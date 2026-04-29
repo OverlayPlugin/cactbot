@@ -14,12 +14,78 @@ const headMarkerData = {
   // Phase 2
   // VFX: sharelaser2tank5sec_c0k1, used by Double Sobat (B520)
   'sharedTankbuster': '0256',
-  // Replication 2 Tethers
+  // Staging and Replication 2/4 Tethers
   'lockedTether': '0175',
   'projectionTether': '016F',
   'manaBurstTether': '0170',
   'heavySlamTether': '0171',
   'fireballSplashTether': '0176', // Comes from the boss, B4E4 Fireball Splash baited jump
+};
+const replication2OutputStrings = {
+  getTether: {
+    en: 'Get Tether',
+  },
+  getBossTether: {
+    en: 'Get Boss Tether',
+  },
+  getConeTetherCW: {
+    en: 'Get Clockwise Cone Tether',
+  },
+  getConeTetherCCW: {
+    en: 'Get Counterclock Cone Tether',
+  },
+  getStackTetherCW: {
+    en: 'Get Clockwise Stack Tether',
+  },
+  getStackTetherCCW: {
+    en: 'Get Counterclock Stack Tether',
+  },
+  getDefamationTetherCW: {
+    en: 'Get Clockwise Defamation Tether',
+  },
+  getDefamationTetherCCW: {
+    en: 'Get Counterclock Defamation Tether',
+  },
+  getNoTether: {
+    en: 'Get Nothing',
+  },
+  getTetherNClone: {
+    en: '${tether}',
+  },
+  getTetherNEClone: {
+    en: '${tether}',
+  },
+  getTetherEClone: {
+    en: '${tether}',
+  },
+  getTetherSEClone: {
+    en: '${tether}',
+  },
+  getTetherSClone: {
+    en: '${tether}',
+  },
+  getTetherSWClone: {
+    en: '${tether}',
+  },
+  getTetherWClone: {
+    en: '${tether}',
+  },
+  getTetherNWClone: {
+    en: '${tether}',
+  },
+};
+// Replication 2: Map for retreiving index by direction
+// Abilities are stored in replication2AbilityOrder with the following dirNum order:
+// 0, 4, 1, 5, 2, 6, 3, 7
+const rep2DirIndexMap = {
+  'north': 0,
+  'south': 1,
+  'northeast': 2,
+  'southwest': 3,
+  'east': 4,
+  'west': 5,
+  'southeast': 6,
+  'northwest': 7,
 };
 const center = {
   x: 100,
@@ -78,6 +144,65 @@ Options.Triggers.push({
       type: 'checkbox',
       default: false,
     },
+    {
+      id: 'replication2Strategy',
+      name: {
+        en: 'Replication 2 Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DN Strategy: Boss North, Cones NE/NW, Stacks E/W, Defamations SE/SW, Nothing South':
+            'dn',
+          'Banana Codex Strategy: Boss West, Stacks NW/SW, Cones N/S, Defamations NE/SE, Nothing E':
+            'banana',
+          'Nukemaru Strategy: Boss East, Stacks NE/SE, Cones N/S, Defamations NW/SW, Nothing W':
+            'nukemaru',
+          'No strategy: Calls the tether you may have and to get a tether.': 'none',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'replication4Strategy',
+      name: {
+        en: 'Replication 4 (Idyllic Dream) Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DN Strategy: N, NE, E, SE Staging 2 Tethers Grab Stacks, S, SW, W, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'dn',
+          'Emergency Meeting Strategy: N, NE, E, NW Stacks, SE, S, SW, W Defamations. Split party Red/Purple + Yellow/Blue markers and swaps based on Stack or Defamation being first':
+            'em',
+          'Caro Strategy: NE, E, SW, W Staging 2 Tethers Grab Stacks, N, SE, S, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'caro',
+          'Nukemaru Strategy: N, SW, W, NW Staging 2 Tethers Grab Stacks, NE, E, SE, S Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'nukemaru',
+          'No strategy: Calls the tether you may have and to get a tether.': 'none',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'portentStrategy',
+      name: {
+        en: 'Phase 2 Tower Portent Resolution Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire Melee N of Platform (Between Dark/Wind), Fire/Earth Range S Edge of Platform':
+            'dn',
+          'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee':
+            'zenith',
+          'Nukemaru Strategy: Near S (corner of numbered marker), Far S on Boss Hitbox, Earth/Fire Melee S Max Melee, Fire/Earth Range N of Platform':
+            'nukemaru',
+          'No strategy: call element and debuff': 'none',
+        },
+      },
+      default: 'none',
+    },
   ],
   timelineFile: 'r12s.txt',
   initData: () => ({
@@ -91,6 +216,34 @@ Options.Triggers.push({
     cellChainCount: 0,
     hasRot: false,
     // Phase 2
+    actorPositions: {},
+    replicationCounter: 0,
+    replication1FireDebuffCounter: 0,
+    replication1DarkDebuffCounter: 0,
+    replication1FollowUp: false,
+    replication2CloneDirNumPlayers: {},
+    replication2DirNumAbility: {},
+    replication2PlayerAbilities: {},
+    replication2PlayerOrder: [],
+    replication2AbilityOrder: [],
+    netherwrathFollowup: false,
+    manaSpheres: {},
+    westManaSpheres: {},
+    eastManaSpheres: {},
+    closeManaSphereIds: [],
+    twistedVisionCounter: 0,
+    replication3CloneOrder: [],
+    replication3CloneDirNumPlayers: {},
+    replication4DirNumAbility: {},
+    replication4PlayerAbilities: {},
+    replication4BossCloneDirNumPlayers: {},
+    replication4PlayerOrder: [],
+    replication4AbilityOrder: [],
+    cosmicKissPattern: [],
+    hasLightResistanceDown: false,
+    twistedVision4MechCounter: 0,
+    doomPlayers: [],
+    hasPyretic: false,
   }),
   triggers: [
     {
@@ -104,6 +257,91 @@ Options.Triggers.push({
           throw new UnreachableCode();
         data.phase = phase;
       },
+    },
+    {
+      id: 'R12S Phase Two Staging Tracker',
+      // Due to the way the combatants are added in prior to the cast of Staging, this is used to set the phase
+      type: 'AddedCombatant',
+      netRegex: { name: 'Understudy', capture: false },
+      condition: (data) => data.phase === 'replication1',
+      run: (data) => data.phase = 'replication2',
+    },
+    {
+      id: 'R12S Phase Two Replication Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: 'B4D8', source: 'Lindwurm', capture: false },
+      run: (data) => {
+        if (data.replicationCounter === 0)
+          data.phase = 'replication1';
+        data.replicationCounter = data.replicationCounter + 1;
+      },
+    },
+    {
+      id: 'R12S Phase Two Boss ID Collect',
+      // Store the boss' id later for checking against tether
+      // Using first B4E1 Staging
+      type: 'StartsUsing',
+      netRegex: { id: 'B4E1', source: 'Lindwurm', capture: true },
+      condition: (data) => data.phase === 'replication2',
+      suppressSeconds: 9999,
+      run: (data, matches) => data.replication2BossId = matches.sourceId,
+    },
+    {
+      id: 'R12S Phase Two Reenactment Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: 'B4EC', source: 'Lindwurm', capture: false },
+      run: (data) => {
+        if (data.phase === 'replication2') {
+          data.phase = 'reenactment1';
+          return;
+        }
+        data.phase = 'reenactment2';
+      },
+    },
+    {
+      id: 'R12S Phase Two Twisted Vision Tracker',
+      // Used for keeping track of phases in idyllic
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      run: (data) => {
+        data.twistedVisionCounter = data.twistedVisionCounter + 1;
+      },
+    },
+    {
+      id: 'R12S ActorSetPos Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R12S ActorMove Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
+      type: 'ActorMove',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R12S AddedCombatant Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
+      type: 'AddedCombatant',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
     },
     {
       id: 'R12S The Fixer',
@@ -2101,6 +2339,4031 @@ Options.Triggers.push({
       response: Responses.bigAoe('alert'),
     },
     // Phase 2
+    {
+      id: 'R12S Arcadia Aflame',
+      type: 'StartsUsing',
+      netRegex: { id: 'B528', source: 'Lindwurm', capture: false },
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'R12S Winged Scourge',
+      // B4DA E/W or N/S clones Facing S, Cleaving Front/Back (North/South)
+      // B4DB N/S or E/W clones Facing W, Cleaving Front/Back (East/West)
+      // Clones are positioned:
+      //          (100, 86)
+      // (86, 100)         (114, 100)
+      //          (100, 114)
+      type: 'StartsUsing',
+      netRegex: { id: ['B4DA', 'B4DB'], source: 'Lindschrat', capture: true },
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        if (matches.id === 'B4DA') {
+          if (data.replication1FollowUp)
+            return output.northSouthCleaves2();
+          const x = parseFloat(matches.x);
+          if (x < 87 || x > 113)
+            return output.eWCleavingNorthSouth();
+          return output.nSCleavingNorthSouth();
+        }
+        if (data.replication1FollowUp)
+          return output.eastWestCleaves2();
+        const x = parseFloat(matches.x);
+        if (x < 87 || x > 113)
+          return output.eWCleavingEastWest();
+        return output.nSCleavingEastWest();
+      },
+      outputStrings: {
+        nSCleavingNorthSouth: {
+          en: 'N/S Cleaving North/South',
+        },
+        eWCleavingNorthSouth: {
+          en: 'E/W Cleaving North/South',
+        },
+        nSCleavingEastWest: {
+          en: 'N/S Cleaving East/West',
+        },
+        eWCleavingEastWest: {
+          en: 'E/W Cleaving East/West',
+        },
+        northSouthCleaves2: {
+          en: 'North/South Cleaves',
+        },
+        eastWestCleaves2: {
+          en: 'East/West Cleaves',
+        },
+      },
+    },
+    {
+      id: 'R12S Fire and Dark Resistance Down II Collector',
+      // CFB Dark Resistance Down II
+      // B79 Fire Resistance Down II
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: true },
+      condition: (data) => !data.replication1FollowUp,
+      run: (data, matches) => {
+        const debuff = matches.effectId === 'CFB' ? 'dark' : 'fire';
+        if (data.me === matches.target)
+          data.replication1Debuff = debuff;
+        if (debuff === 'fire')
+          data.replication1FireDebuffCounter = data.replication1FireDebuffCounter + 1;
+        else
+          data.replication1DarkDebuffCounter = data.replication1DarkDebuffCounter + 1;
+      },
+    },
+    {
+      id: 'R12S Fire and Dark Resistance Down II',
+      // CFB Dark Resistance Down II
+      // B79 Fire Resistance Down II
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return !data.replication1FollowUp;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (_data, matches, output) => {
+        return matches.effectId === 'CFB' ? output.dark() : output.fire();
+      },
+      outputStrings: {
+        fire: {
+          en: 'Fire Debuff: Spread near Dark (later)',
+        },
+        dark: {
+          en: 'Dark Debuff: Stack near Fire (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Fake Fire Resistance Down II',
+      // Two players will not receive a debuff, they will need to act as if they had
+      // Mechanics happen across 1.1s
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: false },
+      condition: (data) => !data.replication1FollowUp,
+      delaySeconds: 1.3,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (data.replication1Debuff === undefined) {
+          // Expecting 2 Fire, 4 Dark (6 Total)
+          if (
+            data.replication1FireDebuffCounter === 2 &&
+            data.replication1DarkDebuffCounter === 4
+          )
+            return output.noDebuff();
+          return output.noDebuffFail();
+        }
+      },
+      outputStrings: {
+        noDebuff: {
+          en: 'No Debuff: Spread near Dark (later)',
+        },
+        noDebuffFail: {
+          en: 'Debuffs Messed Up, Check Partner',
+        },
+      },
+    },
+    {
+      id: 'R12S Snaking Kick',
+      // Targets random player
+      // Second cast of this happens before Grotesquerie, delay until Grotesquerie to reduce chance of none projection players running into it
+      type: 'StartsUsing',
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: true },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      alertText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.getBehind();
+        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
+        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        return output.getBehindDir({
+          dir: output[dir](),
+          mech: output.getBehind(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 1 Follow-up Tracker',
+      // Tracking from B527 Snaking Kick
+      type: 'Ability',
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      run: (data) => data.replication1FollowUp = true,
+    },
+    {
+      id: 'R12S Top-Tier Slam Actor Collect',
+      // Fire NPCs always move in the first Set
+      // Locations are static
+      // Fire => Dark => Fire => Dark
+      // Dark => Fire => Dark => Fire
+      // The other 4 cleave in a line
+      // (90, 90)           (110, 90)
+      //      (95, 95)  (105, 95)
+      //             Boss
+      //      (95, 100) (105, 105)
+      // (90, 110)          (110, 110)
+      // ActorMove ~0.3s later will have the data
+      // ActorSet from the clones splitting we can infer the fire entities since their positions and headings are not perfect
+      // For first set there are two patterns that use these coordinates:
+      //           (100, 86)
+      // (86, 100)           (114, 100)
+      //           (100, 114)
+      // Either N/S are clones casting Winged Scourge, or the E/W clones cast Winged Scourge
+      // Each pattern has its own pattern for IDs of the clones, in order
+      // N/S will have Fire -5 and -6 of its original
+      // E/W will have Fire -6 and -7 of its original
+      // Could use -6 to cover both cases, but that doesn't determine which add jumps first
+      type: 'Ability',
+      netRegex: { id: 'B4D9', source: 'Lindschrat', capture: true },
+      condition: (data, matches) => {
+        if (data.replication1FollowUp) {
+          const pos = data.actorPositions[matches.sourceId];
+          if (pos === undefined)
+            return false;
+          // These values should be 0 when x or y coord has non-zero decimal values
+          // Heading is also checked as the non fire clones all face a perfect heading
+          const xFilter = pos.x % 1;
+          const yFilter = pos.y % 1;
+          if (xFilter === 0 && yFilter === 0 && pos.heading === 0)
+            return false;
+          return true;
+        }
+        return false;
+      },
+      suppressSeconds: 9999,
+      run: (data, matches) => data.replication1FireActor = matches.sourceId,
+    },
+    {
+      id: 'R12S Top-Tier Slam/Mighty Magic Locations',
+      type: 'Ability',
+      netRegex: { id: 'B4D9', source: 'Lindschrat', capture: false },
+      condition: (data) => {
+        if (data.replication1FollowUp && data.replication1FireActor !== undefined)
+          return true;
+        return false;
+      },
+      delaySeconds: 1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const fireId = data.replication1FireActor;
+        if (fireId === undefined)
+          return;
+        const actor = data.actorPositions[fireId];
+        if (actor === undefined)
+          return;
+        const debuff = data.replication1Debuff;
+        const x = actor.x;
+        const dirNum = Directions.xyTo8DirNum(x, actor.y, center.x, center.y);
+        const dir1 = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dirNum2 = (dirNum + 4) % 8;
+        const dir2 = Directions.output8Dir[dirNum2] ?? 'unknown';
+        // Check if combatant moved to inner or outer
+        const isIn = (x > 94 && x < 106);
+        const fireIn = isIn ? dir1 : dir2;
+        const fireOut = isIn ? dir2 : dir1;
+        if (debuff === 'dark')
+          return output.fire({
+            dir1: output[fireIn](),
+            dir2: output[fireOut](),
+          });
+        // Dark will be opposite pattern of Fire
+        const darkIn = isIn ? dir2 : dir1;
+        const darkOut = isIn ? dir1 : dir2;
+        // Fire debuff players and unmarked bait Dark
+        // Expecting 2 Fire, 4 Dark (6 Total)
+        if (
+          debuff === 'fire' ||
+          (data.replication1FireDebuffCounter === 2 &&
+            data.replication1DarkDebuffCounter === 4)
+        )
+          return output.dark({
+            dir1: output[darkIn](),
+            dir2: output[darkOut](),
+          });
+        // Non-debuff players when not 2 fire and 4 dark debuffs
+        // Output Dark location as 2 players will need it
+        return output.darkDebuffFail({
+          dir1: output[darkIn](),
+          dir2: output[darkOut](),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        fire: {
+          en: 'Bait Fire In ${dir1}/Out ${dir2} (Partners)',
+        },
+        dark: {
+          en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
+        },
+        darkDebuffFail: {
+          en: 'Check Partner, Dark is In ${dir1}/Out ${dir2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Double Sobat',
+      // Shared half-room cleave on tank => random turn half-room cleave =>
+      // Esoteric Finisher big circle aoes that hits two highest emnity targets
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['sharedTankbuster'], capture: true },
+      response: Responses.sharedTankBuster(),
+    },
+    {
+      id: 'R12S Double Sobat 2',
+      // Followup half-room cleave:
+      // B521 Double Sobat: 0 degree left turn then B525
+      // B522 Double Sobat: 90 degree left turn then B525
+      // B523 Double Sobat: 180 degree left turn then B525
+      // B524 Double Sobat: 270 degree left turn (this ends up 90 degrees to the right)
+      type: 'Ability',
+      netRegex: { id: ['B521', 'B522', 'B523', 'B524'], source: 'Lindwurm', capture: true },
+      suppressSeconds: 1,
+      alertText: (_data, matches, output) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const targetX = parseFloat(matches.targetX);
+        const targetY = parseFloat(matches.targetY);
+        // Boss snaps to the player position which could be different from heading at time of ability
+        const dirNum = Directions.xyTo16DirNum(targetX, targetY, x, y);
+        const getNewDirNum = (dirNum, id) => {
+          switch (id) {
+            case 'B521':
+              return dirNum;
+            case 'B522':
+              return dirNum - 4;
+            case 'B523':
+              return dirNum - 8;
+            case 'B524':
+              return dirNum - 12;
+          }
+          throw new UnreachableCode();
+        };
+        // Adding 16 incase of negative values
+        const newDirNum = (getNewDirNum(dirNum, matches.id) + 16 + 8) % 16;
+        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
+        return output.getBehindDir({
+          dir: output[dir](),
+          mech: output.getBehind(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
+    },
+    {
+      id: 'R12S Esoteric Finisher',
+      // After Double Sobat 2, boss hits targets highest emnity target, second targets second highest
+      type: 'StartsUsing',
+      netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankBusterCleaves: Outputs.tankBusterCleaves,
+          avoidTankCleaves: Outputs.avoidTankCleaves,
+        };
+        if (data.role === 'tank' || data.role === 'healer') {
+          if (data.role === 'healer')
+            return { infoText: output.tankBusterCleaves() };
+          return { alertText: output.tankBusterCleaves() };
+        }
+        return { infoText: output.avoidTankCleaves() };
+      },
+    },
+    {
+      id: 'R12S Staging 1 Tethered Clone Collect',
+      // Map the locations to a player name
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data) => data.replicationCounter === 1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication2CloneDirNumPlayers[dirNum] = matches.target;
+      },
+    },
+    {
+      id: 'R12S Staging 1 Tethered Clone',
+      // Combatants are added ~4s before Staging starts casting
+      // Same tether ID is used for "locked" ability tethers
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.cloneTether();
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        return output.cloneTetherDir({ dir: output[dir]() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cloneTether: {
+          en: 'Tethered to Clone',
+        },
+        cloneTetherDir: {
+          en: 'Tethered to ${dir} Clone',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 and Replication 4 Ability Tethers Collect',
+      // Record and store a map of where the tethers come from and what they do for later
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['projectionTether'],
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+          headMarkerData['fireballSplashTether'],
+        ],
+        capture: true,
+      },
+      condition: (data) => {
+        if (data.phase === 'replication2' || data.phase === 'idyllic')
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        if (data.phase === 'replication2') {
+          // Handle boss tether separately as its direction location is unimportant
+          if (matches.id !== headMarkerData['fireballSplashTether'])
+            data.replication2DirNumAbility[dirNum] = matches.id;
+        }
+        if (data.phase === 'idyllic')
+          data.replication4DirNumAbility[dirNum] = matches.id;
+      },
+    },
+    {
+      id: 'R12S Replication 2 Ability Tethers Initial Call',
+      // Occur ~8s after end of Replication 2 cast
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['projectionTether'],
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+          headMarkerData['fireballSplashTether'],
+        ],
+        capture: false,
+      },
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const clones = data.replication2CloneDirNumPlayers;
+        const strat = data.triggerSetConfig.replication2Strategy;
+        const myDirNum = Object.keys(clones).find((key) => clones[parseInt(key)] === data.me);
+        if (myDirNum !== undefined) {
+          // Get dirNum of player for custom output based on staging 1 tether
+          // Player can replace the get tether with get defamation, get stack and
+          // the location they want based on custom plan
+          switch (parseInt(myDirNum)) {
+            case 0:
+              return output.getTetherNClone({
+                tether: strat === 'dn'
+                  ? output.getBossTether()
+                  : strat === 'banana'
+                  ? output.getConeTetherCW()
+                  : strat === 'nukemaru'
+                  ? output.getConeTetherCCW()
+                  : output.getTether(),
+              });
+            case 1:
+              return output.getTetherNEClone({
+                tether: strat === 'dn'
+                  ? output.getConeTetherCW()
+                  : strat === 'banana'
+                  ? output.getDefamationTetherCW()
+                  : strat === 'nukemaru'
+                  ? output.getStackTetherCCW()
+                  : output.getTether(),
+              });
+            case 2:
+              return output.getTetherEClone({
+                tether: strat === 'dn'
+                  ? output.getStackTetherCW()
+                  : strat === 'banana'
+                  ? output.getNoTether()
+                  : strat === 'nukemaru'
+                  ? output.getBossTether()
+                  : output.getTether(),
+              });
+            case 3:
+              return output.getTetherSEClone({
+                tether: strat === 'dn'
+                  ? output.getDefamationTetherCW()
+                  : strat === 'banana'
+                  ? output.getDefamationTetherCCW()
+                  : strat === 'nukemaru'
+                  ? output.getStackTetherCW()
+                  : output.getTether(),
+              });
+            case 4:
+              return output.getTetherSClone({
+                tether: strat === 'dn'
+                  ? output.getNoTether()
+                  : strat === 'banana'
+                  ? output.getConeTetherCCW()
+                  : strat === 'nukemaru'
+                  ? output.getConeTetherCW()
+                  : output.getTether(),
+              });
+            case 5:
+              return output.getTetherSWClone({
+                tether: strat === 'dn'
+                  ? output.getDefamationTetherCCW()
+                  : strat === 'banana'
+                  ? output.getStackTetherCCW()
+                  : strat === 'nukemaru'
+                  ? output.getDefamationTetherCW()
+                  : output.getTether(),
+              });
+            case 6:
+              return output.getTetherWClone({
+                tether: strat === 'dn'
+                  ? output.getStackTetherCCW()
+                  : strat === 'banana'
+                  ? output.getBossTether()
+                  : strat === 'nukemaru'
+                  ? output.getNoTether()
+                  : output.getTether(),
+              });
+            case 7:
+              return output.getTetherNWClone({
+                tether: strat === 'dn'
+                  ? output.getConeTetherCCW()
+                  : strat === 'banana'
+                  ? output.getStackTetherCW()
+                  : strat === 'nukemaru'
+                  ? output.getDefamationTetherCCW()
+                  : output.getTether(),
+              });
+          }
+        }
+        // Unknown staging clone tether
+        return output.getTether();
+      },
+      outputStrings: replication2OutputStrings,
+    },
+    {
+      id: 'R12S Replication 2 Locked Tether Collect',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'replication2' &&
+          data.replicationCounter === 2
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const target = matches.target;
+        const sourceId = matches.sourceId;
+        const boss = headMarkerData['fireballSplashTether'];
+        // Check if boss tether
+        if (data.replication2BossId === sourceId)
+          data.replication2PlayerAbilities[target] = boss;
+        else if (data.replication2BossId !== sourceId) {
+          const actor = data.actorPositions[sourceId];
+          if (actor === undefined) {
+            // Setting to use that we know we have a tether but couldn't determine what ability it is
+            data.replication2PlayerAbilities[target] = 'unknown';
+            return;
+          }
+          const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+          // Lookup what the tether was at the same location
+          const ability = data.replication2DirNumAbility[dirNum];
+          if (ability === undefined) {
+            // Setting to use that we know we have a tether but couldn't determine what ability it is
+            data.replication2PlayerAbilities[target] = 'unknown';
+            return;
+          }
+          data.replication2PlayerAbilities[target] = ability;
+        }
+        // Create ability order once we have all 8 players
+        // If players had more than one tether previously, the extra tethers are randomly assigned
+        if (Object.keys(data.replication2PlayerAbilities).length === 7) {
+          // Fill in for player that had no tether, they are going to be boss' defamation
+          if (data.replication2PlayerAbilities[data.me] === undefined)
+            data.replication2PlayerAbilities[data.me] = 'none';
+          const abilities = data.replication2PlayerAbilities;
+          const order = [0, 4, 1, 5, 2, 6, 3, 7]; // Order in which clones spawned, this is static
+          const players = data.replication2CloneDirNumPlayers; // Direction of player's clone
+          // Mechanics are resolved clockwise
+          for (const dirNum of order) {
+            const player = players[dirNum] ?? 'unknown';
+            // No Tether player wouldn't have an ability found for other
+            // players, so this can be set to 'none' here when undefined
+            // Additional players missing abilities, but received a tether
+            // would have 'unknown' instead of undefined
+            const ability = abilities[player] ?? 'none';
+            data.replication2PlayerOrder.push(player);
+            data.replication2AbilityOrder.push(ability);
+          }
+          // Detect recognized strategy by checking first 7 abilities
+          const detectStrategy = (order) => {
+            const defamation = headMarkerData['manaBurstTether'];
+            const stack = headMarkerData['heavySlamTether'];
+            const projection = headMarkerData['projectionTether'];
+            // DN
+            if (
+              order[rep2DirIndexMap['north']] === boss &&
+              order[rep2DirIndexMap['south']] === 'none' &&
+              order[rep2DirIndexMap['northeast']] === projection &&
+              order[rep2DirIndexMap['southwest']] === defamation &&
+              order[rep2DirIndexMap['east']] === stack &&
+              order[rep2DirIndexMap['west']] === stack &&
+              order[rep2DirIndexMap['southeast']] === defamation
+            )
+              return 'dn';
+            // Banana Codex
+            if (
+              order[rep2DirIndexMap['north']] === projection &&
+              order[rep2DirIndexMap['south']] === projection &&
+              order[rep2DirIndexMap['northeast']] === defamation &&
+              order[rep2DirIndexMap['southwest']] === stack &&
+              order[rep2DirIndexMap['east']] === 'none' &&
+              order[rep2DirIndexMap['west']] === boss &&
+              order[rep2DirIndexMap['southeast']] === defamation
+            )
+              return 'banana';
+            // Nukemaru
+            if (
+              order[rep2DirIndexMap['north']] === projection &&
+              order[rep2DirIndexMap['south']] === projection &&
+              order[rep2DirIndexMap['northeast']] === stack &&
+              order[rep2DirIndexMap['southwest']] === defamation &&
+              order[rep2DirIndexMap['east']] === boss &&
+              order[rep2DirIndexMap['west']] === 'none' &&
+              order[rep2DirIndexMap['southeast']] === stack
+            )
+              return 'nukemaru';
+            // Not Yet Supported, File a Feature Request or PR
+            return 'unknown';
+          };
+          data.replication2StrategyDetected = detectStrategy(data.replication2AbilityOrder);
+        }
+      },
+    },
+    {
+      id: 'R12S Replication 2 Locked Tether',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'replication2' &&
+          data.replicationCounter === 2 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        const sourceId = matches.sourceId;
+        const strat = data.triggerSetConfig.replication2Strategy;
+        // Check if it's the boss
+        if (data.replication2BossId === sourceId)
+          return output.fireballSplashTether({
+            mech1: strat === 'dn'
+              ? output.baitJumpDNN({ strat: output.north() })
+              : strat === 'banana'
+              ? output.baitJumpBananaW({ strat: output.west() })
+              : strat === 'nukemaru'
+              ? output.baitJumpNukemaruE({ strat: output.east() })
+              : output.baitJump(),
+          });
+        // Get direction of the tether
+        const actor = data.actorPositions[sourceId];
+        const ability = data.replication2PlayerAbilities[data.me];
+        const clones = data.replication2CloneDirNumPlayers;
+        const myDirNum = Object.keys(clones).find((key) => clones[parseInt(key)] === data.me);
+        const myDirNumInt = myDirNum === undefined ? -1 : parseInt(myDirNum);
+        if (actor === undefined) {
+          switch (ability) {
+            case headMarkerData['projectionTether']:
+              switch (myDirNumInt) {
+                case 0: // Banana and Nukemaru
+                  return output.projectionTether({
+                    mech1: strat === 'banana'
+                      ? output.baitProteanBananaN({
+                        strat: output['dirWSW'](),
+                      }) // Southmost protean
+                      : strat === 'nukemaru'
+                      ? output.baitProteanNukemaruN({
+                        strat: output['dirENE'](),
+                      }) // Northmost protean
+                      : output.baitProtean(),
+                  });
+                case 1: // DN only
+                  return output.projectionTether({
+                    mech1: strat === 'dn'
+                      ? output.baitProteanDNNE({ strat: output.north() }) // Inner NNE
+                      : output.baitProtean(),
+                  });
+                case 4: // Banana and Nukemaru
+                  return output.projectionTether({
+                    mech1: strat === 'banana'
+                      ? output.baitProteanBananaS({
+                        strat: output['dirWNW'](),
+                      }) // Northmost protean
+                      : strat === 'nukemaru'
+                      ? output.baitProteanNukemaruN({
+                        strat: output['dirESE'](),
+                      }) // Southmost protean
+                      : output.baitProtean(),
+                  });
+                case 7: // DN only
+                  return output.projectionTether({
+                    mech1: strat === 'dn'
+                      ? output.baitProteanDNNW({ strat: output.north() }) // Inner NNW
+                      : output.baitProtean(),
+                  });
+              }
+              return output.projectionTether({
+                mech1: strat === 'dn'
+                  ? output.baitProteanDN({ strat: output.north() })
+                  : strat === 'banana'
+                  ? output.baitProteanBanana({ strat: output.west() })
+                  : strat === 'nukemaru'
+                  ? output.baitProteanNukemaru({ strat: output.east() })
+                  : output.baitProtean(),
+              });
+            case headMarkerData['manaBurstTether']:
+              switch (myDirNumInt) {
+                case 1: // Banana Only
+                  return output.manaBurstTether({
+                    mech1: strat === 'banana'
+                      ? output.defamationOnYouBananaNE({
+                        strat: output['dirNNE'](),
+                      }) // North/NNE
+                      : output.defamationOnYou(),
+                  });
+                case 3: // DN and Banana
+                  return output.manaBurstTether({
+                    mech1: strat === 'dn'
+                      ? output.defamationOnYouDNSE({
+                        strat: output['dirESE'](),
+                      }) // East/ESE
+                      : strat === 'banana'
+                      ? output.defamationOnYouBananaSE({
+                        strat: output['dirSSE'](),
+                      }) // South/SSE
+                      : output.defamationOnYou(),
+                  });
+                case 5: // DN and Nukemaru
+                  return output.manaBurstTether({
+                    mech1: strat === 'dn'
+                      ? output.defamationOnYouDNSW({
+                        strat: output['dirWSW'](),
+                      }) // West/WSW
+                      : strat === 'nukemaru'
+                      ? output.defamationOnYouNukemaruSW({
+                        strat: output['dirSSW'](),
+                      }) // South/SSW
+                      : output.defamationOnYou(),
+                  });
+                case 7: // Nukemaru Only
+                  return output.manaBurstTether({
+                    mech1: strat === 'nukemaru'
+                      ? output.defamationOnYouNukemaruNW({
+                        strat: output['dirNNW'](),
+                      }) // North/NNW
+                      : output.defamationOnYou(),
+                  });
+              }
+              return output.manaBurstTether({
+                mech1: output.defamationOnYou(),
+              });
+            case headMarkerData['heavySlamTether']:
+              switch (myDirNumInt) {
+                case 1: // Nukemaru Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'nukemaru'
+                      ? output.baitProteanNukemaruNE({ strat: output.east() }) // Inner ENE
+                      : output.baitProtean(),
+                  });
+                case 2: // DN Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'dn'
+                      ? output.baitProteanDNE({
+                        strat: output['dirNNE'](),
+                      }) // Eastmost Protean
+                      : output.baitProtean(),
+                  });
+                case 3: // Nukemaru Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'nukemaru'
+                      ? output.baitProteanNukemaruSE({ strat: output.east() }) // Inner ESE
+                      : output.baitProtean(),
+                  });
+                case 5: // Banana Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'banana'
+                      ? output.baitProteanBananaSW({ strat: output.west() }) // Inner WSW
+                      : output.baitProtean(),
+                  });
+                case 6: // DN Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'dn'
+                      ? output.baitProteanDNW({
+                        strat: output['dirNNW'](),
+                      }) // Westmost Protean
+                      : output.baitProtean(),
+                  });
+                case 7: // Banana Only
+                  return output.heavySlamTether({
+                    mech1: strat === 'banana'
+                      ? output.baitProteanBananaNW({ strat: output.west() }) // Inner WNW
+                      : output.baitProtean(),
+                  });
+              }
+              return output.heavySlamTether({
+                mech1: strat === 'dn'
+                  ? output.baitProteanDN({ strat: output.north() })
+                  : strat === 'banana'
+                  ? output.baitProteanBanana({ strat: output.west() })
+                  : output.baitProtean(),
+              });
+          }
+          return;
+        }
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+            switch (myDirNumInt) {
+              case 0: // Banana and Nukemaru
+                return output.projectionTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'banana'
+                    ? output.baitProteanBananaN({
+                      strat: output['dirWSW'](),
+                    }) // Southmost protean
+                    : strat === 'nukemaru'
+                    ? output.baitProteanNukemaruN({
+                      strat: output['dirENE'](),
+                    }) // Northmost protean
+                    : output.baitProtean(),
+                });
+              case 1: // DN only
+                return output.projectionTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.baitProteanDNNE({ strat: output.north() }) // Inner NNE
+                    : output.baitProtean(),
+                });
+              case 4: // Banana and Nukemaru
+                return output.projectionTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'banana'
+                    ? output.baitProteanBananaS({
+                      strat: output['dirWNW'](),
+                    }) // Northmost protean
+                    : strat === 'nukemaru'
+                    ? output.baitProteanNukemaruS({
+                      strat: output['dirESE'](),
+                    }) // Southmost protean
+                    : output.baitProtean(),
+                });
+              case 7: // DN only
+                return output.projectionTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.baitProteanDNNW({ strat: output.north() }) // Inner NNW
+                    : output.baitProtean(),
+                });
+            }
+            return output.projectionTetherDir({
+              dir: output[dir](),
+              mech1: strat === 'dn'
+                ? output.baitProteanDN({ strat: output.north() })
+                : strat === 'banana'
+                ? output.baitProteanBanana({ strat: output.west() })
+                : strat === 'nukemaru'
+                ? output.baitProteanNukemaru({ strat: output.east() })
+                : output.baitProtean(),
+            });
+          case headMarkerData['manaBurstTether']:
+            switch (myDirNumInt) {
+              case 1: // Banana Only
+                return output.manaBurstTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'banana'
+                    ? output.defamationOnYouBananaNE({
+                      strat: output['dirNNE'](),
+                    }) // North/NNE
+                    : output.defamationOnYou(),
+                });
+              case 3: // DN and Banana
+                return output.manaBurstTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.defamationOnYouDNSE({
+                      strat: output['dirESE'](),
+                    }) // East/ESE
+                    : strat === 'banana'
+                    ? output.defamationOnYouBananaSE({
+                      strat: output['dirSSE'](),
+                    }) // South/SSE
+                    : output.defamationOnYou(),
+                });
+              case 5: // DN and Nukemaru
+                return output.manaBurstTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.defamationOnYouDNSW({
+                      strat: output['dirWSW'](),
+                    }) // West/WSW
+                    : strat === 'nukemaru'
+                    ? output.defamationOnYouNukemaruSW({
+                      strat: output['dirSSW'](),
+                    }) // South/SSW
+                    : output.defamationOnYou(),
+                });
+              case 7: // Nukemaru Only
+                return output.manaBurstTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'nukemaru'
+                    ? output.defamationOnYouNukemaruNW({
+                      strat: output['dirNNW'](),
+                    }) // North/NNW
+                    : output.defamationOnYou(),
+                });
+            }
+            return output.manaBurstTetherDir({
+              dir: output[dir](),
+              mech1: output.defamationOnYou(),
+            });
+          case headMarkerData['heavySlamTether']:
+            switch (myDirNumInt) {
+              case 1: // Nukemaru Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'nukemaru'
+                    ? output.baitProteanNukemaruNE({ strat: output.east() }) // Inner ENE
+                    : output.baitProtean(),
+                });
+              case 2: // DN Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.baitProteanDNE({
+                      strat: output['dirNNE'](),
+                    }) // Eastmost Protean
+                    : output.baitProtean(),
+                });
+              case 3: // Nukemaru Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'nukemaru'
+                    ? output.baitProteanNukemaruSE({ strat: output.east() }) // Inner ESE
+                    : output.baitProtean(),
+                });
+              case 5: // Banana Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'banana'
+                    ? output.baitProteanBananaSW({ strat: output.west() }) // Inner WSW
+                    : output.baitProtean(),
+                });
+              case 6: // DN Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'dn'
+                    ? output.baitProteanDNW({
+                      strat: output['dirNNW'](),
+                    }) // Westmost Protean
+                    : output.baitProtean(),
+                });
+              case 7: // Banana Only
+                return output.heavySlamTetherDir({
+                  dir: output[dir](),
+                  mech1: strat === 'banana'
+                    ? output.baitProteanBananaNW({ strat: output.west() }) // Inner WNW
+                    : output.baitProtean(),
+                });
+            }
+            return output.heavySlamTetherDir({
+              dir: output[dir](),
+              mech1: strat === 'dn'
+                ? output.baitProteanDN({ strat: output.north() })
+                : strat === 'banana'
+                ? output.baitProteanBanana({ strat: output.west() })
+                : strat === 'nukemaru'
+                ? output.baitProteanBanana({ strat: output.east() })
+                : output.baitProtean(),
+            });
+        }
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        north: Outputs.north,
+        east: Outputs.east,
+        south: Outputs.south,
+        west: Outputs.west,
+        defamationOnYou: Outputs.defamationOnYou,
+        defamationOnYouDNSE: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouDNSW: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouBananaNE: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouBananaSE: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouNukemaruSW: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouNukemaruNW: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        baitProtean: {
+          en: 'Bait Protean from Boss',
+        },
+        baitProteanDN: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNNE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNNW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBanana: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaN: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaS: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaSW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaNW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanNukemaru: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanNukemaruN: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanNukemaruS: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanNukemaruNE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanNukemaruSE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitJump: {
+          en: 'Bait Jump',
+        },
+        baitJumpDNN: {
+          en: 'Bait Jump ${strat}',
+        },
+        baitJumpBananaW: {
+          en: 'Bait Jump ${strat}',
+        },
+        baitJumpNukemaruE: {
+          en: 'Bait Jump ${strat}',
+        },
+        projectionTetherDir: {
+          en: '${dir} Cone Tether: ${mech1}',
+        },
+        projectionTether: {
+          en: 'Cone Tether: ${mech1}',
+        },
+        manaBurstTetherDir: {
+          en: '${dir} Defamation Tether: ${mech1}',
+        },
+        manaBurstTether: {
+          en: 'Defamation Tether: ${mech1}',
+        },
+        heavySlamTetherDir: {
+          en: '${dir} Stack Tether: ${mech1}',
+        },
+        heavySlamTether: {
+          en: 'Stack Tether: ${mech1}',
+        },
+        fireballSplashTether: {
+          en: 'Boss Tether: ${mech1}',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 Mana Burst Far Target',
+      // A player without a tether will be target for defamation
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: false },
+      condition: (data) => {
+        if (data.phase === 'replication2' && data.replicationCounter === 2)
+          return true;
+        return false;
+      },
+      delaySeconds: 0.2,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const ability = data.replication2PlayerAbilities[data.me];
+        const strat = data.triggerSetConfig.replication2Strategy;
+        if (ability !== 'none' || ability === undefined)
+          return;
+        return output.noTether({
+          mech1: strat === 'dn'
+            ? output.baitFarDefamationDN({ strat: output.south() })
+            : strat === 'banana'
+            ? output.baitFarDefamationBanana({ strat: output.east() })
+            : strat === 'nukemaru'
+            ? output.baitFarDefamationNukemaru({ strat: output.west() })
+            : output.baitFarDefamation(),
+          mech2: output.stackGroups(),
+        });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        south: Outputs.south,
+        west: Outputs.west,
+        baitFarDefamation: {
+          en: 'Bait Far Defamation',
+        },
+        baitFarDefamationDN: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        baitFarDefamationBanana: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        baitFarDefamationNukemaru: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        noTether: {
+          en: 'No Tether: ${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Heavy Slam',
+      // After B4E7 Mana Burst, Groups must stack up on the heavy slam targetted players
+      type: 'Ability',
+      netRegex: { id: 'B4E7', source: 'Lindwurm', capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+            return output.projectionTether({
+              mech1: output.stackGroups(),
+              mech2: output.lookAway(),
+              mech3: output.getBehind(),
+            });
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTether({
+              mech1: output.stackGroups(),
+              mech2: output.projection(),
+              mech3: output.getBehind(),
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTether({
+              mech1: output.stackGroups(),
+              mech2: output.projection(),
+              mech3: output.getBehind(),
+            });
+          case headMarkerData['fireballSplashTether']:
+            return output.fireballSplashTether({
+              mech1: output.stackGroups(),
+              mech2: output.projection(),
+              mech3: output.getBehind(),
+            });
+        }
+        return output.noTether({
+          mech1: output.stackGroups(),
+          mech2: output.projection(),
+          mech3: output.getBehind(),
+        });
+      },
+      outputStrings: {
+        getBehind: Outputs.getBehind,
+        lookAway: Outputs.lookAway,
+        projection: {
+          en: 'Cones',
+        },
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        stackOnYou: Outputs.stackOnYou,
+        projectionTether: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+        manaBurstTether: {
+          en: '${mech1} => ${mech2} => ${mech3}',
+        },
+        heavySlamTether: {
+          en: '${mech1} => ${mech2} => ${mech3}',
+        },
+        fireballSplashTether: {
+          en: '${mech1} => ${mech2} => ${mech3}',
+        },
+        noTether: {
+          en: '${mech1} => ${mech2} => ${mech3}',
+        },
+      },
+    },
+    {
+      id: 'R12S Grotesquerie',
+      // This seems to be the point at which the look for the Snaking Kick is snapshot
+      // The VFX B4E9 happens ~0.6s before Snaking Kick
+      // B4EA has the targetted player in it
+      // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
+      type: 'Ability',
+      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        // Get Boss facing
+        const bossId = data.replication2BossId;
+        if (bossId === undefined)
+          return output.getBehind();
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return output.getBehind();
+        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
+        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        return output.getBehindDir({
+          dir: output[dir](),
+          mech: output.getBehind(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
+    },
+    {
+      id: 'R12S Netherwrath Near/Far and First Clones',
+      // In DN, Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
+      // In Banana Codex and Nukemaru, N/S Projections happen at this time
+      type: 'StartsUsing',
+      netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
+      infoText: (data, matches, output) => {
+        const strat = data.replication2StrategyDetected;
+        const ability = data.replication2PlayerAbilities[data.me];
+        const isNear = matches.id === 'B52E';
+        // DN Strategy
+        if (strat === 'dn') {
+          if (isNear) {
+            switch (ability) {
+              case headMarkerData['projectionTether']:
+                return output.projectionTetherNear({
+                  proteanBaits: output.beFar(),
+                  mech1: output.scaldingWave(),
+                  mech2: output.stacks(),
+                  spiteBaits: output.near(),
+                });
+              case headMarkerData['manaBurstTether']:
+                return output.manaBurstTetherNear({
+                  spiteBaits: output.beNear(),
+                  mech1: output.timelessSpite(),
+                  mech2: output.proteans(),
+                  proteanBaits: output.far(),
+                });
+              case headMarkerData['heavySlamTether']:
+                return output.heavySlamTetherNear({
+                  proteanBaits: output.beFar(),
+                  mech1: output.scaldingWave(),
+                  mech2: output.stacks(),
+                  spiteBaits: output.near(),
+                });
+              case headMarkerData['fireballSplashTether']:
+                return output.fireballSplashTetherNear({
+                  spiteBaits: output.beNear(),
+                  mech1: output.timelessSpite(),
+                  mech2: output.proteans(),
+                  proteanBaits: output.far(),
+                });
+            }
+            return output.noTetherNear({
+              spiteBaits: output.beNear(),
+              mech1: output.timelessSpite(),
+              mech2: output.proteans(),
+              proteanBaits: output.far(),
+            });
+          }
+          // Netherwrath Far
+          switch (ability) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTetherFar({
+                proteanBaits: output.beNear(),
+                mech1: output.scaldingWave(),
+                mech2: output.stacks(),
+                spiteBaits: output.far(),
+              });
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTetherFar({
+                spiteBaits: output.beFar(),
+                mech1: output.timelessSpite(),
+                mech2: output.proteans(),
+                proteanBaits: output.near(),
+              });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTetherFar({
+                proteanBaits: output.beNear(),
+                mech1: output.scaldingWave(),
+                mech2: output.stacks(),
+                spiteBaits: output.far(),
+              });
+            case headMarkerData['fireballSplashTether']:
+              return output.fireballSplashTetherFar({
+                spiteBaits: output.beFar(),
+                mech1: output.timelessSpite(),
+                mech2: output.proteans(),
+                proteanBaits: output.near(),
+              });
+          }
+          return output.noTetherFar({
+            spiteBaits: output.beFar(),
+            mech1: output.timelessSpite(),
+            mech2: output.proteans(),
+            proteanBaits: output.near(),
+          });
+        }
+        // Banana Codex and Nukemaru Strategies
+        if (strat === 'banana' || strat === 'nukemaru') {
+          // Technically, these strategies do not care about Near/Far, but
+          // included as informational
+          switch (ability) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTetherBait({
+                mech1: output.timelessSpite(),
+                spiteBaits: isNear ? output.near() : output.far(),
+                mech2: output.proteans(),
+              });
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTetherHitbox({
+                mech1: strat === 'banana'
+                  ? output.hitboxBanana()
+                  : output.hitboxNukemaru(),
+                spiteBaits: isNear ? output.near() : output.far(),
+                mech2: output.stackDir({
+                  dir: strat === 'banana'
+                    ? output.dirSW()
+                    : output.dirNE(),
+                }),
+              });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTetherBait({
+                mech1: output.timelessSpite(),
+                spiteBaits: isNear ? output.near() : output.far(),
+                mech2: output.proteans(),
+              });
+            case headMarkerData['fireballSplashTether']:
+              return output.fireballSplashTetherHitbox({
+                mech1: strat === 'banana'
+                  ? output.hitboxBanana()
+                  : output.hitboxNukemaru(),
+                spiteBaits: isNear ? output.near() : output.far(),
+                mech2: output.stackDir({
+                  dir: strat === 'banana'
+                    ? output.dirSW()
+                    : output.dirNE(),
+                }),
+              });
+          }
+          return output.noTetherHitbox({
+            mech1: strat === 'banana'
+              ? output.hitboxBanana()
+              : output.hitboxNukemaru(),
+            spiteBaits: isNear ? output.near() : output.far(),
+            mech2: output.stackDir({
+              dir: strat === 'banana'
+                ? output.dirSW()
+                : output.dirNE(),
+            }),
+          });
+        }
+        // No built-in strategy / unsupported order, call generic far/near and
+        // what's happening next
+        const getMechanic = (order) => {
+          const boss = headMarkerData['fireballSplashTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const stack = headMarkerData['heavySlamTether'];
+          const projection = headMarkerData['projectionTether'];
+          if (order === boss)
+            return 'proteans';
+          if (order === defamation || order === 'none')
+            return 'defamation';
+          if (order === projection)
+            return 'projection';
+          if (order === stack)
+            return 'stack';
+          return 'unknown';
+        };
+        const order = data.replication2AbilityOrder;
+        const mechanic1 = getMechanic(order[0] ?? 'unknown');
+        const mechanic2 = getMechanic(order[1] ?? 'unknown');
+        const mechanic3 = getMechanic(order[2] ?? 'unknown');
+        const mechanic4 = getMechanic(order[3] ?? 'unknown');
+        return output.netherwrathMechThenMech({
+          spiteBaits: isNear ? output.near() : output.far(),
+          mech1: output[mechanic1](),
+          mech2: output[mechanic2](),
+          mech3: output[mechanic3](),
+          mech4: output[mechanic4](),
+        });
+      },
+      outputStrings: {
+        dirNE: Outputs.dirNE,
+        dirSW: Outputs.dirSW,
+        scaldingWave: Outputs.protean,
+        timelessSpite: Outputs.stackPartner,
+        stacks: Outputs.stacks,
+        stackDir: {
+          en: 'Stack ${dir}',
+        },
+        proteans: {
+          en: 'Proteans',
+        },
+        beNear: {
+          en: 'Be Near',
+        },
+        beFar: {
+          en: 'Be Far',
+        },
+        hitboxBanana: {
+          en: 'Be West on Boss Hitbox',
+        },
+        hitboxNukemaru: {
+          en: 'Be West on Boss Hitbox',
+        },
+        near: {
+          en: 'Near',
+          de: 'Nah',
+          fr: 'Proche',
+          cn: '近',
+          ko: '가까이',
+        },
+        far: {
+          en: 'Far',
+          de: 'Fern',
+          fr: 'Loin',
+          cn: '远',
+          ko: '멀리',
+        },
+        projectionTetherFar: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        manaBurstTetherFar: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        heavySlamTetherFar: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        fireballSplashTetherFar: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        noTetherFar: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        projectionTetherNear: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        manaBurstTetherNear: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        heavySlamTetherNear: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        fireballSplashTetherNear: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        noTetherNear: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        projectionTetherBait: {
+          en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
+        },
+        manaBurstTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        heavySlamTetherBait: {
+          en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
+        },
+        fireballSplashTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        noTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        stack: Outputs.stackMarker,
+        projection: {
+          en: 'Cones',
+        },
+        defamation: {
+          en: 'Defamation',
+        },
+        unknown: Outputs.unknown,
+        netherwrathMechThenMech: {
+          en: '${spiteBaits} Baits + ${mech1} N + ${mech2} S => ${mech3} NE + ${mech4} SW',
+        },
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Scalding Waves Collect (DN)',
+      // NOTE: This is used in DN Strategy
+      // Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
+      // There are multiple BBE3s, setting flag to trigger after
+      // B8E1 Scalding Waves
+      type: 'Ability',
+      netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
+      condition: (data) => data.phase === 'reenactment1',
+      suppressSeconds: 9999,
+      run: (data) => data.netherwrathFollowup = true,
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stack SW (Second Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
+      // SW (Banana)/NE (Nukemaru) Clone Stack happens after N/S Clone Projections
+      // Defamation Tether Players, Boss Tether Player, and No Tether Player take stack
+      // Using B922 Hemorrhagic Projection from clones
+      type: 'Ability',
+      netRegex: { id: 'B922', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stackThenStackBanana: {
+            en: 'Stack on SW Clone => Stack on NW Clone',
+          },
+          avoidStackThenProteanBanana: {
+            en: 'Avoid SW Stack => Bait Protean West',
+          },
+          stackThenProteansBanana: {
+            en: 'SW Clone Stack => West Proteans',
+          },
+          stackThenStackNukemaru: {
+            en: 'Stack on NE Clone => Stack on SE Clone',
+          },
+          avoidStackThenProteanNukemaru: {
+            en: 'Avoid NE Stack => Bait Protean East',
+          },
+          stackThenProteansNukemaru: {
+            en: 'NE Clone Stack => East Proteans',
+          },
+        };
+        const strat = data.replication2StrategyDetected;
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidStackThenProteanBanana()
+                : output.avoidStackThenProteanNukemaru(),
+            };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return {
+              alertText: strat === 'banana'
+                ? output.stackThenStackBanana()
+                : output.stackThenStackNukemaru(),
+            };
+        }
+        // Missing ability data, output mechanic order
+        return {
+          infoText: strat === 'banana'
+            ? output.stackThenProteansBanana()
+            : output.stackThenProteansNukemaru(),
+        };
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stacks E/W (Third Clones DN)',
+      // NOTE: This is used with DN Strategy
+      // Players need to wait for BBE3 Mana Burst defamations on clones to complete
+      // This happens three times during reenactment and the third one (which is after the proteans) is the trigger
+      type: 'Ability',
+      netRegex: { id: 'BBE3', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        if (data.netherwrathFollowup) {
+          const order = data.replication2AbilityOrder;
+          const stack = headMarkerData['heavySlamTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const projection = headMarkerData['projectionTether'];
+          if (
+            order[rep2DirIndexMap['east']] === stack &&
+            order[rep2DirIndexMap['west']] === stack &&
+            order[rep2DirIndexMap['northeast']] === projection &&
+            order[rep2DirIndexMap['southwest']] === defamation
+          )
+            return true;
+        }
+        return false;
+      },
+      suppressSeconds: 9999,
+      alertText: (_data, _matches, output) => output.text(),
+      outputStrings: {
+        text: {
+          en: 'East/West Clone Stacks',
+        },
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Proteans West (Third Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
+      // Stack Players need to go to the other stack
+      // Non-stack players need to bait proteans
+      // Using BE5D Heavy Slam from clones
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          proteanBanana: {
+            en: 'Bait Protean West + Avoid Clone AoE',
+          },
+          avoidThenStackBanana: {
+            en: 'Avoid West Clone/East Defamation + Stack on NW Clone',
+          },
+          proteansThenStackBanana: {
+            en: 'West Proteans => NW Clone Stack',
+          },
+          proteanNukemaru: {
+            en: 'Bait Protean East + Avoid Clone AoE',
+          },
+          avoidThenStackNukemaru: {
+            en: 'Avoid East Clone/West Defamation + Stack on SE Clone',
+          },
+          proteansThenStackNukemaru: {
+            en: 'East Proteans => SE Clone Stack',
+          },
+        };
+        const strat = data.replication2StrategyDetected;
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return {
+              alertText: strat === 'banana'
+                ? output.proteanBanana()
+                : output.proteanNukemaru(),
+            };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidThenStackBanana()
+                : output.avoidThenStackNukemaru(),
+            };
+        }
+        // Missing ability data, output mechanic order
+        return {
+          infoText: strat === 'banana'
+            ? output.proteansThenStackBanana()
+            : output.proteansThenStackNukemaru(),
+        };
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Defamation SE Dodge Reminder (Fourth Clones DN)',
+      // NOTE: This is used with DN Strategy
+      // Players need to run back to north after clone stacks (BE5D Heavy Slam)
+      // The clone stacks become a defamation and the other a cleave going East or West through the room
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        if (data.netherwrathFollowup) {
+          const order = data.replication2AbilityOrder;
+          const stack = headMarkerData['heavySlamTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const projection = headMarkerData['projectionTether'];
+          if (
+            order[rep2DirIndexMap['east']] === stack &&
+            order[rep2DirIndexMap['west']] === stack &&
+            order[rep2DirIndexMap['southeast']] === defamation &&
+            order[rep2DirIndexMap['northwest']] === projection
+          )
+            return true;
+        }
+        return false;
+      },
+      suppressSeconds: 9999,
+      alertText: (_data, _matches, output) => output.north(),
+      outputStrings: {
+        north: Outputs.north,
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stack NW Reminder (Fourth Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
+      // Reminder for players to Stack
+      // Reminder for Non-stack players to avoid
+      // Using B8E1 Scalding Waves from clones
+      type: 'Ability',
+      netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stackBanana: {
+            en: 'Stack on NW Clone',
+          },
+          avoidStackBanana: {
+            en: 'Avoid NE Stack',
+          },
+          stackAndDefamationBanana: {
+            en: 'NW Clone Stack + SE Defamation',
+          },
+          stackNukemaru: {
+            en: 'Stack on SE Clone',
+          },
+          avoidStackNukemaru: {
+            en: 'Avoid SE Stack',
+          },
+          stackAndDefamationNukemaru: {
+            en: 'SE Clone Stack + NW Defamation',
+          },
+        };
+        const strat = data.replication2StrategyDetected;
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidStackBanana()
+                : output.avoidStackNukemaru(),
+            };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return {
+              alertText: strat === 'banana'
+                ? output.stackBanana()
+                : output.stackNukemaru(),
+            };
+        }
+        // Missing ability data, output mechanic order
+        return {
+          infoText: strat === 'banana'
+            ? output.stackAndDefamationBanana()
+            : output.stackAndDefamationNukemaru(),
+        };
+      },
+    },
+    {
+      id: 'R12S Mana Sphere Collect and Label',
+      // Combatants Spawn ~3s before B505 Mutating Cells startsUsing
+      // Their positions are available at B4FD in the 264 AbilityExtra lines and updated periodically after with 270 lines
+      // 19208 => Lightning Bowtie (N/S Cleave)
+      // 19209 => Fire Bowtie (E/W Cleave)
+      // 19205 => Black Hole
+      // 19206 => Water Sphere/Chariot
+      // 19207 => Wind Donut
+      // Position at add is center, so not useful here yet
+      type: 'AddedCombatant',
+      netRegex: { name: 'Mana Sphere', capture: true },
+      run: (data, matches) => {
+        const id = matches.id;
+        const npcBaseId = parseInt(matches.npcBaseId);
+        switch (npcBaseId) {
+          case 19205:
+            data.manaSpheres[id] = 'blackHole';
+            return;
+          case 19206:
+            data.manaSpheres[id] = 'water';
+            return;
+          case 19207:
+            data.manaSpheres[id] = 'wind';
+            return;
+          case 19208:
+            data.manaSpheres[id] = 'lightning';
+            return;
+          case 19209:
+            data.manaSpheres[id] = 'fire';
+            return;
+        }
+      },
+    },
+    {
+      id: 'R12S Mutation α/β Collect',
+      // Used in Blood Mana / Blood Awakening Mechanics
+      // 12A1 Mutation α: Don't get hit
+      // 12A3 Mutation β: Get Hit
+      // Players will get opposite debuff after Blood Mana
+      type: 'GainsEffect',
+      netRegex: { effectId: ['12A1', '12A3'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        data.myMutation = matches.effectId === '12A1' ? 'alpha' : 'beta';
+      },
+    },
+    {
+      id: 'R12S Mutation α/β',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['12A1', '12A3'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        if (matches.effectId === '12A1')
+          return output.alpha();
+        return output.beta();
+      },
+      tts: (_data, matches, output) => {
+        if (matches.effectId === '12A1')
+          return output.alphaTts();
+        return output.betaTts();
+      },
+      outputStrings: {
+        alpha: {
+          en: 'Mutation α on YOU',
+        },
+        beta: {
+          en: 'Mutation β on YOU',
+        },
+        alphaTts: {
+          en: 'Mutation α on YOU',
+        },
+        betaTts: {
+          en: 'Mutation β on YOU',
+        },
+      },
+    },
+    {
+      id: 'R12S Mana Sphere Position Collect',
+      // BCB0 Black Holes:
+      // These are (90, 100) and (110, 100)
+      // B4FD Shapes
+      // Side that needs to be exploded will have pairs with 2 of the same x or y coords
+      // Side to get the shapes to explode will be closest distance to black hole
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4FD', capture: true },
+      run: (data, matches) => {
+        // Calculate Distance to Black Hole
+        const getDistance = (x, y) => {
+          const blackHoleX = x < 100 ? 90 : 110;
+          const dx = x - blackHoleX;
+          const dy = y - 100;
+          return Math.round(Math.sqrt(dx * dx + dy * dy));
+        };
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const d = getDistance(x, y);
+        const id = matches.sourceId;
+        // Put into different objects for easier lookup
+        if (x < 100) {
+          data.westManaSpheres[id] = { x: x, y: y };
+        }
+        data.eastManaSpheres[id] = { x: x, y: y };
+        // Shapes with 6 distance are close, Shapes with 12 are far
+        if (d < 7) {
+          data.closeManaSphereIds.push(id);
+          // Have enough data to solve at this point
+          if (data.closeManaSphereIds.length === 2) {
+            const popSide = x < 100 ? 'east' : 'west';
+            data.manaSpherePopSide = popSide;
+            const sphereId1 = data.closeManaSphereIds[0];
+            const sphereId2 = id;
+            if (sphereId1 === undefined)
+              return;
+            const sphereType1 = data.manaSpheres[sphereId1];
+            const sphereType2 = data.manaSpheres[sphereId2];
+            if (sphereType1 === undefined || sphereType2 === undefined)
+              return;
+            // If you see Water, pop side first
+            // If you see Wind, non-pop side
+            // Can't be Lightning + Wind because Fire hits the donut
+            // Fire + Lightning would hit whole room
+            // Water + Wind would hit whole room
+            const nonPopSide = popSide === 'east' ? 'west' : 'east';
+            const first = [sphereType1, sphereType2];
+            const dir2 = first.includes('water') ? popSide : nonPopSide;
+            data.firstBlackHole = dir2;
+          }
+        }
+      },
+    },
+    {
+      id: 'R12S Black Hole and Shapes',
+      // Black Holes and shapes
+      type: 'Ability',
+      netRegex: { id: 'B4FD', source: 'Mana Sphere', capture: false },
+      delaySeconds: 0.2,
+      durationSeconds: 8.3,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const popSide = data.manaSpherePopSide;
+        const blackHole = data.firstBlackHole;
+        const sphereId1 = data.closeManaSphereIds[0];
+        const sphereId2 = data.closeManaSphereIds[1];
+        if (
+          popSide === undefined ||
+          blackHole === undefined ||
+          sphereId1 === undefined ||
+          sphereId2 === undefined
+        )
+          return data.myMutation === 'alpha' ? output.alpha() : output.beta();
+        const sphereType1 = data.manaSpheres[sphereId1];
+        const sphereType2 = data.manaSpheres[sphereId2];
+        if (sphereType1 === undefined || sphereType2 === undefined)
+          return data.myMutation === 'alpha' ? output.alpha() : output.beta();
+        if (data.myMutation === 'alpha')
+          return output.alphaDir({
+            dir1: output[popSide](),
+            shape1: output[sphereType1](),
+            shape2: output[sphereType2](),
+            northSouth: output.northSouth(),
+            dir2: output[blackHole](),
+          });
+        return output.betaDir({
+          dir1: output[popSide](),
+          shape1: output[sphereType1](),
+          shape2: output[sphereType2](),
+          northSouth: output.northSouth(),
+          dir2: output[blackHole](),
+        });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
+        water: {
+          en: 'Orb',
+        },
+        lightning: {
+          en: 'Lightning',
+        },
+        fire: {
+          en: 'Fire',
+        },
+        wind: {
+          en: 'Donut',
+        },
+        alpha: {
+          en: 'Avoid Shape AoEs, Wait by Black Hole',
+        },
+        beta: {
+          en: 'Shared Shape Soak => Get by Black Hole',
+        },
+        alphaDir: {
+          en: 'Avoid ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
+        },
+        betaDir: {
+          en: 'Share ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
+        },
+      },
+    },
+    {
+      id: 'R12S Dramatic Lysis Black Hole 1',
+      // This may not happen if all shapes are failed
+      type: 'Ability',
+      netRegex: { id: 'B507', source: 'Lindwurm', capture: false },
+      durationSeconds: 15,
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        const blackHole = data.firstBlackHole;
+        if (blackHole === undefined)
+          return data.myMutation === 'alpha' ? output.alpha() : output.beta();
+        return data.myMutation === 'alpha'
+          ? output.alphaDir({
+            northSouth: output.northSouth(),
+            dir2: output[blackHole](),
+          })
+          : output.betaDir({
+            northSouth: output.northSouth(),
+            dir2: output[blackHole](),
+          });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
+        alpha: {
+          en: 'Get by Black Hole',
+        },
+        beta: {
+          en: 'Get by Black Hole',
+        },
+        alphaDir: {
+          en: '${dir2} Black Hole + ${northSouth}',
+        },
+        betaDir: {
+          en: '${dir2} Black Hole + ${northSouth}',
+        },
+      },
+    },
+    {
+      id: 'R12S Blood Wakening Followup',
+      // Run to the other Black Hole after abilities go off
+      // B501 Lindwurm's Water III
+      // B502 Lindwurm's Aero III
+      // B503 Straightforward Thunder II
+      // B504 Sideways Fire II
+      type: 'Ability',
+      netRegex: { id: ['B501', 'B502', 'B503', 'B504'], source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        const blackHole = data.firstBlackHole;
+        if (blackHole === undefined)
+          return output.move();
+        const next = blackHole === 'east' ? 'west' : 'east';
+        return output.moveDir({
+          northSouth: output.northSouth(),
+          dir: output[next](),
+        });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
+        move: {
+          en: 'Move to other Black Hole',
+        },
+        moveDir: {
+          en: '${dir} Black Hole + ${northSouth}',
+        },
+      },
+    },
+    {
+      id: 'R12S Netherworld Near/Far',
+      type: 'StartsUsing',
+      netRegex: { id: ['B52B', 'B52C'], source: 'Lindwurm', capture: true },
+      alertText: (data, matches, output) => {
+        if (matches.id === 'B52B')
+          return data.myMutation === 'beta'
+            ? output.betaNear({ mech: output.getUnder() })
+            : output.alphaNear({ mech: output.maxMelee() });
+        return data.myMutation === 'beta'
+          ? output.betaFar({ mech: output.maxMelee() })
+          : output.alphaFar({ mech: output.getUnder() });
+      },
+      tts: (data, matches, output) => {
+        if (matches.id === 'B52B')
+          return data.myMutation === 'beta'
+            ? output.betaNearTts({ mech: output.getUnder() })
+            : output.alphaNear({ mech: output.maxMelee() });
+        return data.myMutation === 'beta'
+          ? output.betaFarTts({ mech: output.maxMelee() })
+          : output.alphaFar({ mech: output.getUnder() });
+      },
+      outputStrings: {
+        getUnder: Outputs.getUnder,
+        maxMelee: {
+          en: 'Max Melee',
+        },
+        alphaNear: {
+          en: '${mech} (Avoid Near Stack)',
+        },
+        alphaFar: {
+          en: '${mech} (Avoid Far Stack)',
+        },
+        betaNear: {
+          en: 'Near β Stack: ${mech}',
+        },
+        betaFar: {
+          en: 'Far β Stack: ${mech}',
+        },
+        betaNearTts: {
+          en: 'Near β Stack: ${mech}',
+        },
+        betaFarTts: {
+          en: 'Far β Stack: ${mech}',
+        },
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream',
+      type: 'StartsUsing',
+      netRegex: { id: 'B509', source: 'Lindwurm', capture: false },
+      durationSeconds: 4.7,
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'R12S Idyllic Dream Staging 2 Clone Order Collect',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D2', capture: true },
+      condition: (data) => {
+        if (data.phase === 'idyllic' && data.replicationCounter === 2)
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.id];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication3CloneOrder.push(dirNum);
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Staging 2 First Clone Cardinal/Intercardinal',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D2', capture: true },
+      condition: (data) => {
+        if (data.phase === 'idyllic' && data.replicationCounter === 2)
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.id];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        if (dirNum % 2 === 0)
+          return output.firstClone({ cards: output.cardinals() });
+        return output.firstClone({ cards: output.intercards() });
+      },
+      outputStrings: {
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        firstClone: {
+          en: 'First Clone: ${cards}',
+        },
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Staging 2 Tethered Clone Collect',
+      // Map the locations to a player name
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.replicationCounter === 2
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication3CloneDirNumPlayers[dirNum] = matches.target;
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Staging 2 Tethered Clone',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.replicationCounter === 2 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.cloneTether();
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        return output.cloneTetherDir({ dir: output[dir]() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cloneTether: {
+          en: 'Tethered to Clone',
+        },
+        cloneTetherDir: {
+          en: 'Tethered to ${dir} Clone',
+        },
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Power Gusher and Snaking Kick Collect',
+      // Need to know these for later
+      // B511 Snaking Kick
+      // B512 from boss is the VFX and has headings that show directions for B50F and B510
+      // B50F Power Gusher is the East/West caster
+      // B510 Power Gusher is the North/South caster
+      // Right now just the B510 caster is needed to resolve
+      type: 'StartsUsing',
+      netRegex: { id: ['B50F', 'B510', 'B511'], source: 'Lindschrat', capture: true },
+      run: (data, matches) => {
+        // Temporal Curtain can have early calls based on matching the id for which add went where
+        switch (matches.id) {
+          case 'B510': {
+            const y = parseFloat(matches.y);
+            data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
+            data.idyllicDreamActorNS = matches.sourceId;
+            return;
+          }
+          case 'B511':
+            data.idyllicDreamActorSnaking = matches.sourceId;
+            return;
+          case 'B50F':
+            data.idyllicDreamActorEW = matches.sourceId;
+            return;
+        }
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Power Gusher Vision',
+      // Call where the E/W safe spots will be later
+      type: 'StartsUsing',
+      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
+      infoText: (_data, matches, output) => {
+        const y = parseFloat(matches.y);
+        const dir = y < center.y ? 'north' : 'south';
+        return output.text({ dir: output[dir](), sides: output.sides() });
+      },
+      outputStrings: {
+        north: Outputs.north,
+        south: Outputs.south,
+        sides: Outputs.sides,
+        text: {
+          en: '${dir} + ${sides} (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 4 Ability Tethers Initial Call',
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+        ],
+        capture: true,
+      },
+      condition: (data, matches) => {
+        if (data.me === matches.target && data.phase === 'idyllic')
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1,
+      durationSeconds: 7,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const first = data.replication4DirNumAbility[0];
+        if (first === undefined) {
+          return output.getTether();
+        }
+        const mech = first === headMarkerData['heavySlamTether']
+          ? 'stacks'
+          : first === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : 'unknown';
+        const clones = data.replication3CloneDirNumPlayers;
+        const strat = data.triggerSetConfig.replication4Strategy;
+        const myDirNum = Object.keys(clones).find((key) => clones[parseInt(key)] === data.me);
+        if (myDirNum !== undefined) {
+          // Get dirNum of player for custom output based on staging 2 tether
+          // Player can replace the get tether with get defamation, get stack and
+          // the location they want based on custom plan
+          switch (parseInt(myDirNum)) {
+            case 0:
+              return output.mechLaterNClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getStackEastGroupQuad1DN({
+                    dir: mech === 'stacks'
+                      ? output['dirN']()
+                      : mech === 'defamations'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                    ? output.getStackWestGroup1EM({
+                      dir: output['dirN'](),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackWestGroup2EM({
+                      dir: output['dirSW'](),
+                    })
+                    : output.getStackWestGroup12EM({
+                      dir1: output['dirN'](),
+                      dir2: output['dirSW'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getDefamationEastGroupQuad1Caro({
+                    dir: mech === 'defamations'
+                      ? output['dirN']()
+                      : mech === 'stacks'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getStackEastGroupQuad1Nukemaru({
+                    dir: mech === 'stacks'
+                      ? output['dirN']()
+                      : mech === 'defamations'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 1:
+              return output.mechLaterNEClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getStackEastGroupQuad2DN({
+                    dir: mech === 'stacks'
+                      ? output['dirE']()
+                      : mech === 'defamations'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                    ? output.getStackEastGroup1EM({
+                      dir: output['dirS'](),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackEastGroup2EM({
+                      dir: output['dirNE'](),
+                    })
+                    : output.getStackEastGroup12EM({
+                      dir1: output['dirS'](),
+                      dir2: output['dirNE'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getStackEastGroupQuad2Caro({
+                    dir: mech === 'stacks'
+                      ? output['dirE']()
+                      : mech === 'defamations'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationEastGroupQuad1Nukemaru({
+                    dir: mech === 'defamations'
+                      ? output['dirN']()
+                      : mech === 'stacks'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 2:
+              return output.mechLaterEClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getStackWestGroupQuad3DN({
+                    dir: mech === 'stacks'
+                      ? output['dirS']()
+                      : mech === 'defamations'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                    ? output.getStackEastGroup3EM({
+                      dir: output['dirE'](),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackEastGroup4EM({
+                      dir: output['dirSE'](),
+                    })
+                    : output.getStackEastGroup34EM({
+                      dir1: output['dirE'](),
+                      dir2: output['dirSE'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getStackEastGroupQuad3Caro({
+                    dir: mech === 'stacks'
+                      ? output['dirS']()
+                      : mech === 'defamations'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationWestGroupQuad4Nukemaru({
+                    dir: mech === 'defamations'
+                      ? output['dirW']()
+                      : mech === 'stacks'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 3:
+              return output.mechLaterSEClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getStackWestGroupQuad4DN({
+                    dir: mech === 'stacks'
+                      ? output['dirW']()
+                      : mech === 'defamations'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                    ? output.getDefamationEastGroup3EM({
+                      dir: output['dirE'](),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationEastGroup4EM({
+                      dir: output['dirSE'](),
+                    })
+                    : output.getDefamationEastGroup34EM({
+                      dir1: output['dirE'](),
+                      dir2: output['dirSE'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getDefamationEastGroupQuad4Caro({
+                    dir: mech === 'defamations'
+                      ? output['dirW']()
+                      : mech === 'stacks'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationEastGroupQuad2Nukemaru({
+                    dir: mech === 'defamations'
+                      ? output['dirE']()
+                      : mech === 'stacks'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 4:
+              return output.mechLaterSClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getDefamationEastGroupQuad1DN({
+                    dir: mech === 'defamations'
+                      ? output['dirN']()
+                      : mech === 'stacks'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                    ? output.getDefamationEastGroup1EM({
+                      dir: output['dirS'](),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationEastGroup2EM({
+                      dir: output['dirNE'](),
+                    })
+                    : output.getDefamationEastGroup12EM({
+                      dir1: output['dirS'](),
+                      dir2: output['dirNE'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getDefamationWestGroupQuad1Caro({
+                    dir: mech === 'defamations'
+                      ? output['dirN']()
+                      : mech === 'stacks'
+                      ? output['dirNE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationWestGroupQuad3Nukemaru({
+                    dir: mech === 'defamations'
+                      ? output['dirS']()
+                      : mech === 'stacks'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 5:
+              return output.mechLaterSWClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getDefamationEastGroupQuad2DN({
+                    dir: mech === 'defamations'
+                      ? output['dirE']()
+                      : mech === 'stacks'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                    ? output.getDefamationWestGroup1EM({
+                      dir: output['dirN'](),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationWestGroup2EM({
+                      dir: output['dirSE'](),
+                    })
+                    : output.getDefamationWestGroup12EM({
+                      dir1: output['dirN'](),
+                      dir2: output['dirSE'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getStackWestGroupQuad2Caro({
+                    dir: mech === 'stacks'
+                      ? output['dirE']()
+                      : mech === 'defamations'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getStackWestGroupQuad3Nukemaru({
+                    dir: mech === 'stacks'
+                      ? output['dirS']()
+                      : mech === 'defamations'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 6:
+              return output.mechLaterWClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getDefamationWestGroupQuad3DN({
+                    dir: mech === 'defamations'
+                      ? output['dirS']()
+                      : mech === 'stacks'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                    ? output.getDefamationWestGroup3EM({
+                      dir: output['dirW'](),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationWestGroup4EM({
+                      dir: output['dirNW'](),
+                    })
+                    : output.getDefamationWestGroup34EM({
+                      dir1: output['dirW'](),
+                      dir2: output['dirNW'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getStackWestGroupQuad3Caro({
+                    dir: mech === 'stacks'
+                      ? output['dirS']()
+                      : mech === 'defamations'
+                      ? output['dirSW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getStackWestGroupQuad4Nukemaru({
+                    dir: mech === 'stacks'
+                      ? output['dirW']()
+                      : mech === 'defamations'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+            case 7:
+              return output.mechLaterNWClone({
+                later: output.mechLater({ mech: output[mech]() }),
+                tether: strat === 'dn'
+                  ? output.getDefamationWestGroupQuad4DN({
+                    dir: mech === 'defamations'
+                      ? output['dirW']()
+                      : mech === 'stacks'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                    ? output.getStackWestGroup3EM({
+                      dir: output['dirW'](),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackWestGroup4EM({
+                      dir: output['dirNW'](),
+                    })
+                    : output.getStackWestGroup34EM({
+                      dir1: output['dirW'](),
+                      dir2: output['dirNW'](),
+                    })
+                  : strat === 'caro'
+                  ? output.getDefamationWestGroupQuad4Caro({
+                    dir: mech === 'defamations'
+                      ? output['dirW']()
+                      : mech === 'stacks'
+                      ? output['dirNW']()
+                      : output['unknown'](),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getStackEastGroupQuad2Nukemaru({
+                    dir: mech === 'stacks'
+                      ? output['dirE']()
+                      : mech === 'defamations'
+                      ? output['dirSE']()
+                      : output['unknown'](),
+                  })
+                  : output.getTether(),
+              });
+          }
+        }
+        return output.mechLaterTether({
+          later: output.mechLater({ mech: output[mech]() }),
+          tether: output.getTether(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        getTether: {
+          en: 'Get Tether',
+        },
+        mechLater: {
+          en: '${mech} First (later)',
+        },
+        defamations: {
+          en: 'Defamations',
+          de: 'Große AoE auf dir',
+          fr: 'Grosse AoE sur vous',
+          ja: '自分に巨大な爆発',
+          cn: '大圈点名',
+          ko: '광역 대상자',
+          tc: '大圈點名',
+        },
+        stacks: Outputs.stacks,
+        mechLaterTether: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSWClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterWClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNWClone: {
+          en: '${later}; ${tether}',
+        },
+        getStackEastGroupQuad1DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad2DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad3DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad4DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad1DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroupQuad2DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad3DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad4DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroup1EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup2EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getStackEastGroup1EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup2EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getStackEastGroup3EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup4EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getDefamationEastGroup3EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup4EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationEastGroup1EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup2EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationWestGroup1EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup2EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationWestGroup3EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup4EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getStackWestGroup3EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup4EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getDefamationEastGroupQuad1Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackEastGroupQuad2Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad3Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad4Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad1Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroupQuad2Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad3Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationWestGroupQuad4Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackEastGroupQuad1Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad1Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad4Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroupQuad2Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad3Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroupQuad3Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad4Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad2Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 4 Locked Tether Collect',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.replicationCounter === 4
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        const target = matches.target;
+        if (actor === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          if (data.me === target)
+            data.replication4PlayerAbilities[target] = 'unknown';
+          return;
+        }
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        // Store the player at each dirNum
+        data.replication4BossCloneDirNumPlayers[dirNum] = target;
+        // Lookup what the tether was at the same location
+        const ability = data.replication4DirNumAbility[dirNum];
+        if (ability === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          data.replication4PlayerAbilities[target] = 'unknown';
+          return;
+        }
+        data.replication4PlayerAbilities[target] = ability;
+        // Create ability order once we have all 8 players
+        // If players had more than one tether previously, the extra tethers are randomly assigned
+        if (Object.keys(data.replication4PlayerAbilities).length === 8) {
+          // Used for Twisted Vision 7 and 8 mechanics
+          const abilities = data.replication4PlayerAbilities;
+          const order = data.replication3CloneOrder; // Order in which clones spawned
+          const players = data.replication3CloneDirNumPlayers; // Direction of player's clone
+          // Mechanics are resolved clockwise, create order based on cards/inters
+          const first = order[0];
+          if (first === undefined)
+            return;
+          const dirNumOrder = first % 2 === 0 ? [0, 2, 4, 6, 1, 3, 5, 7] : [1, 3, 5, 7, 0, 2, 4, 6];
+          for (const dirNum of dirNumOrder) {
+            const player = players[dirNum] ?? 'unknown';
+            const ability = abilities[player] ?? 'unknown';
+            data.replication4PlayerOrder.push(player);
+            data.replication4AbilityOrder.push(ability);
+          }
+        }
+      },
+    },
+    {
+      id: 'R12S Replication 4 Locked Tether',
+      // At this point the player needs to dodge the north/south cleaves + chariot
+      // Simultaneously there will be a B4F2 Lindwurm's Meteor bigAoe that ends with room split
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.twistedVisionCounter === 3 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1,
+      durationSeconds: 8,
+      alertText: (data, matches, output) => {
+        const meteorAoe = output.meteorAoe({
+          bigAoe: output.bigAoe(),
+          groups: output.healerGroups(),
+        });
+        const cleaveOrigin = data.idyllicVision2NorthSouthCleaveSpot;
+        const myAbility = data.replication4PlayerAbilities[data.me];
+        // Get direction of the tether
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined || cleaveOrigin === undefined) {
+          switch (myAbility) {
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTether({ meteorAoe: meteorAoe });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTether({ meteorAoe: meteorAoe });
+          }
+          return;
+        }
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dodge = output.dodgeCleaves({
+          dir: output[cleaveOrigin](),
+          sides: output.sides(),
+        });
+        switch (myAbility) {
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTetherDir({
+              dir: output[dir](),
+              dodgeCleaves: dodge,
+              meteorAoe: meteorAoe,
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTetherDir({
+              dir: output[dir](),
+              dodgeCleaves: dodge,
+              meteorAoe: meteorAoe,
+            });
+        }
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        north: Outputs.north,
+        south: Outputs.south,
+        sides: Outputs.sides,
+        bigAoe: Outputs.bigAoe,
+        healerGroups: Outputs.healerGroups,
+        meteorAoe: {
+          en: '${bigAoe} + ${groups}',
+        },
+        dodgeCleaves: {
+          en: '${dir} + ${sides}',
+        },
+        manaBurstTetherDir: {
+          en: '${dodgeCleaves} (${dir} Defamation Tether)  => ${meteorAoe}',
+        },
+        manaBurstTether: {
+          en: ' N/S Clone (Defamation Tether) => ${meteorAoe}',
+        },
+        heavySlamTetherDir: {
+          en: '${dodgeCleaves} (${dir} Stack Tether)  => ${meteorAoe}',
+        },
+        heavySlamTether: {
+          en: ' N/S Clone (Stack Tether) => ${meteorAoe}',
+        },
+      },
+    },
+    {
+      id: 'R12S CombatantMemory Tower Collect',
+      // Towers spawn in these Locations:
+      // (81.7574, 95.7574)  (90.2426, 95.7574)   |   (109.7574, 95.7574)  (118.2426, 95.7574)
+      // (81.7574, 104.2426) (90.2426, 104.2426)  |   (109.7574, 104.2426) (118.2426, 104.2426)
+      // The patterns will be the same on both platforms (not mirrored)
+      // There are only two patterns.
+      // Earth/Wind are North, Fire/Dark are South
+      // Wind/Dark and Fire/Earth are diagonal from each other on each platform
+      // So if we know where one tower is, we know where all are
+      // Wind:  1EBF25
+      // Dark:  1EBF26
+      // Earth: 1EBF27
+      // Fire:  1EBF28
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBF25', '1EBF26', '1EBF27', '1EBF28'] }],
+        capture: true,
+      },
+      suppressSeconds: 9999,
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const towerMap = {
+          '1EBF25': 'wind',
+          '1EBF26': 'dark',
+          '1EBF27': 'earth',
+          '1EBF28': 'fire',
+          'unknown': 'unknown',
+        };
+        const pattern1 = ['earth', 'wind', 'dark', 'fire'];
+        const pattern2 = ['wind', 'earth', 'fire', 'dark'];
+        const bnpcid = matches.pairBNpcID ?? 'unknown';
+        const kind = towerMap[bnpcid];
+        if (kind === 'earth' || kind === 'dark') {
+          if ((x > 81 && x < 83) || (x > 109 && x < 111))
+            data.cosmicKissPattern = pattern1;
+          else
+            data.cosmicKissPattern = pattern2;
+        } else if (kind === 'wind' || kind === 'fire') {
+          if ((x > 81 && x < 83) || (x > 109 && x < 111))
+            data.cosmicKissPattern = pattern2;
+          else
+            data.cosmicKissPattern = pattern1;
+        }
+      },
+    },
+    {
+      id: 'R12S Arcadian Arcanum',
+      // Players hit will receive 1044 Light Resistance Down II debuff
+      type: 'StartsUsing',
+      netRegex: { id: 'B529', source: 'Lindwurm', capture: false },
+      response: Responses.spread(),
+    },
+    {
+      id: 'R12S Light Resistance Down II Collect',
+      // Players cannot soak a tower that has holy (triple element towers)
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasLightResistanceDown = true,
+    },
+    {
+      id: 'R12S Light Resistance Down II',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: true },
+      condition: (data, matches) => {
+        if (data.twistedVisionCounter === 3 && data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (_data, _matches, output) => output.text(),
+      outputStrings: {
+        text: {
+          en: 'Soak Fire/Earth Meteor (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S No Light Resistance Down II',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: false },
+      condition: (data) => data.twistedVisionCounter === 3,
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (!data.hasLightResistanceDown)
+          return output.text();
+      },
+      outputStrings: {
+        text: {
+          en: 'Soak a White/Star Meteor (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 4 Stack/Defamation 1',
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4,
+      durationSeconds: 10,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stacks: Outputs.stacks,
+          stackOnYou: Outputs.stackOnYou,
+          defamations: {
+            en: 'Avoid Defamations',
+          },
+          defamationOnYou: Outputs.defamationOnYou,
+          stacksThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStacks: {
+            en: '${mech1} => ${mech2}',
+          },
+          stacksThenDefamationOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStackOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          stackOnYouThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationOnYouThenStack: {
+            en: '${mech1} => ${mech2}',
+          },
+        };
+        const player1 = data.replication4BossCloneDirNumPlayers[0];
+        const player2 = data.replication4BossCloneDirNumPlayers[4];
+        const player3 = data.replication4BossCloneDirNumPlayers[1];
+        const player4 = data.replication4BossCloneDirNumPlayers[5];
+        const abilityId = data.replication4DirNumAbility[0]; // Only need to know one
+        if (
+          abilityId === undefined || player1 === undefined ||
+          player2 === undefined || player3 === undefined ||
+          player4 === undefined
+        )
+          return;
+        const ability1 = abilityId === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : abilityId === headMarkerData['heavySlamTether']
+          ? 'stacks'
+          : 'unknown';
+        if (ability1 === 'stacks') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.stackOnYouThenDefamations({
+                mech1: output.stackOnYou(),
+                mech2: output.defamations(),
+              }),
+            };
+          if (data.me === player3 || data.me === player4)
+            return {
+              infoText: output.stacksThenDefamationOnYou({
+                mech1: output.stacks(),
+                mech2: output.defamationOnYou(),
+              }),
+            };
+          return {
+            infoText: output.stacksThenDefamations({
+              mech1: output.stacks(),
+              mech2: output.defamations(),
+            }),
+          };
+        }
+        if (ability1 === 'defamations') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.defamationOnYouThenStack({
+                mech1: output.defamationOnYou(),
+                mech2: output.stacks(),
+              }),
+            };
+          if (data.me === player3 || data.me === player4)
+            return {
+              infoText: output.defamationsThenStackOnYou({
+                mech1: output.defamations(),
+                mech2: output.stackOnYou(),
+              }),
+            };
+          return {
+            infoText: output.defamationsThenStacks({
+              mech1: output.defamations(),
+              mech2: output.stacks(),
+            }),
+          };
+        }
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 4 Stack/Defamation Counter',
+      // Used for keeping of which Twisted Vision 4 mechanic we are on
+      // Note: B519 Heavy Slam and B517 Mana Burst cast regardless of players alive
+      //       A B4F0 Unmitigated Impact will occur should the stack be missed
+      // Note2: B518 Mana Burst seems to not cast if the target is dead, and there doesn't seem to be repercussions
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4,
+      suppressSeconds: 1,
+      run: (data) => {
+        data.twistedVision4MechCounter = data.twistedVision4MechCounter + 2; // Mechanic is done in pairs
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 4 Stack/Defamation 2-4',
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter <= 6,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stacks: Outputs.stacks,
+          stackOnYou: Outputs.stackOnYou,
+          defamations: {
+            en: 'Avoid Defamations',
+          },
+          defamationOnYou: Outputs.defamationOnYou,
+          stacksThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStacks: {
+            en: '${mech1} => ${mech2}',
+          },
+          stacksThenDefamationOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStackOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          stackOnYouThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationOnYouThenStack: {
+            en: '${mech1} => ${mech2}',
+          },
+          towers: {
+            en: 'Tower Positions',
+            de: 'Turm Positionen',
+            fr: 'Position tour',
+            ja: '塔の位置へ',
+            cn: '八人塔站位',
+            ko: '기둥 자리잡기',
+            tc: '八人塔站位',
+          },
+        };
+        const count = data.twistedVision4MechCounter;
+        const players = data.replication4BossCloneDirNumPlayers;
+        const abilityIds = data.replication4DirNumAbility;
+        const player1 = count === 2
+          ? players[1]
+          : count === 4
+          ? players[2]
+          : players[3];
+        const player2 = count === 2
+          ? players[5]
+          : count === 4
+          ? players[6]
+          : players[7];
+        const abilityId = count === 2
+          ? abilityIds[1]
+          : count === 4
+          ? abilityIds[2]
+          : abilityIds[3];
+        if (
+          abilityId === undefined || player1 === undefined ||
+          player2 === undefined
+        )
+          return;
+        const ability1 = abilityId === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : abilityId === headMarkerData['heavySlamTether']
+          ? 'stacks'
+          : 'unknown';
+        if (count < 6) {
+          const player3 = count === 2 ? players[2] : players[3];
+          const player4 = count === 2 ? players[6] : players[7];
+          if (player3 === undefined || player4 === undefined)
+            return;
+          if (ability1 === 'stacks') {
+            if (data.me === player1 || data.me === player2)
+              return {
+                alertText: output.stackOnYouThenDefamations({
+                  mech1: output.stackOnYou(),
+                  mech2: output.defamations(),
+                }),
+              };
+            if (data.me === player3 || data.me === player4)
+              return {
+                infoText: output.stacksThenDefamationOnYou({
+                  mech1: output.stacks(),
+                  mech2: output.defamationOnYou(),
+                }),
+              };
+            return {
+              infoText: output.stacksThenDefamations({
+                mech1: output.stacks(),
+                mech2: output.defamations(),
+              }),
+            };
+          }
+          if (ability1 === 'defamations') {
+            if (data.me === player1 || data.me === player2)
+              return {
+                alertText: output.defamationOnYouThenStack({
+                  mech1: output.defamationOnYou(),
+                  mech2: output.stacks(),
+                }),
+              };
+            if (data.me === player3 || data.me === player4)
+              return {
+                infoText: output.defamationsThenStackOnYou({
+                  mech1: output.defamations(),
+                  mech2: output.stackOnYou(),
+                }),
+              };
+            return {
+              infoText: output.defamationsThenStacks({
+                mech1: output.defamations(),
+                mech2: output.stacks(),
+              }),
+            };
+          }
+        }
+        // Last set followed up with tower positions
+        if (ability1 === 'stacks') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.stackOnYouThenDefamations({
+                mech1: output.stackOnYou(),
+                mech2: output.towers(),
+              }),
+            };
+          return {
+            infoText: output.stacksThenDefamations({
+              mech1: output.stacks(),
+              mech2: output.towers(),
+            }),
+          };
+        }
+        if (ability1 === 'defamations') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.defamationOnYouThenStack({
+                mech1: output.defamationOnYou(),
+                mech2: output.towers(),
+              }),
+            };
+          return {
+            infoText: output.defamationsThenStacks({
+              mech1: output.defamations(),
+              mech2: output.towers(),
+            }),
+          };
+        }
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 5 Towers (Early)',
+      // Calls on last stack or defamation
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter > 6,
+      durationSeconds: 5,
+      suppressSeconds: 9999,
+      infoText: (_data, _matches, output) => output.towers(),
+      outputStrings: {
+        towers: {
+          en: 'Tower Positions',
+          de: 'Turm Positionen',
+          fr: 'Position tour',
+          ja: '塔の位置へ',
+          cn: '八人塔站位',
+          ko: '기둥 자리잡기',
+          tc: '八人塔站位',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 5 Towers',
+      // TODO: Get Position of the towers and player side and state the front/left back/right
+      // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
+      // 4s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
+      condition: (data) => data.twistedVisionCounter === 5,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.1,
+      alertText: (data, _matches, output) => {
+        if (data.hasLightResistanceDown)
+          return output.fireEarthTower();
+        return output.holyTower();
+      },
+      outputStrings: {
+        fireEarthTower: {
+          en: 'Soak Fire/Earth Meteor',
+        },
+        holyTower: {
+          en: 'Soak a White/Star Meteor',
+        },
+      },
+    },
+    {
+      id: 'R12S Cosmic Kiss Tower Collect',
+      // Map the Cosmic Kiss player is hit by back to the tower type
+      // Actors will be at the same locations as the towers
+      type: 'Ability',
+      netRegex: { id: 'B4F4', source: 'Lindwurm', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        const towers = data.cosmicKissPattern;
+        if (actor === undefined || towers.length !== 4)
+          return;
+        const x = actor.x;
+        const y = actor.y;
+        if ((x > 81 && x < 83) || (x > 109 && x < 111)) {
+          data.myCosmicKiss = data.cosmicKissPattern[y < center.y ? 0 : 2];
+        } else if ((x > 89 && x < 91) || (x > 117 && x < 119)) {
+          data.myCosmicKiss = data.cosmicKissPattern[y < center.y ? 1 : 3];
+        }
+      },
+    },
+    {
+      id: 'R12S Hot-blooded Collect',
+      // Player can still cast, but shouldn't move for 5s duration
+      type: 'GainsEffect',
+      netRegex: { effectId: '12A0', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, _matches) => data.hasPyretic = true,
+    },
+    {
+      id: 'R12S Hot-blooded',
+      // Player can still cast, but shouldn't move for 5s duration
+      type: 'GainsEffect',
+      netRegex: { effectId: '12A0', capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: (_data, matches) => parseFloat(matches.duration),
+      response: Responses.stopMoving(),
+    },
+    {
+      id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
+      // 5s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
+      condition: (data) => {
+        // Avoid simultaneous trigger for Pyretic player as they wouldn't be at the earth location
+        if (data.hasPyretic)
+          return false;
+        // Handle this in Doom cleanse instead
+        if (data.CanCleanse())
+          return false;
+        return true;
+      },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R12S Idyllic Dream Lindwurm's Stone III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
+      infoText: (data, _matches, output) => {
+        const pattern = data.cosmicKissPattern;
+        const platform = data.myPlatform;
+        if (pattern.length !== 4 || platform === undefined)
+          return output.avoidEarthTower({ dir: output.south() });
+        if (
+          (pattern[0] === 'earth' && platform === 'west') ||
+          (pattern[1] === 'earth' && platform === 'east')
+        )
+          return output.avoidEarthTower({ dir: output.in() });
+        if (
+          (pattern[0] === 'earth' && platform === 'east') ||
+          (pattern[1] === 'earth' && platform === 'west')
+        )
+          return output.avoidEarthTower({ dir: output.southIn() });
+      },
+      outputStrings: {
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
+        avoidEarthTower: {
+          en: '${dir} (Avoid Earth Tower)',
+        },
+      },
+    },
+    {
+      id: 'R12S Doom Collect',
+      // Happens about 1.3s after Dark Tower when it casts B4F6 Lindwurm's Dark II
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D24', capture: true },
+      run: (data, matches) => data.doomPlayers.push(matches.target),
+    },
+    {
+      id: 'R12S Doom Cleanse',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D24', capture: false },
+      condition: (data) => data.CanCleanse(),
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(`R12S Doom Cleanse: Wrong combatants count ${combatants.length}`);
+          return;
+        }
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
+      infoText: (data, _matches, output) => {
+        const pattern = data.cosmicKissPattern;
+        const platform = data.myPlatform;
+        let dir;
+        if (pattern.length !== 4 || platform === undefined)
+          dir = 'south';
+        else if (
+          (pattern[0] === 'earth' && platform === 'west') ||
+          (pattern[1] === 'earth' && platform === 'east')
+        )
+          dir = 'in';
+        else if (
+          (pattern[0] === 'earth' && platform === 'east') ||
+          (pattern[1] === 'earth' && platform === 'west')
+        )
+          dir = 'southIn';
+        if (dir === undefined)
+          dir = 'south';
+        const players = data.doomPlayers;
+        if (players.length > 2) {
+          // Mechanic was messed up, but recoverable
+          // Pyretic player shouldn't move and shouldn't need to avoid earth
+          if (data.hasPyretic)
+            return output.cleanseDooms();
+          return output.mech({
+            cleanse: output.cleanseDooms(),
+            avoid: output.avoidEarthTower({ dir: output[dir]() }),
+          });
+        }
+        if (players.length === 2) {
+          const target1 = data.party.member(data.doomPlayers[0]);
+          const target2 = data.party.member(data.doomPlayers[1]);
+          if (data.hasPyretic)
+            return output.cleanseDoom2({ target1: target1, target2: target2 });
+          return output.mech({
+            cleanse: output.cleanseDoom2({ target1: target1, target2: target2 }),
+            avoid: output.avoidEarthTower({ dir: output[dir]() }),
+          });
+        }
+        if (players.length === 1) {
+          const target1 = data.party.member(data.doomPlayers[0]);
+          if (data.hasPyretic)
+            return output.cleanseDoom({ target: target1 });
+          return output.mech({
+            cleanse: output.cleanseDoom({ target: target1 }),
+            avoid: output.avoidEarthTower({ dir: output[dir]() }),
+          });
+        }
+      },
+      outputStrings: {
+        cleanseDooms: {
+          en: 'Cleanse Doom(s)',
+        },
+        cleanseDoom: {
+          en: 'Cleanse ${target}',
+          de: 'Reinige ${target}',
+          fr: 'Guérison sur ${target}',
+          cn: '康复 ${target}',
+          ko: '${target} 에스나',
+          tc: '康復 ${target}',
+        },
+        cleanseDoom2: {
+          en: 'Cleanse ${target1}/${target2}',
+        },
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
+        avoidEarthTower: {
+          en: '${dir}',
+        },
+        mech: {
+          en: '${cleanse} + ${avoid}',
+        },
+      },
+    },
+    {
+      id: 'R12S Avoid Earth Tower (Missing Dooms)',
+      // Handle scenario where both Dooms end up not being applied
+      // Triggering on the Lindwurm's Dark II ability that would apply Doom
+      type: 'Ability',
+      netRegex: { id: 'B4F6', capture: false },
+      condition: (data) => data.CanCleanse(),
+      delaySeconds: 0.5,
+      suppressSeconds: 9999,
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(`R12S Doom Cleanse: Wrong combatants count ${combatants.length}`);
+          return;
+        }
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
+      infoText: (data, _matches, output) => {
+        if (data.doomPlayers[0] === undefined) {
+          const pattern = data.cosmicKissPattern;
+          const platform = data.myPlatform;
+          if (pattern.length !== 4 || platform === undefined)
+            return output.avoidEarthTower({ dir: output.south() });
+          if (
+            (pattern[0] === 'earth' && platform === 'west') ||
+            (pattern[1] === 'earth' && platform === 'east')
+          )
+            return output.avoidEarthTower({ dir: output.in() });
+          if (
+            (pattern[0] === 'earth' && platform === 'east') ||
+            (pattern[1] === 'earth' && platform === 'west')
+          )
+            return output.avoidEarthTower({ dir: output.southIn() });
+        }
+      },
+      outputStrings: {
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
+        avoidEarthTower: {
+          en: '${dir} (Avoid Earth Tower)',
+        },
+      },
+    },
+    {
+      id: 'R12S Nearby and Faraway Portent',
+      // 129D Lindwurm's Portent prevents stacking the portents
+      // 129E Farwaway Portent, Always on wind player
+      // 129F Nearby Portent, Always on Dark player
+      // 10s duration, need to delay to avoid earth + doom trigger overlap
+      // This would go out to players that soaked white/holy meteors
+      type: 'GainsEffect',
+      netRegex: { effectId: ['129E', '129F'], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
+      infoText: (data, matches, output) => {
+        if (matches.effectId === '129E') {
+          switch (data.triggerSetConfig.portentStrategy) {
+            case 'dn':
+              return output.farOnYouWindDN();
+            case 'zenith':
+              return output.farOnYouWindZenith();
+            case 'nukemaru':
+              return output.farOnYouWindNukemaru();
+          }
+          return output.farOnYouWind();
+        }
+        switch (data.triggerSetConfig.portentStrategy) {
+          case 'dn':
+            return output.nearOnYouDarkDN();
+          case 'zenith':
+            return output.nearOnYouDarkZenith();
+          case 'nukemaru':
+            return output.nearOnYouDarkNukemaru();
+        }
+        return output.nearOnYouDark();
+      },
+      outputStrings: {
+        nearOnYouDarkDN: {
+          en: 'Near on YOU: Be on Hitbox N',
+        },
+        nearOnYouDarkZenith: {
+          en: 'Near on YOU: Be on Middle Hitbox (Lean North)',
+        },
+        nearOnYouDarkNukemaru: {
+          en: 'Near on YOU: Max Melee S (Near Outer Player)',
+        },
+        nearOnYouDark: {
+          en: 'Dark: Near on YOU',
+        },
+        farOnYouWindDN: {
+          en: 'Far on YOU: Be on Middle Hitbox',
+        },
+        farOnYouWindZenith: {
+          en: 'Far on YOU: Max Melee N',
+        },
+        farOnYouWindNukemaru: {
+          en: 'Far on YOU: Be on Hitbox S',
+        },
+        farOnYouWind: {
+          en: 'Wind: Far on YOU',
+        },
+      },
+    },
+    {
+      id: 'R12S Nearby and Faraway Portent Baits',
+      // This would go out on players that soaked fire/earth meteors
+      type: 'GainsEffect',
+      netRegex: { effectId: ['129E', '129F'], capture: true },
+      condition: (data) => data.hasLightResistanceDown,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.hasPyretic) {
+          switch (data.triggerSetConfig.portentStrategy) {
+            case 'dn':
+              return output.baitFireDN();
+            case 'zenith':
+              return output.baitFireZenith();
+            case 'nukemaru':
+              return output.baitFireNukemaru();
+          }
+          return output.baitFire();
+        }
+        switch (data.triggerSetConfig.portentStrategy) {
+          case 'dn':
+            return output.baitEarthDN();
+          case 'zenith':
+            return output.baitEarthZenith();
+          case 'nukemaru':
+            return output.baitEarthNukemaru();
+        }
+        return output.baitEarth();
+      },
+      outputStrings: {
+        baitFireDN: {
+          en: 'Bait Cone N Center Below Dark/S Center',
+        },
+        baitFireZenith: {
+          en: 'Bait Cone S, Max Melee',
+        },
+        baitFireNukemaru: {
+          en: 'Bait Cone, N of Platform/S Max Melee',
+        },
+        baitFire: {
+          en: 'Fire: Bait Cone',
+        },
+        baitEarthDN: {
+          en: 'Bait Cone N Center Below Dark/S Center',
+        },
+        baitEarthZenith: {
+          en: 'Bait Cone Middle, Max Melee (Lean North)',
+        },
+        baitEarthNukemaru: {
+          en: 'Bait Cone, S Max Melee/N of Platform',
+        },
+        baitEarth: {
+          en: 'Earth: Bait Cone',
+        },
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 1 Collect',
+      // Describe actor going into portal
+      type: 'Ability',
+      netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
+      run: (data, matches) => {
+        switch (matches.sourceId) {
+          case data.idyllicDreamActorEW:
+            data.idyllicVision8SafeSides = 'frontBack';
+            return;
+          case data.idyllicDreamActorNS:
+            data.idyllicVision8SafeSides = 'sides';
+        }
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 1',
+      // Describe actor going into portal
+      type: 'Ability',
+      netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
+      infoText: (data, matches, output) => {
+        switch (matches.sourceId) {
+          case data.idyllicDreamActorEW:
+            return output.frontBackLater();
+          case data.idyllicDreamActorNS:
+            return output.sidesLater();
+        }
+      },
+      outputStrings: {
+        frontBackLater: {
+          en: 'Portal + Under Boss (later)',
+        },
+        sidesLater: {
+          en: 'Portal + E/W of Clone (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 2 Collect',
+      // Describe actor going into portal
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4D9', capture: true },
+      run: (data, matches) => {
+        switch (matches.sourceId) {
+          case data.idyllicDreamActorEW:
+            data.idyllicVision7SafeSides = 'frontBack';
+            return;
+          case data.idyllicDreamActorNS:
+            data.idyllicVision7SafeSides = 'sides';
+            return;
+          case data.idyllicDreamActorSnaking: {
+            const x = parseFloat(matches.x);
+            data.idyllicVision7SafePlatform = x < 100 ? 'east' : 'west';
+          }
+        }
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 2',
+      // Describe actor going into portal
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4D9', capture: false },
+      infoText: (data, _matches, output) => {
+        if (data.idyllicVision7SafeSides === 'frontBack') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.frontBackEastLater();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.frontBackWestLater();
+        }
+        if (data.idyllicVision7SafeSides === 'sides') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.sidesEastLater();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.sidesWestLater();
+        }
+      },
+      outputStrings: {
+        frontBackWestLater: {
+          en: 'West Platform => N/S of Clone (later)',
+        },
+        sidesWestLater: {
+          en: 'West Platform => Under Boss (later)',
+        },
+        frontBackEastLater: {
+          en: 'East Platform => N/S of Clone (later)',
+        },
+        sidesEastLater: {
+          en: 'East Platform => Under Boss (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 6 Light Party Stacks',
+      // At end of cast it's cardinal or intercard
+      type: 'Ability',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 6,
+      alertText: (data, _matches, output) => {
+        const first = data.replication3CloneOrder[0];
+        if (first === undefined)
+          return;
+        const dirNumOrder = first % 2 === 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
+        // Need to lookup what ability is at each dir, only need cards or intercard dirs
+        const abilities = data.replication4AbilityOrder.splice(0, 4);
+        const stackDirs = [];
+        let i = 0;
+        // Find first all stacks in cards or intercards
+        // Incorrect amount means players made an unsolvable? run
+        for (const dirNum of dirNumOrder) {
+          if (abilities[i++] === headMarkerData['heavySlamTether'])
+            stackDirs.push(dirNum);
+        }
+        // Only grabbing first two
+        const dirNum1 = stackDirs[0];
+        const dirNum2 = stackDirs[1];
+        // If we failed to get two stacks, just output generic cards/intercards reminder
+        if (dirNum1 === undefined || dirNum2 === undefined) {
+          return first % 2 === 0 ? output.cardinals() : output.intercards();
+        }
+        const dir1 = Directions.output8Dir[dirNum1] ?? 'unknown';
+        const dir2 = Directions.output8Dir[dirNum2] ?? 'unknown';
+        return output.stack({ dir1: output[dir1](), dir2: output[dir2]() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        stack: {
+          en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 7 Safe Platform',
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
+      condition: (data) => data.twistedVisionCounter === 7,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.5,
+      infoText: (data, _matches, output) => {
+        if (data.idyllicVision7SafeSides === 'frontBack') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.frontBackEastPlatform();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.frontBackWestPlatform();
+        }
+        if (data.idyllicVision7SafeSides === 'sides') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.sidesEastPlatform();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.sidesWestPlatform();
+        }
+        return output.safePlatform();
+      },
+      outputStrings: {
+        safePlatform: {
+          en: 'Move to Safe Platform Side => Dodge Cleaves',
+        },
+        sidesWestPlatform: {
+          en: 'West Platform => Under Boss',
+        },
+        sidesEastPlatform: {
+          en: 'East Platform => Under Boss',
+        },
+        frontBackEastPlatform: {
+          en: 'East Platform => N/S of Clone',
+        },
+        frontBackWestPlatform: {
+          en: 'West Platform => N/S of Clone',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 8 Light Party Stacks',
+      // At end of cast it's cardinal or intercard
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 8,
+      alertText: (data, _matches, output) => {
+        const first = data.replication3CloneOrder[0];
+        if (first === undefined)
+          return;
+        const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
+        // Need to lookup what ability is at each dir, only need cards or intercard dirs
+        const abilities = data.replication4AbilityOrder.slice(4, 8);
+        const stackDirs = [];
+        let i = 0;
+        // Find first all stacks in cards or intercards
+        // Incorrect amount means players made an unsolvable? run
+        for (const dirNum of dirNumOrder) {
+          if (abilities[i++] === headMarkerData['heavySlamTether'])
+            stackDirs.push(dirNum);
+        }
+        // Only grabbing first two
+        const dirNum1 = stackDirs[0];
+        const dirNum2 = stackDirs[1];
+        // If we failed to get two stacks, just output generic cards/intercards reminder
+        if (dirNum1 === undefined || dirNum2 === undefined) {
+          return first % 2 !== 0 ? output.cardinals() : output.intercards();
+        }
+        const dir1 = Directions.output8Dir[dirNum1] ?? 'unknown';
+        const dir2 = Directions.output8Dir[dirNum2] ?? 'unknown';
+        return output.stack({ dir1: output[dir1](), dir2: output[dir2]() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        stack: {
+          en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 8 Dodge Cleaves',
+      // Trigger on Clone's BE5D Heavy Slam
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 8,
+      alertText: (data, _matches, output) => {
+        if (data.idyllicVision8SafeSides === 'sides')
+          return output.sides();
+        if (data.idyllicVision8SafeSides === 'frontBack')
+          return output.frontBack();
+      },
+      run: (data) => {
+        // Prevent re-execution of output
+        delete data.idyllicVision8SafeSides;
+      },
+      outputStrings: {
+        sides: {
+          en: 'E/W of Clone',
+        },
+        frontBack: {
+          en: 'Under Boss',
+        },
+      },
+    },
+    {
+      id: 'R12S Arcadian Hell 1',
+      // B533 + B534 x4, Total ~280k Damage
+      type: 'StartsUsing',
+      netRegex: { id: 'B533', source: 'Lindwurm', capture: false },
+      durationSeconds: 4.7,
+      suppressSeconds: 9999,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'R12S Arcadian Hell 2',
+      // B533 + B535 x8, Total ~360k Damage
+      type: 'StartsUsing',
+      netRegex: { id: 'B535', source: 'Lindschrat', capture: false },
+      durationSeconds: 4.7,
+      suppressSeconds: 9999,
+      response: Responses.bigAoe(),
+    },
   ],
   timelineReplace: [
     {
