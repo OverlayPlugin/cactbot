@@ -131,70 +131,87 @@ const replication2OutputStrings: OutputStrings = {
   getTether: {
     en: 'Get Tether',
     cn: '接线',
+    ko: '선 가져가기',
   },
   getBossTether: {
     en: 'Get Boss Tether',
     cn: '接 BOSS 线',
+    ko: '보스 선 가져가기',
   },
   getConeTetherCW: {
     en: 'Get Clockwise Cone Tether',
     cn: '顺时针接扇形线',
+    ko: '시계방향 부채꼴 선 가져가기',
   },
   getConeTetherCCW: {
     en: 'Get Counterclock Cone Tether',
     cn: '逆时针接扇形线',
+    ko: '반시계방향 부채꼴 선 가져가기',
   },
   getStackTetherCW: {
     en: 'Get Clockwise Stack Tether',
     cn: '顺时针接分摊线',
+    ko: '시계방향 쉐어징 선 가져가기',
   },
   getStackTetherCCW: {
     en: 'Get Counterclock Stack Tether',
     cn: '逆时针接分摊线',
+    ko: '반시계방향 쉐어징 선 가져가기',
   },
   getDefamationTetherCW: {
     en: 'Get Clockwise Defamation Tether',
     cn: '顺时针接大圈线',
+    ko: '시계방향 광역징 선 가져가기',
   },
   getDefamationTetherCCW: {
     en: 'Get Counterclock Defamation Tether',
     cn: '逆时针接大圈线',
+    ko: '반시계방향 광역징 선 가져가기',
   },
   getNoTether: {
     en: 'Get Nothing',
     cn: '不接线',
+    ko: '아무것도 가져가지 않기',
   },
   getTetherNClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherNEClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherEClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherSEClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherSClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherSWClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherWClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
   getTetherNWClone: {
     en: '${tether}',
     cn: '${tether}',
+    ko: '${tether}',
   },
 };
 
@@ -285,6 +302,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Replication 2 Strategy',
         cn: '本体二运策略',
+        ko: '자가 복제 2 전략',
       },
       type: 'select',
       options: {
@@ -303,6 +321,12 @@ const triggerSet: TriggerSet<Data> = {
           'Nukemaru 策略: Boss 东侧, 分摊东北/东南, 扇形北/南, 大圈西北/西南, 无点名西侧': 'nukemaru',
           '无策略: 播报你可能获得的连线, 并提示获取连线': 'none',
         },
+        ko: {
+          'DN: 보스 북, 부채꼴 북동/북서, 쉐어 동/서, 광역징 남동/남서, 무징 남': 'dn',
+          '바나나 코덱스: 보스 서, 쉐어 북서/남서, 부채꼴 북/남, 광역징 북동/남동, 무징 동': 'banana',
+          '누케마루: 보스 동, 쉐어 북동/남동, 부채꼴 북/남, 광역징 북서/남서, 무징 서': 'nukemaru',
+          '전략 없음: 자신에게 걸린 선과 선 가져가기만 알림': 'none',
+        },
       },
       default: 'none',
     },
@@ -311,6 +335,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Replication 4 (Idyllic Dream) Strategy',
         cn: '本体四运 (境中奇梦) 策略',
+        ko: '자가 복제 4 (아르카디아의 꿈) 전략',
       },
       type: 'select',
       options: {
@@ -332,6 +357,15 @@ const triggerSet: TriggerSet<Data> = {
           'Nukemaru 策略: 北、西南、西、西北两线一组接分摊, 东北、东、东南、南两线一组接大圈。队伍分为4个斜向象限': 'nukemaru',
           '无策略: 播报你可能获得的连线, 并提示获取连线': 'none',
         },
+        ko: {
+          'DN: 북, 북동, 동, 남동 분신 대상자 쉐어징, 남, 남서, 서, 북서 분신 대상자 광역징. 파티를 4개의 대각선 구역으로 나눕니다.': 'dn',
+          'Emergency Meeting: 북, 북동, 동, 북서 쉐어, 남동, 남, 남서, 서 광역징. 파티를 빨강/보라 + 노랑/파랑 징으로 나누고 쉐어 또는 광역징이 먼저인지에 따라 위치를 바꿉니다.':
+            'em',
+          '카로: 북동, 동, 남서, 서 분신 대상자 쉐어징, 북, 남동, 남, 북서 분신 대상자 광역징. 파티를 4개의 대각선 구역으로 나눕니다.': 'caro',
+          '누케마루: 북, 남서, 서, 북서 분신 대상자 쉐어징, 북동, 동, 남동, 남 분신 대상자 광역징. 파티를 4개의 대각선 구역으로 나눕니다.':
+            'nukemaru',
+          '전략 없음: 자신에게 걸린 선과 선 가져가기만 알림': 'none',
+        },
       },
       default: 'none',
     },
@@ -340,6 +374,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Phase 2 Tower Portent Resolution Strategy',
         cn: '本体预兆塔解决策略',
+        ko: '2페이즈 탑 디버프 해결 전략',
       },
       type: 'select',
       options: {
@@ -357,6 +392,12 @@ const triggerSet: TriggerSet<Data> = {
           'Zenith 策略: 风北最远近战位, 土/暗中间位 (偏北), 火南最远近战位': 'zenith',
           'Nukemaru 策略: 近线南侧(数字标记角落), 远线 Boss 南侧判定点, 土/火南最远近战位, 火/土平台北侧远程位': 'nukemaru',
           '无策略: 播报元素与 debuff': 'none',
+        },
+        ko: {
+          'DN: 어둠 - 북 히트박스, 바람 - 중앙 히트박스, 땅/불 근딜 - 플랫폼 북쪽 (어둠/바람 사이), 불/땅 원딜 - 플랫폼 남쪽 가장자리': 'dn',
+          'Zenith: 바람 - 북 칼끝딜, 땅/어둠 - 중앙 (약간 북쪽), 불 - 남 칼끝딜': 'zenith',
+          '누케마루: 가까이 - 남쪽 (숫자징 구석), 멀리 - 보스 히트박스, 땅/불 - 남쪽 칼끝딜, 불/땅 - 플랫폼 북쪽': 'nukemaru',
+          '전략 없음: 속성과 디버프만 알림': 'none',
         },
       },
       default: 'none',
@@ -2663,26 +2704,32 @@ const triggerSet: TriggerSet<Data> = {
         nSCleavingNorthSouth: {
           en: 'N/S Cleaving North/South',
           cn: '上/下扇形 上/下',
+          ko: '북/남 부채꼴 북쪽/남쪽',
         },
         eWCleavingNorthSouth: {
           en: 'E/W Cleaving North/South',
           cn: '左/右扇形 上/下',
+          ko: '동/서 부채꼴 북쪽/남쪽',
         },
         nSCleavingEastWest: {
           en: 'N/S Cleaving East/West',
           cn: '上/下扇形 左/右',
+          ko: '북/남 부채꼴 동쪽/서쪽',
         },
         eWCleavingEastWest: {
           en: 'E/W Cleaving East/West',
           cn: '左/右扇形 左/右',
+          ko: '동/서 부채꼴 동쪽/서쪽',
         },
         northSouthCleaves2: {
           en: 'North/South Cleaves',
           cn: '上/下扇形',
+          ko: '북/남 부채꼴',
         },
         eastWestCleaves2: {
           en: 'East/West Cleaves',
           cn: '左/右扇形',
+          ko: '동/서 부채꼴',
         },
       },
     },
@@ -2723,10 +2770,12 @@ const triggerSet: TriggerSet<Data> = {
         fire: {
           en: 'Fire Debuff: Spread near Dark (later)',
           cn: '火 Debuff: 暗附近分散 (稍后)',
+          ko: '불 디버프: 어둠 근처 산개 (나중에)',
         },
         dark: {
           en: 'Dark Debuff: Stack near Fire (later)',
           cn: '暗 Debuff: 火附近分摊 (稍后)',
+          ko: '어둠 디버프: 불 근처 쉐어 (나중에)',
         },
       },
     },
@@ -2754,10 +2803,12 @@ const triggerSet: TriggerSet<Data> = {
         noDebuff: {
           en: 'No Debuff: Spread near Dark (later)',
           cn: '无 Debuff: 暗附近分散 (稍后)',
+          ko: '디버프 없음: 어둠 근처 산개 (나중에)',
         },
         noDebuffFail: {
           en: 'Debuffs Messed Up, Check Partner',
           cn: 'Debuff 获取故障, 检查搭档状态',
+          ko: '디버프 꼬임, 파트너 확인',
         },
       },
     },
@@ -2787,6 +2838,7 @@ const triggerSet: TriggerSet<Data> = {
         getBehindDir: {
           en: '${dir}: ${mech}',
           cn: '${dir}: ${mech}',
+          ko: '${dir}: ${mech}',
         },
       },
     },
@@ -2908,14 +2960,17 @@ const triggerSet: TriggerSet<Data> = {
         fire: {
           en: 'Bait Fire In ${dir1}/Out ${dir2} (Partners)',
           cn: '内${dir1}/外${dir2}诱导火 (和搭档一起)',
+          ko: '불 안쪽 ${dir1}/바깥쪽 ${dir2} 유도 (파트너)',
         },
         dark: {
           en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
           cn: '内${dir1}/外${dir2}诱导暗 (单独)',
+          ko: '어둠 안쪽 ${dir1}/바깥쪽 ${dir2} 유도 (혼자)',
         },
         darkDebuffFail: {
           en: 'Check Partner, Dark is In ${dir1}/Out ${dir2}',
           cn: '检查搭档状态, 暗在内${dir1}/外${dir2}',
+          ko: '파트너 확인, 어둠 안쪽 ${dir1}/바깥쪽 ${dir2}',
         },
       },
     },
@@ -2976,6 +3031,7 @@ const triggerSet: TriggerSet<Data> = {
         getBehindDir: {
           en: '${dir}: ${mech}',
           cn: '${dir}: ${mech}',
+          ko: '${dir}: ${mech}',
         },
       },
     },
@@ -3037,10 +3093,12 @@ const triggerSet: TriggerSet<Data> = {
         cloneTether: {
           en: 'Tethered to Clone',
           cn: '分身连线',
+          ko: '분신과 연결됨',
         },
         cloneTetherDir: {
           en: 'Tethered to ${dir} Clone',
           cn: '与${dir}分身连线',
+          ko: '${dir} 분신과 연결됨',
         },
       },
     },
@@ -3677,134 +3735,167 @@ const triggerSet: TriggerSet<Data> = {
         defamationOnYouDNSE: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         defamationOnYouDNSW: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         defamationOnYouBananaNE: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         defamationOnYouBananaSE: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         defamationOnYouNukemaruSW: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         defamationOnYouNukemaruNW: {
           en: 'Defamation on YOU, Go ${strat}',
           cn: '大圈点名, 去${strat}',
+          ko: '광역징 대상자, ${strat}',
         },
         baitProtean: {
           en: 'Bait Protean from Boss',
           cn: '从 Boss 诱导扇形',
+          ko: '보스의 부채꼴 유도',
         },
         baitProteanDN: { // If clone tether num missing
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanDNNE: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanDNE: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanDNW: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanDNNW: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanBanana: { // If clone tether num missing
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanBananaN: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanBananaS: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanBananaSW: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanBananaNW: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanNukemaru: { // If clone tether num missing
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanNukemaruN: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanNukemaruS: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanNukemaruNE: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitProteanNukemaruSE: {
           en: 'Bait Protean from Boss (${strat})',
           cn: '从 Boss 诱导扇形 (${strat})',
+          ko: '보스의 부채꼴 유도 (${strat})',
         },
         baitJump: {
           en: 'Bait Jump',
           cn: '诱导跳跃',
+          ko: '점프 유도',
         },
         baitJumpDNN: {
           en: 'Bait Jump ${strat}',
           cn: '诱导跳跃 ${strat}',
+          ko: '점프 유도 ${strat}',
         },
         baitJumpBananaW: {
           en: 'Bait Jump ${strat}',
           cn: '诱导跳跃 ${strat}',
+          ko: '점프 유도 ${strat}',
         },
         baitJumpNukemaruE: {
           en: 'Bait Jump ${strat}',
           cn: '诱导跳跃 ${strat}',
+          ko: '점프 유도 ${strat}',
         },
         projectionTetherDir: {
           en: '${dir} Cone Tether: ${mech1}',
           cn: '${dir} 扇形连线: ${mech1}',
+          ko: '${dir} 부채꼴 선: ${mech1}',
         },
         projectionTether: {
           en: 'Cone Tether: ${mech1}',
           cn: '扇形连线: ${mech1}',
+          ko: '부채꼴 선: ${mech1}',
         },
         manaBurstTetherDir: {
           en: '${dir} Defamation Tether: ${mech1}',
           cn: '${dir} 大圈连线: ${mech1}',
+          ko: '${dir} 광역징 선: ${mech1}',
         },
         manaBurstTether: {
           en: 'Defamation Tether: ${mech1}',
           cn: '大圈连线: ${mech1}',
+          ko: '광역징 선: ${mech1}',
         },
         heavySlamTetherDir: {
           en: '${dir} Stack Tether: ${mech1}',
           cn: '${dir} 分摊连线: ${mech1}',
+          ko: '${dir} 쉐어징 선: ${mech1}',
         },
         heavySlamTether: {
           en: 'Stack Tether: ${mech1}',
           cn: '分摊连线: ${mech1}',
+          ko: '쉐어징 선: ${mech1}',
         },
         fireballSplashTether: {
           en: 'Boss Tether: ${mech1}',
           cn: 'Boss 连线: ${mech1}',
+          ko: '보스 선: ${mech1}',
         },
       },
     },
@@ -3843,18 +3934,22 @@ const triggerSet: TriggerSet<Data> = {
         baitFarDefamation: {
           en: 'Bait Far Defamation',
           cn: '诱导远大圈',
+          ko: '멀리 광역징 유도',
         },
         baitFarDefamationDN: {
           en: 'Bait Far Defamation (Go ${strat})',
           cn: '诱导远大圈 (去 ${strat})',
+          ko: '멀리 광역징 유도 (${strat})',
         },
         baitFarDefamationBanana: {
           en: 'Bait Far Defamation (Go ${strat})',
           cn: '诱导远大圈 (去 ${strat})',
+          ko: '멀리 광역징 유도 (${strat})',
         },
         baitFarDefamationNukemaru: {
           en: 'Bait Far Defamation (Go ${strat})',
           cn: '诱导远大圈 (去 ${strat})',
+          ko: '멀리 광역징 유도 (${strat})',
         },
         stackGroups: {
           en: 'Stack Groups',
@@ -3868,6 +3963,7 @@ const triggerSet: TriggerSet<Data> = {
         noTether: {
           en: 'No Tether: ${mech1} => ${mech2}',
           cn: '无连线: ${mech1} => ${mech2}',
+          ko: '선 없음: ${mech1} => ${mech2}',
         },
       },
     },
@@ -3917,6 +4013,7 @@ const triggerSet: TriggerSet<Data> = {
         projection: {
           en: 'Cones',
           cn: '扇形',
+          ko: '부채꼴',
         },
         stackGroups: {
           en: 'Stack Groups',
@@ -3931,22 +4028,27 @@ const triggerSet: TriggerSet<Data> = {
         projectionTether: {
           en: '${mech1} + ${mech2} => ${mech3}',
           cn: '${mech1} + ${mech2} => ${mech3}',
+          ko: '${mech1} + ${mech2} => ${mech3}',
         },
         manaBurstTether: {
           en: '${mech1} => ${mech2} => ${mech3}',
           cn: '${mech1} => ${mech2} => ${mech3}',
+          ko: '${mech1} => ${mech2} => ${mech3}',
         },
         heavySlamTether: {
           en: '${mech1} => ${mech2} => ${mech3}',
           cn: '${mech1} => ${mech2} => ${mech3}',
+          ko: '${mech1} => ${mech2} => ${mech3}',
         },
         fireballSplashTether: {
           en: '${mech1} => ${mech2} => ${mech3}',
           cn: '${mech1} => ${mech2} => ${mech3}',
+          ko: '${mech1} => ${mech2} => ${mech3}',
         },
         noTether: {
           en: '${mech1} => ${mech2} => ${mech3}',
           cn: '${mech1} => ${mech2} => ${mech3}',
+          ko: '${mech1} => ${mech2} => ${mech3}',
         },
       },
     },
@@ -3982,6 +4084,7 @@ const triggerSet: TriggerSet<Data> = {
         getBehindDir: {
           en: '${dir}: ${mech}',
           cn: '${dir}: ${mech}',
+          ko: '${dir}: ${mech}',
         },
       },
     },
@@ -4172,26 +4275,32 @@ const triggerSet: TriggerSet<Data> = {
         stackDir: {
           en: 'Stack ${dir}',
           cn: '${dir} 分摊',
+          ko: '쉐어 ${dir}',
         },
         proteans: {
           en: 'Proteans',
           cn: '扇形',
+          ko: '부채꼴',
         },
         beNear: {
           en: 'Be Near',
           cn: '站近',
+          ko: '가까이 있기',
         },
         beFar: {
           en: 'Be Far',
           cn: '站远',
+          ko: '멀리 있기',
         },
         hitboxBanana: {
           en: 'Be West on Boss Hitbox',
           cn: '去左边, Boss判定圈上',
+          ko: '보스 히트박스 서쪽에 있기',
         },
         hitboxNukemaru: {
           en: 'Be West on Boss Hitbox',
           cn: '去左边, Boss判定圈下',
+          ko: '보스 히트박스 서쪽에 있기',
         },
         near: {
           en: 'Near',
@@ -4210,76 +4319,94 @@ const triggerSet: TriggerSet<Data> = {
         projectionTetherFar: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
           cn: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+          ko: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
         manaBurstTetherFar: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         heavySlamTetherFar: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
           cn: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+          ko: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
         fireballSplashTetherFar: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         noTetherFar: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         projectionTetherNear: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
           cn: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+          ko: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
         manaBurstTetherNear: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         heavySlamTetherNear: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
           cn: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+          ko: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
         fireballSplashTetherNear: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         noTetherNear: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
           cn: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+          ko: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
         projectionTetherBait: {
           en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
           cn: '${mech1} (${spiteBaits} Baits) => ${mech2}',
+          ko: '${mech1} (${spiteBaits} 유도) => ${mech2}',
         },
         manaBurstTetherHitbox: {
           en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
           cn: '${mech1} + 躲避 ${spiteBaits} 诱导 => ${mech2}',
+          ko: '${mech1} + ${spiteBaits} 유도 피하기 => ${mech2}',
         },
         heavySlamTetherBait: {
           en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
           cn: '${mech1} (${spiteBaits} 诱导) => ${mech2}',
+          ko: '${mech1} (${spiteBaits} 유도) => ${mech2}',
         },
         fireballSplashTetherHitbox: {
           en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
           cn: '${mech1} + 躲避 ${spiteBaits} 诱导 => ${mech2}',
+          ko: '${mech1} + ${spiteBaits} 유도 피하기 => ${mech2}',
         },
         noTetherHitbox: {
           en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
           cn: '${mech1} + 躲避 ${spiteBaits} 诱导 => ${mech2}',
+          ko: '${mech1} + ${spiteBaits} 유도 피하기 => ${mech2}',
         },
         stack: Outputs.stackMarker,
         projection: {
           en: 'Cones',
           cn: '扇形',
+          ko: '부채꼴',
         },
         defamation: {
           en: 'Defamation',
           cn: '大圈',
+          ko: '광역징',
         },
         unknown: Outputs.unknown,
         netherwrathMechThenMech: {
           en: '${spiteBaits} Baits + ${mech1} N + ${mech2} S => ${mech3} NE + ${mech4} SW',
           cn: '${spiteBaits} 诱导 + ${mech1} 上 + ${mech2} 下 => ${mech3} 右上 + ${mech4} 左下',
+          ko: '${spiteBaits} 유도 + ${mech1} 북 + ${mech2} 남 => ${mech3} 북동 + ${mech4} 남서',
         },
       },
     },
@@ -4319,26 +4446,32 @@ const triggerSet: TriggerSet<Data> = {
           stackThenStackBanana: {
             en: 'Stack on SW Clone => Stack on NW Clone',
             cn: '左下分身分摊 => 左上分身分摊',
+            ko: '남서 분신에서 쉐어 => 북서 분신에서 쉐어',
           },
           avoidStackThenProteanBanana: {
             en: 'Avoid SW Stack => Bait Protean West',
             cn: '避开左下分摊 => 左侧诱导扇形',
+            ko: '남서 분신 쉐어 피하기 => 서쪽에서 부채꼴 유도',
           },
           stackThenProteansBanana: {
             en: 'SW Clone Stack => West Proteans',
             cn: '左下分身分摊 => 左侧扇形',
+            ko: '남서 분신 쉐어 => 서쪽 부채꼴',
           },
           stackThenStackNukemaru: {
             en: 'Stack on NE Clone => Stack on SE Clone',
             cn: '右上分身分摊 => 右下分身分摊',
+            ko: '북동 분신에서 쉐어 => 남동 분신에서 쉐어',
           },
           avoidStackThenProteanNukemaru: {
             en: 'Avoid NE Stack => Bait Protean East',
             cn: '避开右上分摊 => 右侧诱导扇形',
+            ko: '북동 분신 쉐어 피하기 => 동쪽에서 부채꼴 유도',
           },
           stackThenProteansNukemaru: {
             en: 'NE Clone Stack => East Proteans',
             cn: '右上分身分摊 => 右侧扇形',
+            ko: '북동 분신 쉐어 => 동쪽 부채꼴',
           },
         };
 
@@ -4399,6 +4532,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East/West Clone Stacks',
           cn: '左/右分身分摊',
+          ko: '동/서 분신 쉐어',
         },
       },
     },
@@ -4426,26 +4560,32 @@ const triggerSet: TriggerSet<Data> = {
           proteanBanana: {
             en: 'Bait Protean West + Avoid Clone AoE',
             cn: '左侧诱导扇形 + 避开分身AoE',
+            ko: '서쪽 부채꼴 유도 + 분신 장판 피하기',
           },
           avoidThenStackBanana: {
             en: 'Avoid West Clone/East Defamation + Stack on NW Clone',
             cn: '避开左分身/右大圈 + 左上分身分摊',
+            ko: '서쪽 분신/동쪽 광역징 피하기 + 북서 분신에서 쉐어',
           },
           proteansThenStackBanana: {
             en: 'West Proteans => NW Clone Stack',
             cn: '左侧扇形 => 左上分身分摊',
+            ko: '서쪽 부채꼴 => 북서 분신 쉐어',
           },
           proteanNukemaru: {
             en: 'Bait Protean East + Avoid Clone AoE',
             cn: '右侧诱导扇形 + 避开分身AoE',
+            ko: '동쪽 부채꼴 유도 + 분신 장판 피하기',
           },
           avoidThenStackNukemaru: {
             en: 'Avoid East Clone/West Defamation + Stack on SE Clone',
             cn: '避开右分身/左大圈 + 右上分身分摊',
+            ko: '동쪽 분신/서쪽 광역징 피하기 + 남동 분신에서 쉐어',
           },
           proteansThenStackNukemaru: {
             en: 'East Proteans => SE Clone Stack',
             cn: '右侧扇形 => 右上分身分摊',
+            ko: '동쪽 부채꼴 => 남동 분신 쉐어',
           },
         };
 
@@ -4530,26 +4670,32 @@ const triggerSet: TriggerSet<Data> = {
           stackBanana: {
             en: 'Stack on NW Clone',
             cn: '左上分身分摊',
+            ko: '북서 분신에서 쉐어',
           },
           avoidStackBanana: {
             en: 'Avoid NE Stack',
             cn: '避开右上分摊',
+            ko: '북동 쉐어 피하기',
           },
           stackAndDefamationBanana: {
             en: 'NW Clone Stack + SE Defamation',
             cn: '左上分身分摊 + 右下大圈',
+            ko: '북서 분신 쉐어 + 남동 광역징',
           },
           stackNukemaru: {
             en: 'Stack on SE Clone',
             cn: '右下分身分摊',
+            ko: '남동 분신에서 쉐어',
           },
           avoidStackNukemaru: {
             en: 'Avoid SE Stack',
             cn: '避开右下分摊',
+            ko: '남동 쉐어 피하기',
           },
           stackAndDefamationNukemaru: {
             en: 'SE Clone Stack + NW Defamation',
             cn: '右下分身分摊 + 左上大圈',
+            ko: '남동 분신 쉐어 + 북서 광역징',
           },
         };
 
@@ -4647,18 +4793,22 @@ const triggerSet: TriggerSet<Data> = {
         alpha: {
           en: 'Mutation α on YOU',
           cn: '变异细胞α点名',
+          ko: '변이세포 α 대상자',
         },
         beta: {
           en: 'Mutation β on YOU',
           cn: '变异细胞β点名',
+          ko: '변이세포 β 대상자',
         },
         alphaTts: {
           en: 'Mutation α on YOU',
           cn: '变异细胞α点名',
+          ko: '변이세포 알파 대상자',
         },
         betaTts: {
           en: 'Mutation β on YOU',
           cn: '变异细胞β点名',
+          ko: '변이세포 베타 대상자',
         },
       },
     },
@@ -4782,34 +4932,42 @@ const triggerSet: TriggerSet<Data> = {
         water: {
           en: 'Orb',
           cn: '钢铁碎片',
+          ko: '구슬',
         },
         lightning: {
           en: 'Lightning',
           cn: '上下扇形碎片',
+          ko: '번개',
         },
         fire: {
           en: 'Fire',
           cn: '左右扇形碎片',
+          ko: '불',
         },
         wind: {
           en: 'Donut',
           cn: '月环碎片',
+          ko: '도넛',
         },
         alpha: {
           en: 'Avoid Shape AoEs, Wait by Black Hole',
           cn: '避开碎片 AOE, 等待黑洞',
+          ko: '도형 장판 피하기, 블랙홀 옆에서 대기',
         },
         beta: {
           en: 'Shared Shape Soak => Get by Black Hole',
           cn: '分摊撞碎片 => 靠近黑洞',
+          ko: '도형 쉐어 처리 => 블랙홀 옆으로 이동',
         },
         alphaDir: {
           en: 'Avoid ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
           cn: '避开 ${dir1} ${shape1}/${shape2} => ${dir2} 黑洞 + ${northSouth}',
+          ko: '${dir1} ${shape1}/${shape2} 도형 장판 피하기 => ${dir2} 블랙홀 + ${northSouth}',
         },
         betaDir: {
           en: 'Share ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
           cn: '分摊 ${dir1} ${shape1}/${shape2} => ${dir2} 黑洞 + ${northSouth}',
+          ko: '${dir1} ${shape1}/${shape2} 쉐어 => ${dir2} 블랙홀 + ${northSouth}',
         },
       },
     },
@@ -4849,18 +5007,22 @@ const triggerSet: TriggerSet<Data> = {
         alpha: {
           en: 'Get by Black Hole',
           cn: '靠近黑洞',
+          ko: '블랙홀 옆으로 이동',
         },
         beta: {
           en: 'Get by Black Hole',
           cn: '靠近黑洞',
+          ko: '블랙홀 옆으로 이동',
         },
         alphaDir: {
           en: '${dir2} Black Hole + ${northSouth}',
           cn: '${dir2} 黑洞 + ${northSouth}',
+          ko: '${dir2} 블랙홀 + ${northSouth}',
         },
         betaDir: {
           en: '${dir2} Black Hole + ${northSouth}',
           cn: '${dir2} 黑洞 + ${northSouth}',
+          ko: '${dir2} 블랙홀 + ${northSouth}',
         },
       },
     },
@@ -4899,10 +5061,12 @@ const triggerSet: TriggerSet<Data> = {
         move: {
           en: 'Move to other Black Hole',
           cn: '去另一个黑洞',
+          ko: '다른 블랙홀로 이동',
         },
         moveDir: {
           en: '${dir} Black Hole + ${northSouth}',
           cn: '${dir} 黑洞 + ${northSouth}',
+          ko: '${dir} 블랙홀 + ${northSouth}',
         },
       },
     },
@@ -4933,30 +5097,37 @@ const triggerSet: TriggerSet<Data> = {
         maxMelee: {
           en: 'Max Melee',
           cn: '最大近战距离',
+          ko: '칼끝딜',
         },
         alphaNear: {
           en: '${mech} (Avoid Near Stack)',
           cn: '${mech} (避开近分摊)',
+          ko: '${mech} (근거리 쉐어 피하기)',
         },
         alphaFar: {
           en: '${mech} (Avoid Far Stack)',
           cn: '${mech} (避开远分摊)',
+          ko: '${mech} (원거리 쉐어 피하기)',
         },
         betaNear: {
           en: 'Near β Stack: ${mech}',
           cn: '近 β 分摊: ${mech}',
+          ko: '근거리 β 쉐어: ${mech}',
         },
         betaFar: {
           en: 'Far β Stack: ${mech}',
           cn: '远 β 分摊: ${mech}',
+          ko: '원거리 β 쉐어: ${mech}',
         },
         betaNearTts: {
           en: 'Near β Stack: ${mech}',
           cn: '近 β 分摊: ${mech}',
+          ko: '근거리 베타 쉐어: ${mech}',
         },
         betaFarTts: {
           en: 'Far β Stack: ${mech}',
           cn: '远 β 分摊: ${mech}',
+          ko: '원거리 베타 쉐어: ${mech}',
         },
       },
     },
@@ -5011,6 +5182,7 @@ const triggerSet: TriggerSet<Data> = {
         firstClone: {
           en: 'First Clone: ${cards}',
           cn: '第一个分身: ${cards}',
+          ko: '첫 번째 분신: ${cards}',
         },
       },
     },
@@ -5064,10 +5236,12 @@ const triggerSet: TriggerSet<Data> = {
         cloneTether: {
           en: 'Tethered to Clone',
           cn: '分身连线',
+          ko: '분신과 선 연결',
         },
         cloneTetherDir: {
           en: 'Tethered to ${dir} Clone',
           cn: '被 ${dir} 分身连线',
+          ko: '${dir} 분신과 선 연결',
         },
       },
     },
@@ -5116,6 +5290,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir} + ${sides} (later)',
           cn: '${dir} + ${sides} (稍后)',
+          ko: '${dir} + ${sides} (나중에)',
         },
       },
     },
@@ -5508,10 +5683,12 @@ const triggerSet: TriggerSet<Data> = {
         getTether: {
           en: 'Get Tether',
           cn: '接线',
+          ko: '선 가져가기',
         },
         mechLater: {
           en: '${mech} First (later)',
           cn: '${mech} 先 (稍后)',
+          ko: '${mech} 먼저 (나중에)',
         },
         defamations: {
           en: 'Defamations',
@@ -5519,237 +5696,294 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse AoE sur vous',
           ja: '自分に巨大な爆発',
           cn: '大圈',
-          ko: '광역 대상자',
+          ko: '광역징',
           tc: '大圈點名',
         },
         stacks: Outputs.stacks,
         mechLaterTether: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterNClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterNEClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterEClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterSEClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterSClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterSWClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterWClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         mechLaterNWClone: {
           en: '${later}; ${tether}',
           cn: '${later}; ${tether}',
+          ko: '${later}; ${tether}',
         },
         getStackEastGroupQuad1DN: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroupQuad2DN: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroupQuad3DN: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroupQuad4DN: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getDefamationEastGroupQuad1DN: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroupQuad2DN: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroupQuad3DN: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroupQuad4DN: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getStackWestGroup1EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroup2EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroup12EM: {
           en: 'Get ${dir1}/${dir2} Stack Tether',
           cn: '接${dir1}/${dir2}分摊线',
+          ko: '${dir1}/${dir2} 쉐어 선 가져가기',
         },
         getStackEastGroup1EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroup2EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroup12EM: {
           en: 'Get ${dir1}/${dir2} Stack Tether',
           cn: '接${dir1}/${dir2}分摊线',
+          ko: '${dir1}/${dir2} 쉐어 선 가져가기',
         },
         getStackEastGroup3EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroup4EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroup34EM: {
           en: 'Get ${dir1}/${dir2} Stack Tether',
           cn: '接${dir1}/${dir2}分摊线',
+          ko: '${dir1}/${dir2} 쉐어 선 가져가기',
         },
         getDefamationEastGroup3EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroup4EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroup34EM: {
           en: 'Get ${dir1}/${dir2} Defamation Tether',
           cn: '接${dir1}/${dir2}大圈线',
+          ko: '${dir1}/${dir2} 광역징 선 가져가기',
         },
         getDefamationEastGroup1EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroup2EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroup12EM: {
           en: 'Get ${dir1}/${dir2} Defamation Tether',
           cn: '接${dir1}/${dir2}大圈线',
+          ko: '${dir1}/${dir2} 광역징 선 가져가기',
         },
         getDefamationWestGroup1EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroup2EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroup12EM: {
           en: 'Get ${dir1}/${dir2} Defamation Tether',
           cn: '接${dir1}/${dir2}大圈线',
+          ko: '${dir1}/${dir2} 광역징 선 가져가기',
         },
         getDefamationWestGroup3EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroup4EM: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroup34EM: {
           en: 'Get ${dir1}/${dir2} Defamation Tether',
           cn: '接${dir1}/${dir2}大圈线',
+          ko: '${dir1}/${dir2} 광역징 선 가져가기',
         },
         getStackWestGroup3EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroup4EM: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroup34EM: {
           en: 'Get ${dir1}/${dir2} Stack Tether',
           cn: '接${dir1}/${dir2}分摊线',
+          ko: '${dir1}/${dir2} 쉐어 선 가져가기',
         },
         getDefamationEastGroupQuad1Caro: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getStackEastGroupQuad2Caro: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroupQuad3Caro: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getDefamationEastGroupQuad4Caro: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroupQuad1Caro: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getStackWestGroupQuad2Caro: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroupQuad3Caro: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getDefamationWestGroupQuad4Caro: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getStackEastGroupQuad1Nukemaru: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getDefamationEastGroupQuad1Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroupQuad4Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationEastGroupQuad2Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getDefamationWestGroupQuad3Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
           cn: '接${dir}大圈线',
+          ko: '${dir} 광역징 선 가져가기',
         },
         getStackWestGroupQuad3Nukemaru: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackWestGroupQuad4Nukemaru: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
         getStackEastGroupQuad2Nukemaru: {
           en: 'Get ${dir} Stack Tether',
           cn: '接${dir}分摊线',
+          ko: '${dir} 쉐어 선 가져가기',
         },
       },
     },
@@ -5885,26 +6119,32 @@ const triggerSet: TriggerSet<Data> = {
         meteorAoe: {
           en: '${bigAoe} + ${groups}',
           cn: '${bigAoe} + ${groups}',
+          ko: '${bigAoe} + ${groups}',
         },
         dodgeCleaves: {
           en: '${dir} + ${sides}',
           cn: '${dir} + ${sides}',
+          ko: '${dir} + ${sides}',
         },
         manaBurstTetherDir: {
           en: '${dodgeCleaves} (${dir} Defamation Tether)  => ${meteorAoe}',
           cn: '${dodgeCleaves} (${dir}大圈线) => ${meteorAoe}',
+          ko: '${dodgeCleaves} (${dir} 광역징 선)  => ${meteorAoe}',
         },
         manaBurstTether: {
           en: ' N/S Clone (Defamation Tether) => ${meteorAoe}',
           cn: ' 南/北分身 (大圈线) => ${meteorAoe}',
+          ko: ' 북/남 분신 (광역징 선) => ${meteorAoe}',
         },
         heavySlamTetherDir: {
           en: '${dodgeCleaves} (${dir} Stack Tether)  => ${meteorAoe}',
           cn: '${dodgeCleaves} (${dir}分摊线) => ${meteorAoe}',
+          ko: '${dodgeCleaves} (${dir} 쉐어징 선)  => ${meteorAoe}',
         },
         heavySlamTether: {
           en: ' N/S Clone (Stack Tether) => ${meteorAoe}',
           cn: ' 南/北分身 (分摊线) => ${meteorAoe}',
+          ko: ' 북/남 분신 (쉐어징 선) => ${meteorAoe}',
         },
       },
     },
@@ -5984,6 +6224,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Soak Fire/Earth Meteor (later)',
           cn: '踩火/土陨石塔 (稍后)',
+          ko: '불/땅 메테오 밟기 (나중에)',
         },
       },
     },
@@ -6002,6 +6243,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Soak a White/Star Meteor (later)',
           cn: '踩光/彩色陨石塔 (稍后)',
+          ko: '바람/어둠 메테오 밟기 (나중에)',
         },
       },
     },
@@ -6019,31 +6261,38 @@ const triggerSet: TriggerSet<Data> = {
           defamations: {
             en: 'Avoid Defamations',
             cn: '远离大圈',
+            ko: '광역징 피하기',
           },
           defamationOnYou: Outputs.defamationOnYou,
           stacksThenDefamations: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationsThenStacks: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           stacksThenDefamationOnYou: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationsThenStackOnYou: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           stackOnYouThenDefamations: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationOnYouThenStack: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
         };
         const player1 = data.replication4BossCloneDirNumPlayers[0];
@@ -6144,31 +6393,38 @@ const triggerSet: TriggerSet<Data> = {
           defamations: {
             en: 'Avoid Defamations',
             cn: '远离大圈',
+            ko: '광역징 피하기',
           },
           defamationOnYou: Outputs.defamationOnYou,
           stacksThenDefamations: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationsThenStacks: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           stacksThenDefamationOnYou: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationsThenStackOnYou: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           stackOnYouThenDefamations: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           defamationOnYouThenStack: {
             en: '${mech1} => ${mech2}',
             cn: '${mech1} => ${mech2}',
+            ko: '${mech1} => ${mech2}',
           },
           towers: {
             en: 'Tower Positions',
@@ -6176,7 +6432,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Position tour',
             ja: '塔の位置へ',
             cn: '塔站位',
-            ko: '기둥 자리잡기',
+            ko: '탑 자리잡기',
             tc: '八人塔站位',
           },
         };
@@ -6319,7 +6575,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Position tour',
           ja: '塔の位置へ',
           cn: '塔站位',
-          ko: '기둥 자리잡기',
+          ko: '탑 자리잡기',
           tc: '八人塔站位',
         },
       },
@@ -6342,10 +6598,12 @@ const triggerSet: TriggerSet<Data> = {
         fireEarthTower: {
           en: 'Soak Fire/Earth Meteor',
           cn: '踩火/土陨石塔',
+          ko: '불/땅 메테오 밟기',
         },
         holyTower: {
           en: 'Soak a White/Star Meteor',
           cn: '踩光/彩色陨石塔',
+          ko: '바람/어둠 메테오 밟기',
         },
       },
     },
@@ -6449,10 +6707,12 @@ const triggerSet: TriggerSet<Data> = {
         southIn: {
           en: 'South + In',
           cn: '下+内',
+          ko: '남쪽 + 안으로',
         },
         avoidEarthTower: {
           en: '${dir} (Avoid Earth Tower)',
           cn: '${dir} (避开土塔)',
+          ko: '${dir} (땅 탑 피하기)',
         },
       },
     },
@@ -6543,6 +6803,7 @@ const triggerSet: TriggerSet<Data> = {
         cleanseDooms: {
           en: 'Cleanse Doom(s)',
           cn: '康复死宣',
+          ko: '죽음의 선고 에스나',
         },
         cleanseDoom: {
           en: 'Cleanse ${target}',
@@ -6555,20 +6816,24 @@ const triggerSet: TriggerSet<Data> = {
         cleanseDoom2: {
           en: 'Cleanse ${target1}/${target2}',
           cn: '康复 ${target1}/${target2}',
+          ko: '${target1}/${target2} 에스나',
         },
         south: Outputs.south,
         in: Outputs.in,
         southIn: {
           en: 'South + In',
           cn: '下+内',
+          ko: '남쪽 + 안으로',
         },
         avoidEarthTower: {
           en: '${dir}',
           cn: '${dir}',
+          ko: '${dir}',
         },
         mech: {
           en: '${cleanse} + ${avoid}',
           cn: '${cleanse} + ${avoid}',
+          ko: '${cleanse} + ${avoid}',
         },
       },
     },
@@ -6626,10 +6891,12 @@ const triggerSet: TriggerSet<Data> = {
         southIn: {
           en: 'South + In',
           cn: '下+内',
+          ko: '남쪽 + 안으로',
         },
         avoidEarthTower: {
           en: '${dir} (Avoid Earth Tower)',
           cn: '${dir} (避开土塔)',
+          ko: '${dir} (땅 탑 피하기)',
         },
       },
     },
@@ -6670,34 +6937,42 @@ const triggerSet: TriggerSet<Data> = {
         nearOnYouDarkDN: {
           en: 'Near on YOU: Be on Hitbox N',
           cn: '近点名: 站上边判定圈',
+          ko: '근거리 대상자: 히트박스 북쪽에 서기',
         },
         nearOnYouDarkZenith: {
           en: 'Near on YOU: Be on Middle Hitbox (Lean North)',
           cn: '近点名: 站中间判定圈 (偏上)',
+          ko: '근거리 대상자: 히트박스 중앙에 서기 (약간 북쪽)',
         },
         nearOnYouDarkNukemaru: {
           en: 'Near on YOU: Max Melee S (Near Outer Player)',
           cn: '近点名: 下边最远近战距离 (靠近外侧玩家)',
+          ko: '근거리 대상자: 남쪽 칼끝딜 (바깥 플레이어 가까이)',
         },
         nearOnYouDark: {
           en: 'Dark: Near on YOU',
           cn: '暗: 近点名',
+          ko: '어둠: 근거리 대상자',
         },
         farOnYouWindDN: {
           en: 'Far on YOU: Be on Middle Hitbox',
           cn: '远点名: 站中间判定圈',
+          ko: '원거리 대상자: 히트박스 중앙에 서기',
         },
         farOnYouWindZenith: {
           en: 'Far on YOU: Max Melee N',
           cn: '远点名: 上边最远近战距离',
+          ko: '원거리 대상자: 북쪽 칼끝딜',
         },
         farOnYouWindNukemaru: {
           en: 'Far on YOU: Be on Hitbox S',
           cn: '远点名: 站下边判定圈',
+          ko: '원거리 대상자: 히트박스 남쪽에 서기',
         },
         farOnYouWind: {
           en: 'Wind: Far on YOU',
           cn: '风: 远点名',
+          ko: '바람: 원거리 대상자',
         },
       },
     },
@@ -6735,34 +7010,42 @@ const triggerSet: TriggerSet<Data> = {
         baitFireDN: {
           en: 'Bait Cone N Center Below Dark/S Center',
           cn: '诱导扇形: 北侧中心, 暗下方/南侧中心',
+          ko: '부채꼴 유도 북쪽 어둠 밑/남쪽 중앙',
         },
         baitFireZenith: {
           en: 'Bait Cone S, Max Melee',
           cn: '诱导扇形: 南侧, 最远近战距离',
+          ko: '부채꼴 유도 남쪽, 칼끝딜',
         },
         baitFireNukemaru: {
           en: 'Bait Cone, N of Platform/S Max Melee',
           cn: '诱导扇形: 平台北侧/南侧最远近战距离',
+          ko: '부채꼴 유도, 플랫폼 북쪽/남쪽 칼끝딜',
         },
         baitFire: {
           en: 'Fire: Bait Cone',
           cn: '火: 诱导扇形',
+          ko: '불: 부채꼴 유도',
         },
         baitEarthDN: {
           en: 'Bait Cone N Center Below Dark/S Center',
           cn: '诱导扇形: 北侧中心, 暗下方/南侧中心',
+          ko: '부채꼴 유도 북쪽 어둠 밑/남쪽 중앙',
         },
         baitEarthZenith: {
           en: 'Bait Cone Middle, Max Melee (Lean North)',
           cn: '诱导扇形: 中间, 最远近战距离 (偏北)',
+          ko: '부채꼴 유도 중앙, 칼끝딜 (약간 북쪽)',
         },
         baitEarthNukemaru: {
           en: 'Bait Cone, S Max Melee/N of Platform',
           cn: '诱导扇形: 南侧最远近战距离/平台北侧',
+          ko: '부채꼴 유도, 남쪽 칼끝딜/플랫폼 북쪽',
         },
         baitEarth: {
           en: 'Earth: Bait Cone',
           cn: '土: 诱导扇形',
+          ko: '땅: 부채꼴 유도',
         },
       },
     },
@@ -6798,10 +7081,12 @@ const triggerSet: TriggerSet<Data> = {
         frontBackLater: {
           en: 'Portal + Under Boss (later)',
           cn: '传送 + Boss脚下 (稍后)',
+          ko: '포탈 + 앞/뒤 분신 (나중에)',
         },
         sidesLater: {
           en: 'Portal + E/W of Clone (later)',
           cn: '传送 + 分身左/右 (稍后)',
+          ko: '포탈 + 양 옆 분신 (나중에)',
         },
       },
     },
@@ -6848,18 +7133,22 @@ const triggerSet: TriggerSet<Data> = {
         frontBackWestLater: {
           en: 'West Platform => N/S of Clone (later)',
           cn: '左平台 + 分身上/下 (稍后)',
+          ko: '서쪽 플랫폼 => 앞/뒤 분신 (나중에)',
         },
         sidesWestLater: {
           en: 'West Platform => Under Boss (later)',
           cn: '左平台 + Boss脚下 (稍后)',
+          ko: '서쪽 플랫폼 => 양 옆 분신 (나중에)',
         },
         frontBackEastLater: {
           en: 'East Platform => N/S of Clone (later)',
           cn: '右平台 + 分身上/下 (稍后)',
+          ko: '동쪽 플랫폼 => 앞/뒤 분신 (나중에)',
         },
         sidesEastLater: {
           en: 'East Platform => Under Boss (later)',
           cn: '右平台 + Boss脚下 (稍后)',
+          ko: '동쪽 플랫폼 => 양 옆 분신 (나중에)',
         },
       },
     },
@@ -6905,6 +7194,7 @@ const triggerSet: TriggerSet<Data> = {
         stack: {
           en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
           cn: '${dir1}/${dir2}分摊 + 偏向中间外侧',
+          ko: '${dir1}/${dir2} 쉐어 + 중앙 밖으로 약간 빼기',
         },
       },
     },
@@ -6933,22 +7223,27 @@ const triggerSet: TriggerSet<Data> = {
         safePlatform: {
           en: 'Move to Safe Platform Side => Dodge Cleaves',
           cn: '移动到安全平台侧 => 避开扇形',
+          ko: '안전한 플랫폼 쪽으로 이동 => 부채꼴 피하기',
         },
         sidesWestPlatform: {
           en: 'West Platform => Under Boss',
           cn: '左平台 + Boss脚下',
+          ko: '서쪽 플랫폼 => 보스 밑',
         },
         sidesEastPlatform: {
           en: 'East Platform => Under Boss',
           cn: '右平台 + Boss脚下',
+          ko: '동쪽 플랫폼 => 보스 밑',
         },
         frontBackEastPlatform: {
           en: 'East Platform => N/S of Clone',
           cn: '右平台 + 分身上/下',
+          ko: '동쪽 플랫폼 => 분신 남/북',
         },
         frontBackWestPlatform: {
           en: 'West Platform => N/S of Clone',
           cn: '左平台 + 分身上/下',
+          ko: '서쪽 플랫폼 => 분신 남/북',
         },
       },
     },
@@ -6994,6 +7289,7 @@ const triggerSet: TriggerSet<Data> = {
         stack: {
           en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
           cn: '${dir1}/${dir2}分摊 + 偏向中间外侧',
+          ko: '${dir1}/${dir2} 쉐어 + 중앙 바깥쪽으로 빼기',
         },
       },
     },
@@ -7017,10 +7313,12 @@ const triggerSet: TriggerSet<Data> = {
         sides: {
           en: 'E/W of Clone',
           cn: '分身东/西',
+          ko: '분신 동/서',
         },
         frontBack: {
           en: 'Under Boss',
           cn: 'Boss脚下',
+          ko: '보스 밑',
         },
       },
     },
@@ -7166,7 +7464,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Blood Vessel': '연환세포',
         'Lindschrat': '인간형 분열체',
@@ -7183,6 +7480,10 @@ const triggerSet: TriggerSet<Data> = {
         '--boss clones': '--보스 분신',
         '--tether (\\d)--': '--선 $1--',
         '--tethers--': '--선--',
+        '--n/s clones--': '--북/남 분신--',
+        '--ne/sw clones--': '--북동/남서 분신--',
+        '--e/w clones--': '--동/서 분신--',
+        '--se/nw clones--': '--남동/북서 분신--',
         '--black holes--': '--블랙홀--',
         '--shapes--': '--도형--',
         '--close shapes eaten--': '--가까운 도형 흡수--',
