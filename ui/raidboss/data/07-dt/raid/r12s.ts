@@ -4512,6 +4512,8 @@ const triggerSet: TriggerSet<Data> = {
         if (data.myMutation === 'alpha')
           return output.alphaDir!({
             dir1: output[popSide]!(),
+            shape1: output[sphereType1]!(),
+            shape2: output[sphereType2]!(),
             northSouth: output.northSouth!(),
             dir2: output[blackHole]!(),
           });
@@ -4554,7 +4556,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Shared Shape Soak => Get by Black Hole',
         },
         alphaDir: {
-          en: 'Avoid ${dir1} Shape AoEs => ${dir2} Black Hole + ${northSouth}',
+          en: 'Avoid ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
         },
         betaDir: {
           en: 'Share ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
