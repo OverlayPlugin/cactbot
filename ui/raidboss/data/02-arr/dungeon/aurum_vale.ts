@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'TheAurumVale',
   zoneId: ZoneId.TheAurumVale,
+  comments: {
+    en: 'pre-7.4 rework',
+  },
   triggers: [
     {
       id: 'Aurum Vale GoldLungs/Burrs',

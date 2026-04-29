@@ -2638,7 +2638,7 @@ const data: HuntMap = {
       'fr': 'pampa de barbarie fabuleux',
       'ja': 'ノパルテンダー・ファビュローソー',
       'ko': '노팔텐더 멋쟁이',
-      'tc': '絕妙圓扇刺',
+      'tc': '絕妙圓扇仙人掌怪',
     },
     'rank': 'B',
   },
