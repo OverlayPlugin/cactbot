@@ -804,7 +804,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '青之魂块',
         'Beckoning Hands': '邀死之手',
@@ -821,6 +820,7 @@ Options.Triggers.push({
         '\\(puddles\\)': '(圈)',
         '\\(spread\\)': '(分散)',
         '\\(tower\\)': '(塔)',
+        'Add Spawn': '小怪生成',
         'Aetherblight': '青之波动',
         'Blue Shockwave': '青之冲击',
         'Chilling Fingers': '死缠',
