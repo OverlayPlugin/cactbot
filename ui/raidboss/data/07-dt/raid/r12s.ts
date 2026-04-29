@@ -6,7 +6,7 @@ import { Responses } from '../../../../../resources/responses';
 import { DirectionOutputIntercard, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { TriggerSet } from '../../../../../types/trigger';
+import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Verify EU/JP strategy configurations and Emergency Meeting (NA) strategy
 // TODO: Replication 4 strategy use for stack/defamation bait locations?
@@ -127,7 +127,7 @@ const headMarkerData = {
   'fireballSplashTether': '0176', // Comes from the boss, B4E4 Fireball Splash baited jump
 } as const;
 
-const replication2OutputStrings = {
+const replication2OutputStrings: OutputStrings = {
   getTether: {
     en: 'Get Tether',
   },
