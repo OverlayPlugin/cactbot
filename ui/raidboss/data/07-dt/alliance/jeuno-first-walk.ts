@@ -1555,7 +1555,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aquarius': 'Aquarius',
         'Ark Angel EV': 'Ark Angel EV',
@@ -1565,60 +1564,58 @@ const triggerSet: TriggerSet<Data> = {
         'Ark Angel TT': 'Ark Angel TT',
         'Despot': 'Despot',
         'Fafnir The Forgotten': 'Fafnir',
-        'Fafnir the Forgotten': 'Fafnir',
         'Lordly Shadow': 'Lordly Shadow',
-        'Luminous Remnant': '光流殘滓',
-        'Prishe Of The Distant Chains': '遙遠的咒縛 普利修',
-        'Prishe of the Distant Chains': '遙遠的咒縛 普利修',
+        'Luminous Remnant': 'Luminous Remnant',
+        'Prishe of the Distant Chains': 'Prishe Of The Distant Chains',
         'Shadow Lord': 'Shadow Lord',
         'Sprinkler': 'Sprinkler',
-        // 'The Dragon\'s Aery': '', // FIXME '龙巢'
-        // 'The grand dais': '', // FIXME '斗舞台'
-        // 'The La\'loff Amphitheater': '', // FIXME '拉·洛弗剧场'
-        // 'The Throne Room': '', // FIXME '王座大殿'
+        'The Dragon\'s Aery': '龍巢',
+        'The grand dais': '斗舞台',
+        'The La\'loff Amphitheater': '拉·洛弗劇場',
+        'The Throne Room': '王座大殿',
       },
       'replaceText': {
-        // '--all untargetable--': '', // FIXME '--全体不可选中--'
-        // '--Binding Indicator': '', // FIXME '--绑定指示'
-        // '--Darters spawn--': '', // FIXME '--赤蜻生成--'
-        // '--EV \\+ HM center--': '', // FIXME '--EV + HM 中央--'
-        // '--EV \\+ HM targetable--': '', // FIXME '--EV + HM 可选中--'
-        // '--EV untargetable--': '', // FIXME '--EV 不可选中--'
-        // '--HM center--': '', // FIXME '--HM 中央--'
-        // '--MR center--': '', // FIXME '--MR 中央--'
-        // '--MR targetable--': '', // FIXME '--MR 可选中--'
-        // '--GK targetable--': '', // FIXME '--GK 可选中--'
-        // '--MR jump--': '', // FIXME '--MR 跳--'
-        // '--TT jump--': '', // FIXME '--TT 跳--'
-        // '\\(add\\)': '', // FIXME '(小怪)'
-        // '\\(big raidwide\\)': '', // FIXME '(超大全域)'
-        // '\\(boss\\)': '', // FIXME '(BOSS)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(castbar\\)': '', // FIXME '(咏唱栏)'
-        // '\\(circle\\)': '', // FIXME '(圆)'
-        // '\\(circle AoE\\)': '', // FIXME '(圆形AOE)'
-        // '\\(circle indicator\\)': '', // FIXME '(圆形指示)'
-        // '\\(exalines\\)': '', // FIXME '(扩展直线)'
-        // '\\(explode\\)': '', // FIXME '(爆炸)'
-        // '\\(gaze\\)': '', // FIXME '(石化光)'
-        // '\\(grid\\)': '', // FIXME '(网格)'
-        // '\\(knockback\\)': '', // FIXME '(击退)'
-        // '\\(line AoE\\)': '', // FIXME '(直线AOE)'
-        // '\\(line indicators\\)': '', // FIXME '(直线指示)'
-        // '\\(puddles\\)': '', // FIXME '(圈)'
-        // '\\(raidwide\\)': '', // FIXME '(全域)'
-        // '\\(raidwides\\)': '', // FIXME '(全域)'
-        // '\\(rings\\)': '', // FIXME '(环)'
-        // '\\(single lines\\)': '', // FIXME '(单独直线)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '\\(spreads explode\\)': '', // FIXME '(分散爆炸)'
-        // '\\(stack\\)': '', // FIXME '(集合)'
+        '--all untargetable--': '--全體不可選中--',
+        '--Binding Indicator': '--綁定指示',
+        '--Darters spawn--': '--赤蜻生成--',
+        '--EV \\+ HM center--': '--EV + HM 中央--',
+        '--EV \\+ HM targetable--': '--EV + HM 可選中--',
+        '--EV untargetable--': '--EV 不可選中--',
+        '--HM center--': '--HM 中央--',
+        '--MR center--': '--MR 中央--',
+        '--MR targetable--': '--MR 可選中--',
+        '--GK targetable--': '--GK 可選中--',
+        '--MR jump--': '--MR 跳--',
+        '--TT jump--': '--TT 跳--',
+        '\\(add\\)': '(小怪)',
+        '\\(big raidwide\\)': '(超大全域)',
+        '\\(boss\\)': '(BOSS)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(castbar\\)': '(詠唱欄)',
+        '\\(circle\\)': '(圓)',
+        '\\(circle AoE\\)': '(圓形AOE)',
+        '\\(circle indicator\\)': '(圓形指示)',
+        '\\(exalines\\)': '(擴展直線)',
+        '\\(explode\\)': '(爆炸)',
+        '\\(gaze\\)': '(石化光)',
+        '\\(grid\\)': '(網格)',
+        '\\(knockback\\)': '(擊退)',
+        '\\(line AoE\\)': '(直線AOE)',
+        '\\(line indicators\\)': '(直線指示)',
+        '\\(puddles\\)': '(圈)',
+        '\\(raidwide\\)': '(全域)',
+        '\\(raidwides\\)': '(全域)',
+        '\\(rings\\)': '(環)',
+        '\\(single lines\\)': '(單獨直線)',
+        '\\(spread\\)': '(分散)',
+        '\\(spreads explode\\)': '(分散爆炸)',
+        '\\(stack\\)': '(集合)',
         'Absolute Terror': '絕對恐懼',
         'Arrogance Incarnate': '驕慢化身',
         'Asuran Fists': '夢想阿修羅拳',
         'Auroral Uppercut': '羅剎七星拳',
         'Baleful Breath': '兇惡吐息',
-        // 'Banish(?!(ga| Storm))': '', // FIXME '放逐'
+        'Banish(?!(ga| Storm))': '放逐',
         'Banish Storm': '放逐風暴',
         'Banishga(?! )': '強放逐',
         'Banishga IV': '強放逐IV',
@@ -1645,7 +1642,7 @@ const triggerSet: TriggerSet<Data> = {
         'Doom Arc': '毀滅之弧',
         'Dragon Breath': '巨龍吐息',
         'Dragonfall': '亢龍天錘落',
-        'Echoes of Agony': '慘痛的回響',
+        'Echoes of Agony': '慘痛的迴響',
         'Explosion': '爆炸',
         'Flames of Hatred': '憎惡之火',
         'Giga Slash(?!:)': '十億斬擊',
