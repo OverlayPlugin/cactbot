@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.36.6",
-  "releaseSummary": "more m9s, m10s, m11s; initial m12s; i18n",
+  "version": "0.37.0",
+  "releaseSummary": "m12sp2, more Necron EX, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
