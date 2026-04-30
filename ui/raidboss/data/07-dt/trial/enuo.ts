@@ -1,14 +1,14 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
+import { DirectionOutput8, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   gazeDir: 'CW' | 'CCW';
-  naughtGrowsPositions: (DirectionOutputCardinal | 'middle')[];
+  naughtGrowsPositions: (DirectionOutput8 | 'middle')[];
   flareTargets: string[];
 }
 
@@ -31,18 +31,21 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Enuo Meteorain',
       type: 'StartsUsing',
       netRegex: { id: 'C333', source: 'Enuo', capture: false },
+      durationSeconds: 4.7,
       response: Responses.aoe(),
     },
     {
       id: 'Enuo Almagest',
       type: 'StartsUsing',
       netRegex: { id: 'C308', source: 'Enuo', capture: false },
+      durationSeconds: 5,
       response: Responses.aoe(),
     },
     {
       id: 'Enuo Lightless World',
       type: 'StartsUsing',
       netRegex: { id: 'C327', source: 'Enuo', capture: false },
+      durationSeconds: 8.3,
       response: Responses.bigAoe(),
     },
 
@@ -51,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsingExtra',
       netRegex: { id: ['C30D', 'C30E'], capture: true },
       preRun: (data, matches) => {
-        let dir: DirectionOutputCardinal | 'middle';
+        let dir: DirectionOutput8 | 'middle';
 
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
@@ -59,11 +62,12 @@ const triggerSet: TriggerSet<Data> = {
         if (Math.abs(x - center.x) < 1 && Math.abs(y - center.y) < 1) {
           dir = 'middle';
         } else {
-          dir = Directions.xyToCardinalDirOutput(x, y, center.x, center.y);
+          dir = Directions.xyTo8DirOutput(x, y, center.x, center.y);
         }
         data.naughtGrowsPositions.push(dir);
       },
       delaySeconds: 0.5,
+      durationSeconds: 6,
       infoText: (data, _matches, output) => {
         if (data.naughtGrowsPositions.length === 0)
           return;
@@ -75,27 +79,43 @@ const triggerSet: TriggerSet<Data> = {
         if (pos1 === undefined)
           return;
 
-        // Three possible patterns: Single, Double with one under boss, Double at opposite sides
+        // Four possible patterns: Single, Double with one under boss, Double at opposite sides, Double with overlap
+        // Single
         if (pos2 === undefined)
           return output.awayFrom!({ dir: output[pos1]!() });
 
+        // Double with one under boss
         if (pos1 === 'middle' || pos2 === 'middle') {
           const awayFromDir = pos1 === 'middle' ? pos2 : pos1;
           const dirOutput = output[awayFromDir]!();
           return output.awayFromAndOut!({ dir: dirOutput });
         }
 
-        const [dir1, dir2] = Directions.outputCardinalDir.filter((dir) =>
-          ![pos1, pos2].includes(dir)
-        );
-        if (dir1 === undefined || dir2 === undefined)
-          return;
-        const dir1Output = output[dir1]!();
-        const dir2Output = output[dir2]!();
-        return output.goDirections!({ dir1: dir1Output, dir2: dir2Output });
+        // Double and opposite
+        const dir1Num = Directions.output8Dir.indexOf(pos1);
+        const dir2Num = Directions.output8Dir.indexOf(pos2);
+
+        if ((dir1Num % 4) === (dir2Num % 4)) {
+          const safe1Dir = Directions.output8Dir[(dir1Num + 2) % 8];
+          const safe2Dir = Directions.output8Dir[(dir2Num + 2) % 8];
+          if (safe1Dir === undefined || safe2Dir === undefined)
+            return;
+          const dir1Output = output[safe1Dir]!();
+          const dir2Output = output[safe2Dir]!();
+          return output.goDirections!({ dir1: dir1Output, dir2: dir2Output });
+        }
+
+        // Double with overlap
+        const safeDir8Num = ((dir1Num + 3) % 8) === dir2Num ? dir2Num + 2 : dir1Num + 2;
+        // Convert to 16, add 1
+        const safeDir16Num = ((safeDir8Num * 2) + 1) % 16;
+        return output.goDir!({
+          dir: output[Directions.output16Dir[safeDir16Num] ?? 'unknown']!(),
+        });
       },
       outputStrings: {
-        ...Directions.outputStringsCardinalDir,
+        ...Directions.outputStrings8Dir,
+        ...Directions.outputStrings16Dir,
         middle: Outputs.middle,
         awayFrom: {
           en: 'Away from ${dir}',
@@ -105,6 +125,9 @@ const triggerSet: TriggerSet<Data> = {
         },
         goDirections: {
           en: 'Go ${dir1}/${dir2} + Max Melee',
+        },
+        goDir: {
+          en: 'Go ${dir} + Max Melee',
         },
       },
     },
@@ -125,6 +148,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsingExtra',
       netRegex: { id: 'C321', capture: true },
       delaySeconds: 0.2,
+      durationSeconds: 11.3,
       suppressSeconds: 30,
       infoText: (data, matches, output) => {
         const coneDir = Directions.hdgTo8DirNum(parseFloat(matches.heading));
@@ -132,10 +156,10 @@ const triggerSet: TriggerSet<Data> = {
         let endDir;
         if (data.gazeDir === 'CW') {
           startDir = ((coneDir + 8) - 1) % 8;
-          endDir = (coneDir + 1) % 8;
+          endDir = (coneDir + 2) % 8;
         } else {
           startDir = (coneDir + 1) % 8;
-          endDir = ((coneDir + 8) - 1) % 8;
+          endDir = ((coneDir + 8) - 2) % 8;
         }
         return output.text!({
           rotation: output[data.gazeDir]!(),
@@ -160,6 +184,7 @@ const triggerSet: TriggerSet<Data> = {
         data.flareTargets.push(matches.target);
       },
       delaySeconds: 0.1,
+      durationSeconds: 6,
       infoText: (data, _matches, output) => {
         if (data.flareTargets.length < 2)
           return;
@@ -183,12 +208,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Enuo Shrouded Holy',
       type: 'StartsUsing',
       netRegex: { id: 'C32F', source: 'Enuo', capture: true },
+      durationSeconds: 5,
       response: Responses.stackMarkerOn(),
     },
     {
       id: 'Enuo Dimension Zero',
       type: 'StartsUsing',
       netRegex: { id: 'C331', source: 'Enuo', capture: true },
+      durationSeconds: 7.7,
       response: Responses.stackMarkerOn(),
     },
     {
@@ -196,6 +223,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: '0194', capture: true },
       condition: Conditions.targetIsYou(),
+      durationSeconds: 13.8,
+      countdownSeconds: 13.8,
       infoText: (_data, _matches, output) => output.chasingPuddle!(),
       outputStrings: {
         chasingPuddle: {
@@ -208,6 +237,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: '0195', capture: true },
       condition: Conditions.targetIsYou(),
+      durationSeconds: 13.3,
+      countdownSeconds: 13.3,
       infoText: (_data, _matches, output) => output.chasingPuddle!(),
       outputStrings: {
         chasingPuddle: {
