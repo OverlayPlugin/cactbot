@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheAurumVale,
   comments: {
     en: 'pre-7.4 rework',
+    cn: '7.4改版前',
   },
   triggers: [
     {
