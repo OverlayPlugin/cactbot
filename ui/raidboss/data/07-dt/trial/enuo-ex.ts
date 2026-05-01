@@ -70,7 +70,11 @@ const filterUnsafeBig = (safeDirs: number[], pos: number) => {
   return safeDirs;
 };
 
-const filterUnsafeSmall = (safeDirs: number[], line1: Data['passageOfNaughtPositions'][number], line2: Data['passageOfNaughtPositions'][number]) => {
+const filterUnsafeSmall = (
+  safeDirs: number[],
+  line1: Data['passageOfNaughtPositions'][number],
+  line2: Data['passageOfNaughtPositions'][number],
+) => {
   // Find the center between the smalls
   const cX = (line1.x + line2.x) / 2;
   const cY = (line1.y + line2.y) / 2;
@@ -131,7 +135,9 @@ const triggerSet: TriggerSet<Data> = {
         en: `Strategy for resolving towers and spreads in add phase.
 
              None: Call tower or spread only.
-             <number>: Call the specified partner number's position, for example H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority`,
+             <number>: Call the specified partner number's position. For example:
+             If following the "modified" raidplan (kgH6GJydOCbUs1L_), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
+             If following the "original" raidplan (z6hesq84t7ewujw9), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
       },
       type: 'select',
       options: {
@@ -451,18 +457,24 @@ const triggerSet: TriggerSet<Data> = {
             });
           case '2':
             return output.orbSoaks!({
-              dir1: output[Directions.output8Dir[(firstTankOrb + orb2Light + 2) % 8] ?? 'unknown']!(),
-              dir2: output[Directions.output8Dir[(firstTankOrb + orb2Dark + 2) % 8] ?? 'unknown']!(),
+              dir1:
+                output[Directions.output8Dir[(firstTankOrb + orb2Light + 2) % 8] ?? 'unknown']!(),
+              dir2:
+                output[Directions.output8Dir[(firstTankOrb + orb2Dark + 2) % 8] ?? 'unknown']!(),
             });
           case '3':
             return output.orbSoaks!({
-              dir1: output[Directions.output8Dir[(firstTankOrb + orb3Light + 4) % 8] ?? 'unknown']!(),
-              dir2: output[Directions.output8Dir[(firstTankOrb + orb3Dark + 4) % 8] ?? 'unknown']!(),
+              dir1:
+                output[Directions.output8Dir[(firstTankOrb + orb3Light + 4) % 8] ?? 'unknown']!(),
+              dir2:
+                output[Directions.output8Dir[(firstTankOrb + orb3Dark + 4) % 8] ?? 'unknown']!(),
             });
           case '4':
             return output.orbSoaks!({
-              dir1: output[Directions.output8Dir[(firstTankOrb + orb4Light + 6) % 8] ?? 'unknown']!(),
-              dir2: output[Directions.output8Dir[(firstTankOrb + orb4Dark + 6) % 8] ?? 'unknown']!(),
+              dir1:
+                output[Directions.output8Dir[(firstTankOrb + orb4Light + 6) % 8] ?? 'unknown']!(),
+              dir2:
+                output[Directions.output8Dir[(firstTankOrb + orb4Dark + 6) % 8] ?? 'unknown']!(),
             });
           default:
             return output.unknown!();
@@ -547,7 +559,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 3,
     },
     {
-      id: 'EnuoEx Looming Emptiness C33E',
+      id: 'EnuoEx Looming Emptiness',
       type: 'StartsUsing',
       netRegex: { id: 'C33E', source: 'Looming Shadow', capture: false },
       response: Responses.knockback(),
@@ -561,7 +573,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsingExtra',
       netRegex: { id: 'C35D', capture: true },
       run: (data, matches) => {
-        const dirNum = Directions.xyTo16DirNum(parseFloat(matches.x), parseFloat(matches.y), center.x, center.y);
+        const dirNum = Directions.xyTo16DirNum(
+          parseFloat(matches.x),
+          parseFloat(matches.y),
+          center.x,
+          center.y,
+        );
         data.addPhasePositions[Math.floor(dirNum / 2)] = 'tower';
       },
     },
@@ -574,7 +591,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'EnuoEx Voidal Turbulence C374',
+      id: 'EnuoEx Voidal Turbulence',
       type: 'StartsUsing',
       netRegex: { id: 'C374', source: 'Looming Shadow', capture: false },
       delaySeconds: 0.1,
@@ -595,36 +612,64 @@ const triggerSet: TriggerSet<Data> = {
 
         used.push(pos1Tower, pos1Cone);
 
-        const pos2Tower = data.addPhasePositions.findIndex((pos, index) => pos === 'tower' && !used.includes(index));
-        const pos2Cone = data.addPhasePositions.findIndex((pos, index) => pos === 'empty' && !used.includes(index));
+        const pos2Tower = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'tower' && !used.includes(index)
+        );
+        const pos2Cone = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'empty' && !used.includes(index)
+        );
 
         used.push(pos2Tower, pos2Cone);
 
-        const pos3Tower = data.addPhasePositions.findIndex((pos, index) => pos === 'tower' && !used.includes(index));
-        const pos3Cone = data.addPhasePositions.findIndex((pos, index) => pos === 'empty' && !used.includes(index));
+        const pos3Tower = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'tower' && !used.includes(index)
+        );
+        const pos3Cone = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'empty' && !used.includes(index)
+        );
 
         used.push(pos3Tower, pos3Cone);
 
-        const pos4Tower = data.addPhasePositions.findIndex((pos, index) => pos === 'tower' && !used.includes(index));
-        const pos4Cone = data.addPhasePositions.findIndex((pos, index) => pos === 'empty' && !used.includes(index));
+        const pos4Tower = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'tower' && !used.includes(index)
+        );
+        const pos4Cone = data.addPhasePositions.findIndex((pos, index) =>
+          pos === 'empty' && !used.includes(index)
+        );
 
         switch (strategy) {
           case '1':
             if (cone)
-              return output.conePos!({ dir: output[Directions.output16Dir[pos1Cone * 2 + 1] ?? 'unknown']!() });
-            return output.towerPos!({ dir: output[Directions.output16Dir[pos1Tower * 2 + 1] ?? 'unknown']!() });
+              return output.conePos!({
+                dir: output[Directions.output16Dir[pos1Cone * 2 + 1] ?? 'unknown']!(),
+              });
+            return output.towerPos!({
+              dir: output[Directions.output16Dir[pos1Tower * 2 + 1] ?? 'unknown']!(),
+            });
           case '2':
             if (cone)
-              return output.conePos!({ dir: output[Directions.output16Dir[pos2Cone * 2 + 1] ?? 'unknown']!() });
-            return output.towerPos!({ dir: output[Directions.output16Dir[pos2Tower * 2 + 1] ?? 'unknown']!() });
+              return output.conePos!({
+                dir: output[Directions.output16Dir[pos2Cone * 2 + 1] ?? 'unknown']!(),
+              });
+            return output.towerPos!({
+              dir: output[Directions.output16Dir[pos2Tower * 2 + 1] ?? 'unknown']!(),
+            });
           case '3':
             if (cone)
-              return output.conePos!({ dir: output[Directions.output16Dir[pos3Cone * 2 + 1] ?? 'unknown']!() });
-            return output.towerPos!({ dir: output[Directions.output16Dir[pos3Tower * 2 + 1] ?? 'unknown']!() });
+              return output.conePos!({
+                dir: output[Directions.output16Dir[pos3Cone * 2 + 1] ?? 'unknown']!(),
+              });
+            return output.towerPos!({
+              dir: output[Directions.output16Dir[pos3Tower * 2 + 1] ?? 'unknown']!(),
+            });
           case '4':
             if (cone)
-              return output.conePos!({ dir: output[Directions.output16Dir[pos4Cone * 2 + 1] ?? 'unknown']!() });
-            return output.towerPos!({ dir: output[Directions.output16Dir[pos4Tower * 2 + 1] ?? 'unknown']!() });
+              return output.conePos!({
+                dir: output[Directions.output16Dir[pos4Cone * 2 + 1] ?? 'unknown']!(),
+              });
+            return output.towerPos!({
+              dir: output[Directions.output16Dir[pos4Tower * 2 + 1] ?? 'unknown']!(),
+            });
           default:
             return output.unknown!();
         }
@@ -653,7 +698,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'EnuoEx Curse of the Flesh',
       type: 'Ability',
-      netRegex: { id: 'C369', source: 'Soothing Shadow', capture: false },
+      netRegex: { id: 'C369', source: 'Soothing Shadow', capture: true },
       condition: Conditions.targetIsYou(),
       infoText: (_data, _matches, output) => output.cleanse!(),
       outputStrings: {
@@ -733,7 +778,10 @@ const triggerSet: TriggerSet<Data> = {
         const small2 = line2.type === 'small' ? line2 : line3;
         const big = line1.type === 'big' ? line1 : (line2.type === 'big' ? line2 : line3);
 
-        safeDirs = filterUnsafeBig(safeDirs, Directions.xyTo16DirNum(big.x, big.y, center.x, center.y));
+        safeDirs = filterUnsafeBig(
+          safeDirs,
+          Directions.xyTo16DirNum(big.x, big.y, center.x, center.y),
+        );
 
         safeDirs = filterUnsafeSmall(safeDirs, small1, small2);
 

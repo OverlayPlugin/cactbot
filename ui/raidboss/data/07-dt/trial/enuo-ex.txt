@@ -1,7 +1,7 @@
 ### THE UNMAKING (EXTREME)
 # ZoneId: 1362
 
-# -ii C311 C312 C336 C337 C338 C34A C34C C34D C34F C350 C351 C352 C353 C354 C356 C357 C35C C35F C360 C364 C366 C368 C36D C370 C371 C374 C37B C63F C640 C641
+# -ii C0D9 C311 C312 C335 C336 C337 C338 C34A C34C C34D C34F C350 C351 C352 C353 C354 C356 C357 C35B C35C C35F C360 C364 C366 C368 C36D C370 C371 C374 C37B C37D C37F C63F C640 C641
 # -it "Enuo" "Looming Shadow" "Aggressive Shadow" "Soothing Shadow" "Protective Shadow" "Beacon in the Dark"
 # -p C36D:500
 
@@ -16,7 +16,7 @@ hideall "--sync--"
 14.2 "Meteorain" Ability { id: "C381", source: "Enuo" }
 
 19.3 "--middle--" Ability { id: "C307", source: "Enuo" }
-29.7 "Naught Grows" Ability { id: "C339", source: "Yawning Void" }
+29.7 "Naught Grows" #Ability { id: "C339", source: "Yawning Void" }
 30.4 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
 43.8 "Meltdown (puddle baits + pyretic)" Ability { id: "C378", source: "Enuo" }
 49.4 "Meltdown (puddle explodes)" Ability { id: "C379", source: "Enuo" }
@@ -24,7 +24,7 @@ hideall "--sync--"
 50.1 "--middle--" Ability { id: "C307", source: "Enuo" }
 50.5 "Meltdown (spread)" Ability { id: "C37A", source: "Enuo" }
 57.4 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
-67.8 "Naught Grows" Ability { id: "C33A", source: "Yawning Void" }
+67.8 "Naught Grows" #Ability { id: "C33A", source: "Yawning Void" }
 68.6 "Great Return to Nothing/Return to Nothing" Ability { id: ["C340", "C33F"], source: "Void" }
 
 75.0 "--middle--" Ability { id: "C307", source: "Enuo" }
@@ -44,7 +44,8 @@ hideall "--sync--"
 
 ## Add phase
 # Add phase timeline is a pain. First towers spawn at a fixed point, but second towers spawn
-# a few seconds after first set of solo adds are killed, and beacon spawns when
+# a few seconds after first set of solo adds are killed, and beacon spawns when middle add dies,
+# but that might be delayed if the solo adds aren't killed first.
 174.9 "Looming Emptiness" Ability { id: "C33E", source: "Looming Shadow" }
 174.9 "--Add targetable--"
 # Loop towers from early cast sync
@@ -110,29 +111,27 @@ hideall "--sync--"
 723.6 "Passage of Naught" #Ability { id: "C342", source: "Yawning Void" }
 723.6 "Endless Chase (active)" duration 16.9 #Ability { id: "BD5B", source: "Void" }
 
-# Entries beyond this point pulled from FFLogs report
-745.0 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
-750.0 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
-760.4 "Dimension Zero x4" duration 4 #Ability { id: "C380", source: "Enuo" }
-774.8 "Almagest" Ability { id: "C334", source: "Enuo" }
+745.1 "Passage of Naught" Ability { id: "C341", source: "Yawning Void" }
+751.1 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
+760.4 "Dimension Zero x4" duration 3.9 #Ability { id: "C380", source: "Enuo" }
+774.7 "Almagest" Ability { id: "C334", source: "Enuo" }
 
-778.2 "--middle--" Ability { id: "C307", source: "Enuo" }
-788.3 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
+778.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+788.4 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
 789.2 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
-796.3 "Naught Wakes" Ability { id: "C335", source: "Enuo" }
-804.3 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
-815.6 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
-821.6 "Deep Freeze" Ability { id: "C37C", source: "Enuo" }
+804.6 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+815.9 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+821.9 "Deep Freeze" Ability { id: "C37C", source: "Enuo" }
 
-825.8 "--middle--" Ability { id: "C307", source: "Enuo" }
-836.1 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
-836.9 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
-847.5 "Dimension Zero x4" duration 4 #Ability { id: "C380", source: "Enuo" }
-861.9 "Meteorain" Ability { id: "C381", source: "Enuo" }
-872.0 "Meteorain" Ability { id: "C381", source: "Enuo" }
+826.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+836.2 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
+837.1 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+847.9 "Dimension Zero" duration 3.9 #Ability { id: "C380", source: "Enuo" }
+862.3 "Meteorain" Ability { id: "C381", source: "Enuo" }
+872.4 "Meteorain" Ability { id: "C381", source: "Enuo" }
 
-878.1 "--sync--" Ability { id: "C307", source: "Enuo" }
-889.2 "Almagest (enrage)" Ability { id: "C382", source: "Enuo" }
+878.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+889.6 "Almagest (enrage)" Ability { id: "C382", source: "Enuo" }
 
 
 # IGNORED ABILITIES
@@ -244,6 +243,8 @@ hideall "--sync--"
 # C37F Dimension Zero: Line stack, castbar only
 # C380 Dimension Zero: Line stack, actual damage
 # C381 Meteorain: raidwide
+# C382 Almagest: Enrage
 # C63F --sync--: Something related to add phase tank add
 # C640 --sync--: Something related to add phase DPS add
 # C641 --sync--: Something related to add phase healer add
+# C66F Self-destruct: DPS add, DPS check failure
