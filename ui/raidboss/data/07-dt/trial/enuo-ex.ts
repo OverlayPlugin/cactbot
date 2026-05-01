@@ -712,6 +712,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'C362', source: 'Protective Shadow', capture: true },
       condition: (data) => data.role === 'tank',
+      suppressSeconds: 1,
       response: Responses.interrupt(),
     },
     {
