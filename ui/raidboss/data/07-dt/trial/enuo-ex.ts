@@ -52,51 +52,6 @@ const adjustDirNum = (pos: number, by: number, max: number) => {
   return (pos + max + by) % max;
 };
 
-const filterUnsafeBig = (safeDirs: number[], pos: number) => {
-  // Around source
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, -2, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, -1, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== pos);
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 1, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 2, 16));
-
-  // Around destination
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 6, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 7, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 8, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 9, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(pos, 10, 16));
-
-  return safeDirs;
-};
-
-const filterUnsafeSmall = (
-  safeDirs: number[],
-  line1: Data['passageOfNaughtPositions'][number],
-  line2: Data['passageOfNaughtPositions'][number],
-) => {
-  // Find the center between the smalls
-  const cX = (line1.x + line2.x) / 2;
-  const cY = (line1.y + line2.y) / 2;
-  const dirNum = Directions.xyTo8DirNum(cX, cY, center.x, center.y);
-
-  // Remove positions that don't align with center
-  // CW from source
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 2, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 3, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 4, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 5, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 6, 16));
-
-  // CW from destination
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 10, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 11, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 12, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 13, 16));
-  safeDirs = safeDirs.filter((dir) => dir !== adjustDirNum(dirNum, 14, 16));
-  return safeDirs;
-};
-
 const triggerSet: TriggerSet<Data> = {
   id: 'TheUnmakingExtreme',
   zoneId: ZoneId.TheUnmakingExtreme,
@@ -773,37 +728,31 @@ const triggerSet: TriggerSet<Data> = {
         if (line4 !== undefined)
           return output.under!();
 
-        let safeDirs = [...Array(16).keys()];
-
-        const small1 = line1.type === 'small' ? line1 : line2;
-        const small2 = line2.type === 'small' ? line2 : line3;
+        // We're only concerned with the "big" line, as max melee perpindicular to that line will be safe
         const big = line1.type === 'big' ? line1 : (line2.type === 'big' ? line2 : line3);
 
-        safeDirs = filterUnsafeBig(
-          safeDirs,
-          Directions.xyTo16DirNum(big.x, big.y, center.x, center.y),
-        );
+        const bigDirNum = Directions.xyTo16DirNum(big.x, big.y, center.x, center.y);
 
-        safeDirs = filterUnsafeSmall(safeDirs, small1, small2);
+        const safe1 = adjustDirNum(bigDirNum, 2, 8);
+        const safe2 = adjustDirNum(bigDirNum, 6, 8);
 
-        // We should have two safe dirs left at the end
-        const [safe1, safe2] = safeDirs;
+        // Sort directions N CW
 
-        if (safe1 === undefined || safe2 === undefined)
-          return;
+        const safe1Sorted = safe1 > safe2 ? safe2 : safe1;
+        const safe2Sorted = safe1 === safe1Sorted ? safe2 : safe1;
 
         return output.go!({
-          dir1: output[Directions.output16Dir[safe1] ?? 'unknown']!(),
-          dir2: output[Directions.output16Dir[safe2] ?? 'unknown']!(),
+          dir1: output[Directions.output8Dir[safe1Sorted] ?? 'unknown']!(),
+          dir2: output[Directions.output8Dir[safe2Sorted] ?? 'unknown']!(),
         });
       },
       outputStrings: {
-        ...Directions.outputStrings16Dir,
+        ...Directions.outputStrings8Dir,
         intercards: Outputs.intercards,
         cardinals: Outputs.cardinals,
         under: Outputs.getUnder,
         go: {
-          en: 'Go ${dir1} / ${dir2}',
+          en: 'Go ${dir1}/${dir2} Max Melee',
         },
       },
     },
