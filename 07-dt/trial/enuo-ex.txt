@@ -1,0 +1,251 @@
+### THE UNMAKING (EXTREME)
+# ZoneId: 1362
+
+# -ii C0D9 C311 C312 C335 C336 C337 C338 C34A C34C C34D C34F C350 C351 C352 C353 C354 C356 C357 C35B C35C C35F C360 C364 C366 C368 C36D C370 C371 C374 C37B C37D C37F C63F C640 C641
+# -it "Enuo" "Looming Shadow" "Aggressive Shadow" "Soothing Shadow" "Protective Shadow" "Beacon in the Dark"
+# -p C36D:500
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+## Intro
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+9.2 "--sync--" StartsUsing { id: "C381", source: "Enuo" } window 9.2,2
+14.2 "Meteorain" Ability { id: "C381", source: "Enuo" }
+
+19.3 "--middle--" Ability { id: "C307", source: "Enuo" }
+29.7 "Naught Grows" #Ability { id: "C339", source: "Yawning Void" }
+30.4 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+43.8 "Meltdown (puddle baits + pyretic)" Ability { id: "C378", source: "Enuo" }
+49.4 "Meltdown (puddle explodes)" Ability { id: "C379", source: "Enuo" }
+
+50.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+50.5 "Meltdown (spread)" Ability { id: "C37A", source: "Enuo" }
+57.4 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
+67.8 "Naught Grows" #Ability { id: "C33A", source: "Yawning Void" }
+68.6 "Great Return to Nothing/Return to Nothing" Ability { id: ["C340", "C33F"], source: "Void" }
+
+75.0 "--middle--" Ability { id: "C307", source: "Enuo" }
+84.2 "Gaze of the Void x10" duration 3.6 #Ability { id: "C355", source: "Enuo" }
+
+115.3 "Silent Torrent x7 (lines)" #Ability { id: "C34B", source: "Void" }
+115.7 "Silent Torrent x7 (puddles)" #Ability { id: "C34E", source: "Enuo" }
+
+115.7 "--middle--" Ability { id: "C307", source: "Enuo" }
+123.0 "Dense Emptiness/Airy Emptiness" Ability { id: ["C373", "C372"], source: "Enuo" }
+134.1 "Deep Freeze" Ability { id: "C37C", source: "Enuo" }
+141.2 "Meteorain" Ability { id: "C381", source: "Enuo" }
+
+147.4 "--north--" Ability { id: "C307", source: "Enuo" }
+154.8 "All for Naught" Ability { id: "C35A", source: "Enuo" }
+154.9 "--untargetable--"
+
+## Add phase
+# Add phase timeline is a pain. First towers spawn at a fixed point, but second towers spawn
+# a few seconds after first set of solo adds are killed, and beacon spawns when middle add dies,
+# but that might be delayed if the solo adds aren't killed first.
+174.9 "Looming Emptiness" Ability { id: "C33E", source: "Looming Shadow" }
+174.9 "--Add targetable--"
+# Loop towers from early cast sync
+176.9 "--sync--" StartsUsing { id: "C35D", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] } window 2.5,120
+183.9 "Empty Shadow" Ability { id: "C35D", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+184.2 "Voidal Turbulence" #Ability { id: "C376", source: "Enuo" }
+185.4 "--Tower adds targetable--"
+# It is expected that the following three lines miss syncs in timeline testing, as which ability happens depends
+# on what roles are soaking towers
+189.1 "Curse of the Flesh?" Ability { id: "C369", source: "Soothing Shadow" }
+191.1 "Demon Eye?" Ability { id: "C367", source: "Aggressive Shadow" }
+198.3 "Weight of Nothing?" Ability { id: "C365", source: "Protective Shadow" }
+210.5 "--Tower adds enrage--" #Ability { id: "C35E", source: "Looming Shadow" }
+
+# MapEffect fires as looming shadow dies
+300.0 "--sync--" MapEffect { flags: "00200010", location: "01" } window 125,0
+302.5 label "beacon-loop"
+302.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+305.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+308.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+311.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+314.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
+317.5 "Nothingness" Ability { id: "C361", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] } forcejump "beacon-loop"
+
+# MapEffect fires as beacon dies
+486.2 "--sync--" MapEffect { flags: "02000100", location: "01" } window 400,0
+
+## Phase 2
+494.7 "--targetable--"
+505.7 "Lightless World x5" duration 1.8 #Ability { id: "C36E", source: "Enuo" }
+507.9 "Lightless World (big)" Ability { id: "C36F", source: "Enuo" }
+519.7 "Almagest" Ability { id: "C334", source: "Enuo" }
+
+523.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+533.5 "Naught Grows x2" #Ability { id: "C33B", source: "Enuo" }
+534.2 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+549.6 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+560.9 "Passage of Naught" #Ability { id: "C342", source: "Yawning Void" }
+566.9 "Shrouded Holy" Ability { id: "C37E", source: "Enuo" }
+
+572.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+582.2 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
+583.1 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+593.6 "Dimension Zero x3" duration 2.6 #Ability { id: "C380", source: "Enuo" }
+
+601.6 "--middle--" Ability { id: "C307", source: "Enuo" }
+611.7 "Silent Torrent x7 (lines)" #Ability { id: "C34B", source: "Void" }
+612.1 "Meltdown (puddle baits + pyretic)" Ability { id: "C378", source: "Enuo" }
+612.1 "Silent Torrent x7 (puddles)" #Ability { id: "C34E", source: "Enuo" }
+617.5 "Meltdown (puddle explodes)" Ability { id: "C379", source: "Enuo" }
+618.5 "Meltdown (spread)" Ability { id: "C37A", source: "Enuo" }
+
+623.2 "--middle--" Ability { id: "C307", source: "Enuo" }
+632.2 "Gaze of the Void x10" duration 3.6 #Ability { id: "C355", source: "Enuo" }
+664.2 "Almagest" Ability { id: "C334", source: "Enuo" }
+
+670.4 "--middle--" Ability { id: "C307", source: "Enuo" }
+682.9 "Naught Hunts" Ability { id: "C348", source: "Enuo" }
+683.9 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+683.9 "Endless Chase (active)" duration 16.9 #Ability { id: "BD5B", source: "Void" }
+705.4 "Passage of Naught" #Ability { id: "C341", source: "Yawning Void" }
+711.4 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
+722.6 "Naught Hunts" Ability { id: "C348", source: "Enuo" }
+723.6 "Passage of Naught" #Ability { id: "C342", source: "Yawning Void" }
+723.6 "Endless Chase (active)" duration 16.9 #Ability { id: "BD5B", source: "Void" }
+
+745.1 "Passage of Naught" Ability { id: "C341", source: "Yawning Void" }
+751.1 "Airy Emptiness/Dense Emptiness" Ability { id: ["C372", "C373"], source: "Enuo" }
+760.4 "Dimension Zero x4" duration 3.9 #Ability { id: "C380", source: "Enuo" }
+774.7 "Almagest" Ability { id: "C334", source: "Enuo" }
+
+778.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+788.4 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
+789.2 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+804.6 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+815.9 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+821.9 "Deep Freeze" Ability { id: "C37C", source: "Enuo" }
+
+826.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+836.2 "Naught Grows x2" #Ability { id: "C339", source: "Yawning Void" }
+837.1 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
+847.9 "Dimension Zero" duration 3.9 #Ability { id: "C380", source: "Enuo" }
+862.3 "Meteorain" Ability { id: "C381", source: "Enuo" }
+872.4 "Meteorain" Ability { id: "C381", source: "Enuo" }
+
+878.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+889.6 "Almagest (enrage)" Ability { id: "C382", source: "Enuo" }
+
+
+# IGNORED ABILITIES
+# C0D9 Looming Emptiness: VFX or blue circle?
+# C311 --sync--: Enuo autoattack
+# C312 --sync--: Add death animation vfx?
+# C335 Naught Wakes: castbar to signify voids moving
+# C336 --sync--: Void teleport animation VFX
+# C337 Naught Grows: Castbar only
+# C338 Naught Grows: Castbar only
+# C34A Vacuum: VFX for silent torrent lines prep
+# C34C Silent Torrent: Medium line?
+# C34D Silent Torrent: Long line?
+# C34F Silent Torrent: Medium puddle?
+# C350 Silent Torrent: Big/far puddle?
+# C351 Vacuum: VFX for silent torrent lines end
+# C352 Gaze of the Void: Castbar for clockwise
+# C353 Gaze of the Void: Castbar for counter clockwise
+# C354 Gaze of the Void: VFX for glowing orb
+# C356 Burst: Gaze orb soak
+# C357 Violent Burst: Gaze tank orb soak
+# C35B Looming Emptiness: VFX or blue circle?
+# C35C --sync--: Tower add spawn VFX?
+# C35F --sync--: Tank/healer tower add autoattack
+# C360 --sync--: Big add autoattack
+# C364 Weight of Nothing: Tank interrupt, castbar only
+# C366 Demon Eye: Gaze attack castbar
+# C368 Curse of the Flesh: Healer debuff, castbar only
+# C36D Lightless World: P2 transition, castbar only. For some reason ignoring this prevents `-p` from working?
+# C370 Airy Emptiness: Partner stacks, castbar only
+# C371 Dense Emptiness: Healer stacks, castbar only
+# C374 Voidal Turbulence: Add phase cones, castbar only
+# C37B Deep Freeze: Tank flares, castbar only
+# C37D Shrouded Holy: Healer stacks, castbar only
+# C37F Dimension Zero: Line stack, castbar only
+# C63F --sync--: Something related to add phase tank add
+# C640 --sync--: Something related to add phase DPS add
+# C641 --sync--: Something related to add phase healer add
+
+# ALL ENCOUNTER ABILITIES
+# BD5B Endless Chase: Initial telegraphed aoe for chasing puddle
+# C0D9 Looming Emptiness: VFX or blue circle?
+# C307 --sync--: Enuo teleport/jump animation
+# C311 --sync--: Enuo autoattack
+# C312 --sync--: Add death animation vfx?
+# C334 Almagest: raidwide
+# C335 Naught Wakes: castbar to signify voids moving
+# C336 --sync--: Void teleport animation VFX
+# C337 Naught Grows: Castbar only
+# C338 Naught Grows: Castbar only
+# C339 Naught Grows: aoe around boss
+# C33A Naught Grows: donut around boss
+# C33B Naught Grows: aoe around void
+# C33C Naught Grows: donut around void
+# C33E Looming Emptiness: Add phase knockback
+# C33F Return to Nothing: Healer stacks wild charge
+# C340 Great Return to Nothing: Party stack wild charge
+# C341 Passage of Naught: Void portal line attack
+# C342 Passage of Naught: Void portal line attack
+# C343 Passage of Naught: Void portal line attack
+# C348 Naught Hunts: Castbar for chasing puddle
+# C349 Endless Chase: Actual chasing puddle aoe
+# C34A Vacuum: VFX for silent torrent lines prep
+# C34B Silent Torrent: Short line?
+# C34C Silent Torrent: Medium line?
+# C34D Silent Torrent: Long line?
+# C34E Silent Torrent: Small/close puddle?
+# C34F Silent Torrent: Medium puddle?
+# C350 Silent Torrent: Big/far puddle?
+# C351 Vacuum: VFX for silent torrent lines end
+# C352 Gaze of the Void: Castbar for clockwise
+# C353 Gaze of the Void: Castbar for counter clockwise
+# C354 Gaze of the Void: VFX for glowing orb
+# C355 Gaze of the Void: Actual cone attacks
+# C356 Burst: Gaze orb soak
+# C357 Violent Burst: Gaze tank orb soak
+# C35A All for Naught: Phase transition cast, does nothing / VFX only
+# C35B Looming Emptiness: VFX or blue circle?
+# C35C --sync--: Tower add spawn VFX?
+# C35D Empty Shadow: Add phase towers
+# C35E Big Burst: Tower/solo add enrage
+# C35F --sync--: Tank/healer tower add autoattack
+# C360 --sync--: Big add autoattack
+# C361 Nothingness: Add phase line attack
+# C362 Drain Touch: Mechanics failure of some sort?
+# C363 Drain Touch: Mechanics failure of some sort?
+# C364 Weight of Nothing: Tank interrupt, castbar only
+# C365 Weight of Nothing: Tank interrupt, actual hit
+# C366 Demon Eye: Gaze attack castbar
+# C367 Demon Eye: Gaze attack, actual look away ability
+# C368 Curse of the Flesh: Healer debuff, castbar only
+# C369 Curse of the Flesh: Healer debuff, actual hit
+# C36D Lightless World: P2 transition, castbar only
+# C36E Lightless World: P2 transition, small hits
+# C36F Lightless World: P2 transition, big hit
+# C370 Airy Emptiness: Partner stacks, castbar only
+# C371 Dense Emptiness: Healer stacks, castbar only
+# C372 Airy Emptiness: Partner stacks, actual hit
+# C373 Dense Emptiness: Healer stacks, actual hit
+# C374 Voidal Turbulence: Add phase cones, castbar only
+# C376 Voidal Turbulence: Add phase cones, actual hit
+# C378 Meltdown: Puddle bait + pyretic debuff (Chains of Condemnation)
+# C379 Meltdown: Puddle explosion
+# C37A Meltdown: Spread
+# C37B Deep Freeze: Tank flares, castbar only
+# C37C Deep Freeze: Tank flares, actual damage
+# C37D Shrouded Holy: Healer stacks, castbar only
+# C37E Shrouded Holy: Healer stacks, actual damage
+# C37F Dimension Zero: Line stack, castbar only
+# C380 Dimension Zero: Line stack, actual damage
+# C381 Meteorain: raidwide
+# C382 Almagest: Enrage
+# C63F --sync--: Something related to add phase tank add
+# C640 --sync--: Something related to add phase DPS add
+# C641 --sync--: Something related to add phase healer add
+# C66F Self-destruct: DPS add, DPS check failure
