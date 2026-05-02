@@ -731,7 +731,7 @@ const triggerSet: TriggerSet<Data> = {
         // We're only concerned with the "big" line, as max melee perpindicular to that line will be safe
         const big = line1.type === 'big' ? line1 : (line2.type === 'big' ? line2 : line3);
 
-        const bigDirNum = Directions.xyTo16DirNum(big.x, big.y, center.x, center.y);
+        const bigDirNum = Directions.xyTo8DirNum(big.x, big.y, center.x, center.y);
 
         const safe1 = adjustDirNum(bigDirNum, 2, 8);
         const safe2 = adjustDirNum(bigDirNum, 6, 8);
