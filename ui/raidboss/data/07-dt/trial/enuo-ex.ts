@@ -263,13 +263,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from ${dir} + ${mech}',
         },
         under: {
-          en: 'Away from ${dir} + ${mech}',
+          en: '${dir} + ${mech}',
         },
         underBossAndAway: {
           en: 'Under Boss + Away from ${dir} + ${mech}',
         },
         underPortalAndAway: {
-          en: 'Go ${dir} + Away from Boss + ${mech}',
+          en: '${dir} + Away from Boss + ${mech}',
         },
       },
     },
