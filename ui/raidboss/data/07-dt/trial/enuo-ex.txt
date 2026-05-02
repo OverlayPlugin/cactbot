@@ -83,6 +83,7 @@ hideall "--sync--"
 533.5 "Naught Grows x2" #Ability { id: "C33B", source: "Enuo" }
 534.2 "Return to Nothing/Great Return to Nothing" Ability { id: ["C33F", "C340"], source: "Void" }
 549.6 "Passage of Naught" #Ability { id: "C343", source: "Enuo" }
+560.9 "Passage of Naught" #Ability { id: "C342", source: "Yawning Void" }
 566.9 "Shrouded Holy" Ability { id: "C37E", source: "Enuo" }
 
 572.1 "--middle--" Ability { id: "C307", source: "Enuo" }
