@@ -49,8 +49,8 @@ hideall "--sync--"
 174.9 "Looming Emptiness" Ability { id: "C33E", source: "Looming Shadow" }
 174.9 "--Add targetable--"
 # Loop towers from early cast sync
-176.9 "--sync--" StartsUsing { id: "C35D", source: "Looming Shadow" } window 2.5,120
-183.9 "Empty Shadow" Ability { id: "C35D", source: "Looming Shadow" }
+176.9 "--sync--" StartsUsing { id: "C35D", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] } window 2.5,120
+183.9 "Empty Shadow" Ability { id: "C35D", source: ["Aggressive Shadow", "Soothing Shadow", "Protective Shadow"] }
 184.2 "Voidal Turbulence" #Ability { id: "C376", source: "Enuo" }
 185.4 "--Tower adds targetable--"
 # It is expected that the following three lines miss syncs in timeline testing, as which ability happens depends
