@@ -268,35 +268,16 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Enuo Silent Torrent',
       type: 'StartsUsingExtra',
       netRegex: { id: 'C317', capture: true },
-      infoText: (_data, matches, output) => {
-        // C317 is the short line. Safe spots are (clockwise):
-        // +6 far
-        // +7 medium
-        // +8 short
-        // +9 short
-        // +10 short
-        // +11 medium
-        // +12 far
-
-        // For brevity, call +6/+12 far and +9 short only
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        const dangerDirNum = Directions.xyTo16DirNum(x, y, center.x, center.y);
-        const safeFar1DirNum = Directions.output16Dir[(dangerDirNum + 6) % 16] ?? 'unknown';
-        const safeFar2DirNum = Directions.output16Dir[(dangerDirNum + 12) % 16] ?? 'unknown';
-        const closeDirNum = Directions.output16Dir[(dangerDirNum + 9) % 16] ?? 'unknown';
-
-        return output.text!({
-          dir1: output[safeFar1DirNum]!(),
-          dir2: output[safeFar2DirNum]!(),
-          dir3: output[closeDirNum]!(),
-        });
-      },
+      alertText: (_data, _matches, output) => output.avoid!(),
       outputStrings: {
-        ...Directions.outputStrings8Dir,
-        ...Directions.outputStrings16Dir,
-        text: {
-          en: '${dir1}/${dir2} Far / ${dir3} Close',
+        avoid: {
+          en: 'Avoid Line Ends',
+          de: 'Weiche den Enden der Linien aus',
+          fr: 'Évitez les fins de lignes',
+          ja: '線の端から離れる',
+          cn: '远离线末端',
+          ko: '선의 끝부분 피하기',
+          tc: '遠離線末端',
         },
       },
     },
