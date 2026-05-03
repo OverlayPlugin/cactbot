@@ -267,7 +267,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Enuo Silent Torrent',
       type: 'StartsUsingExtra',
-      netRegex: { id: 'C317', capture: true },
+      netRegex: { id: 'C317', capture: false },
       alertText: (_data, _matches, output) => output.avoid!(),
       outputStrings: {
         avoid: {
