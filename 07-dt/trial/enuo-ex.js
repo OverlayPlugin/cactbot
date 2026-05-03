@@ -21,11 +21,15 @@ Options.Triggers.push({
       id: 'gazeOrbStrat',
       name: {
         en: 'Gaze of the Void Strategy',
+        cn: '混沌激流策略',
       },
       comment: {
         en: `Strategy for resolving Gaze of the Void orbs.
              Tank: Call the tank direction only.
              <number>: Call the specified number's priority, treating tank orb as north clockwise`,
+        cn: `处理混沌激流撞球的策略。
+             坦克: 仅播报坦克方向。
+             <数字>: 播报指定数字编号的优先级, 以坦克球为北顺时针排列`,
       },
       type: 'select',
       options: {
@@ -38,6 +42,13 @@ Options.Triggers.push({
           '3 (melee)': '3',
           '4 (ranged)': '4',
         },
+        cn: {
+          '坦克': 'tank',
+          '1 (坦克)': '1',
+          '2 (治疗)': '2',
+          '3 (近战)': '3',
+          '4 (远程)': '4',
+        },
       },
       default: 'tank',
     },
@@ -45,6 +56,7 @@ Options.Triggers.push({
       id: 'addPhaseStrat',
       name: {
         en: 'Add Phase Strategy',
+        cn: '小怪阶段策略',
       },
       comment: {
         en: `Strategy for resolving towers and spreads in add phase.
@@ -52,6 +64,11 @@ Options.Triggers.push({
              <number>: Call the specified partner number's position. For example:
              If following the "modified" raidplan (kgH6GJydOCbUs1L_), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
              If following the "original" raidplan (z6hesq84t7ewujw9), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
+        cn: `小怪阶段处理踩塔与扇形分散的策略。
+             无: 仅播报踩塔或扇形分散。
+             <数字>: 播报指定搭档编号的位置。例如:
+             若遵循 "修改版" 攻略 (kgH6GJydOCbUs1L_), H1应选择 "3" 因为是从南开始顺时针第一顺位, MT应选择 "4" 因为是从北开始逆时针第一顺位。
+             若遵循 "初始版" 攻略 (z6hesq84t7ewujw9), H1应选择 "2" 因为是从北开始顺时针第二顺位, MT应选择 "1" 因为是从北开始顺时针第一顺位。`,
       },
       type: 'select',
       options: {
@@ -61,6 +78,13 @@ Options.Triggers.push({
           '2 (SE)': '2',
           '3 (SW)': '3',
           '4 (NW)': '4',
+        },
+        cn: {
+          '无': 'none',
+          '1 (右上)': '1',
+          '2 (右下)': '2',
+          '3 (左下)': '3',
+          '4 (左上)': '4',
         },
       },
       default: 'none',
@@ -166,15 +190,19 @@ Options.Triggers.push({
         stack: Outputs.stackMarker,
         awayFrom: {
           en: 'Away from ${dir} + ${mech}',
+          cn: '远离 ${dir} + ${mech}',
         },
         under: {
           en: '${dir} + ${mech}',
+          cn: '${dir} + ${mech}',
         },
         underBossAndAway: {
           en: 'Under Boss + Away from ${dir} + ${mech}',
+          cn: 'Boss 脚下 + 远离 ${dir} + ${mech}',
         },
         underPortalAndAway: {
           en: '${dir} + Away from Boss + ${mech}',
+          cn: '${dir} + 远离 Boss + ${mech}',
         },
       },
     },
@@ -198,6 +226,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Bait Puddles => Stop Moving => Spread',
+          cn: '引诱黄圈 => 停止移动 => 分散',
         },
       },
     },
@@ -213,6 +242,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stop Moving => Spread',
+          cn: '停止移动 => 分散',
         },
       },
     },
@@ -282,6 +312,7 @@ Options.Triggers.push({
         CCW: Outputs.counterclockwise,
         text: {
           en: '${dir1} ${rotation} => ${dir2}',
+          cn: '${dir1} ${rotation} => ${dir2} ',
         },
       },
     },
@@ -369,9 +400,11 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         tankOrbsDir: {
           en: 'Tank orbs ${dir}',
+          cn: '坦克球在${dir} ',
         },
         orbSoaks: {
           en: '${dir1} => ${dir2}',
+          cn: '${dir1} => ${dir2} ',
         },
       },
     },
@@ -402,6 +435,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         text: {
           en: '${dir3} Close',
+          cn: '${dir3}靠近',
         },
       },
     },
@@ -427,9 +461,11 @@ Options.Triggers.push({
       outputStrings: {
         tankFlareOnYou: {
           en: 'Tank Flare on YOU => Keep Moving',
+          cn: '坦克核爆 => 保持移动',
         },
         awayFromFlares: {
           en: 'Away from tank flares => Keep Moving',
+          cn: '远离坦克核爆 => 保持移动',
         },
       },
     },
@@ -555,15 +591,19 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         cone: {
           en: 'Cone on YOU',
+          cn: '扇形点名',
         },
         tower: {
           en: 'Soak Tower',
+          cn: '踩塔',
         },
         conePos: {
           en: 'Aim Cone ${dir}',
+          cn: '扇形指向 ${dir}',
         },
         towerPos: {
           en: 'Soak Tower ${dir}',
+          cn: '前往 ${dir} 踩塔',
         },
       },
     },
@@ -576,6 +616,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse Debuff',
+          cn: '驱散 Debuff',
         },
       },
     },
@@ -603,6 +644,7 @@ Options.Triggers.push({
       outputStrings: {
         lookMiddle: {
           en: 'Look Middle',
+          cn: '看向场中',
         },
       },
     },
@@ -658,6 +700,7 @@ Options.Triggers.push({
         under: Outputs.getUnder,
         go: {
           en: 'Go ${dir1}/${dir2} Max Melee',
+          cn: '前往 ${dir1}/${dir2} 最大近战距离',
         },
       },
     },
@@ -685,7 +728,61 @@ Options.Triggers.push({
       outputStrings: {
         chasingPuddle: {
           en: 'Chasing puddle on you',
+          cn: '追踪地火点名',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Aggressive Shadow': '虚无之攻影',
+        'Enuo': '恩欧',
+        'Looming Shadow': '虚无巨影',
+        'Protective Shadow': '虚无之防影',
+        'Soothing Shadow': '虚无之疗影',
+        '(?<! )Void': '无之漩涡',
+        'Yawning Void': '无之巨漩涡',
+      },
+      'replaceText': {
+        '--Add': '--小怪',
+        '--Tower adds': '--塔小怪',
+        '(?<!un)targetable--': '可选中--',
+        '\\(active\\)': '(激活)',
+        '\\(castbar\\)': '(咏唱栏)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(lines\\)': '(直线)',
+        '\\(puddles\\)': '(黄圈)',
+        '\\(puddle baits': '(诱导黄圈',
+        '\\(puddle explodes\\)': '(黄圈爆炸)',
+        'pyretic\\)': '热病)',
+        '\\(spread\\)': '(分散)',
+        'Airy Emptiness': '扩散波动',
+        'Almagest': '至高无上',
+        'All for Naught': '无之领域',
+        'Curse of the Flesh': '疫病诅咒',
+        'Deep Freeze': '深度冻结',
+        'Demon Eye': '恶魔之瞳',
+        'Dense Emptiness': '集束波动',
+        'Dimension Zero': '零次元',
+        'Empty Shadow': '虚无冲击',
+        'Endless Chase': '追尾波动',
+        'Gaze of the Void': '混沌激流',
+        'Great Return to Nothing': '回归重波动',
+        'Lightless World': '无光的世界',
+        'Looming Emptiness': '虚无大冲击',
+        'Meltdown': '核心熔毁',
+        'Meteorain': '流星雨',
+        'Naught Grows': '无之膨胀',
+        'Naught Hunts': '无之追踪',
+        'Nothingness': '无之波动',
+        'Passage of Naught': '聚能波动',
+        '(?<!Great )Return to Nothing': '回归波动',
+        'Shrouded Holy': '暗影神圣',
+        'Silent Torrent': '奔流',
+        'Voidal Turbulence': '无之涡流',
+        'Weight of Nothing': '高压波动',
       },
     },
   ],
