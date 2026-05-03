@@ -212,11 +212,18 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stackMarkerOn(),
     },
     {
-      id: 'Enuo Dimension Zero',
-      type: 'StartsUsing',
-      netRegex: { id: 'C331', source: 'Enuo', capture: true },
+      id: 'Enuo Dimension Zero Headmarker',
+      type: 'HeadMarker',
+      netRegex: { id: '02CF', data0: '1[0-9A-F]{7}', capture: true },
       durationSeconds: 7.7,
-      response: Responses.stackMarkerOn(),
+      infoText: (data, matches, output) => {
+        const member = data.party.nameFromId(matches.data0);
+
+        return output.stackMarkerOn!({ player: data.party.member(member) });
+      },
+      outputStrings: {
+        stackMarkerOn: Outputs.stackOnPlayer,
+      },
     },
     {
       id: 'Enuo Naught Hunts Tether',
