@@ -61,6 +61,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Gaze of the Void Strategy',
         cn: '混沌激流策略',
+        ko: '혼돈의 격류 전략',
       },
       comment: {
         en: `Strategy for resolving Gaze of the Void orbs.
@@ -71,6 +72,10 @@ const triggerSet: TriggerSet<Data> = {
 
              坦克: 仅播报坦克方向。
              <数字>: 播报指定数字编号的优先级, 以坦克球为北顺时针排列`,
+        ko: `혼돈의 격류 구슬 처리 전략.
+
+             탱커: 탱커 방향만 호출.
+             <숫자>: 탱커 구슬을 북쪽으로 보고 시계 방향으로 번호를 매겼을 때, 해당 번호의 우선순위로 호출.`,
       },
       type: 'select',
       options: {
@@ -90,6 +95,13 @@ const triggerSet: TriggerSet<Data> = {
           '3 (近战)': '3',
           '4 (远程)': '4',
         },
+        ko: {
+          '탱커': 'tank',
+          '1 (탱커)': '1',
+          '2 (힐러)': '2',
+          '3 (근딜)': '3',
+          '4 (원딜)': '4',
+        },
       },
       default: 'tank',
     },
@@ -98,20 +110,28 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Add Phase Strategy',
         cn: '小怪阶段策略',
+        ko: '쫄 페이즈 전략',
       },
       comment: {
         en: `Strategy for resolving towers and spreads in add phase.
 
              None: Call tower or spread only.
              <number>: Call the specified partner number's position. For example:
-             If following the "modified" raidplan (kgH6GJydOCbUs1L_), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
-             If following the "original" raidplan (z6hesq84t7ewujw9), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
+             If following the "modified" raidplan (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
+             If following the "original" raidplan (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
         cn: `小怪阶段处理踩塔与扇形分散的策略。
 
              无: 仅播报踩塔或扇形分散。
              <数字>: 播报指定搭档编号的位置。例如:
-             若遵循 "修改版" 攻略 (kgH6GJydOCbUs1L_), H1应选择 "3" 因为是从南开始顺时针第一顺位, MT应选择 "4" 因为是从北开始逆时针第一顺位。
-             若遵循 "初始版" 攻略 (z6hesq84t7ewujw9), H1应选择 "2" 因为是从北开始顺时针第二顺位, MT应选择 "1" 因为是从北开始顺时针第一顺位。`,
+             若遵循 "修改版" 攻略 (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>), H1应选择 "3" 因为是从南开始顺时针第一顺位, MT应选择 "4" 因为是从北开始逆时针第一顺位。
+             若遵循 "初始版" 攻略 (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>), H1应选择 "2" 因为是从北开始顺时针第二顺位, MT应选择 "1" 因为是从北开始顺时针第一顺位。`,
+        ko: `쫄 페이즈의 탑과 산개 처리 전략.
+
+             없음: 탑 또는 산개만 호출.
+             <숫자>: 지정한 번호의 파트너 위치를 호출. 예시:
+             "수정된" 공략 (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>)을 따를 경우, H1은 남쪽 시계 방향 우선순위인 "3"을, T1은 북쪽 반시계 방향 우선순위인 "4"를 담당합니다.
+             "원래" 공략 (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>)을 따를 경우, H1은 북쪽에서 시계 방향으로 2번째 채우기인 "2"를, T1은 북쪽에서 시계 방향으로 1번째 채우기인 "1"을 담당합니다.
+        `,
       },
       type: 'select',
       options: {
@@ -128,6 +148,13 @@ const triggerSet: TriggerSet<Data> = {
           '2 (右下)': '2',
           '3 (左下)': '3',
           '4 (左上)': '4',
+        },
+        ko: {
+          '없음': 'none',
+          '1 (북동)': '1',
+          '2 (남동)': '2',
+          '3 (남서)': '3',
+          '4 (북서)': '4',
         },
       },
       default: 'none',
@@ -243,18 +270,22 @@ const triggerSet: TriggerSet<Data> = {
         awayFrom: {
           en: 'Away from ${dir} + ${mech}',
           cn: '远离 ${dir} + ${mech}',
+          ko: '${dir} 멀어지기 + ${mech}',
         },
         under: {
           en: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
+          ko: '${dir} + ${mech}',
         },
         underBossAndAway: {
           en: 'Under Boss + Away from ${dir} + ${mech}',
           cn: 'Boss 脚下 + 远离 ${dir} + ${mech}',
+          ko: '보스 아래 + ${dir} 멀어지기 + ${mech}',
         },
         underPortalAndAway: {
           en: '${dir} + Away from Boss + ${mech}',
           cn: '${dir} + 远离 Boss + ${mech}',
+          ko: '${dir} + 보스 멀어지기 + ${mech}',
         },
       },
     },
@@ -279,6 +310,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait Puddles => Stop Moving => Spread',
           cn: '引诱黄圈 => 停止移动 => 分散',
+          ko: '장판 유도 => 이동 멈추기 => 산개',
         },
       },
     },
@@ -295,6 +327,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stop Moving => Spread',
           cn: '停止移动 => 分散',
+          ko: '이동 멈추기 => 산개',
         },
       },
     },
@@ -366,6 +399,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir1} ${rotation} => ${dir2}',
           cn: '${dir1} ${rotation} => ${dir2} ',
+          ko: '${dir1} ${rotation} => ${dir2}',
         },
       },
     },
@@ -474,10 +508,12 @@ const triggerSet: TriggerSet<Data> = {
         tankOrbsDir: {
           en: 'Tank orbs ${dir}',
           cn: '坦克球在${dir} ',
+          ko: '탱커 구슬 ${dir}',
         },
         orbSoaks: {
           en: '${dir1} => ${dir2}',
           cn: '${dir1} => ${dir2} ',
+          ko: '${dir1} => ${dir2}',
         },
       },
     },
@@ -511,6 +547,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir3} Close',
           cn: '${dir3}靠近',
+          ko: '${dir3} 가까이',
         },
       },
     },
@@ -537,10 +574,12 @@ const triggerSet: TriggerSet<Data> = {
         tankFlareOnYou: {
           en: 'Tank Flare on YOU => Keep Moving',
           cn: '坦克核爆 => 保持移动',
+          ko: '탱커 플레어 대상자 => 계속 움직이기',
         },
         awayFromFlares: {
           en: 'Away from tank flares => Keep Moving',
           cn: '远离坦克核爆 => 保持移动',
+          ko: '탱커 플레어에서 멀어지기 => 계속 움직이기',
         },
       },
     },
@@ -677,18 +716,22 @@ const triggerSet: TriggerSet<Data> = {
         cone: {
           en: 'Cone on YOU',
           cn: '扇形点名',
+          ko: '부채꼴 대상자',
         },
         tower: {
           en: 'Soak Tower',
           cn: '踩塔',
+          ko: '탑 밟기',
         },
         conePos: {
           en: 'Aim Cone ${dir}',
           cn: '扇形指向 ${dir}',
+          ko: '부채꼴 조준 ${dir}',
         },
         towerPos: {
           en: 'Soak Tower ${dir}',
           cn: '前往 ${dir} 踩塔',
+          ko: '${dir} 탑 밟기',
         },
       },
     },
@@ -702,6 +745,7 @@ const triggerSet: TriggerSet<Data> = {
         cleanse: {
           en: 'Cleanse Debuff',
           cn: '驱散 Debuff',
+          ko: '디버프 해제',
         },
       },
     },
@@ -730,6 +774,7 @@ const triggerSet: TriggerSet<Data> = {
         lookMiddle: {
           en: 'Look Middle',
           cn: '看向场中',
+          ko: '중앙 보기',
         },
       },
     },
@@ -798,6 +843,7 @@ const triggerSet: TriggerSet<Data> = {
         go: {
           en: 'Go ${dir1}/${dir2} Max Melee',
           cn: '前往 ${dir1}/${dir2} 最大近战距离',
+          ko: '${dir1}/${dir2} 칼끝딜',
         },
       },
     },
@@ -826,11 +872,132 @@ const triggerSet: TriggerSet<Data> = {
         chasingPuddle: {
           en: 'Chasing puddle on you',
           cn: '追踪地火点名',
+          ko: '추적 장판 대상자',
         },
       },
     },
   ],
   timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aggressive Shadow': 'strafend(?:e|er|es|en) Hand',
+        'Enuo': 'Enuo',
+        'Looming Shadow': 'groß(?:e|er|es|en) Nichts-Silhouette',
+        'Protective Shadow': 'beschützend(?:e|er|es|en) Hand',
+        'Soothing Shadow': 'heilend(?:e|er|es|en) Hand',
+        '(?<! )Void': 'Nichtswirbel',
+        'Yawning Void': 'groß(?:e|er|es|en) Nichtswirbel',
+      },
+      'replaceText': {
+        'Airy Emptiness': 'Streuende Welle',
+        'All for Naught': 'Nichts-Territorium',
+        'Almagest': 'Almagest',
+        'Curse of the Flesh': 'Miasma-Fluch',
+        'Deep Freeze': 'Tiefenfrost',
+        'Demon Eye': 'Dämonenauge',
+        'Dense Emptiness': 'Sammelnde Welle',
+        'Dimension Zero': 'Dimension Null',
+        'Empty Shadow': 'Last der Leere',
+        'Endless Chase': 'Suchende Welle',
+        'Gaze of the Void': 'Chaotischer Strom',
+        'Great Return to Nothing': 'Große Welle der Wiederkehr',
+        'Lightless World': 'Lichtlose Welt',
+        'Looming Emptiness': 'Schwere Last der Leere',
+        'Meltdown': 'Komplettschmelze',
+        'Meteorain': 'Meteorregen',
+        'Naught Grows': 'Anschwellen des Nichts',
+        'Naught Hunts': 'Verfolgung des Nichts',
+        'Nothingness': 'Welle der Leere',
+        'Passage of Naught': 'Sammelwelle',
+        '(?<! )Return to Nothing': 'Welle der Wiederkehr',
+        'Shrouded Holy': 'Schattenheiligtum',
+        'Silent Torrent': 'Reißender Strom',
+        'Voidal Turbulence': 'Nichtsstrudel',
+        'Weight of Nothing': 'Hochdruckwelle',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aggressive Shadow': 'main assaillante de l\'ombre insondable',
+        'Enuo': 'Énuo',
+        'Looming Shadow': 'grande ombre insondable',
+        'Protective Shadow': 'main protectrice de l\'ombre insondable',
+        'Soothing Shadow': 'main guérisseuse de l\'ombre insondable',
+        '(?<! )Void': 'vortex de néant',
+        'Yawning Void': 'grand vortex de néant',
+      },
+      'replaceText': {
+        'Airy Emptiness': 'Onde diffusée',
+        'All for Naught': 'Domaine du néant',
+        'Almagest': 'Almageste',
+        'Curse of the Flesh': 'Malédiction pathogène',
+        'Deep Freeze': 'Congélation ancestrale',
+        'Demon Eye': 'Œil diabolique',
+        'Dense Emptiness': 'Onde concentrée',
+        'Dimension Zero': 'Dimension zéro',
+        'Empty Shadow': 'Impact de vacuité',
+        'Endless Chase': 'Néant traqueur',
+        'Gaze of the Void': 'Torrents chaotiques',
+        'Great Return to Nothing': 'Grande onde régressive',
+        'Lightless World': 'Monde sans Lumière',
+        'Looming Emptiness': 'Grand impact de vacuité',
+        'Meltdown': 'Fusion ancestrale',
+        'Meteorain': 'Pluie de météorites',
+        'Naught Grows': 'Abcès du néant',
+        'Naught Hunts': 'Poursuite du néant',
+        'Nothingness': 'Rayon du néant',
+        'Passage of Naught': 'Onde accumulatrice',
+        '(?<! )Return to Nothing': 'Onde régressive',
+        'Shrouded Holy': 'Miracle d\'ombre',
+        'Silent Torrent': 'Flot d\'énergie',
+        'Voidal Turbulence': 'Maelström du néant',
+        'Weight of Nothing': 'Onde de particules haute tension',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aggressive Shadow': '虚ろなる影の攻め手',
+        'Enuo': 'エヌオー',
+        'Looming Shadow': '虚ろなる巨影',
+        'Protective Shadow': '虚ろなる影の護り手',
+        'Soothing Shadow': '虚ろなる影の癒し手',
+        '(?<! )Void': '無の渦',
+        'Yawning Void': '無の大渦',
+      },
+      'replaceText': {
+        'Airy Emptiness': '拡散波動',
+        'All for Naught': '無の領域',
+        'Almagest': 'アルマゲスト',
+        'Curse of the Flesh': '病の呪詛',
+        'Deep Freeze': 'ディープフリーズ',
+        'Demon Eye': '悪魔の瞳',
+        'Dense Emptiness': '集束波動',
+        'Dimension Zero': 'ディメンションゼロ',
+        'Empty Shadow': '虚ろなる衝撃',
+        'Endless Chase': '追尾波動',
+        'Gaze of the Void': '混沌の激流',
+        'Great Return to Nothing': '回帰の重波動',
+        'Lightless World': 'ライトレス・ワールド',
+        'Looming Emptiness': '虚ろなる大衝撃',
+        'Meltdown': 'メルトダウン',
+        'Meteorain': 'メテオレイン',
+        'Naught Grows': '無の肥大',
+        'Naught Hunts': '無の追跡',
+        'Nothingness': '無の波動',
+        'Passage of Naught': '集積波動',
+        '(?<! )Return to Nothing': '回帰の波動',
+        'Shrouded Holy': 'シャドウホーリー',
+        'Silent Torrent': '奔流',
+        'Voidal Turbulence': '無の渦流',
+        'Weight of Nothing': '高圧波動',
+      },
+    },
     {
       'locale': 'cn',
       'replaceSync': {
@@ -880,6 +1047,55 @@ const triggerSet: TriggerSet<Data> = {
         'Silent Torrent': '奔流',
         'Voidal Turbulence': '无之涡流',
         'Weight of Nothing': '高压波动',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Aggressive Shadow': '공허한 그림자의 공격수',
+        'Enuo': '에누오',
+        'Looming Shadow': '공허한 큰 그림자',
+        'Protective Shadow': '공허한 그림자의 수호자',
+        'Soothing Shadow': '공허한 그림자의 치유사',
+        '(?<! )Void': '무의 소용돌이',
+        'Yawning Void': '무의 큰 소용돌이',
+      },
+      'replaceText': {
+        '--Add': '--쫄',
+        '--Tower adds': '--탑 쫄',
+        '(?<= )targetable--': '타겟가능--',
+        '\\(puddle baits \\+ pyretic\\)': '(장판 유도 + 열병)',
+        '\\(puddle explodes\\)': '(장판 폭발)',
+        '\\(spread\\)': '(산개)',
+        '\\(lines\\)': '(선)',
+        '\\(puddles\\)': '(장판)',
+        '\\(big\\)': '(강력)',
+        '\\(active\\)': '(활성)',
+        'Airy Emptiness': '확산 파동',
+        'All for Naught': '무의 영역',
+        'Almagest': '알마게스트',
+        'Curse of the Flesh': '질병의 저주',
+        'Deep Freeze': '극한 동결',
+        'Demon Eye': '악마의 눈동자',
+        'Dense Emptiness': '집속 파동',
+        'Dimension Zero': '0차원',
+        'Empty Shadow': '공허한 충격',
+        'Endless Chase': '추적 파동',
+        'Gaze of the Void': '혼돈의 격류',
+        'Great Return to Nothing': '회귀의 대파동',
+        'Lightless World': '빛이 없는 세계',
+        'Looming Emptiness': '공허한 대충격',
+        'Meltdown': '용융',
+        'Meteorain': '메테오 레인',
+        'Naught Grows': '무의 비대',
+        'Naught Hunts': '무의 추적',
+        'Nothingness': '무의 파동',
+        'Passage of Naught': '집적 파동',
+        '(?<! )Return to Nothing': '회귀의 파동',
+        'Shrouded Holy': '섀도우 홀리',
+        'Silent Torrent': '급류',
+        'Voidal Turbulence': '무의 맴돌이',
+        'Weight of Nothing': '고압 파동',
       },
     },
   ],
