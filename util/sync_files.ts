@@ -1000,8 +1000,8 @@ const zoneReplace: ZoneReplace[] = [
     // Secondary offset 9E2D
 
     id: {
-      '1DD1': 'BC2D', // Unknown, not seen in modern logs
-      '1DD3': 'BC2F', // Unknown, not seen in modern logs
+      '1DD1': 'BC2D', // Tail Spit, not seen in current logs. Possibly normal mode?
+      '1DD3': 'BC2F', // Dragonflight, not seen in current logs. Possibly normal mode?
       '1FA8': 'BFEB', // Gyre Charge, not seen in current logs. Possibly normal mode?
       '1FF4': 'BFEC', // Gyre Charge, not seen in current logs. Possibly normal mode?
       '25D7': 'C433', // Tail Spit
@@ -1018,7 +1018,7 @@ const zoneReplace: ZoneReplace[] = [
       '25E3': 'C43F', // Enhanced Sneak Attack
       '25E4': 'C440', // Protostar
       '25E5': 'C441', // Meteor Impact
-      '25E6': 'C442', // Unknown, possibly Meteor Impact?
+      '25E6': 'C442', // Explosive Hatch, not seen in current logs. Possibly normal mode or mechanical failure?
       '25E7': 'C443', // Dark Matter
       '25E8': 'C444', // Hypernova
       '25E9': 'C445', // Hypernova
@@ -1054,7 +1054,7 @@ const zoneReplace: ZoneReplace[] = [
       '260A': 'C466', // Death Sentence
       '260B': 'C467', // Fireball
       '260C': 'C468', // Super Cyclone
-      '260D': 'C469', // Unknown, possibly mis-mapped Tail Slap
+      '260D': 'C469', // Tail Slap, not seen in modern logs. Possibly normal mode?
       '260E': 'C46A', // Hasty Reprisal
       '260F': 'C46B', // Meteor Impact
       '2610': 'C46C', // Dragonfist
@@ -1081,13 +1081,11 @@ const zoneReplace: ZoneReplace[] = [
       '2720': 'C482', // Levinbolt
       '2722': 'C484', // Ice Storm
       '2723': 'C485', // Levinbolt
-      '2725': 'C486', // Unknown, not seen in modern logs
+      '2725': 'C486', // Levinbolt, not seen in modern logs. Possibly normal mode?
     },
   },
 ];
 
-// C47D Judgment Bolt
-// C47E Hellfire
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {
   const output = [];
 
