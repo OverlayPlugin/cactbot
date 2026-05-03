@@ -2947,6 +2947,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         noDebuffFail: {
           en: 'Debuffs Messed Up, Check Partner',
+          de: 'Debuffs durcheinander, Partner überprüfen',
           cn: 'Debuff 获取故障, 检查搭档状态',
           ko: '디버프 꼬임, 파트너 확인',
         },
@@ -7374,6 +7375,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitFireDN: {
           en: 'Bait Cone N Center Below Dark/S Center',
+          de: 'Köder Kegel-AoE Norden Mitte Darunter Dunkel/Süden Mitte',
           cn: '诱导扇形: 北侧中心, 暗下方/南侧中心',
           ko: '부채꼴 유도 북쪽 어둠 밑/남쪽 중앙',
         },
@@ -7385,6 +7387,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitFireNukemaru: {
           en: 'Bait Cone, N of Platform/S Max Melee',
+          de: 'Köder Kegel-AoE, Norden der Plattform/ Süden Max Nahkampf',
           cn: '诱导扇形: 平台北侧/南侧最远近战距离',
           ko: '부채꼴 유도, 플랫폼 북쪽/남쪽 칼끝딜',
         },
@@ -7396,6 +7399,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitEarthDN: {
           en: 'Bait Cone N Center Below Dark/S Center',
+          de: 'Köder Kegel-AoE Norden Mitte Darunter Dunkel/Süden Mitte',
           cn: '诱导扇形: 北侧中心, 暗下方/南侧中心',
           ko: '부채꼴 유도 북쪽 어둠 밑/남쪽 중앙',
         },
@@ -7407,6 +7411,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitEarthNukemaru: {
           en: 'Bait Cone, S Max Melee/N of Platform',
+          de: 'Köder Kegel-AoE, Süden Max Nahkampf/ Norden der Plattform',
           cn: '诱导扇形: 南侧最远近战距离/平台北侧',
           ko: '부채꼴 유도, 남쪽 칼끝딜/플랫폼 북쪽',
         },

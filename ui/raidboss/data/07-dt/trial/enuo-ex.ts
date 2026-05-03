@@ -60,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'gazeOrbStrat',
       name: {
         en: 'Gaze of the Void Strategy',
+        de: 'Chaotischer Strom Strategie',
         fr: 'Stratégie pour les Torrents chaotiques',
         cn: '混沌激流策略',
         ko: '혼돈의 격류 전략',
@@ -69,6 +70,10 @@ const triggerSet: TriggerSet<Data> = {
 
              Tank: Call the tank direction only.
              <number>: Call the specified number's priority, treating tank orb as north clockwise`,
+        de: `Strategie zur Lösung der „Chaotischer Strom“-Kugeln.
+
+             Tank: Nenne nur die Richtung des Tanks.
+             <Nummer>: Nenne die Priorität der angegebenen Zahl, wobei die Kugel des Tanks als „Norden im Uhrzeigersinn“ gilt.`,
         fr: `Stratégie pour résoudre les Torrent Chaotiques.
 
              Tank: Indique la direction Tank seulement.
@@ -92,6 +97,13 @@ const triggerSet: TriggerSet<Data> = {
           '2 (healer)': '2',
           '3 (melee)': '3',
           '4 (ranged)': '4',
+        },
+        de: {
+          'Tank': 'tank',
+          '1 (Tank)': '1',
+          '2 (Heiler)': '2',
+          '3 (Nahkämpfer)': '3',
+          '4 (Fernkämpfer)': '4',
         },
         fr: {
           'Tank': 'tank',
@@ -121,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'addPhaseStrat',
       name: {
         en: 'Add Phase Strategy',
+        de: 'Add Phase Strategie',
         fr: 'Stratégie pour les adds',
         cn: '小怪阶段策略',
         ko: '쫄 페이즈 전략',
@@ -132,6 +145,12 @@ const triggerSet: TriggerSet<Data> = {
              <number>: Call the specified partner number's position. For example:
              If following the "modified" raidplan (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
              If following the "original" raidplan (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
+        de: `Strategie zur Lösung der Türmen und Verteilens in der Add-Phase.
+
+             Keine: Nur den Turm oder das Verteilen aufrufen.
+             <Nummer>: Die Position der angegebenen Partnernummer aufrufen. Beispiel:
+             Wenn man dem „modifizierten“ Raidplan (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>) folgt, sollte H1 „3“ für die S-Uhrzeigersinn-Priorität wählen, T1 sollte „4“ für die N-GegenUhrzeigersinn-Priorität wählen.
+             Wenn man dem „ursprünglichen“ Raidplan (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>) folgt, sollte H1 „2“ wählen (zweite Position im Uhrzeigersinn von N), T1 sollte „1“ wählen (zweiteerste Position im Uhrzeigersinn von N)`,
         fr: `Strategy for resolving towers and spreads in add phase.
 
              Aucun: Indique seulement les tours et les spread.
@@ -158,6 +177,13 @@ const triggerSet: TriggerSet<Data> = {
           'None': 'none',
           '1 (NE)': '1',
           '2 (SE)': '2',
+          '3 (SW)': '3',
+          '4 (NW)': '4',
+        },
+        de: {
+          'Keine': 'none',
+          '1 (NO)': '1',
+          '2 (SO)': '2',
           '3 (SW)': '3',
           '4 (NW)': '4',
         },
@@ -295,24 +321,28 @@ const triggerSet: TriggerSet<Data> = {
         stack: Outputs.stackMarker,
         awayFrom: {
           en: 'Away from ${dir} + ${mech}',
+          de: 'Weg von ${dir} + ${mech}',
           fr: 'Loin de ${dir} + ${mech}',
           cn: '远离 ${dir} + ${mech}',
           ko: '${dir} 멀어지기 + ${mech}',
         },
         under: {
           en: '${dir} + ${mech}',
+          de: '${dir} + ${mech}',
           fr: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
           ko: '${dir} + ${mech}',
         },
         underBossAndAway: {
           en: 'Under Boss + Away from ${dir} + ${mech}',
+          de: 'Unter den Boss + Weg von ${dir} + ${mech}',
           fr: 'Sous le boss + loin de ${dir} + ${mech}',
           cn: 'Boss 脚下 + 远离 ${dir} + ${mech}',
           ko: '보스 아래 + ${dir} 멀어지기 + ${mech}',
         },
         underPortalAndAway: {
           en: '${dir} + Away from Boss + ${mech}',
+          de: '${dir} + Weg vom Boss + ${mech}',
           fr: '${dir} + Loin du boss + ${mech}',
           cn: '${dir} + 远离 Boss + ${mech}',
           ko: '${dir} + 보스 멀어지기 + ${mech}',
@@ -339,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Puddles => Stop Moving => Spread',
+          de: 'Köder Flächen => Nicht Bewegen => Verteilen',
           fr: 'Déposez les flaques => Ne bougez plus => Écartez-vous',
           cn: '引诱黄圈 => 停止移动 => 分散',
           ko: '장판 유도 => 이동 멈추기 => 산개',
@@ -357,6 +388,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stop Moving => Spread',
+          de: 'Nicht Bewegen => Verteilen',
           fr: 'Ne bougez plus => Écartez-vous',
           cn: '停止移动 => 分散',
           ko: '이동 멈추기 => 산개',
@@ -430,6 +462,7 @@ const triggerSet: TriggerSet<Data> = {
         CCW: Outputs.counterclockwise,
         text: {
           en: '${dir1} ${rotation} => ${dir2}',
+          de: '${dir1} ${rotation} => ${dir2}',
           fr: '${dir1} ${rotation} => ${dir2}',
           cn: '${dir1} ${rotation} => ${dir2} ',
           ko: '${dir1} ${rotation} => ${dir2}',
@@ -497,12 +530,14 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         tankOrbsDir: {
           en: 'Tank orbs ${dir}',
+          de: 'Tank Kugeln ${dir}',
           fr: 'Orbes Tank : ${dir}',
           cn: '坦克球在${dir} ',
           ko: '탱커 구슬 ${dir}',
         },
         orbSoaks: {
           en: '${dir1} => ${dir2}',
+          de: '${dir1} => ${dir2}',
           fr: '${dir1} => ${dir2}',
           cn: '${dir1} => ${dir2} ',
           ko: '${dir1} => ${dir2}',
@@ -538,6 +573,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: '${dir3} Close',
+          de: '${dir3} Nahe',
           fr: '${dir3} proche',
           cn: '${dir3}靠近',
           ko: '${dir3} 가까이',
@@ -566,12 +602,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tankFlareOnYou: {
           en: 'Tank Flare on YOU => Keep Moving',
+          de: 'Tank Flare auf DIR => Bewegen',
           fr: 'Brasier sur VOUS => Bougez !',
           cn: '坦克核爆 => 保持移动',
           ko: '탱커 플레어 대상자 => 계속 움직이기',
         },
         awayFromFlares: {
           en: 'Away from tank flares => Keep Moving',
+          de: 'Weg von den Tank Flares => Bewegen',
           fr: 'Loin des brasiers (Tanks) => Bougez !',
           cn: '远离坦克核爆 => 保持移动',
           ko: '탱커 플레어에서 멀어지기 => 계속 움직이기',
@@ -710,24 +748,28 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         cone: {
           en: 'Cone on YOU',
+          de: 'Kegel auf DIR',
           fr: 'Cône sur VOUS',
           cn: '扇形点名',
           ko: '부채꼴 대상자',
         },
         tower: {
           en: 'Soak Tower',
+          de: 'Turm nehmen',
           fr: 'Prenez une tour',
           cn: '踩塔',
           ko: '탑 밟기',
         },
         conePos: {
           en: 'Aim Cone ${dir}',
+          de: 'Kegel nach ${dir} zeigen',
           fr: 'Pointez le cône : ${dir}',
           cn: '扇形指向 ${dir}',
           ko: '부채꼴 조준 ${dir}',
         },
         towerPos: {
           en: 'Soak Tower ${dir}',
+          de: 'Turm nehmen ${dir}',
           fr: 'Prenez la tour : ${dir}',
           cn: '前往 ${dir} 踩塔',
           ko: '${dir} 탑 밟기',
@@ -743,6 +785,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse Debuff',
+          de: 'Debuff Reinigen',
           fr: 'Guérissez le débuff',
           cn: '驱散 Debuff',
           ko: '디버프 해제',
@@ -773,6 +816,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lookMiddle: {
           en: 'Look Middle',
+          de: 'Schau in die Mitte',
           fr: 'Regardez au milieu',
           cn: '看向场中',
           ko: '중앙 보기',
@@ -843,6 +887,7 @@ const triggerSet: TriggerSet<Data> = {
         under: Outputs.getUnder,
         go: {
           en: 'Go ${dir1}/${dir2} Max Melee',
+          de: 'Geh ${dir1}/${dir2} Max Nahkampf',
           fr: 'Allez ${dir1}/${dir2} Max mêlée',
           cn: '前往 ${dir1}/${dir2} 最大近战距离',
           ko: '${dir1}/${dir2} 칼끝딜',
@@ -873,6 +918,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         chasingPuddle: {
           en: 'Chasing puddle on you',
+          de: 'Verfolgende Fläche auf DIR',
           fr: 'Flaque chassante sur VOUS',
           cn: '追踪地火点名',
           ko: '추적 장판 대상자',
@@ -883,7 +929,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Aggressive Shadow': 'strafend(?:e|er|es|en) Hand',
         'Enuo': 'Enuo',
@@ -894,6 +939,16 @@ const triggerSet: TriggerSet<Data> = {
         'Yawning Void': 'groß(?:e|er|es|en) Nichtswirbel',
       },
       'replaceText': {
+        '--Add': '--Add',
+        '--Tower adds': '--Turm Add',
+        '(?<= )targetable--': 'anvisierbar--',
+        '\\(active\\)': '(aktiv)',
+        '\\(big\\)': '(groß)',
+        '\\(lines\\)': '(Linien)',
+        '\\(puddles\\)': '(Flächen)',
+        '\\(puddle baits \\+ pyretic\\)': '(Flächen ködern + Pyretisch)',
+        '\\(puddle explodes\\)': '(Flächen explodieren)',
+        '\\(spread\\)': '(verteilen)',
         'Airy Emptiness': 'Streuende Welle',
         'All for Naught': 'Nichts-Territorium',
         'Almagest': 'Almagest',
