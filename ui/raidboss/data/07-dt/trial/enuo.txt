@@ -92,6 +92,8 @@ hideall "--sync--"
 562.0 "Dimension Zero x3" duration 2.6 #Ability { id: "C332", source: "Enuo" }
 575.3 "Almagest" Ability { id: "C308", source: "Enuo" }
 
+575.3 label "p2-loop"
+
 578.7 "--middle--" Ability { id: "C307", source: "Enuo" }
 586.7 "Naught Hunts" Ability { id: "C313", source: "Enuo" }
 587.8 "Endless Chase (active)" duration 7.8 #Ability { id: "BD5A", source: "Void" }
@@ -101,7 +103,6 @@ hideall "--sync--"
 610.5 "Naught Grows x2 (AoE)" Ability { id: "C30E", source: "Enuo" }
 617.5 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
 
-621.5 label "p2-loop"
 621.5 "Vacuum" Ability { id: "C316", source: "Enuo" }
 623.6 "--middle--" Ability { id: "C307", source: "Enuo" }
 627.0 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
@@ -113,8 +114,8 @@ hideall "--sync--"
 647.7 "Meltdown (puddle baits)" Ability { id: "C32A", source: "Enuo" }
 653.7 "Meltdown (puddles)" Ability { id: "C32B", source: "Enuo" }
 654.7 "Meltdown (spreads)" Ability { id: "C32C", source: "Enuo" }
-658.1 "Naught Grows" Ability { id: "C30C", source: "Enuo" }
-659.1 "Naught Grows" Ability { id: "C30D", source: "Yawning Void" }
+658.1 "Naught Grows (Tether)" Ability { id: "C30C", source: "Enuo" }
+659.1 "Naught Grows x2 (AoE)" Ability { id: "C30D", source: "Yawning Void" }
 666.1 "Meteorain" Ability { id: "C333", source: "Enuo" }
 
 674.2 "Vacuum" Ability { id: "C316", source: "Enuo" }
@@ -131,13 +132,24 @@ hideall "--sync--"
 709.1 "Dimension Zero x3" duration 2.6 #Ability { id: "C332", source: "Enuo" }
 723.3 "Almagest" Ability { id: "C308", source: "Enuo" }
 
-# maybe loop to 621.5?
-731.4 "Vacuum" Ability { id: "C316", source: "Enuo" } forcejump "p2-loop"
-# 733.5 "--middle--" Ability { id: "C307", source: "Enuo" }
-# 736.9 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
-# 737.5 "Silent Torrent x7 (puddles)" Ability { id: "C31B", source: "Enuo" }
-# 739.5 "Vacuum" Ability { id: "C31D", source: "Void" }
+731.4 "Vacuum" Ability { id: "C316", source: "Enuo" }
+734.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+736.9 "Silent Torrent x7 (lines)" Ability { id: "C319", source: "Void" }
+737.3 "Silent Torrent (puddles)" Ability { id: "C31C", source: "Enuo" }
+739.3 "Vacuum" #Ability { id: "C31D", source: "Void" }
+742.4 "Naught Grows (Tether)" #Ability { id: "C30C", source: "Enuo" }
+743.4 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+750.4 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
 
+754.4 "Vacuum" Ability { id: "C316", source: "Enuo" }
+757.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+759.9 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
+760.3 "Silent Torrent (puddles)" Ability { id: "C31B", source: "Enuo" }
+762.3 "Vacuum" Ability { id: "C31D", source: "Void" }
+765.4 "Naught Grows (Tether)" #Ability { id: "C30C", source: "Enuo" }
+766.4 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+773.4 "Meteorain" Ability { id: "C333", source: "Enuo" }
+784.5 "Almagest" Ability { id: "C308", source: "Enuo" } forcejump "p2-loop"
 
 
 # IGNORED ABILITIES
