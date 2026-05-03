@@ -24,7 +24,7 @@ hideall "--sync--"
 67.9 "Tail Slap" Ability { id: "25E2", source: "Tail" }
 79.8 "Hypernova / Levinbolt" Ability { id: ["25E8", "25EA"], source: "Right Wing" }
 90.9 "Dragonfist" Ability { id: "2610", source: "Shinryu" }
-97.8 "Ice Storm" Ability { id: "25F1", source: "Left Wing" } # sometimes 3 seconds earlier?
+94.8 "Ice Storm" Ability { id: "25F1", source: "Left Wing" }
 108.0 "Akh Morn 1" Ability { id: "25F3", source: "Shinryu" } duration 3.2
 110.1 "Akh Rhai" Ability { id: "25F5", source: "Shinryu" } duration 5.3
 116.3 "Summon Icicle" Ability { id: "25EE", source: "Left Wing" }
@@ -45,12 +45,14 @@ hideall "--sync--"
 208.2 "Diamond Dust" Ability { id: "25FC", source: "Shinryu" }
 224.9 "--Reiryu Adds--"
 
+# The timing on the Icicle here appears to be here or 3s later.
+# We leave the earlier visual in place to let players anticipate it.
 233.3 "--Tail Marker (tank)--"
-251.5 "Tail Slap" Ability { id: "260D", source: "Tail" }
-268.5 "Summon Icicle" Ability { id: "25EE", source: "Left Wing" }
-269.1 "Icicle Impact" Ability { id: "25EF", source: "Icicle" }
+251.5 "Tail Slap" Ability { id: "25E2", source: "Tail" }
+268.5 "Summon Icicle" #Ability { id: "25EE", source: "Left Wing" }
+269.1 "Icicle Impact" #Ability { id: "25EF", source: "Icicle" }
 272.4 "Akh Morn 3" Ability { id: "25F3", source: "Shinryu" } duration 3.2
-273.6 "Spikesicle" Ability { id: "25F0", source: "Icicle" }
+273.6 "Spikesicle" #Ability { id: "25F0", source: "Icicle" }
 274.5 "Akh Rhai" Ability { id: "25F5", source: "Shinryu" } duration 5.3
 285.3 "Super Cyclone 1" #Ability { id: "260C", source: "Shinryu" }
 287.4 "Super Cyclone 2" #Ability { id: "260C", source: "Shinryu" }
