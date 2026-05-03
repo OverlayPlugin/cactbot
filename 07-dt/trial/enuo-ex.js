@@ -21,6 +21,7 @@ Options.Triggers.push({
       id: 'gazeOrbStrat',
       name: {
         en: 'Gaze of the Void Strategy',
+        fr: 'Stratégie pour les Torrents chaotiques',
         cn: '混沌激流策略',
         ko: '혼돈의 격류 전략',
       },
@@ -28,6 +29,9 @@ Options.Triggers.push({
         en: `Strategy for resolving Gaze of the Void orbs.
              Tank: Call the tank direction only.
              <number>: Call the specified number's priority, treating tank orb as north clockwise`,
+        fr: `Stratégie pour résoudre les Torrent Chaotiques.
+             Tank: Indique la direction Tank seulement.
+             <nombre>: Indique la priorité du nombre spécifié, l'orbe des tank étant le nord (sens horaire)`,
         cn: `处理混沌激流撞球的策略。
              坦克: 仅播报坦克方向。
              <数字>: 播报指定数字编号的优先级, 以坦克球为北顺时针排列`,
@@ -45,6 +49,13 @@ Options.Triggers.push({
           '2 (healer)': '2',
           '3 (melee)': '3',
           '4 (ranged)': '4',
+        },
+        fr: {
+          'Tank': 'tank',
+          '1 (Tank)': '1',
+          '2 (Soigneur)': '2',
+          '3 (Mêlée)': '3',
+          '4 (Distant)': '4',
         },
         cn: {
           '坦克': 'tank',
@@ -67,6 +78,7 @@ Options.Triggers.push({
       id: 'addPhaseStrat',
       name: {
         en: 'Add Phase Strategy',
+        fr: 'Stratégie pour les adds',
         cn: '小怪阶段策略',
         ko: '쫄 페이즈 전략',
       },
@@ -76,6 +88,11 @@ Options.Triggers.push({
              <number>: Call the specified partner number's position. For example:
              If following the "modified" raidplan (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>), H1 should select "3" for S CW priority, T1 should select "4" for N CCW priority.
              If following the "original" raidplan (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>), H1 should select "2" as they are 2nd fill clockwise from N, T1 should select "1" as they are 1st fill clockwise from N.`,
+        fr: `Strategy for resolving towers and spreads in add phase.
+             Aucun: Indique seulement les tours et les spread.
+             <nombre>: la position du numéro du partenaire spécifié. Par exemple :
+             Utilisation du raidplan "Modifié" (<a href="https://raidplan.io/plan/kgH6GJydOCbUs1L_" target="_blank">kgH6GJydOCbUs1L_</a>), H1 séléctionne "3" pour une priorité Sud horaire, T1 sélectionne "4" pour une priorité Nord anti-horaire.
+             Utilisation du raidplan "Original" (<a href="https://raidplan.io/plan/z6hesq84t7ewujw9" target="_blank">z6hesq84t7ewujw9</a>), H1 sélectionne "2", 2ème emplacement (sens horaire) à partir du Nord, T1 sélectionne "1", 1er emplacement (sens horaire) depuis le nord.`,
         cn: `小怪阶段处理踩塔与扇形分散的策略。
              无: 仅播报踩塔或扇形分散。
              <数字>: 播报指定搭档编号的位置。例如:
@@ -96,6 +113,13 @@ Options.Triggers.push({
           '2 (SE)': '2',
           '3 (SW)': '3',
           '4 (NW)': '4',
+        },
+        fr: {
+          'Aucun': 'none',
+          '1 (NE)': '1',
+          '2 (SE)': '2',
+          '3 (SO)': '3',
+          '4 (NO)': '4',
         },
         cn: {
           '无': 'none',
@@ -215,21 +239,25 @@ Options.Triggers.push({
         stack: Outputs.stackMarker,
         awayFrom: {
           en: 'Away from ${dir} + ${mech}',
+          fr: 'Loin de ${dir} + ${mech}',
           cn: '远离 ${dir} + ${mech}',
           ko: '${dir} 멀어지기 + ${mech}',
         },
         under: {
           en: '${dir} + ${mech}',
+          fr: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
           ko: '${dir} + ${mech}',
         },
         underBossAndAway: {
           en: 'Under Boss + Away from ${dir} + ${mech}',
+          fr: 'Sous le boss + loin de ${dir} + ${mech}',
           cn: 'Boss 脚下 + 远离 ${dir} + ${mech}',
           ko: '보스 아래 + ${dir} 멀어지기 + ${mech}',
         },
         underPortalAndAway: {
           en: '${dir} + Away from Boss + ${mech}',
+          fr: '${dir} + Loin du boss + ${mech}',
           cn: '${dir} + 远离 Boss + ${mech}',
           ko: '${dir} + 보스 멀어지기 + ${mech}',
         },
@@ -255,6 +283,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Bait Puddles => Stop Moving => Spread',
+          fr: 'Déposez les flaques => Ne bougez plus => Écartez-vous',
           cn: '引诱黄圈 => 停止移动 => 分散',
           ko: '장판 유도 => 이동 멈추기 => 산개',
         },
@@ -272,6 +301,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stop Moving => Spread',
+          fr: 'Ne bougez plus => Écartez-vous',
           cn: '停止移动 => 分散',
           ko: '이동 멈추기 => 산개',
         },
@@ -343,6 +373,7 @@ Options.Triggers.push({
         CCW: Outputs.counterclockwise,
         text: {
           en: '${dir1} ${rotation} => ${dir2}',
+          fr: '${dir1} ${rotation} => ${dir2}',
           cn: '${dir1} ${rotation} => ${dir2} ',
           ko: '${dir1} ${rotation} => ${dir2}',
         },
@@ -400,11 +431,13 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         tankOrbsDir: {
           en: 'Tank orbs ${dir}',
+          fr: 'Orbes Tank : ${dir}',
           cn: '坦克球在${dir} ',
           ko: '탱커 구슬 ${dir}',
         },
         orbSoaks: {
           en: '${dir1} => ${dir2}',
+          fr: '${dir1} => ${dir2}',
           cn: '${dir1} => ${dir2} ',
           ko: '${dir1} => ${dir2}',
         },
@@ -437,6 +470,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         text: {
           en: '${dir3} Close',
+          fr: '${dir3} proche',
           cn: '${dir3}靠近',
           ko: '${dir3} 가까이',
         },
@@ -464,11 +498,13 @@ Options.Triggers.push({
       outputStrings: {
         tankFlareOnYou: {
           en: 'Tank Flare on YOU => Keep Moving',
+          fr: 'Brasier sur VOUS => Bougez !',
           cn: '坦克核爆 => 保持移动',
           ko: '탱커 플레어 대상자 => 계속 움직이기',
         },
         awayFromFlares: {
           en: 'Away from tank flares => Keep Moving',
+          fr: 'Loin des brasiers (Tanks) => Bougez !',
           cn: '远离坦克核爆 => 保持移动',
           ko: '탱커 플레어에서 멀어지기 => 계속 움직이기',
         },
@@ -596,21 +632,25 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         cone: {
           en: 'Cone on YOU',
+          fr: 'Cône sur VOUS',
           cn: '扇形点名',
           ko: '부채꼴 대상자',
         },
         tower: {
           en: 'Soak Tower',
+          fr: 'Prenez une tour',
           cn: '踩塔',
           ko: '탑 밟기',
         },
         conePos: {
           en: 'Aim Cone ${dir}',
+          fr: 'Pointez le cône : ${dir}',
           cn: '扇形指向 ${dir}',
           ko: '부채꼴 조준 ${dir}',
         },
         towerPos: {
           en: 'Soak Tower ${dir}',
+          fr: 'Prenez la tour : ${dir}',
           cn: '前往 ${dir} 踩塔',
           ko: '${dir} 탑 밟기',
         },
@@ -625,6 +665,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse Debuff',
+          fr: 'Guérissez le débuff',
           cn: '驱散 Debuff',
           ko: '디버프 해제',
         },
@@ -654,6 +695,7 @@ Options.Triggers.push({
       outputStrings: {
         lookMiddle: {
           en: 'Look Middle',
+          fr: 'Regardez au milieu',
           cn: '看向场中',
           ko: '중앙 보기',
         },
@@ -711,6 +753,7 @@ Options.Triggers.push({
         under: Outputs.getUnder,
         go: {
           en: 'Go ${dir1}/${dir2} Max Melee',
+          fr: 'Allez ${dir1}/${dir2} Max mêlée',
           cn: '前往 ${dir1}/${dir2} 最大近战距离',
           ko: '${dir1}/${dir2} 칼끝딜',
         },
@@ -740,6 +783,7 @@ Options.Triggers.push({
       outputStrings: {
         chasingPuddle: {
           en: 'Chasing puddle on you',
+          fr: 'Flaque chassante sur VOUS',
           cn: '追踪地火点名',
           ko: '추적 장판 대상자',
         },
