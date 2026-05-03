@@ -445,62 +445,19 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-        let trimmedOrbs = orbs.slice(firstTankOrb, firstTankOrb + 8);
-
-        const orb1Light = trimmedOrbs.findIndex((orb) => orb.color === 'light');
-        const orb1Dark = trimmedOrbs.findIndex((orb) => orb.color === 'dark');
-
-        trimmedOrbs = trimmedOrbs.filter((_orb, index) =>
-          index !== orb1Light && index !== orb1Dark
-        );
-
-        const orb2Light = trimmedOrbs.findIndex((orb) => orb.color === 'light');
-        const orb2Dark = trimmedOrbs.findIndex((orb) => orb.color === 'dark');
-
-        trimmedOrbs = trimmedOrbs.filter((_orb, index) =>
-          index !== orb2Light && index !== orb2Dark
-        );
-
-        const orb3Light = trimmedOrbs.findIndex((orb) => orb.color === 'light');
-        const orb3Dark = trimmedOrbs.findIndex((orb) => orb.color === 'dark');
-
-        trimmedOrbs = trimmedOrbs.filter((_orb, index) =>
-          index !== orb3Light && index !== orb3Dark
-        );
-
-        const orb4Light = trimmedOrbs.findIndex((orb) => orb.color === 'light');
-        const orb4Dark = trimmedOrbs.findIndex((orb) => orb.color === 'dark');
-
-        switch (strategy) {
-          case '1':
-            return output.orbSoaks!({
-              dir1: output[Directions.output8Dir[(firstTankOrb + orb1Light) % 8] ?? 'unknown']!(),
-              dir2: output[Directions.output8Dir[(firstTankOrb + orb1Dark) % 8] ?? 'unknown']!(),
-            });
-          case '2':
-            return output.orbSoaks!({
-              dir1:
-                output[Directions.output8Dir[(firstTankOrb + orb2Light + 2) % 8] ?? 'unknown']!(),
-              dir2:
-                output[Directions.output8Dir[(firstTankOrb + orb2Dark + 2) % 8] ?? 'unknown']!(),
-            });
-          case '3':
-            return output.orbSoaks!({
-              dir1:
-                output[Directions.output8Dir[(firstTankOrb + orb3Light + 4) % 8] ?? 'unknown']!(),
-              dir2:
-                output[Directions.output8Dir[(firstTankOrb + orb3Dark + 4) % 8] ?? 'unknown']!(),
-            });
-          case '4':
-            return output.orbSoaks!({
-              dir1:
-                output[Directions.output8Dir[(firstTankOrb + orb4Light + 6) % 8] ?? 'unknown']!(),
-              dir2:
-                output[Directions.output8Dir[(firstTankOrb + orb4Dark + 6) % 8] ?? 'unknown']!(),
-            });
-          default:
-            return output.unknown!();
+        const indexes = { light: 0, dark: 0 };
+        const dirs = { light: -1, dark: -1 };
+        for (let dir = firstTankOrb; dir < firstTankOrb + 8; dir++) {
+          const { color } = orbs[dir]!;
+          indexes[color]++;
+          if (indexes[color].toString() === strategy) {
+            dirs[color] = dir % 8;
+          }
         }
+        return output.orbSoaks!({
+          dir1: output[Directions.output8Dir[dirs.light] ?? 'unknown']!(),
+          dir2: output[Directions.output8Dir[dirs.dark] ?? 'unknown']!(),
+        });
       },
       outputStrings: {
         ...Directions.outputStrings16Dir,
