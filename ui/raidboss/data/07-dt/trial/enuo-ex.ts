@@ -112,7 +112,6 @@ const triggerSet: TriggerSet<Data> = {
              <数字>: 播报指定搭档编号的位置。例如:
              若遵循 "修改版" 攻略 (kgH6GJydOCbUs1L_), H1应选择 "3" 因为是从南开始顺时针第一顺位, MT应选择 "4" 因为是从北开始逆时针第一顺位。
              若遵循 "初始版" 攻略 (z6hesq84t7ewujw9), H1应选择 "2" 因为是从北开始顺时针第二顺位, MT应选择 "1" 因为是从北开始顺时针第一顺位。`,
-
       },
       type: 'select',
       options: {
