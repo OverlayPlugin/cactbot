@@ -1,0 +1,228 @@
+### THE UNMAKING
+# ZoneId: 1361
+
+# -ii C30A C310 C312 C31E C31F C320 C323 C32D C5EB
+# -ic "Golbez"
+# -it "Enuo" "Uncast Shadow" "Beacon in the Dark"
+# -p C327:500
+
+# "Shrouded Holy" entry corresponds to the actual damage casts, which can be cancelled if the target dies
+# As such, the enemy castbar is included before as a sync
+
+# "Naught Hunts" and "Naught Hunts Another" can be cancelled early if both targets die, so
+# after every instance of the mechanic, the next timeline entry has an early sync with a window covering
+# the "Naught Hunts" mechanic
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+9.4 "--sync--" StartsUsing { id: "C333", source: "Enuo" } window 9.4,5
+14.4 "Meteorain" Ability { id: "C333", source: "Enuo" }
+
+16.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+24.8 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+25.8 "Naught Grows (AoE)" #Ability { id: "C30D", source: "Yawning Void" }
+31.8 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
+
+36.9 "--middle--" Ability { id: "C307", source: "Enuo" }
+45.2 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+46.2 "Naught Grows (AoE)" #Ability { id: "C30D", source: "Yawning Void" }
+60.3 "Gaze of the Void x10" duration 3.6 #Ability { id: "C321", source: "Enuo" }
+74.5 "Deep Freeze" Ability { id: "C32E", source: "Enuo" }
+
+78.6 "--middle--" Ability { id: "C307", source: "Enuo" }
+86.9 "Naught Hunts" Ability { id: "C313", source: "Enuo" }
+88.0 "Endless Chase (active)" duration 7.8 #Ability { id: "BD5A", source: "Void" }
+96.2 "Naught Hunts Another" Ability { id: "C315", source: "Enuo" }
+96.3 "Endless Chase (active)" duration 8.4
+
+# This "Shrouded Holy" cast has a large window to cover the Naught Hunts potential skip
+106.2 "--sync--" StartsUsing { id: "C32F", source: "Enuo" } window 20,2.5
+111.2 "Shrouded Holy" Ability { id: "C330", source: "Enuo" }
+120.3 "Meltdown (puddle baits)" Ability { id: "C32A", source: "Enuo" }
+126.3 "Meltdown (puddles)" Ability { id: "C32B", source: "Enuo" }
+127.3 "Meltdown (spreads)" #Ability { id: "C32C", source: "Enuo" }
+132.3 "Vacuum" Ability { id: "C316", source: "Enuo" }
+138.0 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
+138.6 "Silent Torrent x7 (puddles)" Ability { id: "C31B", source: "Enuo" }
+140.6 "Vacuum" Ability { id: "C31D", source: "Void" }
+148.6 "Meteorain" Ability { id: "C333", source: "Enuo" }
+150.7 "--north--" Ability { id: "C307", source: "Enuo" }
+158.1 "All for Naught" Ability { id: "C322", source: "Enuo" }
+158.2 "--untargetable--"
+
+# Add Phase
+179.2 "Empty Shadow" #Ability { id: "C324", source: "Uncast Shadow" }
+179.2 "Looming Emptiness" Ability { id: "C33D", source: "Looming Shadow" }
+180.2 "--adds targetable--"
+185.2 label "adds-loop"
+185.2 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+188.2 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+191.2 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+194.2 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+197.2 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+200.2 "Nothingness" Ability { id: "C326", source: "Uncast Shadow" } window 1,1 forcejump "adds-loop"
+
+# Add line attacks pause momentarily for the beacon to spawn
+
+# MapEffect for the white ring pulse animation
+299.6 "--beacon targetable--" MapEffect { flags: "00020001", location: "0[^09]" } window 200,0
+306.0 label "beacon-loop"
+306.0 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+309.1 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+312.0 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+315.0 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+318.0 "Nothingness" #Ability { id: "C326", source: "Uncast Shadow" }
+321.0 "Nothingness" Ability { id: "C326", source: "Uncast Shadow" } window 1,1 forcejump "beacon-loop"
+
+# Phase 2
+# Sync based on MapEffect for the cracking animation of the portal breaking
+441.2 "--sync--" MapEffect { flags: "02000100", location: "0[^09]" } window 400,0
+# Backup sync to match phase change for FFLogs report testing
+494.6 "--sync--" StartsUsing { id: "C327", source: "Enuo" } window 400,0
+499.6 "Lightless World (castbar)" Ability { id: "C327", source: "Enuo" }
+500.6 "Lightless World x5" duration 1.8 #Ability { id: "C328", source: "Enuo" }
+503.0 "Lightless World (big)" Ability { id: "C329", source: "Enuo" }
+505.4 "--targetable--"
+
+509.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+517.9 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+518.9 "Naught Grows (AoE)" #Ability { id: "C30E", source: "Enuo" }
+526.0 "Almagest" Ability { id: "C308", source: "Enuo" }
+
+532.1 "--middle--" Ability { id: "C307", source: "Enuo" }
+540.3 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+541.3 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+545.3 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
+553.7 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+554.7 "Naught Grows x2 (AoE)" #Ability { id: "C30D", source: "Yawning Void" }
+561.7 "Dimension Zero (castbar)" Ability { id: "C331", source: "Enuo" }
+562.0 "Dimension Zero x3" duration 2.6 #Ability { id: "C332", source: "Enuo" }
+575.3 "Almagest" Ability { id: "C308", source: "Enuo" }
+
+575.3 label "p2-loop"
+
+578.7 "--middle--" Ability { id: "C307", source: "Enuo" }
+586.7 "Naught Hunts" Ability { id: "C313", source: "Enuo" }
+587.8 "Endless Chase (active)" duration 7.8 #Ability { id: "BD5A", source: "Void" }
+596.0 "Naught Hunts Another" Ability { id: "C315", source: "Enuo" }
+596.1 "Endless Chase (active)" duration 8.4 #Ability { id: "C314", source: "Void" }
+# Big window to cover Naught Hunts potential timeline skip
+603.5 "--sync--" StartsUsing { id: ["C30B", "C30C"], source: "Enuo" } window 20,2.5
+609.5 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+610.5 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+617.5 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
+
+621.5 "Vacuum" Ability { id: "C316", source: "Enuo" }
+623.6 "--middle--" Ability { id: "C307", source: "Enuo" }
+627.0 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
+627.6 "Silent Torrent x7 (puddles)" Ability { id: "C31B", source: "Enuo" }
+629.6 "Vacuum" Ability { id: "C31D", source: "Void" }
+633.6 "Gaze of the Void x10" duration 3.6 #Ability { id: "C321", source: "Enuo" }
+
+641.7 "--middle--" Ability { id: "C307", source: "Enuo" }
+647.7 "Meltdown (puddle baits)" Ability { id: "C32A", source: "Enuo" }
+653.7 "Meltdown (puddles)" Ability { id: "C32B", source: "Enuo" }
+654.7 "Meltdown (spreads)" Ability { id: "C32C", source: "Enuo" }
+658.1 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+659.1 "Naught Grows x2 (AoE)" #Ability { id: "C30D", source: "Yawning Void" }
+666.1 "Meteorain" Ability { id: "C333", source: "Enuo" }
+
+674.2 "Vacuum" Ability { id: "C316", source: "Enuo" }
+679.9 "Silent Torrent x7 (lines)" Ability { id: "C319", source: "Void" }
+680.3 "Meltdown (puddle baits)" Ability { id: "C32A", source: "Enuo" }
+680.3 "Silent Torrent (puddles)" Ability { id: "C31B", source: "Enuo" }
+682.3 "Vacuum" Ability { id: "C31D", source: "Void" }
+686.3 "Meltdown (puddles)" Ability { id: "C32B", source: "Enuo" }
+687.3 "Meltdown (spreads)" Ability { id: "C32C", source: "Enuo" }
+
+691.4 "Gaze of the Void x10" duration 3.6 #Ability { id: "C321", source: "Enuo" }
+702.6 "Deep Freeze" Ability { id: "C32E", source: "Enuo" }
+708.7 "Dimension Zero (castbar)" Ability { id: "C331", source: "Enuo" }
+709.1 "Dimension Zero x3" duration 2.6 #Ability { id: "C332", source: "Enuo" }
+723.3 "Almagest" Ability { id: "C308", source: "Enuo" }
+
+731.4 "Vacuum" Ability { id: "C316", source: "Enuo" }
+734.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+736.9 "Silent Torrent x7 (lines)" Ability { id: "C319", source: "Void" }
+737.3 "Silent Torrent (puddles)" Ability { id: "C31C", source: "Enuo" }
+739.3 "Vacuum" #Ability { id: "C31D", source: "Void" }
+742.4 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+743.4 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+750.4 "Naught Wakes" Ability { id: "C309", source: "Enuo" }
+
+754.4 "Vacuum" Ability { id: "C316", source: "Enuo" }
+757.5 "--middle--" Ability { id: "C307", source: "Enuo" }
+759.9 "Silent Torrent x7 (lines)" Ability { id: "C318", source: "Void" }
+760.3 "Silent Torrent (puddles)" Ability { id: "C31B", source: "Enuo" }
+762.3 "Vacuum" Ability { id: "C31D", source: "Void" }
+765.4 "Naught Grows (Tether)" Ability { id: ["C30B", "C30C"], source: "Enuo" }
+766.4 "Naught Grows x2 (AoE)" #Ability { id: "C30E", source: "Enuo" }
+773.4 "Meteorain" Ability { id: "C333", source: "Enuo" }
+784.5 "Almagest" Ability { id: "C308", source: "Enuo" } forcejump "p2-loop"
+
+
+# IGNORED ABILITIES
+# C30A --sync--: Void teleports/jumps
+# C310 --sync--: Enuo Autoattack
+# C312 --sync--: Add teleport on death
+# C31E Gaze of the Void: Cast bar
+# C31F Gaze of the Void: CW rotation
+# C320 Gaze of the Void: CCW rotation
+# C323 Looming Emptiness: VFX
+# C32D Deep Freeze: Tank Flare castbar
+# C5EB Empty Shadow: VFX?
+
+# ALL ENCOUNTER ABILITIES
+# BD5A Endless Chase: Initial cast/telegraphed puddle?
+# C307 --sync--: Enuo teleport/jump
+# C308 Almagest: Raidwide
+# C309 Naught Wakes: Enuo castbar to indicate void teleport/jump
+# C30A --sync--: Void teleports/jumps
+# C30B Naught Grows: Tether animation to indicate what's exploding
+# C30C Naught Grows: Tether animation to indicate what's exploding
+# C30D Naught Grows: point blank aoe
+# C30E Naught Grows: point blank aoe
+# C310 --sync--: Enuo Autoattack
+# C312 --sync--: Add teleport on death
+# C313 Naught Hunts: Cast bar for chasing puddle, initial aoe marker
+# C314 Endless Chase: Chasing puddle
+# C315 Naught Hunts Another: Cast bar to change chasing puddle target
+# C316 Vacuum: VFX for silent torrent lines prep
+# C317 Silent Torrent: Short line?
+# C318 Silent Torrent: Medium line?
+# C319 Silent Torrent: Long line?
+# C31A Silent Torrent: Small/close puddle?
+# C31B Silent Torrent: Medium puddle?
+# C31C Silent Torrent: Big/far puddle?
+# C31D Vacuum: VFX for silent torrent lines end
+# C31E Gaze of the Void: Cast bar
+# C31F Gaze of the Void: CW rotation
+# C320 Gaze of the Void: CCW rotation
+# C321 Gaze of the Void: Cone
+# C322 All for Naught: Transition cast
+# C323 Looming Emptiness: Proximity marker VFX
+# C324 Empty Shadow: Damage?
+# C325 --sync--
+# C326 Nothingness: Add line attack
+# C327 Lightless World: castbar
+# C328 Lightless World: small hits
+# C329 Lightless World: big hit
+# C32A Meltdown: Castbar/puddle bait
+# C32B Meltdown: Puddle explosions
+# C32C Meltdown: Spreads
+# C32D Deep Freeze: Tank flare castbar
+# C32E Deep Freeze: Tank flare actual damage snapshot
+# C32F Shrouded Holy: Party stack castbar
+# C330 Shrouded Holy: Party stack actual damage snapshot
+# C331 Dimension Zero: cast bar
+# C332 Dimension Zero: line stack, 3 hits
+# C333 Meteorain: Raidwide
+# C33D Looming Emptiness: Proximity marker snapshot/damage
+# C5EB Empty Shadow: VFX?
+# C657 --sync--: Golbez Autoattack?
+# C658 Warlock's Tide: NPC attack
+# C66C Spell Flame: NPC attack
