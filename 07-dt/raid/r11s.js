@@ -61,11 +61,13 @@ Options.Triggers.push({
       id: 'majesticMeteowrathTetherDir',
       name: {
         en: 'Majestic Meteowrath Tether Direction',
+        de: 'Herrscher-Meteo des Zorns Verbindungsrichtungen',
         cn: '王者陨石震拉线方向',
         ko: '분노의 챔피언 메테오 선 처리 방향',
       },
       comment: {
         en: 'Direction to stretch tethers during Majestic Meteowrath.',
+        de: 'Richtungen um Verbindungen langzuziehen für Herrscher-Meteo des Zorns.',
         cn: '王者陨石震期间的拉线方向。',
         ko: '분노의 챔피언 메테오 선 처리 방향을 설정합니다.',
       },
@@ -74,6 +76,10 @@ Options.Triggers.push({
         en: {
           'Clockwise': 'cw',
           'Counter Clockwise': 'ccw',
+        },
+        de: {
+          'Im Uhrzeigersinn': 'cw',
+          'Gegen den Uhrzeigersinn': 'ccw',
         },
         cn: {
           '顺时针': 'cw',
@@ -90,11 +96,13 @@ Options.Triggers.push({
       id: 'twoWayFireballBaitDir',
       name: {
         en: 'Two-Way Fireball Bait Direction',
+        de: 'Zweifaches Drehfeuer Köder Richtungen',
         cn: '双向回旋火诱导方向',
         ko: '두 갈래 회전화염 유도 위치',
       },
       comment: {
         en: 'Direction to bait the two-way fireball.',
+        de: 'Richtungen um Zweifaches Drehfeuer zu ködern.',
         cn: '诱导双向回旋火的方向',
         ko: '두 갈래 회전화염 유도 방향을 설정합니다.',
       },
@@ -103,6 +111,10 @@ Options.Triggers.push({
         en: {
           'East/West': 'ew',
           'North/South': 'ns',
+        },
+        de: {
+          'Ost/West': 'ew',
+          'Nord/Süd': 'ns',
         },
         cn: {
           '东/西': 'ew',
@@ -1523,15 +1535,14 @@ Options.Triggers.push({
         'The Tyrant': '(?:der|die|das) Tyrann',
       },
       'replaceText': {
-        '\\(Axe\\)': '(Axt)',
-        '\\(Scythe\\)': '(Sense)',
-        '\\(Scythe/Axe\\)': '(Sense/Axt)',
+        'Axe': 'Axt',
+        'Scythe': 'Sense',
         '\\(castbar\\)': '(wirken)',
         '\\(split\\)': '(teilen)',
         '--Fire Breath Markers--': '--Feueratem Markierungen--',
         '--Meteor Markers': '--Meteor Markierungen',
         '--Meteor(?! Markers)': '--Meteor',
-        '--jump ': '--Sprung',
+        '--jump': '--Sprung',
         'scythe--': 'Sense--',
         '--tethers--': '--Verbindungen--',
         'Arcadion Avalanche': 'Arkadionbruch',
@@ -1570,7 +1581,7 @@ Options.Triggers.push({
         'One and Only': 'Alles für einen',
         'Orbital Omen': 'Orbitalachse',
         'Powerful Gust': 'Starke Bö',
-        'Raw Steel(?! )': 'Waffenspalter',
+        'Raw Steel(?! Trophy)': 'Waffenspalter',
         'Raw Steel Trophy': 'Spaltende Waffenkunst',
         'Shockwave': 'Schockwelle',
         'Triple Tyrannhilation': 'Drillingsstern-Tyrannensturz',
