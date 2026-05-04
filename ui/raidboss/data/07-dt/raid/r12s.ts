@@ -6466,10 +6466,10 @@ const triggerSet: TriggerSet<Data> = {
           ko: ' 북/남 분신 (광역징 선) => ${meteorAoe}',
         },
         heavySlamTetherDir: {
-          en: '${dodgeCleaves} (${dir} Stack Tether)  => ${meteorAoe}',
-          de: '${dodgeCleaves} (${dir} Sammel-Verbindung)  => ${meteorAoe}',
+          en: '${dodgeCleaves} (${dir} Stack Tether) => ${meteorAoe}',
+          de: '${dodgeCleaves} (${dir} Sammel-Verbindung) => ${meteorAoe}',
           cn: '${dodgeCleaves} (${dir}分摊线) => ${meteorAoe}',
-          ko: '${dodgeCleaves} (${dir} 쉐어징 선)  => ${meteorAoe}',
+          ko: '${dodgeCleaves} (${dir} 쉐어징 선) => ${meteorAoe}',
         },
         heavySlamTether: {
           en: ' N/S Clone (Stack Tether) => ${meteorAoe}',
