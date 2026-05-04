@@ -7621,7 +7621,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         frontBackEastPlatform: {
           en: 'East Platform => N/S of Clone',
-          de: 'Ost Platform =>N/S des Klones',
+          de: 'Ost Platform => N/S des Klones',
           cn: '右平台 + 分身上/下',
           ko: '동쪽 플랫폼 => 분신 남/북',
         },
