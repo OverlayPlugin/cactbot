@@ -6454,10 +6454,10 @@ const triggerSet: TriggerSet<Data> = {
           ko: '${dir} + ${sides}',
         },
         manaBurstTetherDir: {
-          en: '${dodgeCleaves} (${dir} Defamation Tether)  => ${meteorAoe}',
-          de: '${dodgeCleaves} (${dir} Ehrenstrafe-Verbindung)  => ${meteorAoe}',
+          en: '${dodgeCleaves} (${dir} Defamation Tether) => ${meteorAoe}',
+          de: '${dodgeCleaves} (${dir} Ehrenstrafe-Verbindung) => ${meteorAoe}',
           cn: '${dodgeCleaves} (${dir}大圈线) => ${meteorAoe}',
-          ko: '${dodgeCleaves} (${dir} 광역징 선)  => ${meteorAoe}',
+          ko: '${dodgeCleaves} (${dir} 광역징 선) => ${meteorAoe}',
         },
         manaBurstTether: {
           en: ' N/S Clone (Defamation Tether) => ${meteorAoe}',
