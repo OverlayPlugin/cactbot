@@ -102,6 +102,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Ice: Stack + don\'t move',
           de: 'Eis: Sammeln + nicht bewegen',
           cn: '冰: 集合 + 不要动',
+          ko: '얼음: 모이기 + 이동 멈추기',
         },
       },
     },
@@ -817,7 +818,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Hakkinryu': '백금룡',
         'Left Wing': '왼쪽 날개',
