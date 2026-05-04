@@ -119,15 +119,19 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         awayFrom: {
           en: 'Away from ${dir}',
+          cn: '远离 ${dir}',
         },
         awayFromAndOut: {
           en: 'Away from ${dir} + Out',
+          cn: '远离 ${dir} + 出去',
         },
         goDirections: {
           en: 'Go ${dir1}/${dir2} + Max Melee',
+          cn: '前往 ${dir1}/${dir2} + 最大近战距离',
         },
         goDir: {
           en: 'Go ${dir} + Max Melee',
+          cn: '前往 ${dir} + 最大近战距离',
         },
       },
     },
@@ -173,6 +177,7 @@ const triggerSet: TriggerSet<Data> = {
         CCW: Outputs.counterclockwise,
         text: {
           en: '${dir1} ${rotation} => ${dir2}',
+          cn: '${dir1} ${rotation} => ${dir2}',
         },
       },
     },
@@ -198,9 +203,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tankFlareOnYou: {
           en: 'Tank Flare on YOU',
+          cn: '坦克核爆点名',
         },
         awayFromFlares: {
           en: 'Away from tank flares',
+          cn: '远离坦克核爆',
         },
       },
     },
@@ -236,6 +243,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         chasingPuddle: {
           en: 'Chasing puddle on you',
+          cn: '追踪地火点名',
         },
       },
     },
@@ -250,6 +258,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         chasingPuddle: {
           en: 'Chasing puddle on you',
+          cn: '追踪地火点名',
         },
       },
     },
@@ -261,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait puddles => spread',
+          cn: '诱导黄圈 => 分散',
         },
       },
     },
@@ -289,6 +299,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         away: {
           en: 'Away from proximity marker',
+          cn: '远离距离衰减标记',
         },
       },
     },
@@ -301,6 +312,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill adds',
+          cn: '击杀小怪',
         },
       },
     },
@@ -313,7 +325,50 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill light beacon',
+          cn: '击杀光之征兆',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Enuo': '恩欧',
+        'Looming Shadow': '虚无巨影',
+        'Uncast Shadow': '虚无之影',
+        '(?<! )Void': '无之漩涡',
+        'Yawning Void': '无之巨漩涡',
+      },
+      'replaceText': {
+        '--beacon targetable--': '--光之征兆可选中--',
+        '\\(active\\)': '(激活)',
+        '\\(big\\)': '(大)',
+        '\\(castbar\\)': '(咏唱栏)',
+        '\\(lines\\)': '(直线)',
+        '\\(puddles\\)': '(黄圈)',
+        '\\(puddle baits\\)': '(诱导黄圈)',
+        '\\(spreads\\)': '(分散)',
+        '\\(Tether\\)': '(连线)',
+        'All for Naught': '无之领域',
+        'Almagest': '至高无上',
+        'Deep Freeze': '深度冻结',
+        'Dimension Zero': '零次元',
+        'Empty Shadow': '虚无冲击',
+        'Endless Chase': '追尾波动',
+        'Gaze of the Void': '混沌激流',
+        'Lightless World': '无光的世界',
+        'Looming Emptiness': '虚无大冲击',
+        'Meltdown': '核心熔毁',
+        'Meteorain': '流星雨',
+        'Naught Grows': '无之膨胀',
+        'Naught Hunts(?! )': '无之追踪',
+        'Naught Hunts Another': '无之再追踪',
+        'Naught Wakes': '无之活性',
+        'Nothingness': '无之波动',
+        'Shrouded Holy': '暗影神圣',
+        'Silent Torrent': '奔流',
+        'Vacuum': '无之漩涡',
       },
     },
   ],
