@@ -5,6 +5,7 @@ Options.Triggers.push({
     en: 'pre-7.4 rework',
     de: 'Vor der 7.4 Überarbeitung',
     cn: '7.4改版前',
+    ko: '7.4 개편 전',
   },
   triggers: [
     {
