@@ -334,7 +334,7 @@ hideall "--sync--"
 
 # The Stellar Fulcrum will be sealed off
 30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1488" } window 30000,1
-30006.2 "--sync--" StartsUsing { id: "ACBD", source: "Kam'lanaut" } window 30006.2,1
+30006.0 "--sync--" StartsUsing { id: "ACBD", source: "Kam'lanaut" } window 30006,1
 30011.1 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
 30014.3 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
 30019.5 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
@@ -519,13 +519,13 @@ hideall "--sync--"
 
 # Phase 1
 40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "148A" } window 40000,1
-40006.4 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 40006.4,1
+40006.2 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 40006.2,1
 40010.1 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
 40011.1 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
 40023.2 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
 40023.6 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
-40029.5 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
-40039.8 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
+40029.4 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40039.7 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
 40045.6 "--sync--" Ability { id: "AD70", source: "Eald'narche" }
 40056.9 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
 40057.3 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
@@ -535,13 +535,13 @@ hideall "--sync--"
 40077.0 "Sleepga" Ability { id: "AD58", source: "Eald'narche" }
 40079.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
 40084.4 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 11.1
-40090.7 "--sync--" StartsUsing { id: "AD5C", source: "Eald'narche" } window 5,5
-40094.4 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
-40095.5 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
-40099.9 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
-40105.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 26.2
+40090.6 "--sync--" StartsUsing { id: "AD5C", source: "Eald'narche" } window 5,5
+40094.5 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40095.6 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40100.0 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40105.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 11.1
 40116.7 "--sync--" Ability { id: "AD78", source: "Eald'narche" }
-40120.7 "--sync--" Ability { id: "AD77", source: "Eald'narche" }
+40120.7 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 11.1
 40131.8 "--sync--" Ability { id: "AD78", source: "Eald'narche" }
 40140.8 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
 40150.1 "Excelsior" Ability { id: "B040", source: "Eald'narche" }
@@ -554,61 +554,61 @@ hideall "--sync--"
 # Phase 2 Begins
 40189.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
 40198.7 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
-40207.7 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
-40207.7 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
-40208.7 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
-40215.4 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
-40224.0 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40207.8 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
+40207.8 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
+40208.8 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
+40215.5 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
+40224.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
 # TODO: There are many variations of Ancient Triad which are not really
 # worth creating branching timelines for. Just use a duration to indicate
 # that mechanics are ongoing. Note that this duration likely isn't accurate
 # for every variation, however the mechanics should mostly be done resolving
 # by this time.
-40232.3 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
-40248.0 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
-40263.1 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 15,5
-40266.8 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
-40267.8 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
-40273.9 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
-40283.0 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40232.4 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
+40248.1 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
+40263.2 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 15,5
+40266.9 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
+40267.9 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
+40274.0 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40283.1 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
 
 # Phase 2 Loop
-40292.0 label "ealdnarche-phase-2-loop"
-40292.0 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
-40293.1 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
-40295.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
-40297.5 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
-40300.5 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
-40313.5 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
-40313.9 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
-40319.6 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
-40327.5 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
-40327.5 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
-40328.5 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
-40335.2 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
-40342.9 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
-40351.0 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
-40359.7 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
-40368.9 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
-40373.0 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
-40377.0 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
-40382.8 "--sync--" Ability { id: "AD70", source: "Eald'narche" }
-40386.6 "Warp" Ability { id: "AD56", source: "Eald'narche" }
-40387.3 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
-40393.2 "Sleepga" Ability { id: "AD58", source: "Eald'narche" }
-40395.3 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
-40401.6 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
-40402.7 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
-40407.1 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
-40411.7 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
-40412.1 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
-40417.9 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
-40429.2 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
-40430.2 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
-40444.3 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
-40453.4 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
-40457.5 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
-40462.5 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" } forcejump "ealdnarche-phase-2-loop"
+40292.2 label "ealdnarche-phase-2-loop"
+40292.2 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40293.3 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40295.3 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40297.7 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40300.6 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
+40313.7 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40314.1 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40319.8 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40327.7 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
+40327.7 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
+40328.7 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
+40335.4 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
+40343.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40351.2 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
+40359.9 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40369.1 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40373.2 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
+40377.2 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
+40383.1 "--sync--" Ability { id: "AD70", source: "Eald'narche" }
+40386.9 "Warp" Ability { id: "AD56", source: "Eald'narche" }
+40387.6 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40393.5 "Sleepga" Ability { id: "AD58", source: "Eald'narche" }
+40395.6 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40401.9 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40403.0 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40407.4 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40412.0 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40412.4 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40418.2 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40429.5 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
+40430.5 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
+40444.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40453.7 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40457.8 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
+40462.8 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" } forcejump "ealdnarche-phase-2-loop"
 
 # IGNORED ABILITIES
 # AD47 --sync--
