@@ -200,8 +200,6 @@ hideall "--sync--"
 20066.9 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20067.9 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
 20069.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20069.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20071.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20071.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20075.0 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
 20076.0 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
@@ -212,8 +210,9 @@ hideall "--sync--"
 20096.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
 20097.1 "Energy Ray" #Ability { id: "AD0D", source: "Ultima, the Feared" }
 20102.0 "Trajectory Projection" Ability { id: "AD23", source: "Omega, the One" }
-20112.7 "Guided Missile" #Ability { id: "AD24", source: "Omega, the One" }
-20112.7 "Guided Missile" #Ability { id: "AD24", source: "Omega, the One" }
+20112.7 "Guided Missile" Ability { id: "AD24", source: "Omega, the One" }
+20118.2 "--untargetable--" Ability { id: "AD12", source: "Ultima, the Feared" }
+20118.3 "--jump--" Ability { id: "AD2C", source: "Omega, the One" }
 
 # Jump from the airship before it's reduced to ash!
 20118.3 "Tractor Field" Ability { id: "AD12", source: "Ultima, the Feared" }
@@ -239,8 +238,11 @@ hideall "--sync--"
 20138.2 "Multi-missile" #Ability { id: "AFEC", source: "Omega, the One" }
 20138.2 "Multi-missile" #Ability { id: "AFEC", source: "Omega, the One" }
 20140.6 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
+20145.8 "--ultima targetable--"
 20152.7 "Citadel Buster" Ability { id: "AD1B", source: "Ultima, the Feared" }
 20158.6 "Hyper Pulse" Ability { id: "AD2F", source: "Omega, the One" }
+20160.8 "--omega targetable--"
+20171.2 "--jump--" Ability { id: "AD2C", source: "Omega, the One" }
 
 # Phase 2
 20175.8 label "ultima-omega-p2-loop"
@@ -256,7 +258,6 @@ hideall "--sync--"
 20201.4 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
 20201.6 "Energy Ray" Ability { id: "AD0B", source: "Ultima, the Feared" }
 20206.4 "Anti-personnel Missile" Ability { id: "B088", source: "Omega, the One" }
-20214.9 "Chemical Bomb" Ability { id: "AD0E", source: "Ultima, the Feared" }
 20215.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
 20218.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
 20221.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
@@ -265,8 +266,6 @@ hideall "--sync--"
 20234.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20236.2 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
 20236.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20236.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20238.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20238.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20244.0 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
 20244.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
