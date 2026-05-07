@@ -334,141 +334,125 @@ hideall "--sync--"
 
 # The Stellar Fulcrum will be sealed off
 30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1488" } window 30000,1
-30006.4 "--sync--" StartsUsing { id: "ACBD", source: "Kam'lanaut" } window 30006.4,1
+30006.2 "--sync--" StartsUsing { id: "ACBD", source: "Kam'lanaut" } window 30006.2,1
 30011.1 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
 30014.3 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
-30019.4 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
-# TODO: Add sync for elemental buffs?
-30032.5 "Elemental Blade" Ability { id: "AC91", source: "Kam'lanaut" }
-30043.6 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
-# TODO: condense sublime elements, based on which of these is "real"
-# TODO: verify if the two variants of Sublime Elements can appear in
-# different order
-30044.6 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
-30044.6 "Sublime Fire" #Ability { id: "AC93", source: "Kam'lanaut" }
-30044.6 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
-30044.6 "Sublime Lightning" #Ability { id: "AC97", source: "Kam'lanaut" }
-30044.6 "Sublime Water" #Ability { id: "AC9B", source: "Kam'lanaut" }
-30044.6 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
-30054.7 "Elemental Blade" Ability { id: "AC91", source: "Kam'lanaut" }
-30065.8 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
-30066.8 "Earth Blade" #Ability { id: "ACA0", source: "Kam'lanaut" }
-30066.8 "Fire Blade" #Ability { id: "AC9F", source: "Kam'lanaut" }
-30066.8 "Ice Blade" #Ability { id: "ACA8", source: "Kam'lanaut" }
-30066.8 "Lightning Blade" #Ability { id: "ACA9", source: "Kam'lanaut" }
-30066.8 "Water Blade" #Ability { id: "ACA1", source: "Kam'lanaut" }
-30066.8 "Wind Blade" #Ability { id: "ACA4", source: "Kam'lanaut" }
+30019.5 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30024.7 "Elemental Blade" StartsUsing { id: "AC91", source: "Kam'lanaut" } duration 7.7
+30026.6 "--first charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30030.1 "--second charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30032.6 "--sync--" Ability { id: "AC91", source: "Kam'lanaut" }
+30043.7 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30046.9 "Elemental Blade" StartsUsing { id: "AC91", source: "Kam'lanaut" } duration 7.7
+30048.8 "--first charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30052.3 "--second charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30054.8 "--sync--" Ability { id: "AC91", source: "Kam'lanaut" }
+30065.9 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
 # TODO: Check which ablity hurts?
-30076.1 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
-30077.1 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
-30082.2 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
-30088.2 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30088.2 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30091.3 "Great Wheel" Ability { id: ["ACAF", "ACB0"], source: "Kam'lanaut" }
-30097.2 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
-30104.4 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
-30111.5 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30076.2 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30077.2 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30082.3 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30088.3 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30088.3 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30091.4 "Great Wheel" Ability { id: ["ACAF", "ACB0"], source: "Kam'lanaut" }
+30097.3 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30104.5 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30111.6 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
 
 # Phase Transition
 # TODO: Add --untargettable--?? and maybe a duration?
-30124.8 "Esoteric Scrivening" Ability { id: "ACB2", source: "Kam'lanaut" }
-30129.9 "--sync--" Ability { id: "AD79", source: "Kam'lanaut" }
-30143.0 "--sync--" Ability { id: "AD7A", source: "Kam'lanaut" }
-30148.2 "Shockwave" Ability { id: "ACB3", source: "Kam'lanaut" }
-30148.2 "--sync--" Ability { id: "A2FF", source: "Kam'lanaut" }
-30156.8 "Transcendent Union" Ability { id: "ACB4", source: "Kam'lanaut" }
-30157.8 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30158.1 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30158.4 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30158.8 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30159.2 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30159.9 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
-30163.2 "Transcendent Union" Ability { id: "ACB5", source: "Kam'lanaut" }
-30174.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30124.9 "Esoteric Scrivening" Ability { id: "ACB2", source: "Kam'lanaut" }
+30130.0 "--sync--" Ability { id: "AD79", source: "Kam'lanaut" }
+30143.1 "--sync--" Ability { id: "AD7A", source: "Kam'lanaut" }
+30148.3 "Shockwave" Ability { id: "ACB3", source: "Kam'lanaut" }
+30148.3 "--sync--" Ability { id: "A2FF", source: "Kam'lanaut" }
+30156.9 "Transcendent Union" Ability { id: "ACB4", source: "Kam'lanaut" }
+30157.9 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.2 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.5 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.9 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30159.3 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30160.0 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30163.4 "Transcendent Union" Ability { id: "ACB5", source: "Kam'lanaut" }
+30174.2 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
 
 # Phase 2
-30179.2 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
-30185.3 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
-30193.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30200.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30207.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30207.4 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
-30207.4 "Empyreal Banish III" #Ability { id: "ACBF", source: "Kam'lanaut" }
-30218.4 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
-30225.7 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
+30179.4 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
+30185.5 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
+30193.4 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30200.4 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30207.4 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30207.6 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
+30207.6 "Empyreal Banish III" #Ability { id: "ACBF", source: "Kam'lanaut" }
+30218.5 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
+30225.8 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
 # TODO: check which of these matters
-30234.8 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
-30235.8 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
-30245.1 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
-30246.1 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
-30255.2 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
-30260.3 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
-30274.4 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
-30285.5 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
-30286.5 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
-30286.5 "Sublime Fire" #Ability { id: "AC99", source: "Kam'lanaut" }
-30286.5 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
-30286.5 "Sublime Lightning" #Ability { id: "AC9D", source: "Kam'lanaut" }
-30286.5 "Sublime Water" #Ability { id: "AC95", source: "Kam'lanaut" }
-30286.5 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
-30292.6 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
-30298.6 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30298.6 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30298.6 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
-30301.7 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
-30307.6 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
-30307.7 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
-30314.8 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
-30322.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30234.9 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
+30235.9 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30245.2 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30246.2 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30255.4 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30260.5 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30263.7 "Elemental Blade" StartsUsing { id: "AC92", source: "Kam'lanaut" } duration 10.7
+30265.6 "--first charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30269.1 "--second charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30272.6 "--third charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30274.7 "--sync--" Ability { id: "AC92", source: "Kam'lanaut" }
+30285.8 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30292.9 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30298.9 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30298.9 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30298.9 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30302.0 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
+30307.9 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30308.0 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30315.1 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30322.3 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
 
 # Phase 2 Loop Start
-30327.2 label "kamlanaut-loop"
-30327.2 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
-30333.3 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
-30341.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30348.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30355.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30358.4 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
-30364.4 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30364.4 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
-30364.4 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
-30371.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
-30372.8 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
-30382.9 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
-30383.7 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
-30392.1 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
-30393.1 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
-30398.2 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
-30412.3 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
-30423.4 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
-30424.4 "Earth Blade" #Ability { id: "ACA6", source: "Kam'lanaut" }
-30424.4 "Fire Blade" #Ability { id: "ACA5", source: "Kam'lanaut" }
-30424.4 "Ice Blade" #Ability { id: "ACA2", source: "Kam'lanaut" }
-30424.4 "Lightning Blade" #Ability { id: "ACA3", source: "Kam'lanaut" }
-30424.4 "Water Blade" #Ability { id: "ACA1", source: "Kam'lanaut" }
-30424.4 "Wind Blade" #Ability { id: "ACAA", source: "Kam'lanaut" }
-30431.5 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
-30441.8 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
-30442.8 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
-30452.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
-30457.1 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
-30471.2 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
-30482.3 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
-30483.3 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
-30483.3 "Sublime Fire" #Ability { id: "AC99", source: "Kam'lanaut" }
-30483.3 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
-30483.3 "Sublime Lightning" #Ability { id: "AC9D", source: "Kam'lanaut" }
-30483.3 "Sublime Water" #Ability { id: "AC95", source: "Kam'lanaut" }
-30483.3 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
-30489.4 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
-30495.4 "Sublime Estoc" Ability { id: "ACAC", source: "Sublime Estoc" }
-30495.4 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
-30498.5 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
-30504.4 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
-30504.5 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
-30511.6 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
-30518.8 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
-30524.0 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" } window 30,30 forcejump "kamlanaut-loop"
+30327.5 label "kamlanaut-loop"
+30327.5 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
+30333.6 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
+30341.5 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30348.5 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30355.5 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30358.7 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30364.7 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30364.7 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30364.7 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30371.5 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30373.1 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
+30383.2 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
+30384.0 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
+30392.4 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
+30393.4 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30398.5 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30401.7 "Elemental Blade" StartsUsing { id: "AC92", source: "Kam'lanaut" } duration 10.7
+30403.6 "--first charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30407.1 "--second charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30410.6 "--third charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30412.7 "--sync--" Ability { id: "AC92", source: "Kam'lanaut" }
+30423.8 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30431.9 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30442.2 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30443.2 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30452.4 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30457.5 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30460.9 "Elemental Blade" StartsUsing { id: "AC92", source: "Kam'lanaut" } duration 10.7
+30462.6 "--first charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30466.1 "--second charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30469.6 "--third charge--" GainsEffect { effectId: "B9A", target: "Kam'lanaut" }
+30471.6 "--sync--" Ability { id: "AC92", source: "Kam'lanaut" }
+30482.7 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30489.8 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30495.8 "Sublime Estoc" Ability { id: "ACAC", source: "Sublime Estoc" }
+30495.8 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30498.9 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
+30504.8 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30504.9 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30512.0 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30519.2 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30524.4 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" } window 30,30 forcejump "kamlanaut-loop"
 
 # IGNORED ABILITIES
 # AF4C --sync--
