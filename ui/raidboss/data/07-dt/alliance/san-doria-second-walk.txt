@@ -181,17 +181,17 @@ hideall "--sync--"
 
 # Armada Airship will be sealed off
 20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "14B2" } window 20000,1
-20005.5 "--sync--" StartsUsing { id: "AD2B", source: "Omega, the One" } window 20005.5,10
+20005.2 "--sync--" StartsUsing { id: "AD2B", source: "Omega, the One" } window 20005.2,10
 20011.7 "Ion Efflux" Ability { id: "AD2B", source: "Omega, the One" }
 20015.5 "--sync--" Ability { id: "AD10", source: "Ultima, the Feared" }
 20016.5 "Antimatter" Ability { id: "AD11", source: "Ultima, the Feared" }
 20020.6 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
 20028.8 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
 20031.8 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
-20032.4 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
-20034.0 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
-20034.8 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
-20048.4 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" }
+20032.3 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
+20033.9 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
+20034.7 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
+20048.3 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" }
 20048.6 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
 20048.8 "Crash" Ability { id: "AD07", source: "Ultima, the Feared" }
 20048.8 "Tractor Beam" #Ability { id: "B086", source: "Ultima, the Feared" }
@@ -201,28 +201,28 @@ hideall "--sync--"
 20067.9 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
 20069.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
 20071.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20075.0 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
-20076.0 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
-20080.0 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
-20080.0 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
-20083.0 "Mana Screen" Ability { id: "AD09", source: "Ultima, the Feared" }
-20088.1 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
-20096.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
-20097.1 "Energy Ray" #Ability { id: "AD0D", source: "Ultima, the Feared" }
-20102.0 "Trajectory Projection" Ability { id: "AD23", source: "Omega, the One" }
-20112.7 "Guided Missile" Ability { id: "AD24", source: "Omega, the One" }
-20118.2 "--untargetable--" Ability { id: "AD12", source: "Ultima, the Feared" }
-20118.3 "--jump--" Ability { id: "AD2C", source: "Omega, the One" }
+20075.2 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
+20076.2 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20080.2 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
+20080.2 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
+20083.3 "Mana Screen" Ability { id: "AD09", source: "Ultima, the Feared" }
+20088.4 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20096.6 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20097.4 "Energy Ray" #Ability { id: "AD0D", source: "Ultima, the Feared" }
+20102.1 "Trajectory Projection" Ability { id: "AD23", source: "Omega, the One" }
+20112.8 "Guided Missile" Ability { id: "AD24", source: "Omega, the One" }
+20118.3 "--untargetable--" Ability { id: "AD12", source: "Ultima, the Feared" }
+20118.4 "--jump--" Ability { id: "AD2C", source: "Omega, the One" }
 
 # Jump from the airship before it's reduced to ash!
-20118.3 "Tractor Field" Ability { id: "AD12", source: "Ultima, the Feared" }
-20118.7 "Tractor Field" Ability { id: "AD13", source: "Ultima, the Feared" }
-20123.6 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
-20123.6 "Citadel Siege" Ability { id: "AD14", source: "Ultima, the Feared" }
-20125.4 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
-20125.5 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
-20127.6 "Citadel Siege" Ability { id: "AD15", source: "Ultima, the Feared" }
-20127.7 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20118.4 "Tractor Field" Ability { id: "AD12", source: "Ultima, the Feared" }
+20118.8 "Tractor Field" Ability { id: "AD13", source: "Ultima, the Feared" }
+20123.7 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20123.7 "Citadel Siege" Ability { id: "AD14", source: "Ultima, the Feared" }
+20125.5 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
+20125.6 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
+20127.7 "Citadel Siege" Ability { id: "AD15", source: "Ultima, the Feared" }
+20127.8 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
 20128.6 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
 20129.6 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
 20129.7 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
@@ -262,21 +262,21 @@ hideall "--sync--"
 20218.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
 20221.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
 20224.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
-20233.2 "Surface Missile" Ability { id: "B075", source: "Omega, the One" }
-20234.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20236.2 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
-20236.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20238.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
-20244.0 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
-20244.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
-20244.4 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
-20246.1 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
-20246.9 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
-20262.9 "Ion Efflux" Ability { id: "AD2B", source: "Omega, the One" }
-20274.6 "Antimatter" Ability { id: "AD10", source: "Ultima, the Feared" }
-20275.6 "Antimatter" Ability { id: "AD11", source: "Ultima, the Feared" }
-20293.6 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" } window 30,30 forcejump "ultima-omega-p2-loop"
-20342.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+20233.1 "Surface Missile" Ability { id: "B075", source: "Omega, the One" }
+20234.1 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20236.3 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20236.3 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20238.3 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20244.1 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
+20244.5 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20244.6 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
+20246.3 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
+20247.1 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
+20263.1 "Ion Efflux" Ability { id: "AD2B", source: "Omega, the One" }
+20274.8 "Antimatter" Ability { id: "AD10", source: "Ultima, the Feared" }
+20275.8 "Antimatter" Ability { id: "AD11", source: "Ultima, the Feared" }
+20293.8 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" } window 30,30 forcejump "ultima-omega-p2-loop"
+20342.7 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
 
 # IGNORED ABILITIES
 # AD1D --sync--
