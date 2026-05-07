@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.37.0",
-  "releaseSummary": "m12sp2, more Necron EX, i18n",
-  "releaseInDraft": "false",
+  "version": "0.37.1",
+  "releaseSummary": "Enuo, Enuo EX, Shinryu Unreal, i18n",
+  "releaseInDraft": "true",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",

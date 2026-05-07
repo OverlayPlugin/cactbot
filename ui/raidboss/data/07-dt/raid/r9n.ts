@@ -529,7 +529,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Coffinmaker': 'fatal(?:e|er|es|en) Säge',
         'Fatal Flail': 'fatal(?:e|er|es|en) Stachelbombe',

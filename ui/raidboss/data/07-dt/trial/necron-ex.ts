@@ -740,7 +740,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'azur(?:e|er|es|en) Äther',
         'Beckoning Hands': 'lockend(?:e|er|es|en) Hand',
@@ -748,6 +747,16 @@ const triggerSet: TriggerSet<Data> = {
         'Necron': 'Ewig(?:e|er|es|en) Dunkel',
       },
       'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(damage\\)': '(Schaden)',
+        '\\(intercards\\)': '(Interkardinal)',
+        '\\(line\\)': '(Linie)',
+        '\\(lines\\)': '(Linien)',
+        '\\(puddle\\)': '(Fläche)',
+        '\\(puddles\\)': '(Flächen)',
+        '\\(spread\\)': '(verteilen)',
+        '\\(tower\\)': '(Turm)',
+        'Add Spawn': 'Add erscheint',
         'Aetherblight': 'Ätherische Verderbnis',
         'Blue Shockwave': 'Blaue Schockwelle',
         'Chilling Fingers': 'Klauen des Todes',
