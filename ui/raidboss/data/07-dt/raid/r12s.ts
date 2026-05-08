@@ -1515,7 +1515,7 @@ const triggerSet: TriggerSet<Data> = {
         innerBlobTower: {
           en: 'Blob Tower ${num} Inner ${dir} (later)',
           de: 'Blob Turm ${num} Innen ${dir} (später)',
-          cn: '踩场内${dir}玩家${num}塔 (稍后)',
+          cn: '踩场内${dir}场地${num}塔 (稍后)',
           ko: '살점 탑 ${num} 안쪽 ${dir} (나중에)',
         },
         outerBlobTower: {
