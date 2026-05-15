@@ -31,7 +31,7 @@ jobs:
   msbuild:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup-js-env
 
@@ -43,7 +43,7 @@ jobs:
 
       - name: Check dependencies cache
         id: cache-dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ./plugin/ThirdParty
           key: |
@@ -57,7 +57,7 @@ jobs:
           npm run fetch-deps
 
       - name: Set up msbuild
-        uses: microsoft/setup-msbuild@v1
+        uses: microsoft/setup-msbuild@v3
 
       - name: Add Custom Problem Matcher
         run: |
@@ -76,7 +76,7 @@ jobs:
         run: ./util/publish.sh
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cactbot-${{ env.artifact_sha }}
           path: publish/cactbot-release/
