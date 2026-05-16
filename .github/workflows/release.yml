@@ -143,6 +143,9 @@ jobs:
           echo "release_draft=$release_draft" >> $env:GITHUB_OUTPUT
 
       - name: Create Release
+        # Note: This action has a literal `@v1` tag and release which are no longer being updated.
+        # As such, we have to specify an exact version to avoid getting the outdated build.
+        # Should it ever release a v2 release with proper semantic version, update to use that.
         uses: ncipollo/release-action@v1.21.0
         with:
           name: ${{ steps.set_attributes.outputs.release_name }}
