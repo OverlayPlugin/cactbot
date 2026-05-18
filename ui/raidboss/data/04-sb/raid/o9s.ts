@@ -108,7 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.orbTethers!();
       },
       infoText: (data, _matches, output) => {
-        if (data.role === 'healer' || data.job === 'BLU')
+        if (data.role === 'healer' || data.party.isLimitedJob(data.me))
           return output.orbTethers!();
       },
       outputStrings: {
@@ -406,7 +406,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O9S Accretion',
       type: 'GainsEffect',
       netRegex: { effectId: '644', capture: false },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       suppressSeconds: 10,
       infoText: (data, _matches, output) => {
         if (data.phaseType !== 'earth')
