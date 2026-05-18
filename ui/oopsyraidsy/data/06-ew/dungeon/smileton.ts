@@ -64,6 +64,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Face': 'Fratze',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Face': 'visage imperturbable',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Face': 'フェイス',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Face': '面像',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Face': '얼굴',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Face': '面像',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
