@@ -860,7 +860,7 @@ const triggerSet: TriggerSet<Data> = {
 
         // Four "small" lines
         if (line4 !== undefined)
-          return output.under!();
+          return output.middle!();
 
         // We're only concerned with the "big" line, as max melee perpindicular to that line will be safe
         const big = line1.type === 'big' ? line1 : (line2.type === 'big' ? line2 : line3);
@@ -884,7 +884,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         intercards: Outputs.intercards,
         cardinals: Outputs.cardinals,
-        under: Outputs.getUnder,
+        middle: Outputs.goIntoMiddle,
         go: {
           en: 'Go ${dir1}/${dir2} Max Melee',
           de: 'Geh ${dir1}/${dir2} Max Nahkampf',
@@ -908,6 +908,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'EnuoEx Naught Hunts Tether',
+      // 12x hits per target
       type: 'Tether',
       netRegex: { id: ['0194', '0195'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -917,7 +918,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.chasingPuddle!(),
       outputStrings: {
         chasingPuddle: {
-          en: 'Chasing puddle on you',
+          en: '12x Chasing puddle on you',
           de: 'Verfolgende Fläche auf DIR',
           fr: 'Flaque chassante sur VOUS',
           cn: '追踪地火点名',
