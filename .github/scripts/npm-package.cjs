@@ -10,7 +10,7 @@ const pkg = require('../../package.json');
 
 const projectRoot = path.join(__dirname, '..', '..');
 
-const npmrc = '//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}\nalways-auth=true';
+const npmrc = '//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}';
 
 async function main() {
   // force pwd to at .../cactbot/

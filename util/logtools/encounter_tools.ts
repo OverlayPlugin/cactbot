@@ -50,6 +50,7 @@ export const ignoredCombatants = PetData['en'].concat([
   'Alisaie\'s Avatar',
   'Alphinaud',
   'Alphinaud\'s Avatar',
+  'Alxaal',
   'Arenvald',
   'Carbuncle',
   'Carvallain',

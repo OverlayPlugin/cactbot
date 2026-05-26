@@ -129,6 +129,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheUnderkeep,
   ZoneId.TheMesoTerminal,
   ZoneId.Mistwake,
+  ZoneId.TheClyteum,
 
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
@@ -253,6 +254,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheAgelessNecropolis,
   ZoneId.TheWindwardWilds,
   ZoneId.HellOnRails,
+  ZoneId.TheUnmaking,
 
   // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
@@ -266,6 +268,8 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheWindwardWildsExtreme,
   ZoneId.HellOnRailsExtreme,
   ZoneId.TsukuyomisPainUnreal,
+  ZoneId.TheUnmakingExtreme,
+  ZoneId.ShinryusDomainUnreal,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
@@ -428,6 +432,7 @@ const contentList: (ZoneIdType)[] = [
   // Alliance Raids (Dawntrail)
   ZoneId.JeunoTheFirstWalk,
   ZoneId.SanDoriaTheSecondWalk,
+  ZoneId.WindurstTheThirdWalk,
 
   // Normal Raids (Dawntrail)
   ZoneId.AacLightHeavyweightM1,

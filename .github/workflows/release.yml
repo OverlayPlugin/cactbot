@@ -17,13 +17,13 @@ jobs:
       do_release: ${{ steps.check_tag.outputs.do_release }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Get Project Version
         id: get_version
-        uses: 'euberdeveloper/ga-project-version@main'
+        run: echo "version=$(npm pkg get version | tr -d '\"')" >> $GITHUB_OUTPUT
 
       - name: Check Tag Exists
         id: check_tag
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -65,18 +65,18 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up msbuild
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v3
 
       - uses: ./.github/actions/setup-js-env
 
       - name: Check dependencies cache
         id: cache-dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ./plugin/ThirdParty
           key: |
@@ -118,9 +118,10 @@ jobs:
 
       - name: Fetch Release Attributes
         id: fetch_attributes
-        uses: zoexx/github-action-json-file-properties@release
-        with:
-          file_path: "package.json"
+        shell: bash
+        run: |
+          echo "releaseSummary=$(npm pkg get releaseSummary | tr -d '\"')" >> $GITHUB_OUTPUT
+          echo "releaseInDraft=$(npm pkg get releaseInDraft | tr -d '\"')" >> $GITHUB_OUTPUT
 
       - name: Set Release Attributes
         id: set_attributes
@@ -142,7 +143,10 @@ jobs:
           echo "release_draft=$release_draft" >> $env:GITHUB_OUTPUT
 
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        # Note: This action has a literal `@v1` tag and release which are no longer being updated.
+        # As such, we have to specify an exact version to avoid getting the outdated build.
+        # Should it ever release a v2 release with proper semantic version, update to use that.
+        uses: ncipollo/release-action@v1.21.0
         with:
           name: ${{ steps.set_attributes.outputs.release_name }}
           tag: v${{ needs.validate_tag.outputs.version }}
@@ -160,7 +164,7 @@ jobs:
     if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - uses: ./.github/actions/setup-js-env
 

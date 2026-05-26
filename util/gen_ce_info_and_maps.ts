@@ -66,16 +66,10 @@ import SouthHornCEs from './south_horn_encounters';
 const _DES_SHEET = 'DynamicEventSet';
 
 const _DES_FIELDS = [
-  'Unknown0',
-];
-
-const _DE_SHEET = 'DynamicEvent';
-
-const _DE_FIELDS = [
-  'Name',
-  'Name@de',
-  'Name@fr',
-  'Name@ja',
+  'DynamicEvent.Name',
+  'DynamicEvent.Name@de',
+  'DynamicEvent.Name@fr',
+  'DynamicEvent.Name@ja',
 ];
 
 const _LOCALE_TABLE = 'DynamicEvent';
@@ -85,12 +79,8 @@ type ResultDynamicEventSetType = {
   row_id: number;
   subrow_id: number;
   fields: {
-    Unknown0: number;
+    DynamicEvent?: ResultDynamicEventType;
   };
-};
-
-type IndexedDynamicEventType = {
-  [key: string]: ResultDynamicEventType;
 };
 
 type ResultDynamicEventType = {
@@ -158,14 +148,6 @@ const indexDeSetData = (data: ResultDynamicEventSetType[]): IndexedDynamicEventS
   return deSetData;
 };
 
-const indexDeData = (data: ResultDynamicEventType[]): IndexedDynamicEventType => {
-  const deData: IndexedDynamicEventType = {};
-  for (const row of data) {
-    deData[row.row_id] = row;
-  }
-  return deData;
-};
-
 const fetchLocaleCsvTables = async (): Promise<LocaleCsvTables> => {
   log.debug(`Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_COLUMNS.toString()}]`);
   log.debug('Fetching \'cn\' table...');
@@ -183,7 +165,6 @@ const fetchLocaleCsvTables = async (): Promise<LocaleCsvTables> => {
 
 const generateCEList = (
   deSetData: IndexedDynamicEventSetSubrow,
-  deData: IndexedDynamicEventType,
   zone: string,
 ): CeInfoOutput => {
   if (Object.keys(deSetData).length === 0) {
@@ -207,25 +188,26 @@ const generateCEList = (
 
     if (setData === undefined) {
       log.alert(
-        `Unexpectedly could not find set info for CE ${idx} for ${zone}. Resolve before merge.`,
+        `Unexpectedly could not find DynamicEventSet info for CE ${idx} for ${zone}. Resolve before merge.`,
       );
       continue;
     }
 
-    const deId = setData.fields.Unknown0;
-    const data = deData[deId];
+    const data = setData.fields.DynamicEvent;
 
     if (data === undefined) {
       log.alert(
-        `Unexpectedly could not find info for CE ${idx} (row ${deId}) for ${zone}. Resolve before merge.`,
+        `Unexpectedly could not find DynamicEvent info for CE ${idx} for ${zone}. Resolve before merge.`,
       );
       continue;
     }
+
+    const deId = data.row_id;
 
     const enName = capitalize(data.fields.Name);
     if (enName === undefined) {
       log.alert(
-        `No Name data available for CE ${idx} (row ${deId}) for ${zone}. Resolve before merge.`,
+        `No Name data available for CE ${idx} for ${zone}. Resolve before merge.`,
       );
       continue;
     }
@@ -319,10 +301,8 @@ const generateCEMap = (
 
 const assembleData = async (
   deSetRawData: ResultDynamicEventSetType[],
-  deRawData: ResultDynamicEventType[],
 ): Promise<OutputContainer> => {
   const deSetData = indexDeSetData(deSetRawData);
-  const deData = indexDeData(deRawData);
 
   log.info('Fetching locale CSV tables...');
   localeCsvTables = await fetchLocaleCsvTables();
@@ -331,9 +311,9 @@ const assembleData = async (
   const zadnorSetData = deSetData[2] ?? {};
   const southHornSetData = deSetData[3] ?? {};
 
-  const bozjaCEData = generateCEList(bozjaSetData, deData, 'Bozja');
-  const zadnorCEData = generateCEList(zadnorSetData, deData, 'Zadnor');
-  const southHornCEData = generateCEList(southHornSetData, deData, 'South Horn');
+  const bozjaCEData = generateCEList(bozjaSetData, 'Bozja');
+  const zadnorCEData = generateCEList(zadnorSetData, 'Zadnor');
+  const southHornCEData = generateCEList(southHornSetData, 'South Horn');
 
   const bozjaCEMap = generateCEMap(bozjaCEData, 'Bozja');
   const zadnorCEMap = generateCEMap(zadnorCEData, 'Zadnor');
@@ -363,12 +343,7 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
     _DES_FIELDS,
   ) as ResultDynamicEventSetType[];
 
-  const deRawData = await api.queryApi(
-    _DE_SHEET,
-    _DE_FIELDS,
-  ) as ResultDynamicEventType[];
-
-  const outputData = await assembleData(deSetRawData, deRawData);
+  const outputData = await assembleData(deSetRawData);
 
   await api.writeFile(
     path.basename(import.meta.url),

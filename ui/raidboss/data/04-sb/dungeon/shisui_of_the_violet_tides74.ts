@@ -7,18 +7,12 @@ import { TriggerSet } from '../../../../../types/trigger';
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
-  id: 'ShisuiOfTheVioletTides',
-  zoneId: ZoneId.ShisuiOfTheVioletTides,
-  comments: {
-    en: 'pre-7.5 rework',
-    de: 'Vor der 7.5 Überarbeitung',
-    cn: '7.5改版前',
-    ko: '7.5 개편 전',
-  },
-  timelineFile: 'shisui_of_the_violet_tides.txt',
+  id: 'ShisuiOfTheVioletTides74',
+  zoneId: ZoneId.ShisuiOfTheVioletTides74,
+  timelineFile: 'shisui_of_the_violet_tides74.txt',
   triggers: [
     {
-      id: 'Shisui Amikiri Kamikiri Add',
+      id: 'Shisui74 Amikiri Kamikiri Add',
       type: 'AddedCombatant',
       netRegex: { npcNameId: '6238' },
       alertText: (_data, matches, output) => output.kill!({ name: matches.name }),
@@ -35,14 +29,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Shisui Amikiri Digestive Fluid',
+      id: 'Shisui74 Amikiri Digestive Fluid',
       type: 'HeadMarker',
       netRegex: { id: '000E' },
       condition: Conditions.targetIsYou(),
       response: Responses.spread(),
     },
     {
-      id: 'Shisui Ruby Princess Seduce',
+      id: 'Shisui74 Ruby Princess Seduce',
       type: 'StartsUsing',
       netRegex: { source: 'Ruby Princess', id: '1F7A', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
@@ -60,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // This is what it's called!
-      id: 'Shisui Ruby Princess Geothermal Flatulence',
+      id: 'Shisui74 Ruby Princess Geothermal Flatulence',
       type: 'HeadMarker',
       netRegex: { id: '0001' },
       condition: Conditions.targetIsYou(),
@@ -78,13 +72,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Shisui Shisui Yohi Naishi-No-Kami',
+      id: 'Shisui74 Shisui Yohi Naishi-No-Kami',
       type: 'AddedCombatant',
       netRegex: { npcNameId: '6244', capture: false },
       response: Responses.killAdds(),
     },
     {
-      id: 'Shisui Shisui Yohi Mad Stare',
+      id: 'Shisui74 Shisui Yohi Mad Stare',
       type: 'StartsUsing',
       netRegex: { source: 'Shisui Yohi', id: '1F82', capture: false },
       response: Responses.lookAway(),
