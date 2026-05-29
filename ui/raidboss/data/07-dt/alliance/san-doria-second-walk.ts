@@ -1366,6 +1366,44 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'San dOria Second Walk Eald\'narche Empyreal Vortex Spread',
+      type: 'StartsUsing',
+      netRegex: { id: 'AD70', source: 'Eald\'narche' },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'San dOria Second Walk Eald\'narche Omega Javelin',
+      type: 'StartsUsing',
+      netRegex: { id: 'AD5E', source: 'Eald\'narche', capture: false },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Avoid dropped crystals',
+        },
+      },
+    },
+    {
+      id: 'San dOria Second Walk Eald\'narche Omega Javelin Spread',
+      type: 'HeadMarker',
+      netRegex: { id: '01D2' },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'San dOria Second Walk Eald\'narche Gaea Stream',
+      type: 'StartsUsing',
+      netRegex: { id: 'AD53', source: 'Eald\'narche', capture: false },
+      suppressSeconds: 10,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Avoid exalines x6',
+        },
+      },
+    },
 
     // ----------------------
     // Adds
