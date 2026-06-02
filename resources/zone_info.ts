@@ -12058,6 +12058,7 @@ const data: ZoneInfoType = {
     'contentType': 28,
     'exVersion': 5,
     'name': {
+      'cn': '妖星乱舞绝境战',
       'de': 'Tanzender Wahn (fatal)',
       'en': 'Dancing Mad (Ultimate)',
       'fr': 'Danse démente (fatal)',
