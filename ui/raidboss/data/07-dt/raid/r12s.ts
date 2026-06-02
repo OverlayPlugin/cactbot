@@ -7028,9 +7028,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         const pattern = data.cosmicKissPattern;
@@ -7096,9 +7096,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         const pattern = data.cosmicKissPattern;
@@ -7217,9 +7217,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         if (data.doomPlayers[0] === undefined) {
