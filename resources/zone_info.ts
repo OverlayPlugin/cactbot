@@ -12054,6 +12054,21 @@ const data: ZoneInfoType = {
     'sizeFactor': 400,
     'weatherRate': 149,
   },
+  1363: {
+    'contentType': 28,
+    'exVersion': 5,
+    'name': {
+      'de': 'Tanzender Wahn (fatal)',
+      'en': 'Dancing Mad (Ultimate)',
+      'fr': 'Danse démente (fatal)',
+      'ja': '絶妖星乱舞',
+      'ko': '절 요성난무',
+    },
+    'offsetX': -100,
+    'offsetY': -100,
+    'sizeFactor': 400,
+    'weatherRate': 0,
+  },
   1366: {
     'contentType': 2,
     'exVersion': 1,

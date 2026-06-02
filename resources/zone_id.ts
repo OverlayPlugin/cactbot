@@ -176,6 +176,7 @@ const data = {
   'CuriousGorgeMeetsHisMatch': 717,
   'CuttersCry': 1303,
   'CuttersCry72': 170,
+  'DancingMadUltimate': 1363,
   'DarkAsTheNightSky': 713,
   'DeathUntoDawn': 977,
   'DefeatAnOccupiedTarget': 545,
