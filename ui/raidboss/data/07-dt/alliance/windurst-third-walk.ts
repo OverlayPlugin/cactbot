@@ -451,7 +451,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Windurst Third Walk Shantotto Circumscribed Fire Counter',
       type: 'StartsUsing',
-      netRegex: { id: 'C41A', source: 'Shantotto The Demon', capture: false },
+      netRegex: { id: ['C419', 'C41A'], source: 'Shantotto The Demon', capture: false },
       run: (data) => data.fireCount += 1,
     },
     {
@@ -466,8 +466,8 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['C419', 'C41A'], source: 'Shantotto The Demon', capture: false },
       condition: (data) => {
         if (data.seenFirstBlizzard)
-          return data.fireCount < 5;
-        return data.fireCount < 3;
+          return data.fireCount < 6;
+        return data.fireCount < 4;
       },
       suppressSeconds: 1, // This can hit multiple people.
       infoText: (data, _matches, output) => {
@@ -497,9 +497,10 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C41A', source: 'Shantotto The Demon', capture: false },
       condition: (data) => {
         if (data.seenFirstBlizzard)
-          return data.fireCount === 5;
-        return data.fireCount === 3;
+          return data.fireCount === 6;
+        return data.fireCount === 4;
       },
+      delaySeconds: 0.5,
       suppressSeconds: 1, // This can hit multiple people
       response: Responses.getOut(),
       run: (data) => {
@@ -555,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.knockWest!(),
       outputStrings: {
         knockWest: {
-          en: 'Knockback west into wall, no immune',
+          en: 'Knockback west into wall',
         },
       },
     },
@@ -567,7 +568,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.knockEast!(),
       outputStrings: {
         knockEast: {
-          en: 'Knockback east into wall, no immune',
+          en: 'Knockback east into wall',
         },
       },
     },
@@ -962,7 +963,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Windurst Third Walk Promathia Shinryu Comet Dark Nova Collect',
+      id: 'Windurst Third Walk Promathia Shinryu Hollow King Comet Dark Nova Collect',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['cometDarkNova'], capture: true },
       run: (data, matches) => data.cometTargets.push(matches.target),
@@ -1381,20 +1382,14 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.moveAround(),
     },
     {
-      id: 'Windurst Third Walk Shinryu Dark Nova Call',
+      id: 'Windurst Third Walk Shinryu Atomic Tail',
       type: 'StartsUsing',
-      netRegex: { id: 'BFEE', source: 'Shinryu Paradox', capture: false },
-      delaySeconds: 0.5,
-      suppressSeconds: 1,
-      alertText: (data, _matches, output) => {
-        if (data.cometTargets.includes(data.me))
-          return output.cleaveOnYou!();
-        return output.avoidCleave!();
-      },
-      run: (data) => data.cometTargets = [],
+      netRegex: { id: 'BFEA', source: 'Shinryu Paradox', capture: false },
+      alertText: (_data, _matches, output) => output.goUp!(),
       outputStrings: {
-        cleaveOnYou: Outputs.tankCleaveOnYou,
-        avoidCleave: Outputs.avoidTankCleaves,
+        goUp: {
+          en: 'Go upper platform',
+        },
       },
     },
     {
