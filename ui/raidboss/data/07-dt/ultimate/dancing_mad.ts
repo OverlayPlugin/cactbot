@@ -312,22 +312,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P1 Hyperdrive',
       // This hits three times
+      // Occurs 3.1s after C622 Light of Judgment, which is a 5s cast
       type: 'StartsUsing',
-      netRegex: { id: 'C24B', source: 'Kefka' },
-      suppressSeconds: 5,
+      netRegex: { id: 'C622', source: 'Kefka', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3, // Gives 5.1s delay
       response: Responses.tankBuster(),
-    },
-    {
-      id: 'DMU P1 Intemperate Will',
-      type: 'StartsUsing',
-      netRegex: { id: 'BAB2', source: 'Graven Image', capture: false },
-      response: Responses.goWest(),
-    },
-    {
-      id: 'DMU P1 Gravitational Wave',
-      type: 'StartsUsing',
-      netRegex: { id: 'BAB1', source: 'Graven Image', capture: false },
-      response: Responses.goEast(),
     },
   ],
   timelineReplace: [
