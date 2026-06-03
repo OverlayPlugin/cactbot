@@ -164,6 +164,31 @@ const staticResponse = (field: SevText, text: LocaleText): StaticResponseFunc =>
   };
 };
 
+type LocaleTextPart = [sep: string, text: LocaleText];
+
+const combineLocaleText = (first: LocaleText, rest: LocaleTextPart[]): LocaleText => {
+  const parts: LocaleTextPart[] = [['', first], ...rest];
+  const langs = new Set<keyof LocaleText>(['en']);
+
+  for (const [, text] of parts) {
+    for (const lang of Object.keys(text))
+      langs.add(lang as keyof LocaleText);
+  }
+
+  const result: Record<string, string> = {};
+  for (const lang of langs) {
+    let combined = '';
+    for (const [sep, text] of parts) {
+      combined += sep;
+      combined += text[lang] ?? text.en;
+    }
+
+    result[lang] = combined;
+  }
+
+  return result as LocaleText;
+};
+
 type SingleSevToResponseFunc = (sev?: Severity) => TargetedResponseFunc | StaticResponseFunc;
 type DoubleSevToResponseFunc = (targetSev?: Severity, otherSev?: Severity) => TargetedResponseFunc;
 type ResponsesMap = {
@@ -624,6 +649,29 @@ export const Responses = {
   wakeUp: (sev?: Severity) => staticResponse(defaultAlarmText(sev), Outputs.wakeUp),
   getTowers: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.getTowers),
 } as const;
+
+export const compose = (
+  text1: LocaleText,
+  sep: string,
+  text2: LocaleText,
+  sev?: Severity,
+): StaticResponseFunc => {
+  return staticResponse(defaultInfoText(sev), combineLocaleText(text1, [[sep, text2]]));
+};
+
+export const compose3 = (
+  text1: LocaleText,
+  sep1: string,
+  text2: LocaleText,
+  sep2: string,
+  text3: LocaleText,
+  sev?: Severity,
+): StaticResponseFunc => {
+  return staticResponse(
+    defaultInfoText(sev),
+    combineLocaleText(text1, [[sep1, text2], [sep2, text3]]),
+  );
+};
 
 // Don't give `Responses` a type in its declaration so that it can be treated as more strict
 // than `ResponsesMap`, but do assert that its type is correct.  This allows callers to know
