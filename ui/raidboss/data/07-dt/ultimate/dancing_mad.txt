@@ -1,0 +1,186 @@
+### DANCING MAD (ULTIMATE)
+# ZoneId: DancingMadUltimate
+
+# -ii C252 BA9E BAA0 BAAB BA95 BAAD BAD6 BAD8 BAD7 BAD9
+# -p C403:12.1 C24C:216.5
+# -it Kefka
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+
+# TODO: Replace these FFLogs (IINACT uploads) with ACT Network Log timings
+### Phase 1 - Kefka
+# TODO: Add voiceline capture and headmarker
+# https://xivapi.com/NpcYell/?pretty=true
+# en (auto-translate): 'This is my first time, so please take it easy!'
+#0.0 "--sync--" NpcYell { npcYellId: "" }
+12.1 "Revolting Ruin III 1" Ability { id: "C403", source: "Kefka" } window 15,15
+15.2 "Revolting Ruin III 2" Ability { id: "C4E1", source: "Kefka" }
+21.3 "Enhanced Thrill Of War II" Ability { id: "C3FD", source: "Kefka" }
+
+26.0 "Graven Image 1" Ability { id: "BCF2", source: "Kefka" }
+31.9 "Pulse Wave" Ability { id: "BAA9", source: "Graven Image" }
+34.2 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
+34.2 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+35.1 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
+39.3 "Wave Cannon x4" Ability { id: "BAA8", source: "Graven Image" }
+41.4 "Double-Trouble Trap" Ability { id: "BAA6", source: "Kefka" }
+43.0 "Explosion x4" Ability { id: "BAAA", source: "Kefka" }
+46.7 "Double-Trouble Trap x2" Ability { id: "BAA7", source: "Kefka" }
+50.7 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
+50.7 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
+50.7 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+59.7 "Light of Judgment" Ability { id: "C622", source: "Kefka" }
+62.8 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
+64.8 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
+66.8 "Hyperdrive 3" #Ability { id: "C24B", source: "Kefka" }
+72.6 "Enhanced Thrill Of War II" Ability { id: "C3FD", source: "Kefka" }
+
+77.0 "Graven Image 2" Ability { id: "BCF2", source: "Kefka" }
+84.1 "Blizzard III Blowout" Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+84.2 "Gravitas x4" Ability { id: "BAAC", source: "Graven Image" }
+88.2 "Vitrophyre x4" Ability { id: "BAB0", source: "Graven Image" }
+94.3 "Revolting Ruin III 1" Ability { id: "C403", source: "Kefka" }
+97.4 "Revolting Ruin III 2" Ability { id: "C4E1", source: "Kefka" }
+98.0 "Intemperate Will/Gravitational Wave" Ability { id: ["BAB2", "BAB1"], source: "Graven Image" }
+102.7 "Gravitas x4" Ability { id: "BAAC", source: "Graven Image" }
+106.7 "Vitrophyre x4" Ability { id: "BAB0", source: "Graven Image" }
+111.5 "Intemperate Will/Gravitational Wave" Ability { id: ["BAB2", "BAB1"], source: "Graven Image" }
+115.1 "Double-Trouble Trap x2" Ability { id: "BAA7", source: "Kefka" } # NOTE: If it was passed after first set.
+129.5 "Light of Judgment" Ability { id: "C622", source: "Kefka" }
+132.6 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
+134.6 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
+136.6 "Hyperdrive 3" #Ability { id: "C24B", source: "Kefka" }
+148.4 "Tele-Trouncing" Ability { id: "BAB9", source: "Kefka" }
+156.3 "Tele-Trouncing 1" Ability { id: "BABA", source: "Kefka" }
+159.3 "Tele-Trouncing 2" Ability { id: "BABA", source: "Kefka" }
+
+160.5 "Graven Image 3" Ability { id: "BCF2", source: "Kefka" }
+165.6 "--sync--" Ability { id: "C554", source: "Kefka" }
+170.4 "Indulgent Will x4" Ability { id: "BAB5", source: "Graven Image" }
+170.4 "Idyllic Will x4" #Ability { id: "BAB6", source: "Graven Image" }
+174.7 "--sync--" Ability { id: "C555", source: "Kefka" }
+176.7 "Enhanced Thrill Of War II" Ability { id: "C3FD", source: "Kefka" }
+183.1 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
+183.1 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
+183.3 "Indolent Will/Ave Maria" Ability { id: ["BAB4", "BAB3"], source: "Graven Image" }
+183.9 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
+199.3 "Light of Judgment (enrage?)" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP
+
+### Phase 2 - God Kefka
+# TODO: Add voiceline
+# https://xivapi.com/NpcYell/?pretty=true
+# en: 'Yes... I am filled with glorious purpose!'
+#200.0 "--sync--" NpcYell { npcYellId: "" } window 200,5
+216.5 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" } window 220,5
+231.7 "Forsaken" Ability { id: "BABC", source: "Kefka" }
+244.9 "The Path of Light 1" Ability { id: "BABE", source: "Kefka" }
+245.6 "Spelldriver" #Ability { id: "BAC0", source: "Kefka" }
+245.6 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+245.6 "Spellscatter" #Ability { id: "BAC1", source: "Kefka" }
+254.4 "Future's End/Past's End" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+
+254.8 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
+255.5 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+255.5 "Spellscatter" #Ability { id: "BAC1", source: "Kefka" }
+265.6 "All Things Ending" #Ability { id: ["BACD", "BADD"], source: "Kefka" }
+265.7 "The Path of Light" Ability { id: "BABE", source: "Kefka" }
+266.4 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+266.4 "Spelldriver" #Ability { id: "BAC0", source: "Kefka" }
+266.4 "Spellscatter" #Ability { id: "BAC1", source: "Kefka" }
+275.6 "Future's End/Past's End" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+
+275.6 "The Path of Light 3" Ability { id: "BABE", source: "Kefka" }
+276.3 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+276.3 "Spellscatter" #Ability { id: "BAC1", source: "Kefka" }
+276.7 "The River of Light" Ability { id: "BABF", source: "Kefka" }
+286.1 "All Things Ending" #Ability { id: ["BACD", "BADD"], source: "Kefka" }
+286.4 "The Path of Light" Ability { id: "BABE", source: "Kefka" }
+287.1 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+287.5 "The River of Light" Ability { id: "BABF", source: "Kefka" }
+295.5 "Future's End/Past's End" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+
+296.4 "The Path of Light 4" Ability { id: "BABE", source: "Kefka" }
+297.1 "Spellwave" #Ability { id: "BAC2", source: "Kefka" }
+297.5 "The River of Light" Ability { id: "BABF", source: "Kefka" }
+306.7 "All Things Ending" #Ability { id: ["BACD", "BADD"], source: "Kefka" }
+307.2 "The Path of Light" Ability { id: "BABE", source: "Kefka" }
+308.2 "The River of Light" Ability { id: "BABF", source: "Kefka" }
+316.1 "Future's End/Past's End" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+
+317.2 "The Path of Light 5" Ability { id: "BABE", source: "Kefka" }
+318.2 "The River of Light" Ability { id: "BABF", source: "Kefka" }
+327.8 "All Things Ending" #Ability { id: "BADD", source: "Kefka" }
+
+# TODO: 2 more sets of towers => aoe => summon trines => left/right => trines + aoes => tankbuster => ... => "enrage", or fake end or phase 3?
+# Note: Enrage appears to be at > 0% if getting fake end
+
+# IGNORED ABILITIES
+# C252 Attack: Phase 1 boss attack
+# BA9E Blizzard III Blowout: Damage
+# BA95 Blizzard III Blowout: VFX
+# BAA0 Thrumming Thunder III: VFX
+# BAAB Unmitigated Explosion: Failing to soak a tower from BAA8 Wave Cannon
+# BAAD Gravitational Explosion: BAB0 Vitrophyre aoe overlaps with BAAC Gravitas puddle
+# BAD6 Future's End: Damage (On 1 player)
+# BAD7 Past's End: Damage (On 1 player)
+# BAD8 Future's End: Damage (On 3 players)
+# BAD9 Past's End: Damage (On 3 players)
+
+# ALL ENCOUNTER ABILITIES
+# BA94 Mystery Magic
+# BA95 Blizzard III Blowout: VFX (paired with BA98)
+# BA98 Blizzard III Blowout: Damage for Fake? (paired with BA95)
+# BA9B Blizzard III Blowout: VFX (paired with BA9E)
+# BA9E Blizzard III Blowout: Damage (paired with BA9B)
+# BA9F Thrumming Thunder III: Damage for Fake? (No corresponding VFX)
+# BAA0 Thrumming Thunder III: VFX (paired with BAA1)
+# BAA1 Thrumming Thunder III: Damage (paired with BAA0)
+# BAA2 Flagrant Fire III: Spread Damage
+# BAA3 Flagrant Fire III: Stack Damage
+# BAA6 Double-Trouble Trap: VFX
+# BAA7 Double-Trouble Trap
+# BAA8 Wave Cannon
+# BAA9 Pulse Wave
+# BAAA Explosion: Cast by towers that are dropped from getting hit by BAA8 Wave Cannon
+# BAAB Unmitigated Explosion: Failing to soak a tower from BAA8 Wave Cannon
+# BAAC Gravitas
+# BAAD Gravitational Explosion: BAB0 Vitrophyre aoe overlaps with BAAC Gravitas puddle
+# BAB0 Vitrophyre
+# BAB1 Gravitational Wave
+# BAB2 Intemperate Will
+# BAB3 Ave Maria
+# BAB4 Indolent Will
+# BAB5 Indulgent Will
+# BAB6 Idyllic Will
+# BAB9 Tele-Trouncing: VFX
+# BABA Tele-Trouncing
+# BABB Light of Judgment: P1 Enrage
+# BABC Forsaken
+# BABE The Path of Light
+# BABF The River of Light
+# BAC0 Spelldriver
+# BAC1 Spellscatter
+# BAC2 Spellwave
+# BAD2 Future's End: VFX
+# BAD3 Past's End: VFX
+# BAD6 Future's End: Damage (On 1 player)
+# BAD7 Past's End: Damage (On 1 player)
+# BAD8 Future's End: Damage (On 3 players)
+# BAD9 Past's End: Damage (On 3 players)
+# BADC All Things Ending
+# BADD All Things Ending
+# BCF2 Graven Image
+# C24B Hyperdrive
+# C24C Ultimate Embrace
+# C252 Attack
+# C3FD Enhanced Thrill Of War II
+# C403 Revolting Ruin III
+# C4E1 Revolting Ruin III
+# C554 --sync--
+# C555 --sync--
+# C622 Light of Judgment
