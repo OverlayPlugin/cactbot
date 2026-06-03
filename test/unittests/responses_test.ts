@@ -40,7 +40,7 @@ const runResponseFuncWithOutputStrings = (
   func: ResponseFunc<RaidbossData, Matches>,
 ): [ResponseFuncOutput, OutputStrings] => {
   const empty = {};
-  const output = {
+  const output: { responseOutputStrings: OutputStrings } = {
     responseOutputStrings: {},
   };
   return [
