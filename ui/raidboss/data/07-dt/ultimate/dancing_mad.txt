@@ -54,7 +54,7 @@ hideall "--sync--"
 135.6 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
 137.7 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
 139.7 "Hyperdrive 3" #Ability { id: "C24B", source: "Kefka" }
-151.5 "Tele-trouncing" Ability { id: "BAB9", source: "Kefka" }
+151.5 "Tele-trouncing (castbar)" Ability { id: "BAB9", source: "Kefka" }
 159.4 "Tele-trouncing 1" Ability { id: "BABA", source: "Kefka" }
 162.4 "Tele-trouncing 2" Ability { id: "BABA", source: "Kefka" }
 
