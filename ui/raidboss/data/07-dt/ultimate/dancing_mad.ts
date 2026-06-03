@@ -7,8 +7,8 @@ const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
 };
 
-//const centerX = 100;
-//const centerY = 100;
+// const centerX = 100;
+// const centerY = 100;
 
 export interface Data extends RaidbossData {
   // General
@@ -33,7 +33,7 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   timelineReplace: [
-  {
+    {
       'locale': 'en',
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
