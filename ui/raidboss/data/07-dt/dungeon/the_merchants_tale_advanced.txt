@@ -1,0 +1,17 @@
+### THE MERCHANT'S TALE (ADVANCED)
+# ZoneId: 524
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~~#
+# PARI OF PLENTY #
+#~~~~~~~~~~~~~~~~#
+
+1000.0 "--sync--" SystemLogMessage { id: "7DC" } window 10000,0
+1013.0 "Heat Burst" Ability { id: "B1CC", source: "Pari of Plenty" }
+
+# ALL ENCOUNTER ABILITIES
+# B1CC Heat Burst
