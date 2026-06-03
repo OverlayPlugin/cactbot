@@ -1,7 +1,10 @@
 import { assert } from 'chai';
 
+import Outputs from '../../resources/outputs';
 import {
   builtInResponseStr,
+  compose,
+  compose3,
   Responses,
   severityList,
   severityMap,
@@ -9,7 +12,13 @@ import {
 } from '../../resources/responses';
 import { RaidbossData } from '../../types/data';
 import { Matches } from '../../types/net_matches';
-import { Output, ResponseFunc, ResponseOutput } from '../../types/trigger';
+import {
+  LocaleText,
+  Output,
+  OutputStrings,
+  ResponseFunc,
+  ResponseOutput,
+} from '../../types/trigger';
 
 // test_trigger.js will validate the field names, so no need to do that here.
 
@@ -25,6 +34,19 @@ const runResponseFunc = (
   // Built-in responses must be callable with empty parameters.
   const empty = {};
   return func(empty as RaidbossData, empty as Matches, empty as Output);
+};
+
+const runResponseFuncWithOutputStrings = (
+  func: ResponseFunc<RaidbossData, Matches>,
+): [ResponseFuncOutput, OutputStrings] => {
+  const empty = {};
+  const output = {
+    responseOutputStrings: {},
+  };
+  return [
+    func(empty as RaidbossData, empty as Matches, output as Output),
+    output.responseOutputStrings,
+  ];
 };
 
 describe('response tests', () => {
@@ -105,5 +127,66 @@ describe('response tests', () => {
         }
       }
     }
+  });
+  it('compose returns a built-in static response', () => {
+    const responseFunc = compose(Outputs.in, ' => ', Outputs.out);
+    assert.include(responseFunc.toString(), outputStringSetterStr);
+    assert.include(responseFunc.toString(), builtInResponseStr);
+
+    const [result, outputStrings] = runResponseFuncWithOutputStrings(responseFunc);
+    assert.isObject(result);
+    assert.property(result, 'infoText');
+    assert.deepEqual(outputStrings.text, {
+      en: 'In => Out',
+      de: 'Rein => Raus',
+      fr: 'Intérieur => Extérieur',
+      ja: '中へ => 外へ',
+      cn: '靠近 => 远离',
+      ko: '안으로 => 밖으로',
+      tc: '靠近 => 遠離',
+    });
+  });
+  it('compose respects explicit severity and locale fallbacks', () => {
+    const fallbackText: LocaleText = {
+      en: 'Fallback',
+      ja: 'Japanese Fallback',
+    };
+    const responseFunc = compose(Outputs.spread, ' 😗 ', fallbackText, 'alarm');
+
+    const [result, outputStrings] = runResponseFuncWithOutputStrings(responseFunc);
+    assert.isObject(result);
+    assert.property(result, 'alarmText');
+    assert.deepEqual(outputStrings.text, {
+      en: 'Spread 😗 Fallback',
+      de: 'Verteilen 😗 Fallback',
+      fr: 'Dispersez-vous 😗 Fallback',
+      ja: 'さんかい 😗 Japanese Fallback',
+      cn: '分散 😗 Fallback',
+      ko: '산개 😗 Fallback',
+      tc: '分散 😗 Fallback',
+    });
+  });
+  it('compose3 returns a built-in static response', () => {
+    const responseFunc = compose3(
+      Outputs.in,
+      ' => ',
+      Outputs.out,
+      ' + ',
+      Outputs.spread,
+      'alert',
+    );
+
+    const [result, outputStrings] = runResponseFuncWithOutputStrings(responseFunc);
+    assert.isObject(result);
+    assert.property(result, 'alertText');
+    assert.deepEqual(outputStrings.text, {
+      en: 'In => Out + Spread',
+      de: 'Rein => Raus + Verteilen',
+      fr: 'Intérieur => Extérieur + Dispersez-vous',
+      ja: '中へ => 外へ + さんかい',
+      cn: '靠近 => 远离 + 分散',
+      ko: '안으로 => 밖으로 + 산개',
+      tc: '靠近 => 遠離 + 分散',
+    });
   });
 });
