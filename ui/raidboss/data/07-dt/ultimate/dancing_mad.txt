@@ -18,7 +18,7 @@ hideall "--sync--"
 10.6 "--sync--" StartsUsing { id: "C403", source: "Kefka" } window 20,10
 15.6 "Revolting Ruin III 1" Ability { id: "C403", source: "Kefka" }
 18.7 "Revolting Ruin III 2" Ability { id: "C4E1", source: "Kefka" }
-24.8 "--sync--" Ability { id: "C3FD", source: "Kefka" }
+24.8 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
 29.2 "Graven Image 1" Ability { id: "BCF2", source: "Kefka" }
 35.1 "Pulse Wave" Ability { id: "BAA9", source: "Graven Image" }
@@ -36,7 +36,7 @@ hideall "--sync--"
 65.8 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
 67.8 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
 69.8 "Hyperdrive 3" #Ability { id: "C24B", source: "Kefka" }
-75.6 "--sync--" Ability { id: "C3FD", source: "Kefka" }
+75.6 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
 80.0 "Graven Image 2" Ability { id: "BCF2", source: "Kefka" }
 87.1 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
@@ -63,7 +63,7 @@ hideall "--sync--"
 173.4 "Indulgent Will x4" Ability { id: "BAB5", source: "Graven Image" }
 173.4 "Idyllic Will x4" #Ability { id: "BAB6", source: "Graven Image" }
 177.7 "--sync--" Ability { id: "C555", source: "Kefka" }
-179.7 "--sync--" Ability { id: "C3FD", source: "Kefka" }
+179.7 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 186.3 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
 186.3 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
 186.3 "Indolent Will/Ave Maria" #Ability { id: ["BAB4", "BAB3"], source: "Graven Image" }
@@ -178,7 +178,7 @@ hideall "--sync--"
 # C24B Hyperdrive
 # C24C Ultimate Embrace
 # C252 Attack
-# C3FD --sync--
+# C3FD --sync--: Boss jumps to middle
 # C403 Revolting Ruin III
 # C4E1 Revolting Ruin III
 # C554 --sync--
