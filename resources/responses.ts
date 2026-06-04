@@ -178,13 +178,9 @@ const combineLocaleText = (first: LocaleText, rest: LocaleTextWithSeparator[]): 
 
   const result: Record<string, string> = {};
   for (const lang of langs) {
-    let combined = '';
-    for (const [sep, text] of parts) {
-      combined += sep;
-      combined += text[lang] ?? text.en;
-    }
-
-    result[lang] = combined;
+    result[lang] = parts
+      .map(([sep, text]) => `${sep}${text[lang] ?? text.en}`)
+      .join('');
   }
 
   return result as LocaleText;
