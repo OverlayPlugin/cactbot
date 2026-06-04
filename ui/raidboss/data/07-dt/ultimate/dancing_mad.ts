@@ -20,6 +20,7 @@ export interface Data extends RaidbossData {
   isFireTrue?: boolean;
   isIceTrue?: boolean;
   isThunderTrue?: boolean;
+  doubleTroubleTrapTargets: string[];
 }
 
 const headMarkerData = {
@@ -128,6 +129,7 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       phase: 'p1',
+      doubleTroubleTrapTargets: [],
     };
   },
   triggers: [
@@ -302,6 +304,143 @@ const triggerSet: TriggerSet<Data> = {
         delete data.isThunderTrue;
         delete data.fireMarker;
       },
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      run: (data, matches) => data.doubleTroubleTrapTargets.push(matches.target),
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap Early',
+      // Times are 5s, 68s, and 49s
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        // Ignore first set
+        if (parseFloat(matches.duration) < 6)
+          return;
+        const target1 = data.doubleTroubleTrapTargets[0];
+        if (data.doubleTroubleTrapTargets.length === 2) {
+          const target2 = data.doubleTroubleTrapTargets[1];
+
+          if (target1 === data.me)
+            return output.trapOnYouPlayer!({
+              player: data.party.member(target1),
+            });
+
+          if (target2 === data.me)
+            return output.trapOnYouPlayer!({
+              player: data.party.member(target2),
+            });
+
+          return output.trapOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+          });
+        }
+
+        if (target1 === data.me)
+          return output.trapOnYou!();
+        return output.trapOnPlayer!({
+          player: data.party.member(target1),
+        });
+      },
+      outputStrings: {
+        trapOnYou: {
+          en: 'Trap on YOU (later)',
+        },
+        trapOnYouPlayer: {
+          en: 'Traps on YOU, ${player} (later)',
+        },
+        trapOnPlayer: {
+          en: 'Trap on ${player} (later)',
+        },
+        trapOnPlayers: {
+          en: 'Traps on ${player1}, ${player2} (later)',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap',
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      delaySeconds: (_data, matches) => {
+        const duration = parseFloat(matches.duration);
+        // Giving a 5s warning
+        // Second Set
+        if (duration > 67)
+          return 63;
+
+        // Last set
+        if (duration > 48)
+          return 44;
+
+        // First set
+        return 0.1;
+      },
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          trapOnYou: {
+            en: 'Trap on YOU',
+          },
+          trapOnYouPlayer: {
+            en: 'Traps on YOU, ${player}',
+          },
+          trapOnPlayer: {
+            en: 'Trap on ${player}',
+          },
+          trapOnPlayers: {
+            en: 'Traps on ${player1}, ${player2}',
+          },
+        };
+
+        const target1 = data.doubleTroubleTrapTargets[0];
+        if (data.doubleTroubleTrapTargets.length === 2) {
+          const target2 = data.doubleTroubleTrapTargets[1];
+
+          if (target1 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target1),
+              }),
+            };
+
+          if (target2 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target2),
+              }),
+            };
+
+          return {
+            infoText: output.trapOnPlayers!({
+              player1: data.party.member(target1),
+              player2: data.party.member(target2),
+            }),
+          };
+        }
+
+        if (target1 === data.me)
+          return { alertText: output.trapOnYou!() };
+        return {
+          infoText: output.trapOnPlayer!({
+            player: data.party.member(target1),
+          }),
+        };
+      },
+    },
+    {
+      // Debuffs should expire before the new ones come out
+      id: 'DMU P1 Double-trouble Trap Cleanup',
+      type: 'LosesEffect',
+      netRegex: { effectId: '13D6', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.doubleTroubleTrapTargets = [],
     },
     {
       id: 'DMU P1 Light of Judgment',
