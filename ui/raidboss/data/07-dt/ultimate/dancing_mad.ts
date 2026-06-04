@@ -2,9 +2,10 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'p1' | 'p2';
+type Phase = 'p1' | 'p2' | 'p3';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
+  'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
 };
 
 // const centerX = 100;
