@@ -31,6 +31,7 @@ export interface Data extends RaidbossData {
   isFireTrue?: boolean;
   isIceTrue?: boolean;
   isThunderTrue?: boolean;
+  waveCannonTargets: string[];
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
@@ -176,6 +177,7 @@ const triggerSet: TriggerSet<Data> = {
       blueTowerIds: [],
       yellowTowerIds: [],
       purpleTowerIds: [],
+      waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
     };
   },
@@ -249,7 +251,62 @@ const triggerSet: TriggerSet<Data> = {
       // Offtank can provoke to cause the main tank to take both hits so long as main tank is closest
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['tankbuster'], capture: true },
-      response: Responses.tankBuster(),
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+
+        // Highest entity player can stand wherever, but if they swap threat
+        // they should be in to either take the hit or prevent party hit
+        if (target === data.me)
+          return output.cleaveOnYouDir!({
+            cleave: output.cleaveOnYou!(),
+            dir: output.in!(),
+          });
+
+        // Off tank (second highest enmity player) needs to be in for followup
+        // Or swap with main tank being in
+        // If both tanks are in, then it's safe for party in either case
+        if (data.role === 'tank')
+          return output.cleaveOnPlayerSwapDir!({
+            cleave: output.cleaveOnPlayer!({
+              player: data.party.member(target),
+            }),
+            dir: output.in!(),
+          });
+
+        if (data.role === 'healer')
+          return output.cleaveOnPlayerDir!({
+            cleave: output.cleaveOnPlayer!({
+              player: data.party.member(target),
+            }),
+            dir: output.out!(),
+          });
+
+        return output.avoidCleavesDir!({
+          cleave: output.avoidCleaves!(),
+          dir: output.out!(),
+        });
+      },
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleaves: Outputs.avoidTankCleaves,
+        cleaveOnPlayer: {
+          en: 'Tank Cleave on ${player}',
+        },
+        cleaveOnYouDir: {
+          en: '${cleave} => ${dir}',
+        },
+        cleaveOnPlayerDir: {
+          en: '${cleave} + ${dir}',
+        },
+        cleaveOnPlayerSwapDir: {
+          en: '${cleave} => ${dir}',
+        },
+        avoidCleavesDir: {
+          en: '${cleave} + ${dir}',
+        },
+      },
     },
     {
       id: 'DMU P1 Mystery Magic Collect',
@@ -429,6 +486,79 @@ const triggerSet: TriggerSet<Data> = {
         delete data.isIceTrue;
         delete data.isThunderTrue;
         delete data.fireMarker;
+      },
+    },
+    {
+      id: 'DMU P1 Wave Cannon',
+      // BAA8 Wave Cannon is an instant cast from Graven Image
+      // This gives a ~5 second warning to spread
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      alertText: (data, matches, output) => {
+        if (data.blueTowerIds.indexOf(matches.id) !== -1)
+          return output.waveCannonLine!();
+      },
+      outputStrings: {
+        waveCannonLine: {
+          en: 'E/W Spread',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Wave Cannon Collect',
+      // Collect players hit by Wave Cannon to tell who soaks tower followup and who avoids tower
+      type: 'Ability',
+      netRegex: { id: 'BAA8', source: 'Graven Image', capture: true },
+      run: (data, matches) => data.waveCannonTargets.push(matches.target),
+    },
+    {
+      id: 'DMU P1 Wave Cannon Explosion Towers',
+      // Wave Cannon gives a vulnerability which causes death to BAAA Explosion soaks
+      // Sacraficing a player who clipped to prevent party 90% damage down from
+      // BAAB Unmitigated Explosion seems ideal, although different clients may
+      // get different order
+      // Suprisingly the Unmitigated Explosion doesn't deal damage
+      type: 'Ability',
+      netRegex: { id: 'BAA8', source: 'Graven Image', capture: true },
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          soak: {
+            en: 'Soak tower',
+            de: 'Türme nehmen',
+            fr: 'Prenez une tour',
+            ja: '塔踏み',
+            cn: '踩塔击飞',
+            ko: '기둥 들어가기',
+            tc: '踩塔擊飛',
+          },
+          avoid: {
+            en: 'Avoid towers',
+            de: 'Türme vermeiden',
+            fr: 'Évitez les tours',
+            ja: '塔回避',
+            cn: '远离塔',
+            ko: '기둥 피하기',
+            tc: '遠離塔',
+          },
+          extra: {
+            en: 'Extra Tower',
+          },
+        };
+        const avoidedCannon = data.waveCannonTargets.indexOf(data.me) !== -1;
+
+        // Option for player to soak the tower for p1 prog?
+        if (avoidedCannon && data.waveCannonTargets.length > 4)
+          return { infoText: output.extra!() };
+
+        // Avoid the tower
+        if (avoidedCannon)
+          return { alertText: output.avoid!() };
+
+        // Player didn't get hit, they will need to soak a tower
+        return { alertTest: output.soak!() };
       },
     },
     {
