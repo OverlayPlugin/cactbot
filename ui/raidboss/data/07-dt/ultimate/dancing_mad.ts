@@ -315,7 +315,7 @@ const triggerSet: TriggerSet<Data> = {
       // Occurs 3.1s after C622 Light of Judgment, which is a 5s cast
       type: 'StartsUsing',
       netRegex: { id: 'C622', source: 'Kefka', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3, // Gives 5.1s delay
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // Result in ~5.1s warning
       response: Responses.tankBuster(),
     },
   ],
