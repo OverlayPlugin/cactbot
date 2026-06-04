@@ -1,8 +1,14 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
+
+// TODO: P1 Tethers
+// TODO: P1 Halfroom Cleaves
+// TODO: P1 Replace Mystery Magic Ice Only with tether combination
+// TODO: P1 Tele-Portent configuration options
 
 type Phase = 'p1' | 'p2';
 const phases: { [id: string]: Phase } = {
@@ -21,6 +27,8 @@ export interface Data extends RaidbossData {
   isIceTrue?: boolean;
   isThunderTrue?: boolean;
   doubleTroubleTrapTargets: string[];
+  myTelePortent1?: 'up' | 'down' | 'right' | 'left';
+  myTelePortent2?: 'up' | 'down' | 'right' | 'left';
 }
 
 const headMarkerData = {
@@ -122,6 +130,36 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
 };
 
+const trapEarlyOutputStrings: OutputStrings = {
+  trapOnYou: {
+    en: 'Trap on YOU (later)',
+  },
+  trapOnYouPlayer: {
+    en: 'Traps on YOU, ${player} (later)',
+  },
+  trapOnPlayer: {
+    en: 'Trap on ${player} (later)',
+  },
+  trapOnPlayers: {
+    en: 'Traps on ${player1}, ${player2} (later)',
+  },
+};
+
+const trapOutputStrings: OutputStrings = {
+  trapOnYou: {
+    en: 'Trap on YOU ',
+  },
+  trapOnYouPlayer: {
+    en: 'Traps on YOU, ${player}',
+  },
+  trapOnPlayer: {
+    en: 'Trap on ${player}',
+  },
+  trapOnPlayers: {
+    en: 'Traps on ${player1}, ${player2}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -129,6 +167,7 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       phase: 'p1',
+      // Phase 1
       doubleTroubleTrapTargets: [],
     };
   },
@@ -253,8 +292,29 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
+      id: 'DMU P1 Mystery Magic Ice Only',
+      // Occurs between Set 2 and Set 3
+      // BA95 Blizzard Blowout III cast
+      type: 'StartsUsing',
+      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
+      condition: (data) => {
+        if (
+          data.isIceTrue !== undefined &&
+          data.isThunderTrue === undefined &&
+          data.isFireTrue === undefined
+        )
+        return true;
+      },
+      infoText: (data, _matches, output) => {
+        return data.isIceTrue
+          ? output.trueIce!()
+          : output.fakeIce!();
+      },
+      outputStrings: mysteryMagicOutputStrings,
+    },
+    {
       id: 'DMU P1 Mystery Magic Fire and Thunder',
-      // Set 2: Only Ice and Thunder should be set
+      // Set 3: Only Fire and Thunder should be set
       type: 'StartsUsing',
       netRegex: { id: 'BA94', source: 'Kefka', capture: false },
       condition: (data) => {
@@ -307,21 +367,22 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P1 Double-trouble Trap Collect',
+      // Times are 5s, 68s, and 49s
       type: 'GainsEffect',
       netRegex: { effectId: '13D6', capture: true },
       run: (data, matches) => data.doubleTroubleTrapTargets.push(matches.target),
     },
     {
-      id: 'DMU P1 Double-trouble Trap Early',
-      // Times are 5s, 68s, and 49s
+      id: 'DMU P1 Double-trouble Trap 2 Early',
       type: 'GainsEffect',
       netRegex: { effectId: '13D6', capture: true },
       delaySeconds: 0.1,
       suppressSeconds: 1,
       infoText: (data, matches, output) => {
-        // Ignore first set
-        if (parseFloat(matches.duration) < 6)
+        // Ignore first set and third set
+        if (parseFloat(matches.duration) < 67)
           return;
+
         const target1 = data.doubleTroubleTrapTargets[0];
         if (data.doubleTroubleTrapTargets.length === 2) {
           const target2 = data.doubleTroubleTrapTargets[1];
@@ -348,56 +409,153 @@ const triggerSet: TriggerSet<Data> = {
           player: data.party.member(target1),
         });
       },
-      outputStrings: {
-        trapOnYou: {
-          en: 'Trap on YOU (later)',
-        },
-        trapOnYouPlayer: {
-          en: 'Traps on YOU, ${player} (later)',
-        },
-        trapOnPlayer: {
-          en: 'Trap on ${player} (later)',
-        },
-        trapOnPlayers: {
-          en: 'Traps on ${player1}, ${player2} (later)',
-        },
-      },
+      outputStrings: trapEarlyOutputStrings,
     },
     {
-      id: 'DMU P1 Double-trouble Trap',
+      id: 'DMU P1 Double-trouble Trap 3 Early',
       type: 'GainsEffect',
       netRegex: { effectId: '13D6', capture: true },
-      delaySeconds: (_data, matches) => {
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
         const duration = parseFloat(matches.duration);
-        // Giving a 5s warning
-        // Second Set
-        if (duration > 67)
-          return 63;
+        // Only capture 3rd set
+        if (duration < 48 || duration > 50)
+          return;
 
-        // Last set
-        if (duration > 48)
-          return 44;
+        const target1 = data.doubleTroubleTrapTargets[0];
+        if (data.doubleTroubleTrapTargets.length === 2) {
+          const target2 = data.doubleTroubleTrapTargets[1];
 
-        // First set
-        return 0.1;
+          if (target1 === data.me)
+            return output.trapOnYouPlayer!({
+              player: data.party.member(target1),
+            });
+
+          if (target2 === data.me)
+            return output.trapOnYouPlayer!({
+              player: data.party.member(target2),
+            });
+
+          return output.trapOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+          });
+        }
+
+        if (target1 === data.me)
+          return output.trapOnYou!();
+        return output.trapOnPlayer!({
+          player: data.party.member(target1),
+        });
       },
+      outputStrings: trapEarlyOutputStrings,
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap 1',
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      condition: (_data, matches) => parseFloat(matches.duration) < 6,
+      delaySeconds: 0.1,
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
-        output.responseOutputStrings = {
-          trapOnYou: {
-            en: 'Trap on YOU',
-          },
-          trapOnYouPlayer: {
-            en: 'Traps on YOU, ${player}',
-          },
-          trapOnPlayer: {
-            en: 'Trap on ${player}',
-          },
-          trapOnPlayers: {
-            en: 'Traps on ${player1}, ${player2}',
-          },
+        output.responseOutputStrings = trapOutputStrings;
+
+        const target1 = data.doubleTroubleTrapTargets[0];
+        if (data.doubleTroubleTrapTargets.length === 2) {
+          const target2 = data.doubleTroubleTrapTargets[1];
+
+          if (target1 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target1),
+              }),
+            };
+
+          if (target2 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target2),
+              }),
+            };
+
+          return {
+            infoText: output.trapOnPlayers!({
+              player1: data.party.member(target1),
+              player2: data.party.member(target2),
+            }),
+          };
+        }
+
+        if (target1 === data.me)
+          return { alertText: output.trapOnYou!() };
+        return {
+          infoText: output.trapOnPlayer!({
+            player: data.party.member(target1),
+          }),
         };
+      },
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap 2',
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      condition: (_data, matches) => parseFloat(matches.duration) > 67,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = trapOutputStrings;
+
+        const target1 = data.doubleTroubleTrapTargets[0];
+        if (data.doubleTroubleTrapTargets.length === 2) {
+          const target2 = data.doubleTroubleTrapTargets[1];
+
+          if (target1 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target1),
+              }),
+            };
+
+          if (target2 === data.me)
+            return {
+              alertText: output.trapOnYouPlayer!({
+                player: data.party.member(target2),
+              }),
+            };
+
+          return {
+            infoText: output.trapOnPlayers!({
+              player1: data.party.member(target1),
+              player2: data.party.member(target2),
+            }),
+          };
+        }
+
+        if (target1 === data.me)
+          return { alertText: output.trapOnYou!() };
+        return {
+          infoText: output.trapOnPlayer!({
+            player: data.party.member(target1),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P1 Double-trouble Trap 3',
+      type: 'GainsEffect',
+      netRegex: { effectId: '13D6', capture: true },
+      condition: (_data, matches) => {
+        const duration = parseFloat(matches.duration);
+        return duration > 48 && duration < 50;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = trapOutputStrings;
 
         const target1 = data.doubleTroubleTrapTargets[0];
         if (data.doubleTroubleTrapTargets.length === 2) {
@@ -456,6 +614,190 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C622', source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // Result in ~5.1s warning
       response: Responses.tankBuster(),
+    },
+    {
+      id: 'DMU P1 Tele-Portent Collect',
+      // Debuffs distributed to 8 players:
+      // Players with 2 of the same are always:
+      // 130F Left  (7s) + 130F Left  (10s)
+      // 130E Right (7s) + 130E Right (10s)
+      // 130D Down  (7s) + 130D Down  (10s)
+      // 130C Up    (7s) + 130C Up    (10s)
+      //
+      // The remaining players may have differing patterns:
+      // Pattern 1:
+      // 130D Down  (7s) + 13DA Left  (10s)
+      // 13D9 Right (7s) + 130C Up    (10s)
+      // 13D8 Down  (7s) + 130E Right (10s)
+      // 130F Left  (7s) + 13D7 Up    (10s)
+      //
+      // Pattern 2:
+      // 130D Down  (7s) + 13DA Left  (10s)
+      // 13D9 Right (7s) + 130C Up    (10s)
+      // 130E Right (7s) + 13D8 Down  (10s)
+      // 13D7 Up    (7s) + 130F Left  (10s)
+      //
+      // Pattern 3:
+      // 130D Down  (7s) + 13DA Left  (10s)
+      // 13D9 Right (7s) + 130C Up    (10s)
+      // 130E Right (7s) + 13D8 Down  (10s)
+      // 130F Left  (7s) + 13D7 Up    (10s)
+      //
+      // Pattern 4:
+      // 13DA Left  (7s) + 130D Down  (10s)
+      // 130C Up    (7s) + 13D9 Right (10s)
+      // 130E Right (7s) + 13D8 Down  (10s)
+      // 130F Left  (7s) + 13D7 Up    (10s)
+      //
+      // Possibly More?
+      // Varying strategies to resolve
+      // Players with the same arrows will get a 6s 503 Confused which causes them to target nearest players
+      // Players with different arrows will cause a 6s 131E Sleep aoe
+      type: 'GainsEffect',
+      netRegex: {
+        effectId: [
+          '130C', // Up
+          '130D', // Down
+          '130E', // Right
+          '130F', // Left
+          '13D7', // Up
+          '13D8', // Down
+          '13D9', // Right
+          '13DA', // Left
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        const effectMap: { [effectId: string]: typeof data.myTelePortent1 } = {
+          '130C': 'up',
+          '130D': 'down',
+          '130E': 'right',
+          '130F': 'left',
+          '13D7': 'up',
+          '13D8': 'down',
+          '13D9': 'right',
+          '13DA': 'left',
+        };
+        const duration = parseFloat(matches.duration);
+        if (duration < 8) {
+          data.myTelePortent1 = effectMap[matches.effectId];
+          return;
+        }
+        data.myTelePortent2 = effectMap[matches.effectId];
+      },
+    },
+    {
+      id: 'DMU P1 Tele-Portents',
+      type: 'GainsEffect',
+      netRegex: {
+        effectId: [
+          '130C', // Up
+          '130D', // Down
+          '130E', // Right
+          '130F', // Left
+          '13D7', // Up
+          '13D8', // Down
+          '13D9', // Right
+          '13DA', // Left
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: 7,
+      infoText: (data, _matches, output) => {
+        if (data.myTelePortent1 === undefined || data.myTelePortent2 === undefined)
+          return;
+        const portents = data.myTelePortent1 + data.myTelePortent2;
+        return output[portents]!();
+      },
+      outputStrings: {
+        upup: {
+          en: 'Up Portents',
+        },
+        downdown: {
+          en: 'Down Portents',
+        },
+        rightright: {
+          en: 'Right Portents',
+        },
+        leftleft: {
+          en: 'Left Portents',
+        },
+        downleft: {
+          en: 'Down => Left Portent',
+        },
+        downright: {
+          en: 'Down => Right Portent',
+        },
+        rightup: {
+          en: 'Right => Up Portent',
+        },
+        rightdown: {
+          en: 'Right => Down Portent',
+        },
+        leftup: {
+          en: 'Left => Up Portent',
+        },
+        leftdown: {
+          en: 'Left => Down Portent',
+        },
+        upright: {
+          en: 'Up => Right Portent',
+        },
+        upleft: {
+          en: 'Up => Left Portent',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Tele-Portent 2',
+      // Not enough time to have lengthy TTS, but could configure this to give direction instead of move
+      type: 'LosesEffect',
+      netRegex: {
+        effectId: [
+          '130C', // Up
+          '130D', // Down
+          '130E', // Right
+          '130F', // Left
+          '13D7', // Up
+          '13D8', // Down
+          '13D9', // Right
+          '13DA', // Left
+        ],
+        capture: true,
+      },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          if (data.myTelePortent1 !== undefined)
+            return true;
+        return false;
+      },
+      durationSeconds: 3,
+      response: Responses.moveAway('alert'),
+    },
+    {
+      id: 'DMU P1 Tele-Portent Cleanup',
+      type: 'LosesEffect',
+      netRegex: {
+        effectId: [
+          '130C', // Up
+          '130D', // Down
+          '130E', // Right
+          '130F', // Left
+          '13D7', // Up
+          '13D8', // Down
+          '13D9', // Right
+          '13DA', // Left
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 1,
+      run: (data) => {
+        delete data.myTelePortent1;
+        delete data.myTelePortent2;
+      },
     },
   ],
   timelineReplace: [
