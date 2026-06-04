@@ -681,7 +681,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '13D6', capture: true },
       run: (data, matches) => {
         data.doubleTroubleTrapTargets = data.doubleTroubleTrapTargets.filter(
-          (target) => target !== matches.target
+          (target) => target !== matches.target,
         );
       },
     },
