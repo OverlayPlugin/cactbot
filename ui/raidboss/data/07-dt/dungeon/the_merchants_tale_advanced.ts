@@ -137,18 +137,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '301' },
       condition: Conditions.targetIsYou(),
       suppressSeconds: 2,
-      infoText: (_data, _matches, output) => output.breakChain!(),
-      outputStrings: {
-        breakChain: {
-          en: 'Break Chain',
-          de: 'Kette brechen',
-          fr: 'Brisez la chaîne',
-          ja: '鎖を切る',
-          cn: '拉断锁链',
-          ko: '사슬 끊기',
-          tc: '拉斷鎖鏈',
-        },
-      },
+    response: Responses.breakChains(),
     },
     {
       id: 'Pari Sun Circlet',
