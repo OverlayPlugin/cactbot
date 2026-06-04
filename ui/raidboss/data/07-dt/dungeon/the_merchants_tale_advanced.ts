@@ -66,7 +66,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Pari Fire Of Victory',
       type: 'StartsUsing',
       netRegex: { source: 'Pari of Plenty', id: 'B1CE' },
-      response: Responses.tankBuster(),
+      response: Responses.tankCleave(),
     },
     {
       id: 'Pari Scouring Scorn',
