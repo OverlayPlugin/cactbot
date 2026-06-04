@@ -63,40 +63,16 @@ const mysteryMagicOutputStrings: OutputStrings = {
     tc: '集合',
   },
   trueThunder: {
-    en: 'True Thunder',
-    de: 'Wahrer Blitz',
-    fr: 'Vraie foudre',
-    ja: '真サンダガ',
-    cn: '真雷',
-    ko: '진실 선더가',
-    tc: '真雷',
+    en: 'In Line',
   },
   fakeThunder: {
-    en: 'Fake Thunder',
-    de: 'Falscher Blitz',
-    fr: 'Fausse foudre',
-    ja: 'にせサンダガ',
-    cn: '假雷',
-    ko: '거짓 선더가',
-    tc: '假雷',
+    en: 'Avoid Tell',
   },
   trueIce: {
-    en: 'True Ice',
-    de: 'Wahres Eis',
-    fr: 'Vraie glace',
-    ja: '真ブリザガ',
-    cn: '真冰',
-    ko: '진실 블리자가',
-    tc: '真冰',
+    en: 'In Cone',
   },
   fakeIce: {
-    en: 'Fake Ice',
-    de: 'Falsches Eis',
-    fr: 'Fausse glace',
-    ja: 'にせブリザガ',
-    cn: '假冰',
-    ko: '거짓 블리자가',
-    tc: '假冰',
+    en: 'Avoid Tell',
   },
   stackTrueIce: {
     en: '${mech} + ${ice}',
@@ -111,16 +87,16 @@ const mysteryMagicOutputStrings: OutputStrings = {
     en: '${mech} + ${ice}',
   },
   trueIceTrueThunder: {
-    en: '${ice} + ${thunder}',
+    en: 'Avoid Tells',
   },
   fakeIceTrueThunder: {
-    en: '${ice} + ${thunder}',
+    en: 'Cone (only)',
   },
   trueIceFakeThunder: {
-    en: '${ice} + ${thunder}',
+    en: 'Line (only)',
   },
   fakeIceFakeThunder: {
-    en: '${ice} + ${thunder}',
+    en: 'Cone + Line',
   },
   stackTrueThunder: {
     en: '${mech} + ${thunder}',
@@ -392,24 +368,12 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         if (data.isThunderTrue) {
           return data.isIceTrue
-            ? output.trueIceTrueThunder!({
-              ice: output.trueIce!(),
-              thunder: output.trueThunder!(),
-            })
-            : output.fakeIceTrueThunder!({
-              ice: output.fakeIce!(),
-              thunder: output.trueThunder!(),
-            });
+            ? output.trueIceTrueThunder!()
+            : output.fakeIceTrueThunder!();
         }
         return data.isIceTrue
-          ? output.trueIceTrueThunder!({
-            ice: output.trueIce!(),
-            thunder: output.fakeThunder!(),
-          })
-          : output.fakeIceFakeThunder!({
-            ice: output.fakeIce!(),
-            thunder: output.fakeThunder!(),
-          });
+          ? output.trueIceTrueThunder!()
+          : output.fakeIceFakeThunder!();
       },
       outputStrings: mysteryMagicOutputStrings,
     },
