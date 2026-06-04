@@ -23,6 +23,10 @@ export interface Data extends RaidbossData {
   // General
   phase: Phase | 'unknown';
   // Phase 1
+  blueTowerIds: string[];
+  yellowTowerIds: string[];
+  purpleTowerIds: string[];
+  tower?: 'blue' | 'yellow' | 'purple';
   fireMarker?: string;
   isFireTrue?: boolean;
   isIceTrue?: boolean;
@@ -169,6 +173,9 @@ const triggerSet: TriggerSet<Data> = {
     return {
       phase: 'p1',
       // Phase 1
+      blueTowerIds: [],
+      yellowTowerIds: [],
+      purpleTowerIds: [],
       doubleTroubleTrapTargets: [],
     };
   },
@@ -178,6 +185,63 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: Object.keys(phases) },
       run: (data, matches) => data.phase = phases[matches.id] ?? 'unknown',
+    },
+    {
+      id: 'DMU P1 CombatantMemory Tower Tracker',
+      // 1EBFBB => Wave Cannon entity (blue)
+      // 1EBFBC => Gravitational Wave entity (purple)
+      // 1EBFBD => Intemperate Will entity (yellow)
+      // There are two of each, they are added at start of fight
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBFBB', '1EBFBC', '1EBFBD'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const towerMap = {
+          '1EBFBB': 'blue',
+          '1EBFBC': 'purple',
+          '1EBFBD': 'yellow',
+          'unknown': 'unknown',
+        };
+        const bnpcid = matches.pairBNpcID ?? 'unknown';
+        const kind = towerMap[bnpcid as keyof typeof towerMap];
+        if (kind === 'blue') {
+          data.blueTowerIds.push(matches.id);
+          return;
+        }
+        if (kind === 'yellow') {
+          data.yellowTowerIds.push(matches.id);
+          return;
+        }
+        if (kind === 'purple') {
+          data.purpleTowerIds.push(matches.id);
+          return;
+        }
+      },
+    },
+    {
+      id: 'DMU P1 Graven Image Collect',
+      // Tower entity actions
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      run: (data, matches) => {
+        const id = matches.id;
+
+        if (data.yellowTowerIds.indexOf(id) !== -1) {
+          data.tower = 'yellow';
+          return;
+        }
+        if (data.purpleTowerIds.indexOf(id) !== -1) {
+          data.tower = 'purple';
+          return;
+        }
+        if (data.blueTowerIds.indexOf(id) !== -1) {
+          data.tower = 'blue';
+          return;
+        }
+      },
     },
     {
       id: 'DMU P1 Revolting Ruin III',
@@ -386,6 +450,10 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const target1 = data.doubleTroubleTrapTargets[0];
+        // Check if players died from a knockback
+        if (target1 === undefined)
+          return;
+
         if (data.doubleTroubleTrapTargets.length === 2) {
           const target2 = data.doubleTroubleTrapTargets[1];
 
@@ -426,6 +494,10 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const target1 = data.doubleTroubleTrapTargets[0];
+        // Check if players died from a knockback
+        if (target1 === undefined)
+          return;
+
         if (data.doubleTroubleTrapTargets.length === 2) {
           const target2 = data.doubleTroubleTrapTargets[1];
 
@@ -511,6 +583,10 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = trapOutputStrings;
 
         const target1 = data.doubleTroubleTrapTargets[0];
+        // Check if players died
+        if (target1 === undefined)
+          return;
+
         if (data.doubleTroubleTrapTargets.length === 2) {
           const target2 = data.doubleTroubleTrapTargets[1];
 
@@ -560,6 +636,10 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = trapOutputStrings;
 
         const target1 = data.doubleTroubleTrapTargets[0];
+        // Check if players died
+        if (target1 === undefined)
+          return;
+
         if (data.doubleTroubleTrapTargets.length === 2) {
           const target2 = data.doubleTroubleTrapTargets[1];
 
@@ -595,12 +675,15 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // Debuffs should expire before the new ones come out
       id: 'DMU P1 Double-trouble Trap Cleanup',
+      // Players dying will also trigger this
       type: 'LosesEffect',
-      netRegex: { effectId: '13D6', capture: false },
-      suppressSeconds: 1,
-      run: (data) => data.doubleTroubleTrapTargets = [],
+      netRegex: { effectId: '13D6', capture: true },
+      run: (data, matches) => {
+        data.doubleTroubleTrapTargets = data.doubleTroubleTrapTargets.filter(
+          (target) => target !== matches.target
+        );
+      },
     },
     {
       id: 'DMU P1 Light of Judgment',
@@ -616,6 +699,24 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C622', source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // Result in ~5.1s warning
       response: Responses.tankBuster(),
+    },
+    {
+      id: 'DMU P1 Impertinent Will/Gravitational Wave',
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      alertText: (data, matches, output) => {
+        const id = matches.id;
+        if (data.yellowTowerIds.indexOf(id) !== -1) {
+          return output.goWest!();
+        }
+        if (data.purpleTowerIds.indexOf(id) !== -1) {
+          return output.goEast!();
+        }
+      },
+      outputStrings: {
+        goWest: Outputs.getLeftAndWest,
+        goEast: Outputs.getRightAndEast,
+      },
     },
     {
       id: 'DMU P1 Tele-Portent Collect',
