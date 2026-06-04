@@ -3,7 +3,7 @@
 
 # -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BAD6 BAD8 BAD7 BAD9
 # -p C403:15.6 C24C:216.5 C3F7:500.0
-# -it Kefka
+# -it Kefka Chaos Exdeath
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -142,7 +142,7 @@ hideall "--sync--"
 381.2 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
 382.3 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
-500.0 label "p2-success"
+497.0 label "p2-success"
 500.0 "Aero III Assault" Ability { id: "C3F7", source: "Kefka" } window 500,20
 
 ### Phase 3 - Chaos and Exdeath
