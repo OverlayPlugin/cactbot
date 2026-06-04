@@ -10,9 +10,10 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 // TODO: P1 Replace Mystery Magic Ice Only with tether combination
 // TODO: P1 Tele-Portent configuration options
 
-type Phase = 'p1' | 'p2';
+type Phase = 'p1' | 'p2' | 'p3';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
+  'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
 };
 
 // const centerX = 100;
