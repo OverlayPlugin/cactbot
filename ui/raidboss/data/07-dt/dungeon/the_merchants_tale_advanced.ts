@@ -144,18 +144,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Pari of Plenty', id: 'B187', capture: false },
       suppressSeconds: 3,
-      alarmText: (_data, _matches, output) => output.inBossHitbox!(),
-      outputStrings: {
-        inBossHitbox: {
-          en: 'In Boss Hitbox',
-          de: 'In die Boss-Hitbox',
-          fr: 'Dans la hitbox du boss',
-          ja: 'ボスの足元へ',
-          cn: '进Boss脚下',
-          ko: '보스 안으로',
-          tc: '進Boss腳下',
-        },
-      },
+      response: Responses.getUnder(),
     },
     {
       id: 'Pari False Flame Fableflight',
