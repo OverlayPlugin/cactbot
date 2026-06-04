@@ -303,7 +303,8 @@ const triggerSet: TriggerSet<Data> = {
           data.isThunderTrue === undefined &&
           data.isFireTrue === undefined
         )
-        return true;
+          return true;
+        return false;
       },
       infoText: (data, _matches, output) => {
         return data.isIceTrue
