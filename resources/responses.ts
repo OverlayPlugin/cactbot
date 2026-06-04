@@ -31,6 +31,7 @@ import {
   TriggerOutput,
 } from '../types/trigger';
 
+import type { Lang } from './languages';
 import Outputs from './outputs';
 
 type TargetedResponseOutput = ResponseOutput<Data, TargetedMatches>;
@@ -164,15 +165,15 @@ const staticResponse = (field: SevText, text: LocaleText): StaticResponseFunc =>
   };
 };
 
-type LocaleTextPart = [sep: string, text: LocaleText];
+type LocaleTextWithSeparator = [sep: string, text: LocaleText];
 
-const combineLocaleText = (first: LocaleText, rest: LocaleTextPart[]): LocaleText => {
-  const parts: LocaleTextPart[] = [['', first], ...rest];
-  const langs = new Set<keyof LocaleText>(['en']);
+const combineLocaleText = (first: LocaleText, rest: LocaleTextWithSeparator[]): LocaleText => {
+  const parts: LocaleTextWithSeparator[] = [['', first], ...rest];
+  const langs = new Set<Lang>(['en']);
 
   for (const [, text] of parts) {
     for (const lang of Object.keys(text))
-      langs.add(lang as keyof LocaleText);
+      langs.add(lang as Lang);
   }
 
   const result: Record<string, string> = {};
