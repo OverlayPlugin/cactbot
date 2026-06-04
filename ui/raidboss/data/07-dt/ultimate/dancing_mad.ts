@@ -519,7 +519,7 @@ const triggerSet: TriggerSet<Data> = {
       // get different order
       // Suprisingly the Unmitigated Explosion doesn't deal damage
       type: 'Ability',
-      netRegex: { id: 'BAA8', source: 'Graven Image', capture: true },
+      netRegex: { id: 'BAA8', source: 'Graven Image', capture: false },
       delaySeconds: 0.1,
       suppressSeconds: 1,
       response: (data, _matches, output) => {
