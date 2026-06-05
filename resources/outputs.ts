@@ -553,6 +553,7 @@ export default {
   },
   sidesThenFrontBack: {
     en: 'Sides => Front/Back',
+    de: 'Seiten -> Vorne/Hinten',
     fr: 'Côtés => Devant/Derrière',
     ja: '横 -> 縦',
     cn: '两侧 => 前/后',
@@ -561,6 +562,7 @@ export default {
   },
   frontBackThenSides: {
     en: 'Front/Back => Sides',
+    de: 'Vorne/Hinten -> Seiten',
     fr: 'Devant/Derrière => Côtés',
     ja: '縦 -> 横',
     cn: '前/后 => 两侧',
