@@ -112,33 +112,12 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
 };
 
-const trapEarlyOutputStrings: OutputStrings = {
-  trapOnYou: {
-    en: 'Trap on YOU (later)',
-  },
-  trapOnYouPlayer: {
-    en: 'Traps on YOU, ${player} (later)',
-  },
-  trapOnPlayer: {
-    en: 'Trap on ${player} (later)',
-  },
-  trapOnPlayers: {
-    en: 'Traps on ${player1}, ${player2} (later)',
-  },
-};
-
 const trapOutputStrings: OutputStrings = {
-  trapOnYou: {
-    en: 'Trap on YOU ',
+  knockbackFrom: {
+    en: 'Knockback from ${players}',
   },
-  trapOnYouPlayer: {
-    en: 'Traps on YOU, ${player}',
-  },
-  trapOnPlayer: {
-    en: 'Trap on ${player}',
-  },
-  trapOnPlayers: {
-    en: 'Traps on ${player1}, ${player2}',
+  knockbackFromLater: {
+    en: 'Knockback from ${players} (later)',
   },
 };
 
@@ -516,37 +495,21 @@ const triggerSet: TriggerSet<Data> = {
         if (parseFloat(matches.duration) < 67)
           return;
 
-        const target1 = data.doubleTroubleTrapTargets[0];
-        // Check if players died from a knockback
-        if (target1 === undefined)
+        // Check if players died
+        if (data.doubleTroubleTrapTargets[0] === undefined)
           return;
 
-        if (data.doubleTroubleTrapTargets.length === 2) {
-          const target2 = data.doubleTroubleTrapTargets[1];
-
-          if (target1 === data.me)
-            return output.trapOnYouPlayer!({
-              player: data.party.member(target1),
-            });
-
-          if (target2 === data.me)
-            return output.trapOnYouPlayer!({
-              player: data.party.member(target2),
-            });
-
-          return output.trapOnPlayers!({
-            player1: data.party.member(target1),
-            player2: data.party.member(target2),
-          });
-        }
-
-        if (target1 === data.me)
-          return output.trapOnYou!();
-        return output.trapOnPlayer!({
-          player: data.party.member(target1),
-        });
+        const players = data.doubleTroubleTrapTargets.map(
+          (player) => {
+            if (player === data.me)
+              return 'YOU';
+            return data.party.member(player);
+          }
+        );
+        const msg = players?.join(', ');
+        return output.knockbackFromLater!({ players: msg });
       },
-      outputStrings: trapEarlyOutputStrings,
+      outputStrings: trapOutputStrings,
     },
     {
       id: 'DMU P1 Double-trouble Trap 3 Early',
@@ -560,37 +523,21 @@ const triggerSet: TriggerSet<Data> = {
         if (duration < 48 || duration > 50)
           return;
 
-        const target1 = data.doubleTroubleTrapTargets[0];
-        // Check if players died from a knockback
-        if (target1 === undefined)
+        // Check if players died
+        if (data.doubleTroubleTrapTargets[0] === undefined)
           return;
 
-        if (data.doubleTroubleTrapTargets.length === 2) {
-          const target2 = data.doubleTroubleTrapTargets[1];
-
-          if (target1 === data.me)
-            return output.trapOnYouPlayer!({
-              player: data.party.member(target1),
-            });
-
-          if (target2 === data.me)
-            return output.trapOnYouPlayer!({
-              player: data.party.member(target2),
-            });
-
-          return output.trapOnPlayers!({
-            player1: data.party.member(target1),
-            player2: data.party.member(target2),
-          });
-        }
-
-        if (target1 === data.me)
-          return output.trapOnYou!();
-        return output.trapOnPlayer!({
-          player: data.party.member(target1),
-        });
+        const players = data.doubleTroubleTrapTargets.map(
+          (player) => {
+            if (player === data.me)
+              return 'YOU';
+            return data.party.member(player);
+          }
+        );
+        const msg = players?.join(', ');
+        return output.knockbackFromLater!({ players: msg });
       },
-      outputStrings: trapEarlyOutputStrings,
+      outputStrings: trapOutputStrings,
     },
     {
       id: 'DMU P1 Double-trouble Trap 1',
@@ -603,39 +550,16 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = trapOutputStrings;
 
-        const target1 = data.doubleTroubleTrapTargets[0];
-        if (data.doubleTroubleTrapTargets.length === 2) {
-          const target2 = data.doubleTroubleTrapTargets[1];
-
-          if (target1 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target1),
-              }),
-            };
-
-          if (target2 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target2),
-              }),
-            };
-
-          return {
-            infoText: output.trapOnPlayers!({
-              player1: data.party.member(target1),
-              player2: data.party.member(target2),
-            }),
-          };
-        }
-
-        if (target1 === data.me)
-          return { alertText: output.trapOnYou!() };
-        return {
-          infoText: output.trapOnPlayer!({
-            player: data.party.member(target1),
-          }),
-        };
+        const severity = data.doubleTroubleTrapTargets.includes(data.me) ? 'alertText' : 'infoText';
+        const players = data.doubleTroubleTrapTargets.map(
+          (player) => {
+            if (player === data.me)
+              return 'YOU';
+            return data.party.member(player);
+          }
+        );
+        const msg = players?.join(', ');
+        return { [severity]: output.knockbackFrom!({ players: msg }) };
       },
     },
     {
@@ -649,43 +573,20 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = trapOutputStrings;
 
-        const target1 = data.doubleTroubleTrapTargets[0];
         // Check if players died
-        if (target1 === undefined)
+        if (data.doubleTroubleTrapTargets[0] === undefined)
           return;
 
-        if (data.doubleTroubleTrapTargets.length === 2) {
-          const target2 = data.doubleTroubleTrapTargets[1];
-
-          if (target1 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target1),
-              }),
-            };
-
-          if (target2 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target2),
-              }),
-            };
-
-          return {
-            infoText: output.trapOnPlayers!({
-              player1: data.party.member(target1),
-              player2: data.party.member(target2),
-            }),
-          };
-        }
-
-        if (target1 === data.me)
-          return { alertText: output.trapOnYou!() };
-        return {
-          infoText: output.trapOnPlayer!({
-            player: data.party.member(target1),
-          }),
-        };
+        const severity = data.doubleTroubleTrapTargets.includes(data.me) ? 'alertText' : 'infoText';
+        const players = data.doubleTroubleTrapTargets.map(
+          (player) => {
+            if (player === data.me)
+              return 'YOU';
+            return data.party.member(player);
+          }
+        );
+        const msg = players?.join(', ');
+        return { [severity]: output.knockbackFrom!({ players: msg }) };
       },
     },
     {
@@ -702,43 +603,20 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = trapOutputStrings;
 
-        const target1 = data.doubleTroubleTrapTargets[0];
         // Check if players died
-        if (target1 === undefined)
+        if (data.doubleTroubleTrapTargets[0] === undefined)
           return;
 
-        if (data.doubleTroubleTrapTargets.length === 2) {
-          const target2 = data.doubleTroubleTrapTargets[1];
-
-          if (target1 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target1),
-              }),
-            };
-
-          if (target2 === data.me)
-            return {
-              alertText: output.trapOnYouPlayer!({
-                player: data.party.member(target2),
-              }),
-            };
-
-          return {
-            infoText: output.trapOnPlayers!({
-              player1: data.party.member(target1),
-              player2: data.party.member(target2),
-            }),
-          };
-        }
-
-        if (target1 === data.me)
-          return { alertText: output.trapOnYou!() };
-        return {
-          infoText: output.trapOnPlayer!({
-            player: data.party.member(target1),
-          }),
-        };
+        const severity = data.doubleTroubleTrapTargets.includes(data.me) ? 'alertText' : 'infoText';
+        const players = data.doubleTroubleTrapTargets.map(
+          (player) => {
+            if (player === data.me)
+              return 'YOU';
+            return data.party.member(player);
+          }
+        );
+        const msg = players?.join(', ');
+        return { [severity]: output.knockbackFrom!({ players: msg }) };
       },
     },
     {
