@@ -24,15 +24,7 @@ Options.Triggers.push({
           return output.sides();
       },
       outputStrings: {
-        sides: {
-          en: 'Sides -> Front/Back',
-          de: 'Seiten -> Vorne/Hinten',
-          fr: 'Côtés -> Devant/Derrière',
-          ja: '横 -> 縦',
-          cn: '左右 -> 前后',
-          ko: '양옆 -> 앞뒤',
-          tc: '左右 -> 前後',
-        },
+        sides: Outputs.sidesThenFrontBack,
         dieOnFrontBack: {
           en: 'Die on Front/Back -> Sides',
           de: 'Stirb Vorne/Hinten -> Seiten',
@@ -57,15 +49,7 @@ Options.Triggers.push({
           return output.frontBack();
       },
       outputStrings: {
-        frontBack: {
-          en: 'Front/Back -> Sides',
-          de: 'Vorne/Hinten -> Seiten',
-          fr: 'Devant/Derrière -> Côtés',
-          ja: '縦 -> 横',
-          cn: '前后 -> 左右',
-          ko: '앞뒤 -> 양옆',
-          tc: '前後 -> 左右',
-        },
+        frontBack: Outputs.frontBackThenSides,
         dieOnSides: {
           en: 'Die on Sides -> Front/Back',
           de: 'Stirb an Seiten -> Vorne/Hinten',
