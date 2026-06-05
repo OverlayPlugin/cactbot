@@ -165,10 +165,11 @@ const staticResponse = (field: SevText, text: LocaleText): StaticResponseFunc =>
   };
 };
 
-type LocaleTextWithSeparator = [sep: string, text: LocaleText];
-
-const combineLocaleText = (first: LocaleText, rest: LocaleTextWithSeparator[]): LocaleText => {
-  const parts: LocaleTextWithSeparator[] = [['', first], ...rest];
+export const combineLocaleText = (
+  first: LocaleText,
+  ...rest: [sep: string, text: LocaleText][]
+): LocaleText => {
+  const parts: [sep: string, text: LocaleText][] = [['', first], ...rest];
   const langs = new Set<Lang>(['en']);
 
   for (const [, text] of parts) {
@@ -653,7 +654,7 @@ export const compose = (
   text2: LocaleText,
   sev?: Severity,
 ): StaticResponseFunc => {
-  return staticResponse(defaultInfoText(sev), combineLocaleText(text1, [[sep, text2]]));
+  return staticResponse(defaultInfoText(sev), combineLocaleText(text1, [sep, text2]));
 };
 
 export const compose3 = (
@@ -666,7 +667,7 @@ export const compose3 = (
 ): StaticResponseFunc => {
   return staticResponse(
     defaultInfoText(sev),
-    combineLocaleText(text1, [[sep1, text2], [sep2, text3]]),
+    combineLocaleText(text1, [sep1, text2], [sep2, text3]),
   );
 };
 
