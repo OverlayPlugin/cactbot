@@ -504,7 +504,7 @@ const triggerSet: TriggerSet<Data> = {
             if (player === data.me)
               return 'YOU';
             return data.party.member(player);
-          }
+          },
         );
         const msg = players?.join(', ');
         return output.knockbackFromLater!({ players: msg });
@@ -532,7 +532,7 @@ const triggerSet: TriggerSet<Data> = {
             if (player === data.me)
               return 'YOU';
             return data.party.member(player);
-          }
+          },
         );
         const msg = players?.join(', ');
         return output.knockbackFromLater!({ players: msg });
@@ -556,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
             if (player === data.me)
               return 'YOU';
             return data.party.member(player);
-          }
+          },
         );
         const msg = players?.join(', ');
         return { [severity]: output.knockbackFrom!({ players: msg }) };
@@ -583,7 +583,7 @@ const triggerSet: TriggerSet<Data> = {
             if (player === data.me)
               return 'YOU';
             return data.party.member(player);
-          }
+          },
         );
         const msg = players?.join(', ');
         return { [severity]: output.knockbackFrom!({ players: msg }) };
@@ -613,7 +613,7 @@ const triggerSet: TriggerSet<Data> = {
             if (player === data.me)
               return 'YOU';
             return data.party.member(player);
-          }
+          },
         );
         const msg = players?.join(', ');
         return { [severity]: output.knockbackFrom!({ players: msg }) };
