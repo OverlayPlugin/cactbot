@@ -430,18 +430,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
-      id: 'DMU P1 Mystery Magic Cleanup',
-      // C622 Light of Judgment to reset for the Graven Image 2
-      type: 'StartsUsing',
-      netRegex: { id: ['BA94', 'C622'], source: 'Kefka', capture: false },
-      run: (data) => {
-        delete data.isFireTrue;
-        delete data.isIceTrue;
-        delete data.isThunderTrue;
-        delete data.fireMarker;
-      },
-    },
-    {
       id: 'DMU P1 Graven Image Tether Cleanup',
       // Clear on Ability:
       // BAA9 Pulse Wave
@@ -1126,6 +1114,18 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
       outputStrings: mysteryMagicOutputStrings,
+    },
+    {
+      id: 'DMU P1 Mystery Magic Cleanup',
+      // C622 Light of Judgment to reset for the Graven Image 2
+      type: 'StartsUsing',
+      netRegex: { id: ['BA94', 'C622'], source: 'Kefka', capture: false },
+      run: (data) => {
+        delete data.isFireTrue;
+        delete data.isIceTrue;
+        delete data.isThunderTrue;
+        delete data.fireMarker;
+      },
     },
   ],
   timelineReplace: [
