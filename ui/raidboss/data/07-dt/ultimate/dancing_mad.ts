@@ -455,7 +455,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.blueTowerId === matches.id,
-      alertText: (data, _matches, output) => output.waveCannonLine!(),
+      alertText: (_data, _matches, output) => output.waveCannonLine!(),
       outputStrings: {
         waveCannonLine: {
           en: 'E/W Spread',
@@ -702,7 +702,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.yellowTowerId === matches.id,
-      alertText: (data, _matches, output) => output.goWest!(),
+      alertText: (_data, _matches, output) => output.goWest!(),
       outputStrings: {
         goWest: Outputs.getLeftAndWest,
       },
@@ -712,7 +712,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.purpleTowerId === matches.id,
-      alertText: (data, _matches, output) => output.goEast!(),
+      alertText: (_data, _matches, output) => output.goEast!(),
       outputStrings: {
         goEast: Outputs.getRightAndEast,
       },
