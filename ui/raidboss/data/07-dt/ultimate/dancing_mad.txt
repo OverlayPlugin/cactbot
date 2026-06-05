@@ -296,8 +296,8 @@ hideall "--sync--"
 827.4 "Big Bang" Ability { id: "BB05", source: "Chaos" }
 827.4 "Big Bang" #Ability { id: "BB06", source: "Chaos" }
 
-840.8 "--sync--" StartsUsing { id: "BAE1", source: "Exdeath" } jump "p3-enrage"
-840.8 "--sync--" StartsUsing { id: "C3F7", source: "Chaos" } jump "p3-enrage"
+840.8 "--sync--" StartsUsing { id: "C258", source: "Exdeath" } jump "p3-enrage"
+840.8 "--sync--" StartsUsing { id: "C259", source: "Chaos" } jump "p3-enrage"
 845.8 "Meteor (Enrage)?" Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP?
 845.8 "Bowels of Agony (Enrage)?" Ability { id: "C259", source: "Chaos" } # Chaos >0% HP?
 
