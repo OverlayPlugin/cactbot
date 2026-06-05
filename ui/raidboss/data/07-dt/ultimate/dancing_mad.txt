@@ -28,7 +28,8 @@ hideall "--sync--"
 42.5 "Wave Cannon" Ability { id: "BAA8", source: "Graven Image" }
 44.6 "Double-trouble Trap" Ability { id: "BAA6", source: "Kefka" }
 46.0 "Explosion" Ability { id: "BAAA", source: "Kefka" }
-49.7 "Double-trouble Trap" Ability { id: "BAA7", source: "Kefka" }
+49.6 "--knockback--" # From Double-trouble Trap 1
+49.7 "Double-trouble Trap 2" Ability { id: "BAA7", source: "Kefka" }
 53.7 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
 53.7 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
 53.7 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
@@ -48,7 +49,8 @@ hideall "--sync--"
 105.8 "Gravitas" Ability { id: "BAAC", source: "Graven Image" }
 109.8 "Vitrophyre" Ability { id: "BAB0", source: "Graven Image" }
 114.4 "Intemperate Will/Gravitational Wave" Ability { id: ["BAB2", "BAB1"], source: "Graven Image" }
-118.9 "Double-Trouble Trap" Ability { id: "BAA7", source: "Kefka" } # NOTE: If it was passed after first set.
+118.0 "--knockback--" # From Double-trouble Trap 2
+118.1 "Double-Trouble Trap" Ability { id: "BAA7", source: "Kefka" } # NOTE: If it was passed after first set.
 121.3 "Gravity III" #Ability { id: "BAAF", source: "Kefka" } # TODO: Adjust timing/wording to puddles safe to pop, make it a duration?
 132.4 "Light of Judgment" Ability { id: "C622", source: "Kefka" }
 135.6 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
@@ -60,6 +62,7 @@ hideall "--sync--"
 
 163.6 "Graven Image 3" Ability { id: "BCF2", source: "Kefka" }
 168.7 "--sync--" Ability { id: "C554", source: "Kefka" }
+170.6 "--knockback--" # From Double-trouble Trap 3
 173.4 "Indulgent Will" Ability { id: "BAB5", source: "Graven Image" }
 173.4 "Idyllic Will" #Ability { id: "BAB6", source: "Graven Image" }
 177.7 "--sync--" Ability { id: "C555", source: "Kefka" }
