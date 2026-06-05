@@ -63,16 +63,16 @@ const mysteryMagicOutputStrings: OutputStrings = {
     tc: '集合',
   },
   trueThunder: {
-    en: 'In Line',
+    en: 'Avoid Tell',
   },
   fakeThunder: {
-    en: 'Avoid Tell',
+    en: 'In Line',
   },
   trueIce: {
-    en: 'In Cone',
+    en: 'Avoid Tell',
   },
   fakeIce: {
-    en: 'Avoid Tell',
+    en: 'In Cone',
   },
   stackTrueIce: {
     en: '${mech} + ${ice}',
