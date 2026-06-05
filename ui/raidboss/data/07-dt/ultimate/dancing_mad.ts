@@ -219,18 +219,12 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const id = matches.id;
 
-        if (data.yellowTowerId === id) {
+        if (data.yellowTowerId === id)
           data.tower = 'yellow';
-          return;
-        }
-        if (data.purpleTowerId === id) {
+        else if (data.purpleTowerId === id)
           data.tower = 'purple';
-          return;
-        }
-        if (data.blueTowerId === id) {
+        else if (data.blueTowerId === id)
           data.tower = 'blue';
-          return;
-        }
       },
     },
     {
@@ -277,7 +271,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.gravenImageCount = data.gravenImageCount + 1,
     },
     {
-      id: 'DMU Graven Image Tether Collect',
+      id: 'DMU P1 Graven Image Tether Collect',
       // 271 ActorSetPos lines indicate where the tether is coming from
       // 261 CombatantMemory lines may also indicate this
       // Graven Image 1:
@@ -316,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU Pulse Wave Tethers',
+      id: 'DMU P1 Pulse Wave Tethers',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
@@ -460,10 +454,8 @@ const triggerSet: TriggerSet<Data> = {
       // This gives a ~5 second warning to spread
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      alertText: (data, matches, output) => {
-        if (data.blueTowerId === matches.id)
-          return output.waveCannonLine!();
-      },
+      condition: (data, matches) => data.blueTowerId === matches.id,
+      alertText: (data, _matches, output) => output.waveCannonLine!(),
       outputStrings: {
         waveCannonLine: {
           en: 'E/W Spread',
@@ -706,25 +698,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: trapOutputStrings,
     },
     {
-      id: 'DMU P1 Impertinent Will/Gravitational Wave',
+      id: 'DMU P1 Impertinent Will',
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      alertText: (data, matches, output) => {
-        const id = matches.id;
-        if (data.yellowTowerId === id) {
-          return output.goWest!();
-        }
-        if (data.purpleTowerId === id) {
-          return output.goEast!();
-        }
-      },
+      condition: (data, matches) => data.yellowTowerId === matches.id,
+      alertText: (data, _matches, output) => output.goWest!(),
       outputStrings: {
         goWest: Outputs.getLeftAndWest,
+      },
+    },
+    {
+      id: 'DMU P1 Gravitational Wave',
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      condition: (data, matches) => data.purpleTowerId === matches.id,
+      alertText: (data, _matches, output) => output.goEast!(),
+      outputStrings: {
         goEast: Outputs.getRightAndEast,
       },
     },
     {
-      id: 'DMU Gravitas and Vitrophyre Tethers 2',
+      id: 'DMU P1 Gravitas and Vitrophyre Tethers 2',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
@@ -1030,7 +1024,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU Indulgent Will and Idyllic Will Tethers',
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
