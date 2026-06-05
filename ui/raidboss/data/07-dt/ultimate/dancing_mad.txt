@@ -296,7 +296,7 @@ hideall "--sync--"
 827.4 "Big Bang" Ability { id: "BB05", source: "Chaos" }
 827.4 "Big Bang" #Ability { id: "BB06", source: "Chaos" }
 
-839.0 "--sync--" StartsUsing { id: "C61E", source: "Exdeath" } jump "p3-exdeath-enrage" window 839,3 # Possibly this starts when Chaos dies?
+839.0 "--sync--" StartsUsing { id: "C61E", source: "Exdeath" } window 839,3 jump "p3-exdeath-enrage" # Possibly this starts when Chaos dies?
 # Possibly there is another if Exdeath is instead killed first, but Chaos triggers untargetable?
 
 840.8 "--sync--" StartsUsing { id: "C258", source: "Exdeath" } jump "p3-enrage"
@@ -347,7 +347,7 @@ hideall "--sync--"
 10845.8 "Meteor (Enrage)" Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP
 
 # Phase 3 Exdeath Enrage Sequence
-11839.0 "p3-exdeath-enrage"
+11839.0 label "p3-exdeath-enrage"
 11849.0 "Meteor (Exdeath Enrage)" StartsUsing { id: "C61E", source: "Exdeath" } # Exdeath >0% HP
 # NOTE: Using a window to jump back to p4, TBD if killing Exdeath first triggers a separate sequence
 
