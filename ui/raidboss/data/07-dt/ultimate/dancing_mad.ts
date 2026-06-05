@@ -1,4 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
@@ -182,45 +183,42 @@ const triggerSet: TriggerSet<Data> = {
         },
     },
     {
-      id: 'DMU P1 CombatantMemory Tower Tracker',
-      // 1EBFBB => Wave Cannon entity (blue)
-      // 1EBFBC => Gravitational Wave entity (purple)
-      // 1EBFBD => Intemperate Will entity (yellow)
-      // There are two of each, they are added at start of fight
-      type: 'CombatantMemory',
-      netRegex: {
-        change: 'Add',
-        pair: [{ key: 'BNpcID', value: ['1EBFBB', '1EBFBC', '1EBFBD'] }],
-        capture: true,
-      },
-      run: (data, matches) => {
-        const towerMap = {
-          '1EBFBB': 'blue',
-          '1EBFBC': 'purple',
-          '1EBFBD': 'yellow',
-          'unknown': 'unknown',
-        };
-        const bnpcid = matches.pairBNpcID ?? 'unknown';
-        const kind = towerMap[bnpcid as keyof typeof towerMap];
-        if (kind === 'blue') {
-          data.blueTowerIds.push(matches.id);
-          return;
-        }
-        if (kind === 'yellow') {
-          data.yellowTowerIds.push(matches.id);
-          return;
-        }
-        if (kind === 'purple') {
-          data.purpleTowerIds.push(matches.id);
-          return;
-        }
-      },
-    },
-    {
       id: 'DMU P1 Graven Image Collect',
       // Tower entity actions
+      // The CombatantMemory Add lines are added prior to combat
+      // OverlayPlugin call used to retrieve the matching BNpcID
+      // 1EBFBB (2015163) => Wave Cannon entity (blue)
+      // 1EBFBC (2015164) => Gravitational Wave entity (purple)
+      // 1EBFBD (2015165) => Intemperate Will entity (yellow)
+      // There are two of each, they are added at start of fight
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      promise: async (data, matches) => {
+        const ids = [parseInt((matches.id), 16)];
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: ids,
+        })).combatants;
+        const image = actors[0];
+        if (image === undefined)
+          return;
+
+        const towerMap = {
+          '2015163': 'blue',
+          '2015164': 'purple',
+          '2015165': 'yellow',
+          'unknown': 'unknown',
+        };
+
+        const bnpcid = image.BNpcID ?? 'unknown';
+        const kind = towerMap[bnpcid as keyof typeof towerMap];
+        if (kind === 'blue')
+          data.blueTowerIds.push(matches.id);
+        else if (kind === 'yellow')
+          data.yellowTowerIds.push(matches.id);
+        else if (kind === 'purple')
+          data.purpleTowerIds.push(matches.id);
+      },
       run: (data, matches) => {
         const id = matches.id;
 
