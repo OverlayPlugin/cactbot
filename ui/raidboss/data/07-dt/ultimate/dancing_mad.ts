@@ -27,6 +27,15 @@ export interface Data extends RaidbossData {
   yellowTowerIds: string[];
   purpleTowerIds: string[];
   tower?: 'blue' | 'yellow' | 'purple';
+  gravenImageCount: number;
+  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  gravenImageTether?:
+    | 'pulse'
+    | 'gravitas'
+    | 'vitrophyre'
+    | 'indulgent'
+    | 'idyllic'
+    | 'unknown';
   fireMarker?: string;
   isFireTrue?: boolean;
   isIceTrue?: boolean;
@@ -49,10 +58,22 @@ const headMarkerData = {
   'tankbuster': '00DA', // Revolting Ruin III tankbuster
   'dorito': '007F', // spread (real) or stack (fake)
   'stack': '0080', // spread (fake) or stack (real)
+  // Phase 1 Tethers
+  'imageTether': '002D',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
+  puddle: {
+    en: 'Bait Puddle',
+    de: 'Fläche ködern',
+    fr: 'Déposez',
+    ja: 'AOE誘導',
+    cn: '诱导AOE',
+    ko: '장판 유도',
+    tc: '誘導AOE',
+  },
   spread: Outputs.spread,
+  middle: Outputs.goIntoMiddle,
   stack: {
     en: 'Stack',
     de: 'Stacken',
@@ -73,6 +94,12 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
   fakeIce: {
     en: 'In Cone',
+  },
+  trueIcePuddle: {
+    en: '${mech1} + ${mech2} => ${mech3}',
+  },
+  fakeIcePuddle: {
+    en: '${mech1} + ${mech2} => ${mech3}',
   },
   stackTrueIce: {
     en: '${mech} + ${ice}',
@@ -132,6 +159,8 @@ const triggerSet: TriggerSet<Data> = {
       blueTowerIds: [],
       yellowTowerIds: [],
       purpleTowerIds: [],
+      actorPositions: {},
+      gravenImageCount: 0,
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
     };
@@ -142,6 +171,248 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: Object.keys(phases) },
       run: (data, matches) => data.phase = phases[matches.id] ?? 'unknown',
+    },
+    {
+      id: 'DMU ActorSetPos Tracker',
+      // Only in use for P1 Graven Image tethers
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'DMU P1 Graven Image Counter',
+      // Used for timing of tether triggers
+      type: 'StartsUsing',
+      netRegex: { id: 'BCF2', source: 'Kefka', capture: false },
+      run: (data) => data.gravenImageCount = data.gravenImageCount + 1,
+    },
+    {
+      id: 'DMU Graven Image Tether Collect',
+      // 271 ActorSetPos lines indicate where the tether is coming from
+      // 261 CombatantMemory lines may also indicate this
+      // Graven Image 1:
+      // (100, 56, 18.5) Center Tether, Will be target of BAA9 Pulse Wave (knockback)
+      // Graven Image 2:
+      // (102.5, 27, 22.5) Center Tether, Will be target of BAAC Gravitas (puddles)
+      // (126, 41.5, 7) Right Tether, Will be target of BAB0 Vitrophyre (rocks)
+      // Graven Image 3:
+      // (95, 25, 27) Left Tether, Will be target of BAB5 Indulgent Will which causes 503 Confused
+      // (107, 43, 8.5) Right tether, Will be target of BAB6 Idyllic Will which causes 131E Sleep
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1, // Actor position data can come after tether in log
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          data.gravenImageTether = 'unknown';
+          return;
+        }
+
+        const x = actor.x;
+        // Graven Image 1: Pulse Wave target
+        if (x < 101 && x > 99)
+          data.gravenImageTether = 'pulse';
+        else if (x < 103 && x > 101) // Graven Image 2: Gravitas target
+          data.gravenImageTether = 'gravitas';
+        else if (x > 125) // Graven Image 2: Vitrophyre target
+          data.gravenImageTether = 'vitrophyre';
+        else if (x < 100) // Graven Image 3: Indulgent Will target
+          data.gravenImageTether = 'indulgent';
+        else if (x < 108 && x > 106) // Graven Image 3: Idyllic Will target
+          data.gravenImageTether = 'idyllic';
+        else
+          data.gravenImageTether = 'unknown';
+      },
+    },
+    {
+      id: 'DMU Pulse Wave Tethers',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.gravenImageCount === 1;
+      },
+      delaySeconds: 0.1, // Actor position data can come after tether in log
+      durationSeconds: 7,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.tetherOnYou!();
+
+        const x = actor.x;
+        // Graven Image 1: Pulse Wave target
+        if (x < 101 && x > 99)
+          return output.pulse!();
+        return output.tetherOnYou!();
+      },
+      outputStrings: {
+        tetherOnYou: {
+          en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
+          ja: '線ついた',
+          cn: '连线点名',
+          ko: '선 대상자 지정됨',
+          tc: '連線點名',
+        },
+        pulse: Outputs.knockback, // Cannot be immuned, happens within 6s of tether
+      },
+    },
+    {
+      id: 'DMU Gravitas and Vitrophyre Tethers 2',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target &&
+          data.isIceTrue !== undefined &&
+          data.isThunderTrue === undefined &&
+          data.isFireTrue === undefined;
+      },
+      delaySeconds: 2,
+      durationSeconds: 6,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.tetherOnYou!();
+
+        const x = actor.x;
+        if (x < 103 && x > 101) // Graven Image 2: Gravitas target
+          return output.gravitas!({
+            mech1: output.puddle!(),
+            mech2: output.middle!(),
+          });
+        if (x > 125) // Graven Image 2: Vitrophyre target
+          return output.vitrophyre!({
+            mech1: output.puddle!(),
+            mech2: output.spread!(),
+          });
+        return output.tetherOnYou!();
+      },
+      outputStrings: {
+        puddle: {
+          en: 'Bait Puddle',
+          de: 'Fläche ködern',
+          fr: 'Déposez',
+          ja: 'AOE誘導',
+          cn: '诱导AOE',
+          ko: '장판 유도',
+          tc: '誘導AOE',
+        },
+        middle: Outputs.goIntoMiddle,
+        spread: Outputs.spread,
+        tetherOnYou: {
+          en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
+          ja: '線ついた',
+          cn: '连线点名',
+          ko: '선 대상자 지정됨',
+          tc: '連線點名',
+        },
+        gravitas: {
+          en: '${mech1} => ${mech2}',
+        },
+        vitrophyre: {
+          en: '${mech1} => ${mech2}',
+        },
+        indulgent: {
+          en: 'Confuse Tether on YOU',
+        },
+        idyllic: {
+          en: 'Sleep Tether on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Vitrophyre',
+      // Trigger on BAAC Gravitas, ~4s to get away
+      type: 'Ability',
+      netRegex: { id: 'BAAC', source: 'Graven Image', capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.gravenImageTether === 'vitrophyre')
+          return output.spread!();
+        return output.avoidTethers!();
+      },
+      outputStrings: {
+        avoidTethers: 'Avoid Tethered Players',
+        spread: 'Spread (avoid puddles)',
+      },
+    },
+    {
+      id: 'DMU Indulgent Will and Idyllic Will Tethers',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.gravenImageCount === 3;
+      },
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.tetherOnYou!();
+
+        const x = actor.x;
+        if (x < 100) // Graven Image 3: Indulgent Will target
+           return output.indulgent!();
+        if (x < 108 && x > 106) // Graven Image 3: Idyllic Will target
+          return output.idyllic!();
+        return output.tetherOnYou!();
+      },
+      outputStrings: {
+        tetherOnYou: {
+          en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
+          ja: '線ついた',
+          cn: '连线点名',
+          ko: '선 대상자 지정됨',
+          tc: '連線點名',
+        },
+        indulgent: {
+          en: 'Confuse Tether on YOU',
+        },
+        idyllic: {
+          en: 'Sleep Tether on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Graven Image Tether Cleanup',
+      // Clear on Ability:
+      // BAA9 Pulse Wave
+      // BAAC Gravitas
+      // BAB0 vitrophyre
+      // BAB5 Indulgent Will
+      // BAB6 Idyllic Will
+      type: 'Ability',
+      netRegex: {
+        id: ['BAA9', 'BAAC', 'BAB0', 'BAB5', 'BAB6'],
+        source: 'Graven Image',
+        capture: true,
+      },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        // Player could die and this ability then not target them
+        // Need intelligent way to remove once related ability has executed
+        // Clear data if ability matches our tether
+        const abilityMap = {
+          'pulse': 'BAAC',
+          'gravitas': 'BAA9',
+          'vitrophyre': 'BAB0',
+          'indulgent': 'BAB5',
+          'idyllic': 'BAB6',
+          'unknown': 'unknown',
+        };
+        const tether = data.gravenImageTether ?? 'unknown';
+        const tetherAbilityId = abilityMap[tether];
+        if (tetherAbilityId === matches.id || tether === 'unknown')
+          delete data.gravenImageTether;
+      },
     },
     {
       id: 'DMU P1 CombatantMemory Tower Tracker',
@@ -330,7 +601,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
-      id: 'DMU P1 Mystery Magic Ice Only',
+      id: 'DMU P1 Mystery Magic Ice, and Gravitas and Vitrophyre Tethers 1',
       // Occurs between Set 2 and Set 3
       // BA95 Blizzard Blowout III cast
       type: 'StartsUsing',
@@ -345,9 +616,18 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       infoText: (data, _matches, output) => {
+        const hasVitrophyre = data.gravenImageTether === 'vitrophyre';
         return data.isIceTrue
-          ? output.trueIce!()
-          : output.fakeIce!();
+          ? output.trueIcePuddle!({
+            mech1: output.trueIce!(),
+            mech2: output.puddle!(),
+            mech3: hasVitrophyre ? output.spread!() : output.middle!(),
+          })
+          : output.fakeIcePuddle!({
+            mech1: output.fakeIce!(),
+            mech2: output.puddle!(),
+            mech3: hasVitrophyre ? output.spread!() : output.middle!(),
+          });
       },
       outputStrings: mysteryMagicOutputStrings,
     },
