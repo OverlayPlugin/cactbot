@@ -223,44 +223,26 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P1 Revolting Ruin III',
-      // Tankbuster targets highest enmity then the nearest player that is not the highest enmity
-      // Offtank can provoke to cause the main tank to take both hits so long as main tank is closest
+      // Tankbuster targets highest enmity then second highest enmity
+      // A tank swap can happen to have MT take both hits
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['tankbuster'], capture: true },
       alertText: (data, matches, output) => {
         const target = matches.target;
-
-        // Highest entity player can stand wherever, but if they swap threat
-        // they should be in to either take the hit or prevent party hit
         if (target === data.me)
-          return output.cleaveOnYouDir!({
-            cleave: output.cleaveOnYou!(),
-            dir: output.in!(),
-          });
+          return output.cleaveOnYou!();
 
-        // Off tank (second highest enmity player) needs to be in for followup
-        // Or swap with main tank being in
-        // If both tanks are in, then it's safe for party in either case
         if (data.role === 'tank')
-          return output.cleaveOnPlayerSwapDir!({
-            cleave: output.cleaveOnPlayer!({
-              player: data.party.member(target),
-            }),
-            dir: output.in!(),
+          return output.cleaveSwap!({
+            player: data.party.member(target),
           });
 
         if (data.role === 'healer')
-          return output.cleaveOnPlayerDir!({
-            cleave: output.cleaveOnPlayer!({
-              player: data.party.member(target),
-            }),
-            dir: output.out!(),
+          return output.cleaveOnPlayer!({
+            player: data.party.member(target),
           });
 
-        return output.avoidCleavesDir!({
-          cleave: output.avoidCleaves!(),
-          dir: output.out!(),
-        });
+        return output.avoidCleaves!();
       },
       outputStrings: {
         in: Outputs.in,
@@ -270,17 +252,8 @@ const triggerSet: TriggerSet<Data> = {
         cleaveOnPlayer: {
           en: 'Tank Cleave on ${player}',
         },
-        cleaveOnYouDir: {
-          en: '${cleave} => ${dir}',
-        },
-        cleaveOnPlayerDir: {
-          en: '${cleave} + ${dir}',
-        },
-        cleaveOnPlayerSwapDir: {
-          en: '${cleave} => ${dir}',
-        },
-        avoidCleavesDir: {
-          en: '${cleave} + ${dir}',
+        cleaveSwap: { // Defaulting to same output as cleaveOnPlayer
+          en: 'Tank Cleave on ${player}',
         },
       },
     },
