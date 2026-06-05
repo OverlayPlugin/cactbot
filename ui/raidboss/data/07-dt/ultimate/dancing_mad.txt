@@ -87,34 +87,34 @@ hideall "--sync--"
 # Set 1
 # NOTE: The BAC0 Spelldriver, BAC2 Spellwave, BAC0 Spellscatter can be resolved in different orders
 244.9 "The Path of Light 1" Ability { id: "BABE", source: "Kefka" }
-245.6 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+245.6 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 254.3 "Future's End/Past's End 1" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 255.0 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
-255.7 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+255.7 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 265.7 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
 
 # Set 2
 265.9 "The Path of Light 3" Ability { id: "BABE", source: "Kefka" }
-266.4 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+266.4 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 275.4 "Future's End/Past's End 2" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 275.8 "The Path of Light 4" Ability { id: "BABE", source: "Kefka" }
-276.5 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+276.5 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 286.7 "All Things Ending" #Ability { id: ["BACD", "BADD"], source: "Kefka" }
 
 # Set 3
 286.7 "The Path of Light 5" Ability { id: "BABE", source: "Kefka" }
-287.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+287.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 296.1 "Future's End/Past's End 3" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 296.4 "The Path of Light 6" Ability { id: "BABE", source: "Kefka" }
-297.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+297.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 307.5 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
 
 # Set 4
 307.5 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
-308.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+308.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 317.0 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 317.4 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
-318.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"] source: "Kefka" }
+318.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 328.3 "All Things Ending" Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
 
 # Trines
