@@ -307,7 +307,7 @@ hideall "--sync--"
 845.8 "Meteor (Enrage)?" #Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP
 
 
-### Phase 4 - Kefka + Neo Exdeath + Chaos
+### Phase 4 - Kefka with Chaos and Neo Exdeath
 # TODO: Cleanup p4 as there are multiple sequences that could happen
 # TODO: Update with network log
 # TODO: Add voiceline sync?
