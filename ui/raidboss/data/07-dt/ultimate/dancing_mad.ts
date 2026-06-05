@@ -5,9 +5,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TODO: P1 Tethers
-// TODO: P1 Halfroom Cleaves
-// TODO: P1 Replace Mystery Magic Ice Only with tether combination
 // TODO: P1 Tele-Portent configuration options
 
 type Phase = 'p1' | 'p2' | 'p3';
