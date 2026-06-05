@@ -1,5 +1,6 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -20,9 +21,9 @@ export interface Data extends RaidbossData {
   // General
   phase: Phase | 'unknown';
   // Phase 1
-  blueTowerIds: string[];
-  yellowTowerIds: string[];
-  purpleTowerIds: string[];
+  blueTowerId?: string;
+  yellowTowerId?: string;
+  purpleTowerId?: string;
   tower?: 'blue' | 'yellow' | 'purple';
   gravenImageCount: number;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
@@ -154,9 +155,6 @@ const triggerSet: TriggerSet<Data> = {
     return {
       phase: 'p1',
       // Phase 1
-      blueTowerIds: [],
-      yellowTowerIds: [],
-      purpleTowerIds: [],
       actorPositions: {},
       gravenImageCount: 0,
       waveCannonTargets: [],
@@ -184,60 +182,51 @@ const triggerSet: TriggerSet<Data> = {
         },
     },
     {
-      id: 'DMU P1 CombatantMemory Tower Tracker',
-      // 1EBFBB => Wave Cannon entity (blue)
-      // 1EBFBC => Gravitational Wave entity (purple)
-      // 1EBFBD => Intemperate Will entity (yellow)
-      // There are two of each, they are added at start of fight
-      type: 'CombatantMemory',
-      netRegex: {
-        change: 'Add',
-        pair: [{ key: 'BNpcID', value: ['1EBFBB', '1EBFBC', '1EBFBD'] }],
-        capture: true,
-      },
-      run: (data, matches) => {
-        const towerMap = {
-          '1EBFBB': 'blue',
-          '1EBFBC': 'purple',
-          '1EBFBD': 'yellow',
-          'unknown': 'unknown',
-        };
-        const bnpcid = matches.pairBNpcID ?? 'unknown';
-        const kind = towerMap[bnpcid as keyof typeof towerMap];
-        if (kind === 'blue') {
-          data.blueTowerIds.push(matches.id);
-          return;
-        }
-        if (kind === 'yellow') {
-          data.yellowTowerIds.push(matches.id);
-          return;
-        }
-        if (kind === 'purple') {
-          data.purpleTowerIds.push(matches.id);
-          return;
-        }
-      },
-    },
-    {
       id: 'DMU P1 Graven Image Collect',
       // Tower entity actions
+      // The CombatantMemory Add lines are added prior to combat
+      // OverlayPlugin call used to retrieve the matching BNpcID
+      // 1EBFBB (2015163) => Wave Cannon entity (blue)
+      // 1EBFBC (2015164) => Gravitational Wave entity (purple)
+      // 1EBFBD (2015165) => Intemperate Will entity (yellow)
+      // There are two of each, they are added at start of fight
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      promise: async (data, matches) => {
+        const id = matches.id;
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(id, 16)],
+        })).combatants;
+        const image = actors[0];
+        if (image === undefined)
+          return;
+
+        const towerMap = {
+          '2015163': 'blue',
+          '2015164': 'purple',
+          '2015165': 'yellow',
+          'unknown': 'unknown',
+        };
+
+        const bnpcid = image.BNpcID ?? 'unknown';
+        const kind = towerMap[bnpcid as keyof typeof towerMap];
+        if (kind === 'blue')
+          data.blueTowerId = id;
+        else if (kind === 'yellow')
+          data.yellowTowerId = id;
+        else if (kind === 'purple')
+          data.purpleTowerId = id;
+      },
       run: (data, matches) => {
         const id = matches.id;
 
-        if (data.yellowTowerIds.indexOf(id) !== -1) {
+        if (data.yellowTowerId === id)
           data.tower = 'yellow';
-          return;
-        }
-        if (data.purpleTowerIds.indexOf(id) !== -1) {
+        else if (data.purpleTowerId === id)
           data.tower = 'purple';
-          return;
-        }
-        if (data.blueTowerIds.indexOf(id) !== -1) {
+        else if (data.blueTowerId === id)
           data.tower = 'blue';
-          return;
-        }
       },
     },
     {
@@ -284,7 +273,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.gravenImageCount = data.gravenImageCount + 1,
     },
     {
-      id: 'DMU Graven Image Tether Collect',
+      id: 'DMU P1 Graven Image Tether Collect',
       // 271 ActorSetPos lines indicate where the tether is coming from
       // 261 CombatantMemory lines may also indicate this
       // Graven Image 1:
@@ -323,7 +312,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU Pulse Wave Tethers',
+      id: 'DMU P1 Pulse Wave Tethers',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
@@ -467,10 +456,8 @@ const triggerSet: TriggerSet<Data> = {
       // This gives a ~5 second warning to spread
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      alertText: (data, matches, output) => {
-        if (data.blueTowerIds.indexOf(matches.id) !== -1)
-          return output.waveCannonLine!();
-      },
+      condition: (data, matches) => data.blueTowerId === matches.id,
+      alertText: (_data, _matches, output) => output.waveCannonLine!(),
       outputStrings: {
         waveCannonLine: {
           en: 'E/W Spread',
@@ -713,25 +700,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: trapOutputStrings,
     },
     {
-      id: 'DMU P1 Impertinent Will/Gravitational Wave',
+      id: 'DMU P1 Impertinent Will',
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      alertText: (data, matches, output) => {
-        const id = matches.id;
-        if (data.yellowTowerIds.indexOf(id) !== -1) {
-          return output.goWest!();
-        }
-        if (data.purpleTowerIds.indexOf(id) !== -1) {
-          return output.goEast!();
-        }
-      },
+      condition: (data, matches) => data.yellowTowerId === matches.id,
+      alertText: (_data, _matches, output) => output.goWest!(),
       outputStrings: {
         goWest: Outputs.getLeftAndWest,
+      },
+    },
+    {
+      id: 'DMU P1 Gravitational Wave',
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      condition: (data, matches) => data.purpleTowerId === matches.id,
+      alertText: (_data, _matches, output) => output.goEast!(),
+      outputStrings: {
         goEast: Outputs.getRightAndEast,
       },
     },
     {
-      id: 'DMU Gravitas and Vitrophyre Tethers 2',
+      id: 'DMU P1 Gravitas and Vitrophyre Tethers 2',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
@@ -1037,7 +1026,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU Indulgent Will and Idyllic Will Tethers',
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers',
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
