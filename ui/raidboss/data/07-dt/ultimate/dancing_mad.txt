@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BAD6 BAD8 BAD7 BAD9 BAF9 BAF1
-# -p C403:15.6 C24C:216.5 C3F7:500.0
+# -p C403:15.6 C24C:216.5 C3F7:500.0 C2DC:1000.0
 # -it Kefka Chaos Exdeath
 
 hideall "--Reset--"
@@ -296,10 +296,46 @@ hideall "--sync--"
 827.4 "Big Bang" Ability { id: "BB05", source: "Chaos" }
 827.4 "Big Bang" #Ability { id: "BB06", source: "Chaos" }
 
+839.0 "--sync--" StartsUsing { id: "C61E", source: "Exdeath" } jump "p3-exdeath-enrage" window 839,3 # Possibly this starts when Chaos dies?
+# Possibly there is another if Exdeath is instead killed first, but Chaos triggers untargetable?
+
 840.8 "--sync--" StartsUsing { id: "C258", source: "Exdeath" } jump "p3-enrage"
 840.8 "--sync--" StartsUsing { id: "C259", source: "Chaos" } jump "p3-enrage"
-845.8 "Meteor (Enrage)?" Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP?
-845.8 "Bowels of Agony (Enrage)?" Ability { id: "C259", source: "Chaos" } # Chaos >0% HP?
+840.8 "--Chaos untargetable--"
+840.8 "--Exdeath untargetable?--"
+845.8 "Bowels of Agony (Enrage)?" #Ability { id: "C259", source: "Chaos" } # Chaos >0% HP
+845.8 "Meteor (Enrage)?" #Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP
+
+
+### Phase 4 - Kefka + Neo Exdeath + Chaos
+# TODO: Cleanup p4 as there are multiple sequences that could happen
+# TODO: Update with network log
+# TODO: Add voiceline sync?
+# en: 'Boring!'
+# NOTE: Label not used due to unknown timing between Chaos/Exdeath kill order and time from Kefka Says
+995.0 "--sync--" StartsUsing { id: "C2DC", source: "Kefka" } window 995,12000 # Escape from the p3 exdeath enrage or chaos
+1000.0 "Kefka Says" Ability { id: "C2DC", source: "Kefka" }
+1003.1 "--middle--" Ability { id: "C3FD", source: "Kefka" }
+
+1009.4 "Mystery Magic 1" Ability { id: "BA94", source: "Kefka" }
+1009.4 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
+1009.4 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1013.7 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1018.7 "Tsunami" Ability { id: "BB21", source: "Chaos" }
+
+1024.1 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
+1024.1 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
+1024.1 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1028.4 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1033.5 "Inferno" Ability { id: "BB20", source: "Chaos" }
+
+1039.2 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
+1039.2 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
+1039.2 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1043.3 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+
+1045.3 "--sync--" Ability { id: "C554", source: "Kefka" }
+
 
 # Phase 2 Enrage Sequence
 10376.2 label "p2-enrage"
@@ -307,8 +343,13 @@ hideall "--sync--"
 
 # Phase 3 Enrage Sequence
 10840.8 label "p3-enrage"
-10845.8 "Meteor (Enrage)" Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP?
-10845.8 "Bowels of Agony (Enrage)" Ability { id: "C259", source: "Chaos" } # Chaos >0% HP?
+10845.8 "Bowels of Agony (Enrage)" Ability { id: "C259", source: "Chaos" } # Chaos >0% HP
+10845.8 "Meteor (Enrage)" Ability { id: "C258", source: "Exdeath" } # Exdeath >0% HP
+
+# Phase 3 Exdeath Enrage Sequence
+11839.0 "p3-exdeath-enrage"
+11849.0 "Meteor (Exdeath Enrage)" StartsUsing { id: "C61E", source: "Exdeath" } # Exdeath >0% HP
+# NOTE: Using a window to jump back to p4, TBD if killing Exdeath first triggers a separate sequence
 
 # IGNORED ABILITIES
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
@@ -376,6 +417,7 @@ hideall "--sync--"
 # BADD All Things Ending
 # BADF Trine
 # BAE0 Trine
+# BAE1 Light of Judgment: P2 Enrage
 # BAE2 Definition of Insanity
 # BAE3 Ultima Blaster
 # BAE4 Ultima Blaster
@@ -418,7 +460,18 @@ hideall "--sync--"
 # BB11 Blizzard III
 # BB12 Thunder III
 # BB13 Vacuum Wave
-# BAE1 Light of Judgment: P2 Enrage
+# BB14 Grand Cross
+# BB16 Death Shriek
+# BB17 Death Shriek
+# BB18 Death Bolt
+# BB19 Death Bolt
+# BB1A Death Wave
+# BB1B Death Wave
+# BB1D Death Surge
+# BB20 Inferno
+# BB21 Tsunami
+# BB23 Stray Flames
+# BB25 Stray Spray
 # BCCD Black Spark
 # BCF2 Graven Image
 # BD66 White Hole
@@ -428,6 +481,7 @@ hideall "--sync--"
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
 # C258 Meteor: P3 Chaos Enrage
 # C259 Bowels of Agony: P3 Exdeath Enrage
+# C2DC Kefka Says
 # C2D6 Trance
 # C2E2 the Decisive Battle
 # C2E3 the Decisive Battle
