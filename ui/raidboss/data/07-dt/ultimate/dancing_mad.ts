@@ -41,6 +41,7 @@ export interface Data extends RaidbossData {
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
+  // Phase 2
 }
 
 const headMarkerData = {
@@ -160,6 +161,7 @@ const triggerSet: TriggerSet<Data> = {
       gravenImageCount: 0,
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
+      // Phase 2
     };
   },
   triggers: [
@@ -1124,12 +1126,31 @@ const triggerSet: TriggerSet<Data> = {
         delete data.fireMarker;
       },
     },
+    {
+      id: 'DMU P2 Future\'s End/Past\'s End',
+      // There are four end casts
+      type: 'StartsUsing',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        return matches.id === 'BAD2' ? output.future!() : output.past!();
+      },
+      outputStrings: {
+        future: {
+          en: 'Future',
+        },
+        past: {
+          en: 'Past',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
+        'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
+        'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
       },
     },
   ],
