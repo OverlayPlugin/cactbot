@@ -3,6 +3,7 @@ import { assert } from 'chai';
 import Outputs from '../../resources/outputs';
 import {
   builtInResponseStr,
+  combineLocaleText,
   compose,
   compose3,
   Responses,
@@ -127,6 +128,29 @@ describe('response tests', () => {
         }
       }
     }
+  });
+  it('combineLocaleText combines localized text with fallbacks', () => {
+    const fallbackText: LocaleText = {
+      en: 'Fallback',
+      ja: 'Japanese Fallback',
+    };
+
+    assert.deepEqual(
+      combineLocaleText(
+        Outputs.in,
+        [' => ', Outputs.out],
+        [' + ', fallbackText],
+      ),
+      {
+        en: 'In => Out + Fallback',
+        de: 'Rein => Raus + Fallback',
+        fr: 'Intérieur => Extérieur + Fallback',
+        ja: '中へ => 外へ + Japanese Fallback',
+        cn: '靠近 => 远离 + Fallback',
+        ko: '안으로 => 밖으로 + Fallback',
+        tc: '靠近 => 遠離 + Fallback',
+      },
+    );
   });
   it('compose returns a built-in static response', () => {
     const responseFunc = compose(Outputs.in, ' => ', Outputs.out);
