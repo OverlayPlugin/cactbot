@@ -1,6 +1,6 @@
 import Conditions from '../../../../../resources/conditions';
-import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -21,9 +21,9 @@ export interface Data extends RaidbossData {
   // General
   phase: Phase | 'unknown';
   // Phase 1
-  blueTowerIds: string[];
-  yellowTowerIds: string[];
-  purpleTowerIds: string[];
+  blueTowerId?: string;
+  yellowTowerId?: string;
+  purpleTowerId?: string;
   tower?: 'blue' | 'yellow' | 'purple';
   gravenImageCount: number;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
@@ -154,9 +154,6 @@ const triggerSet: TriggerSet<Data> = {
     return {
       phase: 'p1',
       // Phase 1
-      blueTowerIds: [],
-      yellowTowerIds: [],
-      purpleTowerIds: [],
       actorPositions: {},
       gravenImageCount: 0,
       waveCannonTargets: [],
@@ -194,10 +191,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       promise: async (data, matches) => {
-        const ids = [parseInt((matches.id), 16)];
+        const id = matches.id;
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
-          ids: ids,
+          ids: [parseInt(id, 16)],
         })).combatants;
         const image = actors[0];
         if (image === undefined)
@@ -213,24 +210,24 @@ const triggerSet: TriggerSet<Data> = {
         const bnpcid = image.BNpcID ?? 'unknown';
         const kind = towerMap[bnpcid as keyof typeof towerMap];
         if (kind === 'blue')
-          data.blueTowerIds.push(matches.id);
+          data.blueTowerId = id;
         else if (kind === 'yellow')
-          data.yellowTowerIds.push(matches.id);
+          data.yellowTowerId = id;
         else if (kind === 'purple')
-          data.purpleTowerIds.push(matches.id);
+          data.purpleTowerId = id;
       },
       run: (data, matches) => {
         const id = matches.id;
 
-        if (data.yellowTowerIds.indexOf(id) !== -1) {
+        if (data.yellowTowerId === id) {
           data.tower = 'yellow';
           return;
         }
-        if (data.purpleTowerIds.indexOf(id) !== -1) {
+        if (data.purpleTowerId === id) {
           data.tower = 'purple';
           return;
         }
-        if (data.blueTowerIds.indexOf(id) !== -1) {
+        if (data.blueTowerId === id) {
           data.tower = 'blue';
           return;
         }
@@ -464,7 +461,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       alertText: (data, matches, output) => {
-        if (data.blueTowerIds.indexOf(matches.id) !== -1)
+        if (data.blueTowerId === matches.id)
           return output.waveCannonLine!();
       },
       outputStrings: {
@@ -714,10 +711,10 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       alertText: (data, matches, output) => {
         const id = matches.id;
-        if (data.yellowTowerIds.indexOf(id) !== -1) {
+        if (data.yellowTowerId === id) {
           return output.goWest!();
         }
-        if (data.purpleTowerIds.indexOf(id) !== -1) {
+        if (data.purpleTowerId === id) {
           return output.goEast!();
         }
       },
