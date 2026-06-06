@@ -10,8 +10,542 @@ hideall "--sync--"
 # PARI OF PLENTY #
 #~~~~~~~~~~~~~~~~#
 
-1000.0 "--sync--" SystemLogMessage { id: "7DC" } window 10000,0
-1013.0 "Heat Burst" Ability { id: "B1CC", source: "Pari of Plenty" }
+# -p B1CC:1013.1
+# -ii B1E8
+# -ic Flying Carpet
 
-# ALL ENCOUNTER ABILITIES
+# The Smoldering Bedchamber will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1507" } window 10000,0
+1008.1 "--sync--" StartsUsing { id: "B1CC", source: "Pari of Plenty" } window 20,20
+1013.1 "Heat Burst" Ability { id: "B1CC", source: "Pari of Plenty" }
+1021.3 "--North--" Ability { id: "B16D", source: "Pari of Plenty" }
+
+1033.3 "Left/Right Fireflight" Ability { id: ["B172", "B173"], source: "Pari of Plenty" }
+#1035.4 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1036.0 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+#1037.5 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+1038.1 "Carpet Ride x3" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" } duration 2.1
+#1039.6 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1040.2 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+1043.9 "Sun Circlet" Ability { id: "B187", source: "Pari of Plenty" }
+
+1052.1 "Doubling" Ability { id: "B093", source: "Pari of Plenty" }
+1058.2 "Charméd Chains" Ability { id: "B08F", source: "Pari of Plenty" }
+1065.3 "Left/Right Fableflight" Ability { id: ["B174", "B175"], source: "False Flame" }
+1067.4 "Carpet Ride" Ability { id: ["B176", "B177"], source: "False Flame" }
+1067.8 "Burning Gleam" Ability { id: "B1BB", source: "Fiery Bauble" }
+#1067.8 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+
+1073.0 "Doubling" Ability { id: "B093", source: "Pari of Plenty" }
+1079.2 "Charméd Chains" Ability { id: "B08F", source: "Pari of Plenty" }
+1086.2 "Left/Right Fableflight" Ability { id: ["B174", "B175"], source: "False Flame" }
+1088.2 "Carpet Ride" Ability { id: ["B176", "B177"], source: "False Flame" }
+1088.7 "Burning Gleam" Ability { id: "B1BB", source: "Fiery Bauble" }
+#1088.7 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+
+1097.0 "Fire of Victory" Ability { id: "B1CE", source: "Pari of Plenty" }
+1101.1 "--Middle--" Ability { id: "B16D", source: "Pari of Plenty" }
+
+1119.9 "Left/Right Fireflight: Four Long Nights" Ability { id: ["B195", "B196"], source: "Pari of Plenty" }
+1122.0 "Wheel of Fireflight + Fell Spark 1" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1122.0 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1126.6 "Wheel of Fireflight + Fell Spark 2" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1126.6 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1131.2 "Wheel of Fireflight + Fell Spark 3" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1131.2 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1135.8 "Wheel of Fireflight + Fell Spark 4" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1135.8 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+
+1144.5 "--North--" Ability { id: "B16D", source: "Pari of Plenty" }
+
+1156.5 "Left/Right Fireflight: Fact and Fiction" Ability { id: ["B7B1", "B7B2"], source: "Pari of Plenty" }
+#1158.5 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1159.0 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+#1160.5 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+1161.1 "Carpet Ride x3" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" } duration 2
+#1162.5 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1163.1 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+1166.9 "Sun Circlet" Ability { id: "B187", source: "Pari of Plenty" }
+
+1176.0 "Heat Burst" Ability { id: "B1CC", source: "Pari of Plenty" }
+1186.2 "Pari's Curse" Ability { id: "B1D0", source: "Pari of Plenty" }
+1194.3 "Charming Baubles" Ability { id: "B1B8", source: "Pari of Plenty" }
+1205.1 "Burning Gleam" Ability { id: "B925", source: "Fiery Bauble" }
+1205.8 "Fire Powder" Ability { id: "B1D1", source: "Pari of Plenty" }
+#1205.8 "High Fire Powder" #Ability { id: "B1D2", source: "Pari of Plenty" }
+
+1213.7 "Charméd Fableflight" Ability { id: "B7B0", source: "Pari of Plenty" }
+1227.6 "Left/Right Fableflight" #Ability { id: ["B762", "B763"], source: "False Flame" }
+1229.7 "Carpet Ride" Ability { id: ["B764", "B765"], source: "False Flame" }
+1230.3 "Carpet Ride" Ability { id: ["B766", "B767"], source: "Pari of Plenty" }
+1230.4 "Burning Gleam" Ability { id: "AFF3", source: "Fiery Bauble" }
+#1233.4 "Carpet Ride" #Ability { id: ["B764", "B765"], source: "False Flame" }
+1234.0 "Carpet Ride" Ability { id: ["B7AC", "B7AD"], source: "Pari of Plenty" }
+
+1236.0 "--middle--" Ability { id: "B16D", source: "Pari of Plenty" }
+1244.8 "Spurning Flames" Ability { id: "B1A9", source: "Pari of Plenty" }
+1254.9 "Impassioned Sparks" Ability { id: "B1AB", source: "Pari of Plenty" }
+1258.0 "Impassioned Sparks x12" Ability { id: "B1AC", source: "Pari of Plenty" } duration 16.6
+#1259.0 "Impassioned Sparks" #Ability { id: "B1AD", source: "Pari of Plenty" }
+#1261.1 "Impassioned Sparks" #Ability { id: "B1AC", source: "Pari of Plenty" }
+#1262.1 "Impassioned Sparks" #Ability { id: "B1AD", source: "Pari of Plenty" }
+#1264.1 "Impassioned Sparks" #Ability { id: "B1AC", source: "Pari of Plenty" }
+#1265.1 "Impassioned Sparks" #Ability { id: "B1AD", source: "Pari of Plenty" }
+#1265.4 "Impassioned Sparks" #Ability { id: "B1AF", source: "Pari of Plenty" }
+#1268.2 "Impassioned Sparks" #Ability { id: "B1AD", source: "Pari of Plenty" }
+#1268.5 "Impassioned Sparks" #Ability { id: "B1AF", source: "Pari of Plenty" }
+#1271.6 "Impassioned Sparks" #Ability { id: "B1AF", source: "Pari of Plenty" }
+#1274.6 "Impassioned Sparks" #Ability { id: "B1AF", source: "Pari of Plenty" }
+1268.9 "Burning Pillar x4" #Ability { id: "B1D6", source: "Pari of Plenty" } duration 6
+#1270.9 "Burning Pillar" #Ability { id: "B1D6", source: "Pari of Plenty" }
+#1272.8 "Burning Pillar" #Ability { id: "B1D6", source: "Pari of Plenty" }
+#1274.8 "Burning Pillar" #Ability { id: "B1D6", source: "Pari of Plenty" }
+1276.8 "Fire Well" Ability { id: "B1D8", source: "Pari of Plenty" }
+1283.6 "Scouring Scorn" Ability { id: "B1B2", source: "Pari of Plenty" }
+
+1292.8 label "pari-loop"
+1292.8 "--North--" Ability { id: "B16D", source: "Pari of Plenty" }
+
+1304.8 "Right/Left Fireflight: Fact and Fiction" Ability { id: ["B7B1", "B7B2"], source: "Pari of Plenty" }
+#1306.8 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1307.4 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+#1308.8 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1309.4 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+#1310.8 "Carpet Ride" #Ability { id: ["B176", "B177"], source: "Pari of Plenty" }
+#1311.4 "Carpet Ride" #Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+1315.2 "Sun Circlet" Ability { id: "B187", source: "Pari of Plenty" }
+
+1326.3 "Heat Burst" Ability { id: "B1CC", source: "Pari of Plenty" }
+1336.5 "Doubling" Ability { id: "B093", source: "Pari of Plenty" }
+1342.6 "Charméd Chains" Ability { id: "B08F", source: "Pari of Plenty" }
+1349.7 "Right/Left Fableflight" Ability { id: ["B174", "B175"], source: "False Flame" }
+1351.8 "Carpet Ride" Ability { id: ["B176", "B177"], source: "False Flame" }
+1352.2 "Burning Gleam" Ability { id: "B1BB", source: "Fiery Bauble" }
+1352.2 "Carpet Ride" Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+
+1357.5 "Doubling" Ability { id: "B093", source: "Pari of Plenty" }
+1363.6 "Charméd Chains" Ability { id: "B08F", source: "Pari of Plenty" }
+1370.6 "Right/Left Fableflight" Ability { id: ["B174", "B175"], source: "False Flame" }
+1372.6 "Carpet Ride" Ability { id: ["B176", "B177"], source: "False Flame" }
+1373.0 "Burning Gleam" Ability { id: "B1BB", source: "Fiery Bauble" }
+1373.0 "Carpet Ride" Ability { id: ["B178", "B179"], source: "Pari of Plenty" }
+
+1382.3 "Charméd Fableflight" Ability { id: "B7B0", source: "Pari of Plenty" }
+#1396.2 "Right/Left Fableflight" #Ability { id: ["B762", "B763"], source: "False Flame" }
+1398.3 "Carpet Ride" Ability { id: ["B764", "B765"], source: "False Flame" }
+1398.9 "Carpet Ride" Ability { id: ["B766", "B767"], source: "Pari of Plenty" }
+#1402.1 "Carpet Ride" #Ability { id: ["B764", "B765"], source: "False Flame" }
+1402.5 "Carpet Ride" Ability { id: ["B7AC", "B7AD"], source: "Pari of Plenty" }
+
+1404.5 "--middle--" Ability { id: "B16D", source: "Pari of Plenty" }
+
+1423.5 "Right/Left Fireflight: Four Long Nights" Ability { id: ["B195", "B196"], source: "Pari of Plenty" }
+1425.5 "Wheel of Fireflight + Fell Spark 1" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1425.5 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1430.1 "Wheel of Fireflight + Fell Spark 2" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1430.1 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1434.7 "Wheel of Fireflight + Fell Spark 3" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1434.7 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+1439.3 "Wheel of Fireflight + Fell Spark 4" Ability { id: ["B197", "B198", "B199", "B19A"], source: "Pari of Plenty" }
+#1439.3 "Fell Spark" #Ability { id: "B1A3", source: "Pari of Plenty" }
+
+1452.9 "Fire of Victory" Ability { id: "B1CE", source: "Pari of Plenty" }
+1463.0 "Pari's Curse" Ability { id: "B1D0", source: "Pari of Plenty" }
+1471.1 "Charming Baubles" Ability { id: "B1B8", source: "Pari of Plenty" }
+
+1488.5 "--sync--" Ability { id: "B16D", source: "Pari of Plenty" } window 20,20 forcejump "pari-loop"
+
+# PARI OF PLENTY ABILITIES
+# AFF3 Burning Gleam
+# B08F Charméd Chains
+# B093 Doubling
+# B16D --sync-- repositioning (North or Middle)
+# B171 Carpet Ride
+# B172 Right Fireflight
+# B173 Left Fireflight
+# B174 Right Fableflight
+# B175 Left Fableflight
+# B176 Carpet Ride
+# B177 Carpet Ride
+# B178 Carpet Ride
+# B179 Carpet Ride
+# B187 Sun Circlet
+# B195 Right Fireflight: Four Long Nights
+# B196 Left Fireflight: Four Long Nights
+# B197 Wheel of Fireflight
+# B198 Wheel of Fireflight
+# B199 Wheel of Fireflight
+# B19A Wheel of Fireflight
+# B1A3 Fell Spark
+# B1A9 Spurning Flames
+# B1AB Impassioned Sparks
+# B1AC Impassioned Sparks
+# B1AD Impassioned Sparks
+# B1AF Impassioned Sparks
+# B1B2 Scouring Scorn
+# B1B8 Charming Baubles
+# B1BB Burning Gleam
 # B1CC Heat Burst
+# B1CE Fire of Victory
+# B1D0 Pari's Curse
+# B1D1 Fire Powder
+# B1D2 High Fire Powder
+# B1D6 Burning Pillar
+# B1D8 Fire Well
+# B1DA Burning Chains
+# B1E8 --sync--
+# B762 Right Fableflight
+# B763 Left Fableflight
+# B764 Carpet Ride
+# B765 Carpet Ride
+# B766 Carpet Ride
+# B767 Carpet Ride
+# B7AC Carpet Ride
+# B7AD Carpet Ride
+# B7B0 Charméd Fableflight
+# B7B1 Right Fireflight: Fact and Fiction
+# B7B2 Left Fireflight: Fact and Fiction
+# B925 Burning Gleam
+
+#~~~~~~~~~~~~~~~~~~#
+# LONE SWORDMASTER #
+#~~~~~~~~~~~~~~~~~~#
+
+# -p BC08:2009.1
+
+# The Wound of the Heavens will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "150D" } window 10000,0
+2004.1 "--sync--" StartsUsing { id: "BC08", source: "Lone Swordmaster" } window 20,20
+2009.1 "Steelsbreath Release" Ability { id: "BC08", source: "Lone Swordmaster" }
+
+2016.2 "Malefic Quartering" Ability { id: "B637", source: "Lone Swordmaster" }
+2028.3 "Malefic Portent" Ability { id: "B63C", source: "Lone Swordmaster" }
+2030.4 "--sync--" Ability { id: "B60F", source: "Lone Swordmaster" }
+2035.7 "Shifting Horizon" Ability { id: "B63E", source: "Lone Swordmaster" }
+2048.1 "Unyielding Will" Ability { id: "BE0C", source: "Force of Will" }
+
+2060.8 "Near/Far to Heaven" Ability { id: ["B9CA", "B9CC"], source: "Lone Swordmaster" }
+2062.8 "Heavens' Confluence" Ability { id: "B649", source: "Lone Swordmaster" }
+
+2070.0 "Echoing Heat" Ability { id: "B64A", source: "Lone Swordmaster" }
+2077.8 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+2079.8 "Wolf's Crossing" Ability { id: "B64C", source: "Lone Swordmaster" }
+2092.8 "Echoing Eight" Ability { id: "B64E", source: "Lone Swordmaster" }
+
+2106.8 "Near/Far to Heaven" Ability { id: ["B9CA", "B9CC"], source: "Lone Swordmaster" }
+2108.8 "Heavens' Confluence" Ability { id: "B649", source: "Lone Swordmaster" }
+
+2114.0 "Sting of the Scorpion" Ability { id: "B636", source: "Lone Swordmaster" }
+2120.3 "--middle--" Ability { id: "B60F", source: "Lone Swordmaster" }
+
+2124.7 "Malefic Alignment 1" Ability { id: "B650", source: "Lone Swordmaster" }
+2130.7 "Malefic Alignment 2" Ability { id: "B650", source: "Lone Swordmaster" }
+2137.5 "Cardinal Horizons" Ability { id: "B652", source: "Lone Swordmaster" }
+2148.5 "Echoing Heat" Ability { id: "B64A", source: "Lone Swordmaster" }
+2148.8 "Will of the Underworld" Ability { id: "BA92", source: "Force of Will" }
+2179.4 "Near/Far to Heaven" Ability { id: ["B9CA", "B9CB", "B9CC", "B9CD"], source: "Lone Swordmaster" }
+2181.4 "Heavens' Confluence" Ability { id: ["B648", "B649"], source: "Lone Swordmaster" }
+2188.5 "Sting of the Scorpion" Ability { id: "B636", source: "Lone Swordmaster" }
+2201.8 "Waiting Wounds" Ability { id: "B653", source: "Lone Swordmaster" }
+
+2208.0 "Silent Eight" Ability { id: "B655", source: "Lone Swordmaster" }
+2213.0 "Resounding Silence" Ability { id: "B656", source: "Lone Swordmaster" }
+2218.0 "Maw of the Wolf" Ability { id: "B657", source: "Lone Swordmaster" }
+
+2228.2 "Near/Far to Heaven" Ability { id: ["B9CA", "B9CB", "B9CC", "B9CD"], source: "Lone Swordmaster" }
+2230.3 "Heavens' Confluence" Ability { id: ["B648", "B649"], source: "Lone Swordmaster" }
+
+2236.8 "Steelsbreath Release" Ability { id: "B659", source: "Lone Swordmaster" }
+2249.2 label "swordmaster-loop"
+2249.2 "--middle--" Ability { id: "B60F", source: "Lone Swordmaster" }
+
+2253.5 "Malefic Alignment" Ability { id: "B650", source: "Lone Swordmaster" }
+2254.5 "Malefic Alignment" Ability { id: "B651", source: "Lone Swordmaster" }
+#2254.7 "Malefic Influence" #Ability { id: ["B638", "B639", "B63A", "B63B"], source: "Lone Swordmaster" }
+
+2260.6 "Vanishing Horizon" Ability { id: "B65A", source: "Lone Swordmaster" }
+#2260.6 "Lash of Light" #Ability { id: "B63F", source: "Lone Swordmaster" }
+#2262.6 "Lash of Light" #Ability { id: "B63F", source: "Lone Swordmaster" }
+2262.7 "Steelsbreath Bonds" Ability { id: "B65C", source: "Lone Swordmaster" }
+
+2272.0 "Will of the Underworld" Ability { id: "B65B", source: "Force of Will" }
+2281.9 "Malefic Portent" Ability { id: "B63C", source: "Lone Swordmaster" }
+# 2282.9 "Malefic Influence" #Ability { id: ["B638", "B639", "B63A", "B63B"], source: "Lone Swordmaster" }
+2282.9 "Malefic Portent" Ability { id: "B63D", source: "Lone Swordmaster" }
+
+2290.0 "Steelsbreath Release" Ability { id: "BC08", source: "Lone Swordmaster" }
+2304.1 "Near/Far to Heaven" Ability { id: ["B9CA", "B9CC"], source: "Lone Swordmaster" }
+#2304.1 "Heavens' Confluence" #Ability { id: "B646", source: "Lone Swordmaster" }
+2304.3 "Near/Far to Heaven" Ability { id: ["B642", "B644"], source: "Lone Swordmaster" }
+2306.1 "Heavens' Confluence" Ability { id: "B649", source: "Lone Swordmaster" }
+
+2313.4 "Echoing Heat" Ability { id: "B64A", source: "Lone Swordmaster" }
+2321.0 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+2328.4 "Echoing Hush + Wolf's Crossing" Ability { id: "B69B", source: "Lone Swordmaster" }
+#2328.4 "Wolf's Crossing" #Ability { id: "B64D", source: "Lone Swordmaster" }
+2336.0 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+2336.1 "Echoing Eight" Ability { id: "B64E", source: "Lone Swordmaster" }
+2340.1 "Echoing Hush" Ability { id: "B64B", source: "Lone Swordmaster" }
+2343.1 "Echoing Eight" Ability { id: "B64F", source: "Lone Swordmaster" }
+
+2350.1 "Near to Heaven" Ability { id: ["B9CA", "B9CC"], source: "Lone Swordmaster" }
+#2350.1 "Heavens' Confluence" #Ability { id: "B646", source: "Lone Swordmaster" }
+2350.4 "Near to Heaven" Ability { id: ["B642", "B644"], source: "Lone Swordmaster" }
+2352.1 "Heavens' Confluence" Ability { id: "B649", source: "Lone Swordmaster" }
+2357.8 "Sting of the Scorpion" Ability { id: "B636", source: "Lone Swordmaster" }
+
+2364.0 "--middle--" Ability { id: "B60F", source: "Lone Swordmaster" }
+
+2368.3 "Malefic Alignment" Ability { id: "B650", source: "Lone Swordmaster" }
+2369.3 "Malefic Alignment" Ability { id: "B651", source: "Lone Swordmaster" }
+#2369.5 "Malefic Influence" #Ability { id: ["B638", "B639", "B63A", "B63B"], source: "Lone Swordmaster" }
+2374.4 "Malefic Alignment" Ability { id: "B650", source: "Lone Swordmaster" }
+2375.4 "Malefic Alignment" Ability { id: "B651", source: "Lone Swordmaster" }
+#2375.6 "Malefic Influence" #Ability { id: ["B638", "B639", "B63A", "B63B"], source: "Lone Swordmaster" }
+
+2381.4 "Cardinal Horizons" Ability { id: "B652", source: "Lone Swordmaster" }
+#2381.4 "Lash of Light" #Ability { id: "B63F", source: "Lone Swordmaster" }
+#2383.4 "Lash of Light" #Ability { id: "B63F", source: "Lone Swordmaster" }
+
+2392.5 "Echoing Heat" Ability { id: "B64A", source: "Lone Swordmaster" }
+2392.8 "Will of the Underworld" Ability { id: "BA92", source: "Force of Will" }
+2399.8 "Will of the Underworld" Ability { id: "BA92", source: "Force of Will" }
+2400.0 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+2406.9 "Will of the Underworld" Ability { id: "BA92", source: "Force of Will" }
+2407.7 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+2413.9 "Will of the Underworld" Ability { id: "BA92", source: "Force of Will" }
+2415.1 "Echoing Hush" Ability { id: "B69B", source: "Lone Swordmaster" }
+
+2423.5 "Near/Far to Heaven" Ability { id: ["B9CB", "B9CD"], source: "Lone Swordmaster" }
+#2423.5 "Heavens' Confluence" #Ability { id: "B647", source: "Lone Swordmaster" }
+2423.7 "Near/Far to Heaven" Ability { id: ["B643", "B645"], source: "Lone Swordmaster" }
+2425.5 "Heavens' Confluence" Ability { id: "B648", source: "Lone Swordmaster" }
+2432.7 "Sting of the Scorpion" Ability { id: "B636", source: "Lone Swordmaster" }
+
+2445.8 "Waiting Wounds" Ability { id: "B653", source: "Lone Swordmaster" }
+#2445.8 "Waiting Wounds" #Ability { id: "B654", source: "Lone Swordmaster" }
+#2446.8 "Waiting Wounds" #Ability { id: "B654", source: "Lone Swordmaster" }
+#2447.8 "Waiting Wounds" #Ability { id: "B654", source: "Lone Swordmaster" }
+2451.8 "Silent Eight" Ability { id: "B655", source: "Lone Swordmaster" }
+2456.9 "Resounding Silence" Ability { id: "B656", source: "Lone Swordmaster" }
+
+2456.9 "--middle--" Ability { id: "B60F", source: "Lone Swordmaster" }
+
+2459.9 "Echoing Eight" Ability { id: "B64F", source: "Lone Swordmaster" }
+2462.0 "Maw of the Wolf" Ability { id: "B657", source: "Lone Swordmaster" }
+2463.7 "Maw of the Wolf" Ability { id: "B658", source: "Lone Swordmaster" }
+2472.3 "Near to Heaven" Ability { id: ["B9CA", "B9CC"], source: "Lone Swordmaster" }
+#2472.3 "Heavens' Confluence" #Ability { id: "B646", source: "Lone Swordmaster" }
+2472.7 "Near to Heaven" Ability { id: ["B642", "B644"], source: "Lone Swordmaster" }
+2474.3 "Heavens' Confluence" Ability { id: "B649", source: "Lone Swordmaster" }
+
+2480.9 "Steelsbreath Release" Ability { id: "B659", source: "Lone Swordmaster" }
+2490.0 "Malefic Quartering" Ability { id: "B637", source: "Lone Swordmaster" }
+2491.0 "Malefic Influence" Ability { id: ["B638", "B63A"], source: "Lone Swordmaster" }
+2492.0 "Malefic Influence" Ability { id: ["B639", "B63B"], source: "Lone Swordmaster" }
+
+2493.1 "--middle--" Ability { id: "B60F", source: "Lone Swordmaster" } window 20,20 forcejump "swordmaster-loop"
+
+# LONE SWORDMASTER ABILITIES
+# B60F --middle--
+# B636 Sting of the Scorpion
+# B637 Malefic Quartering
+# B638 Malefic Influence
+# B639 Malefic Influence
+# B63A Malefic Influence
+# B63B Malefic Influence
+# B63C Malefic Portent
+# B63D Malefic Portent
+# B63E Shifting Horizon
+# B63F Lash of Light
+# B640 Unyielding Will
+# B641 Unyielding Will
+# B642 Near to Heaven
+# B643 Far from Heaven
+# B644 Near to Heaven
+# B645 Far from Heaven
+# B646 Heavens' Confluence
+# B647 Heavens' Confluence
+# B648 Heavens' Confluence
+# B649 Heavens' Confluence
+# B64A Echoing Heat
+# B64B Echoing Hush
+# B64C Wolf's Crossing
+# B64D Wolf's Crossing
+# B64E Echoing Eight
+# B64F Echoing Eight
+# B650 Malefic Alignment
+# B651 Malefic Alignment
+# B652 Cardinal Horizons
+# B653 Waiting Wounds
+# B654 Waiting Wounds
+# B655 Silent Eight
+# B656 Resounding Silence
+# B657 Maw of the Wolf
+# B658 Maw of the Wolf
+# B659 Steelsbreath Release
+# B65A Vanishing Horizon
+# B65B Will of the Underworld
+# B65C Steelsbreath Bonds
+# B69B Echoing Hush
+# B9CA Near to Heaven
+# B9CB Far from Heaven
+# B9CC Near to Heaven
+# B9CD Far from Heaven
+# BA92 Will of the Underworld
+# BC08 Steelsbreath Release
+# BE0C Unyielding Will
+
+
+#~~~~~~~~~~~~~~~~~~~~#
+# DARYA THE SEA-MAID #
+#~~~~~~~~~~~~~~~~~~~~#
+
+# -p B30D:3012.0
+
+# The Sea-maid's Mirror will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "150A" } window 10000,0
+3007.0 "--sync--" StartsUsing { id: "B30D", source: "Darya the Sea-maid" } window 20,20
+3012.0 "Piercing Plunge" Ability { id: "B30D", source: "Darya the Sea-maid" }
+
+# Seaborn Stalwart (Clionid), Seaborn Steed (Seahorse), Seaborn Soldier (Crab), Seaborn Steward (Turtle)
+3024.3 "Familiar Call" Ability { id: "B2CB", source: "Darya the Sea-maid" }
+3038.0 "Echoed Serenade" Ability { id: "B2CD", source: "Darya the Sea-maid" }
+3041.7 "Watersong 1" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+3044.7 "Watersong 2" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+3047.8 "Watersong 3" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+3050.8 "Watersong 4" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+
+3059.7 "Sunken Treasure" Ability { id: "B2F4", source: "Darya the Sea-maid" }
+3067.7 "Hydrobullet (cast)" Ability { id: "B2F7", source: "Darya the Sea-maid" }
+3073.8 "Hydrobullet" Ability { id: "B2F8", source: "Darya the Sea-maid" }
+3074.7 "Sphere Shatter" Ability { id: ["B2F5", "B2F6"], source: "Darya the Sea-maid" }
+#3079.6 "Sphere Shatter" #Ability { id: "B2F5", source: "Darya the Sea-maid" }
+3087.7 "Hydrocannon" Ability { id: "B2E9", source: "Darya the Sea-maid" }
+#3088.8 "Hydrocannon" #Ability { id: "B30C", source: "Darya the Sea-maid" }
+3098.8 "Aqua Spear (cast)" Ability { id: "B2F9", source: "Darya the Sea-maid" }
+3102.6 "Aqua Spear" Ability { id: "B2FA", source: "Darya the Sea-maid" }
+
+3108.5 "Sea Shackles" Ability { id: "B2FD", source: "Darya the Sea-maid" }
+3115.6 "Tidal Wave (cast)" Ability { id: "B2FB", source: "Darya the Sea-maid" }
+3124.1 "Tidal Wave x2" Ability { id: "B2FC", source: "Darya the Sea-maid" } duration 10
+#3129.8 "Explosion" #Ability { id: "B2FE", source: "Darya the Sea-maid" }
+#3134.1 "Tidal Wave" #Ability { id: "B2FC", source: "Darya the Sea-maid" }
+
+3141.1 "Piercing Plunge" Ability { id: "B30D", source: "Darya the Sea-maid" }
+3155.4 "Swimming in the Air" Ability { id: "B2F1", source: "Darya the Sea-maid" }
+3168.7 "Hydrobullet" Ability { id: "B2F3", source: "Darya the Sea-maid" }
+#3168.7 "Tidalspout" #Ability { id: "B7F1", source: "Darya the Sea-maid" }
+#3168.9 "Hydrofall" #Ability { id: "B2F2", source: "Darya the Sea-maid" }
+
+3181.2 "Sea Shackles" Ability { id: "B2FD", source: "Darya the Sea-maid" }
+3191.3 "Ceaseless Current (cast)" Ability { id: "B2FF", source: "Darya the Sea-maid" }
+3199.4 "Ceaseless Current x5" Ability { id: "B300", source: "Darya the Sea-maid" } duration 8
+#3201.4 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+3202.4 "Surging Current (cast)" Ability { id: "B302", source: "Darya the Sea-maid" }
+#3203.4 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+3203.4 "Surging Current" Ability { id: "B303", source: "Darya the Sea-maid" }
+#3205.4 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+#3207.4 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+
+3216.4 "Alluring Order" Ability { id: "B7F2", source: "Darya the Sea-maid" }
+3224.5 "Aqua Ball (cast)" Ability { id: "B30A", source: "Darya the Sea-maid" }
+3229.2 "Aqua Ball x3" #Ability { id: "B30B", source: "Darya the Sea-maid" } duration 4.1
+#3231.3 "Aqua Ball" #Ability { id: "B30B", source: "Darya the Sea-maid" }
+#3233.3 "Aqua Ball" #Ability { id: "B30B", source: "Darya the Sea-maid" }
+3230.9 "Hydrobullet (cast)" Ability { id: "B2F7", source: "Darya the Sea-maid" }
+3237.1 "Hydrobullet" Ability { id: "B2F8", source: "Darya the Sea-maid" }
+3247.1 "Hydrocannon" Ability { id: "B2E9", source: "Darya the Sea-maid" }
+#3248.2 "Hydrocannon" #Ability { id: "B30C", source: "Darya the Sea-maid" }
+
+3254.3 label "darya-loop"
+3254.3 "--middle--" Ability { id: "B2CA", source: "Darya the Sea-maid" }
+
+# Seaborn Stalwart (Clionid), Seaborn Steed (Seahorse), Seaborn Soldier (Crab), Seaborn Steward (Turtle)
+3260.4 "Familiar Call" Ability { id: "B2CB", source: "Darya the Sea-maid" }
+3274.1 "Echoed Serenade" Ability { id: "B2CD", source: "Darya the Sea-maid" }
+3277.8 "Watersong 1" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+
+# Encroaching: Near then Far. Receding: Far then Near.
+3279.8 "Encroaching/Receding Twin Tides" Ability { id: ["B307", "B304"], source: "Darya the Sea-maid" }
+3280.8 "Far/Near Tide" Ability { id: ["B308", "B305"], source: "Darya the Sea-maid" }
+#3280.8 "Watersong" #Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+3283.8 "Near/Far Tide" Ability { id: ["B306", "B309"], source: "Darya the Sea-maid" }
+3283.8 "Watersong 2" Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+3286.9 "Watersong 3" #Ability { id: ["B2ED", "B2EE", "B2EF", "B2F0"], source: ["Seaborn Stalwart", "Seaborn Steed", "Seaborn Soldier", "Seaborn Steward"] }
+
+3294.8 "Sunken Treasure" Ability { id: "B2F4", source: "Darya the Sea-maid" }
+3302.9 "Hydrobullet (cast)" Ability { id: "B2F7", source: "Darya the Sea-maid" }
+3309.0 "Hydrobullet" Ability { id: "B2F8", source: "Darya the Sea-maid" }
+3309.9 "Sphere Shatter" Ability { id: ["B2F5", "B2F6"], source: "Darya the Sea-maid" }
+3314.9 "Sphere Shatter" Ability { id: "B2F5", source: "Darya the Sea-maid" }
+
+3323.9 "Piercing Plunge" Ability { id: "B30D", source: "Darya the Sea-maid" }
+3335.0 "Aqua Spear (cast)" Ability { id: "B2F9", source: "Darya the Sea-maid" }
+3338.8 "Aqua Spear" Ability { id: "B2FA", source: "Darya the Sea-maid" }
+3344.7 "Sea Shackles" Ability { id: "B2FD", source: "Darya the Sea-maid" }
+3351.8 "Tidal Wave (cast)" Ability { id: "B2FB", source: "Darya the Sea-maid" }
+3360.3 "Tidal Wave x2" Ability { id: "B2FC", source: "Darya the Sea-maid" } duration 10
+#3370.3 "Tidal Wave" #Ability { id: "B2FC", source: "Darya the Sea-maid" }
+3376.4 "Hydrocannon" Ability { id: "B2E9", source: "Darya the Sea-maid" }
+#3377.5 "Hydrocannon" #Ability { id: "B30C", source: "Darya the Sea-maid" }
+
+3383.6 "--middle--" Ability { id: "B2CA", source: "Darya the Sea-maid" }
+3390.8 "Swimming in the Air" Ability { id: "B2F1", source: "Darya the Sea-maid" }
+3404.3 "Hydrofall" Ability { id: "B2F2", source: "Darya the Sea-maid" }
+3405.1 "Hydrobullet" Ability { id: "B2F3", source: "Darya the Sea-maid" }
+#3405.1 "Tidalspout" #Ability { id: "B7F1", source: "Darya the Sea-maid" }
+
+3414.4 "Sea Shackles" Ability { id: "B2FD", source: "Darya the Sea-maid" }
+3424.5 "Ceaseless Current (cast)" Ability { id: "B2FF", source: "Darya the Sea-maid" }
+3432.6 "Ceaseless Current x5" Ability { id: "B300", source: "Darya the Sea-maid" } duration 8
+#3434.6 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+3435.7 "Surging Current (cast)" Ability { id: "B302", source: "Darya the Sea-maid" }
+#3436.6 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+3436.7 "Surging Current" Ability { id: "B303", source: "Darya the Sea-maid" }
+#3438.6 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+#3440.6 "Ceaseless Current" #Ability { id: "B301", source: "Darya the Sea-maid" }
+
+3446.0 "--middle--" Ability { id: "B2CA", source: "Darya the Sea-maid" } window 20,20 forcejump "darya-loop"
+
+# DARYA THE SEA-MAID ABILITIES
+# B2C9 --sync--
+# B2CA --middle--
+# B2CB Familiar Call
+# B2CD Echoed Serenade
+# B2E9 Hydrocannon
+# B2ED Watersong
+# B2EE Watersong
+# B2EF Watersong
+# B2F0 Watersong
+# B2F1 Swimming in the Air
+# B2F2 Hydrofall
+# B2F3 Hydrobullet
+# B2F4 Sunken Treasure
+# B2F5 Sphere Shatter
+# B2F6 Sphere Shatter
+# B2F7 Hydrobullet
+# B2F8 Hydrobullet
+# B2F9 Aqua Spear
+# B2FA Aqua Spear
+# B2FB Tidal Wave
+# B2FC Tidal Wave
+# B2FD Sea Shackles
+# B2FE Explosion
+# B2FF Ceaseless Current
+# B300 Ceaseless Current
+# B301 Ceaseless Current
+# B302 Surging Current
+# B303 Surging Current
+# B304 Receding Twin Tides
+# B305 Near Tide
+# B306 Near Tide
+# B307 Encroaching Twin Tides
+# B308 Far Tide
+# B309 Far Tide
+# B30A Aqua Ball
+# B30B Aqua Ball
+# B30C Hydrocannon
+# B30D Piercing Plunge
+# B7F1 Tidalspout
+# B7F2 Alluring Order
