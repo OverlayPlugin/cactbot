@@ -1077,10 +1077,16 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P1 Ave Maria',
       // BAB3 Ave Maria
+      // The animation is visible ~9.89s before cast goes off, however
+      // When animation becomes visible, the players will bbe asleep or
+      // confused for another ~3.4s. Once the debuff ends the players have
+      // ~6.4s to turn character
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.fakeEyeTowerId === matches.id,
-      alertText: (_data, _matches, output) => output.lookAt!(),
+      durationSeconds: 9.5,
+      countdownSeconds: 3.5, // Estimated time debuff would expire
+      infoText: (_data, _matches, output) => output.lookAt!(),
       outputStrings: {
         lookAt: {
           en: 'Look At Statue',
@@ -1099,7 +1105,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.eyeTowerId === matches.id,
-      alertText: (_data, _matches, output) => output.lookAway!(),
+      durationSeconds: 9.5,
+      countdownSeconds: 3.5, // Estimated time debuff would expire
+      infoText: (_data, _matches, output) => output.lookAway!(),
       outputStrings: {
         lookAway: {
           en: 'Look Away From Statue',
