@@ -1,6 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
-import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -21,12 +20,11 @@ export interface Data extends RaidbossData {
   // General
   phase: Phase | 'unknown';
   // Phase 1
-  blueTowerId?: string;
-  yellowTowerId?: string;
-  purpleTowerId?: string;
-  eyeTowerId?: string;
-  fakeEyeTowerId?: string;
-  tower?: 'blue' | 'yellow' | 'purple' | 'eye' | 'fakeeye';
+  blueTowerIds: string[];
+  purpleTowerIds: string[];
+  yellowTowerIds: string[];
+  eyeTowerIds: string[];
+  fakeEyeTowerIds: string[];
   gravenImageCount: number;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   gravenImageTether?:
@@ -185,7 +183,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P1 Graven Image Collect',
       // Tower entity actions
       // The CombatantMemory Add lines are added prior to combat
-      // OverlayPlugin call used to retrieve the matching BNpcID
+      // OverlayPlugin can retrieve the matching BNpcID
+      // However, these entities seem to always spawn in the same order and the
+      // first tower is the highest ID and the towers are in sequential order
+      // These are the BNpcID values:
       // 1EBFBB (2015163) => Wave Cannon entity (blue)
       // 1EBFBC (2015164) => Gravitational Wave entity (purple)
       // 1EBFBD (2015165) => Intemperate Will entity (yellow)
@@ -194,51 +195,23 @@ const triggerSet: TriggerSet<Data> = {
       // There are two of each, they are added at start of fight
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      promise: async (data, matches) => {
-        const id = matches.id;
-        const actors = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [parseInt(id, 16)],
-        })).combatants;
-        const image = actors[0];
-        if (image === undefined)
-          return;
+      suppressSeconds: 99999,
+      preRun: (data, matches) => {
+        const id = parseInt(matches.id, 16);
+        const blueTowers = [id, id - 1]; // First tower is blue and highest ID
+        const purpleTowers = [id - 2, id - 4]; // Next are in pair with yellow
+        const yellowTowers = [id - 3, id - 5];
+        const eyeTowers = [id - 7, id - 9]; // Next are in paire with fake
+        const fakeEyeTowers = [id - 6, id - 8];
 
-        const towerMap = {
-          '2015163': 'blue',
-          '2015164': 'purple',
-          '2015165': 'yellow',
-          '2015166': 'eye',
-          '2015167': 'fakeeye',
-          'unknown': 'unknown',
+        const toStringId = (id: number): string => {
+          return id.toString(16).toUpperCase();
         };
-
-        const bnpcid = image.BNpcID ?? 'unknown';
-        const kind = towerMap[bnpcid as keyof typeof towerMap];
-        if (kind === 'blue')
-          data.blueTowerId = id;
-        else if (kind === 'yellow')
-          data.yellowTowerId = id;
-        else if (kind === 'purple')
-          data.purpleTowerId = id;
-        else if (kind === 'eye')
-          data.eyeTowerId = id;
-        else if (kind === 'fakeeye')
-          data.fakeEyeTowerId = id;
-      },
-      run: (data, matches) => {
-        const id = matches.id;
-
-        if (data.yellowTowerId === id)
-          data.tower = 'yellow';
-        else if (data.purpleTowerId === id)
-          data.tower = 'purple';
-        else if (data.blueTowerId === id)
-          data.tower = 'blue';
-        else if (data.eyeTowerId === id)
-          data.tower = 'eye';
-        else if (data.fakeEyeTowerId === id)
-          data.tower = 'fakeeye';
+        data.blueTowerIds = blueTowers.map((id) => toStringId(id));
+        data.purpleTowerIds = purpleTowers.map((id) => toStringId(id))
+        data.yellowTowerIds = yellowTowers.map((id) => toStringId(id))
+        data.eyeTowerIds = eyeTowers.map((id) => toStringId(id))
+        data.fakeEyeTowerIds = fakeEyeTowers.map((id) => toStringId(id))
       },
     },
     {
@@ -468,7 +441,7 @@ const triggerSet: TriggerSet<Data> = {
       // This gives a ~5 second warning to spread
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.blueTowerId === matches.id,
+      condition: (data, matches) => data.blueTowerIds.includes(matches.id),
       alertText: (_data, _matches, output) => output.waveCannonLine!(),
       outputStrings: {
         waveCannonLine: {
@@ -616,7 +589,7 @@ const triggerSet: TriggerSet<Data> = {
             : output.fakeIceTrueThunder!();
         }
         return data.isIceTrue
-          ? output.trueIceTrueThunder!()
+          ? output.trueIceFakeThunder!()
           : output.fakeIceFakeThunder!();
       },
       outputStrings: mysteryMagicOutputStrings,
@@ -679,8 +652,12 @@ const triggerSet: TriggerSet<Data> = {
         return output.avoidTethers!();
       },
       outputStrings: {
-        avoidTethers: 'Avoid Tethered Players',
-        spread: 'Spread (avoid puddles)',
+        avoidTethers: {
+          en: 'Avoid Tethered Players',
+        },
+        spread: {
+          en: 'Spread (avoid puddles)',
+        },
       },
     },
     {
@@ -715,7 +692,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P1 Impertinent Will',
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.yellowTowerId === matches.id,
+      condition: (data, matches) => data.yellowTowerIds.includes(matches.id),
       alertText: (_data, _matches, output) => output.goWest!(),
       outputStrings: {
         goWest: Outputs.getLeftAndWest,
@@ -725,7 +702,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P1 Gravitational Wave',
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.purpleTowerId === matches.id,
+      condition: (data, matches) => data.purpleTowerIds.includes(matches.id),
       alertText: (_data, _matches, output) => output.goEast!(),
       outputStrings: {
         goEast: Outputs.getRightAndEast,
@@ -1083,7 +1060,7 @@ const triggerSet: TriggerSet<Data> = {
       // ~6.4s to turn character
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.fakeEyeTowerId === matches.id,
+      condition: (data, matches) => data.fakeEyeTowerIds.includes(matches.id),
       durationSeconds: 9.5,
       countdownSeconds: 3.4, // Estimated time debuff would expire
       infoText: (_data, _matches, output) => output.lookAt!(),
@@ -1104,7 +1081,7 @@ const triggerSet: TriggerSet<Data> = {
       // BAB4 Indolent Will
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.eyeTowerId === matches.id,
+      condition: (data, matches) => data.eyeTowerIds.includes(matches.id),
       durationSeconds: 9.5,
       countdownSeconds: 3.4, // Estimated time debuff would expire
       infoText: (_data, _matches, output) => output.lookAway!(),
