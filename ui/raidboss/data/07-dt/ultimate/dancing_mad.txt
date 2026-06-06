@@ -129,7 +129,7 @@ hideall "--sync--"
 372.9 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
 
 376.2 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
-379.3 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } jump "p2-success"  window 220,5 # Kefka will skip mechanics at 0% HP
+379.3 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } jump "p2-success" window 220,5 # Kefka will skip mechanics at 0% HP
 381.2 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
 382.3 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
