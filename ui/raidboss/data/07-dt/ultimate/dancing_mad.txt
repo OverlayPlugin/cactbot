@@ -77,7 +77,7 @@ hideall "--sync--"
 # TODO: Update with network log, this uses FFLOGS
 # TODO: Get fake ending route?
 # TODO: Add voiceline sync / branch to complete?
-# Complete Path:
+# Fake Duty Complete Path:
 # en: 'Yes... I am filled with glorious purpose!'
 # Duty Complete Path:
 # en: 'How boring. Guess I'll have to spice things up!'
@@ -321,13 +321,13 @@ hideall "--sync--"
 1009.4 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
 1009.4 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
 1013.7 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1018.7 "Tsunami" Ability { id: "BB21", source: "Chaos" }
+1018.7 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
 
 1024.1 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
 1024.1 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
 1024.1 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
 1028.4 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1033.5 "Inferno" Ability { id: "BB20", source: "Chaos" }
+1033.5 "Tsunami/Inferno" Ability { id: ["BB21", "BB20"], source: "Chaos" }
 
 1039.2 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
 1039.2 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
@@ -336,6 +336,35 @@ hideall "--sync--"
 
 1045.3 "--sync--" Ability { id: "C554", source: "Kefka" }
 
+1055.4 "Flood of Naught" Ability { id: "C393", source: "Neo Exdeath" }
+1055.8 "Edge of Death" Ability { id: "C396", source: "Neo Exdeath" }
+1055.8 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
+1055.8 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
+1059.0 "--sync--" Ability { id: "C555", source: "Kefka" }
+1059.7 "Death Surge" Ability { id: "BB1D", source: "Neo Exdeath" }
+1064.1 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
+1064.4 "Death Bolt" #Ability { id: "BB18", source: "Neo Exdeath" }
+1064.4 "Death Wave" #Ability { id: "BB1A", source: "Neo Exdeath" }
+1072.4 "Thrumming Thunder III" Ability { id: "C5DE", source: "Kefka" }
+1072.4 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
+1073.4 "Death Shriek" Ability { id: "BB16", source: "Neo Exdeath" }
+1082.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
+1085.3 "Stray Flames" Ability { id: "BB23", source: "Chaos" }
+1089.4 "Death Wave" Ability { id: "BB1B", source: "Neo Exdeath" }
+1089.4 "Death Bolt" #Ability { id: "BB19", source: "Neo Exdeath" }
+1089.4 "Death Bomb" #Ability { id: "BB15", source: "Neo Exdeath" }
+1090.4 "Blizzard III Blowout" Ability { id: "BA9B", source: "Kefka" }
+1094.6 "Stray Spray" #Ability { id: "BB25", source: "Chaos" }
+1095.9 "Stray Spray" #Ability { id: "BB25", source: "Chaos" }
+1097.2 "Death Shriek" Ability { id: "BB17", source: "Neo Exdeath" }
+1103.5 "Mana Release" Ability { id: "BAA5", source: "Kefka" }
+1107.6 "Stray Spray" Ability { id: "BB25", source: "Chaos" }
+1108.5 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
+1108.5 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+
+1112.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p4-enrage"
+1112.8 "--untargetable?--"
+1117.8 "Light of Judgment (Enrage)?" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP?
 
 # Phase 2 Enrage Sequence
 10376.2 label "p2-enrage"
@@ -350,6 +379,11 @@ hideall "--sync--"
 11839.0 label "p3-exdeath-enrage"
 11849.0 "Meteor (Exdeath Enrage)" StartsUsing { id: "C61E", source: "Exdeath" } # Exdeath >0% HP
 # NOTE: Using a window to jump back to p4, TBD if killing Exdeath first triggers a separate sequence
+
+# Phase 4 Enrage Sequence
+12000.0 label "p4-enrage"
+12005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP?
+
 
 # IGNORED ABILITIES
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
@@ -378,6 +412,8 @@ hideall "--sync--"
 # BAA1 Thrumming Thunder III: Damage (paired with BAA0)
 # BAA2 Flagrant Fire III: Spread Damage
 # BAA3 Flagrant Fire III: Stack Damage
+# BAA4 Mana Charge
+# BAA5 Mana Release
 # BAA6 Double-Trouble Trap: VFX
 # BAA7 Double-Trouble Trap
 # BAA8 Wave Cannon
@@ -396,7 +432,7 @@ hideall "--sync--"
 # BAB6 Idyllic Will
 # BAB9 Tele-Trouncing: VFX
 # BABA Tele-Trouncing
-# BABB Light of Judgment: P1 Enrage
+# BABB Light of Judgment: P1 Enrage and P4 Enrage
 # BABC Forsaken
 # BABD Light of Judgment: P2 version
 # BABE The Path of Light
@@ -461,6 +497,7 @@ hideall "--sync--"
 # BB12 Thunder III
 # BB13 Vacuum Wave
 # BB14 Grand Cross
+# BB15 Death Bomb
 # BB16 Death Shriek
 # BB17 Death Shriek
 # BB18 Death Bolt
@@ -475,6 +512,7 @@ hideall "--sync--"
 # BCCD Black Spark
 # BCF2 Graven Image
 # BD66 White Hole
+# C24A Ultima Upsurge
 # C24B Hyperdrive
 # C24C Ultimate Embrace
 # C250 Attack: P3 Exdeath attack
@@ -487,6 +525,10 @@ hideall "--sync--"
 # C2E3 the Decisive Battle
 # C2E4 Aetherlink
 # C2E5 Aetherlink
+# C393 Flood of Naught
+# C394 White Antilight
+# C395 Black Antilight
+# C396 Edge of Death
 # C3F7 Aero III Assault
 # C3FD --sync--: Boss jumps to middle
 # C403 Revolting Ruin III
@@ -498,4 +540,5 @@ hideall "--sync--"
 # C555 --sync--
 # C571 Earthquake
 # C572 Earthquake
+# C5DE Thrumming Thunder III
 # C622 Light of Judgment: P1 version
