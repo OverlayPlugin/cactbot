@@ -25,7 +25,9 @@ export interface Data extends RaidbossData {
   blueTowerId?: string;
   yellowTowerId?: string;
   purpleTowerId?: string;
-  tower?: 'blue' | 'yellow' | 'purple';
+  eyeTowerId?: string;
+  fakeEyeTowerId?: string;
+  tower?: 'blue' | 'yellow' | 'purple' | 'eye' | 'fakeeye';
   gravenImageCount: number;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   gravenImageTether?:
@@ -190,6 +192,8 @@ const triggerSet: TriggerSet<Data> = {
       // 1EBFBB (2015163) => Wave Cannon entity (blue)
       // 1EBFBC (2015164) => Gravitational Wave entity (purple)
       // 1EBFBD (2015165) => Intemperate Will entity (yellow)
+      // 1EBFBE (2015166) => Indolent Will entity (eye)
+      // 1EBFBF (2015167) => Ave Maria entity (fake eye)
       // There are two of each, they are added at start of fight
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
@@ -207,6 +211,8 @@ const triggerSet: TriggerSet<Data> = {
           '2015163': 'blue',
           '2015164': 'purple',
           '2015165': 'yellow',
+          '2015166': 'eye',
+          '2015167': 'fakeeye',
           'unknown': 'unknown',
         };
 
@@ -218,6 +224,10 @@ const triggerSet: TriggerSet<Data> = {
           data.yellowTowerId = id;
         else if (kind === 'purple')
           data.purpleTowerId = id;
+        else if (kind === 'eye')
+          data.eyeTowerId = id;
+        else if (kind === 'fakeeye')
+          data.fakeEyeTowerId = id;
       },
       run: (data, matches) => {
         const id = matches.id;
@@ -228,6 +238,10 @@ const triggerSet: TriggerSet<Data> = {
           data.tower = 'purple';
         else if (data.blueTowerId === id)
           data.tower = 'blue';
+        else if (data.eyeTowerId === id)
+          data.tower = 'eye';
+        else if (data.fakeEyeTowerId === id)
+          data.tower = 'fakeeye';
       },
     },
     {
@@ -1060,6 +1074,44 @@ const triggerSet: TriggerSet<Data> = {
         },
         idyllic: {
           en: 'Sleep Tether on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Ave Maria',
+      // BAB3 Ave Maria
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      condition: (data, matches) => data.fakeEyeTowerId === matches.id,
+      alertText: (_data, _matches, output) => output.lookAt!(),
+      outputStrings: {
+        lookAt: {
+          en: 'Look At Statue',
+          de: 'Statue anschauen',
+          fr: 'Regardez la statue',
+          ja: '像を見る！',
+          cn: '面对神像',
+          ko: '시선 바라보기',
+          tc: '面對神像',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Indolent Will',
+      // BAB4 Indolent Will
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      condition: (data, matches) => data.eyeTowerId === matches.id,
+      alertText: (_data, _matches, output) => output.lookAway!(),
+      outputStrings: {
+        lookAway: {
+          en: 'Look Away From Statue',
+          de: 'Von Statue wegschauen',
+          fr: 'Ne regardez pas la statue',
+          ja: '塔を見ない！',
+          cn: '背对神像',
+          ko: '시선 피하기',
+          tc: '背對神像',
         },
       },
     },

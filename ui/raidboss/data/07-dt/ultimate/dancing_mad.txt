@@ -69,7 +69,7 @@ hideall "--sync--"
 179.7 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 186.3 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
 186.3 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
-186.3 "Indolent Will/Ave Maria" #Ability { id: ["BAB4", "BAB3"], source: "Graven Image" }
+186.3 "Ave Maria/Indolent Will" #Ability { id: ["BAB3", "BAB4"], source: "Graven Image" }
 187.1 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
 202.5 "Light of Judgment (Enrage)?" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP
 
