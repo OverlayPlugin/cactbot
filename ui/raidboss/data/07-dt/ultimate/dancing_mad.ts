@@ -155,6 +155,11 @@ const triggerSet: TriggerSet<Data> = {
       phase: 'p1',
       // Phase 1
       actorPositions: {},
+      blueTowerIds: [],
+      purpleTowerIds: [],
+      yellowTowerIds: [],
+      eyeTowerIds: [],
+      fakeEyeTowerIds: [],
       gravenImageCount: 0,
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
