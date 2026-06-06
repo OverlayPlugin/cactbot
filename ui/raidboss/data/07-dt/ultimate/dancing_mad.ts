@@ -20,13 +20,13 @@ export interface Data extends RaidbossData {
   // General
   phase: Phase | 'unknown';
   // Phase 1
+  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  gravenImageCount: number;
   blueTowerIds: string[];
   purpleTowerIds: string[];
   yellowTowerIds: string[];
   eyeTowerIds: string[];
   fakeEyeTowerIds: string[];
-  gravenImageCount: number;
-  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   gravenImageTether?:
     | 'pulse'
     | 'gravitas'
@@ -155,12 +155,12 @@ const triggerSet: TriggerSet<Data> = {
       phase: 'p1',
       // Phase 1
       actorPositions: {},
+      gravenImageCount: 0,
       blueTowerIds: [],
       purpleTowerIds: [],
       yellowTowerIds: [],
       eyeTowerIds: [],
       fakeEyeTowerIds: [],
-      gravenImageCount: 0,
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
     };
@@ -183,41 +183,6 @@ const triggerSet: TriggerSet<Data> = {
           y: parseFloat(matches.y),
           heading: parseFloat(matches.heading),
         },
-    },
-    {
-      id: 'DMU P1 Graven Image Collect',
-      // Tower entity actions
-      // The CombatantMemory Add lines are added prior to combat
-      // OverlayPlugin can retrieve the matching BNpcID
-      // However, these entities seem to always spawn in the same order and the
-      // first tower is the highest ID and the towers are in sequential order
-      // These are the BNpcID values:
-      // 1EBFBB (2015163) => Wave Cannon entity (blue)
-      // 1EBFBC (2015164) => Gravitational Wave entity (purple)
-      // 1EBFBD (2015165) => Intemperate Will entity (yellow)
-      // 1EBFBE (2015166) => Indolent Will entity (eye)
-      // 1EBFBF (2015167) => Ave Maria entity (fake eye)
-      // There are two of each, they are added at start of fight
-      type: 'ActorControlExtra',
-      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      suppressSeconds: 99999,
-      preRun: (data, matches) => {
-        const id = parseInt(matches.id, 16);
-        const blueTowers = [id, id - 1]; // First tower is blue and highest ID
-        const purpleTowers = [id - 2, id - 4]; // Next are in pair with yellow
-        const yellowTowers = [id - 3, id - 5];
-        const eyeTowers = [id - 7, id - 9]; // Next are in paire with fake
-        const fakeEyeTowers = [id - 6, id - 8];
-
-        const toStringId = (id: number): string => {
-          return id.toString(16).toUpperCase();
-        };
-        data.blueTowerIds = blueTowers.map((id) => toStringId(id));
-        data.purpleTowerIds = purpleTowers.map((id) => toStringId(id))
-        data.yellowTowerIds = yellowTowers.map((id) => toStringId(id))
-        data.eyeTowerIds = eyeTowers.map((id) => toStringId(id))
-        data.fakeEyeTowerIds = fakeEyeTowers.map((id) => toStringId(id))
-      },
     },
     {
       id: 'DMU P1 Revolting Ruin III',
@@ -441,12 +406,47 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P1 Graven Image Collect',
+      // Tower entity actions
+      // The CombatantMemory Add lines are added prior to combat
+      // OverlayPlugin can retrieve the matching BNpcID
+      // However, these entities seem to always spawn in the same order and the
+      // first tower is the highest ID and the towers are in sequential order
+      // These are the BNpcID values:
+      // 1EBFBB (2015163) => Wave Cannon entity (blue)
+      // 1EBFBC (2015164) => Gravitational Wave entity (purple)
+      // 1EBFBD (2015165) => Intemperate Will entity (yellow)
+      // 1EBFBE (2015166) => Indolent Will entity (eye)
+      // 1EBFBF (2015167) => Ave Maria entity (fake eye)
+      // There are two of each, they are added at start of fight
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      preRun: (data, matches) => {
+        const id = parseInt(matches.id, 16);
+        const blueTowers = [id, id - 1]; // First tower is blue and highest ID
+        const purpleTowers = [id - 2, id - 4]; // Next are in pair with yellow
+        const yellowTowers = [id - 3, id - 5];
+        const eyeTowers = [id - 7, id - 9]; // Next are in paire with fake
+        const fakeEyeTowers = [id - 6, id - 8];
+
+        const toStringId = (id: number): string => {
+          return id.toString(16).toUpperCase();
+        };
+        data.blueTowerIds = blueTowers.map((id) => toStringId(id));
+        data.purpleTowerIds = purpleTowers.map((id) => toStringId(id));
+        data.yellowTowerIds = yellowTowers.map((id) => toStringId(id));
+        data.eyeTowerIds = eyeTowers.map((id) => toStringId(id));
+        data.fakeEyeTowerIds = fakeEyeTowers.map((id) => toStringId(id));
+      },
+      suppressSeconds: 99999,
+    },
+    {
       id: 'DMU P1 Wave Cannon',
       // BAA8 Wave Cannon is an instant cast from Graven Image
       // This gives a ~5 second warning to spread
       type: 'ActorControlExtra',
-      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
-      condition: (data, matches) => data.blueTowerIds.includes(matches.id),
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: false },
+      suppressSeconds: 99999, // First instance is a blue tower
       alertText: (_data, _matches, output) => output.waveCannonLine!(),
       outputStrings: {
         waveCannonLine: {
