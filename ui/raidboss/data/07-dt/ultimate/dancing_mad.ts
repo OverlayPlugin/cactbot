@@ -1133,6 +1133,14 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.sharedTankBuster(),
     },
     {
+      id: 'DMU P2 Forsaken',
+      // 7s cast
+      type: 'StartsUsing',
+      netRegex: { id: 'BABC', source: 'Kefka', capture: false },
+      durationSeconds: 6.7,
+      response: Responses.bigAoe('alert'),
+    },
+    {
       id: 'DMU P2 Future\'s End/Past\'s End',
       // There are four end casts
       type: 'StartsUsing',
@@ -1146,6 +1154,49 @@ const triggerSet: TriggerSet<Data> = {
         },
         past: {
           en: 'Past',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
+      // Applied to 4 nearest players when Chaos and Exdeath finish casting
+      // C2E2/C2E3 The Decisive Battle
+      // 1060 Epic Hero: Can only damage Chaos, preferred by Melee DPS
+      // 1062 Fated Hero: Can only damage Exdeath, preferred by Ranged DPS
+      // These fall off once Exdeath casts BB12 Thunder III
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1060', '1062'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '1060' ? output.epic!() : output.fated!();
+      },
+      outputStrings: {
+        epic: {
+          en: 'Attack Chaos',
+        },
+        fated: {
+          en: 'Attack Exdeath',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuffs',
+      // Applied at BAF2 Bowels of Agony
+      // Debuffs trigger if hit by certain sources, causing a knockback
+      // 642 Headwind: Face away from damage source
+      // 643 Tailwind: Face towards damage source
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '642' ? output.headwind!() : output.tailwind!();
+      },
+      outputStrings: {
+        headwind: {
+          en: 'Headwind on YOU',
+        },
+        tailwind: {
+          en: 'Tailwind on You',
         },
       },
     },
@@ -1165,6 +1216,19 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.frontBack!(),
       outputStrings: {
         frontBack: Outputs.frontBackThenSides,
+      },
+    },
+    {
+      id: 'DMU P3 Vaccuum Wave',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Chaos', capture: true },
+      infoText: (data, matches, output) => {
+        return output.knockbackFromBoss!({ chaos: matches.source });
+      },
+      outputStrings: {
+        knockbackFromBoss: {
+          en: 'Knockback from ${chaos}',
+        },
       },
     },
     {
