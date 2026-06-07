@@ -487,6 +487,7 @@ const triggerSet: TriggerSet<Data> = {
       // BAAB Unmitigated Explosion seems ideal, although different clients may
       // get different order
       // Suprisingly the Unmitigated Explosion doesn't deal damage
+      // Players ahve ~4s to soak the tower, BAAA Explosion
       type: 'Ability',
       netRegex: { id: 'BAA8', source: 'Graven Image', capture: false },
       delaySeconds: 0.1,
@@ -494,15 +495,7 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          soak: {
-            en: 'Soak tower',
-            de: 'Türme nehmen',
-            fr: 'Prenez une tour',
-            ja: '塔踏み',
-            cn: '踩塔击飞',
-            ko: '기둥 들어가기',
-            tc: '踩塔擊飛',
-          },
+          getTowers: Outputs.getTowers,
           avoid: {
             en: 'Avoid towers',
             de: 'Türme vermeiden',
@@ -527,7 +520,7 @@ const triggerSet: TriggerSet<Data> = {
           return { alertText: output.avoid!() };
 
         // Player didn't get hit, they will need to soak a tower
-        return { alertTest: output.soak!() };
+        return { alertText: output.getTowers!() };
       },
     },
     {
