@@ -510,7 +510,7 @@ const triggerSet: TriggerSet<Data> = {
       // BAAB Unmitigated Explosion seems ideal, although different clients may
       // get different order
       // Suprisingly the Unmitigated Explosion doesn't deal damage
-      // Players ahve ~4s to soak the tower, BAAA Explosion
+      // Players have ~4s to soak the tower
       type: 'Ability',
       netRegex: { id: 'BAA8', source: 'Graven Image', capture: false },
       delaySeconds: 0.1,
@@ -1124,6 +1124,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         return data.me === matches.target && data.gravenImageCount === 3;
       },
+      delaySeconds: 0.1, // Delay for collect of tower type
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
