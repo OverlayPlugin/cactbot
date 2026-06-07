@@ -541,6 +541,10 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = trapOutputStrings;
 
+        // If players died before the duration ended
+        if (data.doubleTroubleTrapTargets.length === 0)
+          return;
+
         const severity = data.doubleTroubleTrapTargets.includes(data.me) ? 'alertText' : 'infoText';
         const players = data.doubleTroubleTrapTargets.map(
           (player) => {
