@@ -1270,7 +1270,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Vaccuum Wave',
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Chaos', capture: true },
-      infoText: (data, matches, output) => {
+      infoText: (_data, matches, output) => {
         return output.knockbackFromBoss!({ chaos: matches.source });
       },
       outputStrings: {

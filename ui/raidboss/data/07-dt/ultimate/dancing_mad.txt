@@ -420,7 +420,7 @@ hideall "--sync--"
 1336.3 "Flare Diffusion" Ability { id: "BB55", source: "Kefka" }
 1342.3 "--sync--" Ability { id: "C652", source: "Kefka" }
 1343.2 "Fell Forces" Ability { id: "C653", source: "Kefka" }
-1345.5 "--sync--" Ability { id: "C652", source: "Kefka" 
+1345.5 "--sync--" Ability { id: "C652", source: "Kefka" }
 1352.3 "Celestriad" Ability { id: "BB42", source: "Kefka" }
 # TODO: Get up to the enrage
 
