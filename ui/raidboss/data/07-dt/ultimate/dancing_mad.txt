@@ -1,8 +1,8 @@
 ### DANCING MAD (ULTIMATE)
 # ZoneId: 1363
 
-# -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAF9 BAF1
-# -p C403:15.6 C24C:219.8 C3F7:500.0 C2DC:1000.0 BB40:1300.0
+# -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BAD6 BAD8 BAD7 BAD9 BACF BAF9 BAF1
+# -p C403:15.6 C24C:216.5 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
 hideall "--Reset--"
@@ -71,10 +71,7 @@ hideall "--sync--"
 186.3 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
 186.3 "Ave Maria/Indolent Will" #Ability { id: ["BAB3", "BAB4"], source: "Graven Image" }
 187.1 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
-197.3 "--untargetable--"
-197.5 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
-202.4 "Light of Judgment (Enrage)?" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP
-
+202.5 "Light of Judgment (Enrage)?" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP
 
 ### Phase 2 - God Kefka
 # TODO: Update with network log, this uses FFLOGS
@@ -84,62 +81,61 @@ hideall "--sync--"
 # en: 'Yes... I am filled with glorious purpose!'
 # Duty Complete Path:
 # en: 'How boring. Guess I'll have to spice things up!'
-207.6 "--targetable--"
-219.8 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" } window 220,5
-234.9 "Forsaken" Ability { id: "BABC", source: "Kefka" }
+216.5 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" } window 220,5
+231.7 "Forsaken" Ability { id: "BABC", source: "Kefka" }
 
 # Set 1
 # NOTE: The BAC0 Spelldriver, BAC2 Spellwave, BAC0 Spellscatter can be resolved in different orders
-248.1 "The Path of Light 1" Ability { id: "BABE", source: "Kefka" }
-248.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-257.5 "Future's End/Past's End 1" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-258.2 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
-259.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-269.0 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
+244.9 "The Path of Light 1" Ability { id: "BABE", source: "Kefka" }
+245.6 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+254.3 "Future's End/Past's End 1" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+255.0 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
+255.7 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+265.7 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Set 2
-269.2 "The Path of Light 3" Ability { id: "BABE", source: "Kefka" }
-269.9 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-278.5 "Future's End/Past's End 2" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-279.4 "The Path of Light 4" Ability { id: "BABE", source: "Kefka" }
-280.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-289.9 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
+265.9 "The Path of Light 3" Ability { id: "BABE", source: "Kefka" }
+266.4 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+275.4 "Future's End/Past's End 2" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+275.8 "The Path of Light 4" Ability { id: "BABE", source: "Kefka" }
+276.5 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+286.7 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Set 3
-290.4 "The Path of Light 5" Ability { id: "BABE", source: "Kefka" }
-291.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-299.7 "Future's End/Past's End 3" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-300.6 "The Path of Light 6" Ability { id: "BABE", source: "Kefka" }
-301.3 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-311.3 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
+286.7 "The Path of Light 5" Ability { id: "BABE", source: "Kefka" }
+287.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+296.1 "Future's End/Past's End 3" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+296.4 "The Path of Light 6" Ability { id: "BABE", source: "Kefka" }
+297.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+307.5 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Set 4
-311.5 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
-312.2 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-321.0 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-321.7 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
-322.4 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-332.5 "All Things Ending" Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
+307.5 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
+308.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+317.0 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+317.4 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
+318.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+328.3 "All Things Ending" Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Trines
-341.5 "Light of Judgment" Ability { id: "BABD", source: "Kefka" }
-352.7 "Trine" Ability { id: "BADF", source: "Kefka" }
-359.8 "Wings of Destruction" Ability { id: "BACD", source: "Kefka" }
-365.6 "Trine 1" #Ability { id: "BAE0", source: "Kefka" }
-367.6 "Trine 2" #Ability { id: "BAE0", source: "Kefka" }
-369.6 "Trine 3" #Ability { id: "BAE0", source: "Kefka" }
-370.0 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
-370.0 "Wings of Destruction" #Ability { id: "BACF", source: "Kefka" }
-377.1 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
+337.4 "Light of Judgment" Ability { id: "BABD", source: "Kefka" }
+348.6 "Trine" Ability { id: "BADF", source: "Kefka" }
+355.7 "Wings of Destruction" Ability { id: ["BACD", "BACE"], source: "Kefka" }
+361.5 "Trine 1" #Ability { id: "BAE0", source: "Kefka" }
+363.5 "Trine 2" #Ability { id: "BAE0", source: "Kefka" }
+365.5 "Trine 3" #Ability { id: "BAE0", source: "Kefka" }
+365.9 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
+372.9 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
 
-380.5 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
-383.7 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
-385.5 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
-386.7 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
+376.2 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
+379.3 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
+381.2 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
+382.3 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
 # TODO: Earlier sync on jump middle
 497.0 label "p2-success"
 500.0 "Aero III Assault" Ability { id: "C3F7", source: "Kefka" } window 500,20
+500.8 "Down for the Count" GainsEffect { effectId: '306' } duration 32.5
 
 ### Phase 3 - Chaos and Exdeath
 # TODO: Cleanup p3 as there are multiple sequences that could happen
@@ -366,7 +362,7 @@ hideall "--sync--"
 1108.5 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
 1108.5 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
 
-1112.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
+1112.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p4-enrage"
 1112.8 "--untargetable?--"
 1114.8 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
 1117.8 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
@@ -424,10 +420,6 @@ hideall "--sync--"
 1352.3 "Celestriad" Ability { id: "BB42", source: "Kefka" }
 # TODO: Get up to the enrage
 
-# Phase 1 and Phase 4 Enrage Sequence
-10000.0 label "p1-and-p4-enrage"
-10005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # P1 Kefka > 15%HP / P4 Kefka >20% HP
-
 # Phase 2 Enrage Sequence
 10376.2 label "p2-enrage"
 10381.2 "Light of Judgment (Enrage)" Ability { id: "BAE1", source: "Kefka" } # Kefka >0% HP
@@ -442,6 +434,10 @@ hideall "--sync--"
 11849.0 "Meteor (Exdeath Enrage)" StartsUsing { id: "C61E", source: "Exdeath" } # Exdeath >0% HP
 # NOTE: Using a window to jump back to p4, TBD if killing Exdeath first triggers a separate sequence
 
+# Phase 4 Enrage Sequence
+12000.0 label "p4-enrage"
+12005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
+
 
 # IGNORED ABILITIES
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
@@ -451,11 +447,11 @@ hideall "--sync--"
 # BAAB Unmitigated Explosion: Failing to soak a tower from BAA8 Wave Cannon
 # BAAD Gravitational Explosion: BAB0 Vitrophyre aoe overlaps with BAAC Gravitas puddle
 # BAAF Gravity III: Soaking the Gravitas puddles at the correct time
-# BABF The River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
 # BAD6 Future's End: Damage (On 1 player)
 # BAD7 Past's End: Damage (On 1 player)
 # BAD8 Future's End: Damage (On 3 players)
 # BAD9 Past's End: Damage (On 3 players)
+# BACF Wings of Destruction: AOE Damage (On nearest/furthest players)
 # C250 Attack: P3 Exdeath attack
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
@@ -495,21 +491,21 @@ hideall "--sync--"
 # BABC Forsaken
 # BABD Light of Judgment: P2 version
 # BABE The Path of Light
-# BABF The River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
+# BABF The River of Light
 # BAC0 Spelldriver
 # BAC1 Spellscatter
 # BAC2 Spellwave
-# BACD Wings of Destruction
-# BACE Wings of Destruction
-# BACF Wings of Destruction
+# BACD Wings of Destruction: Left wing
+# BACE Wings of Destruction: Right wing
+# BACF Wings of Destruction: AOE Damage (On nearest/furthest players)
 # BAD2 Future's End: VFX
 # BAD3 Past's End: VFX
 # BAD6 Future's End: Damage (On 1 player)
 # BAD7 Past's End: Damage (On 1 player)
 # BAD8 Future's End: Damage (On 3 players)
 # BAD9 Past's End: Damage (On 3 players)
-# BADC All Things Ending
-# BADD All Things Ending
+# BADC All Things Ending: Followup to BAD2 Future's End
+# BADD All Things Ending: Followup to BAD3 Past's End
 # BADF Trine
 # BAE0 Trine
 # BAE1 Light of Judgment: P2 Enrage
@@ -606,7 +602,7 @@ hideall "--sync--"
 # C3F7 Aero III Assault
 # C3FD --sync--: Boss jumps to middle
 # C403 Revolting Ruin III
-# C487 Wings of Destruction
+# C487 Wings of Destruction: VFX/castbar for BACF
 # C4BA Blackblood
 # C4E1 Revolting Ruin III
 # C533 --sync--
