@@ -62,6 +62,11 @@ const headMarkerData = {
   'stack': '0080', // spread (fake) or stack (real)
   // Phase 1 Tethers
   'imageTether': '002D',
+  // Phase 2
+  'sharedBuster': '0103', // Ultimate Embrace shared tankbuster
+  'stackPath': '02CB', // When standing in Path of Light tower, causes BAC0 Spelldriver (3-person stack)
+  'conePath': '02CD', // When standing in Path of Light tower, causes BAC2 Spellwave (cone targetting nearest player)
+  'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
@@ -1139,6 +1144,45 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BABC', source: 'Kefka', capture: false },
       durationSeconds: 6.7,
       response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'DMU P2 Path of Light Headmarker',
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        const id = matches.id;
+        type markerMap = {
+          [key: string]: 'stack' | 'cone' | 'spread';
+        };
+        const markers: markerMap = {
+          '02CB': 'stack',
+          '02CD': 'cone',
+          '02CC': 'spread',
+        };
+        const marker = markers[id];
+        if (marker === undefined)
+          return;
+        return output[marker]!();
+      },
+      outputStrings: {
+        stack: {
+          en: 'Stack Path on YOU',
+        },
+        cone: {
+          en: 'Cone Path on YOU',
+        },
+        spread: {
+          en: 'Spread Path on YOU',
+        },
+      },
     },
     {
       id: 'DMU P2 Future\'s End/Past\'s End',
