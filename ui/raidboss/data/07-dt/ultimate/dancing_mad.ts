@@ -534,7 +534,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P1 Double-trouble Trap Knockback',
       type: 'GainsEffect',
       netRegex: { effectId: '13D6', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.9,  // First one needs 0.1 delay for collect
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.9, // First one needs 0.1 delay for collect
       durationSeconds: 5.9,
       suppressSeconds: 1,
       response: (data, matches, output) => {
