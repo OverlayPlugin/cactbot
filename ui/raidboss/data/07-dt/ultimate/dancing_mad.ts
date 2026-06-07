@@ -167,8 +167,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'teleportent',
       comment: {
-        en:
-          `Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+        en: `Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a>`,
       },
       name: {
