@@ -1,11 +1,10 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
-
-// TODO: P1 Tele-Portent configuration options
 
 type Phase = 'p1' | 'p2' | 'p3';
 const phases: { [id: string]: Phase } = {
@@ -17,6 +16,9 @@ const phases: { [id: string]: Phase } = {
 // const centerY = 100;
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    teleportent: 'clockwise' | 'filipino' | 'none';
+  };
   // General
   phase: Phase | 'unknown';
   // Phase 1
@@ -161,6 +163,28 @@ const trapOutputStrings: OutputStrings = {
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
+  config: [
+    {
+      id: 'teleportent',
+      comment: {
+        en:
+          `Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a>`,
+      },
+      name: {
+        en: 'P1 Graven Image 3 Tele-Portent Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Tele-portent arrows placed pointing clockwise around the arena.': 'clockwise',
+          'Tele-portent arrows placed in 4 small boxes along intercardinals.': 'filipino',
+          'Call Debuffs only': 'none',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
     return {
@@ -892,12 +916,87 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       durationSeconds: 7,
       infoText: (data, _matches, output) => {
-        if (data.myTelePortent1 === undefined || data.myTelePortent2 === undefined)
+        const tp1 = data.myTelePortent1;
+        const tp2 = data.myTelePortent2;
+        if (tp1 === undefined || tp2 === undefined)
           return;
-        const portents = data.myTelePortent1 + data.myTelePortent2;
+        const portents = tp1 + tp2;
+
+        if (data.triggerSetConfig.teleportent === 'clockwise') {
+          // Relative to center of arena
+          const dir1Map: { [tps: string]: typeof portents } = {
+            'upup': 'west',
+            'downdown': 'east',
+            'rightright': 'north',
+            'leftleft': 'south',
+            'downleft': 'dirESE',
+            'downright': 'northeast',
+            'rightup': 'northwest',
+            'rightdown': 'dirNNE',
+            'leftup': 'dirSSW',
+            'leftdown': 'southeast',
+            'upright': 'dirWNW',
+            'upleft': 'southwest',
+          };
+          // Relative to where player is
+          const dir2Map: { [tps: string]: typeof portents } = {
+            'upup': 'south',
+            'downdown': 'north',
+            'rightright': 'west',
+            'leftleft': 'east',
+            'downleft': 'south',
+            'downright': 'west',
+            'rightup': 'south',
+            'rightdown': 'east',
+            'leftup': 'west',
+            'leftdown': 'north',
+            'upright': 'north',
+            'upleft': 'east',
+          };
+          const dir1 = dir1Map[portents];
+          const dir2 = dir2Map[portents];
+
+          return output.clockwise!({
+            dir1: output[dir1 ?? 'unknown']!(),
+            dir2: output[dir2 ?? 'unknown']!(),
+          });
+        }
+        if (data.triggerSetConfig.teleportent === 'filipino') {
+          const dir2Map: { [tps: string]: typeof portents } = {
+            'upup': 'north',
+            'downdown': 'south',
+            'rightright': 'east',
+            'leftleft': 'west',
+            'downleft': 'onMarker',
+            'downright': 'south',
+            'rightup': 'east',
+            'rightdown': 'onMarker',
+            'leftup': 'onMarker',
+            'leftdown': 'west',
+            'upright': 'onMarker',
+            'upleft': 'north',
+          };
+          const dir1 = `${portents}Filipino1`;
+          const dir2 = dir2Map[portents];
+
+          return output.filipino!({
+            dir1: output[dir1 ?? 'unknown']!(),
+            dir2: output[dir2 ?? 'unknown']!(),
+          });
+        }
         return output[portents]!();
       },
       outputStrings: {
+        ...Directions.outputStrings16Dir,
+        north: Outputs.north,
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        southeast: Outputs.southeast,
+        south: Outputs.south,
+        southwest: Outputs.southwest,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
         },
@@ -933,6 +1032,43 @@ const triggerSet: TriggerSet<Data> = {
         },
         upleft: {
           en: 'Up => Left Portent',
+        },
+        clockwise: {
+          en: '${dir1} => ${dir2}',
+        },
+        filipino: {
+          en: '${dir1} => ${dir2}',
+        },
+        onMarker: {
+          en: 'On Marker',
+        },
+        upupFilipino1: Outputs.southeast,
+        downdownFilipino1: Outputs.northwest,
+        rightrightFilipino1: Outputs.southwest,
+        leftleftFilipino1: Outputs.northeast,
+        downleftFilipino1: {
+          en: 'West of Southwest',
+        },
+        downrightFilipino1: {
+          en: 'Southeast Marker',
+        },
+        rightupFilipino1: {
+          en: 'Northeast Marker',
+        },
+        rightdownFilipino1: {
+          en: 'South of Southeast',
+        },
+        leftupFilipino1: {
+          en: 'North of Northwest',
+        },
+        leftdownFilipino1: {
+          en: 'Southwest Marker',
+        },
+        uprightFilipino1: {
+          en: 'East of Northeast',
+        },
+        upleftFilipino1: {
+          en: 'Northwest Marker',
         },
       },
     },
