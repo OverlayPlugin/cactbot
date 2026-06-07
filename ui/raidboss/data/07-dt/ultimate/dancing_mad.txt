@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BAD6 BAD8 BAD7 BAD9 BAF9 BAF1
-# -p C403:15.6 C24C:216.5 C3F7:500.0 C2DC:1000.0
+# -p C403:15.6 C24C:216.5 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
 hideall "--Reset--"
@@ -364,11 +364,65 @@ hideall "--sync--"
 
 1112.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p4-enrage"
 1112.8 "--untargetable?--"
-1117.8 "Light of Judgment (Enrage)?" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP?
+1114.8 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
+1117.8 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
+1121.3 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
+1159.2 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
+
+
+### Phase 5 - Kefka
+# TODO: Add voiceline sync?
+# en: 'Destruction is the fate of all things.'
+1255.6 label "p4-success"
+1255.6 "--middle--" Ability { id: "C3FD", source: "Kefka" }
+1261.9 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
+1300.0 "Ultima Repeater (castbar)" Ability { id: "BB40", source: "Kefka" }
+1301.1 "Ultima Repeater 1" #Ability { id: "BB41", source: "Kefka" }
+1301.9 "Ultima Repeater 2" #Ability { id: "BB41", source: "Kefka" }
+1302.6 "Ultima Repeater 3" #Ability { id: "BB41", source: "Kefka" }
+1303.4 "Ultima Repeater 4" #Ability { id: "BB41", source: "Kefka" }
+1305.4 "--sync--" Ability { id: "C652", source: "Kefka" }
+1306.3 "Fell Forces" Ability { id: "C654", source: "Kefka" }
+1306.3 "Fell Forces" #Ability { id: "C655", source: "Kefka" }
+1306.3 "Fell Forces" #Ability { id: "C653", source: "Kefka" }
+1308.6 "--sync--" Ability { id: "C652", source: "Kefka" }
+1309.5 "Fell Forces" Ability { id: "C654", source: "Kefka" }
+1309.5 "Fell Forces" #Ability { id: "C655", source: "Kefka" }
+1309.5 "Fell Forces" #Ability { id: "C653", source: "Kefka" }
+1311.8 "--sync--" Ability { id: "C652", source: "Kefka" }
+1312.7 "Fell Forces" Ability { id: "C654", source: "Kefka" }
+1312.7 "Fell Forces" #Ability { id: "C655", source: "Kefka" }
+1312.7 "Fell Forces" #Ability { id: "C653", source: "Kefka" }
+1314.6 "--sync--" #Ability { id: "C183", source: "Kefka" }
+1315.6 "--sync--" #Ability { id: "C183", source: "Kefka" }
+1316.6 "--sync--" #Ability { id: "C183", source: "Kefka" }
+1317.6 "--sync--" #Ability { id: "C183", source: "Kefka" }
+1317.9 "Flood" Ability { id: "C13F", source: "Kefka" }
+1318.9 "Chaotic Flood" #Ability { id: "BB4F", source: "Kefka" }
+1318.9 "Flood" #Ability { id: "C269", source: "Kefka" }
+1319.9 "Chaotic Flood" #Ability { id: "BB4F", source: "Kefka" }
+1319.9 "Flood" #Ability { id: "C269", source: "Kefka" }
+1320.8 "Chaotic Flood" #Ability { id: "BB4F", source: "Kefka" }
+1320.9 "Flood" #Ability { id: "C269", source: "Kefka" }
+1321.8 "Chaotic Flood" #Ability { id: "BB4F", source: "Kefka" }
+1321.9 "Flood" #Ability { id: "C269", source: "Kefka" }
+1330.9 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
+1331.8 "Holy" Ability { id: "BB54", source: "Kefka" }
+1331.8 "Flare" #Ability { id: "BB52", source: "Kefka" }
+1334.0 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
+1334.9 "Holy" Ability { id: "BB54", source: "Kefka" }
+1334.9 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
+1335.6 "Chaotic Holy" Ability { id: "BB56", source: "Kefka" }
+1336.3 "Flare Diffusion" Ability { id: "BB55", source: "Kefka" }
+1342.3 "--sync--" Ability { id: "C652", source: "Kefka" }
+1343.2 "Fell Forces" Ability { id: "C653", source: "Kefka" }
+1345.5 "--sync--" Ability { id: "C652", source: "Kefka" 
+1352.3 "Celestriad" Ability { id: "BB42", source: "Kefka" }
+# TODO: Get up to the enrage
 
 # Phase 2 Enrage Sequence
 10376.2 label "p2-enrage"
-10381.2 "Light of Judgment (Enrage)" Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
+10381.2 "Light of Judgment (Enrage)" Ability { id: "BAE1", source: "Kefka" } # Kefka >0% HP
 
 # Phase 3 Enrage Sequence
 10840.8 label "p3-enrage"
@@ -382,7 +436,7 @@ hideall "--sync--"
 
 # Phase 4 Enrage Sequence
 12000.0 label "p4-enrage"
-12005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP?
+12005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
 
 
 # IGNORED ABILITIES
@@ -510,8 +564,21 @@ hideall "--sync--"
 # BB23 Stray Flames
 # BB25 Stray Spray
 # BCCD Black Spark
+# BB40 Ultima Repeater
+# BB41 Ultima Repeater
+# BB42 Celestriad
+# BB4F Chaotic Flood
+# BB50 Maddening Orchestra
+# BB51 Maddening Orchestra
+# BB52 Flare
+# BB53 Chaotic Flare
+# BB54 Holy
+# BB55 Flare Diffusion
+# BB56 Chaotic Holy
 # BCF2 Graven Image
 # BD66 White Hole
+# C13F Flood
+# C183 --sync--
 # C24A Ultima Upsurge
 # C24B Hyperdrive
 # C24C Ultimate Embrace
@@ -519,12 +586,14 @@ hideall "--sync--"
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
 # C258 Meteor: P3 Chaos Enrage
 # C259 Bowels of Agony: P3 Exdeath Enrage
-# C2DC Kefka Says
+# C269 Flood
 # C2D6 Trance
+# C2DC Kefka Says
 # C2E2 the Decisive Battle
 # C2E3 the Decisive Battle
 # C2E4 Aetherlink
 # C2E5 Aetherlink
+# C392 Flood of Naught
 # C393 Flood of Naught
 # C394 White Antilight
 # C395 Black Antilight
@@ -542,3 +611,7 @@ hideall "--sync--"
 # C572 Earthquake
 # C5DE Thrumming Thunder III
 # C622 Light of Judgment: P1 version
+# C652 --sync--
+# C653 Fell Forces
+# C654 Fell Forces
+# C655 Fell Forces

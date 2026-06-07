@@ -6,12 +6,14 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
+// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
-type Phase = 'p1' | 'p2' | 'p3' | 'p4';
+type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
   'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
+  'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
 
 // const centerX = 100;
