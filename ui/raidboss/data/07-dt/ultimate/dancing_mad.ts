@@ -71,7 +71,7 @@ const forsakenOutputStrings: OutputStrings = {
     en: 'Left Stack/Cone',
   },
   rightStack: {
-    en: 'Right Stack'
+    en: 'Right Stack',
   },
   groupBTowers: {
     en: 'Group B Towers',
