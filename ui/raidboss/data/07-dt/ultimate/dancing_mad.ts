@@ -38,6 +38,9 @@ const headMarkerData = {
 } as const;
 
 const forsakenOutputStrings: OutputStrings = {
+  you: {
+    en: 'YOU',
+  },
   tower: Outputs.getTowers,
   leftTower: {
     en: 'Left Tower',
@@ -417,7 +420,7 @@ const triggerSet: TriggerSet<Data> = {
             const players = data.pathOfLightStackPlayers.map(
               (player) => {
                 if (player === data.me)
-                  return 'YOU';
+                  return output.you!();
                 return data.party.member(player);
               },
             );
@@ -553,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
             const players = data.pathOfLightStackPlayers.map(
               (player) => {
                 if (player === data.me)
-                  return 'YOU';
+                  return output.you!();
                 return data.party.member(player);
               },
             );
@@ -715,7 +718,7 @@ const triggerSet: TriggerSet<Data> = {
           const players = data.pathOfLightStackPlayers.map(
             (player) => {
               if (player === data.me)
-                return 'YOU';
+                return output.you!();
               return data.party.member(player);
             },
           );
