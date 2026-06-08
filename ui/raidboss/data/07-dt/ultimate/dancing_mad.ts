@@ -147,6 +147,9 @@ const mysteryMagicOutputStrings: OutputStrings = {
 };
 
 const trapOutputStrings: OutputStrings = {
+  you: {
+    en: 'YOU',
+  },
   knockbackFrom1: {
     en: 'Knockback from ${players}',
   },
@@ -552,7 +555,7 @@ const triggerSet: TriggerSet<Data> = {
         const players = data.doubleTroubleTrapTargets.map(
           (player) => {
             if (player === data.me)
-              return 'YOU';
+              return output.you!();
             return data.party.member(player);
           },
         );
@@ -600,7 +603,7 @@ const triggerSet: TriggerSet<Data> = {
         const players = data.doubleTroubleTrapTargets.map(
           (player) => {
             if (player === data.me)
-              return 'YOU';
+              return output.you!();
             return data.party.member(player);
           },
         );
@@ -714,7 +717,7 @@ const triggerSet: TriggerSet<Data> = {
         const players = data.doubleTroubleTrapTargets.map(
           (player) => {
             if (player === data.me)
-              return 'YOU';
+              return output.you!();
             return data.party.member(player);
           },
         );
