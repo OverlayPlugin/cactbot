@@ -94,7 +94,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'Group soak order: AAABBBBA. Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in.': 'kroxy-rinon',
+          'Group soak order: AAABBBBA. Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in.':
+            'kroxy-rinon',
           'Generic calls.': 'none',
         },
       },
@@ -369,7 +370,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.myPathOfLights.length !== 1 || data.myPathOfLights[0] === 'stack')
           return;
 
-       return output.bait!();
+        return output.bait!();
       },
       outputStrings: {
         bait: {
@@ -678,7 +679,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.myPathOfLights.length !== 4)
           return;
 
-       return output.bait!();
+        return output.bait!();
       },
       outputStrings: {
         bait: {
