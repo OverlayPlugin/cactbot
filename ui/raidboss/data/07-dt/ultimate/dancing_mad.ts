@@ -482,7 +482,7 @@ const triggerSet: TriggerSet<Data> = {
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             const tower = data.role === 'tank' || Util.isMeleeDpsJob(data.job)
               ? 'rightTower'
-              : 'towerTower';
+              : 'lefttower';
             if (marker === 'cone')
               return output.mechs!({
                 mech1: output[tower]!(),
