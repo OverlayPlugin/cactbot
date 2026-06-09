@@ -356,6 +356,13 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
+const xyToClockwiseAngle = (x: number, y: number, centerX: number, centerY: number): number => {
+  // Returns a continuous angle where north is 0 and values increase clockwise.
+  x = x - centerX;
+  y = y - centerY;
+  return (Math.PI - Math.atan2(x, y) + 2 * Math.PI) % (2 * Math.PI);
+};
+
 const hdgTo16DirNum = (heading: number): number => {
   // N = 0, NNE = 1, ..., NNW = 15
   return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
@@ -383,6 +390,102 @@ const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
 };
 
+interface SortablePoint {
+  x: number;
+  y: number;
+}
+
+type PointSortEntry<T extends SortablePoint> = {
+  point: T;
+  angle: number;
+  index: number;
+};
+
+const twoPi = 2 * Math.PI;
+
+const clockwiseAngleDelta = (toAngle: number, fromAngle: number): number => {
+  // Normalize the wraparound case so the result is always in [0, 2π).
+  return (toAngle - fromAngle + twoPi) % twoPi;
+};
+
+const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
+  entries: PointSortEntry<T>[],
+  referenceAngle: number,
+): T[] => {
+  // Use original index as a stable tie-breaker for points on the same ray.
+  return entries
+    .map((entry) => ({
+      ...entry,
+      delta: clockwiseAngleDelta(entry.angle, referenceAngle),
+    }))
+    .sort((a, b) => a.delta - b.delta || a.index - b.index)
+    .map((entry) => entry.point);
+};
+
+const sortPointsClockwiseFrom = <T extends SortablePoint>(
+  points: readonly T[],
+  centerX: number,
+  centerY: number,
+  referenceX: number,
+  referenceY: number,
+): T[] => {
+  // Sorts points clockwise, starting from the angle of `reference`.
+  const referenceAngle = xyToClockwiseAngle(referenceX, referenceY, centerX, centerY);
+  const entries: PointSortEntry<T>[] = points.map((point, index) => ({
+    point: point,
+    angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
+    index: index,
+  }));
+
+  return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+};
+
+const sortPointsClockwise = <T extends SortablePoint>(
+  points: readonly T[],
+  centerX: number,
+  centerY: number,
+): T[] | undefined => {
+  // Sorts points clockwise if they fit within a semicircle around `center`.
+  // otherwise, returns undefined.
+  if (points.length <= 1)
+    return [...points];
+
+  const entries: PointSortEntry<T>[] = points
+    .map((point, index) => ({
+      point: point,
+      angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
+      index: index,
+    }))
+    .sort((a, b) => a.angle - b.angle || a.index - b.index);
+
+  let largestGap = 0;
+  let startIdx = 0;
+  for (const [idx, entry] of entries.entries()) {
+    const nextIdx = (idx + 1) % entries.length;
+    const nextEntry = entries[nextIdx];
+    if (nextEntry === undefined)
+      continue;
+    const gap = clockwiseAngleDelta(nextEntry.angle, entry.angle);
+
+    if (gap > largestGap) {
+      largestGap = gap;
+      startIdx = nextIdx;
+    }
+  }
+
+  // With no angular separation, there is no clockwise ordering signal.
+  if (largestGap === 0)
+    return [...points];
+
+  // Points fit in a semicircle if the complement of their largest gap is <= 180 degrees.
+  const arcLength = twoPi - largestGap;
+  if (arcLength > Math.PI + 1e-9)
+    return undefined;
+
+  const referenceAngle = entries[startIdx]?.angle ?? 0;
+  return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+};
+
 export const Directions = {
   output8Dir: output8Dir,
   output16Dir: output16Dir,
@@ -402,6 +505,8 @@ export const Directions = {
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
+  sortPointsClockwise: sortPointsClockwise,
+  sortPointsClockwiseFrom: sortPointsClockwiseFrom,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
