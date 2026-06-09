@@ -267,7 +267,7 @@ hideall "--sync--"
 788.1 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
 789.3 "Slap Happy" Ability { id: "BAE9", source: "Kefka" }
 789.3 "Shocking Impact" Ability { id: "BAEA", source: "Kefka" }
-792.5 "Black Spark" Ability { id: "BCCD", source: ["Black Hole," "Kefka"] } # Supposed to be from Black Hole, but can bug
+792.5 "Black Spark" Ability { id: "BCCD", source: ["Black Hole", "Kefka"] } # Supposed to be from Black Hole, but can bug
 796.5 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
 796.5 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
 802.2 "Look upon Me and Despair" Ability { id: "BAED", source: "Kefka" }
