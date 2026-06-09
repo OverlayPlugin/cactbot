@@ -38,17 +38,23 @@ const headMarkerData = {
 } as const;
 
 const forsakenOutputStrings: OutputStrings = {
+  tower: Outputs.getTowers,
+  stackOnYou: Outputs.stackOnYou,
   you: {
     en: 'YOU',
   },
-  tower: Outputs.getTowers,
+  swapTowers: {
+    en: 'Swap Towers',
+  },
   leftTower: {
     en: 'Left Tower',
   },
   rightTower: {
     en: 'Right Tower',
   },
-  stackOnYou: Outputs.stackOnYou,
+  groupBTowers: {
+    en: 'Group B Towers',
+  },
   cone: {
     en: 'Cone on YOU',
   },
@@ -76,8 +82,23 @@ const forsakenOutputStrings: OutputStrings = {
   rightStack: {
     en: 'Right Stack',
   },
-  groupBTowers: {
-    en: 'Group B Towers',
+  beNear: {
+    en: 'Be Near',
+    de: 'Sei Nahe',
+    cn: '站近',
+    ko: '가까이 있기',
+  },
+  beFar: {
+    en: 'Be Far',
+    de: 'Sei Fern',
+    cn: '站远',
+    ko: '멀리 있기',
+  },
+  mechs: {
+    en: '${mech1} + ${mech2}',
+  },
+  bait: {
+    en: 'Bait cone Left/Right or clone far',
   },
 };
 
