@@ -172,9 +172,9 @@ const triggerSet: TriggerSet<Data> = {
           data.myPathOfLights.push(markers[id] ?? 'unknown');
 
         // Clear previous Headmarker if set
-        data.pathOfLightStackPlayers.filter((t) => t !== target);
-        data.pathOfLightConePlayers.filter((t) => t !== target);
-        data.pathOfLightSpreadPlayers.filter((t) => t !== target);
+        data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
+        data.pathOfLightConePlayers = data.pathOfLightConePlayers.filter((t) => t !== target);
+        data.pathOfLightSpreadPlayers = data.pathOfLightSpreadPlayers.filter((t) => t !== target);
 
         if (id === headMarkerData['stackPath'])
           data.pathOfLightStackPlayers.push(target);
@@ -313,22 +313,49 @@ const triggerSet: TriggerSet<Data> = {
         if (marker === undefined)
           return;
 
-        // Unsure that this could happen, unless more than 4 players soaked?
-        if (marker === 'stack')
+        // Stack shouldn't be possible here
+        if (marker === 'stack' || data.myPathOfLights[1] === undefined)
           return;
 
-        // Ignoring stack players that didn't soak tower 1
-        // Check our previous headmarker
-        if (data.myPathOfLights[0] === 'cone')
-          return output.mechs!({
-            mech1: output.tower!(),
-            mech2: output.beFar!(),
-          });
-        if (data.myPathOfLights[0] === 'spread')
-          return output.mechs!({
-            mech1: output.swapTowers!(),
-            mech2: output.beFar!(),
-          });
+        // Spread Players have to be far in the tower, cones need to bait end
+        const nearFar = data.myPathOfLights[1] === 'spread'
+          ? output.beFar!()
+          : output.beNear!();
+
+        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
+          // Check our previous headmarker
+          // Supports Left, DPS Right
+          if (data.role === 'healer' || data.role === 'tank') {
+            // Support had cone in left tower 1, moves up in tower
+            if (data.myPathOfLights[0] === 'cone')
+              return output.mechs!({
+                mech1: output.tower!(),
+                mech2: nearFar,
+              });
+            // Support with spread on right tower 1 changes to left
+            if (data.myPathOfLights[0] === 'spread')
+              return output.mechs!({
+                mech1: output.swapTowers!(),
+                mech2: nearFar,
+              });
+          }
+          if (data.myPathOfLights[0] === 'cone')
+            return output.mechs!({
+              mech1: output.swapTowers!(),
+              mech2: nearFar,
+            });
+          if (data.myPathOfLights[0] === 'spread')
+            return output.mechs!({
+              mech1: output.getTowers!(),
+              mech2: nearFar,
+            });
+        }
+
+        // No strategy just say the cone/spread difference
+        return output.mechs!({
+          mech1: output.getTowers!(),
+          mech2: nearFar,
+        });
       },
       outputStrings: {
         tower: Outputs.getTowers,
@@ -762,7 +789,7 @@ const triggerSet: TriggerSet<Data> = {
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             const tower = data.role === 'tank' || Util.isMeleeDpsJob(data.job)
               ? 'rightTower'
-              : 'towerTower';
+              : 'leftTower';
             if (marker === 'cone')
               return output.mechs!({
                 mech1: output[tower]!(),
