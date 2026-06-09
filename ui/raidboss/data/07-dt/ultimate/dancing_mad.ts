@@ -74,7 +74,10 @@ const forsakenOutputStrings: OutputStrings = {
     en: '${marker} + ${tower}',
   },
   leftStack: {
-    en: 'Left Stack/Cone',
+    en: 'Left Stack',
+  },
+  baitLeftCone: {
+    en: 'Bait Left Cone',
   },
   rightStack: {
     en: 'Right Stack',
@@ -470,8 +473,11 @@ const triggerSet: TriggerSet<Data> = {
 
         // No tower has been soaked
         if (data.myPathOfLights.length === 1) {
-          if (data.role === 'healer' || data.role === 'tank')
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
             return output.leftStack!();
+          if (data.role === 'healer')
+            return output.baitLeftCone!();
           return output.rightStack!();
         }
       },
@@ -575,8 +581,11 @@ const triggerSet: TriggerSet<Data> = {
 
         // Players that have soaked 3 towers
         if (data.myPathOfLights.length === 4) {
-          if (data.role === 'healer' || data.role === 'tank')
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
             return output.leftStack!();
+          if (data.role === 'healer')
+            return output.baitLeftCone!();
           return output.rightStack!();
         }
       },
