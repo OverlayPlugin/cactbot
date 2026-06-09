@@ -357,27 +357,7 @@ const triggerSet: TriggerSet<Data> = {
           mech2: nearFar,
         });
       },
-      outputStrings: {
-        tower: Outputs.getTowers,
-        swapTowers: {
-          en: 'Swap Towers',
-        },
-        beNear: {
-          en: 'Be Near',
-          de: 'Sei Nahe',
-          cn: '站近',
-          ko: '가까이 있기',
-        },
-        beFar: {
-          en: 'Be Far',
-          de: 'Sei Fern',
-          cn: '站远',
-          ko: '멀리 있기',
-        },
-        mechs: {
-          en: '${mech1} + ${mech2}',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
       id: 'DMU P2 Path of Light Towers 2 Baits',
@@ -402,21 +382,19 @@ const triggerSet: TriggerSet<Data> = {
 
         return output.bait!();
       },
-      outputStrings: {
-        bait: {
-          en: 'Bait cone Left/Right or clone far',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Future\'s End/Past\'s End Baits',
-      // There are four end casts
-      // 10s apart
+      id: 'DMU P2 All Things Ending Baits',
+      // Using the following spells for timing:
+      // BAD2 Future's End => Need to bait BACD All Things Ending
+      // BAD3 Past's End => Need to bait BADD All Things Ending
+      // There are four end casts, each 10s apart
       // BAD2 and BAD3 are the castbar, damage doesn't go out until later
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.2, // Time until headmarker damage
+      delaySeconds: 1.2, // Time until headmarker and future/past damage
       alertText: (_data, matches, output) => {
         return matches.id === 'BAD2' ? output.future!() : output.past!();
       },
@@ -509,61 +487,30 @@ const triggerSet: TriggerSet<Data> = {
           if (marker === 'stack' || marker === 'unknown')
             return;
 
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = data.myPathOfLights[1] === 'spread'
+            ? output.beFar!()
+            : output.beNear!();
+
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-            const tower = data.role === 'tank' || Util.isMeleeDpsJob(data.job)
-              ? 'rightTower'
-              : 'lefttower';
-            if (marker === 'cone')
-              return output.mechs!({
-                mech1: output[tower]!(),
-                mech2: output.beNear!(),
-              });
-            if (marker === 'spread')
-              return output.mechs!({
-                mech1: output[tower]!(),
-                mech2: output.beFar!(),
-              });
+            return output.mechs!({
+              mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
+                ? output.rightTower!()
+                : output.leftTower!(),
+              mech2: nearFar,
+            });
           }
-          if (marker === 'cone')
-            return output.mechs!({
-              mech1: output.tower!(),
-              mech2: output.beNear!(),
-            });
-          if (marker === 'spread')
-            return output.mechs!({
-              mech1: output.tower!(),
-              mech2: output.beFar!(),
-            });
+
+          return output.mechs!({
+            mech1: output.tower!(),
+            mech2: nearFar,
+          });
         }
+
+        // Group A
         return output.bait!();
       },
-      outputStrings: {
-        tower: Outputs.getTowers,
-        leftTower: {
-          en: 'Left Tower',
-        },
-        rightTower: {
-          en: 'Right Tower',
-        },
-        beNear: {
-          en: 'Be Near',
-          de: 'Sei Nahe',
-          cn: '站近',
-          ko: '가까이 있기',
-        },
-        beFar: {
-          en: 'Be Far',
-          de: 'Sei Fern',
-          cn: '站远',
-          ko: '멀리 있기',
-        },
-        mechs: {
-          en: '${mech1} + ${mech2}',
-        },
-        bait: {
-          en: 'Bait cone Left/Right or clone far',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
       id: 'DMU P2 Path of Light Towers 5',
@@ -670,24 +617,7 @@ const triggerSet: TriggerSet<Data> = {
             mech2: output.beFar!(),
           });
       },
-      outputStrings: {
-        tower: Outputs.getTowers,
-        beNear: {
-          en: 'Be Near',
-          de: 'Sei Nahe',
-          cn: '站近',
-          ko: '가까이 있기',
-        },
-        beFar: {
-          en: 'Be Far',
-          de: 'Sei Fern',
-          cn: '站远',
-          ko: '멀리 있기',
-        },
-        mechs: {
-          en: '${mech1} + ${mech2}',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
       id: 'DMU P2 Path of Light Towers 6 Baits',
@@ -711,11 +641,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return output.bait!();
       },
-      outputStrings: {
-        bait: {
-          en: 'Bait cone Left/Right or clone far',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
       id: 'DMU P2 Path of Light Towers 7',
@@ -814,33 +740,7 @@ const triggerSet: TriggerSet<Data> = {
         }
         return output.bait!();
       },
-      outputStrings: {
-        tower: Outputs.getTowers,
-        leftTower: {
-          en: 'Left Tower',
-        },
-        rightTower: {
-          en: 'Right Tower',
-        },
-        beNear: {
-          en: 'Be Near',
-          de: 'Sei Nahe',
-          cn: '站近',
-          ko: '가까이 있기',
-        },
-        beFar: {
-          en: 'Be Far',
-          de: 'Sei Fern',
-          cn: '站远',
-          ko: '멀리 있기',
-        },
-        mechs: {
-          en: '${mech1} + ${mech2}',
-        },
-        bait: {
-          en: 'Bait cone Left/Right or clone far',
-        },
-      },
+      outputStrings: forsakenOutputStrings,
     },
     {
       id: 'DMU P2 Light of Judgment',
