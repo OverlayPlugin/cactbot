@@ -98,15 +98,24 @@ describe('util tests', () => {
   it('sorts points clockwise from a reference point', () => {
     const points = [
       { id: 'NE', x: 1, y: -1 },
+      { id: 'SW', x: -1, y: 1 },
       { id: 'N', x: 0, y: -1 },
       { id: 'NW', x: -1, y: -1 },
+      { id: 'S', x: 0, y: 1 },
+      { id: 'W', x: -1, y: 0 },
+      { id: 'SE', x: 3, y: 3 },
+      { id: 'E', x: 2, y: 0 },
     ];
 
-    const sorted = Directions.sortPointsClockwiseFrom(points, 0, 0, -1, -1);
+    const expected = ['NW', 'N', 'NE', 'E', 'SE', 'S', 'SW', 'W'];
 
-    assert.deepEqual(sorted.map((point) => point.id), ['NW', 'N', 'NE']);
-    assert.deepEqual(points.map((point) => point.id), ['NE', 'N', 'NW']);
-    assert.deepEqual(sorted, [points[2], points[1], points[0]]);
+    let [refX, refY] = [-1, -1]; // same as NW
+    let sorted = Directions.sortPointsClockwiseFrom(points, 0, 0, refX, refY);
+    assert.deepEqual(sorted.map((point) => point.id), expected);
+
+    [refX, refY] = [-1.2, -0.8];
+    sorted = Directions.sortPointsClockwiseFrom(points, 0, 0, refX, refY);
+    assert.deepEqual(sorted.map((point) => point.id), expected);
   });
 
   it('sorts clustered points clockwise when contained within a semicircle', () => {
