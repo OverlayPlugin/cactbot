@@ -745,7 +745,7 @@ const triggerSet: TriggerSet<Data> = {
         const num = data.pathOfLightCounter;
         const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
-        // Group A
+         // Group A
          if (data.isForsakenGroupA) {
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             return output.markerOnYouTower!({
@@ -763,7 +763,7 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-         // Group B
+        // Group B
         if (marker === 'stack') {
           // Need to know for priority
           const players = data.pathOfLightStackPlayers.map(
