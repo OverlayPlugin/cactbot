@@ -353,7 +353,7 @@ const triggerSet: TriggerSet<Data> = {
 
         // No strategy just say the cone/spread difference
         return output.mechs!({
-          mech1: output.getTowers!(),
+          mech1: output.tower!(),
           mech2: nearFar,
         });
       },
