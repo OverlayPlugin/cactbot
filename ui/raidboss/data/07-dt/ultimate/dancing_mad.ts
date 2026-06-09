@@ -27,6 +27,7 @@ export interface Data extends RaidbossData {
   pathOfLightConePlayers: string[];
   pathOfLightSpreadPlayers: string[];
   myPathOfLights: string[];
+  isForsakenGroupA: boolean;
 }
 
 const headMarkerData = {
@@ -37,20 +38,39 @@ const headMarkerData = {
   'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
 } as const;
 
+
 const forsakenOutputStrings: OutputStrings = {
   tower: Outputs.getTowers,
+  avoid: {
+    en: 'Avoid towers',
+    de: 'Türme vermeiden',
+    fr: 'Évitez les tours',
+    ja: '塔回避',
+    cn: '远离塔',
+    ko: '기둥 피하기',
+    tc: '遠離塔',
+  },
   stackOnYou: Outputs.stackOnYou,
+  num: {
+    en: '${num}: ',
+    de: '${num}: ',
+    fr: '${num}: ',
+    ja: '${num}: ',
+    cn: '${num}: ',
+    ko: '${num}: ',
+    tc: '${num}: ',
+  },
   you: {
     en: 'YOU',
   },
   swapTowers: {
-    en: 'Swap Towers',
+    en: '${num}Swap Towers',
   },
   leftTower: {
-    en: 'Left Tower',
+    en: '${num}Left Tower',
   },
   rightTower: {
-    en: 'Right Tower',
+    en: '${num}Right Tower',
   },
   cone: {
     en: 'Cone on YOU',
@@ -68,19 +88,22 @@ const forsakenOutputStrings: OutputStrings = {
     en: 'Stacks on ${players}',
   },
   markerOnYouStacksOnPlayers: {
-    en: '${marker} + ${stacks}',
+    en: '${num}${marker} + ${stacks}',
   },
   markerOnYouTower: {
-    en: '${marker} + ${tower}',
+    en: '${num}${marker} + ${tower}',
+  },
+  baitLeftConeOutOdds: {
+    en: '${num}Bait Left Cone Out',
+  },
+  baitLeftConeEvens: {
+    en: '${num}Bait Left Cone Left',
   },
   leftStack: {
-    en: 'Left Stack',
-  },
-  baitLeftCone: {
-    en: 'Bait Left Cone',
+    en: '${num}Left Stack + ${avoid}',
   },
   rightStack: {
-    en: 'Right Stack',
+    en: '${num}Right Stack + ${avoid}',
   },
   beNear: {
     en: 'Be Near',
@@ -95,10 +118,13 @@ const forsakenOutputStrings: OutputStrings = {
     ko: '멀리 있기',
   },
   mechs: {
-    en: '${mech1} + ${mech2}',
+    en: '${num}${mech1} + ${mech2}',
   },
   bait: {
-    en: 'Bait cone Left/Right or clone far',
+    en: '${num}Bait Cone Right or Clone Far',
+  },
+  baitCloneFar: {
+    en: '${num}Bait Clone Far',
   },
 };
 
@@ -136,6 +162,7 @@ const triggerSet: TriggerSet<Data> = {
       pathOfLightStackPlayers: [],
       pathOfLightConePlayers: [],
       pathOfLightSpreadPlayers: [],
+      isForsakenGroupA: false,
     };
   },
   triggers: [
@@ -197,6 +224,10 @@ const triggerSet: TriggerSet<Data> = {
         data.pathOfLightConePlayers = data.pathOfLightConePlayers.filter((t) => t !== target);
         data.pathOfLightSpreadPlayers = data.pathOfLightSpreadPlayers.filter((t) => t !== target);
 
+        // To track "groups"
+        if (data.pathOfLightCounter === 2 && data.me === matches.target)
+          data.isForsakenGroupA = true;
+
         if (id === headMarkerData['stackPath'])
           data.pathOfLightStackPlayers.push(target);
         else if (id === headMarkerData['conePath'])
@@ -241,20 +272,24 @@ const triggerSet: TriggerSet<Data> = {
         const marker = markers[id];
         if (marker === undefined)
           return;
+        const num = data.pathOfLightCounter;
 
         if (marker === 'stack') {
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             if (data.role === 'healer' || data.role === 'tank')
               return output.stackOnYouTower!({
+                num: output.num!({ num: num }),
                 tower: output.leftTower!(),
                 marker: output.stackOnYou!(),
               });
             return output.stackOnYouTower!({
+              num: output.num!({ num: num }),
               tower: output.rightTower!(),
               marker: output.stackOnYou!(),
             });
           }
           return output.stackOnYouTower!({
+            num: output.num!({ num: num }),
             tower: output.tower!(),
             marker: output.stackOnYou!(),
           });
@@ -275,6 +310,7 @@ const triggerSet: TriggerSet<Data> = {
           );
           const msg = players?.join(', ');
           return output.markerOnYouStacksOnPlayers!({
+            num: output.num!({ num: num }),
             marker: output[marker]!(),
             stacks: output.stacksOnPlayers!({ players: msg }),
           });
@@ -283,6 +319,7 @@ const triggerSet: TriggerSet<Data> = {
         // Our partner will be the role that matches us
         const possiblePartner = data.party.member(myRoleIsDPS === stack1IsDPS ? stack1 : stack2);
         return output.markerOnYouStacksOnPlayers!({
+          num: output.num!({ num: num }),
           marker: output[marker]!(),
           stacks: output.stackOnPlayer!({ player: possiblePartner }),
         });
@@ -313,83 +350,6 @@ const triggerSet: TriggerSet<Data> = {
           headMarkerData['conePath'],
           headMarkerData['spreadPath'],
         ],
-        capture: true,
-      },
-      condition: (data, matches) => {
-        return data.me === matches.target && data.pathOfLightCounter === 2;
-      },
-      delaySeconds: 0.1, // Delay for party headmarker collect
-      durationSeconds: 9,
-      infoText: (data, matches, output) => {
-        const id = matches.id;
-        type markerMap = {
-          [key: string]: 'stack' | 'cone' | 'spread';
-        };
-        const markers: markerMap = {
-          '02CB': 'stack',
-          '02CD': 'cone',
-          '02CC': 'spread',
-        };
-        const marker = markers[id];
-        if (marker === undefined)
-          return;
-
-        // Stack shouldn't be possible here
-        if (marker === 'stack' || data.myPathOfLights[1] === undefined)
-          return;
-
-        // Spread Players have to be far in the tower, cones need to bait end
-        const nearFar = data.myPathOfLights[1] === 'spread'
-          ? output.beFar!()
-          : output.beNear!();
-
-        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-          // Check our previous headmarker
-          // Supports Left, DPS Right
-          if (data.role === 'healer' || data.role === 'tank') {
-            // Support had cone in left tower 1, moves up in tower
-            if (data.myPathOfLights[0] === 'cone')
-              return output.mechs!({
-                mech1: output.tower!(),
-                mech2: nearFar,
-              });
-            // Support with spread on right tower 1 changes to left
-            if (data.myPathOfLights[0] === 'spread')
-              return output.mechs!({
-                mech1: output.swapTowers!(),
-                mech2: nearFar,
-              });
-          }
-          if (data.myPathOfLights[0] === 'cone')
-            return output.mechs!({
-              mech1: output.swapTowers!(),
-              mech2: nearFar,
-            });
-          if (data.myPathOfLights[0] === 'spread')
-            return output.mechs!({
-              mech1: output.tower!(),
-              mech2: nearFar,
-            });
-        }
-
-        // No strategy just say the cone/spread difference
-        return output.mechs!({
-          mech1: output.tower!(),
-          mech2: nearFar,
-        });
-      },
-      outputStrings: forsakenOutputStrings,
-    },
-    {
-      id: 'DMU P2 Path of Light Towers 2 Baits',
-      // Players that still have the first headmarker
-      type: 'HeadMarker',
-      netRegex: {
-        id: [
-          headMarkerData['stackPath'],
-          headMarkerData['conePath'],
-          headMarkerData['spreadPath'],
-        ],
         capture: false,
       },
       condition: (data) => data.pathOfLightCounter === 2,
@@ -397,11 +357,70 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 9,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        // Ignoring stack players that didn't soak tower 1
-        if (data.myPathOfLights.length !== 1 || data.myPathOfLights[0] === 'stack')
-          return;
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
-        return output.bait!();
+        // Group A
+        if (data.isForsakenGroupA) {
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = marker === 'spread'
+            ? output.beFar!()
+            : output.beNear!();
+
+          if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
+            // Check our previous headmarker
+            // Supports Left, DPS Right
+            if (data.role === 'healer' || data.role === 'tank') {
+              // Support had cone in left tower 1, moves up in tower
+              if (data.myPathOfLights[0] === 'cone')
+                return output.mechs!({
+                  num: output.num!({ num: num }),
+                  mech1: output.tower!(),
+                  mech2: nearFar,
+                });
+              // Support with spread on right tower 1 changes to left
+              if (data.myPathOfLights[0] === 'spread')
+                return output.mechs!({
+                  num: output.num!({ num: num }),
+                  mech1: output.swapTowers!(),
+                  mech2: nearFar,
+                });
+            }
+            if (data.myPathOfLights[0] === 'cone')
+              return output.mechs!({
+                num: output.num!({ num: num }),
+                mech1: output.swapTowers!(),
+                mech2: nearFar,
+              });
+            if (data.myPathOfLights[0] === 'spread')
+              return output.mechs!({
+                num: output.num!({ num: num }),
+                mech1: output.tower!(),
+                mech2: nearFar,
+              });
+          }
+
+          // No strategy just say the cone/spread difference
+          return output.mechs!({
+            num: output.num!({ num: num }),
+            mech1: output.tower!(),
+            mech2: nearFar,
+          });
+        }
+
+        // Group B
+        if (data.role === 'healer')
+          return output.baitLeftConeEvens!({
+            num: output.num!({ num: num }),
+          });
+        if (data.role === 'tank')
+          return output.baitCloneFar!({
+            num: output.num!({ num: num }),
+          });
+        // DPS Unkmown party composition
+        return output.bait!({
+          num: output.num!({ num: num }),
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
@@ -416,15 +435,36 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
       delaySeconds: 1.2, // Time until headmarker and future/past damage
-      alertText: (_data, matches, output) => {
-        return matches.id === 'BAD2' ? output.future!() : output.past!();
+      alertText: (data, matches, output) => {
+        const isFuture = matches.id === 'BAD2';
+        if (data.pathOfLightCounter !== 9)
+          return isFuture ? output.future!() : output.past!();
+
+        return isFuture
+          ? output.lastFuture!({ action: output.behind!() })
+          : output.lastPast!({ action: output.stay!() });
       },
       outputStrings: {
+        behind: Outputs.getBehind,
+        stay: {
+          en: 'Stay',
+          de: 'Bleib stehen',
+          fr: 'Restez',
+          cn: '停',
+          ko: '대기',
+          tc: '停',
+        },
         future: {
           en: 'Bait Ending opposite Towers',
         },
         past: {
           en: 'Bait Ending between Towers',
+        },
+        lastFuture: {
+          en: 'Bait Ending => ${action}',
+        },
+        lastPast: {
+          en: 'Bait Ending => ${action}',
         },
       },
     },
@@ -438,9 +478,11 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.pathOfLightCounter === 3,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        // Tower soak group A will be at 3
-        if (data.myPathOfLights.length === 3) {
-          const marker = data.myPathOfLights[2] ?? 'unknown';
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
+
+        // Group A
+        if (data.isForsakenGroupA) {
           if (marker === 'stack') {
             // Need to know for priority
             const players = data.pathOfLightStackPlayers.map(
@@ -452,6 +494,7 @@ const triggerSet: TriggerSet<Data> = {
             );
             const msg = players?.join(', ');
             return output.markerOnYouTower!({
+              num: output.num!({ num: num }),
               marker: output.stacksOnPlayers!({ players: msg }),
               tower: output.tower!(),
             });
@@ -459,6 +502,7 @@ const triggerSet: TriggerSet<Data> = {
 
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             return output.markerOnYouTower!({
+              num: output.num!({ num: num }),
               marker: output[marker]!(),
               tower: marker === 'cone'
                 ? output.leftTower!()
@@ -466,25 +510,33 @@ const triggerSet: TriggerSet<Data> = {
             });
           }
           return output.markerOnYouTower!({
+            num: output.num!({ num: num }),
             marker: output[marker]!(),
             tower: output.tower!(),
           });
         }
 
-        // No tower has been soaked
-        if (data.myPathOfLights.length === 1) {
-          // So long as it is standard party composition...
-          if (data.role === 'tank')
-            return output.leftStack!();
-          if (data.role === 'healer')
-            return output.baitLeftCone!();
-          return output.rightStack!();
-        }
+        // Group B
+        // So long as it is standard party composition...
+        if (data.role === 'tank')
+          return output.leftStack!({
+            num: output.num!({ num: num }),
+            avoid: output.avoid!(),
+          });
+        if (data.role === 'healer')
+          return output.baitLeftConeOutOdds!({
+            num: output.num!({ num: num }),
+          });
+        // 2 DPS in stack
+        return output.rightStack!({
+          num: output.num!({ num: num }),
+          avoid: output.avoid!(),
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Path of Light Towers and Baits 4',
+      id: 'DMU P2 Path of Light Towers 4',
       // This set should not contain stack markers
       // If stacks exist, they came from first set
       // 2 Cones and 2 Spreads will soak towers
@@ -504,35 +556,49 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 9,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        // Handle second group's first towers
-        if (data.myPathOfLights.length === 1) {
-          const marker = data.myPathOfLights[0];
-          // If someone has stack from beginning
-          if (marker === 'stack' || marker === 'unknown')
-            return;
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
-          // Spread Players have to be far in the tower, cones need to bait end
-          const nearFar = data.myPathOfLights[1] === 'spread'
-            ? output.beFar!()
-            : output.beNear!();
-
-          if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-            return output.mechs!({
-              mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
-                ? output.rightTower!()
-                : output.leftTower!(),
-              mech2: nearFar,
+        // Group A
+        if (data.isForsakenGroupA) {
+          if (data.role === 'healer')
+            return output.baitLeftConeEvens!({
+              num: output.num!({ num: num }),
             });
-          }
+          if (data.role === 'tank')
+            return output.baitCloneFar!({
+              num: output.num!({ num: num }),
+            });
+          // DPS Unkmown party composition
+          return output.bait!({
+            num: output.num!({ num: num }),
+          });
+        }
 
+        // Group B
+        // If someone has stack from beginning
+        if (marker === 'stack' || marker === 'unknown')
+          return;
+
+        // Spread Players have to be far in the tower, cones need to bait end
+        const nearFar = marker === 'spread'
+          ? output.beFar!()
+          : output.beNear!();
+
+        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
           return output.mechs!({
-            mech1: output.tower!(),
+            mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
+              ? output.rightTower!()
+              : output.leftTower!(),
             mech2: nearFar,
           });
         }
 
-        // Group A
-        return output.bait!();
+        return output.mechs!({
+          num: output.num!({ num: num }),
+          mech1: output.tower!(),
+          mech2: nearFar,
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
@@ -546,48 +612,59 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.pathOfLightCounter === 5,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        // Tower soak group B will be at 2
-        if (data.myPathOfLights.length === 2) {
-          const marker = data.myPathOfLights[1] ?? 'unknown';
-          if (marker === 'stack') {
-            // Need to know for priority
-            const players = data.pathOfLightStackPlayers.map(
-              (player) => {
-                if (player === data.me)
-                  return output.you!();
-                return data.party.member(player);
-              },
-            );
-            const msg = players?.join(', ');
-            return output.markerOnYouTower!({
-              marker: output.stacksOnPlayers!({ players: msg }),
-              tower: output.tower!(),
-            });
-          }
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
-          if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-            return output.markerOnYouTower!({
-              marker: output[marker]!(),
-              tower: marker === 'cone'
-                ? output.leftTower!()
-                : output.rightTower!(),
+        // Group A
+        if (data.isForsakenGroupA) {
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
+            return output.leftStack!({
+              num: output.num!({ num: num }),
+              avoid: output.avoid!(),
             });
-          }
+          if (data.role === 'healer')
+            return output.baitLeftConeOutOdds!({
+              num: output.num!({ num: num }),
+            });
+          return output.rightStack!({
+            num: output.num!({ num: num }),
+            avoid: output.avoid!(),
+          });
+        }
+
+        // Group B
+        if (marker === 'stack') {
+          // Need to know for priority
+          const players = data.pathOfLightStackPlayers.map(
+            (player) => {
+              if (player === data.me)
+                return output.you!();
+              return data.party.member(player);
+            },
+          );
+          const msg = players?.join(', ');
           return output.markerOnYouTower!({
-            marker: output[marker]!(),
+            num: output.num!({ num: num }),
+            marker: output.stacksOnPlayers!({ players: msg }),
             tower: output.tower!(),
           });
         }
 
-        // Players that have soaked 3 towers
-        if (data.myPathOfLights.length === 4) {
-          // So long as it is standard party composition...
-          if (data.role === 'tank')
-            return output.leftStack!();
-          if (data.role === 'healer')
-            return output.baitLeftCone!();
-          return output.rightStack!();
+        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
+          return output.markerOnYouTower!({
+            num: output.num!({ num: num }),
+            marker: output[marker]!(),
+            tower: marker === 'cone'
+              ? output.leftTower!()
+              : output.rightTower!(),
+          });
         }
+        return output.markerOnYouTower!({
+          num: output.num!({ num: num }),
+          marker: output[marker]!(),
+          tower: output.tower!(),
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
@@ -605,41 +682,41 @@ const triggerSet: TriggerSet<Data> = {
           headMarkerData['conePath'],
           headMarkerData['spreadPath'],
         ],
-        capture: true,
+        capture: false,
       },
-      condition: (data, matches) => {
-        return data.me === matches.target && data.pathOfLightCounter === 6;
-      },
+      condition: (data) => data.pathOfLightCounter === 6,
       delaySeconds: 0.1, // Delay for party headmarker collect
       durationSeconds: 9,
-      infoText: (data, matches, output) => {
-        // If a player from Group A accidentally soaks
-        if (data.myPathOfLights.length !== 3)
-          return;
-        const id = matches.id;
-        type markerMap = {
-          [key: string]: 'stack' | 'cone' | 'spread';
-        };
-        const markers: markerMap = {
-          '02CB': 'stack',
-          '02CD': 'cone',
-          '02CC': 'spread',
-        };
-        const marker = markers[id];
-        if (marker === undefined)
-          return;
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
-        // Unsure that this could happen, unless more than 4 players soaked?
-        if (marker === 'stack')
-          return;
+        // Group A
+        if (data.isForsakenGroupA) {
+          if (data.role === 'healer')
+            return output.baitLeftConeEvens!({
+              num: output.num!({ num: num }),
+            });
+          if (data.role === 'tank')
+            return output.baitCloneFar!({
+              num: output.num!({ num: num }),
+            });
+          // DPS Unknown party composition
+          return output.bait!({
+            num: output.num!({ num: num }),
+          });
+        }
 
+        // Group B
         // Spread Players have to be far in the tower, cones need to bait end
-        const nearFar = data.myPathOfLights[2] === 'spread'
+        const nearFar = marker === 'spread'
           ? output.beFar!()
           : output.beNear!();
 
         if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
           return output.mechs!({
+            num: output.num!({ num: num }),
             mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
               ? output.rightTower!()
               : output.leftTower!(),
@@ -648,6 +725,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         return output.mechs!({
+          num: output.num!({ num: num }),
           mech1: output.tower!(),
           mech2: nearFar,
         });
@@ -655,52 +733,37 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Path of Light Towers 6 Baits',
-      // Players that still have the first headmarker
-      type: 'HeadMarker',
-      netRegex: {
-        id: [
-          headMarkerData['stackPath'],
-          headMarkerData['conePath'],
-          headMarkerData['spreadPath'],
-        ],
-        capture: false,
-      },
-      condition: (data) => data.pathOfLightCounter === 6,
-      delaySeconds: 0.1, // Delay for party headmarker collect
-      durationSeconds: 9,
-      suppressSeconds: 1,
-      infoText: (data, _matches, output) => {
-        if (data.myPathOfLights.length !== 4)
-          return;
-
-        return output.bait!();
-      },
-      outputStrings: forsakenOutputStrings,
-    },
-    {
       id: 'DMU P2 Path of Light Towers 7',
-      // This set should not contain stack markers
-      // If stacks exist, they came from first set
+      // BADC All Things Ending (Future)
+      // BADD All Things Ending (Past)
       // There should be two stacks, a cone and an aoe
-      //
-      // Headmarkers come out ~2s before Future's/Past's End
-      type: 'HeadMarker',
-      netRegex: {
-        id: [
-          headMarkerData['stackPath'],
-          headMarkerData['conePath'],
-          headMarkerData['spreadPath'],
-        ],
-        capture: false,
-      },
+      type: 'StartsUsing',
+      netRegex: { id: ['BADC', 'BADD'], source: 'Kefka', capture: false },
       condition: (data) => data.pathOfLightCounter === 7,
-      delaySeconds: 0.1, // Delay for party headmarker collect
-      durationSeconds: 9,
-      infoText: (data, _matches, output) => {
-        // Both groups will be on their last soak
-        // Group B will have two stacks
-        const marker = data.myPathOfLights[4] ?? 'unknown';
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
+
+        // Group A
+         if (data.isForsakenGroupA) {
+          if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
+            return output.markerOnYouTower!({
+              num: output.num!({ num: num }),
+              marker: output[marker]!(),
+              tower: marker === 'cone'
+                ? output.leftTower!()
+                : output.rightTower!(),
+            });
+          }
+          return output.markerOnYouTower!({
+            num: output.num!({ num: num }),
+            marker: output[marker]!(),
+            tower: output.tower!(),
+          });
+        }
+
+         // Group B
         if (marker === 'stack') {
           // Need to know for priority
           const players = data.pathOfLightStackPlayers.map(
@@ -712,59 +775,53 @@ const triggerSet: TriggerSet<Data> = {
           );
           const msg = players?.join(', ');
           return output.markerOnYouTower!({
+            num: output.num!({ num: num }),
             marker: output.stacksOnPlayers!({ players: msg }),
             tower: output.tower!(),
           });
         }
-        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-          return output.markerOnYouTower!({
-            marker: output[marker]!(),
-            tower: marker === 'cone'
-              ? output.leftTower!()
-              : output.rightTower!(),
-          });
-        }
-        return output.markerOnYouTower!({
-          marker: output[marker]!(),
-          tower: output.tower!(),
-        });
       },
       outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Path of Light Towers and Baits 8',
+      id: 'DMU P2 Path of Light Towers 8',
+      // There won't be headmarkers for this set in AAABBBBA or ABBAABBA
       // This set should not contain stack markers
       // If stacks exist, they came from first set
       // 2 Cones and 2 Spreads will soak towers
       //
-      // Headmarkers come out ~2s before Future's/Past's End
-      type: 'HeadMarker',
+      // Track based on tower soak or fail
+      // BABF The River of Light
+      // BAC0 Spelldriver
+      // BAC1 Spellscatter
+      // BAC2 Spellwave
+      type: 'Ability',
       netRegex: {
-        id: [
-          headMarkerData['stackPath'],
-          headMarkerData['conePath'],
-          headMarkerData['spreadPath'],
-        ],
+        id: ['BABF', 'BAC0', 'BAC1', 'BAC2'],
+        source: 'Kefka',
         capture: false,
       },
       condition: (data) => data.pathOfLightCounter === 8,
       delaySeconds: 0.1, // Delay for party headmarker collect
       durationSeconds: 9,
+      suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
-        // Handle first group's last towers
-        if (data.myPathOfLights.length === 4) {
-          const marker = data.myPathOfLights[3];
+        const num = data.pathOfLightCounter;
+        const marker = data.myPathOfLights.at(-1) ?? 'unknown'; // Current headmarker
 
+        // Group A
+        if (data.isForsakenGroupA) {
           if (marker === 'stack' || marker === 'unknown')
             return;
 
           // Spread Players have to be far in the tower, cones need to bait end
-          const nearFar = data.myPathOfLights[3] === 'spread'
+          const nearFar = marker === 'spread'
             ? output.beFar!()
             : output.beNear!();
 
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
             return output.mechs!({
+              num: output.num!({ num: num }),
               mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
                 ? output.rightTower!()
                 : output.leftTower!(),
@@ -773,13 +830,24 @@ const triggerSet: TriggerSet<Data> = {
           }
 
           return output.mechs!({
+            num: output.num!({ num: num }),
             mech1: output.tower!(),
             mech2: nearFar,
           });
         }
 
         // Group B
-        return output.bait!();
+        if (data.role === 'healer')
+          return output.baitLeftConeEvens!({
+            num: output.num!({ num: num }),
+          });
+        if (data.role === 'tank')
+          return output.baitCloneFar!({
+            num: output.num!({ num: num }),
+          });
+        return output.bait!({
+          num: output.num!({ num: num }),
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
