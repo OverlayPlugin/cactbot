@@ -477,9 +477,9 @@ const sortPointsClockwise = <T extends SortablePoint>(
   if (largestGap === 0)
     return [...points];
 
-  // Points fit in a semicircle if the complement of their largest gap is <= 180 degrees.
+  // Return undefined for 180-degree or wider spans because this helper infers its start point.
   const arcLength = twoPi - largestGap;
-  if (arcLength > Math.PI + 1e-9)
+  if (arcLength >= Math.PI - 1e-9)
     return undefined;
 
   const referenceAngle = entries[startIdx]?.angle ?? 0;
