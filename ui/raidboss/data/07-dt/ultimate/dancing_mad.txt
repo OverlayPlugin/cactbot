@@ -77,7 +77,6 @@ hideall "--sync--"
 
 
 ### Phase 2 - God Kefka
-# TODO: Update with network log, this uses FFLOGS
 # TODO: Get fake ending route?
 # TODO: Add voiceline sync / branch to complete?
 # Fake Duty Complete Path:
@@ -93,48 +92,47 @@ hideall "--sync--"
 248.1 "The Path of Light 1" Ability { id: "BABE", source: "Kefka" }
 248.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 257.5 "Future's End/Past's End 1" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-258.2 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
+258.3 "The Path of Light 2" Ability { id: "BABE", source: "Kefka" }
 259.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 269.0 "All Things Ending" #Ability { id: ["BACD", "BADC", "BADD"], source: "Kefka" }
 
 # Set 2
 269.2 "The Path of Light 3" Ability { id: "BABE", source: "Kefka" }
-269.9 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-278.5 "Future's End/Past's End 2" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+269.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+278.8 "Future's End/Past's End 2" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 279.4 "The Path of Light 4" Ability { id: "BABE", source: "Kefka" }
 280.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-289.9 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
+290.3 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Set 3
 290.4 "The Path of Light 5" Ability { id: "BABE", source: "Kefka" }
 291.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-299.7 "Future's End/Past's End 3" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-300.6 "The Path of Light 6" Ability { id: "BABE", source: "Kefka" }
-301.3 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-311.3 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
+299.9 "Future's End/Past's End 3" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+300.3 "The Path of Light 6" Ability { id: "BABE", source: "Kefka" }
+301.0 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+311.1 "All Things Ending" #Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Set 4
-311.5 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
-312.2 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-321.0 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
-321.7 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
-322.4 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-332.5 "All Things Ending" Ability { id: ["BADC", "BADD"], source: "Kefka" }
+311.2 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
+311.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+321.8 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+321.1 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
+322.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+332.2 "All Things Ending" Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Trines
-341.5 "Light of Judgment" Ability { id: "BABD", source: "Kefka" }
-352.7 "Trine" Ability { id: "BADF", source: "Kefka" }
-359.8 "Wings of Destruction" Ability { id: ["BACD", "BACE"], source: "Kefka" }
-365.6 "Trine 1" #Ability { id: "BAE0", source: "Kefka" }
-367.6 "Trine 2" #Ability { id: "BAE0", source: "Kefka" }
-369.6 "Trine 3" #Ability { id: "BAE0", source: "Kefka" }
-370.0 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
-377.1 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
-
-380.5 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
-383.7 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
-385.5 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
-386.7 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
+341.2 "Light of Judgment" Ability { id: "BABD", source: "Kefka" }
+352.3 "Trine" Ability { id: "BADF", source: "Kefka" }
+359.4 "Wings of Destruction" Ability { id: ["BACD", "BACE"], source: "Kefka" }
+365.2 "Trine 1" #Ability { id: "BAE0", source: "Kefka" }
+367.2 "Trine 2" #Ability { id: "BAE0", source: "Kefka" }
+369.2 "Trine 3" #Ability { id: "BAE0", source: "Kefka" }
+369.5 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
+376.6 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" } # TODO: Confirm last few spells here to network log
+380.0 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
+383.2 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
+385.0 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
+386.2  "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
 # TODO: Earlier sync on jump middle
 497.0 label "p2-success"
