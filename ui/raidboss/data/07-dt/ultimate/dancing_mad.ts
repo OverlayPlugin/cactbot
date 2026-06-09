@@ -52,9 +52,6 @@ const forsakenOutputStrings: OutputStrings = {
   rightTower: {
     en: 'Right Tower',
   },
-  groupBTowers: {
-    en: 'Group B Towers',
-  },
   cone: {
     en: 'Cone on YOU',
   },
@@ -627,16 +624,24 @@ const triggerSet: TriggerSet<Data> = {
         if (marker === 'stack')
           return;
 
-        if (marker === 'cone')
+        // Spread Players have to be far in the tower, cones need to bait end
+        const nearFar = data.myPathOfLights[2] === 'spread'
+          ? output.beFar!()
+          : output.beNear!();
+
+        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
           return output.mechs!({
-            mech1: output.tower!(),
-            mech2: output.beNear!(),
+            mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
+              ? output.rightTower!()
+              : output.leftTower!(),
+            mech2: nearFar,
           });
-        if (marker === 'spread')
-          return output.mechs!({
-            mech1: output.tower!(),
-            mech2: output.beFar!(),
-          });
+        }
+
+        return output.mechs!({
+          mech1: output.tower!(),
+          mech2: nearFar,
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
@@ -702,7 +707,18 @@ const triggerSet: TriggerSet<Data> = {
             tower: output.tower!(),
           });
         }
-        return output.groupBTowers!();
+        if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
+          return output.markerOnYouTower!({
+            marker: output[marker]!(),
+            tower: marker === 'cone'
+              ? output.leftTower!()
+              : output.rightTower!(),
+          });
+        }
+        return output.markerOnYouTower!({
+          marker: output[marker]!(),
+          tower: output.tower!(),
+        });
       },
       outputStrings: forsakenOutputStrings,
     },
@@ -733,32 +749,27 @@ const triggerSet: TriggerSet<Data> = {
           if (marker === 'stack' || marker === 'unknown')
             return;
 
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = data.myPathOfLights[3] === 'spread'
+            ? output.beFar!()
+            : output.beNear!();
+
           if (data.triggerSetConfig.forsaken === 'kroxy-rinon') {
-            const tower = data.role === 'tank' || Util.isMeleeDpsJob(data.job)
-              ? 'rightTower'
-              : 'leftTower';
-            if (marker === 'cone')
-              return output.mechs!({
-                mech1: output[tower]!(),
-                mech2: output.beNear!(),
-              });
-            if (marker === 'spread')
-              return output.mechs!({
-                mech1: output[tower]!(),
-                mech2: output.beFar!(),
-              });
+            return output.mechs!({
+              mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
+                ? output.rightTower!()
+                : output.leftTower!(),
+              mech2: nearFar,
+            });
           }
-          if (marker === 'cone')
-            return output.mechs!({
-              mech1: output.tower!(),
-              mech2: output.beNear!(),
-            });
-          if (marker === 'spread')
-            return output.mechs!({
-              mech1: output.tower!(),
-              mech2: output.beFar!(),
-            });
+
+          return output.mechs!({
+            mech1: output.tower!(),
+            mech2: nearFar,
+          });
         }
+
+        // Group A
         return output.bait!();
       },
       outputStrings: forsakenOutputStrings,
