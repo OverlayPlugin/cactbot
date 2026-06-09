@@ -132,6 +132,15 @@ describe('util tests', () => {
     assert.isUndefined(Directions.sortPointsClockwise(points, 0, 0));
   });
 
+  it('returns undefined when points are exactly opposite', () => {
+    const points = [
+      { id: 'N', x: 0, y: -1 },
+      { id: 'S', x: 0, y: 1 },
+    ];
+
+    assert.isUndefined(Directions.sortPointsClockwise(points, 0, 0));
+  });
+
   it('keeps points in input order when all angles are equal', () => {
     const points = [
       { id: 'near', x: 0, y: -1 },
