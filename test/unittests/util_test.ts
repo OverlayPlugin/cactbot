@@ -4,6 +4,7 @@ import Util, {
   allJobs,
   casterDpsJobs,
   craftingJobs,
+  Directions,
   gatheringJobs,
   healerJobs,
   limitedJobs,
@@ -92,5 +93,60 @@ describe('util tests', () => {
     allJobs.filter((job) => !limitedJobs.includes(job)).forEach((job) =>
       assert(!Util.isLimitedJob(job))
     );
+  });
+
+  it('sorts points clockwise from a reference point', () => {
+    const points = [
+      { id: 'NE', x: 1, y: -1 },
+      { id: 'N', x: 0, y: -1 },
+      { id: 'NW', x: -1, y: -1 },
+    ];
+
+    const sorted = Directions.sortPointsClockwiseFrom(points, 0, 0, -1, -1);
+
+    assert.deepEqual(sorted.map((point) => point.id), ['NW', 'N', 'NE']);
+    assert.deepEqual(points.map((point) => point.id), ['NE', 'N', 'NW']);
+    assert.deepEqual(sorted, [points[2], points[1], points[0]]);
+  });
+
+  it('sorts clustered points clockwise when contained within a semicircle', () => {
+    const points = [
+      { id: 'NE', x: 1, y: -1 },
+      { id: 'NW', x: -1, y: -1 },
+      { id: 'N', x: 0, y: -1 },
+    ];
+
+    const sorted = Directions.sortPointsClockwise(points, 0, 0);
+
+    assert.deepEqual(sorted?.map((point) => point.id), ['NW', 'N', 'NE']);
+  });
+
+  it('returns undefined when points are not contained within a semicircle', () => {
+    const points = [
+      { id: 'N', x: 0, y: -1 },
+      { id: 'E', x: 1, y: 0 },
+      { id: 'S', x: 0, y: 1 },
+      { id: 'W', x: -1, y: 0 },
+    ];
+
+    assert.isUndefined(Directions.sortPointsClockwise(points, 0, 0));
+  });
+
+  it('keeps points in input order when all angles are equal', () => {
+    const points = [
+      { id: 'near', x: 0, y: -1 },
+      { id: 'far', x: 0, y: -2 },
+    ];
+
+    const sorted = Directions.sortPointsClockwise(points, 0, 0);
+
+    assert.deepEqual(sorted?.map((point) => point.id), ['near', 'far']);
+    assert.notStrictEqual(sorted, points);
+  });
+
+  it('handles empty point sorting', () => {
+    const points: { id: string; x: number; y: number }[] = [];
+
+    assert.deepEqual(Directions.sortPointsClockwise(points, 0, 0), []);
   });
 });
