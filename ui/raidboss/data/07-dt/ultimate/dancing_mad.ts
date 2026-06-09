@@ -478,7 +478,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Path of Light Towers 4',
+      id: 'DMU P2 Path of Light Towers and Baits 4',
       // This set should not contain stack markers
       // If stacks exist, they came from first set
       // 2 Cones and 2 Spreads will soak towers
@@ -723,7 +723,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: forsakenOutputStrings,
     },
     {
-      id: 'DMU P2 Path of Light Towers 8',
+      id: 'DMU P2 Path of Light Towers and Baits 8',
       // This set should not contain stack markers
       // If stacks exist, they came from first set
       // 2 Cones and 2 Spreads will soak towers
@@ -769,7 +769,7 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-        // Group A
+        // Group B
         return output.bait!();
       },
       outputStrings: forsakenOutputStrings,
