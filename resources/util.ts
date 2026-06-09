@@ -398,7 +398,6 @@ interface SortablePoint {
 type PointSortEntry<T extends SortablePoint> = {
   point: T;
   angle: number;
-  index: number;
 };
 
 const twoPi = 2 * Math.PI;
@@ -412,13 +411,12 @@ const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
   entries: PointSortEntry<T>[],
   referenceAngle: number,
 ): T[] => {
-  // Use original index as a stable tie-breaker for points on the same ray.
   return entries
     .map((entry) => ({
       ...entry,
       delta: clockwiseAngleDelta(entry.angle, referenceAngle),
     }))
-    .sort((a, b) => a.delta - b.delta || a.index - b.index)
+    .sort((a, b) => a.delta - b.delta)
     .map((entry) => entry.point);
 };
 
@@ -431,10 +429,9 @@ const sortPointsClockwiseFrom = <T extends SortablePoint>(
 ): T[] => {
   // Sorts points clockwise, starting from the angle of `reference`.
   const referenceAngle = xyToClockwiseAngle(referenceX, referenceY, centerX, centerY);
-  const entries: PointSortEntry<T>[] = points.map((point, index) => ({
+  const entries: PointSortEntry<T>[] = points.map((point) => ({
     point: point,
     angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
-    index: index,
   }));
 
   return sortPointEntriesClockwiseFrom(entries, referenceAngle);
@@ -451,12 +448,11 @@ const sortPointsClockwise = <T extends SortablePoint>(
     return [...points];
 
   const entries: PointSortEntry<T>[] = points
-    .map((point, index) => ({
+    .map((point) => ({
       point: point,
       angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
-      index: index,
     }))
-    .sort((a, b) => a.angle - b.angle || a.index - b.index);
+    .sort((a, b) => a.angle - b.angle);
 
   let largestGap = 0;
   let startIdx = 0;
