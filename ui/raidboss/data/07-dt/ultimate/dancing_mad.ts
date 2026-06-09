@@ -346,7 +346,7 @@ const triggerSet: TriggerSet<Data> = {
             });
           if (data.myPathOfLights[0] === 'spread')
             return output.mechs!({
-              mech1: output.getTowers!(),
+              mech1: output.tower!(),
               mech2: nearFar,
             });
         }
