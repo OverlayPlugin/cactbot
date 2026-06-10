@@ -1123,19 +1123,145 @@ const triggerSet: TriggerSet<Data> = {
             });
         }
 
-        // Spread Players have to be far in the tower, cones need to bait end
-        const nearFar = marker === 'spread'
-          ? output.beFar!()
-          : output.beNear!();
-
         // Group B
         if (config === 'kroxy-rinon' || config === 'abba') {
-          return output.mechs!({
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = marker === 'spread'
+            ? output.beFar!()
+            : output.beNear!();
+
+          if (data.role === 'healer') {
+            return output.mechs3!({
+              num: num,
+              mech1: output[marker]!(),
+              mech2: output.leftTower!(),
+              mech3: nearFar,
+            });
+          }
+
+          const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+          const group = data.forsakenGroupA;
+          const member1 = group[0] ?? '';
+          const member2 = group[1] ?? '';
+          const member3 = group[2] ?? '';
+          if (data.role === 'tank') {
+            // Need to look at what healer has in relation to us
+            // Partner is whoever has the same marker
+            const partner = data.party.isHealer(member1)
+              ? member1
+              : data.party.isHealer(member2)
+              ? member2
+              : data.party.isHealer(member3)
+              ? member3
+              : 'unknown';
+            // Get partner's marker
+            const pMarker = playerHeadmarkers[partner ?? 0];
+
+            // Could not get priority
+            if (
+              partner === 'unknown' ||
+              pMarker === undefined ||
+              pMarker === 'unknown'
+            )
+              return output.mechs3!({
+                num: num,
+                mech1: output[marker]!(),
+                mech2: output.tower!(),
+                mech3: nearFar,
+              });
+
+            return output.mechs3!({
+              num: num,
+              mech1: output[marker]!(),
+              mech2: pMarker === marker
+                ? output.rightTower!()
+                : output.leftTower!(),
+              mech3: nearFar,
+            });
+          }
+
+          if (Util.isMeleeDpsJob(data.job)) {
+            const isRangedDPS = (
+              x: string,
+            ): boolean => {
+              const jobName = data.party.jobName(x);
+              if (jobName === undefined)
+                return false;
+              return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
+            };
+            // Partner should be a ranged dps, for standard comp
+            const partner = isRangedDPS(member1)
+              ? member1
+              : isRangedDPS(member2)
+              ? member2
+              : isRangedDPS(member3)
+              ? member3
+              : 'unknown';
+            // Get partner's marker
+            const pMarker = playerHeadmarkers[partner ?? 0];
+
+            // Could not find caster or phys ranged partner
+            if (
+              partner === 'unknown' ||
+              pMarker === undefined ||
+              pMarker === 'unknown'
+            )
+              return output.mechs3!({
+                num: num,
+                mech1: output[marker]!(),
+                mech2: output.tower!(),
+                mech3: nearFar,
+              });
+
+            return output.mechs3!({
+              num: num,
+              mech1: output[marker]!(),
+              mech2: pMarker === marker
+                ? output.leftTower!()
+                : output.rightTower!(),
+              mech3: nearFar,
+            });
+          }
+
+          // If we find a melee in our group we are the ranged priority
+          // Partner should be a melee dps, for optimal comp
+          const isMeleeDPS = (
+            x: string,
+          ): boolean => {
+            const jobName = data.party.jobName(x);
+            if (jobName === undefined)
+              return false;
+            return Util.isMeleeDpsJob(jobName);
+          };
+          const partner = isMeleeDPS(member1)
+            ? member1
+            : isMeleeDPS(member2)
+            ? member2
+            : isMeleeDPS(member3)
+            ? member3
+            : 'unknown';
+          // Get partner's marker
+          const pMarker = playerHeadmarkers[partner ?? 0];
+
+          // Could not find melee dps
+          if (
+            partner === 'unknown' ||
+            pMarker === undefined ||
+            pMarker === 'unknown'
+          )
+            return output.mechs3!({
+              num: num,
+              mech1: output[marker]!(),
+              mech2: output.tower!(),
+              mech3: nearFar,
+            });
+
+          // Highest priority right
+          return output.mechs3!({
             num: num,
-            mech1: data.role === 'tank' || Util.isMeleeDpsJob(data.job)
-              ? output.rightTower!()
-              : output.leftTower!(),
-            mech2: nearFar,
+            mech1: output[marker]!(),
+            mech2: output.rightTower!(),
+            mech3: nearFar,
           });
         }
 
