@@ -117,7 +117,7 @@ hideall "--sync--"
 311.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 320.8 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 321.1 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
-321.7  "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+321.7 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 332.2 "All Things Ending" Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Trines
