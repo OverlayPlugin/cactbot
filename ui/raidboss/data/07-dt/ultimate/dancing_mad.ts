@@ -1140,7 +1140,7 @@ const triggerSet: TriggerSet<Data> = {
           }
 
           const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-          const group = data.forsakenGroupA;
+          const group = data.forsakenGroupB;
           const member1 = group[0] ?? '';
           const member2 = group[1] ?? '';
           const member3 = group[2] ?? '';
