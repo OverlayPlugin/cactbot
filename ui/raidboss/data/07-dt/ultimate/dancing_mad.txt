@@ -115,9 +115,9 @@ hideall "--sync--"
 # Set 4
 311.2 "The Path of Light 7" Ability { id: "BABE", source: "Kefka" }
 311.8 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
-321.8 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
+320.8 "Future's End/Past's End 4" Ability { id: ["BAD2", "BAD3"], source: "Kefka" }
 321.1 "The Path of Light 8" Ability { id: "BABE", source: "Kefka" }
-322.1 "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
+321.7  "Spelldriver/Spellscatter/Spellwave" Ability { id: ["BAC0", "BAC1", "BAC2"], source: "Kefka" }
 332.2 "All Things Ending" Ability { id: ["BADC", "BADD"], source: "Kefka" }
 
 # Trines
@@ -132,7 +132,7 @@ hideall "--sync--"
 380.0 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
 383.2 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
 385.0 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
-386.2  "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
+386.2 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
 # TODO: Earlier sync on jump middle
 497.0 label "p2-success"
