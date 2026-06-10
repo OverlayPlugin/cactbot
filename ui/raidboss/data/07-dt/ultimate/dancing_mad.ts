@@ -189,8 +189,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'forsaken',
       comment: {
-        en:
-          `There should be two groups of four players, choose tower soak order.
+        en: `There should be two groups of four players, choose tower soak order.<br \>
           Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br \>
           Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br \>
           Bowtie: <a href="https://raidplan.io/plan/kj2d734d36es2ugs" target="_blank">Raidplan</a> (Will require Tank LB3)<br \>
@@ -292,7 +291,8 @@ const triggerSet: TriggerSet<Data> = {
 
         // Clear previous Headmarker if set
         data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
-        data.forsakenPlayerHeadmarkers[matches.target] = forsakenHeadmarkerIdToName[id] ?? 'unknown';
+        data.forsakenPlayerHeadmarkers[matches.target] = forsakenHeadmarkerIdToName[id] ??
+          'unknown';
 
         // On first headmarker, start everyone in same group
         // Excluding self as this reduces number of lookups to find partner
@@ -441,18 +441,18 @@ const triggerSet: TriggerSet<Data> = {
           (!isForsakenGroupA && config === 'kroxy-rinon') ||
           (isForsakenGroupA && config === 'abba')
         ) {
-            if (data.role === 'healer')
-              return output.baitLeftConeLeftEvens!({
-                num: num,
-              });
-            if (data.role === 'tank')
-              return output.baitCloneOppositeTowers!({
-                num: num,
-              });
-            // DPS Unknown party composition
-            return output.bait!({
+          if (data.role === 'healer')
+            return output.baitLeftConeLeftEvens!({
               num: num,
             });
+          if (data.role === 'tank')
+            return output.baitCloneOppositeTowers!({
+              num: num,
+            });
+          // DPS Unknown party composition
+          return output.bait!({
+            num: num,
+          });
         }
 
         // ABBA (unmodified) and AAAABBBB, Baits
@@ -828,7 +828,7 @@ const triggerSet: TriggerSet<Data> = {
                 mech1: output[marker]!(),
                 mech2: output.tower!(),
                 mech3: nearFar,
-             });
+              });
 
             return output.mechs3!({
               num: num,
@@ -871,7 +871,7 @@ const triggerSet: TriggerSet<Data> = {
                 mech1: output[marker]!(),
                 mech2: output.tower!(),
                 mech3: nearFar,
-             });
+              });
 
             return output.mechs3!({
               num: num,
@@ -914,7 +914,7 @@ const triggerSet: TriggerSet<Data> = {
               mech1: output[marker]!(),
               mech2: output.tower!(),
               mech3: nearFar,
-           });
+            });
 
           // Highest priority right
           return output.mechs3!({
@@ -1310,7 +1310,7 @@ const triggerSet: TriggerSet<Data> = {
                   mech1: output[marker]!(),
                   mech2: output.tower!(),
                   mech3: nearFar,
-               });
+                });
 
               return output.mechs3!({
                 num: num,
@@ -1353,7 +1353,7 @@ const triggerSet: TriggerSet<Data> = {
                   mech1: output[marker]!(),
                   mech2: output.tower!(),
                   mech3: nearFar,
-               });
+                });
 
               return output.mechs3!({
                 num: num,
@@ -1396,7 +1396,7 @@ const triggerSet: TriggerSet<Data> = {
                 mech1: output[marker]!(),
                 mech2: output.tower!(),
                 mech3: nearFar,
-             });
+              });
 
             // Highest priority right
             return output.mechs3!({
@@ -1471,7 +1471,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
       condition: (data) => {
-        return data.role === 'tank' && data.pathOfLightCounter === 8 && data.triggerSetConfig.forsaken === 'bowtie';
+        return data.role === 'tank' && data.pathOfLightCounter === 8 &&
+          data.triggerSetConfig.forsaken === 'bowtie';
       },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3, // 6.4s castTime, this is 4s before damage
       alarmText: (_data, _matches, output) => output.text!(),
