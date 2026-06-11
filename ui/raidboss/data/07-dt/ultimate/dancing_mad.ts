@@ -2952,7 +2952,7 @@ const triggerSet: TriggerSet<Data> = {
             : data.middleTrineFacing
             ? output.wingsTrine!({
               wings: output.wingsTank!(),
-              trine: output[data.middleTrineFacing]!()
+              trine: output[data.middleTrineFacing]!(),
             })
             : output.wingsTank!(),
         });
@@ -2967,7 +2967,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${wings} + ${trine}',
         },
         dirWings: {
-          en: '${dirs} + ${wings}'
+          en: '${dirs} + ${wings}',
         },
         wingsParty: {
           en: 'Outer 2 Rings',
