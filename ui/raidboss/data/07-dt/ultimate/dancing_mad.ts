@@ -2873,7 +2873,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: {
         change: 'Add',
         pair: [{ key: 'BNpcID', value: ['1EBFB2', '1EBFB3'] }],
-        capture: true,
+        capture: false,
       },
       condition: (data) => data.trineDirNums.length === 3,
       durationSeconds: 12, // Detonation occurs ~12.9s
