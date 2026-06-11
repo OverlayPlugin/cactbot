@@ -707,7 +707,8 @@ hideall "--sync--"
 # C571 Earthquake
 # C572 Earthquake
 # C5DE Thrumming Thunder III
-# C61F Bowels of Agony: Chaos Enrage when you kill Exdeath first
+# C61E Meteor: Exdeath enrage when you kill Chaos first
+# C61F Bowels of Agony: Chaos enrage when you kill Exdeath first
 # C622 Light of Judgment: P1 version
 # C652 --sync--
 # C653 Fell Forces: Shared AOE that targets random Tank
