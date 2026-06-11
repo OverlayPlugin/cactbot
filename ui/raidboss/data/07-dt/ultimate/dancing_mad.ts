@@ -1336,6 +1336,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Bowels of Agony',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAF2', source: 'Chaos', capture: false },
+      response: Responses.aoe(),
+    },
+    {
       id: 'DMU P3 Headwind/Tailwind Debuffs',
       // Applied at BAF2 Bowels of Agony
       // Debuffs trigger if hit by certain sources, causing a knockback
