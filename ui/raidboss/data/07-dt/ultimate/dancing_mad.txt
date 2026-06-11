@@ -145,8 +145,7 @@ hideall "--sync--"
 # TODO: Add voiceline sync?
 # en: 'Hmph. I see what's going on here.'
 537.7 "Definition of Insanity" Ability { id: "BAE2", source: "Kefka" }
-543.8 "The Decisive Battle" Ability { id: "C2E3", source: "Exdeath" }
-543.8 "The Decisive Battle" #Ability { id: "C2E2", source: "Chaos" }
+543.8 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
 548.0 "--sync--" Ability { id: "C554", source: "Kefka" }
 
 # Fire, Water, and Wind Elements
@@ -194,8 +193,7 @@ hideall "--sync--"
 649.7 "Thunder III" Ability { id: "BB09", source: "Exdeath" }
 649.7 "Thunder III" #Ability { id: "BB0C", source: "Exdeath" }
 652.7 "Thunder III" #Ability { id: "BB0C", source: "Exdeath" }
-657.7 "The Decisive Battle" Ability { id: "C2E3", source: "Exdeath" }
-657.7 "The Decisive Battle" #Ability { id: "C2E2", source: "Chaos" }
+657.7 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
 666.8 "Thunder III" Ability { id: "BB09", source: "Exdeath" }
 666.8 "Thunder III" #Ability { id: "BB0C", source: "Exdeath" }
 
@@ -678,8 +676,8 @@ hideall "--sync--"
 # C269 Flood
 # C2D6 Trance
 # C2DC Kefka Says
-# C2E2 the Decisive Battle
-# C2E3 the Decisive Battle
+# C2E2 The Decisive Battle: Cast by Chaos, shares health pool with Exdeath
+# C2E3 The Decisive Battle: Cast by Exdeath, shares health pool with Chaos
 # C2E4 Aetherlink
 # C2E5 Aetherlink
 # C392 Flood of Naught
