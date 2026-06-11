@@ -1,7 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
+import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -14,8 +14,8 @@ const phases: { [id: string]: Phase } = {
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
 };
 
-// const centerX = 100;
-// const centerY = 100;
+const centerX = 100;
+const centerY = 100;
 
 type forsakenHeadmarker = 'cone' | 'spread' | 'stack' | 'unknown';
 type forsakenHeadmarkerMap = { [key: string]: forsakenHeadmarker };
@@ -61,6 +61,8 @@ export interface Data extends RaidbossData {
   isForsakenGroupA: boolean; // Quick lookup for group check
   forsakenGroupA: string[]; // List of players in Group A
   forsakenGroupB: string[]; // List of players in Group B
+  trineDirNums: number[];
+  middleTrineFacing?: 'east' | 'west';
 }
 
 const headMarkerData = {
@@ -370,6 +372,7 @@ const triggerSet: TriggerSet<Data> = {
       isForsakenGroupA: false,
       forsakenGroupA: [],
       forsakenGroupB: [],
+      trineDirNums: [],
     };
   },
   triggers: [
@@ -2802,6 +2805,107 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe('alert'),
     },
     {
+      id: 'DMU P2 Trine Collector',
+      // TODO: Get other two pattern coords
+      // Kefkabin solution: https://raidplan.io/plan/apkh6ytq72w8pt3v
+      // Trines are added ~0.5s after BADF Trine ability
+      // They have BNpcID 1EBFB3 and 1EBFB2.
+      // On release of Patch 7.51, the Northwest-ish trine is bugged (rotated 60 degrees)
+      // There are 3 patterns
+      // Pattern 1:
+      // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
+      // Set 2: Southeast-ish (115.55, 110)
+      // Set 3: West-ish (85.57, 105), Middle (100,100)3*, East-ish(114.43, 95)
+      //
+      // Pattern 2:
+      // Set 1:
+      // Set 2:
+      // Set 3:
+      //
+      // Pattern 3:
+      // Set 1:
+      // Set 2:
+      // Set 3:
+      //
+      // * Guaranteed in set 3, and its heading points West or East
+      //
+      // 273 ActorControlExtra lines that follow:
+      // 019D|10|20 => Falling down animation?
+      // 019D|40|80 => Landed animation? (~1.4s after add)
+      // 019D|4|8 => Explosion animation?
+      //
+      // Trines starts with 3 Trines spawning, then 1, then 3 More
+      // BACD/BACE Wings of Destruction halfroom cleave happens while 3rd set is landing
+      // As Trines 1 detonate, the near/far tankbuster C487 Wings of Destruction begins casting
+      // At the 3rd detonation, the tankbuster will snapshot
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBFB2', '1EBFB3'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        // Need heading of middle trine for near tank bait and/or greedy melee
+        // With exception of bugged 7.51 NW Trine rotated 60 degrees off, Heading is defined by the BNpcID
+        // 1EBFB3 => West
+        // 1EBFB2 => East
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+
+        // Exception for center trine
+        if (data.trineDirNums.length === 3) {
+          if (x > 99 && x < 101) {
+            data.middleTrineFacing = matches.pairBNpcID === '1EBFB2' ? 'west' : 'east';
+            return;
+          }
+        }
+
+        // Don't need the last set's x,y
+        if (data.trineDirNums.length !== 3) {
+          const dirNum = Directions.xyTo16DirNum(centerX, centerY, x, y);
+          data.trineDirNums.push(dirNum);
+        }
+      },
+    },
+    {
+      id: 'DMU P2 Trines 1 (Early)',
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBFB2', '1EBFB3'] }],
+        capture: true,
+      },
+      condition: (data) => data.trineDirNums.length === 3,
+      durationSeconds: 12, // Detonation occurs ~12.9s
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const dirNums = data.trineDirNums;
+        const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
+        const trine1 = sorted[0] !== undefined
+          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const trine2 = sorted[1] !== undefined
+          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const trine3 = sorted[2] !== undefined
+          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+
+        return output.safeSpots!({
+          dir1: output[trine1]!(),
+          dir2: output[trine2]!(),
+          dir3: output[trine3]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        unknown: Outputs.unknown,
+        safeSpots: {
+          en: '${dir1}/${dir2}/${dir3} Later',
+        },
+      },
+    },
+    {
       id: 'DMU P2 Single Wing of Destruction',
       // BACD Wings of Destruction, Left wing highlight
       // BACE Wingso of Desctruction, Right wing highlight
@@ -2820,33 +2924,63 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P2 Wings of Destruction',
+      // In DMU, players need to move for trines at same time as the tankbuster call
+      // Melee most likely won't be able to hit the boss due to trine aoes
       type: 'StartsUsing',
       netRegex: { id: 'C487', source: 'Kefka', capture: false },
-      response: (data, _matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          maxMeleeAvoidTanks: {
-            en: 'Max Melee: Avoid Tanks',
-            de: 'Max Nahkampf: Weg von den Tanks',
-            fr: 'Max mêlée : éloignez-vous des tanks',
-            ja: '近接最大レンジ タンクから離れる',
-            cn: '最大近战距离，避开坦克',
-            ko: '칼끝딜: 탱커 피하기',
-            tc: '最大近戰距離，避開坦克',
-          },
-          wingsBeNearFar: {
-            en: 'Wings: Be Near/Far',
-            de: 'Schwingen: Nah/Fern',
-            fr: 'Ailes : Placez-vous près/loin',
-            ja: '翼: めり込む/離れる',
-            cn: '双翅膀：近或远',
-            ko: '양날개: 가까이/멀리',
-            tc: '雙翅膀：近或遠',
-          },
-        };
-        if (data.role === 'tank')
-          return { alertText: output.wingsBeNearFar!() };
-        return { infoText: output.maxMeleeAvoidTanks!() };
+      alertText: (data, _matches, output) => {
+        const dirNums = data.trineDirNums;
+        const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
+        const trine1 = sorted[0] !== undefined
+          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const trine2 = sorted[1] !== undefined
+          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const trine3 = sorted[2] !== undefined
+          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+
+        return output.dirWings!({
+          dirs: output.safeSpots!({
+            dir1: output[trine1]!(),
+            dir2: output[trine2]!(),
+            dir3: output[trine3]!(),
+          }),
+          wings: data.role !== 'tank'
+            ? output.wingsParty!()
+            : data.middleTrineFacing
+            ? output.wingsTrine!({
+              wings: output.wingsTank!(),
+              trine: output[data.middleTrineFacing]!()
+            })
+            : output.wingsTank!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        unknown: Outputs.unknown,
+        safeSpots: {
+          en: '${dir1}/${dir2}/${dir3}',
+        },
+        wingsTrine: {
+          en: '${wings} + ${trine}',
+        },
+        dirWings: {
+          en: '${dirs} + ${wings}'
+        },
+        wingsParty: {
+          en: 'Outer 2 Rings',
+        },
+        wingsTank: {
+          en: 'Be Near/Far',
+        },
+        east: {
+          en: 'Eastward Trine',
+        },
+        west: {
+          en: 'Westward Trine',
+        },
       },
     },
     {
