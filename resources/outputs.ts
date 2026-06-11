@@ -553,14 +553,18 @@ export default {
   },
   sidesThenFrontBack: {
     en: 'Sides => Front/Back',
+    de: 'Seiten => Vorne/Hinten',
     fr: 'Côtés => Devant/Derrière',
+    ja: '横 => 縦',
     cn: '两侧 => 前/后',
     ko: '양옆 => 앞/뒤',
     tc: '兩側 => 前/後',
   },
   frontBackThenSides: {
     en: 'Front/Back => Sides',
+    de: 'Vorne/Hinten => Seiten',
     fr: 'Devant/Derrière => Côtés',
+    ja: '縦 => 横',
     cn: '前/后 => 两侧',
     ko: '앞/뒤 => 양옆',
     tc: '前/後 => 兩側',
