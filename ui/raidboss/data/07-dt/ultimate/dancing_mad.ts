@@ -2860,7 +2860,7 @@ const triggerSet: TriggerSet<Data> = {
           }
         }
 
-        // Don't need the last set's x,y
+        // Not storing the last two sets' x,y coords
         if (data.trineDirNums.length !== 3) {
           const dirNum = Directions.xyTo16DirNum(centerX, centerY, x, y);
           data.trineDirNums.push(dirNum);
