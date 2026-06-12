@@ -1823,7 +1823,7 @@ const triggerSet: TriggerSet<Data> = {
                 : output.tower!(),
             });
         } else if (count === 5) {
-         if (config === 'abba')
+          if (config === 'abba')
             return output.baitThenMech!({
               bait: time,
               mech: isForsakenGroupA
