@@ -40,7 +40,7 @@ hideall "--sync--"
 1092.0 "Circumscribed Fire 4" Ability { id: "C41A", source: "Shantotto the Demon" }
 1095.3 "Localized Blizzard" Ability { id: "C41B", source: "Shantotto the Demon" }
 1099.6 "Thunder and Error" #Ability { id: "C41C", source: "Shantotto the Demon" }
-1103.6 "--middle" # slow walk, no accompanying ability
+1103.6 "--middle--" # slow walk, no accompanying ability
 1107.8 "Meteoric Rhyme" Ability { id: "C406", source: "Shantotto the Demon" }
 1114.9 "Small Specimen x12" duration 22.6 #Ability { id: "C408", source: "Shantotto the Demon" }
 1121.9 "Large Specimen" #Ability { id: "C40A", source: "" }
