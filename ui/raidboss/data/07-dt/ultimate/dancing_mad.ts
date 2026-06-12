@@ -296,10 +296,10 @@ const forsakenOutputStrings: OutputStrings = {
     en: '${num}Bait Left Cone Left',
   },
   leftStack: {
-    en: '${num}Left Stack + ${avoid}',
+    en: '${num}Left Stack',
   },
   rightStack: {
-    en: '${num}Right Stack + ${avoid}',
+    en: '${num}Right Stack',
   },
   bait: {
     en: '${num}Bait Cone Right or Clone Near',
@@ -1956,7 +1956,6 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'tank')
             return output.leftStack!({
               num: num,
-              avoid: output.avoid!(),
             });
           if (data.role === 'healer')
             return output.baitLeftConeOutOdds!({
@@ -1965,7 +1964,6 @@ const triggerSet: TriggerSet<Data> = {
           // 2 DPS in stack
           return output.rightStack!({
             num: num,
-            avoid: output.avoid!(),
           });
         }
 
@@ -2249,7 +2247,6 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'tank')
             return output.leftStack!({
               num: num,
-              avoid: output.avoid!(),
             });
           if (data.role === 'healer')
             return output.baitLeftConeOutOdds!({
@@ -2257,7 +2254,6 @@ const triggerSet: TriggerSet<Data> = {
             });
           return output.rightStack!({
             num: num,
-            avoid: output.avoid!(),
           });
         }
 
@@ -2590,7 +2586,6 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'tank')
             return output.leftStack!({
               num: num,
-              avoid: output.avoid!(),
             });
           if (data.role === 'healer')
             return output.baitLeftConeOutOdds!({
@@ -2598,7 +2593,6 @@ const triggerSet: TriggerSet<Data> = {
             });
           return output.rightStack!({
             num: num,
-            avoid: output.avoid!(),
           });
         }
 
