@@ -1,7 +1,7 @@
 ### DANCING MAD (ULTIMATE)
 # ZoneId: 1363
 
-# -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF BAF7 BAF9 BAF1 BB38
+# -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF BAF7 BAF9 C572 BAFA BAF1 BB38
 # -p C403:15.6 C24C:219.8 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
@@ -150,38 +150,38 @@ hideall "--sync--"
 
 # Fire, Water, and Wind Elements
 563.1 "Bowels of Agony" Ability { id: "BAF2", source: "Chaos" }
-582.1 "Stray Spray" Ability { id: "BAF6", source: "Kefka" }
+582.1 "Stray Flames/Stray Spray" Ability { id: ["BAF3", "BAF6"], source: ["Chaos", "Kefka"] }
 582.1 "Thunder III" #Ability { id: "BB12", source: "Exdeath" }
-583.1 "Tsunami" Ability { id: "BAF5", source: ["Chaos", "Kefka"] } # Supposed to be from Chaos, but can bug
+583.1 "Inferno/Tsunami" Ability { id: ["BAF4", "BAF5"], source: ["Chaos", "Kefka"] } # Supposed to be from Chaos, but can bug
 584.9 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
-591.3 "Thunder III (castbar)" Ability { id: "BB09", source: "Exdeath" }
+591.3 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 591.3 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 594.3 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 597.0 "--sync--" Ability { id: "C555", source: "Kefka" }
 603.0 "Trance" Ability { id: "C2D6", source: "Kefka" }
-604.2 "Longitudinal Implosion/Latitudinal Implosion" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
-605.0 "Shockwave" #Ability { id: "BAFF", source: "Chaos" }
-607.0 "Shockwave" #Ability { id: "BAFF", source: "Chaos" }
-609.0 "Stray Flames" Ability { id: "BAF3", source: "Chaos" }
-610.0 "Inferno" Ability { id: "BAF4", source: "Chaos" }
+604.2 "Longitudinal Implosion/Latitudinal Implosion (castbar)" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
+605.0 "Shockwave 1" #Ability { id: "BAFF", source: "Chaos" }
+607.0 "Shockwave 2" #Ability { id: "BAFF", source: "Chaos" }
+609.0 "Stray Spray/Stray Flames" Ability { id: ["BAF6", "BAF3"], source: ["Kefka", "Chaos"] }
+610.0 "Tsunami/Inferno" Ability { id: ["BAF5", "BAF4"], source: "Chaos" }
 611.7 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
 
-# Limit Cut Preview
-620.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
-622.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
-624.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
+# Ultima Blaster Preview
+620.3 "Ultima Blaster 1" #Ability { id: "BAE3", source: "Kefka" }
+622.3 "Ultima Blaster 2" #Ability { id: "BAE3", source: "Kefka" }
+624.3 "Ultima Blaster 3" #Ability { id: "BAE3", source: "Kefka" }
 624.4 "Umbra Smash" Ability { id: "BB00", source: "Chaos" }
-626.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
+626.3 "Ultima Blaster 4" #Ability { id: "BAE3", source: "Kefka" }
 627.3 "Vacuum Wave" Ability { id: "BB13", source: "Exdeath" }
-628.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
-630.3 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
+628.3 "Ultima Blaster 5" #Ability { id: "BAE3", source: "Kefka" }
+629.3 "--numbers--" # TODO: Get log timing
+630.3 "Ultima Blaster 6" #Ability { id: "BAE3", source: "Kefka" }
 631.3 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
-632.4 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
-632.7 "Aetherlink" #Ability { id: "C2E5", source: "Exdeath" }
-632.7 "Aetherlink" #Ability { id: "C2E4", source: "Chaos" }
+632.4 "Ultima Blaster 7" #Ability { id: "BAE3", source: "Kefka" }
+632.7 "Aetherlink" Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
+634.4 "Ultima Blaster 8" #Ability { id: "BAE3", source: "Kefka" }
 
-# Limit Cut
-634.4 "Ultima Blaster" #Ability { id: "BAE3", source: "Kefka" }
+# Ultima Blaster
 642.4 "Ultima Blaster 1" #Ability { id: "BAE4", source: "Kefka" }
 642.6 "Ultima Blaster 2" #Ability { id: "BAE4", source: "Kefka" }
 642.8 "Ultima Blaster 3" #Ability { id: "BAE4", source: "Kefka" }
@@ -190,85 +190,79 @@ hideall "--sync--"
 643.4 "Ultima Blaster 6" #Ability { id: "BAE4", source: "Kefka" }
 643.6 "Ultima Blaster 7" #Ability { id: "BAE4", source: "Kefka" }
 643.8 "Ultima Blaster 8" #Ability { id: "BAE4", source: "Kefka" }
-649.7 "Thunder III (castbar)" Ability { id: "BB09", source: "Exdeath" }
+649.7 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 649.7 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 652.7 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 657.7 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
-666.8 "Thunder III (castbar)" Ability { id: "BB09", source: "Exdeath" }
+666.8 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 666.8 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 
 # Giant Kefka + Earth Element
 668.6 "Max" Ability { id: "BAE5", source: "Kefka" }
 669.8 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 671.8 "Earthquake" Ability { id: "C571", source: "Chaos" }
-671.8 "Earthquake" #Ability { id: "C572", source: "Chaos" }
-680.5 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-684.1 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-687.4 "Slap Happy" Ability { id: "BAE7", source: "Kefka" }
-688.2 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-688.9 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-689.7 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-690.9 "Slap Happy" Ability { id: "BAE9", source: "Kefka" }
+675.8 "--accretion?--"
+676.8 "Accretion Earthquake 1?" #Ability { id: "BAFA", source: "Chaos" } # Determined by healing player to full
+679.9 "--accretion?--"
+680.9 "Accretion Earthquake 2?" #Ability { id: "BAFA", source: "Chaos" } # Determined by healing player to full
+687.4 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
+688.2 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
+688.9 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
+689.7 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
+690.9 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 690.9 "Shockwave" #Ability { id: "BAEB", source: "Kefka" }
 
 691.2 "Black Hole" Ability { id: "BAFB", source: "Exdeath" }
 698.3 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-698.3 "Aetherlink" #Ability { id: "C2E5", source: "Exdeath" }
-698.3 "Aetherlink" #Ability { id: "C2E4", source: "Chaos" }
+698.3 "Aetherlink" #Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
 705.3 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-708.4 "Thunder III (castbar)" Ability { id: "BB09", source: "Exdeath" }
+708.4 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 708.4 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 711.4 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
-712.7 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
+712.7 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 716.5 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
-717.7 "Slap Happy" Ability { id: "BAE7", source: "Kefka" }
-718.5 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-719.2 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-720.0 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-721.2 "Slap Happy" Ability { id: "BAE9", source: "Kefka" }
+717.7 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
+718.5 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
+719.2 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
+720.0 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
+721.2 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 721.2 "Shockwave" #Ability { id: "BAEB", source: "Kefka" }
 724.6 "Black Spark" Ability { id: "BCCD", source: "Black Hole" }
 728.6 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-730.2 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-733.8 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-733.8 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-735.4 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
+730.2 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+733.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+735.4 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 739.0 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 744.0 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
-744.4 "Look upon Me and Despair" Ability { id: "BAEC", source: "Kefka" }
+744.4 "Look upon Me and Despair (castbar)" Ability { id: "BAEC", source: "Kefka" }
 745.4 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 747.5 "Blackblood" Ability { id: "C4BA", source: "Kefka" }
-747.5 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-749.7 "Thunder III (castbar)" Ability { id: "BB09", source: "Exdeath" }
+747.5 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+749.7 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 749.7 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 752.7 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
-762.8 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-762.8 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-764.4 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-765.0 "Aetherlink" Ability { id: "C2E5", source: "Exdeath" }
-765.0 "Aetherlink" #Ability { id: "C2E4", source: "Chaos" }
-768.0 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-768.0 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-769.6 "Earthquake" Ability { id: "BAFA", source: "Chaos" }
-773.2 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-773.2 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
+762.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+764.4 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+765.0 "Aetherlink" Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
+768.0 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+769.6 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+773.2 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 
 784.2 "White Hole" Ability { id: "BD66", source: "Exdeath" }
-784.2 "Longitudinal Implosion/Latitudinal Implosion" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
-785.0 "Shockwave" #Ability { id: "BAFF", source: "Kefka" }
-785.9 "Slap Happy" Ability { id: "BAE6", source: "Kefka" }
-786.8 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-787.2 "Shockwave" #Ability { id: "BAFF", source: "Chaos" }
-787.4 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-788.1 "Slap Happy" #Ability { id: "BAE8", source: "Kefka" }
-789.3 "Slap Happy" Ability { id: "BAE9", source: "Kefka" }
+784.2 "Longitudinal Implosion/Latitudinal Implosion (castbar)" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
+785.0 "Shockwave 1" #Ability { id: "BAFF", source: "Kefka" }
+785.9 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
+786.8 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
+787.2 "Shockwave 2" #Ability { id: "BAFF", source: "Chaos" }
+787.4 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
+788.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
+789.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 789.3 "Shocking Impact" Ability { id: "BAEA", source: "Kefka" }
 792.5 "Black Spark" Ability { id: "BCCD", source: ["Black Hole", "Kefka"] } # Supposed to be from Black Hole, but can bug
-796.5 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-796.5 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
-802.2 "Look upon Me and Despair" Ability { id: "BAED", source: "Kefka" }
+796.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+802.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 803.2 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
-803.5 "Nothingness" #Ability { id: "BAFC", source: "Black Hole" }
+803.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 
 # Blizzards and Towers
 # Summary:
@@ -282,7 +276,6 @@ hideall "--sync--"
 # 8. Deep Freeze (Blizzard)
 805.3 "--sync--" Ability { id: "C533", source: "Kefka" }
 812.4 "Blizzard III (castbar)" Ability { id: "BB0F", source: "Exdeath" }
-814.3 "Earthquake?" #Ability { id: "BAFA", source: "Chaos" }
 815.4 "Blizzard III 1" Ability { id: "BB0D", source: "Exdeath" }
 816.3 "Stomp-a-Mole (castbar)" Ability { id: "BAEF", source: "Kefka" } # Possibly determines which foot he starts with and/or its based on facing?
 817.9 "Knock Down 1" Ability { id: "BB02", source: "Chaos" }
@@ -525,6 +518,8 @@ hideall "--sync--"
 # C250 Attack: P3 Exdeath attack
 # BAF7 Stray Gusts: Some sort of failed P3 mechanic
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
+# C572 Earthquake: VFX
+# BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
 # BB38 Forsaken: VFX
 
@@ -585,15 +580,15 @@ hideall "--sync--"
 # BAE3 Ultima Blaster
 # BAE4 Ultima Blaster
 # BAE5 Max
-# BAE6 Slap Happy
-# BAE7 Slap Happy
-# BAE8 Slap Happy
-# BAE9 Slap Happy
+# BAE6 Slap Happy: Castbar for slapping left or right first
+# BAE7 Slap Happy: Castbar for slapping right or left first
+# BAE8 Slap Happy: 3 slaps on one side
+# BAE9 Slap Happy: Last slap that flips sides
 # BAEA Shocking Impact
 # BAEB Shockwave
-# BAEC Look upon Me and Despair
-# BAED Look upon Me and Despair
-# BAEE Look upon Me and Despair
+# BAEC Look upon Me and Despair: Kefka falls on his right side across center of arena
+# BAED Look upon Me and Despair: Kefka falls on his left side across center of arena
+# BAEE Look upon Me and Despair: Gives a 3-min damage down if hit
 # BAEF Stomp-a-Mole
 # BAF0 Stomp-a-Mole
 # BAF1 Unmitigated Impact
@@ -605,19 +600,19 @@ hideall "--sync--"
 # BAF7 Stray Gusts: Some sort of failed P3 mechanic
 # BAF8 Cyclone
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
-# BAFA Earthquake
+# BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BAFB Black Hole
 # BAFC Nothingness
 # BAFD Longitudinal Implosion
 # BAFE Latitudinal Implosion
-# BAFF Shockwave
+# BAFF Shockwave:  ~0.7s after Longitudinal/Latitudinal Implosion, there will be 2, then 2s later another 2
 # BB00 Umbra Smash
 # BB01 Damning Edict
 # BB02 Knock Down: VFX
 # BB03 Knock Down: Damage
 # BB05 Big Bang
 # BB06 Big Bang
-# BB09 Thunder III: Cast
+# BB09 Thunder III: VFX castbar
 # BB0C Thunder III: Damage from bb09
 # BB0D Blizzard III
 # BB0F Blizzard III
@@ -687,8 +682,8 @@ hideall "--sync--"
 # C2DC Kefka Says
 # C2E2 The Decisive Battle: Cast by Chaos, shares health pool with Exdeath
 # C2E3 The Decisive Battle: Cast by Exdeath, shares health pool with Chaos
-# C2E4 Aetherlink
-# C2E5 Aetherlink
+# C2E4 Aetherlink: Cast by Chaos
+# C2E5 Aetherlink: Cast by Exdeath
 # C392 Flood of Naught
 # C393 Flood of Naught
 # C394 White Antilight
@@ -705,10 +700,10 @@ hideall "--sync--"
 # C554 --sync--
 # C555 --sync--
 # C571 Earthquake
-# C572 Earthquake
+# C572 Earthquake: VFX
 # C5DE Thrumming Thunder III
 # C61E Meteor: Exdeath enrage when you kill Chaos first
-# C61F Bowels of Agony: Chaos enrage when you kill Exdeath first
+# C61F Bowels of Agony: Chaos Enrage when you kill Exdeath first
 # C622 Light of Judgment: P1 version
 # C652 --sync--
 # C653 Fell Forces: Shared AOE that targets random Tank
