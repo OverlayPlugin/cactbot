@@ -2264,7 +2264,7 @@ const triggerSet: TriggerSet<Data> = {
             tower: marker === 'cone'
               ? output.leftTower!()
               : output.rightTower!(),
-              far: output.beFar!(),
+            far: output.beFar!(),
           });
         }
 
@@ -2580,7 +2580,7 @@ const triggerSet: TriggerSet<Data> = {
             tower: marker === 'cone'
               ? output.leftTower!()
               : output.rightTower!(),
-              far: output.beFar!(),
+            far: output.beFar!(),
           });
 
         // No strategy
