@@ -1232,7 +1232,9 @@ const triggerSet: TriggerSet<Data> = {
         if (data.isFireShort === undefined) {
           const isShort = parseFloat(matches.duration) < 21;
           data.isFireShort = (isShort && id === '640') ||
-            (!isShort && id === '641') ? true : false;
+            (!isShort && id === '641')
+          ? true
+          : false;
         }
         if (data.me === matches.target)
           data.myElement = id === '640' ? 'fire' : 'water';
@@ -1401,6 +1403,7 @@ const triggerSet: TriggerSet<Data> = {
       // BAFE  Latitudinal Implosion
       type: 'Ability',
       netRegex: { id: ['BAFD', 'BAFE'], source: 'Chaos', capture: false },
+      delaySeconds: 10,
       suppressSeconds: 99999,
       infoText: (_data, _matches, output) => output.bait!(),
       outputStrings: {
