@@ -1802,14 +1802,59 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 1.2, // Time until headmarker and future/past damage
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
-        if (data.pathOfLightCounter !== 9)
-          return isFuture ? output.future!() : output.past!();
+        const count = data.pathOfLightCounter;
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
 
-        return isFuture
-          ? output.lastFuture!({ action: output.behind!() })
-          : output.lastPast!({ action: output.stay!() });
+        const time = isFuture ? output.future!() : output.past!();
+        if (count === 3) {
+          if (config === 'kroxy-rinon' || config === 'bowtie')
+            return output.baitThenMech!({
+              bait: time,
+              mech: isForsakenGroupA
+                ? output.tower!()
+                : output.baitOrStack!(),
+            });
+          if (config === 'abba')
+            return output.baitThenMech!({
+              bait: time,
+              mech: isForsakenGroupA
+                ? output.baitOrStack!()
+                : output.tower!(),
+            });
+        } else if (count === 5) {
+         if (config === 'abba')
+            return output.baitThenMech!({
+              bait: time,
+              mech: isForsakenGroupA
+                ? output.tower!()
+                : output.baitOrStack!(),
+            });
+          if (config === 'kroxy-rinon' || config === 'bowtie')
+            return output.baitThenMech!({
+              bait: time,
+              mech: isForsakenGroupA
+                ? output.baitOrStack!()
+                : output.tower!(),
+            });
+        } else if (count === 7) {
+          if (config !== 'none')
+            return output.baitThenMech!({
+              bait: time,
+              mech: isForsakenGroupA
+                ? output.baitOrStack!()
+                : output.tower!(),
+            });
+        } else
+          return isFuture
+            ? output.lastFuture!({ action: output.behind!() })
+            : output.lastPast!({ action: output.stay!() });
+
+        // No Strategy
+        return time;
       },
       outputStrings: {
+        tower: Outputs.getTowers,
         behind: Outputs.getBehind,
         stay: {
           en: 'Stay',
@@ -1819,11 +1864,17 @@ const triggerSet: TriggerSet<Data> = {
           ko: '대기',
           tc: '停',
         },
+        baitOrStack: {
+          en: 'Bait/Stack',
+        },
         future: {
           en: 'Bait Ending opposite Towers',
         },
         past: {
           en: 'Bait Ending between Towers',
+        },
+        baitThenMech: {
+          en: '${bait} => ${mech}',
         },
         lastFuture: {
           en: 'Bait Ending => ${action}',
