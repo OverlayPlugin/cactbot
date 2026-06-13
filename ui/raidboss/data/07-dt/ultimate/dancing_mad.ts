@@ -1387,7 +1387,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'LosesEffect',
       netRegex: { effectId: '13DB', capture: true },
       run: (data, matches) => {
-        delete data.forsakenPlayerHeadmarkers[matches.target];
+        const target = matches.target;
+        data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
+        delete data.forsakenPlayerHeadmarkers[target];
       },
     },
     {
