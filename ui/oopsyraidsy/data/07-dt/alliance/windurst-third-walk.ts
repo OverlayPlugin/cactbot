@@ -7,6 +7,7 @@ export interface Data extends OopsyData {
   hasHPDebuff: { [playerID: string]: boolean };
 }
 
+// TODO: Check whether C3D2 Divine Arrow is used for both directions, or whether C3D1 is also used.
 // TODO: Add Hollow King tower failure
 
 const triggerSet: OopsyTriggerSet<Data> = {
