@@ -74,6 +74,15 @@ const headMarkerData = {
   'stack': '0080', // spread (fake) or stack (real)
   // Phase 1 Tethers
   'imageTether': '002D',
+  // Phase 3
+  '1': '004F',
+  '2': '0050',
+  '3': '0051',
+  '4': '0052',
+  '5': '0053',
+  '6': '0054',
+  '7': '0055',
+  '8': '0056',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
