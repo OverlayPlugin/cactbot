@@ -33,7 +33,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A3S Hand of Stuff',
       regex: /Hand of Prayer\/Parting/,
       beforeSeconds: 5,
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -300,7 +300,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A3S Embolus',
       type: 'Ability',
       netRegex: { source: 'Living Liquid', id: 'F1B', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
