@@ -45,6 +45,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
 
     // Alexander
     'Windurst Third Walk Alexander Divine Arrow Cone': 'C52E', // Spinning cone AoE
+    'Windurst Third Walk Alexander Divine Arrow Counterclockwise Initial': 'C3D2', // Initial cone, counterclockwise
     'Windurst Third Walk Alexander Divine Arrow Radial 1': 'C3D3', // Central circle AoE, in-to-out pattern
     'Windurst Third Walk Alexander Divine Arrow Radial 2': 'C3D4', // Small ring AoE, in-to-out pattern
     'Windurst Third Walk Alexander Divine Arrow Radial 3': 'C3D5', // Large ring AoE, in-to-out pattern
@@ -58,7 +59,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Windurst Third Walk Alexander Activate': 'C42B', // Gordius unit spawn AoEs
     'Windurst Third Walk Alexander Holy Flame': 'C3E6', // Puddles during Gordius intermission
     'Windurst Third Walk Gordius System Shock': 'C3E8', // Chariot AoE
-    'Windurst Third Walk Gordius System Circuit Shock': 'C3E9', // Dynamo AoE
+    'Windurst Third Walk Gordius System Circuit Shock': 'C3F9', // Dynamo AoE
     'Windurst Third Walk Gordius System Repay': 'C3F6', // Karmic Shielding retaliation
     'Windurst Third Walk Gordius System Electrify': 'C3EC', // Large chariot AoEs after tethering
     'Windurst Third Walk Alexander Divine Arrow Crosshatch Vertical': 'C3D9', // 3 vertical + 2 horizontal crosshatch lines
