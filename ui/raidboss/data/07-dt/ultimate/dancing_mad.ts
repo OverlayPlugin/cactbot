@@ -1,6 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -46,6 +47,8 @@ export interface Data extends RaidbossData {
   // Phase 3
   isFireShort?: boolean;
   myElement?: 'fire' | 'water';
+  fireElementPlayers: string[];
+  waterElementPlayers: string[];
   inLine: { [name: string]: number };
   firstAccretion?: string;
   secondAccretion?: string;
@@ -211,6 +214,8 @@ const triggerSet: TriggerSet<Data> = {
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
       // Phase 3
+      fireElementPlayers: [],
+      waterElementPlayers: [],
       inLine: {},
     };
   },
@@ -1238,6 +1243,11 @@ const triggerSet: TriggerSet<Data> = {
         }
         if (data.me === matches.target)
           data.myElement = id === '640' ? 'fire' : 'water';
+
+        if (id === '640')
+          data.fireElementPlayers.push(matches.target);
+        else
+          data.waterElementPlayers.push(matches.target);
       },
     },
     {
@@ -1295,6 +1305,82 @@ const triggerSet: TriggerSet<Data> = {
         withoutElement: {
           en: '${short}: ${wind}',
         },
+      },
+    },
+    {
+      id: 'DMU P3 Entropy and Fire Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '640', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          you: {
+            en: 'YOU',
+          },
+          fireOnPlayersCrystal: {
+            en: 'Spread on ${players} / Bait Fire Donut',
+          },
+          fireOnPlayers: {
+            en: 'Spread on ${players}',
+          },
+        };
+
+        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const players = data.fireElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        // Tanks and Melee aren't expected to bait crystals, so shorten output
+        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
+          return { [severity]: output.fireOnPlayers!() };
+
+        return { [severity]: output.fireOnPlayersCrystal!({ players: msg }) };
+      },
+    },
+    {
+      id: 'DMU P3 Dynamic Fluid and Water Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '641', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          you: {
+            en: 'YOU',
+          },
+          waterOnPlayersCrystal: {
+            en: 'Donut on ${players} / Bait Water AOE',
+          },
+          waterOnPlayers: {
+            en: 'Donut on ${players}',
+          },
+        };
+
+        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const players = data.fireElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        // Tanks and Melee aren't expected to bait crystals, so shorten output
+        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
+          return { [severity]: output.waterOnPlayers!() };
+
+        return { [severity]: output.waterOnPlayersCrystal!({ players: msg }) };
       },
     },
     {
