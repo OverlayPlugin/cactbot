@@ -1,20 +1,24 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
+import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
+// TODO: P3 Tailwind/Headwind resolution configuration options
+// TODO: P3 Verify number headmarker values
 
-type Phase = 'p1' | 'p2' | 'p3';
+type Phase = 'p1' | 'p2' | 'p3' | 'p4';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
+  'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
 };
 
-// const centerX = 100;
-// const centerY = 100;
+const centerX = 100;
+const centerY = 100;
 
 export interface Data extends RaidbossData {
   // General
@@ -42,6 +46,18 @@ export interface Data extends RaidbossData {
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
+  // Phase 3
+  isFireShort?: boolean;
+  myElement?: 'fire' | 'water';
+  myWind?: 'head' | 'tail';
+  fireElementPlayers: string[];
+  waterElementPlayers: string[];
+  firstBlaster: number[];
+  firstBlasterDirNum?: number;
+  blasterRotation?: number;
+  inLine: { [name: string]: number };
+  firstAccretion?: string;
+  secondAccretion?: string;
 }
 
 const headMarkerData = {
@@ -58,6 +74,15 @@ const headMarkerData = {
   'stack': '0080', // spread (fake) or stack (real)
   // Phase 1 Tethers
   'imageTether': '002D',
+  // Phase 3
+  '1': '004F',
+  '2': '0050',
+  '3': '0051',
+  '4': '0052',
+  '5': '0053',
+  '6': '0054',
+  '7': '0055',
+  '8': '0056',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
@@ -203,6 +228,11 @@ const triggerSet: TriggerSet<Data> = {
       fakeEyeTowerIds: [],
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
+      // Phase 3
+      fireElementPlayers: [],
+      waterElementPlayers: [],
+      firstBlaster: [],
+      inLine: {},
     };
   },
   triggers: [
@@ -1171,12 +1201,622 @@ const triggerSet: TriggerSet<Data> = {
         delete data.fireMarker;
       },
     },
+    {
+      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
+      // Applied to 4 nearest players when Chaos and Exdeath finish casting
+      // C2E2/C2E3 The Decisive Battle
+      // 1060 Epic Hero: Can only damage Chaos, preferred by Melee DPS
+      // 1062 Fated Hero: Can only damage Exdeath, preferred by Ranged DPS
+      // These fall off once Exdeath casts BB12 Thunder III
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1060', '1062'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '1060' ? output.epic!() : output.fated!();
+      },
+      outputStrings: {
+        epic: {
+          en: 'Attack Chaos',
+        },
+        fated: {
+          en: 'Attack Exdeath',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Bowels of Agony',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAF2', source: 'Chaos', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'DMU P3 Entropy and Dynamic Fluid Debuff Collector',
+      // TODO: Get crystal element spawn locations
+      // Applied at BAF2 Bowels of Agony
+      // 640 Entropy: On expiration player is hit with point blank AoE and fire
+      // crystal targets two closest players with donut AoEs
+      // 641 Dynamic Flood: On expiration creates donut AoE around the player
+      // and water crystal targets two closest players with point-blank AoEs
+      //
+      // Entropy or Dynamic Fluid will have 20s and the other 45s duration
+      // At the same time, elemental crystals spawn at intercardinals
+      // Fire and Water Crystals will be opposite each other
+      // Wind Crystal will be between on the opposite side
+      //
+      // Exdeath Tank needs to go to element that has the long timer
+      // Chaos Tank needs to go between wind crystal and element with short timer
+      type: 'GainsEffect',
+      netRegex: { effectId: ['640', '641'], capture: true },
+      condition: (data) => data.myElement === undefined,
+      run: (data, matches) => {
+        const id = matches.effectId;
+        if (data.isFireShort === undefined) {
+          const isShort = parseFloat(matches.duration) < 21;
+          data.isFireShort = (isShort && id === '640') ||
+              (!isShort && id === '641')
+            ? true
+            : false;
+        }
+        if (data.me === matches.target)
+          data.myElement = id === '640' ? 'fire' : 'water';
+
+        if (id === '640')
+          data.fireElementPlayers.push(matches.target);
+        else
+          data.waterElementPlayers.push(matches.target);
+      },
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuff Collector',
+      // Applied at BAF2 Bowels of Agony
+      // 642 Headwind: Face away from knockback source, wind crystal targets
+      // nearest player with 2-person stack
+      // 643 Tailwind: Face towards knockback source, wind crystal targets
+      // nearest player with 2-person stack
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.myWind = matches.effectId === '642' ? 'head' : 'tail',
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuff',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        const myElement = data.myElement;
+        const short = data.isFireShort
+          ? output.shortFire!()
+          : output.shortWater!();
+        const wind = matches.effectId === '642'
+          ? output.headwind!()
+          : output.tailwind!();
+        if (myElement !== undefined)
+          return output.withElement!({
+            short: short,
+            element: output[myElement]!(),
+            wind: wind,
+          });
+        return output.withoutElement!({
+          short: short,
+          wind: wind,
+        });
+      },
+      outputStrings: {
+        shortFire: {
+          en: 'Short Fire',
+        },
+        shortWater: {
+          en: 'Short Water',
+        },
+        fire: {
+          en: 'Fire',
+        },
+        water: {
+          en: 'Water',
+        },
+        headwind: {
+          en: 'Headwind on YOU',
+        },
+        tailwind: {
+          en: 'Tailwind on YOU',
+        },
+        withElement: {
+          en: '${short}: ${element} + ${wind}',
+        },
+        withoutElement: {
+          en: '${short}: ${wind}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Entropy and Fire Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '640', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          you: {
+            en: 'YOU',
+          },
+          fireOnPlayersCrystal: {
+            en: 'Spread on ${players} / Bait Fire Donut',
+          },
+          fireOnPlayers: {
+            en: 'Spread on ${players}',
+          },
+        };
+
+        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const players = data.fireElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        // Tanks and Melee aren't expected to bait crystals, so shorten output
+        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
+          return { [severity]: output.fireOnPlayers!() };
+
+        return { [severity]: output.fireOnPlayersCrystal!({ players: msg }) };
+      },
+    },
+    {
+      id: 'DMU P3 Dynamic Fluid and Water Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '641', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          you: {
+            en: 'YOU',
+          },
+          waterOnPlayersCrystal: {
+            en: 'Donut on ${players} / Bait Water AOE',
+          },
+          waterOnPlayers: {
+            en: 'Donut on ${players}',
+          },
+        };
+
+        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const players = data.fireElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        // Tanks and Melee aren't expected to bait crystals, so shorten output
+        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
+          return { [severity]: output.waterOnPlayers!() };
+
+        return { [severity]: output.waterOnPlayersCrystal!({ players: msg }) };
+      },
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Cleanup',
+      // If players resolve winds prior to Exdeath's Vacuum Wave
+      // Long debuffs could get knocked back into the other crystal
+      // Short Debuffs could run to other crystal's donut if fire or stack/bait if water
+      // The remaining 4 players will have to resolve during knockback
+      // Note that each time these are lost, the wind crystal triggers nearest player with 2-person stack
+      type: 'LosesEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => delete data.myWind,
+    },
+    {
+      id: 'DMU P3 Thunder III AOE',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB12', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime), // 7s castTime
+      infoText: (_data, matches, output) => {
+        const boss = matches.source;
+        return output.awayFromBoss!({ boss: boss });
+      },
+      outputStrings: {
+        awayFromBoss: {
+          en: 'Away from ${boss}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Thunder III Tankbuster',
+      // Tankbuster that targets nearest player and then nearest again after 3s
+      type: 'StartsUsing',
+      netRegex: { id: 'BB09', source: 'Exdeath', capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          avoid: {
+            en: '${boss}${cleaves}',
+          },
+          tankCleaveNearThenSwap: {
+            en: 'Near ${boss}${cleave} => ${swap}',
+          },
+          boss: {
+            en: '${boss}: ',
+          },
+          tankCleave: Outputs.tankCleave,
+          avoidTankCleaves: Outputs.avoidTankCleaves,
+          tankSwap: Outputs.tankSwap,
+        };
+
+        const severity = data.role === 'tank' || data.role === 'healer'
+          ? 'alertText'
+          : 'infoText';
+        const boss = output.boss!({ boss: matches.source });
+
+        if (data.role === 'tank')
+          return {
+            [severity]: output.tankCleaveNearThenSwap!({
+              boss: boss,
+              cleave: output.tankCleave!(),
+              swap: output.tankSwap!(),
+            }),
+          };
+
+        return {
+          [severity]: output.avoid!({
+            boss: boss,
+            cleaves: output.avoidTankCleaves!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Thunder III Tank Swap',
+      type: 'Ability',
+      netRegex: { id: 'BB09', source: 'Exdeath', capture: true },
+      condition: (data) => data.role === 'tank',
+      suppressSeconds: 4,
+      alertText: (data, matches, output) => {
+        const boss = matches.source;
+        if (matches.target === data.me)
+          return output.awayFromBoss!({ boss: boss });
+        return output.beNearBoss!({ boss: boss });
+      },
+      outputStrings: {
+        beNearBoss: {
+          en: 'Be Near ${boss} (swap)',
+        },
+        awayFromBoss: {
+          en: 'Away from ${boss} (swap)',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Longitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFD', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.sides!(),
+      outputStrings: {
+        sides: Outputs.sidesThenFrontBack,
+      },
+    },
+    {
+      id: 'DMU P3 Latitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFE', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.frontBack!(),
+      outputStrings: {
+        frontBack: Outputs.frontBackThenSides,
+      },
+    },
+    {
+      id: 'DMU P3 Ultima Blaster Collect',
+      // Starts from random cardinal/intercardinal then rotates either CW or CCW
+      // These are raidwide AOEs, but also include telegraphed lines and explosions
+      // TODO: Verify the this is correct
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
+      condition: (data, matches) => {
+        const x2 = parseFloat(matches.x);
+        const y2 = parseFloat(matches.y);
+        if (data.firstBlaster === undefined) {
+          data.firstBlaster = [x2, y2];
+          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
+          return false;
+        }
+
+        // Get rotation of first and second Kefka blasters
+        const x1 = data.firstBlaster[0];
+        const y1 = data.firstBlaster[1];
+
+        if (x1 === undefined || y1 === undefined) {
+          // Try next blaster
+          data.firstBlaster = [x2, y2];
+          return false;
+        }
+
+        // Compute atan2 of determinant and dot product to get rotational direction
+        // Note: X and Y are flipped due to Y axis being reversed
+        data.blasterRotation = Math.atan2(y1 * x2 - x1 * y2, y1 * y2 + x1 * x2);
+        return true; // Stop execution after 2nd blaster
+      },
+      suppressSeconds: 99999,
+    },
+    {
+      id: 'DMU P3 Ultima Blaster Rotation',
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: false },
+      condition: (data) => data.blasterRotation !== undefined,
+      durationSeconds: 10,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const rotation = data.blasterRotation;
+        const dirNum = data.firstBlasterDirNum;
+        if (rotation === undefined || dirNum === undefined)
+          return;
+
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        if (rotation < 0)
+          return output.clockwise!({ card: output[dir]!() });
+        if (rotation > 0)
+          return output.counterclockwise!({ card: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        unknown: Outputs.unknown,
+        clockwise: {
+          en: '<== ${card} Clockwise (Later)',
+        },
+        counterclockwise: {
+          en: '${card} Counterclockwise (Later) ==>',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Umbra Smash',
+      // At start of cast the target of BB00 Umbra Smash has been locked
+      // Instead of a timeline trigger, ues one of these abilities to trigger:
+      // BAFD Longitudinal Implosion
+      // BAFE  Latitudinal Implosion
+      type: 'Ability',
+      netRegex: { id: ['BAFD', 'BAFE'], source: 'Chaos', capture: false },
+      delaySeconds: 10,
+      suppressSeconds: 99999,
+      infoText: (_data, _matches, output) => output.bait!(),
+      outputStrings: {
+        bait: {
+          en: 'Bait Jump',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Vaccuum Wave',
+      // If players have not yet resolved their headwinds, then they will need
+      // to do so:
+      // Headwind look at Exdeath
+      // Tailwind look away from Exdeath
+      //
+      // Party can Tank LB3 to survive stacking the winds
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      infoText: (data, matches, output) => {
+        const chaosLocaleNames: LocaleText = {
+          en: 'Chaos',
+          de: 'Chaos',
+          fr: 'Chaos',
+          ja: 'カオス',
+          cn: '卡奥斯',
+          ko: '카오스',
+          tc: '卡奧斯',
+        };
+        const chaosName = chaosLocaleNames[data.parserLang];
+
+        if (data.myWind === undefined)
+          return output.knockbackFromChaos!({ chaos: chaosName });
+
+        return output.text!({
+          knockback: output.knockbackFromChaos!({ chaos: chaosName }),
+          facing: output[data.myWind]!({ target: matches.source }),
+        });
+      },
+      outputStrings: {
+        head: {
+          en: 'Face ${target}',
+        },
+        tail: Outputs.lookAwayFromTarget,
+        knockbackFromChaos: {
+          en: 'Knockback from ${chaos}',
+        },
+        text: {
+          en: '${knockback} + ${facing}',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Ultima Blaster Location',
+      // Nearest inter-inter cardinal opposite that of first blaster
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData['1'],
+          headMarkerData['2'],
+          headMarkerData['3'],
+          headMarkerData['4'],
+          headMarkerData['5'],
+          headMarkerData['6'],
+          headMarkerData['7'],
+          headMarkerData['8']],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (data, matches, output) => {
+        const limitCutNumberMap: { [id: string]: number } = {
+          '004F': 1,
+          '0050': 2,
+          '0051': 3,
+          '0052': 4,
+          '0053': 5,
+          '0054': 6,
+          '0055': 7,
+          '0056': 8,
+        };
+        const blaster = data.firstBlasterDirNum;
+        const rotation = data.blasterRotation;
+        const id = matches.id;
+        const myNum = limitCutNumberMap[id];
+        if (myNum === undefined)
+          return;
+
+        if (blaster === undefined || rotation === undefined || rotation === 0)
+          return output.num!({ num: myNum });
+
+        // Convert 8Dir to 16Dir
+        const blaster16Dir = blaster * 2;
+
+        const adjustedDirNum = rotation < 0
+          ? (myNum + blaster16Dir) % 16 // Clockwise
+          : (myNum - blaster16Dir + 16) % 16; // Counterclock
+
+        // Find inter-inter cardinal
+        const spot = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
+        return output.text!({
+          num: output.num!({myNum}),
+          spot: output[spot]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        unknown: Outputs.unknown,
+        num: {
+          en: '#${num}',
+          de: '#${num}',
+          fr: '#${num}',
+          ja: '${num}番',
+          cn: '#${num}',
+          ko: '${num}번째',
+          tc: '#${num}',
+        },
+        text: {
+          en: '${num}: ${dir}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Damning Edict',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget!({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 In Line Debuff Collector',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['BBC', 'BBD', 'BBE'] },
+      run: (data, matches) => {
+        const effectToNum: { [effectId: string]: number } = {
+          BBC: 1,
+          BBD: 2,
+          BBE: 3,
+        } as const;
+        const num = effectToNum[matches.effectId];
+        if (num === undefined)
+          return;
+        data.inLine[matches.target] = num;
+      },
+    },
+    {
+      id: 'DMU P3 Accretion Collector',
+      // Will be applied to 1 DPS and 1 Healer
+      // One will have First in Line, the other will have Second in Line
+      type: 'GainsEffect',
+      netRegex: { effectId: '644', capture: true },
+      delaySeconds: 0.1, // Delay for In Line debuffs
+      run: (data, matches) => {
+        const target = matches.target;
+        if (data.inLine[target] === 1)
+          data.firstAccretion = target;
+        else
+          data.secondAccretion = target;
+      },
+    },
+    {
+      id: 'DMU P3 In Line Debuff',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
+      delaySeconds: 0.1,
+      durationSeconds: 5,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined)
+          return;
+
+        // Let healers know Accretion order
+        // String may be too long to provide list of partners
+        if (data.role === 'healer') {
+          const first = data.firstAccretion;
+          const second = data.secondAccretion;
+          const player1 = first === data.me
+            ? output.you!()
+            : data.party.member(first);
+          const player2 = second === data.me
+            ? output.you!()
+            : data.party.member(second);
+
+          return output.accretionHealer!({
+            num: myNum,
+            player1: player1,
+            player2: player2,
+          });
+        }
+
+        // Rest of players will get partners
+        const partners = [];
+        for (const [name, num] of Object.entries(data.inLine))
+          if (num === myNum && name !== data.me)
+            partners.push(data.party.member(name));
+        const msg = partners?.join(', ');
+
+        return output.text!({ num: myNum, players: msg });
+      },
+      outputStrings: {
+        you: {
+          en: 'YOU',
+        },
+        text: {
+          en: '${num} (with ${players})',
+          de: '${num} (mit ${players})',
+          fr: '${num} (avec ${players})',
+          ja: '${num} (${players})',
+          cn: '${num} (与${players})',
+          ko: '${num} (+ ${players})',
+          tc: '${num} (與${players})',
+        },
+        accretionHealer: {
+          en: '${num}: Accretion on ${player1} => ${player2}',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
+        'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
       },
     },
     {
