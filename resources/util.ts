@@ -420,30 +420,12 @@ const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
     .map((entry) => entry.point);
 };
 
-const sortPointsClockwiseFrom = <T extends SortablePoint>(
-  points: readonly T[],
-  centerX: number,
-  centerY: number,
-  referenceX: number,
-  referenceY: number,
-): T[] => {
-  // Sorts points clockwise, starting from the angle of `reference`.
-  const referenceAngle = xyToClockwiseAngle(referenceX, referenceY, centerX, centerY);
-  const entries: PointSortEntry<T>[] = points.map((point) => ({
-    point: point,
-    angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
-  }));
-
-  return sortPointEntriesClockwiseFrom(entries, referenceAngle);
-};
-
 const sortPointsClockwise = <T extends SortablePoint>(
   points: readonly T[],
   centerX: number,
   centerY: number,
-): T[] | undefined => {
-  // Sorts points clockwise if they fit within a semicircle around `center`.
-  // otherwise, returns undefined.
+  options: { reference?: { x: number; y: number } } = {},
+): T[] => {
   if (points.length <= 1)
     return [...points];
 
@@ -454,6 +436,15 @@ const sortPointsClockwise = <T extends SortablePoint>(
     }))
     .sort((a, b) => a.angle - b.angle);
 
+  const reference = options.reference;
+  if (reference !== undefined) {
+    const referenceAngle = reference.x === centerX && reference.y === centerY
+      ? 0
+      : xyToClockwiseAngle(reference.x, reference.y, centerX, centerY);
+    return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+  }
+
+  const eps = 1e-9;
   let largestGap = 0;
   let startIdx = 0;
   for (const [idx, entry] of entries.entries()) {
@@ -463,7 +454,14 @@ const sortPointsClockwise = <T extends SortablePoint>(
       continue;
     const gap = clockwiseAngleDelta(nextEntry.angle, entry.angle);
 
-    if (gap > largestGap) {
+    const startEntry = entries[startIdx];
+    if (startEntry === undefined)
+      continue;
+    // If there are multiple largest gaps, start from the smallest angle.
+    if (
+      gap > largestGap + eps ||
+      (Math.abs(gap - largestGap) <= eps && nextEntry.angle < startEntry.angle)
+    ) {
       largestGap = gap;
       startIdx = nextIdx;
     }
@@ -472,11 +470,6 @@ const sortPointsClockwise = <T extends SortablePoint>(
   // With no angular separation, there is no clockwise ordering signal.
   if (largestGap === 0)
     return [...points];
-
-  // Return undefined for 180-degree or wider spans because this helper infers its start point.
-  const arcLength = twoPi - largestGap;
-  if (arcLength >= Math.PI - 1e-9)
-    return undefined;
 
   const referenceAngle = entries[startIdx]?.angle ?? 0;
   return sortPointEntriesClockwiseFrom(entries, referenceAngle);
@@ -502,7 +495,6 @@ export const Directions = {
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
   sortPointsClockwise: sortPointsClockwise,
-  sortPointsClockwiseFrom: sortPointsClockwiseFrom,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
