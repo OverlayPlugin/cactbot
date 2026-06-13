@@ -8,6 +8,7 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 
 // TODO: P1 Tele-Portent configuration options
 // TODO: P3 Tailwind/Headwind resolution configuration options
+// TODO: P3 Verify number headmarker values
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4';
 const phases: { [id: string]: Phase } = {
@@ -1518,7 +1519,7 @@ const triggerSet: TriggerSet<Data> = {
         const y2 = parseFloat(matches.y);
         if (data.firstBlaster === undefined) {
           data.firstBlaster = [x2, y2];
-          data.firstBlasterDirNum = Directions.xyTo8DirNum(x2, y2, centerX, centerY);
+          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
           return false;
         }
 
@@ -1631,10 +1632,85 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P1 Ultima Blaster Location',
+      // Nearest inter-inter cardinal opposite that of first blaster
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData['1'],
+          headMarkerData['2'],
+          headMarkerData['3'],
+          headMarkerData['4'],
+          headMarkerData['5'],
+          headMarkerData['6'],
+          headMarkerData['7'],
+          headMarkerData['8']],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (data, matches, output) => {
+        const limitCutNumberMap: { [id: string]: number } = {
+          '004F': 1,
+          '0050': 2,
+          '0051': 3,
+          '0052': 4,
+          '0053': 5,
+          '0054': 6,
+          '0055': 7,
+          '0056': 8,
+        };
+        const blaster = data.firstBlasterDirNum;
+        const rotation = data.blasterRotation;
+        const id = matches.id;
+        const myNum = limitCutNumberMap[id];
+        if (myNum === undefined)
+          return;
+
+        if (blaster === undefined || rotation === undefined || rotation === 0)
+          return output.num!({ num: myNum });
+
+        // Convert 8Dir to 16Dir
+        const blaster16Dir = blaster * 2;
+
+        const adjustedDirNum = rotation < 0
+          ? (myNum + blaster16Dir) % 16 // Clockwise
+          : (myNum - blaster16Dir + 16) % 16; // Counterclock
+
+        // Find inter-inter cardinal
+        const spot = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
+        return output.text!({
+          num: output.num!({myNum}),
+          spot: output[spot]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        unknown: Outputs.unknown,
+        num: {
+          en: '#${num}',
+          de: '#${num}',
+          fr: '#${num}',
+          ja: '${num}番',
+          cn: '#${num}',
+          ko: '${num}번째',
+          tc: '#${num}',
+        },
+        text: {
+          en: '${num}: ${dir}',
+        },
+      },
+    },
+    {
       id: 'DMU P3 Damning Edict',
       type: 'StartsUsing',
-      netRegex: { id: 'BB01', source: 'Chaos', capture: false },
-      response: Responses.getBehind(),
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget!({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+        },
+      },
     },
     {
       id: 'DMU P3 In Line Debuff Collector',
