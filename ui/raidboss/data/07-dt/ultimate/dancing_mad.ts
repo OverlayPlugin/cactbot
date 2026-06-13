@@ -1,12 +1,13 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
+import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
+import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
+// TODO: P3 Tailwind/Headwind resolution configuration options
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4';
 const phases: { [id: string]: Phase } = {
@@ -15,8 +16,8 @@ const phases: { [id: string]: Phase } = {
   'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
 };
 
-// const centerX = 100;
-// const centerY = 100;
+const centerX = 100;
+const centerY = 100;
 
 export interface Data extends RaidbossData {
   // General
@@ -47,8 +48,12 @@ export interface Data extends RaidbossData {
   // Phase 3
   isFireShort?: boolean;
   myElement?: 'fire' | 'water';
+  myWind?: 'head' | 'tail';
   fireElementPlayers: string[];
   waterElementPlayers: string[];
+  firstBlaster: number[];
+  firstBlasterDirNum?: number;
+  blasterRotation?: number;
   inLine: { [name: string]: number };
   firstAccretion?: string;
   secondAccretion?: string;
@@ -216,6 +221,7 @@ const triggerSet: TriggerSet<Data> = {
       // Phase 3
       fireElementPlayers: [],
       waterElementPlayers: [],
+      firstBlaster: [],
       inLine: {},
     };
   },
@@ -1251,12 +1257,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Headwind/Tailwind Debuff',
+      id: 'DMU P3 Headwind/Tailwind Debuff Collector',
       // Applied at BAF2 Bowels of Agony
       // 642 Headwind: Face away from knockback source, wind crystal targets
       // nearest player with 2-person stack
       // 643 Tailwind: Face towards knockback source, wind crystal targets
       // nearest player with 2-person stack
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.myWind = matches.effectId === '642' ? 'head' : 'tail',
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuff',
       type: 'GainsEffect',
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -1384,6 +1397,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Headwind/Tailwind Cleanup',
+      // If players resolve winds prior to Exdeath's Vacuum Wave
+      // Long debuffs could get knocked back into the other crystal
+      // Short Debuffs could run to other crystal's donut if fire or stack/bait if water
+      // The remaining 4 players will have to resolve during knockback
+      // Note that each time these are lost, the wind crystal triggers nearest player with 2-person stack
+      type: 'LosesEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => delete data.myWind,
+    },
+    {
       id: 'DMU P3 Thunder III AOE',
       type: 'StartsUsing',
       netRegex: { id: 'BB12', source: 'Exdeath', capture: true },
@@ -1482,6 +1507,70 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Ultima Blaster Collect',
+      // Starts from random cardinal/intercardinal then rotates either CW or CCW
+      // These are raidwide AOEs, but also include telegraphed lines and explosions
+      // TODO: Verify the this is correct
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
+      condition: (data, matches) => {
+        const x2 = parseFloat(matches.x);
+        const y2 = parseFloat(matches.y);
+        if (data.firstBlaster === undefined) {
+          data.firstBlaster = [x2, y2];
+          data.firstBlasterDirNum = Directions.xyTo8DirNum(x2, y2, centerX, centerY);
+          return false;
+        }
+
+        // Get rotation of first and second Kefka blasters
+        const x1 = data.firstBlaster[0];
+        const y1 = data.firstBlaster[1];
+
+        if (x1 === undefined || y1 === undefined) {
+          // Try next blaster
+          data.firstBlaster = [x2, y2];
+          return false;
+        }
+
+        // Compute atan2 of determinant and dot product to get rotational direction
+        // Note: X and Y are flipped due to Y axis being reversed
+        data.blasterRotation = Math.atan2(y1 * x2 - x1 * y2, y1 * y2 + x1 * x2);
+        return true; // Stop execution after 2nd blaster
+      },
+      suppressSeconds: 99999,
+    },
+    {
+      id: 'DMU P3 Ultima Blaster Rotation',
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: false },
+      condition: (data) => data.blasterRotation !== undefined,
+      durationSeconds: 10,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const rotation = data.blasterRotation;
+        const dirNum = data.firstBlasterDirNum;
+        if (rotation === undefined || dirNum === undefined)
+          return;
+
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        if (rotation < 0)
+          return output.clockwise!({ card: output[dir]!() });
+        if (rotation > 0)
+          return output.counterclockwise!({ card: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        unknown: Outputs.unknown,
+        clockwise: {
+          en: '<== ${card} Clockwise (Later)',
+        },
+        counterclockwise: {
+          en: '${card} Counterclockwise (Later) ==>',
+        },
+      },
+    },
+    {
       id: 'DMU P3 Umbra Smash',
       // At start of cast the target of BB00 Umbra Smash has been locked
       // Instead of a timeline trigger, ues one of these abilities to trigger:
@@ -1500,14 +1589,44 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Vaccuum Wave',
+      // If players have not yet resolved their headwinds, then they will need
+      // to do so:
+      // Headwind look at Exdeath
+      // Tailwind look away from Exdeath
+      //
+      // Party can Tank LB3 to survive stacking the winds
       type: 'StartsUsing',
-      netRegex: { id: 'BB13', source: 'Chaos', capture: true },
-      infoText: (_data, matches, output) => {
-        return output.knockbackFromBoss!({ chaos: matches.source });
+      netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      infoText: (data, matches, output) => {
+        const chaosLocaleNames: LocaleText = {
+          en: 'Chaos',
+          de: 'Chaos',
+          fr: 'Chaos',
+          ja: 'カオス',
+          cn: '卡奥斯',
+          ko: '카오스',
+          tc: '卡奧斯',
+        };
+        const chaosName = chaosLocaleNames[data.parserLang];
+
+        if (data.myWind === undefined)
+          return output.knockbackFromChaos!({ chaos: chaosName });
+
+        return output.text!({
+          knockback: output.knockbackFromChaos!({ chaos: chaosName }),
+          facing: output[data.myWind]!({ target: matches.source }),
+        });
       },
       outputStrings: {
-        knockbackFromBoss: {
+        head: {
+          en: 'Face ${target}',
+        },
+        tail: Outputs.lookAwayFromTarget,
+        knockbackFromChaos: {
           en: 'Knockback from ${chaos}',
+        },
+        text: {
+          en: '${knockback} + ${facing}',
         },
       },
     },
