@@ -1275,37 +1275,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU Wings of Destruction',
-      type: 'StartsUsing',
-      netRegex: { id: 'C487', source: 'Kefka', capture: false },
-      response: (data, _matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          maxMeleeAvoidTanks: {
-            en: 'Max Melee: Avoid Tanks',
-            de: 'Max Nahkampf: Weg von den Tanks',
-            fr: 'Max mêlée : éloignez-vous des tanks',
-            ja: '近接最大レンジ タンクから離れる',
-            cn: '最大近战距离，避开坦克',
-            ko: '칼끝딜: 탱커 피하기',
-            tc: '最大近戰距離，避開坦克',
-          },
-          wingsBeNearFar: {
-            en: 'Wings: Be Near/Far',
-            de: 'Schwingen: Nah/Fern',
-            fr: 'Ailes : Placez-vous près/loin',
-            ja: '翼: めり込む/離れる',
-            cn: '双翅膀：近或远',
-            ko: '양날개: 가까이/멀리',
-            tc: '雙翅膀：近或遠',
-          },
-        };
-        if (data.role === 'tank')
-          return { alertText: output.wingsBeNearFar!() };
-        return { infoText: output.maxMeleeAvoidTanks!() };
-      },
-    },
-    {
       id: 'DMU P2 Aero III Assault',
       // Knockback from boss that can't be resisted
       // Applies 306 Down for the Count
@@ -1396,8 +1365,15 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Damning Edict',
       type: 'StartsUsing',
-      netRegex: { id: 'BB01', source: 'Chaos', capture: false },
-      response: Responses.getBehind(),
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget!({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+        },
+      },
     },
   ],
   timelineReplace: [

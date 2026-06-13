@@ -1,7 +1,7 @@
 ### DANCING MAD (ULTIMATE)
 # ZoneId: 1363
 
-# -ii C250 C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF BAF7 BAF9 C572 BAFA BAF1 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAF1 BB38
 # -p C403:15.6 C24C:219.8 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
@@ -501,7 +501,7 @@ hideall "--sync--"
 15000.0 label "p4-enrage"
 15005.0 "Light of Judgment (Enrage)" Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
 
-# IGNORED ABILITIES
+# P1 IGNORED ABILITIES
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
 # BA9E Blizzard III Blowout: Damage
 # BA95 Blizzard III Blowout: VFX
@@ -509,18 +509,24 @@ hideall "--sync--"
 # BAAB Unmitigated Explosion: Failing to soak a tower from BAA8 Wave Cannon
 # BAAD Gravitational Explosion: BAB0 Vitrophyre aoe overlaps with BAAC Gravitas puddle
 # BAAF Gravity III: Soaking the Gravitas puddles at the correct time
+
+# P2 IGNORED ABILITIES
 # BABF The River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
 # BAD6 Future's End: Damage (On 1 player)
 # BAD7 Past's End: Damage (On 1 player)
 # BAD8 Future's End: Damage (On 3 players)
 # BAD9 Past's End: Damage (On 3 players)
 # BACF Wings of Destruction: AOE Damage (On nearest/furthest players)
+
+# P3 IGNORED ABILITIES
 # C250 Attack: P3 Exdeath attack
 # BAF7 Stray Gusts: Some sort of failed P3 mechanic
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
 # C572 Earthquake: VFX
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
+
+# P5 IGNORED ABILITIES
 # BB38 Forsaken: VFX
 
 # ALL ENCOUNTER ABILITIES
