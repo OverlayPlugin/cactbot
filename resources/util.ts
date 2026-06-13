@@ -356,6 +356,13 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
+const xyToClockwiseAngle = (x: number, y: number, centerX: number, centerY: number): number => {
+  // Returns a continuous angle where north is 0 and values increase clockwise.
+  x = x - centerX;
+  y = y - centerY;
+  return (Math.PI - Math.atan2(x, y) + 2 * Math.PI) % (2 * Math.PI);
+};
+
 const hdgTo16DirNum = (heading: number): number => {
   // N = 0, NNE = 1, ..., NNW = 15
   return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
@@ -383,6 +390,91 @@ const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
 };
 
+interface SortablePoint {
+  x: number;
+  y: number;
+}
+
+type PointSortEntry<T extends SortablePoint> = {
+  point: T;
+  angle: number;
+};
+
+const twoPi = 2 * Math.PI;
+
+const clockwiseAngleDelta = (toAngle: number, fromAngle: number): number => {
+  // Normalize the wraparound case so the result is always in [0, 2π).
+  return (toAngle - fromAngle + twoPi) % twoPi;
+};
+
+const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
+  entries: PointSortEntry<T>[],
+  referenceAngle: number,
+): T[] => {
+  return entries
+    .map((entry) => ({
+      ...entry,
+      delta: clockwiseAngleDelta(entry.angle, referenceAngle),
+    }))
+    .sort((a, b) => a.delta - b.delta)
+    .map((entry) => entry.point);
+};
+
+const sortPointsClockwise = <T extends SortablePoint>(
+  points: readonly T[],
+  centerX: number,
+  centerY: number,
+  options: { reference?: { x: number; y: number } } = {},
+): T[] => {
+  if (points.length <= 1)
+    return [...points];
+
+  const entries: PointSortEntry<T>[] = points
+    .map((point) => ({
+      point: point,
+      angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
+    }))
+    .sort((a, b) => a.angle - b.angle);
+
+  const reference = options.reference;
+  if (reference !== undefined) {
+    const referenceAngle = reference.x === centerX && reference.y === centerY
+      ? 0
+      : xyToClockwiseAngle(reference.x, reference.y, centerX, centerY);
+    return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+  }
+
+  const eps = 1e-9;
+  let largestGap = 0;
+  let startIdx = 0;
+  for (const [idx, entry] of entries.entries()) {
+    const nextIdx = (idx + 1) % entries.length;
+    const nextEntry = entries[nextIdx];
+    if (nextEntry === undefined)
+      continue;
+    const gap = clockwiseAngleDelta(nextEntry.angle, entry.angle);
+
+    const startEntry = entries[startIdx];
+    if (startEntry === undefined)
+      continue;
+    // If there are multiple largest gaps, start from the smallest angle.
+    if (
+      gap > largestGap + eps ||
+      (Math.abs(gap - largestGap) <= eps && nextEntry.angle < startEntry.angle)
+    ) {
+      largestGap = gap;
+      startIdx = nextIdx;
+    }
+  }
+
+  // With no angular separation, there is no clockwise ordering signal.
+  if (largestGap === 0)
+    return [...points];
+
+  const referenceAngle = entries[startIdx]?.angle ?? 0;
+  return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+};
+
 export const Directions = {
   output8Dir: output8Dir,
   output16Dir: output16Dir,
@@ -402,6 +494,7 @@ export const Directions = {
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
+  sortPointsClockwise: sortPointsClockwise,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
