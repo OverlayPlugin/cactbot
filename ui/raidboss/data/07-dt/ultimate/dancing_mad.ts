@@ -1098,10 +1098,18 @@ const triggerSet: TriggerSet<Data> = {
         filipino: {
           en: '${dir1} => ${dir2}',
         },
-        upupFilipino1: Outputs.southeast,
-        downdownFilipino1: Outputs.northwest,
-        rightrightFilipino1: Outputs.southwest,
-        leftleftFilipino1: Outputs.northeast,
+        upupFilipino1: {
+          en: 'Southest Out',
+        },
+        downdownFilipino1: {
+          en: 'Northwest Out',
+        },
+        rightrightFilipino1: {
+          en: 'Southwest Out',
+        },
+        leftleftFilipino1: {
+          en: 'Northwest Out',
+        },
         downleftFilipino1: {
           en: 'West of Southwest',
         },
