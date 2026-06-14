@@ -862,14 +862,6 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
-        indulgent: {
-          en: 'Confuse Tether on YOU',
-          ko: '혼란 선 대상자',
-        },
-        idyllic: {
-          en: 'Sleep Tether on YOU',
-          ko: '수면 선 대상자',
-        },
       },
     },
     {
@@ -1076,6 +1068,7 @@ const triggerSet: TriggerSet<Data> = {
         return data.me === matches.target && data.gravenImageCount === 3;
       },
       delaySeconds: 0.1, // Delay for collect of tower type
+      durationSeconds: 9.6, // Time until 503 Confuse or 131E Sleep Applied, Abilities are at ~9s
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
