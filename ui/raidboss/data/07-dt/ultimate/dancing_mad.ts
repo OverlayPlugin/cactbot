@@ -1116,10 +1116,13 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.fakeEyeTowerIds.includes(matches.id),
-      durationSeconds: 9.5,
-      countdownSeconds: 3.4, // Estimated time debuff would expire
-      infoText: (_data, _matches, output) => output.lookAt!(),
-      outputStrings: mysteryMagicOutputStrings,
+      durationSeconds: 4.7, // Time until reminder
+      infoText: (_data, _matches, output) => output.lookAtLater!(),
+      outputStrings: {
+        lookAtLater: {
+          en: 'Look At Statue (later)',
+        },
+      },
     },
     {
       id: 'DMU P1 Indolent Will (Early)',
@@ -1127,10 +1130,13 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.eyeTowerIds.includes(matches.id),
-      durationSeconds: 9.5,
-      countdownSeconds: 3.4, // Estimated time debuff would expire
-      infoText: (_data, _matches, output) => output.lookAway!(),
-      outputStrings: mysteryMagicOutputStrings,
+      durationSeconds: 4.7, // Time until reminder
+      infoText: (_data, _matches, output) => output.lookAwayLater!(),
+      outputStrings: {
+        lookAwayLater: {
+          en: 'Look Away From Statue (later)',
+        },
+      },
     },
     {
       id: 'DMU P1 Mystery Magic Fire and Thunder',
