@@ -215,6 +215,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           reportId: matches.targetId,
           text: {
             en: `${matches.target}: Wrong buff`,
+            cn: `${matches.target}: buff 错误`,
           },
         };
       },
@@ -231,6 +232,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           reportId: matches.targetId,
           text: {
             en: `${matches.target}: Wrong buff`,
+            cn: `${matches.target}: buff 错误`,
           },
         };
       },
@@ -263,6 +265,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           reportId: matches.targetId,
           text: {
             en: 'Tower with heal debuff',
+            cn: '带着治疗 debuff 踩塔',
           },
         };
       },

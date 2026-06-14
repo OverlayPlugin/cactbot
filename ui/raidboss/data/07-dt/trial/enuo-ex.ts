@@ -921,7 +921,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '12x Chasing puddle on you',
           de: 'Verfolgende Fläche auf DIR',
           fr: 'Flaque chassante sur VOUS',
-          cn: '追踪地火点名',
+          cn: '12连追踪地火点名',
           ko: '추적 장판 대상자',
         },
       },
