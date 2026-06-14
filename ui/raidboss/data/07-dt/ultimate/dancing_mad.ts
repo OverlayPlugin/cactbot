@@ -1010,18 +1010,18 @@ const triggerSet: TriggerSet<Data> = {
         }
         if (data.triggerSetConfig.teleportent === 'filipino') {
           const dir1Map: { [tps: string]: typeof portents } = {
-            'upup': 'upupFilipino1',
-            'downdown': 'downdownFilipino1',
-            'rightright': 'rightrightFilipino1',
-            'leftleft': 'lefleftFilipino1',
+            'upup': 'southeastOut',
+            'downdown': 'northwestOut',
+            'rightright': 'southwestOut',
+            'leftleft': 'northeastOut',
             'downleft': 'dirWSW',
-            'downright': 'downrightFilipino1',
-            'rightup': 'rightupFilipino1',
+            'downright': 'southeastIn',
+            'rightup': 'northeastIn',
             'rightdown': 'dirSSE',
             'leftup': 'dirNNW',
-            'leftdown': 'leftdownFilipino1',
+            'leftdown': 'southwestIn',
             'upright': 'dirENE',
-            'upleft': 'upleftFilipino1',
+            'upleft': 'northwestIn',
           };
           const dir2Map: { [tps: string]: typeof portents } = {
             'upup': 'north',
@@ -1112,28 +1112,28 @@ const triggerSet: TriggerSet<Data> = {
         filipino: {
           en: '${dir1} => ${dir2}',
         },
-        upupFilipino1: {
-          en: 'Southest Out',
+        southeastOut: {
+          en: 'Southeast Out',
         },
-        downdownFilipino1: {
+        northwestOut: {
           en: 'Northwest Out',
         },
-        rightrightFilipino1: {
+        southwestOut: {
           en: 'Southwest Out',
         },
-        leftleftFilipino1: {
-          en: 'Northwest Out',
+        northeastOut: {
+          en: 'Northeast Out',
         },
-        downrightFilipino1: {
+        southeastIn: {
           en: 'Southeast In',
         },
-        rightupFilipino1: {
+        northeastIn: {
           en: 'Northeast In',
         },
-        leftdownFilipino1: {
+        southwestIn: {
           en: 'Southwest In',
         },
-        upleftFilipino1: {
+        northwestIn: {
           en: 'Northwest In',
         },
       },
