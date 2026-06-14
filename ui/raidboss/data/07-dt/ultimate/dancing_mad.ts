@@ -1061,15 +1061,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers',
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers (Early)',
+      // There is 9.6s (not including 0.1s delay) until 503 Confuse or 131E
+      // Sleep Applied. Corresponding Abilities are at ~9s (not including 0.1s delay)
+      // Double-trouble Trap TTS comes out ~1s prior to the tethers
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
         return data.me === matches.target && data.gravenImageCount === 3;
       },
       delaySeconds: 0.1, // Delay for collect of tower type
-      durationSeconds: 9.6, // Time until 503 Confuse or 131E Sleep Applied, Abilities are at ~9s
+      durationSeconds: 5.5, // Time until reminder
       infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.tetherOnYou!();
+
+        const x = actor.x;
+        if (x < 100) // Graven Image 3: Indulgent Will target
+          return output.indulgent!();
+        if (x < 108 && x > 106) // Graven Image 3: Idyllic Will target
+          return output.idyllic!();
+        return output.tetherOnYou!();
+      },
+      outputStrings: {
+        tetherOnYou: {
+          en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
+          ja: '線ついた',
+          cn: '连线点名',
+          ko: '선 대상자 지정됨',
+          tc: '連線點名',
+        },
+        indulgent: {
+          en: 'Confuse Tether on YOU',
+          ko: '혼란 선 대상자',
+        },
+        idyllic: {
+          en: 'Sleep Tether on YOU',
+          ko: '수면 선 대상자',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers Reminder',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.gravenImageCount === 3;
+      },
+      delaySeconds: 5.6,
+      durationSeconds: 4,
+      alertText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
           return output.tetherOnYou!();
