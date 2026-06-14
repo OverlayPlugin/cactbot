@@ -1009,6 +1009,20 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
         if (data.triggerSetConfig.teleportent === 'filipino') {
+          const dir1Map: { [tps: string]: typeof portents } = {
+            'upup': 'upupFilipino1',
+            'downdown': 'downdownFilipino1',
+            'rightright': 'rightrightFilipino1',
+            'leftleft': 'lefleftFilipino1',
+            'downleft': 'dirWSW',
+            'downright': 'downrightFilipino1',
+            'rightup': 'rightupFilipino1',
+            'rightdown': 'dirSSE',
+            'leftup': 'dirNNW',
+            'leftdown': 'leftdownFilipino1',
+            'upright': 'dirENE',
+            'upleft': 'upleftFilipino1',
+          };
           const dir2Map: { [tps: string]: typeof portents } = {
             'upup': 'north',
             'downdown': 'south',
@@ -1023,7 +1037,7 @@ const triggerSet: TriggerSet<Data> = {
             'upright': 'west',
             'upleft': 'north',
           };
-          const dir1 = `${portents}Filipino1`;
+          const dir1 = dir1Map[portents];
           const dir2 = dir2Map[portents];
 
           return output.filipino!({
@@ -1110,26 +1124,14 @@ const triggerSet: TriggerSet<Data> = {
         leftleftFilipino1: {
           en: 'Northwest Out',
         },
-        downleftFilipino1: {
-          en: 'West of Southwest',
-        },
         downrightFilipino1: {
           en: 'Southeast In',
         },
         rightupFilipino1: {
           en: 'Northeast In',
         },
-        rightdownFilipino1: {
-          en: 'South of Southeast',
-        },
-        leftupFilipino1: {
-          en: 'North of Northwest',
-        },
         leftdownFilipino1: {
           en: 'Southwest In',
-        },
-        uprightFilipino1: {
-          en: 'East of Northeast',
         },
         upleftFilipino1: {
           en: 'Northwest In',
