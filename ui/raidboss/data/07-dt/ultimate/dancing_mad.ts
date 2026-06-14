@@ -7,11 +7,14 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
+// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
-type Phase = 'p1' | 'p2' | 'p3';
+type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
+  'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
+  'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
 
 const centerX = 100;
@@ -3106,6 +3109,99 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C3F7', source: 'Kefka', capture: false },
       response: Responses.getUnder('alert'),
     },
+    {
+      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
+      // Applied to 4 nearest players when Chaos and Exdeath finish casting
+      // C2E2/C2E3 The Decisive Battle
+      // 1060 Epic Hero: Can only damage Chaos, preferred by Melee DPS
+      // 1062 Fated Hero: Can only damage Exdeath, preferred by Ranged DPS
+      // These fall off once Exdeath casts BB12 Thunder III
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1060', '1062'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '1060' ? output.epic!() : output.fated!();
+      },
+      outputStrings: {
+        epic: {
+          en: 'Attack Chaos',
+        },
+        fated: {
+          en: 'Attack Exdeath',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Bowels of Agony',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAF2', source: 'Chaos', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuffs',
+      // Applied at BAF2 Bowels of Agony
+      // Debuffs trigger if hit by certain sources, causing a knockback
+      // 642 Headwind: Face away from damage source
+      // 643 Tailwind: Face towards damage source
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '642' ? output.headwind!() : output.tailwind!();
+      },
+      outputStrings: {
+        headwind: {
+          en: 'Headwind on YOU',
+        },
+        tailwind: {
+          en: 'Tailwind on You',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Longitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFD', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.sides!(),
+      outputStrings: {
+        sides: Outputs.sidesThenFrontBack,
+      },
+    },
+    {
+      id: 'DMU P3 Latitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFE', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.frontBack!(),
+      outputStrings: {
+        frontBack: Outputs.frontBackThenSides,
+      },
+    },
+    {
+      id: 'DMU P3 Vaccuum Wave',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.knockbackFromBoss!({ chaos: matches.source });
+      },
+      outputStrings: {
+        knockbackFromBoss: {
+          en: 'Knockback from ${chaos}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Damning Edict',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget!({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
@@ -3113,6 +3209,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
         'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
+        'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
       },
     },
     {
