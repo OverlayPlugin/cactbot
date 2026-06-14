@@ -1901,6 +1901,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         lastPast: {
           en: 'Bait Ending => ${action}',
+        },
       },
     },
     {
