@@ -10,11 +10,14 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 // TODO: P3 Tailwind/Headwind resolution configuration options
 // TODO: P3 Verify number headmarker values
 
-type Phase = 'p1' | 'p2' | 'p3' | 'p4';
+// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
+
+type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
   'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
+  'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
 
 const centerX = 100;
@@ -46,6 +49,7 @@ export interface Data extends RaidbossData {
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
+  // Phase 2
   // Phase 3
   isFireShort?: boolean;
   myElement?: 'fire' | 'water';
@@ -74,6 +78,11 @@ const headMarkerData = {
   'stack': '0080', // spread (fake) or stack (real)
   // Phase 1 Tethers
   'imageTether': '002D',
+  // Phase 2
+  'sharedBuster': '0103', // Ultimate Embrace shared tankbuster
+  'stackPath': '02CB', // When standing in Path of Light tower, causes BAC0 Spelldriver (3-person stack)
+  'conePath': '02CD', // When standing in Path of Light tower, causes BAC2 Spellwave (cone targetting nearest player)
+  'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
   // Phase 3
   '1': '004F',
   '2': '0050',
@@ -228,6 +237,7 @@ const triggerSet: TriggerSet<Data> = {
       fakeEyeTowerIds: [],
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
+      // Phase 2
       // Phase 3
       fireElementPlayers: [],
       waterElementPlayers: [],
@@ -1202,6 +1212,107 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P2 Ultimate Embrace',
+      type: 'StartsUsing',
+      netRegex: { id: 'C24C', source: 'Kefka', capture: true },
+      response: Responses.sharedTankBuster(),
+    },
+    {
+      id: 'DMU P2 Forsaken',
+      // 7s cast
+      type: 'StartsUsing',
+      netRegex: { id: 'BABC', source: 'Kefka', capture: false },
+      durationSeconds: 6.7,
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'DMU P2 Path of Light Headmarker',
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        const id = matches.id;
+        type markerMap = {
+          [key: string]: 'stack' | 'cone' | 'spread';
+        };
+        const markers: markerMap = {
+          '02CB': 'stack',
+          '02CD': 'cone',
+          '02CC': 'spread',
+        };
+        const marker = markers[id];
+        if (marker === undefined)
+          return;
+        return output[marker]!();
+      },
+      outputStrings: {
+        stack: {
+          en: 'Stack Path on YOU',
+        },
+        cone: {
+          en: 'Cone Path on YOU',
+        },
+        spread: {
+          en: 'Spread Path on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Future\'s End/Past\'s End',
+      // There are four end casts
+      type: 'StartsUsing',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        return matches.id === 'BAD2' ? output.future!() : output.past!();
+      },
+      outputStrings: {
+        future: {
+          en: 'Future',
+        },
+        past: {
+          en: 'Past',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Light of Judgment',
+      type: 'StartsUsing',
+      netRegex: { id: 'BABD', source: 'Kefka', capture: false },
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'DMU Single Wing of Destruction',
+      // BACD Wings of Destruction, Left wing highlight
+      // BACE Wingso of Desctruction, Right wing highlight
+      // Halfroom cleaves
+      type: 'StartsUsing',
+      netRegex: { id: ['BACD', 'BACE'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'BACD')
+          return output.right!();
+        return output.left!();
+      },
+      outputStrings: {
+        right: Outputs.right,
+        left: Outputs.left,
+      },
+    },
+    {
+      id: 'DMU P2 Aero III Assault',
+      // Knockback from boss that can't be resisted
+      // Applies 306 Down for the Count
+      type: 'StartsUsing',
+      netRegex: { id: 'C3F7', source: 'Kefka', capture: false },
+      response: Responses.getUnder('alert'),
+    },
+    {
       id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
       // Applied to 4 nearest players when Chaos and Exdeath finish casting
       // C2E2/C2E3 The Decisive Battle
@@ -1818,6 +1929,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
+        'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
         'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
       },
     },
