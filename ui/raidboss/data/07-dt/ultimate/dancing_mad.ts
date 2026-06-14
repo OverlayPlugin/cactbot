@@ -45,6 +45,7 @@ export interface Data extends RaidbossData {
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
+  isTowerLookAway?: boolean;
   // Phase 2
 }
 
