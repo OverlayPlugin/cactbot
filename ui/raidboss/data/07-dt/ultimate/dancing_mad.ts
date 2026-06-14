@@ -205,7 +205,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'teleportent',
       comment: {
-        en: `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
+        en:
+          `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
           Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
       },
