@@ -2924,27 +2924,30 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P2 Trine Collector',
-      // TODO: Get other two pattern coords
       // Kefkabin solution: https://raidplan.io/plan/apkh6ytq72w8pt3v
       // Trines are added ~0.5s after BADF Trine ability
       // They have BNpcID 1EBFB3 and 1EBFB2.
-      // On release of Patch 7.51, the Northwest-ish trine is bugged (rotated 60 degrees)
-      // There are 3 patterns
       // Pattern 1:
       // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
       // Set 2: Southeast-ish (115.55, 110)
-      // Set 3: West-ish (85.57, 105), Middle (100,100)3*, East-ish(114.43, 95)
+      // Set 3: West-ish (85.57, 105), Middle (100,100)*, East-ish(114.43, 95)
       //
       // Pattern 2:
-      // Set 1:
-      // Set 2:
-      // Set 3:
+      // Set 1: Southeast-ish(111.55, 110), South-ish (97.11, 115) East-ish (114.43,95) 
+      // Set 2: North-ish (102.89, 85)
+      // Set 3: West-ish (85.57, 105), Northwest-ish(88.45, 90), Middle (100, 100)*
       //
       // Pattern 3:
-      // Set 1:
-      // Set 2:
-      // Set 3:
+      // Set 1: South-ish (97.11, 115), Southeast-ish (111.55, 110), East-ish (114.43, 95)
+      // Set 2: Northwest-ish (88.45, 90)
+      // Set 3: West-ish (85.57, 105), Middle (100, 100)*, North-ish (102.89, 85)
       //
+      // Pattern 4:
+      // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
+      // Set 2: East-ish (114.43, 95)
+      // Set 3: West-ish (85.57, 105), Middle (100,100)*, Southeast-ish (111.55, 110)
+      // 
+      // There's probably more patterns
       // * Guaranteed in set 3, and its heading points West or East
       //
       // 273 ActorControlExtra lines that follow:
@@ -2964,7 +2967,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       run: (data, matches) => {
         // Need heading of middle trine for near tank bait and/or greedy melee
-        // With exception of bugged 7.51 NW Trine rotated 60 degrees off, Heading is defined by the BNpcID
+        // Heading is defined by the BNpcID
         // 1EBFB3 => West
         // 1EBFB2 => East
         const x = parseFloat(matches.pairPosX ?? '0');
@@ -2980,7 +2983,7 @@ const triggerSet: TriggerSet<Data> = {
 
         // Not storing the last two sets' x,y coords
         if (data.trineDirNums.length !== 3) {
-          const dirNum = Directions.xyTo16DirNum(centerX, centerY, x, y);
+          const dirNum = Directions.xyTo16DirNum(x, y, centerX, centerY);
           data.trineDirNums.push(dirNum);
         }
       },
