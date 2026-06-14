@@ -1645,14 +1645,16 @@ const triggerSet: TriggerSet<Data> = {
       // Nearest inter-inter cardinal opposite that of first blaster
       type: 'HeadMarker',
       netRegex: {
-        id: [headMarkerData['1'],
+        id: [
+          headMarkerData['1'],
           headMarkerData['2'],
           headMarkerData['3'],
           headMarkerData['4'],
           headMarkerData['5'],
           headMarkerData['6'],
           headMarkerData['7'],
-          headMarkerData['8']],
+          headMarkerData['8']
+        ],
         capture: true,
       },
       condition: Conditions.targetIsYou(),
@@ -1685,10 +1687,10 @@ const triggerSet: TriggerSet<Data> = {
           : (myNum - blaster16Dir + 16) % 16; // Counterclock
 
         // Find inter-inter cardinal
-        const spot = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
+        const safeDir = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
         return output.text!({
-          num: output.num!({myNum}),
-          spot: output[spot]!(),
+          num: output.num!({ num: myNum }),
+          dir: output[safeDir]!(),
         });
       },
       outputStrings: {
