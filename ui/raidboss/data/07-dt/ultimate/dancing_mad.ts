@@ -234,6 +234,12 @@ const forsakenOutputStrings: OutputStrings = {
     tc: '遠離塔',
   },
   outOfHitbox: Outputs.outOfHitbox,
+  innerHitbox: {
+    en: 'Inner Hitbox',
+  },
+  outerHitbox: {
+    en: 'Outer Hitbox',
+  },
   cone: {
     en: 'Cone on YOU',
   },
@@ -268,6 +274,9 @@ const forsakenOutputStrings: OutputStrings = {
     ko: '멀리 있기',
   },
   stackOnYou: Outputs.stackOnYou,
+  stackOnYouLocation: { // Used only in first tower
+    en: '${stack} ${location}',
+  },
   stackOnPlayer: { // Used only in first tower (role-based)
     en: 'Stack is on ${player}',
   },
@@ -1482,12 +1491,18 @@ const triggerSet: TriggerSet<Data> = {
               return output.stackOnYouTower!({
                 num: num,
                 tower: output.leftTower!(),
-                marker: output.stackOnYou!(),
+                marker: output.stackOnYouLocation!({
+                  stack: output.stackOnYou!(),
+                  location: output.outerHitbox!(),
+                }),
               });
             return output.stackOnYouTower!({
               num: num,
               tower: output.rightTower!(),
-              marker: output.stackOnYou!(),
+              marker: output.stackOnYouLocation!({
+                stack: output.stackOnYou!(),
+                location: output.innerHitbox!(),
+              }),
             });
           }
 
