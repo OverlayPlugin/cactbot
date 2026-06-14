@@ -1001,13 +1001,13 @@ const triggerSet: TriggerSet<Data> = {
             'downdown': 'south',
             'rightright': 'east',
             'leftleft': 'west',
-            'downleft': 'onMarker',
+            'downleft': 'east',
             'downright': 'south',
             'rightup': 'east',
-            'rightdown': 'onMarker',
-            'leftup': 'onMarker',
+            'rightdown': 'north',
+            'leftup': 'south',
             'leftdown': 'west',
-            'upright': 'onMarker',
+            'upright': 'west',
             'upleft': 'north',
           };
           const dir1 = `${portents}Filipino1`;
@@ -1085,9 +1085,6 @@ const triggerSet: TriggerSet<Data> = {
         filipino: {
           en: '${dir1} => ${dir2}',
         },
-        onMarker: {
-          en: 'On Marker',
-        },
         upupFilipino1: Outputs.southeast,
         downdownFilipino1: Outputs.northwest,
         rightrightFilipino1: Outputs.southwest,
@@ -1096,10 +1093,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'West of Southwest',
         },
         downrightFilipino1: {
-          en: 'Southeast Marker',
+          en: 'Southeast In',
         },
         rightupFilipino1: {
-          en: 'Northeast Marker',
+          en: 'Northeast In',
         },
         rightdownFilipino1: {
           en: 'South of Southeast',
@@ -1108,13 +1105,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'North of Northwest',
         },
         leftdownFilipino1: {
-          en: 'Southwest Marker',
+          en: 'Southwest In',
         },
         uprightFilipino1: {
           en: 'East of Northeast',
         },
         upleftFilipino1: {
-          en: 'Northwest Marker',
+          en: 'Northwest In',
         },
       },
     },
