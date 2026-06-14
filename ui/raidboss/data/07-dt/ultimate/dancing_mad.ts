@@ -1653,7 +1653,7 @@ const triggerSet: TriggerSet<Data> = {
           headMarkerData['5'],
           headMarkerData['6'],
           headMarkerData['7'],
-          headMarkerData['8']
+          headMarkerData['8'],
         ],
         capture: true,
       },
