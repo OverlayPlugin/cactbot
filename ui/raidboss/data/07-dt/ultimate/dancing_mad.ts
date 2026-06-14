@@ -1112,28 +1112,28 @@ const triggerSet: TriggerSet<Data> = {
         filipino: {
           en: '${dir1} => ${dir2}',
         },
-        southeastOut: {
+        southeastOut: { // upup for Filipino
           en: 'Southeast Out',
         },
-        northwestOut: {
+        northwestOut: { // downdown for Filipino
           en: 'Northwest Out',
         },
-        southwestOut: {
+        southwestOut: { // rightright for Filipino
           en: 'Southwest Out',
         },
-        northeastOut: {
+        northeastOut: { // leftleft for Filipino
           en: 'Northeast Out',
         },
-        southeastIn: {
+        southeastIn: { // downright for Filipino
           en: 'Southeast In',
         },
-        northeastIn: {
+        northeastIn: { // rightup for Filipino
           en: 'Northeast In',
         },
-        southwestIn: {
+        southwestIn: { // leftdown for Filipino
           en: 'Southwest In',
         },
-        northwestIn: {
+        northwestIn: { // upleft for Filipino
           en: 'Northwest In',
         },
       },
