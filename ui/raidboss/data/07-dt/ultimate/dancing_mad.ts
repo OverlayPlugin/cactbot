@@ -2933,7 +2933,7 @@ const triggerSet: TriggerSet<Data> = {
       // Set 3: West-ish (85.57, 105), Middle (100,100)*, East-ish(114.43, 95)
       //
       // Pattern 2:
-      // Set 1: Southeast-ish(111.55, 110), South-ish (97.11, 115) East-ish (114.43,95) 
+      // Set 1: Southeast-ish(111.55, 110), South-ish (97.11, 115) East-ish (114.43,95)
       // Set 2: North-ish (102.89, 85)
       // Set 3: West-ish (85.57, 105), Northwest-ish(88.45, 90), Middle (100, 100)*
       //
@@ -2946,7 +2946,7 @@ const triggerSet: TriggerSet<Data> = {
       // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
       // Set 2: East-ish (114.43, 95)
       // Set 3: West-ish (85.57, 105), Middle (100,100)*, Southeast-ish (111.55, 110)
-      // 
+      //
       // There's probably more patterns
       // * Guaranteed in set 3, and its heading points West or East
       //
