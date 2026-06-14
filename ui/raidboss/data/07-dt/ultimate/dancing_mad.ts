@@ -205,8 +205,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'teleportent',
       comment: {
-        en: `Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
-          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a>`,
+        en: `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
+          Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
       },
       name: {
         en: 'P1 Graven Image 3 Tele-Portent Strategy',
@@ -214,8 +215,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'Tele-portent arrows placed pointing clockwise around the arena.': 'clockwise',
-          'Tele-portent arrows placed in 4 small boxes along intercardinals.': 'filipino',
+          'Clockwise Big Box': 'clockwise',
+          'Filipino Box (Intercardinals)': 'filipino',
           'Call Debuffs only': 'none',
         },
       },
