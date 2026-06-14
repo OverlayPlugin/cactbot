@@ -7,10 +7,11 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
 
-type Phase = 'p1' | 'p2' | 'p3';
+type Phase = 'p1' | 'p2' | 'p3' | 'p4';
 const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
+  'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
 };
 
 // const centerX = 100;
@@ -42,6 +43,7 @@ export interface Data extends RaidbossData {
   doubleTroubleTrapTargets: string[];
   myTelePortent1?: 'up' | 'down' | 'right' | 'left';
   myTelePortent2?: 'up' | 'down' | 'right' | 'left';
+  isTowerLookAway?: boolean;
 }
 
 const headMarkerData = {
