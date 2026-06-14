@@ -1,6 +1,8 @@
 const phases = {
   'C24C': 'p2',
-  'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
+  'C3F7': 'p3',
+  'C2DC': 'p4',
+  'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
 const headMarkerData = {
   // Phase 1 Boss
@@ -16,6 +18,11 @@ const headMarkerData = {
   'stack': '0080',
   // Phase 1 Tethers
   'imageTether': '002D',
+  // Phase 2
+  'sharedBuster': '0103',
+  'stackPath': '02CB',
+  'conePath': '02CD',
+  'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
 };
 const mysteryMagicOutputStrings = {
   puddle: {
@@ -158,6 +165,7 @@ Options.Triggers.push({
       fakeEyeTowerIds: [],
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
+      // Phase 2
     };
   },
   triggers: [
@@ -1099,12 +1107,205 @@ Options.Triggers.push({
         delete data.fireMarker;
       },
     },
+    {
+      id: 'DMU P2 Ultimate Embrace',
+      type: 'StartsUsing',
+      netRegex: { id: 'C24C', source: 'Kefka', capture: true },
+      response: Responses.sharedTankBuster(),
+    },
+    {
+      id: 'DMU P2 Forsaken',
+      // 7s cast
+      type: 'StartsUsing',
+      netRegex: { id: 'BABC', source: 'Kefka', capture: false },
+      durationSeconds: 6.7,
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'DMU P2 Path of Light Headmarker',
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        const id = matches.id;
+        const markers = {
+          '02CB': 'stack',
+          '02CD': 'cone',
+          '02CC': 'spread',
+        };
+        const marker = markers[id];
+        if (marker === undefined)
+          return;
+        return output[marker]();
+      },
+      outputStrings: {
+        stack: {
+          en: 'Stack Path on YOU',
+        },
+        cone: {
+          en: 'Cone Path on YOU',
+        },
+        spread: {
+          en: 'Spread Path on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Future\'s End/Past\'s End',
+      // There are four end casts
+      type: 'StartsUsing',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        return matches.id === 'BAD2' ? output.future() : output.past();
+      },
+      outputStrings: {
+        future: {
+          en: 'Future',
+        },
+        past: {
+          en: 'Past',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Light of Judgment',
+      type: 'StartsUsing',
+      netRegex: { id: 'BABD', source: 'Kefka', capture: false },
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'DMU Single Wing of Destruction',
+      // BACD Wings of Destruction, Left wing highlight
+      // BACE Wingso of Desctruction, Right wing highlight
+      // Halfroom cleaves
+      type: 'StartsUsing',
+      netRegex: { id: ['BACD', 'BACE'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'BACD')
+          return output.right();
+        return output.left();
+      },
+      outputStrings: {
+        right: Outputs.right,
+        left: Outputs.left,
+      },
+    },
+    {
+      id: 'DMU P2 Aero III Assault',
+      // Knockback from boss that can't be resisted
+      // Applies 306 Down for the Count
+      type: 'StartsUsing',
+      netRegex: { id: 'C3F7', source: 'Kefka', capture: false },
+      response: Responses.getUnder('alert'),
+    },
+    {
+      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
+      // Applied to 4 nearest players when Chaos and Exdeath finish casting
+      // C2E2/C2E3 The Decisive Battle
+      // 1060 Epic Hero: Can only damage Chaos, preferred by Melee DPS
+      // 1062 Fated Hero: Can only damage Exdeath, preferred by Ranged DPS
+      // These fall off once Exdeath casts BB12 Thunder III
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1060', '1062'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '1060' ? output.epic() : output.fated();
+      },
+      outputStrings: {
+        epic: {
+          en: 'Attack Chaos',
+        },
+        fated: {
+          en: 'Attack Exdeath',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Bowels of Agony',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAF2', source: 'Chaos', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuffs',
+      // Applied at BAF2 Bowels of Agony
+      // Debuffs trigger if hit by certain sources, causing a knockback
+      // 642 Headwind: Face away from damage source
+      // 643 Tailwind: Face towards damage source
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        return matches.effectId === '642' ? output.headwind() : output.tailwind();
+      },
+      outputStrings: {
+        headwind: {
+          en: 'Headwind on YOU',
+        },
+        tailwind: {
+          en: 'Tailwind on You',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Longitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFD', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.sides(),
+      outputStrings: {
+        sides: Outputs.sidesThenFrontBack,
+      },
+    },
+    {
+      id: 'DMU P3 Latitudinal Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: 'BAFE', source: 'Chaos', capture: false },
+      infoText: (_data, _matches, output) => output.frontBack(),
+      outputStrings: {
+        frontBack: Outputs.frontBackThenSides,
+      },
+    },
+    {
+      id: 'DMU P3 Vaccuum Wave',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.knockbackFromBoss({ chaos: matches.source });
+      },
+      outputStrings: {
+        knockbackFromBoss: {
+          en: 'Knockback from ${chaos}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Damning Edict',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
+        'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
+        'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
       },
     },
     {
