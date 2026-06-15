@@ -1935,6 +1935,54 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Accretion Cleanup',
+      type: 'LosesEffect',
+      netRegex: { effectId: '644', capture: true },
+      run: (data, matches) => {
+        const target = matches.target;
+        if (target === data.firstAccretion)
+          delete data.firstAccretion;
+        else // There is no one else it could be but second
+          delete data.secondAccretion;
+      },
+    },
+    {
+      id: 'DMU P3 Accretion 2',
+      // Cleansing 644 Accretion or 154E Primordial Crust triggers BAFA Earthquake
+      // BAFA Earthquake targets receive D2C Earth Resistance Down II (1.96s)
+      // Utilizing D2C Earth Resistance Down II to call for healing next player
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D2C', capture: true },
+      condition: (data) => {
+          return data.firstAccretion !== undefined || data.secondAccretion !== undefined;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        const player = data.firstAccretion !== undefined
+          ? data.firstAccretion
+          : data.secondAccretion;
+        const severity = data.role === 'healer' ? 'alertText' : 'infoText';
+
+        return {
+          [severity]: output.healPlayerFull!({
+            player: data.party.member(player),
+          }),
+        };
+      },
+      outputStrings: {
+        healPlayerFull: {
+          en: 'Heal ${player} to full',
+          de: 'Heile ${player} voll',
+          fr: 'Soin complet sur ${player}',
+          ja: '${player} を全回復して',
+          cn: '奶满${player}',
+          ko: '완전 회복: ${player}',
+          tc: '奶滿${player}',
+        },
+      },
+    },
+    {
       id: 'DMU P3 Slap Happy',
       // TODO: Get boss location on teleport (could adjust call to be a direction of the slaps 1-3)
       // BAE6 Slap Happy: Boss slaps his right 3 times (party cleave) + left once
