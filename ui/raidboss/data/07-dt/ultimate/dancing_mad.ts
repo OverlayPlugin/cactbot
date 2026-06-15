@@ -294,7 +294,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'blackhole',
       comment: {
         en:
-        `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
+          `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
       },
       name: {
         en: 'P3 Black Hole Order',
