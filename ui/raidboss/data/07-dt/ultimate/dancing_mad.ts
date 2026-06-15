@@ -1923,6 +1923,69 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'DMU P3 Slap Happy',
+      // TODO: Get boss location on teleport (could adjust call to be a direction of the slaps 1-3)
+      // BAE6 Slap Happy: Boss slaps his right 3 times (party cleave) + left once
+      // BAE7 Slap Happy: Boss slaps his left 3 times (role cleaves) + right once
+      // Boss can be in different cardinal/intercardinals
+      type: 'StartsUsing',
+      netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
+      alertText: (_data, matches, output) => {
+        const id = matches.id;
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const bossDirNum = Directions.xyTo8DirNum(x, y, centerX, centerY);
+        const clockDirNum = (bossDirNum + 2) % 8;
+        const counterDirNum = (bossDirNum + 6) % 8; // Wrap-around
+        const clockDir = Directions.output8Dir[clockDirNum] ?? 'unknown';
+        const counterDir = Directions.output8Dir[counterDirNum] ?? 'unknown';
+
+        const isRightSlap = id === 'BAE6';
+        const dir = isRightSlap ? clockDir : counterDir;
+
+        return output.slapDirMechThenOut!({
+          dir1: output[dir]!(),
+          mech: isRightSlap
+            ? output.partyStack!()
+            : output.roleStacks!(),
+          out: output.outOfMiddle!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        unknown: Outputs.unknown,
+        outOfMiddle: {
+          en: 'Out Of Middle',
+          de: 'Raus aus der Mitte',
+          fr: 'Sortez du milieu',
+          ja: '横へ',
+          cn: '远离中间',
+          ko: '가운데 피하기',
+          tc: '遠離中間',
+        },
+        partyStack: {
+          en: 'Party Stack',
+          de: 'In der Gruppe sammeln',
+          fr: 'Package en groupe',
+          ja: 'あたまわり',
+          cn: '人群分摊',
+          ko: '본대 쉐어',
+          tc: '分攤',
+        },
+        roleStacks: {
+          en: 'Role Stacks',
+          de: 'Rollengruppe sammeln',
+          fr: 'Package par rôle',
+          cn: '职能分摊',
+          ko: '역할별 쉐어',
+          tc: '職能分攤',
+        },
+        slapDirMechThenOut: {
+          en: '${dir1} + ${mech} => ${out}',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
