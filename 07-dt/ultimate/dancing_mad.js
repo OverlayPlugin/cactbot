@@ -151,6 +151,29 @@ const trapOutputStrings = {
 Options.Triggers.push({
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
+  config: [
+    {
+      id: 'teleportent',
+      comment: {
+        en:
+          `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
+          Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
+      },
+      name: {
+        en: 'P1 Graven Image 3 Tele-Portent Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Clockwise Big Box': 'clockwise',
+          'Filipino Box (Intercardinals)': 'filipino',
+          'Call Debuffs only': 'none',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
     return {
@@ -865,12 +888,98 @@ Options.Triggers.push({
       condition: Conditions.targetIsYou(),
       durationSeconds: 7,
       infoText: (data, _matches, output) => {
-        if (data.myTelePortent1 === undefined || data.myTelePortent2 === undefined)
+        const tp1 = data.myTelePortent1;
+        const tp2 = data.myTelePortent2;
+        if (tp1 === undefined || tp2 === undefined)
           return;
-        const portents = data.myTelePortent1 + data.myTelePortent2;
+        const portents = tp1 + tp2;
+        if (data.triggerSetConfig.teleportent === 'clockwise') {
+          // Relative to center of arena
+          const dir1Map = {
+            'upup': 'west',
+            'downdown': 'east',
+            'rightright': 'north',
+            'leftleft': 'south',
+            'downleft': 'dirESE',
+            'downright': 'northeast',
+            'rightup': 'northwest',
+            'rightdown': 'dirNNE',
+            'leftup': 'dirSSW',
+            'leftdown': 'southeast',
+            'upright': 'dirWNW',
+            'upleft': 'southwest',
+          };
+          // Relative to where player is
+          const dir2Map = {
+            'upup': 'south',
+            'downdown': 'north',
+            'rightright': 'west',
+            'leftleft': 'east',
+            'downleft': 'south',
+            'downright': 'west',
+            'rightup': 'south',
+            'rightdown': 'east',
+            'leftup': 'west',
+            'leftdown': 'north',
+            'upright': 'north',
+            'upleft': 'east',
+          };
+          const dir1 = dir1Map[portents];
+          const dir2 = dir2Map[portents];
+          return output.clockwise({
+            dir1: output[dir1 ?? 'unknown'](),
+            dir2: output[dir2 ?? 'unknown'](),
+          });
+        }
+        if (data.triggerSetConfig.teleportent === 'filipino') {
+          const dir1Map = {
+            'upup': 'southeastOut',
+            'downdown': 'northwestOut',
+            'rightright': 'southwestOut',
+            'leftleft': 'northeastOut',
+            'downleft': 'dirWSW',
+            'downright': 'southeastIn',
+            'rightup': 'northeastIn',
+            'rightdown': 'dirSSE',
+            'leftup': 'dirNNW',
+            'leftdown': 'southwestIn',
+            'upright': 'dirENE',
+            'upleft': 'northwestIn',
+          };
+          const dir2Map = {
+            'upup': 'north',
+            'downdown': 'south',
+            'rightright': 'east',
+            'leftleft': 'west',
+            'downleft': 'east',
+            'downright': 'south',
+            'rightup': 'east',
+            'rightdown': 'north',
+            'leftup': 'south',
+            'leftdown': 'west',
+            'upright': 'west',
+            'upleft': 'north',
+          };
+          const dir1 = dir1Map[portents];
+          const dir2 = dir2Map[portents];
+          return output.filipino({
+            dir1: output[dir1 ?? 'unknown'](),
+            dir2: output[dir2 ?? 'unknown'](),
+          });
+        }
         return output[portents]();
       },
       outputStrings: {
+        ...Directions.outputStrings16Dir,
+        north: Outputs.north,
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        southeast: Outputs.southeast,
+        south: Outputs.south,
+        southwest: Outputs.southwest,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
           ko: '위쪽 화살표',
@@ -918,6 +1027,36 @@ Options.Triggers.push({
         upleft: {
           en: 'Up => Left Portent',
           ko: '위 => 왼쪽 화살표',
+        },
+        clockwise: {
+          en: '${dir1} => ${dir2}',
+        },
+        filipino: {
+          en: '${dir1} => ${dir2}',
+        },
+        southeastOut: {
+          en: 'Southeast Out',
+        },
+        northwestOut: {
+          en: 'Northwest Out',
+        },
+        southwestOut: {
+          en: 'Southwest Out',
+        },
+        northeastOut: {
+          en: 'Northeast Out',
+        },
+        southeastIn: {
+          en: 'Southeast In',
+        },
+        northeastIn: {
+          en: 'Northeast In',
+        },
+        southwestIn: {
+          en: 'Southwest In',
+        },
+        northwestIn: {
+          en: 'Northwest In',
         },
       },
     },
