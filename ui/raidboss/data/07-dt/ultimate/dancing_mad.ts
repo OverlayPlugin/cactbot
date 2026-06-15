@@ -29,6 +29,7 @@ const centerY = 100;
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
+    blackhole: 'kefka' | 'none';
   };
   // General
   phase: Phase | 'unknown';
