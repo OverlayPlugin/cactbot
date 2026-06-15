@@ -1942,7 +1942,8 @@ const triggerSet: TriggerSet<Data> = {
         const target = matches.target;
         if (target === data.firstAccretion)
           delete data.firstAccretion;
-        else // There is no one else it could be but second
+        // There is no one else it could be but second
+        else
           delete data.secondAccretion;
       },
     },
@@ -1951,14 +1952,27 @@ const triggerSet: TriggerSet<Data> = {
       // Cleansing 644 Accretion or 154E Primordial Crust triggers BAFA Earthquake
       // BAFA Earthquake targets receive D2C Earth Resistance Down II (1.96s)
       // Utilizing D2C Earth Resistance Down II to call for healing next player
+      // NOTE: This will still trigger if 154E Primordial Crust is cleansed early
       type: 'GainsEffect',
       netRegex: { effectId: 'D2C', capture: true },
       condition: (data) => {
-          return data.firstAccretion !== undefined || data.secondAccretion !== undefined;
+        return data.firstAccretion !== undefined || data.secondAccretion !== undefined;
       },
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 1,
       response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          healPlayerFull: {
+            en: 'Heal ${player} to full',
+            de: 'Heile ${player} voll',
+            fr: 'Soin complet sur ${player}',
+            ja: '${player} を全回復して',
+            cn: '奶满${player}',
+            ko: '완전 회복: ${player}',
+            tc: '奶滿${player}',
+          },
+        };
         const player = data.firstAccretion !== undefined
           ? data.firstAccretion
           : data.secondAccretion;
@@ -1969,17 +1983,6 @@ const triggerSet: TriggerSet<Data> = {
             player: data.party.member(player),
           }),
         };
-      },
-      outputStrings: {
-        healPlayerFull: {
-          en: 'Heal ${player} to full',
-          de: 'Heile ${player} voll',
-          fr: 'Soin complet sur ${player}',
-          ja: '${player} を全回復して',
-          cn: '奶满${player}',
-          ko: '완전 회복: ${player}',
-          tc: '奶滿${player}',
-        },
       },
     },
     {
