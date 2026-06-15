@@ -7,6 +7,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P1 Tele-Portent configuration options
+// TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -370,7 +371,7 @@ const triggerSet: TriggerSet<Data> = {
         en: `There should be two groups of four players, choose tower soak order.<br \>
           Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br \>
           Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br \>
-          Bowtie: <a href="https://raidplan.io/plan/kj2d734d36es2ugs" target="_blank">Raidplan</a> (Will require Tank LB3)<br \>
+          Bowtie AAAABBBB 4/4: Using same priority as the kroxy-rinon. (Will require Tank LB3)<br \>
           Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in.`,
       },
       name: {
@@ -380,8 +381,8 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
-          'ABBAABBA (1/2/2/2/1) Modified': 'abba',
-          'AAAABBBB (4/4) Bowtie': 'bowtie',
+          'ABBAABBA (1/2/2/2/1), Modified': 'abba',
+          'AAAABBBB (4/4), Bowtie': 'bowtie',
           'Generic calls.': 'none',
         },
       },
@@ -1819,63 +1820,250 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.2, // Time until headmarker and future/past damage
+      delaySeconds: 1.3, // Time until headmarker and future/past damage
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
         const count = data.pathOfLightCounter;
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
         const config = data.triggerSetConfig.forsaken;
         const isForsakenGroupA = data.isForsakenGroupA;
 
         const time = isFuture ? output.future!() : output.past!();
         if (count === 3) {
-          if (config === 'kroxy-rinon' || config === 'bowtie')
-            return output.baitThenMech!({
-              bait: time,
-              mech: isForsakenGroupA
-                ? output.tower!()
-                : output.baitOrStack!(),
-            });
-          if (config === 'abba')
-            return output.baitThenMech!({
-              bait: time,
-              mech: isForsakenGroupA
-                ? output.baitOrStack!()
-                : output.tower!(),
-            });
-        } else if (count === 5) {
-          if (config === 'abba')
-            return output.baitThenMech!({
-              bait: time,
-              mech: isForsakenGroupA
-                ? output.tower!()
-                : output.baitOrStack!(),
-            });
-          if (config === 'kroxy-rinon' || config === 'bowtie')
-            return output.baitThenMech!({
-              bait: time,
-              mech: isForsakenGroupA
-                ? output.baitOrStack!()
-                : output.tower!(),
-            });
-        } else if (count === 7) {
-          if (config !== 'none')
-            return output.baitThenMech!({
-              bait: time,
-              mech: isForsakenGroupA
-                ? output.baitOrStack!()
-                : output.tower!(),
-            });
-        } else
-          return isFuture
-            ? output.lastFuture!({ action: output.behind!() })
-            : output.lastPast!({ action: output.stay!() });
+          // Stacks should soak towers
+          if (marker === 'stack') {
+            if (
+              (
+                isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')
+              ) ||
+              (!isForsakenGroupA && config === 'abba') ||
+              (config === 'none')
+            ) {
+              // Need to know for priority
+              const players = data.pathOfLightStackPlayers.map(
+                (player) => {
+                  if (player === data.me)
+                    return output.you!();
+                  return data.party.member(player);
+                },
+              );
+              const msg = players?.join(', ');
 
-        // No Strategy
-        return time;
+              // Assuming none config soaks
+              return output.baitThenStacks!({
+                bait: time,
+                stacks: output.stacksOnPlayers!({ players: msg }),
+              });
+            }
+          }
+
+          // Tower soakers, non stack markers
+          if (
+            (
+              isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')
+            ) ||
+            (!isForsakenGroupA && config === 'abba')
+          ) {
+            return output.baitThenMarkerTower!({
+              bait: time,
+              marker: output[marker]!(),
+              tower: marker === 'cone'
+                ? output.leftTower!()
+                : output.rightTower!(),
+            });
+          }
+
+          // Baits and Stacks
+          if (
+            (
+              !isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')
+            ) ||
+            (isForsakenGroupA && config === 'abba')
+          ) {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftStack!(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftBaitOut!(),
+              });
+            // 2 DPS in stack
+            return output.baitThenMech!({
+              bait: time,
+              mech: output.rightStack!(),
+            });
+          }
+
+          // No config
+          return output.baitThenMarker!({
+            bait: time,
+            marker: output[marker]!(),
+          });
+        } else if (count === 5) {
+          // Baits and Stacks
+          if (
+            (isForsakenGroupA && config === 'kroxy-rinon') ||
+            (!isForsakenGroupA && config === 'abba')
+          ) {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftStack!(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftBaitOut!(),
+              });
+            // 2 DPS in stack
+            return output.baitThenMech!({
+              bait: time,
+              mech: output.rightStack!(),
+            });
+          }
+
+          if (config === 'bowtie') {
+            // Bowtie has people bait cones, but cones could bait eachother if they wanted
+            if (!isForsakenGroupA) {
+              return output.baitThenMarkerTower!({
+                bait: time,
+                marker: output[marker]!(),
+                tower: marker === 'cone'
+                  ? output.leftTower!()
+                  : output.rightTower!(),
+              });
+            }
+            if (data.role === 'tank')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftBaitLeftBowtie!(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.leftBaitOutBowtie!(),
+              });
+            // 2 DPS in spread
+            return output.baitThenMech!({
+              bait: time,
+              mech: output.getHitRightSpreadBowtie!(),
+            });
+          }
+
+          // Tower Soaks
+          // In AAAABBBB, there is no stack
+          if (marker === 'stack') {
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map(
+              (player) => {
+                if (player === data.me)
+                  return output.you!();
+                return data.party.member(player);
+              },
+            );
+            const msg = players?.join(', ');
+
+            // Assuming none config soaks
+            return output.baitThenStacks!({
+              bait: time,
+              stacks: output.stacksOnPlayers!({ players: msg }),
+            });
+          }
+
+          // This ends up being Group B || Group A for respective config
+          if (config === 'kroxy-rinon' || config === 'abba') {
+            return output.baitThenMarkerTower!({
+              bait: time,
+              marker: output[marker]!(),
+              tower: marker === 'cone'
+                ? output.leftTower!()
+                : output.rightTower!(),
+            });
+          }
+
+          // No config
+          return output.baitThenMarker!({
+            bait: time,
+            marker: output[marker]!(),
+          });
+        } else if (count === 7) {
+          if (config !== 'none') {
+            if (isForsakenGroupA) {
+              // So long as it is standard party composition...
+              if (data.role === 'tank')
+                return output.baitThenMech!({
+                  bait: time,
+                  mech: output.leftStack!(),
+                });
+              if (data.role === 'healer')
+                return output.baitThenMech!({
+                  bait: time,
+                  mech: output.leftBaitOut!(),
+                });
+              // 2 DPS in stack
+              return output.baitThenMech!({
+                bait: time,
+                mech: output.rightStack!(),
+              });
+            }
+            if (marker === 'stack') {
+              // Need to know for priority
+              const players = data.pathOfLightStackPlayers.map(
+                (player) => {
+                  if (player === data.me)
+                    return output.you!();
+                  return data.party.member(player);
+                },
+              );
+              const msg = players?.join(', ');
+
+              // Assuming none config soaks
+              return output.baitThenStacks!({
+                bait: time,
+                stacks: output.stacksOnPlayers!({ players: msg }),
+              });
+            }
+
+            return output.baitThenMarkerTower!({
+              bait: time,
+              marker: output[marker]!(),
+              tower: marker === 'cone'
+                ? output.leftTower!()
+                : output.rightTower!(),
+            });
+          }
+
+          // No config
+          return output.baitThenMarker!({
+            bait: time,
+            marker: output[marker]!(),
+          });
+        }
+        return isFuture
+          ? output.lastFuture!({ action: output.behind!() })
+          : output.lastPast!({ action: output.stay!() });
       },
       outputStrings: {
         tower: Outputs.getTowers,
         behind: Outputs.getBehind,
+        cone: {
+          en: 'Cone on YOU',
+        },
+        spread: {
+          en: 'Spread on YOU',
+        },
+        you: {
+          en: 'YOU',
+        },
+        stacksOnPlayers: {
+          en: 'Stacks on ${players}',
+        },
         stay: {
           en: 'Stay',
           de: 'Bleib stehen',
@@ -1884,23 +2072,59 @@ const triggerSet: TriggerSet<Data> = {
           ko: '대기',
           tc: '停',
         },
+        leftTower: {
+          en: 'Left Tower',
+        },
+        rightTower: {
+          en: 'Right Tower',
+        },
+        leftStack: {
+          en: 'Left Stack',
+        },
+        rightStack: {
+          en: 'Right Stack',
+        },
+        leftBaitOut: {
+          en: 'Left Bait Out',
+        },
         baitOrStack: {
           en: 'Bait/Stack',
         },
         future: {
-          en: 'Bait Ending opposite Towers',
+          en: 'Bait opposite Towers',
         },
         past: {
-          en: 'Bait Ending between Towers',
+          en: 'Bait between Towers',
+        },
+        baitThenMarker: {
+          en: '${bait} => ${marker}',
         },
         baitThenMech: {
           en: '${bait} => ${mech}',
         },
+        baitThenMarkerTower: {
+          en: '${bait} => ${marker} ${tower}',
+        },
+        baitThenTower: {
+          en: '${bait} => ${tower}',
+        },
+        baitThenStacks: {
+          en: '${bait} => ${stacks}',
+        },
         lastFuture: {
-          en: 'Bait Ending => ${action}',
+          en: 'Bait => ${action}',
         },
         lastPast: {
-          en: 'Bait Ending => ${action}',
+          en: 'Bait => ${action}',
+        },
+        getHitRightSpreadBowtie: {
+          en: 'Hit by Right Spread'
+        },
+        leftBaitLeftBowtie: {
+          en: 'Left Bait Left',
+        },
+        leftBaitOutBowtie: {
+          en: 'Left Bait Out',
         },
       },
     },
