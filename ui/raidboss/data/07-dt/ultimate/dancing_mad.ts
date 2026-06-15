@@ -9,6 +9,11 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 // TODO: P3 Tailwind/Headwind resolution configuration options
 // TODO: P3 Verify number headmarker values
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
+// TODO: P3 Blackhole Directions
+// TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
+// TODO: P3 Blackhole number output replace with Blackhole set (currently it's Nothingness counter)
+// TODO: P3 Better no-config support via debuff tracking?
+// TODO: P3 Aoe calls for Earthquake and/or some call for those with no tether during swaps?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -63,6 +68,11 @@ export interface Data extends RaidbossData {
   inLine: { [name: string]: number };
   firstAccretion?: string;
   secondAccretion?: string;
+  hadAccretion: boolean;
+  kefkaTeleportDirNum?: number;
+  blackHoleSet: number; // To be replaced?
+  nothingnessCount: number;
+  // blackHoleDirNums: string[];
 }
 
 const headMarkerData = {
@@ -221,6 +231,39 @@ const trapOutputStrings: OutputStrings = {
   },
 };
 
+const blackHoleOutputStrings: OutputStrings = {
+  ...Directions.outputStringsCardinalDir,
+  unknown: Outputs.unknown,
+  num: {
+    en: '${num}: ',
+    de: '${num}: ',
+    fr: '${num}: ',
+    ja: '${num}: ',
+    cn: '${num}: ',
+    ko: '${num}: ',
+    tc: '${num}: ',
+  },
+  takeDirTetherClockwise: {
+    en: '${num} Take ${dir1} Tether Clockwise'
+  },
+  keepTether: {
+    en: 'Keep Tether',
+  },
+  passTether: {
+    en: 'Pass Tether',
+  },
+  oneBlackHole: {
+    en: '${num}${dir}',
+  },
+  twoBlackHoles: {
+    en: '${num}${dir1}/${dir2}',
+  },
+  threeBlackHoles: {
+    en: '${num}${dir1}/${dir2}/${dir3}',
+  },
+};
+
+
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -246,6 +289,23 @@ const triggerSet: TriggerSet<Data> = {
       },
       default: 'none',
     },
+    {
+      id: 'blackhole',
+      comment: {
+        en: `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
+      },
+      name: {
+        en: 'P3 Black Hole Order',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Kefkabin': 'kefka',
+          'Generic calls': 'none',
+        },
+      },
+      default: 'none',
+    },
   ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
@@ -267,6 +327,10 @@ const triggerSet: TriggerSet<Data> = {
       waterElementPlayers: [],
       firstBlaster: [],
       inLine: {},
+      hadAccretion: false,
+      blackHoleSet: 0, // To be replaced?
+      nothingnessCount: 0,
+      // blackHoleDirNums: [],
     };
   },
   triggers: [
@@ -2017,6 +2081,10 @@ const triggerSet: TriggerSet<Data> = {
           data.firstAccretion = target;
         else
           data.secondAccretion = target;
+
+        // Store for Black Hole Order
+        if (data.me === target)
+          data.hadAccretion = true;
       },
     },
     {
@@ -2189,6 +2257,448 @@ const triggerSet: TriggerSet<Data> = {
         slapDirMechThenOut: {
           en: '${dir1} + ${mech} => ${out}',
         },
+      },
+    },
+    {
+      id: 'DMU P3 Nothingness Counter',
+      // There are 10 sets of Nothingness from Black Holes to soak
+      // They always spawn on a cardinal
+      // The Nothingness beams should be baited cw or ccw for melee uptime
+      // Getting hit by Nothingness gives 154C Unbecoming
+      // If hit by Nothingness with 154C Unbecoming, it becomes 154D Meanest Existence
+      // If hit by Nothingness with 154D Meanest Existence, lethal damage is taken which
+      // expires 154E Primordial Crust causing an BAFA Earthquake AOE
+      //
+      // Accretions Resolve => Slap Happy
+      // Black Hole Set 1 spawns 1 Black Hole
+      // 1 => 1 Nothingness (Taken by a 1)
+      // Black Holes Set 2 spawns 2 Black Holes
+      // 2 => 2 Nothingness (Taken by two 1s)
+      // TBs => Damning Edict => Slap Happy
+      // Black Hole Set 3 spawns 3 Black Holes
+      // 3 => 3 Nothingness (Taken by two 1s and Accretion 1), 1 player swaps tether
+      // 4 => 3 Nothingness (Taken by one 1, Accretion 1, and one 2), 1 player swaps tether
+      // 5 => 3 Nothingness (Taken by two 2s and Accretion 1)
+      // Damning Edict => Look upon Me and Despair => TBs
+      // Black Hole Set 3 spawns 3 Black Holes
+      // 6 => 3 Black Holes (Taken by two 2s and Accretion 2), 1 player swaps tether
+      // 7 => 3 Black Holes (Taken by one 3, one 2, and Accretion 2), 1 player swaps tether
+      // 8 => 3 Black Holes (Taken by two 3s, and Accretion 2)
+      // Lat/Long (White Hole cast here too) => Slap Happy  => Look upon Me and Despair
+      // Black Hole Set 5 spawns 2 Black Holes
+      // 9 => 2 Black Holes (Taken by two 3s)
+      // Black Hole Set 6 spawns 1 Black Hole
+      // 10 => 1 Black Hole (Taken by last 3)
+      // However, there are will be 10 BAFC Nothingness casts
+      // Using BAFC Nothingness to track which set we are on
+      type: 'Ability',
+      netRegex: { id: 'BAFC', capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        data.nothingnessCount = data.nothingnessCount + 1,
+        // These will be replaced with either tether or actor tracker
+        // data.blackHoleDirNums = [];
+        data.blackHoleSet = data.blackHoleSet + 1;
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 1, Nothingness 1',
+      // One Black Hole spawns, causes a single Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 0;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir = 'unknown'; // TBD
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 1 &&
+          !data.hadAccretion && data.role === 'dps'
+        )
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir]!(),
+            }),
+          };
+        return {
+          infoText: output.oneBlackHole!({
+            num: data.blackHoleSet, dir: output[dir]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 2, Nothingness 1',
+      // Two Black Holes spawn, each cause a single Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 1;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir1 = 'unknown'; // TBD
+        const dir2 = 'unknown'; // TBD
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 1 &&
+          !data.hadAccretion
+        ) {
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir1]!(),
+              }),
+            };
+          // Support #1
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.twoBlackHoles!({
+            num: data.blackHoleSet,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 3, Nothingness 1',
+      // Three Black Holes spawn, each cause three Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 2;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir1 = 'unknown'; // TBD
+        const dir2 = 'unknown'; // TBD
+        const dir3 = 'unknown'; // TBD
+
+        if (config === 'kefka' && data.inLine[data.me] === 1) {
+          if (data.hadAccretion)
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir3]!(),
+              }),
+            };
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir1]!(),
+              }),
+            };
+          // Support #1
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.threeBlackHoles!({
+            num: data.blackHoleSet,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+            dir3: output[dir3]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 3, Nothingness 2',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 3;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const hadAccretion = data.hadAccretion;
+        const line = data.inLine[data.me];
+        const dir = 'unknown'; // TBD
+
+        if (config === 'kefka') {
+          if (line === 1) {
+            if (hadAccretion || (data.role !== 'dps'))
+              return { infoText: output.keepTether!() };
+            // DPS #1
+            return { alertText: output.passTether!() };
+          }
+          if (line === 2 && !hadAccretion && data.role === 'dps') {
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 3, Nothingness 3',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 4;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const hadAccretion = data.hadAccretion;
+        const line = data.inLine[data.me];
+        const dir = 'unknown'; // TBD
+
+        if (config === 'kefka') {
+          if (line === 1) {
+            if (hadAccretion)
+              return { infoText: output.keepTether!() };
+            if (data.role !== 'dps')
+              return { alertText: output.passTether!() };
+          }
+          if (line === 2 && !hadAccretion) {
+            if (data.role !== 'dps') {
+              // We could get the player they are taking from, but seems unnecessary at the time
+              return {
+                alertText: output.takeDirTetherClockwise!({
+                  num: data.blackHoleSet, dir: output[dir]!(),
+                }),
+              };
+            }
+            // DPS #2
+            return { infoText: output.keepTether!() };
+          }
+        }
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 4, Nothingness 1',
+      // Three Black Holes spawn, each cause three Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 5;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir1 = 'unknown'; // TBD
+        const dir2 = 'unknown'; // TBD
+        const dir3 = 'unknown'; // TBD
+
+        if (config === 'kefka' && data.inLine[data.me] === 2) {
+          if (data.hadAccretion)
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir3]!(),
+              }),
+            };
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir1]!(),
+              }),
+            };
+          // Support #2
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.threeBlackHoles!({
+            num: data.blackHoleSet,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+            dir3: output[dir3]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 4, Nothingness 2',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 6;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const line = data.inLine[data.me];
+        const dir = 'unknown'; // TBD
+
+        if (config === 'kefka') {
+          if (line === 2) {
+            if (data.hadAccretion || data.role !== 'dps')
+              return { infoText: output.keepTether!() };
+            // DPS #2
+            return { alertText: output.passTether!() };
+          }
+          if (line === 3 && data.role === 'dps') {
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 4, Nothingness 3',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 7;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const line = data.inLine[data.me];
+        const dir = 'unknown'; // TBD
+
+        if (config === 'kefka') {
+          if (line === 2) {
+            if (data.hadAccretion)
+              return { infoText: output.keepTether!() };
+            if (data.role !== 'dps')
+              return { alertText: output.passTether!() };
+          }
+          if (line === 3) {
+            if (data.role === 'dps')
+              return { infoText: output.keepTether!() };
+            // Support #3
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 5, Nothingness 1',
+      // Two Black Holes spawn, each cause a single Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 8;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir1 = 'unknown'; // TBD
+        const dir2 = 'unknown'; // TBD
+
+        if (config === 'kefka' && data.inLine[data.me] === 3) {
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: data.blackHoleSet, dir: output[dir1]!(),
+              }),
+            };
+          // Support #3
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.twoBlackHoles!({
+            num: data.blackHoleSet,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 6, Nothingness 1',
+      // One Black Hole spawns, causes a single Nothingness
+      type: 'Tether',
+      netRegex: { capture: false },
+      condition: (data) => {
+        return data.phase === 'p3' && data.nothingnessCount === 9;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const dir = 'unknown'; // TBD
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 3 &&
+          data.role !== 'dps'
+        )
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: data.blackHoleSet, dir: output[dir]!(),
+            }),
+          };
+        return {
+          infoText: output.oneBlackHole!({
+            num: data.blackHoleSet, dir: output[dir]!(),
+          }),
+        };
       },
     },
   ],
