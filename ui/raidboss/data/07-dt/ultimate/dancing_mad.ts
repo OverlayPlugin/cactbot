@@ -2118,7 +2118,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait => ${action}',
         },
         getHitRightSpreadBowtie: {
-          en: 'Hit by Right Spread'
+          en: 'Hit by Right Spread',
         },
         leftBaitLeftBowtie: {
           en: 'Left Bait Left',
