@@ -245,7 +245,7 @@ const blackHoleOutputStrings: OutputStrings = {
     tc: '${num}: ',
   },
   takeDirTetherClockwise: {
-    en: '${num} Take ${dir1} Tether Clockwise'
+    en: '${num} Take ${dir} Tether Clockwise',
   },
   keepTether: {
     en: 'Keep Tether',
@@ -293,7 +293,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'blackhole',
       comment: {
-        en: `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
+        en:
+        `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
       },
       name: {
         en: 'P3 Black Hole Order',
@@ -2296,7 +2297,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BAFC', capture: false },
       suppressSeconds: 1,
       run: (data) => {
-        data.nothingnessCount = data.nothingnessCount + 1,
+        data.nothingnessCount = data.nothingnessCount + 1;
         // These will be replaced with either tether or actor tracker
         // data.blackHoleDirNums = [];
         data.blackHoleSet = data.blackHoleSet + 1;
@@ -2324,12 +2325,14 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir]!(),
+              num: data.blackHoleSet,
+              dir1: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.blackHoleSet, dir: output[dir]!(),
+            num: data.blackHoleSet,
+            dir: output[dir]!(),
           }),
         };
       },
@@ -2358,13 +2361,15 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir1]!(),
+                num: data.blackHoleSet,
+                dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir2]!(),
+              num: data.blackHoleSet,
+              dir: output[dir2]!(),
             }),
           };
         }
@@ -2400,19 +2405,22 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir3]!(),
+                num: data.blackHoleSet,
+                dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir1]!(),
+                num: data.blackHoleSet,
+                dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir2]!(),
+              num: data.blackHoleSet,
+              dir: output[dir2]!(),
             }),
           };
         }
@@ -2457,7 +2465,8 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir]!(),
+                num: data.blackHoleSet,
+                dir: output[dir]!(),
               }),
             };
           }
@@ -2495,7 +2504,8 @@ const triggerSet: TriggerSet<Data> = {
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.takeDirTetherClockwise!({
-                  num: data.blackHoleSet, dir: output[dir]!(),
+                  num: data.blackHoleSet,
+                  dir: output[dir]!(),
                 }),
               };
             }
@@ -2527,19 +2537,22 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir3]!(),
+                num: data.blackHoleSet,
+                dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir1]!(),
+                num: data.blackHoleSet,
+                dir: output[dir1]!(),
               }),
             };
           // Support #2
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir2]!(),
+              num: data.blackHoleSet,
+              dir: output[dir2]!(),
             }),
           };
         }
@@ -2583,7 +2596,8 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir]!(),
+                num: data.blackHoleSet,
+                dir: output[dir]!(),
               }),
             };
           }
@@ -2622,7 +2636,8 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir]!(),
+                num: data.blackHoleSet,
+                dir: output[dir]!(),
               }),
             };
           }
@@ -2650,13 +2665,15 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet, dir: output[dir1]!(),
+                num: data.blackHoleSet,
+                dir: output[dir1]!(),
               }),
             };
           // Support #3
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir2]!(),
+              num: data.blackHoleSet,
+              dir: output[dir2]!(),
             }),
           };
         }
@@ -2692,12 +2709,14 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet, dir: output[dir]!(),
+              num: data.blackHoleSet,
+              dir: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.blackHoleSet, dir: output[dir]!(),
+            num: data.blackHoleSet,
+            dir: output[dir]!(),
           }),
         };
       },
