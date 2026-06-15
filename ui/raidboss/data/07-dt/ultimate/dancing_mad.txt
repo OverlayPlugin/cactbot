@@ -132,6 +132,7 @@ hideall "--sync--"
 369.5 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
 371.8 "--sync--" HeadMarker { id: '0103' } window 216,5
 376.7 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
+380.1 "--untargetable?--"
 380.1 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
 383.2 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 220,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
 385.0 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
