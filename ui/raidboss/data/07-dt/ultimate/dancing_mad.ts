@@ -1,11 +1,11 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TODO: P1 Tele-Portent configuration options
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -20,6 +20,9 @@ const phases: { [id: string]: Phase } = {
 // const centerY = 100;
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    teleportent: 'clockwise' | 'filipino' | 'none';
+  };
   // General
   phase: Phase | 'unknown';
   // Phase 1
@@ -233,6 +236,29 @@ const trapOutputStrings: OutputStrings = {
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
+  config: [
+    {
+      id: 'teleportent',
+      comment: {
+        en:
+          `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
+          Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
+      },
+      name: {
+        en: 'P1 Graven Image 3 Tele-Portent Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Clockwise Big Box': 'clockwise',
+          'Filipino Box (Intercardinals)': 'filipino',
+          'Call Debuffs only': 'none',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
     return {
@@ -964,12 +990,101 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       durationSeconds: 7,
       infoText: (data, _matches, output) => {
-        if (data.myTelePortent1 === undefined || data.myTelePortent2 === undefined)
+        const tp1 = data.myTelePortent1;
+        const tp2 = data.myTelePortent2;
+        if (tp1 === undefined || tp2 === undefined)
           return;
-        const portents = data.myTelePortent1 + data.myTelePortent2;
+        const portents = tp1 + tp2;
+
+        if (data.triggerSetConfig.teleportent === 'clockwise') {
+          // Relative to center of arena
+          const dir1Map: { [tps: string]: typeof portents } = {
+            'upup': 'west',
+            'downdown': 'east',
+            'rightright': 'north',
+            'leftleft': 'south',
+            'downleft': 'dirESE',
+            'downright': 'northeast',
+            'rightup': 'northwest',
+            'rightdown': 'dirNNE',
+            'leftup': 'dirSSW',
+            'leftdown': 'southeast',
+            'upright': 'dirWNW',
+            'upleft': 'southwest',
+          };
+          // Relative to where player is
+          const dir2Map: { [tps: string]: typeof portents } = {
+            'upup': 'south',
+            'downdown': 'north',
+            'rightright': 'west',
+            'leftleft': 'east',
+            'downleft': 'south',
+            'downright': 'west',
+            'rightup': 'south',
+            'rightdown': 'east',
+            'leftup': 'west',
+            'leftdown': 'north',
+            'upright': 'north',
+            'upleft': 'east',
+          };
+          const dir1 = dir1Map[portents];
+          const dir2 = dir2Map[portents];
+
+          return output.clockwise!({
+            dir1: output[dir1 ?? 'unknown']!(),
+            dir2: output[dir2 ?? 'unknown']!(),
+          });
+        }
+        if (data.triggerSetConfig.teleportent === 'filipino') {
+          const dir1Map: { [tps: string]: typeof portents } = {
+            'upup': 'southeastOut',
+            'downdown': 'northwestOut',
+            'rightright': 'southwestOut',
+            'leftleft': 'northeastOut',
+            'downleft': 'dirWSW',
+            'downright': 'southeastIn',
+            'rightup': 'northeastIn',
+            'rightdown': 'dirSSE',
+            'leftup': 'dirNNW',
+            'leftdown': 'southwestIn',
+            'upright': 'dirENE',
+            'upleft': 'northwestIn',
+          };
+          const dir2Map: { [tps: string]: typeof portents } = {
+            'upup': 'north',
+            'downdown': 'south',
+            'rightright': 'east',
+            'leftleft': 'west',
+            'downleft': 'east',
+            'downright': 'south',
+            'rightup': 'east',
+            'rightdown': 'north',
+            'leftup': 'south',
+            'leftdown': 'west',
+            'upright': 'west',
+            'upleft': 'north',
+          };
+          const dir1 = dir1Map[portents];
+          const dir2 = dir2Map[portents];
+
+          return output.filipino!({
+            dir1: output[dir1 ?? 'unknown']!(),
+            dir2: output[dir2 ?? 'unknown']!(),
+          });
+        }
         return output[portents]!();
       },
       outputStrings: {
+        ...Directions.outputStrings16Dir,
+        north: Outputs.north,
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        southeast: Outputs.southeast,
+        south: Outputs.south,
+        southwest: Outputs.southwest,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
           ko: '위쪽 화살표',
@@ -1017,6 +1132,36 @@ const triggerSet: TriggerSet<Data> = {
         upleft: {
           en: 'Up => Left Portent',
           ko: '위 => 왼쪽 화살표',
+        },
+        clockwise: {
+          en: '${dir1} => ${dir2}',
+        },
+        filipino: {
+          en: '${dir1} => ${dir2}',
+        },
+        southeastOut: { // upup for Filipino
+          en: 'Southeast Out',
+        },
+        northwestOut: { // downdown for Filipino
+          en: 'Northwest Out',
+        },
+        southwestOut: { // rightright for Filipino
+          en: 'Southwest Out',
+        },
+        northeastOut: { // leftleft for Filipino
+          en: 'Northeast Out',
+        },
+        southeastIn: { // downright for Filipino
+          en: 'Southeast In',
+        },
+        northeastIn: { // rightup for Filipino
+          en: 'Northeast In',
+        },
+        southwestIn: { // leftdown for Filipino
+          en: 'Southwest In',
+        },
+        northwestIn: { // upleft for Filipino
+          en: 'Northwest In',
         },
       },
     },
@@ -1340,12 +1485,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stack: {
           en: 'Stack Path on YOU',
+          ko: '쉐어징 대상자',
         },
         cone: {
           en: 'Cone Path on YOU',
+          ko: '부채꼴징 대상자',
         },
         spread: {
           en: 'Spread Path on YOU',
+          ko: '산개징 대상자',
         },
       },
     },
@@ -1360,9 +1508,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         future: {
           en: 'Future',
+          ko: '미래',
         },
         past: {
           en: 'Past',
+          ko: '과거',
         },
       },
     },
@@ -1413,9 +1563,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         epic: {
           en: 'Attack Chaos',
+          ko: '카오스 공격',
         },
         fated: {
           en: 'Attack Exdeath',
+          ko: '엑스데스 공격',
         },
       },
     },
@@ -1440,9 +1592,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         headwind: {
           en: 'Headwind on YOU',
+          ko: '혼돈의 바람 대상자',
         },
         tailwind: {
           en: 'Tailwind on You',
+          ko: '혼돈의 역풍 대상자',
         },
       },
     },
@@ -1474,6 +1628,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockbackFromBoss: {
           en: 'Knockback from ${chaos}',
+          ko: '${chaos}에서 넉백',
         },
       },
     },
@@ -1487,6 +1642,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         getBehindTarget: {
           en: 'Get Behind ${target}',
+          ko: '${target} 뒤로',
         },
       },
     },
@@ -1504,59 +1660,124 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ko',
       'missingTranslations': true,
       'replaceSync': {
+        'Black Hole': '블랙홀',
         'Chaos': '카오스',
-        'Exdeath': '엑스데스',
+        '(?<! )Exdeath': '엑스데스',
         'Graven Image': '신들의 상',
         'Kefka': '케프카',
+        'Neo Exdeath': '네오 엑스데스',
       },
       'replaceText': {
         '\\(Pop Window\\)': '(활성화)',
         '\\(castbar\\)': '(시전바)',
+        '\\(Chaos': '(카오스',
+        '\\(Exdeath': '(엑스데스',
+        '--numbers--': '--숫자--',
+        '--accretion\\?--': '--혼돈의 진흙?--',
+        '--untargetable\\?--': '--타겟 불가능?--',
+        '--middle\\?--': '--중앙?--',
+        '--Chaos untargetable\\?--': '--카오스 타겟 불가능?--',
+        '--Exdeath untargetable\\?--': '--엑스데스 타겟 불가능?--',
+        'Accretion Earthquake': '혼돈의 진흙 지진',
         'Aero III Assault': '갈기갈기 에어로가',
+        'Aetherlink': '에테르 연결',
         'All Things Ending': '소멸의 발차기',
         'Ave Maria': '아베 마리아',
+        'Big Bang': '돌출',
+        'Black Antilight': '죽은 자의 암흑광',
+        'Black Hole': '블랙홀',
+        'Black Spark': '검은 불꽃',
+        'Blackblood': '흑혈',
+        'Blizzard III(?! Blowout)': '블리자가',
         'Blizzard III Blowout': '널리널리 블리자가',
         'Bowels of Agony': '고통의 심핵',
+        'Catastrophic Choice': '두 가지 선택의 참사',
+        'Celestriad': '세 개의 별',
+        'Chaotic Flare': '혼돈의 플레어',
+        'Chaotic Flood': '혼돈의 홍수',
+        'Chaotic Holy': '혼돈의 홀리',
         'Cyclone': '회오리',
+        'Damning Edict': '파멸 포고',
+        'Death Bolt': '죽음의 번개',
+        'Death Bomb': '죽음의 폭탄',
+        'Death Shriek': '죽음의 비명',
+        'Death Surge': '죽음의 격동',
+        'Death Wave': '죽음의 파도',
         'Definition of Insanity': '재구성',
         'Double-Trouble Trap': '줄줄이 함정',
+        'Down for the Count': '행동 불가',
+        '(?<! )Earthquake': '지진',
+        'Edge of Death': '생사의 갈림길',
         'Explosion': '폭발',
+        'Fell Forces': '마격',
+        '(?<! )Fire III': '파이가',
         'Flagrant Fire III': '이글이글 파이가',
-        'Forsaken': '행방불명',
+        '(?<! )Flare(?! )': '플레어',
+        'Flare Diffusion': '확산 플레어',
+        '(?<! )Flood(?! )': '플러드',
+        'Flood of Naught': '무의 범람',
+        'Forsaken(?! [BGN])': '행방불명',
+        'Forsaken Bonds': '행방불명: 유대',
+        'Forsaken Ground': '행방불명: 지면',
+        'Forsaken Null': '행방불명: 소실',
         'Future\'s End/Past\'s End': '과거/미래의 종언',
+        'Grand Cross': '그랜드크로스',
         'Graven Image': '신들의 상',
         'Gravitas': '중력탄',
         'Gravitational Wave': '중력파',
         'Gravity III': '그라비가',
+        '(?<! )Holy': '홀리',
         'Hyperdrive': '하이퍼드라이브',
         'Idyllic Will': '수마의 신기',
         'Indolent Will': '태만의 신기',
         'Indulgent Will': '성모의 신기',
         'Inferno': '화염',
         'Intemperate Will': '박살의 신기',
+        'Kefka Says': '꼭두각시 영혼',
+        'Knock Down': '착탄',
         'Light of Judgment': '심판의 빛',
-        'Longitudinal Implosion': '세로 내파',
+        'Longitudinal Implosion/Latitudinal Implosion': '가로/세로 내파',
+        'Look upon Me and Despair': '있는 그대로의 나',
+        'Maddening Orchestra': '광기의 오케스트라',
+        'Mana Charge': '마력 충전',
+        'Mana Release': '마력 방출',
+        'Max': '맥시멈',
+        'Meteor': '메테오',
         'Mystery Magic': '알쏭달쏭 마법',
+        'Nothingness': '무의 파동',
+        'Primordial Crust Quake': '혼돈의 흙 퀘이크',
         'Pulse Wave': '파동탄',
+        '(?<![ h])Quake': '퀘이크',
         'Revolting Ruin III': '파삭파삭 루인가',
+        'Shocking Impact': '겹충격',
         'Shockwave': '충격파',
-        'Spelldriver': '위험한 주문: 집중',
-        'Spellscatter': '위험한 주문: 분산',
-        'Spellwave': '위험한 주문: 파동',
+        'Slap Happy': '철썩철썩 따귀',
+        'Spelldriver/Spellscatter/Spellwave': '위험한 주문: 집중/분산/파동',
+        'Stomp-a-Mole': '쿵쿵 발 구르기',
+        'Stray Apocalypse': '혼돈의 종말',
+        'Stray Entropy': '혼돈의 와류',
         'Stray Flames': '혼돈의 불',
         'Stray Spray': '혼돈의 물',
         'Tele-trouncing': '성큼성큼 텔레포',
+        'The Decisive Battle': '결전',
         'The Path of Light': '빛의 파동',
         'Thrumming Thunder III': '찌릿찌릿 선더가',
         '(?<! )Thunder III': '선더가',
+        'Tornado': '토네이도',
         'Trance': '자아도취',
         'Trine': '트라인',
         'Tsunami': '해일',
+        'Ultima Blaster': '알테마 블래스터',
+        'Ultima Repeater': '연속 알테마',
+        'Ultima Upsurge': '두근두근 알테마',
         'Ultimate Embrace': '종말의 포옹',
+        'Umbra Smash': '그림자 타격',
+        'Vacuum Wave': '진공파',
         'Vitrophyre': '암석탄',
         'Wave Cannon': '파동포',
-        'Wings of Destruction': '파괴의 날개',
-        'the Decisive Battle': '결전',
+        'White Antilight': '산 자의 암흑광',
+        'White Hole': '화이트홀',
+        'Wings of Destruction': '파괴의 날개 ',
       },
     },
   ],
