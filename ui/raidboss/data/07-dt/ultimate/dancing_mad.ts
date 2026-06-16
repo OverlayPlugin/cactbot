@@ -404,7 +404,7 @@ const triggerSet: TriggerSet<Data> = {
           'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
           'ABBAABBA (1/2/2/2/1), Modified': 'abba',
           'AAAABBBB (4/4), Bowtie': 'bowtie',
-          'Generic calls.': 'none',
+          'Generic calls': 'none',
         },
       },
       default: 'none',
@@ -1960,7 +1960,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.3, // Time until headmarker and future/past damage
+      delaySeconds: 1.4, // Time until headmarker and future/past damage
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
         const count = data.pathOfLightCounter;
