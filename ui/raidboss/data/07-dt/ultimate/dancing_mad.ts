@@ -264,7 +264,6 @@ const blackHoleOutputStrings: OutputStrings = {
   },
 };
 
-
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
