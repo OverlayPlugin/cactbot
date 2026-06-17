@@ -1,7 +1,10 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, { Directions } from '../../../../../resources/util';
+import Util, {
+  DirectionOutputIntercard,
+  Directions,
+} from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -59,10 +62,14 @@ export interface Data extends RaidbossData {
   // Phase 2
   // Phase 3
   isFireShort?: boolean;
+  windCrystalNext: boolean;
   myElement?: 'fire' | 'water';
   myWind?: 'head' | 'tail';
   fireElementPlayers: string[];
   waterElementPlayers: string[];
+  fireCrystalDir?: DirectionOutputIntercard;
+  waterCrystalDir?: DirectionOutputIntercard;
+  windCrystalDir?: DirectionOutputIntercard;
   firstBlaster: number[];
   firstBlasterDirNum?: number;
   blasterRotation?: number;
@@ -326,6 +333,7 @@ const triggerSet: TriggerSet<Data> = {
       doubleTroubleTrapTargets: [],
       // Phase 2
       // Phase 3
+      windCrystalNext: false,
       fireElementPlayers: [],
       waterElementPlayers: [],
       firstBlaster: [],
@@ -1566,7 +1574,7 @@ const triggerSet: TriggerSet<Data> = {
       // 641 Dynamic Flood: On expiration creates donut AoE around the player
       // and water crystal targets two closest players with point-blank AoEs
       //
-      // Entropy or Dynamic Fluid will have 20s and the other 45s duration
+      // Entropy or Dynamic Fluid will have 19s and the other 46s duration
       // At the same time, elemental crystals spawn at intercardinals
       // Fire and Water Crystals will be opposite each other
       // Wind Crystal will be between on the opposite side
@@ -1579,7 +1587,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const id = matches.effectId;
         if (data.isFireShort === undefined) {
-          const isShort = parseFloat(matches.duration) < 21;
+          const isShort = parseFloat(matches.duration) < 20;
           data.isFireShort = (isShort && id === '640') ||
               (!isShort && id === '641')
             ? true
@@ -1601,6 +1609,7 @@ const triggerSet: TriggerSet<Data> = {
       // nearest player with 2-person stack
       // 643 Tailwind: Face towards knockback source, wind crystal targets
       // nearest player with 2-person stack
+      // These have a 68s duration
       type: 'GainsEffect',
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -1646,17 +1655,92 @@ const triggerSet: TriggerSet<Data> = {
         },
         headwind: {
           en: 'Headwind on YOU',
-          ko: '혼돈의 바람 대상자',
         },
         tailwind: {
           en: 'Tailwind on YOU',
-          ko: '혼돈의 역풍 대상자',
         },
         withElement: {
           en: '${short}: ${element} + ${wind}',
         },
         withoutElement: {
           en: '${short}: ${wind}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Crystal Location Collector',
+      // Crystals are added at same time as BAF2 Bowels of Agony
+      //
+      // First set spawns at intercardinals
+      // Wind will be inbetween Fire and Water
+      // The following are their BNpcIDs:
+      // 1EC03A => Fire (Red Triangle) Crystal
+      // 1EC03B => Water (Blue Square) Crystal
+      // 1EC03C => Wind (Green Diamond) Crystal
+      //
+      // Later the Earth Crystal will spawn in the center
+      // 1EC03D => Earth (Yellow Arrowhead) Crystal (TODO: Verify this BNnpcID)
+      // They are removed once players lose their respective debuffs
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03A', '1EC03B', '1EC03C'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const bnpcid = matches.pairBNpcID;
+        const dir = Directions.xyToIntercardDirOutput(x, y, centerX, centerY);
+
+        if (bnpcid === '1EC03A')
+          data.fireCrystalDir = dir;
+        else if (bnpcid === '1EC03B')
+          data.waterCrystalDir = dir;
+        else
+          data.windCrystalDir = dir;
+      },
+    },
+    {
+      id: 'DMU P3 Short Crystal and Crystal Locations',
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: '1EC03C' }],
+        capture: false,
+      },
+      delaySeconds: 2, // To prevent overlap with debuffs and time for collect
+      durationSeconds: 17, // Duration of the first debuff
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const fireDir = data.fireCrystalDir ?? 'unknown';
+        const waterDir = data.waterCrystalDir ?? 'unknown';
+        const windDir = data.waterCrystalDir ?? 'unknown';
+        const fShort = data.isFireShort;
+
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+
+        return output.crystals!({
+          short: fShort ? fire : water,
+          long: fShort ? water : fire,
+          wind: output.wind!({ dir: output[windDir]!() }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        unknown: Outputs.unknown,
+        fire: {
+          en: 'Fire ${dir}',
+        },
+        water: {
+          en: 'Water ${dir}',
+        },
+        wind: {
+          en: 'Wind ${dir}',
+        },
+        crystals: {
+          en: '${short} => ${long} => ${wind} (later)',
         },
       },
     },
@@ -1670,11 +1754,18 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
+          ...Directions.outputStringsIntercardDir,
           you: {
             en: 'YOU',
           },
+          bait: {
+            en: 'Bait Fire Donut',
+          },
           fireOnPlayersCrystal: {
-            en: 'Spread on ${players} / Bait Fire Donut',
+            en: '${spread}/${bait}',
+          },
+          fireOnPlayersCrystalDir: {
+            en: '${spread}/${dir} => ${bait}',
           },
           fireOnPlayers: {
             en: 'Spread on ${players}',
@@ -1690,12 +1781,27 @@ const triggerSet: TriggerSet<Data> = {
           },
         );
         const msg = players?.join(', ');
+        const spread = output.fireOnPlayers!({ players: msg });
 
         // Tanks and Melee aren't expected to bait crystals, so shorten output
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: output.fireOnPlayers!({ players: msg }) };
+          return { [severity]: spread };
 
-        return { [severity]: output.fireOnPlayersCrystal!({ players: msg }) };
+        const dir = data.fireCrystalDir;
+        if (dir === undefined)
+          return {
+            [severity]: output.fireOnPlayersCrystal!({
+              spread: spread,
+              bait: output.bait!(),
+            }),
+          };
+        return {
+          [severity]: output.fireOnPlayersCrystalDir!({
+            spread: spread,
+            dir: output[dir]!(),
+            bait: output.bait!(),
+          }),
+        };
       },
     },
     {
@@ -1708,18 +1814,25 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
+          ...Directions.outputStringsIntercardDir,
           you: {
             en: 'YOU',
           },
+          bait: {
+            en: 'Bait Water AOE',
+          },
           waterOnPlayersCrystal: {
-            en: 'Donut on ${players} / Bait Water AOE',
+            en: '${donut}/${bait}',
+          },
+          waterOnPlayersCrystalDir: {
+            en: '${donut}/${dir} => ${bait}',
           },
           waterOnPlayers: {
             en: 'Donut on ${players}',
           },
         };
 
-        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const severity = data.myElement === 'water' ? 'alertText' : 'infoText';
         const players = data.waterElementPlayers.map(
           (player) => {
             if (player === data.me)
@@ -1728,12 +1841,105 @@ const triggerSet: TriggerSet<Data> = {
           },
         );
         const msg = players?.join(', ');
+        const donut = output.waterOnPlayers!({ players: msg });
 
         // Tanks and Melee aren't expected to bait crystals, so shorten output
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: output.waterOnPlayers!({ players: msg }) };
+          return { [severity]: donut };
 
-        return { [severity]: output.waterOnPlayersCrystal!({ players: msg }) };
+        const dir = data.waterCrystalDir;
+        if (dir === undefined)
+          return {
+            [severity]: output.waterOnPlayersCrystal!({
+              donut: donut,
+              bait: output.bait!(),
+            }),
+          };
+        return {
+          [severity]: output.waterOnPlayersCrystalDir!({
+            donut: donut,
+            dir: output[dir]!(),
+            bait: output.bait!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Long Crystal and Wind Crystal Locations',
+      // Inform that long is next, location it will Be
+      // One of these spells will trigger:
+      // BAF3 Stray Flames
+      // BAF6 Stray Spray
+      type: 'Ability',
+      netRegex: { id: ['BAF3', 'BAF6'], source: 'Chaos', capture: true },
+      condition: (data, matches) => {
+        const fShort = data.isFireShort;
+        const id = matches.id;
+        // Ensure this only outputs if expected crystal went off
+        return (fShort && id === 'BAF3') || (!fShort && id === 'BAF6');
+      },
+      durationSeconds: 27, // Duration of the first debuff
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const fShort = data.isFireShort;
+        const longCrystalDir = fShort ? data.waterCrystalDir : data.fireCrystalDir;
+        const longDir = longCrystalDir ?? 'unknown';
+        const windDir = data.waterCrystalDir ?? 'unknown';
+
+        return output.crystals!({
+          long: fShort
+            ? output.fire!({ dir: output[longDir]!() })
+            : output.water!({ dir: output[longDir]!() }),
+          wind: output.wind!({ dir: output[windDir]!() }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        unknown: Outputs.unknown,
+        fire: {
+          en: 'Fire ${dir}',
+        },
+        water: {
+          en: 'Water ${dir}',
+        },
+        wind: {
+          en: 'Wind ${dir}',
+        },
+        crystals: {
+          en: '${long} => ${wind} (later)',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Wind Crystal Next Flag',
+      // By the BAFF Shockwave, the next BAF3 Stray Flames / BAF6 Stray Spray
+      // Will mean we will need to resolve the wind crystal next
+      type: 'Ability',
+      netRegex: { id: 'BAFF', source: 'Chaos', capture: false },
+      suppressSeconds: 99999,
+      run: (data) => data.windCrystalNext = true,
+    },
+    {
+      id: 'DMU P3 Wind Crystal Location',
+      // Inform that wind is next
+      // One of these spells will trigger:
+      // BAF3 Stray Flames
+      // BAF6 Stray Spray
+      type: 'Ability',
+      netRegex: { id: ['BAF3', 'BAF6'], source: 'Chaos', capture: false },
+      condition: (data) => data.windCrystalNext,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const windDir = data.waterCrystalDir ?? 'unknown';
+
+        return output.wind!({ dir: output[windDir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        unknown: Outputs.unknown,
+        wind: {
+          en: 'Knockback to Wind ${dir} (later)',
+        },
       },
     },
     {
@@ -1928,7 +2134,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Vaccuum Wave',
+      id: 'DMU P3 Vacuum Wave',
       // If players have not yet resolved their headwinds, then they will need
       // to do so:
       // Headwind look at Exdeath
@@ -1948,26 +2154,51 @@ const triggerSet: TriggerSet<Data> = {
           tc: '卡奧斯',
         };
         const chaosName = chaosLocaleNames[data.parserLang];
+        const windDir = data.windCrystalDir;
+        const knockback = output.knockbackFromChaos!({ chaos: chaosName });
+        const exdeath = matches.source;
 
-        if (data.myWind === undefined)
-          return output.knockbackFromChaos!({ chaos: chaosName });
+        if (data.myWind === undefined) {
+          if (windDir === undefined)
+            return output.knockbackFromChaosToCrystal!({ knockback: knockback });
+          return output.knockbackFromChaosToDir!({
+            knockback: knockback,
+            dir: output[windDir]!(),
+          });
+        }
 
-        return output.text!({
-          knockback: output.knockbackFromChaos!({ chaos: chaosName }),
-          facing: output[data.myWind]!({ target: matches.source }),
-        });
+        if (windDir === undefined)
+          return output.knockbackFromChaosToWindFacing!({
+            knockbackDir: output.knockbackFromChaosToCrystal!({
+              knockback: knockback,
+            }),
+            facing: output[data.myWind]!({ target: exdeath }),
+          });
+        return output.knockbackFromChaosToWindFacing!({
+            knockbackDir: output.knockbackFromChaosToDir!({
+              knockback: knockback,
+              dir: output[windDir]!(),
+            }),
+            facing: output[data.myWind]!({ target: exdeath }),
+          });
       },
       outputStrings: {
+        ...Directions.outputStringsIntercardDir,
         head: {
           en: 'Face ${target}',
         },
         tail: Outputs.lookAwayFromTarget,
         knockbackFromChaos: {
           en: 'Knockback from ${chaos}',
-          ko: '${chaos}에서 넉백',
         },
-        text: {
-          en: '${knockback} + ${facing}',
+        knockbackFromChaosToDir: {
+          en: '${knockback} to ${dir}',
+        },
+        knockbackFromChaosToCrystal: {
+          en: '${knockback} to Crystal',
+        },
+        knockbackFromChaosToWindFacing: {
+          en: '${knockbackDir} + ${facing}',
         },
       },
     },
