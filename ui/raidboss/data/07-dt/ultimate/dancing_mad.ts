@@ -1951,6 +1951,26 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: forsakenOutputStrings,
     },
     {
+      id: 'DMU P2 Future\'s End/Past\'s End (Early)',
+      // There are four end casts
+      // This output will need to be short as in 1.4s another trigger will fire
+      type: 'StartsUsing',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      infoText: (_data, matches, output) => {
+        return matches.id === 'BAD2' ? output.future!() : output.past!();
+      },
+      outputStrings: {
+        future: {
+          en: 'Future',
+          ko: '미래',
+        },
+        past: {
+          en: 'Past',
+          ko: '과거',
+        },
+      },
+    },
+    {
       id: 'DMU P2 All Things Ending Baits',
       // Using the following spells for timing:
       // BAD2 Future's End => Need to bait BACD All Things Ending
