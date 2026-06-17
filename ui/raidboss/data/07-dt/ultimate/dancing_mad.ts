@@ -1,10 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, {
-  DirectionOutputIntercard,
-  Directions,
-} from '../../../../../resources/util';
+import Util, { DirectionOutputIntercard, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -2175,12 +2172,12 @@ const triggerSet: TriggerSet<Data> = {
             facing: output[data.myWind]!({ target: exdeath }),
           });
         return output.knockbackFromChaosToWindFacing!({
-            knockbackDir: output.knockbackFromChaosToDir!({
-              knockback: knockback,
-              dir: output[windDir]!(),
-            }),
-            facing: output[data.myWind]!({ target: exdeath }),
-          });
+          knockbackDir: output.knockbackFromChaosToDir!({
+            knockback: knockback,
+            dir: output[windDir]!(),
+          }),
+          facing: output[data.myWind]!({ target: exdeath }),
+        });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
