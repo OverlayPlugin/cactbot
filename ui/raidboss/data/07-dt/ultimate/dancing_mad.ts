@@ -95,7 +95,9 @@ const headMarkerData = {
   'stackPath': '02CB', // When standing in Path of Light tower, causes BAC0 Spelldriver (3-person stack)
   'conePath': '02CD', // When standing in Path of Light tower, causes BAC2 Spellwave (cone targetting nearest player)
   'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
-  // Phase 3
+  // Phase 3 tethers
+  'exdeathTether': '0040', // Exdeath "pulls energy" from Graven Image with BNpcID 4C31 with BB12 Thunder III
+  // Phase 3 Players
   '1': '004F',
   '2': '0050',
   '3': '0051',
@@ -1691,7 +1693,7 @@ const triggerSet: TriggerSet<Data> = {
 
         // Tanks and Melee aren't expected to bait crystals, so shorten output
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: output.fireOnPlayers!() };
+          return { [severity]: output.fireOnPlayers!({ players: msg }) };
 
         return { [severity]: output.fireOnPlayersCrystal!({ players: msg }) };
       },
@@ -1718,7 +1720,7 @@ const triggerSet: TriggerSet<Data> = {
         };
 
         const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
-        const players = data.fireElementPlayers.map(
+        const players = data.waterElementPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
@@ -1729,7 +1731,7 @@ const triggerSet: TriggerSet<Data> = {
 
         // Tanks and Melee aren't expected to bait crystals, so shorten output
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: output.waterOnPlayers!() };
+          return { [severity]: output.waterOnPlayers!({ players: msg }) };
 
         return { [severity]: output.waterOnPlayersCrystal!({ players: msg }) };
       },
@@ -2306,8 +2308,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 1, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
+      netRegex: { capture: true },
       condition: (data) => {
+        if (matches.id === headMarkerData['exdeathTether'])
+          return false;
         return data.phase === 'p3' && data.nothingnessCount === 0;
       },
       suppressSeconds: 99999,
