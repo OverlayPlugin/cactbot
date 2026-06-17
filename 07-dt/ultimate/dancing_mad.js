@@ -101,6 +101,22 @@ const mysteryMagicOutputStrings = {
     en: 'Cone + Line',
     ko: '부채꼴 + 직선',
   },
+  stackTrueThunderLook: {
+    en: '${mech} + ${thunder} + ${look}',
+    ko: '${mech} + ${thunder} + ${look}',
+  },
+  stackFakeThunderLook: {
+    en: '${mech} + ${thunder} + ${look}',
+    ko: '${mech} + ${thunder} + ${look}',
+  },
+  spreadTrueThunderLook: {
+    en: '${mech} + ${thunder} + ${look}',
+    ko: '${mech} + ${thunder} + ${look}',
+  },
+  spreadFakeThunderLook: {
+    en: '${mech} + ${thunder} + ${look}',
+    ko: '${mech} + ${thunder} + ${look}',
+  },
   stackTrueThunder: {
     en: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
@@ -116,6 +132,24 @@ const mysteryMagicOutputStrings = {
   spreadFakeThunder: {
     en: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
+  },
+  lookAway: {
+    en: 'Look Away From Statue',
+    de: 'Von Statue wegschauen',
+    fr: 'Ne regardez pas la statue',
+    ja: '塔を見ない！',
+    cn: '背对神像',
+    ko: '시선 피하기',
+    tc: '背對神像',
+  },
+  lookAt: {
+    en: 'Look At Statue',
+    de: 'Statue anschauen',
+    fr: 'Regardez la statue',
+    ja: '像を見る！',
+    cn: '面对神像',
+    ko: '시선 바라보기',
+    tc: '面對神像',
   },
 };
 const trapOutputStrings = {
@@ -787,14 +821,6 @@ Options.Triggers.push({
           en: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
-        indulgent: {
-          en: 'Confuse Tether on YOU',
-          ko: '혼란 선 대상자',
-        },
-        idyllic: {
-          en: 'Sleep Tether on YOU',
-          ko: '수면 선 대상자',
-        },
       },
     },
     {
@@ -1110,13 +1136,17 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers',
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers (Early)',
+      // There is 9.6s (not including 0.1s delay) until 503 Confuse or 131E
+      // Sleep Applied. Corresponding Abilities are at ~9s (not including 0.1s delay)
+      // Double-trouble Trap TTS comes out ~1s prior to the tethers
       type: 'Tether',
       netRegex: { id: headMarkerData['imageTether'], capture: true },
       condition: (data, matches) => {
         return data.me === matches.target && data.gravenImageCount === 3;
       },
       delaySeconds: 0.1,
+      durationSeconds: 5.5,
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
@@ -1149,7 +1179,47 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'DMU P1 Ave Maria',
+      id: 'DMU P1 Indulgent Will and Idyllic Will Tethers Reminder',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['imageTether'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.gravenImageCount === 3;
+      },
+      delaySeconds: 5.6,
+      durationSeconds: 4,
+      alertText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.tetherOnYou();
+        const x = actor.x;
+        if (x < 100) // Graven Image 3: Indulgent Will target
+          return output.indulgent();
+        if (x < 108 && x > 106) // Graven Image 3: Idyllic Will target
+          return output.idyllic();
+        return output.tetherOnYou();
+      },
+      outputStrings: {
+        tetherOnYou: {
+          en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
+          ja: '線ついた',
+          cn: '连线点名',
+          ko: '선 대상자 지정됨',
+          tc: '連線點名',
+        },
+        indulgent: {
+          en: 'Confuse Tether on YOU',
+          ko: '혼란 선 대상자',
+        },
+        idyllic: {
+          en: 'Sleep Tether on YOU',
+          ko: '수면 선 대상자',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Ave Maria (Early)',
       // BAB3 Ave Maria
       // The animation is visible ~9.89s before cast goes off, however
       // When animation becomes visible, the players will be asleep or
@@ -1158,39 +1228,25 @@ Options.Triggers.push({
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.fakeEyeTowerIds.includes(matches.id),
-      durationSeconds: 9.5,
-      countdownSeconds: 3.4,
-      infoText: (_data, _matches, output) => output.lookAt(),
+      durationSeconds: 4.7,
+      infoText: (_data, _matches, output) => output.lookAtLater(),
       outputStrings: {
-        lookAt: {
-          en: 'Look At Statue',
-          de: 'Statue anschauen',
-          fr: 'Regardez la statue',
-          ja: '像を見る！',
-          cn: '面对神像',
-          ko: '시선 바라보기',
-          tc: '面對神像',
+        lookAtLater: {
+          en: 'Look At Statue (later)',
         },
       },
     },
     {
-      id: 'DMU P1 Indolent Will',
+      id: 'DMU P1 Indolent Will (Early)',
       // BAB4 Indolent Will
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       condition: (data, matches) => data.eyeTowerIds.includes(matches.id),
-      durationSeconds: 9.5,
-      countdownSeconds: 3.4,
-      infoText: (_data, _matches, output) => output.lookAway(),
+      durationSeconds: 4.7,
+      infoText: (_data, _matches, output) => output.lookAwayLater(),
       outputStrings: {
-        lookAway: {
-          en: 'Look Away From Statue',
-          de: 'Von Statue wegschauen',
-          fr: 'Ne regardez pas la statue',
-          ja: '塔を見ない！',
-          cn: '背对神像',
-          ko: '시선 피하기',
-          tc: '背對神像',
+        lookAwayLater: {
+          en: 'Look Away From Statue (later)',
         },
       },
     },
@@ -1200,7 +1256,63 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'BA94', source: 'Kefka', capture: false },
       condition: (data) => {
-        return data.isFireTrue !== undefined && data.isThunderTrue !== undefined;
+        if (
+          data.isFireTrue !== undefined &&
+          data.isThunderTrue !== undefined &&
+          data.phase === 'p1'
+        )
+          return true;
+        return false;
+      },
+      infoText: (data, _matches, output) => {
+        const fireMarker = data.fireMarker;
+        const look = data.isTowerLookAway ? output.lookAway() : output.lookAt();
+        if (
+          (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
+          (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
+        )
+          return data.isThunderTrue
+            ? output.spreadTrueThunderLook({
+              mech: output.spread(),
+              thunder: output.trueThunder(),
+              look: look,
+            })
+            : output.spreadFakeThunderLook({
+              mech: output.spread(),
+              thunder: output.fakeThunder(),
+              look: look,
+            });
+        if (
+          (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
+          (fireMarker === headMarkerData['stack'] && data.isFireTrue)
+        ) {
+          return data.isThunderTrue
+            ? output.stackTrueThunderLook({
+              mech: output.stack(),
+              thunder: output.trueThunder(),
+              look: look,
+            })
+            : output.stackFakeThunderLook({
+              mech: output.stack(),
+              thunder: output.fakeThunder(),
+              look: look,
+            });
+        }
+      },
+      outputStrings: mysteryMagicOutputStrings,
+    },
+    {
+      id: 'DMU P4 Mystery Magic Fire and Thunder',
+      type: 'StartsUsing',
+      netRegex: { id: 'BA94', source: 'Kefka', capture: false },
+      condition: (data) => {
+        if (
+          data.isFireTrue !== undefined &&
+          data.isThunderTrue !== undefined &&
+          data.phase === 'p4'
+        )
+          return true;
+        return false;
       },
       infoText: (data, _matches, output) => {
         const fireMarker = data.fireMarker;
