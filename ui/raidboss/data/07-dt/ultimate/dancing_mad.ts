@@ -2309,7 +2309,7 @@ const triggerSet: TriggerSet<Data> = {
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
       netRegex: { capture: true },
-      condition: (data) => {
+      condition: (data, matches) => {
         if (matches.id === headMarkerData['exdeathTether'])
           return false;
         return data.phase === 'p3' && data.nothingnessCount === 0;
