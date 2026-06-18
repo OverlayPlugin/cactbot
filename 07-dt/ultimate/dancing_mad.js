@@ -1238,6 +1238,17 @@ Options.Triggers.push({
       },
     },
     {
+      id: 'DMU P1 Ave Maria / Indolent Will Collect',
+      // Collect for reminder with Myster Magic
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
+      run: (data, matches) => {
+        const id = matches.id;
+        if (data.eyeTowerIds.includes(id) || data.fakeEyeTowerIds.includes(matches.id))
+          data.isTowerLookAway = data.eyeTowerIds.includes(id);
+      },
+    },
+    {
       id: 'DMU P1 Ave Maria (Early)',
       // BAB3 Ave Maria
       // The animation is visible ~9.89s before cast goes off, however
