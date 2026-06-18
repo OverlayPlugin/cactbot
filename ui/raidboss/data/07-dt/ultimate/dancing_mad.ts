@@ -2053,34 +2053,34 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Ultima Blaster Collect',
       // Starts from random cardinal/intercardinal then rotates either CW or CCW
       // These are raidwide AOEs, but also include telegraphed lines and explosions
-      // TODO: Verify the this is correct
+      // Ability lines can have erroneous values
+      // Entity that does these has BNpcID 4BFB, added shortly before
+      // 271 ActorSetPos and 261 CombatantMemory Change lines are updated just prior to the ability
       type: 'Ability',
       netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
-      condition: (data, matches) => {
-        const x2 = parseFloat(matches.x);
-        const y2 = parseFloat(matches.y);
-        if (data.firstBlaster === undefined) {
-          data.firstBlaster = [x2, y2];
-          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
-          return false;
-        }
+      condition: (data) => data.blasterRotation === undefined,
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
 
+        const x2 = actor.x;
+        const y2 = actor.y;
         // Get rotation of first and second Kefka blasters
         const x1 = data.firstBlaster[0];
         const y1 = data.firstBlaster[1];
-
         if (x1 === undefined || y1 === undefined) {
-          // Try next blaster
           data.firstBlaster = [x2, y2];
-          return false;
+          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
+          // Return to get the next blaster
+          return;
         }
 
         // Compute atan2 of determinant and dot product to get rotational direction
         // Note: X and Y are flipped due to Y axis being reversed
         data.blasterRotation = Math.atan2(y1 * x2 - x1 * y2, y1 * y2 + x1 * x2);
-        return true; // Stop execution after 2nd blaster
       },
-      suppressSeconds: 99999,
     },
     {
       id: 'DMU P3 Ultima Blaster Rotation',
@@ -2202,6 +2202,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P1 Ultima Blaster Location',
       // Nearest inter-inter cardinal opposite that of first blaster
+      // Could also account for player missing a marker as these are added sequentially
       type: 'HeadMarker',
       netRegex: {
         id: [
