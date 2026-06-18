@@ -3422,7 +3422,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BADC', source: 'Kefka', capture: false },
       condition: (data) => data.pathOfLightCounter === 9,
       suppressSeconds: 1,
-      response: Responses.getBehind('alert'),
+      response: Responses.getBehind(),
     },
     {
       id: 'DMU P2 Light of Judgment',
