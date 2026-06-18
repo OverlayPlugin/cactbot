@@ -102,14 +102,14 @@ const headMarkerData = {
   // Phase 3 tethers
   'exdeathTether': '0040', // Exdeath "pulls energy" from Graven Image with BNpcID 4C31 with BB12 Thunder III
   // Phase 3 Players
-  '1': '004F',
-  '2': '0050',
-  '3': '0051',
-  '4': '0052',
-  '5': '0053',
-  '6': '0054',
-  '7': '0055',
-  '8': '0056',
+  '1': '0150',
+  '2': '0151',
+  '3': '0152',
+  '4': '0153',
+  '5': '01B5',
+  '6': '01B6',
+  '7': '01B7',
+  '8': '01B8',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
@@ -1671,8 +1671,8 @@ const triggerSet: TriggerSet<Data> = {
       // First set spawns at intercardinals
       // Wind will be inbetween Fire and Water
       // The following are their BNpcIDs:
-      // 1EC03A => Fire (Red Triangle) Crystal
-      // 1EC03B => Water (Blue Square) Crystal
+      // 1EC03A => Water (Blue Square) Crystal
+      // 1EC03B => Fire (Red Triangle) Crystal
       // 1EC03C => Wind (Green Diamond) Crystal
       //
       // Later the Earth Crystal will spawn in the center
@@ -1691,9 +1691,9 @@ const triggerSet: TriggerSet<Data> = {
         const dir = Directions.xyToIntercardDirOutput(x, y, centerX, centerY);
 
         if (bnpcid === '1EC03A')
-          data.fireCrystalDir = dir;
-        else if (bnpcid === '1EC03B')
           data.waterCrystalDir = dir;
+        else if (bnpcid === '1EC03B')
+          data.fireCrystalDir = dir;
         else
           data.windCrystalDir = dir;
       },
@@ -1712,7 +1712,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const fireDir = data.fireCrystalDir ?? 'unknown';
         const waterDir = data.waterCrystalDir ?? 'unknown';
-        const windDir = data.waterCrystalDir ?? 'unknown';
+        const windDir = data.windCrystalDir ?? 'unknown';
         const fShort = data.isFireShort;
 
         const fire = output.fire!({ dir: output[fireDir]!() });
@@ -2169,22 +2169,22 @@ const triggerSet: TriggerSet<Data> = {
             knockbackDir: output.knockbackFromChaosToCrystal!({
               knockback: knockback,
             }),
-            facing: output[data.myWind]!({ target: exdeath }),
+            facing: output[data.myWind]!({ name: exdeath }),
           });
         return output.knockbackFromChaosToWindFacing!({
           knockbackDir: output.knockbackFromChaosToDir!({
             knockback: knockback,
             dir: output[windDir]!(),
           }),
-          facing: output[data.myWind]!({ target: exdeath }),
+          facing: output[data.myWind]!({ name: exdeath }),
         });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
-        head: {
-          en: 'Face ${target}',
+        tail: {
+          en: 'Face ${name}',
         },
-        tail: Outputs.lookAwayFromTarget,
+        head: Outputs.lookAwayFromTarget,
         knockbackFromChaos: {
           en: 'Knockback from ${chaos}',
         },
@@ -2218,20 +2218,21 @@ const triggerSet: TriggerSet<Data> = {
       },
       condition: Conditions.targetIsYou(),
       infoText: (data, matches, output) => {
-        const limitCutNumberMap: { [id: string]: number } = {
-          '004F': 1,
-          '0050': 2,
-          '0051': 3,
-          '0052': 4,
-          '0053': 5,
-          '0054': 6,
-          '0055': 7,
-          '0056': 8,
+        
+        const blasterNumberMap: { [id: string]: number } = {
+          '0150': 1,
+          '0151': 2,
+          '0152': 3,
+          '0153': 4,
+          '01B5': 5,
+          '01B6': 6,
+          '01B7': 7,
+          '01B8': 8,
         };
         const blaster = data.firstBlasterDirNum;
         const rotation = data.blasterRotation;
         const id = matches.id;
-        const myNum = limitCutNumberMap[id];
+        const myNum = blasterNumberMap[id];
         if (myNum === undefined)
           return;
 
