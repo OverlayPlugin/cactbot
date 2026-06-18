@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAF1 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAF1 BB06 BB38
 # -p C403:15.6 C24C:219.8 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
@@ -148,17 +148,20 @@ hideall "--sync--"
 # TODO: Update with network log
 # TODO: Add voiceline sync?
 # en: 'Hmph. I see what's going on here.'
-537.7 "Definition of Insanity" Ability { id: "BAE2", source: "Kefka" }
-543.8 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
-548.0 "--sync--" Ability { id: "C554", source: "Kefka" }
+537.3 "Definition of Insanity" Ability { id: "BAE2", source: "Kefka" }
+540.3 "--both targetable--"
+543.5 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
+543.5 "--single target--" #GainsEffect { effectId: ['1061', '1063'] } # Epic Villain (Chaos)/Fated Villain (Exdeath)
+547.7 "--sync--" Ability { id: "C554", source: "Kefka" }
 
 # Fire, Water, and Wind Elements
-563.1 "Bowels of Agony" Ability { id: "BAF2", source: "Chaos" }
-582.1 "Stray Flames/Stray Spray" Ability { id: ["BAF3", "BAF6"], source: ["Chaos", "Kefka"] }
-582.1 "Thunder III" #Ability { id: "BB12", source: "Exdeath" }
-583.1 "Inferno/Tsunami" Ability { id: ["BAF4", "BAF5"], source: ["Chaos", "Kefka"] } # Supposed to be from Chaos, but can bug
-584.9 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
-591.3 "--sync--" Ability { id: "BB09", source: "Exdeath" }
+562.9 "Bowels of Agony" Ability { id: "BAF2", source: "Chaos" }
+575.0 "--both targetable--" LosesEffect { effectId: ['1061', '1063'] } # Epic Villain (Chaos)/Fated Villain (Exdeath)
+582.0 "Stray Flames/Stray Spray" Ability { id: ["BAF3", "BAF6"], source: ["Chaos", "Kefka"] }
+582.0 "Thunder III" #Ability { id: "BB12", source: "Exdeath" }
+583.0 "Inferno/Tsunami" Ability { id: ["BAF4", "BAF5"], source: ["Chaos", "Kefka"] } # Supposed to be from Chaos, but can bug
+584.7 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
+591.2 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 591.3 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 594.3 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 597.0 "--sync--" Ability { id: "C555", source: "Kefka" }
@@ -198,6 +201,7 @@ hideall "--sync--"
 649.7 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 652.7 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 657.7 "The Decisive Battle" Ability { id: ["C2E2", "C2E3"], source: ["Chaos", "Exdeath"] }
+657.7 "--single target--" #GainsEffect { effectId: ['1061', '1063'] } # Epic Villain (Chaos)/Fated Villain (Exdeath)
 666.8 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 666.8 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 
@@ -291,7 +295,7 @@ hideall "--sync--"
 823.3 "Knock Down 2" Ability { id: "BB03", source: "Chaos" }
 826.4 "Blizzard III" Ability { id: "BB11", source: "Exdeath" }
 827.4 "Big Bang" Ability { id: "BB05", source: "Chaos" }
-827.4 "Big Bang" #Ability { id: "BB06", source: "Chaos" }
+830.3 "--both targetable--" LosesEffect { effectId: ['1061', '1063'] } # Epic Villain (Chaos)/Fated Villain (Exdeath)
 
 840.7 "--sync--" StartsUsing { id: "C61F", source: "Chaos" } window 840,5 jump "p3-chaos-enrage" # This starts when Exdeath dies
 840.7 "--sync--" StartsUsing { id: "C61E", source: "Exdeath" } window 840,5 jump "p3-exdeath-enrage" # This starts when Chaos dies
@@ -529,6 +533,7 @@ hideall "--sync--"
 # C572 Earthquake: VFX
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
+# BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
 # P5 IGNORED ABILITIES
 # BB38 Forsaken: VFX
@@ -590,8 +595,8 @@ hideall "--sync--"
 # BAE3 Ultima Blaster
 # BAE4 Ultima Blaster
 # BAE5 Max
-# BAE6 Slap Happy: Castbar for slapping left or right first
-# BAE7 Slap Happy: Castbar for slapping right or left first
+# BAE6 Slap Happy: Boss slaps his right 3 times (party cleave) + left once
+# BAE7 Slap Happy: Boss slaps his left 3 times (role cleaves) + right once
 # BAE8 Slap Happy: 3 slaps on one side
 # BAE9 Slap Happy: Last slap that flips sides
 # BAEA Shocking Impact
@@ -620,8 +625,8 @@ hideall "--sync--"
 # BB01 Damning Edict
 # BB02 Knock Down: VFX
 # BB03 Knock Down: Damage
-# BB05 Big Bang
-# BB06 Big Bang
+# BB05 Big Bang: VFX castbar
+# BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 # BB09 Thunder III: VFX castbar
 # BB0C Thunder III: Damage from bb09
 # BB0D Blizzard III

@@ -216,6 +216,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           text: {
             en: `${matches.target}: Wrong buff`,
             cn: `${matches.target}: buff 错误`,
+            ko: `${matches.target}: 디버프 틀림`,
           },
         };
       },
@@ -233,6 +234,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           text: {
             en: `${matches.target}: Wrong buff`,
             cn: `${matches.target}: buff 错误`,
+            ko: `${matches.target}: 디버프 틀림`,
           },
         };
       },
@@ -266,6 +268,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           text: {
             en: 'Tower with heal debuff',
             cn: '带着治疗 debuff 踩塔',
+            ko: '회복 디버프 상태에서 탑 밟음',
           },
         };
       },
