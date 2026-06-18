@@ -2088,7 +2088,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P2 All Things Ending Baits',
       // Using the following spells for timing:
-      // BAD2 Future's End => Need to bait BACD All Things Ending
+      // BAD2 Future's End => Need to bait BADC All Things Ending
       // BAD3 Past's End => Need to bait BADD All Things Ending
       // There are four end casts, each 10s apart
       // BAD2 and BAD3 are the castbar, damage doesn't go out until later
@@ -3414,6 +3414,15 @@ const triggerSet: TriggerSet<Data> = {
           tc: '坦克LB!!',
         },
       },
+    },
+    {
+      id: 'DMU P2 Last All Things Ending Followup',
+      // BADC All Things Ending (Future)
+      type: 'StartsUsing',
+      netRegex: { id: 'BADC', source: 'Kefka', capture: false },
+      condition: (data) => data.pathOfLightCounter === 9,
+      suppressSeconds: 1,
+      response: Responses.getBehind('alert'),
     },
     {
       id: 'DMU P2 Light of Judgment',
