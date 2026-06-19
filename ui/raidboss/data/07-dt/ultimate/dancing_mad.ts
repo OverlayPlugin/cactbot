@@ -4,7 +4,7 @@ import { Responses } from '../../../../../resources/responses';
 import Util, { DirectionOutputIntercard, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
+import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P3 Tailwind/Headwind resolution configuration options
 // TODO: P3 Verify number headmarker values
@@ -2277,61 +2277,52 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
       infoText: (data, matches, output) => {
-        const chaosLocaleNames: LocaleText = {
-          en: 'Chaos',
-          de: 'Chaos',
-          fr: 'Chaos',
-          ja: 'カオス',
-          cn: '卡奥斯',
-          ko: '카오스',
-          tc: '卡奧斯',
-        };
-        const chaosName = chaosLocaleNames[data.parserLang];
         const windDir = data.windCrystalDir;
-        const knockback = output.knockbackFromChaos!({ chaos: chaosName });
         const exdeath = matches.source;
 
         if (data.myWind === undefined) {
+          const knockback = output.knockbackFromExdeath!({ exdeath: exdeath });
           if (windDir === undefined)
-            return output.knockbackFromChaosToCrystal!({ knockback: knockback });
-          return output.knockbackFromChaosToDir!({
+            return output.knockbackToCrystal!({
+              knockback: knockback,
+            });
+          return output.knockbackToDir!({
             knockback: knockback,
             dir: output[windDir]!(),
           });
         }
 
+       const knockbackFacing = output.knockbackFromFacingExdeath!({
+         facing: output[data.myWind]!(),
+         exdeath: exdeath,
+       });
+
         if (windDir === undefined)
-          return output.knockbackFromChaosToWindFacing!({
-            knockbackDir: output.knockbackFromChaosToCrystal!({
-              knockback: knockback,
-            }),
-            facing: output[data.myWind]!({ name: exdeath }),
+          return output.knockbackToCrystal!({
+            knockback: knockbackFacing,
           });
-        return output.knockbackFromChaosToWindFacing!({
-          knockbackDir: output.knockbackFromChaosToDir!({
-            knockback: knockback,
-            dir: output[windDir]!(),
-          }),
-          facing: output[data.myWind]!({ name: exdeath }),
+        return output.knockbackToDir!({
+          knockback: knockbackFacing,
+          dir: output[windDir]!(),
         });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
         tail: {
-          en: 'Face ${name}',
+          en: 'Face',
         },
         head: Outputs.lookAwayFromTarget,
-        knockbackFromChaos: {
-          en: 'Knockback from ${chaos}',
+        knockbackFromExdeath: {
+          en: 'Knockback from ${exdeath}',
         },
-        knockbackFromChaosToDir: {
+        knockbackFromFacingExdeath: {
+          en: 'Knockback from + ${facing} ${exdeath}',
+        },
+        knockbackToDir: {
           en: '${knockback} to ${dir}',
         },
-        knockbackFromChaosToCrystal: {
+        knockbackToCrystal: {
           en: '${knockback} to Crystal',
-        },
-        knockbackFromChaosToWindFacing: {
-          en: '${knockbackDir} + ${facing}',
         },
       },
     },
