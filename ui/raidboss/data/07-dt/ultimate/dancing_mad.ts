@@ -433,11 +433,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'forsaken',
       comment: {
-        en: `There should be two groups of four players, choose tower soak order.<br \>
+        en: `There should be two groups of four players, choose tower soak order<br \>
           Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br \>
           Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br \>
           Bowtie AAAABBBB 4/4: Using same priority as the kroxy-rinon. (Will require Tank LB3)<br \>
-          Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in.`,
+          Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in`,
       },
       name: {
         en: 'P2 Forsaken Strategy',
@@ -448,7 +448,7 @@ const triggerSet: TriggerSet<Data> = {
           'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
           'ABBAABBA (1/2/2/2/1), Modified': 'abba',
           'AAAABBBB (4/4), Bowtie': 'bowtie',
-          'Generic calls': 'none',
+          'Generic Calls': 'none',
         },
       },
       default: 'none',
@@ -1286,7 +1286,6 @@ const triggerSet: TriggerSet<Data> = {
         southwest: Outputs.southwest,
         west: Outputs.west,
         northwest: Outputs.northwest,
-        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
           ko: '위쪽 화살표',
@@ -3549,7 +3548,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings16Dir,
-        unknown: Outputs.unknown,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3} Later',
         },
@@ -3609,7 +3607,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings16Dir,
-        unknown: Outputs.unknown,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3}',
         },
