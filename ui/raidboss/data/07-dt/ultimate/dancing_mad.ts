@@ -4,16 +4,15 @@ import { Responses } from '../../../../../resources/responses';
 import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
+import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TODO: P3 Tailwind/Headwind resolution configuration options
 // TODO: P3 Verify number headmarker values
-// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 // TODO: P3 Blackhole Directions
 // TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
 // TODO: P3 Blackhole number output replace with Blackhole set (currently it's Nothingness counter)
-// TODO: P3 Better no-config support via debuff tracking?
+// TODO: P3 Better Blackhole no-config support via debuff tracking?
 // TODO: P3 Aoe calls for Earthquake and/or some call for those with no tether during swaps?
+// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -29,7 +28,7 @@ const centerY = 100;
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
-    boa: 'lb3' | 'none';
+    boa: 'lb3' | 'sg3k' | 'none';
     blackhole: 'kefka' | 'none';
   };
   // General
@@ -274,9 +273,97 @@ const trapOutputStrings: OutputStrings = {
   },
 };
 
+const boaOutputStrings: OutputStrings = {
+  ...Directions.outputStringsIntercardDir,
+  in: Outputs.in,
+  out: Outputs.out,
+  moveExdeathAndChaosThenMech: {
+    en: 'Move ${exdeath} Middle / ${chaos} to ${dir} => ${mech}',
+  },
+  moveExdeathThenMech: {
+    en: 'Move ${exdeath} to ${long} => ${mech}',
+  },
+  crystals: {
+    en: '${short} => ${long} => ${wind} (later)',
+  },
+  shortLongCrystals: {
+    en: '${short} => ${long}',
+  },
+  crystalsMech: {
+    en: '${crystals}; ${mech}',
+  },
+  fire: {
+    en: 'Fire ${dir}',
+  },
+  water: {
+    en: 'Water ${dir}',
+  },
+  wind: {
+    en: 'Wind ${dir}',
+  },
+  tail: {
+    en: 'Face ${name}',
+  },
+  head: Outputs.lookAwayFromTarget,
+  you: {
+    en: 'YOU',
+  },
+  baitFireDonut: {
+    en: 'Bait Fire Donut',
+  },
+  baitWaterAoe: {
+    en: 'Bait Water AOE',
+  },
+  baitCrystal: {
+    en: 'Bait ${crystal} ${inout}',
+  },
+  fireOnPlayersCrystalDirNum: {
+    en: '${spread}/${dir} => ${bait}',
+  },
+  fireOnPlayers: {
+      en: 'Spread on ${players}',
+  },
+  waterOnPlayersCrystalDirNum: {
+    en: '${donut}/${dir} => ${bait}',
+  },
+  waterOnPlayers: {
+    en: 'Donut on ${players}',
+  },
+  mechThenMech: {
+    en: '${mech1} => ${mech2}',
+  },
+  getMiddleNearPlayer: {
+    en: 'Get Middle Near ${player}',
+  },
+  getHitByDonut: Outputs.goIntoMiddle,
+  knockbackToDir: {
+    en: 'Knockback to ${dir} ${facing}',
+  },
+  beNearWind: {
+    en: 'Be Near ${dir}',
+  },
+  stackPartner: Outputs.stackPartner,
+  donutLater: {
+    en: 'Donut (later)',
+  },
+  roleStacks: {
+    en: 'Role Stacks',
+    de: 'Rollengruppe sammeln',
+    fr: 'Package par rôle',
+    cn: '职能分摊',
+    ko: '역할별 쉐어',
+    tc: '職能分攤',
+  },
+  beNearExdeath: {
+    en: 'Be Near ${name}',
+  },
+  baitJump: {
+    en: 'Bait Jump',
+  },
+};
+
 const blackHoleOutputStrings: OutputStrings = {
   ...Directions.outputStringsCardinalDir,
-  unknown: Outputs.unknown,
   num: {
     en: '${num}: ',
     de: '${num}: ',
@@ -345,7 +432,8 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
-        Default: Ranged DPS and/or Healers bait crystals, resolve Vacuum Wave into Wind Crystal`,
+        Entropy/Dynamic Fluid Bait (Default): Follows <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: Entropy/Fluid bait their crystals and get hit by crystal's aoe<br \>
+        None: Only calls debuffs and locations`,
       },
       name: {
         en: 'P3 Bowels of Agony Strategy',
@@ -354,10 +442,11 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'Tank LB3': 'lb3',
-          'Generic calls': 'none',
+          'Entropy/Dynamic Fluid Bait': 'sg3k',
+          'Generic Calls': 'none',
         },
       },
-      default: 'none',
+      default: 'sg3k',
     },
     {
       id: 'blackhole',
@@ -372,7 +461,7 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'Kefkabin': 'kefka',
-          'Generic calls': 'none',
+          'Generic Calls': 'none',
         },
       },
       default: 'none',
@@ -1213,7 +1302,6 @@ const triggerSet: TriggerSet<Data> = {
         southwest: Outputs.southwest,
         west: Outputs.west,
         northwest: Outputs.northwest,
-        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
           ko: '위쪽 화살표',
@@ -1736,7 +1824,6 @@ const triggerSet: TriggerSet<Data> = {
       // Chaos Tank needs to go between wind crystal and element with short timer
       type: 'GainsEffect',
       netRegex: { effectId: ['640', '641'], capture: true },
-      condition: (data) => data.myElement === undefined,
       run: (data, matches) => {
         const id = matches.effectId;
         if (data.isFireShort === undefined) {
@@ -1866,6 +1953,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 16, // Duration of the first debuff
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
+        const config = data.triggerSetConfig.boa;
         const fireDirNum = data.fireCrystalDirNum;
         const waterDirNum = data.waterCrystalDirNum;
         const windDirNum = data.windCrystalDirNum;
@@ -1882,29 +1970,184 @@ const triggerSet: TriggerSet<Data> = {
 
         const fire = output.fire!({ dir: output[fireDir]!() });
         const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
+        if (config !== 'none') {
+          const myElement = data.myElement;
+          // Tank will need to first position Exdeath for Thunder III AOE
+          if (data.role === 'tank') {
+            const exdeathLocaleNames: LocaleText = {
+              en: 'Exdeath',
+              de: 'Exdeath',
+              fr: 'Exdeath',
+              ja: 'エクスデス',
+              cn: '艾克斯迪司',
+              ko: '엑스데스',
+              tc: '艾克斯迪司',
+            };
+            const exdeathName = exdeathLocaleNames[data.parserLang];
+            if (config === 'sg3k') {
+              if (myElement === 'fire') {
+                if (fShort) {
+                  return output.moveExdeathThenMech!({
+                    exdeath: exdeathName,
+                    long: water,
+                    mech: output.baitCrystal!({
+                      crystal: fire,
+                      inout: Outputs.in,
+                    }),
+                  });
+                }
+
+                // Get player expected to be inner water bait
+                const players = data.waterElementPlayers.filter(
+                  (player) => data.party.isDPS(player),
+                );
+                const player = data.party.member(players[0]);
+
+                return output.moveExdeathThenMech!({
+                  exdeath: exdeathName,
+                  long: fire,
+                  mech: output.getMiddleNearPlayer!({
+                    player: player,
+                  }),
+                });
+              }
+
+              if (myElement === 'water') {
+                if (fShort)
+                  return output.moveExdeathThenMech!({
+                    exdeath: exdeathName,
+                    long: water,
+                    mech: output.getHitByDonut!(),
+                  });
+
+                return output.moveExdeathThenMech!({
+                  exdeath: exdeathName,
+                  long: fire,
+                  mech: output.baitCrystal!({
+                    crystal: water,
+                    inout: Outputs.in,
+                  }),
+                });
+              }
+            }
+
+            // LB3 Config
+            const chaosLocaleNames: LocaleText = {
+              en: 'Chaos',
+              de: 'Chaos',
+              fr: 'Chaos',
+              ja: 'カオス',
+              cn: '卡奥斯',
+              ko: '카오스',
+              tc: '卡奧斯',
+            };
+            const chaosName = chaosLocaleNames[data.parserLang];
+            return output.moveExdeathAndChaosThenMech!({
+              exdeath: exdeathName,
+              chaos: chaosName,
+              dir: wind,
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+
+          if (config === 'sg3k') {
+            if (myElement === 'fire') {
+              if (fShort)
+                return output.crystalsMech!({
+                  crystals: output.shortLongCrystals!({
+                    short: fire,
+                    long: water,
+                  }),
+                  mech: output.baitCrystal!({
+                    crystal: fire,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  }),
+                });
+
+              // Get player expected to be inner water bait
+              const players = data.waterElementPlayers.filter(
+                (player) => data.party.isDPS(player),
+              );
+              const player = data.party.member(players[0]);
+
+              return output.crystalsMech!({
+                crystals: output.shortLongCrystals!({
+                  short: water,
+                  long: fire,
+                }),
+                mech: output.getMiddleNearPlayer!({
+                  player: player,
+                }),
+              });
+            }
+
+            if (myElement === 'water') {
+              if (fShort)
+                return output.crystalsMech!({
+                  crystals: output.shortLongCrystals!({
+                    short: fire,
+                    long: water,
+                  }),
+                  mech: output.getHitByDonut!(),
+                });
+             return output.crystalsMech!({
+                crystals: output.shortLongCrystals!({
+                  short: water,
+                  long: fire,
+                }),
+                mech: output.baitCrystal!({
+                  crystal: water,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                }),
+              });
+            }
+            return output.crystalsMech!({
+              crystals: output.shortLongCrystals!({
+                short: fShort ? fire : water,
+                long: fShort ? water : fire,
+              }),
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+
+          // LB3 Config
+          if (data.role !== 'dps' || Util.isMeleeDpsJob(data.job)) {
+            return output.crystalsMech!({
+              crystals: output.shortLongCrystals!({
+                short: fShort ? fire : water,
+                long: fShort ? water : fire,
+              }),
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+          // Ranged DPS Bait
+          return output.crystalsMech!({
+            crystals: output.shortLongCrystals!({
+              short: fShort ? fire : water,
+              long: fShort ? water : fire,
+            }),
+            mech: output.baitCrystal!({
+              crystal: fShort ? fire : water,
+              inout: output.out!(),
+            }),
+          });
+        }
 
         return output.crystals!({
           short: fShort ? fire : water,
           long: fShort ? water : fire,
-          wind: output.wind!({ dir: output[windDir]!() }),
+          wind: wind,
         });
       },
-      outputStrings: {
-        ...Directions.outputStringsIntercardDir,
-        unknown: Outputs.unknown,
-        fire: {
-          en: 'Fire ${dir}',
-        },
-        water: {
-          en: 'Water ${dir}',
-        },
-        wind: {
-          en: 'Wind ${dir}',
-        },
-        crystals: {
-          en: '${short} => ${long} => ${wind} (later)',
-        },
-      },
+      outputStrings: boaOutputStrings,
     },
     {
       id: 'DMU P3 Entropy and Fire Crystal',
@@ -1915,26 +2158,28 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
-        output.responseOutputStrings = {
-          ...Directions.outputStringsIntercardDir,
-          you: {
-            en: 'YOU',
-          },
-          bait: {
-            en: 'Bait Fire Donut',
-          },
-          fireOnPlayersCrystal: {
-            en: '${spread}/${bait}',
-          },
-          fireOnPlayersCrystalDirNum: {
-            en: '${spread}/${dir} => ${bait}',
-          },
-          fireOnPlayers: {
-            en: 'Spread on ${players}',
-          },
-        };
+        output.responseOutputStrings = boaOutputStrings;
+        const config = data.triggerSetConfig.boa;
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+        const fShort = data.isFireShort;
+        const myElement = data.myElement;
+        const myWind = data.myWind;
 
-        const severity = data.myElement === 'fire' ? 'alertText' : 'infoText';
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
         const players = data.fireElementPlayers.map(
           (player) => {
             if (player === data.me)
@@ -1945,26 +2190,121 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
         const spread = output.fireOnPlayers!({ players: msg });
 
-        // Tanks and Melee aren't expected to bait crystals, so shorten output
-        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: spread };
+        const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
+        const severity = config === 'lb3' && isRangedDPS
+          ? 'alertText'
+          : myElement === 'fire'
+          ? 'alertText'
+          : 'infoText';
 
-        const dirNum = data.fireCrystalDirNum;
-        const dir = dirNum === undefined
-          ? 'unknown'
-          : Directions.outputIntercardDir[dirNum] ?? 'unknown';
-        if (dir === undefined)
+        if (fShort) {
+          if (config === 'lb3') {
+            const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: isNotRanged ? spread : output.baitCrystal!({
+                  crystal: fire,
+                  inout: output.out!(),
+                }),
+                mech2: isNotRanged
+                  ? output.donutLater!()
+                  : output.baitCrystal!({
+                    crystal: water,
+                    inout: output.out!(),
+                  }),
+              }),
+            };
+          }
+
+          if (config === 'sg3k') {
+            // Get player expected to be inner water bait
+            const players = data.waterElementPlayers.filter(
+              (player) => data.party.isDPS(player),
+            );
+            const player = data.party.member(players[0]);
+
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: myElement === 'fire'
+                  ? output.baitCrystal!({
+                    crystal: fire,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  })
+                  : myElement === 'water'
+                  ? output.getHitByDonut!()
+                  : output.beNearWind!({ dir: wind }),
+                mech2: myElement === 'fire'
+                  ? output.getMiddleNearPlayer!({
+                    player: player,
+                  })
+                  : myElement === 'water'
+                  ? output.knockbackToDir!({
+                    facing: output[myWind ?? 'unknown']!({ name: output[fireDir]!() }),
+                    dir: output[waterDir]!(),
+                  })
+                  : output.stackPartner!(),
+              }),
+            };
+          }
+        }
+        const exdeathLocaleNames: LocaleText = {
+          en: 'Exdeath',
+          de: 'Exdeath',
+          fr: 'Exdeath',
+          ja: 'エクスデス',
+          cn: '艾克斯迪司',
+          ko: '엑스데스',
+          tc: '艾克斯迪司',
+        };
+        const exdeathName = exdeathLocaleNames[data.parserLang];
+        if (config === 'lb3') {
+          const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
           return {
-            [severity]: output.fireOnPlayersCrystal!({
-              spread: spread,
-              bait: output.bait!(),
+            [severity]: output.mechThenMech!({
+              mech1: isNotRanged ? spread : output.baitCrystal!({
+                crystal: fire,
+                inout: output.out!(),
+              }),
+              mech2: Util.isRangedDpsJob(data.job)
+                ? output.baitJump!()
+                : output.beNearExdeath!({ name: exdeathName }),
             }),
           };
+        }
+
+        if (config === 'sg3k') {
+          // Players will need to get to opposite side of Wind Crystal
+          const exDeathDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: myElement === 'fire'
+                ? output.baitCrystal!({
+                  crystal: fire,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                })
+                : myElement === 'water'
+                ? output.getHitByDonut!()
+                : output.beNearWind!({ dir: wind }),
+              mech2: myElement === 'fire'
+                ? output.beNearExdeath!({ name: exdeathName })
+                : myElement === 'water'
+                ? output.knockbackToDir!({
+                  facing: output[myWind ?? 'unknown']!({
+                    name: output[fireDir]!(),
+                  }),
+                  dir: output[exDeathDir]!(),
+                })
+                : output.stackPartner!(),
+            }),
+          };
+        }
         return {
           [severity]: output.fireOnPlayersCrystalDirNum!({
             spread: spread,
-            dir: output[dir]!(),
-            bait: output.bait!(),
+            dir: fire,
+            bait: output.baitFireDonut!(),
           }),
         };
       },
@@ -1978,26 +2318,35 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
-        output.responseOutputStrings = {
-          ...Directions.outputStringsIntercardDir,
-          you: {
-            en: 'YOU',
-          },
-          bait: {
-            en: 'Bait Water AOE',
-          },
-          waterOnPlayersCrystal: {
-            en: '${donut}/${bait}',
-          },
-          waterOnPlayersCrystalDirNum: {
-            en: '${donut}/${dir} => ${bait}',
-          },
-          waterOnPlayers: {
-            en: 'Donut on ${players}',
-          },
-        };
+        output.responseOutputStrings = boaOutputStrings;
+        const config = data.triggerSetConfig.boa;
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+        const fShort = data.isFireShort;
+        const myElement = data.myElement;
+        const myWind = data.myWind;
 
-        const severity = data.myElement === 'water' ? 'alertText' : 'infoText';
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
+        const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
+        const severity = config === 'lb3' && isRangedDPS
+          ? 'alertText'
+          : myElement === 'water'
+          ? 'alertText'
+          : 'infoText';
+
         const players = data.waterElementPlayers.map(
           (player) => {
             if (player === data.me)
@@ -2008,26 +2357,122 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
         const donut = output.waterOnPlayers!({ players: msg });
 
-        // Tanks and Melee aren't expected to bait crystals, so shorten output
-        if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
-          return { [severity]: donut };
+        if (!fShort) {
+          if (config === 'lb3') {
+            const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: isNotRanged ? donut : output.baitCrystal!({
+                  crystal: water,
+                  inout: output.out!(),
+                }),
+                mech2: isNotRanged
+                  ? output.roleStacks!()
+                  : output.baitCrystal!({
+                    crystal: fire,
+                    inout: output.out!(),
+                  }),
+              }),
+            };
+          }
 
-        const dirNum = data.waterCrystalDirNum;
-        const dir = dirNum === undefined
-          ? 'unknown'
-          : Directions.outputIntercardDir[dirNum] ?? 'unknown';
-        if (dir === undefined)
+          if (config === 'sg3k') {
+            // Get player expected to be inner water bait
+            const players = data.waterElementPlayers.filter(
+              (player) => data.party.isDPS(player),
+            );
+            const player = data.party.member(players[0]);
+
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: myElement === 'fire'
+                  ? output.getMiddleNearPlayer!({
+                    player: player,
+                  })
+                  : myElement === 'water'
+                  ? output.baitCrystal!({
+                    crystal: water,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  })
+                  : output.beNearWind!({ dir: wind }),
+                mech2: myElement === 'fire'
+                  ? output.knockbackToDir!({
+                    facing: output[myWind ?? 'unknown']!({ name: output[waterDir]!() }),
+                    dir: output[fireDir]!(),
+                  })
+                  : myElement === 'water'
+                  ? output.getHitByDonut!()
+                  : output.stackPartner!(),
+              }),
+            };
+          }
+        }
+        const exdeathLocaleNames: LocaleText = {
+          en: 'Exdeath',
+          de: 'Exdeath',
+          fr: 'Exdeath',
+          ja: 'エクスデス',
+          cn: '艾克斯迪司',
+          ko: '엑스데스',
+          tc: '艾克斯迪司',
+        };
+        const exdeathName = exdeathLocaleNames[data.parserLang];
+        if (config === 'lb3') {
+          const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
           return {
-            [severity]: output.waterOnPlayersCrystal!({
-              donut: donut,
-              bait: output.bait!(),
+            [severity]: output.mechThenMech!({
+              mech1: isNotRanged ? donut : output.baitCrystal!({
+                crystal: water,
+                inout: output.out!(),
+              }),
+              mech2: Util.isRangedDpsJob(data.job)
+                ? output.baitJump!()
+                : output.beNearExdeath!({ name: exdeathName }),
             }),
           };
+        }
+
+        if (config === 'sg3k') {
+          // Get player expected to be inner water bait
+          const players = data.waterElementPlayers.filter(
+            (player) => data.party.isDPS(player),
+          );
+          const player = data.party.member(players[0]);
+          // Players will need to get to opposite side of Wind Crystal
+          const exDeathDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: myElement === 'fire'
+                ? output.getMiddleNearPlayer!({
+                  player: player,
+                })
+                : myElement === 'water'
+                ? output.baitCrystal!({
+                  crystal: water,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                })
+                : output.beNearWind!({ dir: wind }),
+              mech2: myElement === 'fire'
+                ? output.beNearExdeath!({ name: exdeathName })
+                : myElement === 'water'
+                ? output.knockbackToDir!({
+                  facing: output[myWind ?? 'unknown']!({
+                    name: output[waterDir]!(),
+                  }),
+                  dir: output[exDeathDir]!(),
+                })
+                : output.stackPartner!(),
+            }),
+          };
+        }
+
         return {
           [severity]: output.waterOnPlayersCrystalDirNum!({
             donut: donut,
-            dir: output[dir]!(),
-            bait: output.bait!(),
+            dir: water,
+            bait: output.baitWaterAoe!(),
           }),
         };
       },
@@ -2071,7 +2516,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
-        unknown: Outputs.unknown,
         fire: {
           en: 'Fire ${dir}',
         },
@@ -2124,7 +2568,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
-        unknown: Outputs.unknown,
         wind: {
           en: 'Knockback to Wind ${dir} (later)',
         },
@@ -2298,7 +2741,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
-        unknown: Outputs.unknown,
         clockwise: {
           en: '<== ${card} Clockwise (Later)',
         },
@@ -2317,9 +2759,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['BAFD', 'BAFE'], source: 'Chaos', capture: false },
       delaySeconds: 10,
       suppressSeconds: 99999,
-      infoText: (_data, _matches, output) => output.bait!(),
+      infoText: (_data, _matches, output) => output.baitJump!(),
       outputStrings: {
-        bait: {
+        baitJump: {
           en: 'Bait Jump',
         },
       },
@@ -2334,7 +2776,7 @@ const triggerSet: TriggerSet<Data> = {
       // Party can Tank LB3 to survive stacking the winds
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
-      infoText: (data, matches, output) => {
+      alertText: (data, matches, output) => {
         const windDirNum = data.windCrystalDirNum;
         const windDir = windDirNum === undefined
           ? 'unknown'
@@ -2470,7 +2912,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings16Dir,
-        unknown: Outputs.unknown,
         num: {
           en: '#${num}',
           de: '#${num}',
@@ -2674,7 +3115,6 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
-        unknown: Outputs.unknown,
         outOfMiddle: {
           en: 'Out Of Middle',
           de: 'Raus aus der Mitte',
