@@ -1,7 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, { DirectionOutputIntercard, Directions } from '../../../../../resources/util';
+import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -29,6 +29,7 @@ const centerY = 100;
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
+    boa: 'lb3' | 'none';
     blackhole: 'kefka' | 'none';
   };
   // General
@@ -65,9 +66,9 @@ export interface Data extends RaidbossData {
   myWind?: 'head' | 'tail';
   fireElementPlayers: string[];
   waterElementPlayers: string[];
-  fireCrystalDir?: DirectionOutputIntercard;
-  waterCrystalDir?: DirectionOutputIntercard;
-  windCrystalDir?: DirectionOutputIntercard;
+  fireCrystalDirNum?: number;
+  waterCrystalDirNum?: number;
+  windCrystalDirNum?: number;
   firstBlaster: number[];
   firstBlasterDirNum?: number;
   blasterRotation?: number;
@@ -335,6 +336,25 @@ const triggerSet: TriggerSet<Data> = {
           '시계 방향 큰 네모': 'clockwise',
           'Filipino Box (대각선)': 'filipino',
           '디버프만 알림': 'none',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'boa',
+      comment: {
+        en:
+        `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
+        Default: Ranged DPS and/or Healers bait crystals, resolve Vacuum Wave into Wind Crystal`,
+      },
+      name: {
+        en: 'P3 Bowels of Agony Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Tank LB3': 'lb3',
+          'Generic calls': 'none',
         },
       },
       default: 'none',
@@ -1824,14 +1844,14 @@ const triggerSet: TriggerSet<Data> = {
         const x = parseFloat(matches.pairPosX ?? '0');
         const y = parseFloat(matches.pairPosY ?? '0');
         const bnpcid = matches.pairBNpcID;
-        const dir = Directions.xyToIntercardDirOutput(x, y, centerX, centerY);
+        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
 
         if (bnpcid === '1EC03A')
-          data.waterCrystalDir = dir;
+          data.waterCrystalDirNum = dirNum;
         else if (bnpcid === '1EC03B')
-          data.fireCrystalDir = dir;
+          data.fireCrystalDirNum = dirNum;
         else
-          data.windCrystalDir = dir;
+          data.windCrystalDirNum = dirNum;
       },
     },
     {
@@ -1842,13 +1862,22 @@ const triggerSet: TriggerSet<Data> = {
         pair: [{ key: 'BNpcID', value: '1EC03C' }],
         capture: false,
       },
-      delaySeconds: 2, // To prevent overlap with debuffs and time for collect
-      durationSeconds: 17, // Duration of the first debuff
+      delaySeconds: 3, // To prevent overlap with debuffs and time for collect
+      durationSeconds: 16, // Duration of the first debuff
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const fireDir = data.fireCrystalDir ?? 'unknown';
-        const waterDir = data.waterCrystalDir ?? 'unknown';
-        const windDir = data.windCrystalDir ?? 'unknown';
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
         const fShort = data.isFireShort;
 
         const fire = output.fire!({ dir: output[fireDir]!() });
@@ -1882,7 +1911,7 @@ const triggerSet: TriggerSet<Data> = {
       // Late goes off 2s after BAFF Shockwave
       type: 'GainsEffect',
       netRegex: { effectId: '640', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4, // 6s after Lat/Long when Late
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -1897,7 +1926,7 @@ const triggerSet: TriggerSet<Data> = {
           fireOnPlayersCrystal: {
             en: '${spread}/${bait}',
           },
-          fireOnPlayersCrystalDir: {
+          fireOnPlayersCrystalDirNum: {
             en: '${spread}/${dir} => ${bait}',
           },
           fireOnPlayers: {
@@ -1920,7 +1949,10 @@ const triggerSet: TriggerSet<Data> = {
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
           return { [severity]: spread };
 
-        const dir = data.fireCrystalDir;
+        const dirNum = data.fireCrystalDirNum;
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[dirNum] ?? 'unknown';
         if (dir === undefined)
           return {
             [severity]: output.fireOnPlayersCrystal!({
@@ -1929,7 +1961,7 @@ const triggerSet: TriggerSet<Data> = {
             }),
           };
         return {
-          [severity]: output.fireOnPlayersCrystalDir!({
+          [severity]: output.fireOnPlayersCrystalDirNum!({
             spread: spread,
             dir: output[dir]!(),
             bait: output.bait!(),
@@ -1942,7 +1974,7 @@ const triggerSet: TriggerSet<Data> = {
       // Late goes off 2s after BAFF Shockwave
       type: 'GainsEffect',
       netRegex: { effectId: '641', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5, // 7s after Lat/Long when Late
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4, // 6s after Lat/Long when Late
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -1957,7 +1989,7 @@ const triggerSet: TriggerSet<Data> = {
           waterOnPlayersCrystal: {
             en: '${donut}/${bait}',
           },
-          waterOnPlayersCrystalDir: {
+          waterOnPlayersCrystalDirNum: {
             en: '${donut}/${dir} => ${bait}',
           },
           waterOnPlayers: {
@@ -1980,7 +2012,10 @@ const triggerSet: TriggerSet<Data> = {
         if (data.role === 'tank' || Util.isMeleeDpsJob(data.job))
           return { [severity]: donut };
 
-        const dir = data.waterCrystalDir;
+        const dirNum = data.waterCrystalDirNum;
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[dirNum] ?? 'unknown';
         if (dir === undefined)
           return {
             [severity]: output.waterOnPlayersCrystal!({
@@ -1989,7 +2024,7 @@ const triggerSet: TriggerSet<Data> = {
             }),
           };
         return {
-          [severity]: output.waterOnPlayersCrystalDir!({
+          [severity]: output.waterOnPlayersCrystalDirNum!({
             donut: donut,
             dir: output[dir]!(),
             bait: output.bait!(),
@@ -2015,14 +2050,22 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
         const fShort = data.isFireShort;
-        const longCrystalDir = fShort ? data.waterCrystalDir : data.fireCrystalDir;
-        const longDir = longCrystalDir ?? 'unknown';
-        const windDir = data.waterCrystalDir ?? 'unknown';
+        const longCrystalDirNum = fShort
+          ? data.waterCrystalDirNum
+          : data.fireCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+
+        const longDir = longCrystalDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[longCrystalDirNum] ?? 'unknown';
+        const windDir = windDirNum  === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
 
         return output.crystals!({
           long: fShort
-            ? output.fire!({ dir: output[longDir]!() })
-            : output.water!({ dir: output[longDir]!() }),
+            ? output.water!({ dir: output[longDir]!() })
+            : output.fire!({ dir: output[longDir]!() }),
           wind: output.wind!({ dir: output[windDir]!() }),
         });
       },
@@ -2063,15 +2106,30 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.windCrystalNext,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const windDir = data.waterCrystalDir ?? 'unknown';
-
-        return output.wind!({ dir: output[windDir]!() });
+        const windDirNum = data.windCrystalDirNum;
+        const config = data.triggerSetConfig.boa;
+        const windDir = windDirNum  === undefined
+          ? 'unknown'
+          : config !== 'lb3'
+          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
+          : data.role === 'healer'
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 8] ?? 'unknown' // Wrap-around
+          : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 8] ?? 'unknown'; // Ranged DPS
+ 
+        return config !== 'lb3'
+          ? output.wind!({ dir: output[windDir]!() })
+          : output.knockbackToDir!({ dir: output[windDir]!() });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
         unknown: Outputs.unknown,
         wind: {
           en: 'Knockback to Wind ${dir} (later)',
+        },
+        knockbackToDir: {
+          en: 'Knockback to ${dir} (later)',
         },
       },
     },
@@ -2277,11 +2335,20 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
       infoText: (data, matches, output) => {
-        const windDir = data.windCrystalDir;
+        const windDirNum = data.windCrystalDirNum;
+        const windDir = windDirNum  === undefined
+          ? 'unknown'
+          : data.triggerSetConfig.boa !== 'lb3'
+          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
+          : data.role === 'healer'
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 8] ?? 'unknown' // Wrap-around
+          : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 8] ?? 'unknown'; // Ranged DPS
         const exdeath = matches.source;
 
         if (data.myWind === undefined) {
-          const knockback = output.knockbackFromExdeath!({ exdeath: exdeath });
+          const knockback = output.knockbackFromExdeath!({ name: exdeath });
           if (windDir === undefined)
             return output.knockbackToCrystal!({
               knockback: knockback,
@@ -2293,8 +2360,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         const knockbackFacing = output.knockbackFromFacingExdeath!({
-          facing: output[data.myWind]!(),
-          exdeath: exdeath,
+          facing: output[data.myWind]!({ name: exdeath }),
         });
 
         if (windDir === undefined)
@@ -2309,20 +2375,42 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
         tail: {
-          en: 'Face',
+          en: 'Face ${name}',
         },
         head: Outputs.lookAwayFromTarget,
         knockbackFromExdeath: {
-          en: 'Knockback from ${exdeath}',
+          en: 'Knockback from ${name}',
         },
         knockbackFromFacingExdeath: {
-          en: 'Knockback from + ${facing} ${exdeath}',
+          en: 'Knockback from + ${facing}',
         },
         knockbackToDir: {
           en: '${knockback} to ${dir}',
         },
         knockbackToCrystal: {
           en: '${knockback} to Crystal',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Vacuum Wave Tank LB3',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      condition: (data) => {
+        return data.role === 'tank' &&
+          data.triggerSetConfig.boa === 'lb3';
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // 8s castTime, damage expected 3.9s after cast
+      alarmText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'TANK LB!!',
+          de: 'TANK LB!!',
+          fr: 'LB TANK !!',
+          ja: 'タンクLB!!',
+          cn: '坦克LB!!',
+          ko: '탱리밋!!',
+          tc: '坦克LB!!',
         },
       },
     },
