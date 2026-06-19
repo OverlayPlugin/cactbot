@@ -3505,7 +3505,7 @@ const triggerSet: TriggerSet<Data> = {
         // Exception for center trine
         if (data.trineDirNums.length === 3) {
           if (x > 99 && x < 101) {
-            data.middleTrineFacing = matches.pairBNpcID === '1EBFB2' ? 'west' : 'east';
+            data.middleTrineFacing = matches.pairBNpcID === '1EBFB2' ? 'east' : 'west';
             return;
           }
         }
