@@ -2292,10 +2292,10 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-       const knockbackFacing = output.knockbackFromFacingExdeath!({
-         facing: output[data.myWind]!(),
-         exdeath: exdeath,
-       });
+        const knockbackFacing = output.knockbackFromFacingExdeath!({
+          facing: output[data.myWind]!(),
+          exdeath: exdeath,
+        });
 
         if (windDir === undefined)
           return output.knockbackToCrystal!({
