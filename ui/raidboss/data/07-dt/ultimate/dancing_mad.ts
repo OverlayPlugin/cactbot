@@ -344,7 +344,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'boa',
       comment: {
         en:
-        `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
+          `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
         Default: Ranged DPS and/or Healers bait crystals, resolve Vacuum Wave into Wind Crystal`,
       },
       name: {
@@ -2058,7 +2058,7 @@ const triggerSet: TriggerSet<Data> = {
         const longDir = longCrystalDirNum === undefined
           ? 'unknown'
           : Directions.outputIntercardDir[longCrystalDirNum] ?? 'unknown';
-        const windDir = windDirNum  === undefined
+        const windDir = windDirNum === undefined
           ? 'unknown'
           : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
 
@@ -2108,7 +2108,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const windDirNum = data.windCrystalDirNum;
         const config = data.triggerSetConfig.boa;
-        const windDir = windDirNum  === undefined
+        const windDir = windDirNum === undefined
           ? 'unknown'
           : config !== 'lb3'
           ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
@@ -2117,7 +2117,7 @@ const triggerSet: TriggerSet<Data> = {
           : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
           ? Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown' // Opposite of Wind Crystal
           : Directions.outputIntercardDir[(windDirNum + 1) % 8] ?? 'unknown'; // Ranged DPS
- 
+
         return config !== 'lb3'
           ? output.wind!({ dir: output[windDir]!() })
           : output.knockbackToDir!({ dir: output[windDir]!() });
@@ -2336,7 +2336,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
       infoText: (data, matches, output) => {
         const windDirNum = data.windCrystalDirNum;
-        const windDir = windDirNum  === undefined
+        const windDir = windDirNum === undefined
           ? 'unknown'
           : data.triggerSetConfig.boa !== 'lb3'
           ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
