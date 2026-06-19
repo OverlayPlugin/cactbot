@@ -321,7 +321,7 @@ const boaOutputStrings: OutputStrings = {
     en: '${spread}/${dir} => ${bait}',
   },
   fireOnPlayers: {
-      en: 'Spread on ${players}',
+    en: 'Spread on ${players}',
   },
   waterOnPlayersCrystalDirNum: {
     en: '${donut}/${dir} => ${bait}',
@@ -2094,7 +2094,7 @@ const triggerSet: TriggerSet<Data> = {
                   }),
                   mech: output.getHitByDonut!(),
                 });
-             return output.crystalsMech!({
+              return output.crystalsMech!({
                 crystals: output.shortLongCrystals!({
                   short: water,
                   long: fire,
@@ -2275,8 +2275,8 @@ const triggerSet: TriggerSet<Data> = {
         if (config === 'sg3k') {
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
-          ? 'unknown'
-          : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+            ? 'unknown'
+            : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
           return {
             [severity]: output.mechThenMech!({
               mech1: myElement === 'fire'
@@ -2440,8 +2440,8 @@ const triggerSet: TriggerSet<Data> = {
           const player = data.party.member(players[0]);
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
-          ? 'unknown'
-          : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+            ? 'unknown'
+            : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
           return {
             [severity]: output.mechThenMech!({
               mech1: myElement === 'fire'
