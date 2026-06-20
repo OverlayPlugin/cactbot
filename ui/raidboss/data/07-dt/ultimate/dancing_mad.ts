@@ -6,7 +6,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TODO: P3 Verify number headmarker values
 // TODO: P3 Blackhole Directions
 // TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
 // TODO: P3 Blackhole number output replace with Blackhole set (currently it's Nothingness counter)
@@ -2701,7 +2700,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Ultima Blaster Collect',
       // Starts from random cardinal/intercardinal then rotates either CW or CCW
       // These are raidwide AOEs, but also include telegraphed lines and explosions
-      // TODO: Verify the this is correct
       // Ability lines can have erroneous values
       // Entity that does these has BNpcID 4BFB, added shortly before
       // 271 ActorSetPos and 261 CombatantMemory Change lines are updated just prior to the ability
@@ -2991,10 +2989,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 In Line Debuff',
+      id: 'DMU P3 In Line Debuff + Accretion 1',
       type: 'GainsEffect',
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
-      delaySeconds: 0.1,
+      delaySeconds: 0.2,
       durationSeconds: 5,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
@@ -3064,6 +3062,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Accretion 2',
       // Cleansing 644 Accretion or 154E Primordial Crust triggers BAFA Earthquake
+      // on all but the player that had Accretion
       // BAFA Earthquake targets receive D2C Earth Resistance Down II (1.96s)
       // Utilizing D2C Earth Resistance Down II to call for healing next player
       // NOTE: This will still trigger if 154E Primordial Crust is cleansed early
@@ -3097,6 +3096,18 @@ const triggerSet: TriggerSet<Data> = {
             player: data.party.member(player),
           }),
         };
+      },
+    },
+    {
+      id: 'DMU P3 Slap Happy Boss Teleport Collect',
+      // TODO: Get earlier infoText call
+      // This could be necessary to call which black holes to grab later
+      type: 'StartsUsing',
+      netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
+      run: (data, matches) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        data.kefkaTeleportDirNum = Directions.xyTo8DirNum(x, y, centerX, centerY);
       },
     },
     {
@@ -3228,7 +3239,7 @@ const triggerSet: TriggerSet<Data> = {
           return {
             alertText: output.takeDirTetherClockwise!({
               num: data.blackHoleSet,
-              dir1: output[dir]!(),
+              dir: output[dir]!(),
             }),
           };
         return {
