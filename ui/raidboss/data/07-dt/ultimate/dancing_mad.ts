@@ -2287,7 +2287,7 @@ const triggerSet: TriggerSet<Data> = {
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
             ? 'unknown'
-            : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
           return {
             [severity]: output.mechThenMech!({
               mech1: myElement === 'fire'
@@ -2452,7 +2452,7 @@ const triggerSet: TriggerSet<Data> = {
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
             ? 'unknown'
-            : Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown';
+            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
           return {
             [severity]: output.mechThenMech!({
               mech1: myElement === 'fire'
@@ -2568,10 +2568,10 @@ const triggerSet: TriggerSet<Data> = {
           : config !== 'lb3'
           ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
           : data.role === 'healer'
-          ? Directions.outputIntercardDir[(windDirNum + 3) % 8] ?? 'unknown' // Wrap-around
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
           : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
-          ? Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown' // Opposite of Wind Crystal
-          : Directions.outputIntercardDir[(windDirNum + 1) % 8] ?? 'unknown'; // Ranged DPS
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
 
         return config !== 'lb3'
           ? output.wind!({ dir: output[windDir]!() })
@@ -2794,10 +2794,10 @@ const triggerSet: TriggerSet<Data> = {
           : data.triggerSetConfig.boa !== 'lb3'
           ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
           : data.role === 'healer'
-          ? Directions.outputIntercardDir[(windDirNum + 3) % 8] ?? 'unknown' // Wrap-around
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
           : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
-          ? Directions.outputIntercardDir[(windDirNum + 2) % 8] ?? 'unknown' // Opposite of Wind Crystal
-          : Directions.outputIntercardDir[(windDirNum + 1) % 8] ?? 'unknown'; // Ranged DPS
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
         const exdeath = matches.source;
 
         if (data.myWind === undefined) {
