@@ -2701,6 +2701,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Ultima Blaster Collect',
       // Starts from random cardinal/intercardinal then rotates either CW or CCW
       // These are raidwide AOEs, but also include telegraphed lines and explosions
+      // TODO: Verify the this is correct
       // Ability lines can have erroneous values
       // Entity that does these has BNpcID 4BFB, added shortly before
       // 271 ActorSetPos and 261 CombatantMemory Change lines are updated just prior to the ability
@@ -2743,6 +2744,7 @@ const triggerSet: TriggerSet<Data> = {
         if (rotation === undefined || dirNum === undefined)
           return;
 
+        // Will need 16Dir for positions later
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
 
         if (rotation < 0)
@@ -2897,22 +2899,24 @@ const triggerSet: TriggerSet<Data> = {
           '01B7': 7,
           '01B8': 8,
         };
-        const blaster = data.firstBlasterDirNum;
+        const blasterDirNum = data.firstBlasterDirNum;
         const rotation = data.blasterRotation;
         const id = matches.id;
         const myNum = blasterNumberMap[id];
         if (myNum === undefined)
           return;
 
-        if (blaster === undefined || rotation === undefined || rotation === 0)
+        if (blasterDirNum === undefined || rotation === undefined || rotation === 0)
           return output.num!({ num: myNum });
 
-        // Convert 8Dir to 16Dir
-        const blaster16Dir = blaster * 2;
+        // Subtract 1 from ourself as 1 is 0th position
+        const adjNum = (myNum - 1) * 2; // Convert our number to 16Dir format
+        const adjBlaster = blasterDirNum * 2; // Convert blasterDirNum to 16Dir format
 
+        // Boss is at an intercard, so +1 or -1 to get inter-inter safe spot
         const adjustedDirNum = rotation < 0
-          ? (myNum + blaster16Dir) % 16 // Clockwise
-          : (myNum - blaster16Dir + 16) % 16; // Counterclock
+          ? (adjNum + adjBlaster + 1) % 16 // Clockwise
+          : ((adjBlaster- 1 - adjNum) + 16) % 16; // Counterclock
 
         // Find inter-inter cardinal
         const safeDir = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
