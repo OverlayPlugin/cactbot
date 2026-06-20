@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAEA BAF1 BB06 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAF1 BB06 BB38
 # -p C403:15.6 C24C:219.8 C3F7:500.0 C2DC:1000.0 BB40:1300.0
 # -it Kefka Chaos Exdeath
 
@@ -218,7 +218,7 @@ hideall "--sync--"
 688.9 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
 689.7 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 690.9 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
-690.9 "Shockwave" #Ability { id: "BAEB", source: "Kefka" }
+690.9 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 
 691.2 "Black Hole" Ability { id: "BAFB", source: "Exdeath" }
 698.3 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
@@ -234,7 +234,7 @@ hideall "--sync--"
 719.2 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
 720.0 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 721.2 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
-721.2 "Shockwave" #Ability { id: "BAEB", source: "Kefka" }
+721.2 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 724.6 "Black Spark" Ability { id: "BCCD", source: "Black Hole" }
 728.6 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 730.2 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
@@ -265,6 +265,7 @@ hideall "--sync--"
 787.4 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
 788.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 789.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
+789.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 792.5 "Black Spark" Ability { id: "BCCD", source: ["Black Hole", "Kefka"] } # Supposed to be from Black Hole, but can bug
 796.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 802.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
@@ -531,7 +532,6 @@ hideall "--sync--"
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
 # C572 Earthquake: VFX
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
-# BAEA Shocking Impact: Getting hit by BAE9 Slap Happy center slam
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
 # BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
@@ -599,8 +599,8 @@ hideall "--sync--"
 # BAE7 Slap Happy: Boss slaps his left 3 times (role cleaves) + right once
 # BAE8 Slap Happy: 3 slaps on one side
 # BAE9 Slap Happy: Last slap that flips sides
-# BAEA Shocking Impact: Getting hit by BAE9 Slap Happy center slam
-# BAEB Shockwave
+# BAEA Shocking Impact: Party Cleave at end of BAE6 Slap Happy
+# BAEB Shockwave: Role Cleaves at end of BAE7 Slap Happy
 # BAEC Look upon Me and Despair: Kefka falls on his right side across center of arena
 # BAED Look upon Me and Despair: Kefka falls on his left side across center of arena
 # BAEE Look upon Me and Despair: Gives a 3-min damage down if hit
