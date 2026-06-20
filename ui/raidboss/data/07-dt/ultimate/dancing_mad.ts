@@ -1925,8 +1925,8 @@ const triggerSet: TriggerSet<Data> = {
       // First set spawns at intercardinals
       // Wind will be inbetween Fire and Water
       // The following are their BNpcIDs:
-      // 1EC03A => Water (Blue Square) Crystal
-      // 1EC03B => Fire (Red Triangle) Crystal
+      // 1EC03A => Fire (Red Triangle) Crystal
+      // 1EC03B => Water (Blue Square) Crystal
       // 1EC03C => Wind (Green Diamond) Crystal
       //
       // Later the Earth Crystal will spawn in the center
@@ -1945,9 +1945,9 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
 
         if (bnpcid === '1EC03A')
-          data.waterCrystalDirNum = dirNum;
-        else if (bnpcid === '1EC03B')
           data.fireCrystalDirNum = dirNum;
+        else if (bnpcid === '1EC03B')
+          data.waterCrystalDirNum = dirNum;
         else
           data.windCrystalDirNum = dirNum;
       },
