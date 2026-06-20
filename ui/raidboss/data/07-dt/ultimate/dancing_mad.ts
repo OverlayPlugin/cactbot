@@ -2914,7 +2914,7 @@ const triggerSet: TriggerSet<Data> = {
         // Boss is at an intercard, so +1 or -1 to get inter-inter safe spot
         const adjustedDirNum = rotation < 0
           ? (adjNum + adjBlaster + 1) % 16 // Clockwise
-          : ((adjBlaster- 1 - adjNum) + 16) % 16; // Counterclock
+          : ((adjBlaster - 1 - adjNum) + 16) % 16; // Counterclock
 
         // Find inter-inter cardinal
         const safeDir = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
