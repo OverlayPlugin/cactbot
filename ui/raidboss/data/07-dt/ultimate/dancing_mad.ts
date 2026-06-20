@@ -3086,9 +3086,18 @@ const triggerSet: TriggerSet<Data> = {
             tc: '奶滿${player}',
           },
         };
-        const player = data.firstAccretion !== undefined
-          ? data.firstAccretion
-          : data.secondAccretion;
+        const first = data.firstAccretion;
+        const second = data.secondAccretion;
+        const player = first !== undefined
+          ? first
+          : second !== undefined
+          ? second
+          : undefined;
+
+        // This happens if players get cleansed within the delaySeconds, likely causing a wipe
+        if (player === undefined)
+          return;
+
         const severity = data.role === 'healer' ? 'alertText' : 'infoText';
 
         return {
