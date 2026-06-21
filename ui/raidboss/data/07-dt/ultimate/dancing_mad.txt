@@ -277,7 +277,7 @@ hideall "--sync--"
 # 1. Bait 2 Puddles
 # 2. Role 1 4-Stack
 # 3. Role 2 2-NW Towers
-# 4. Role 2 2-NE Towers 
+# 4. Role 2 2-NE Towers
 # 5. Role 1 2-NW Towers
 # 6. Role 1 2-NE Towers
 # 7. Role 2 4-Stack
@@ -316,7 +316,7 @@ hideall "--sync--"
 # TODO: Add voiceline sync?
 # en: 'Boring!'
 # NOTE: Label not used due to unknown timing between Chaos/Exdeath kill order and time from Kefka Says
-995.0 "--sync--" StartsUsing { id: "C2DC", source: "Kefka" } window 995,12000 # Escape from the p3 exdeath enrage or chaos
+995.0 "--sync--" StartsUsing { id: "C2DC", source: "Kefka" } window 995,14000 # Escape from the p3 exdeath enrage or chaos
 1000.0 "Kefka Says" Ability { id: "C2DC", source: "Kefka" }
 1003.1 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
