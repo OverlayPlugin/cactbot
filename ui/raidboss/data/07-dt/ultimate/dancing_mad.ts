@@ -6,11 +6,10 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TODO: P3 Blackhole Directions
 // TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
-// TODO: P3 Blackhole number output replace with Blackhole set (currently it's Nothingness counter)
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
 // TODO: P3 Aoe calls for Earthquake and/or some call for those with no tether during swaps?
+// TODO: P3 Blizzard III Stack Headmarker/Player and Role Towers
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -3263,7 +3262,7 @@ const triggerSet: TriggerSet<Data> = {
       // However, there are will be 10 BAFC Nothingness casts
       // Using BAFC Nothingness to track which set we are on
       type: 'Ability',
-      netRegex: { id: 'BAFC', capture: false },
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       suppressSeconds: 1,
       run: (data) => {
         data.nothingnessCount = data.nothingnessCount + 1;
@@ -3461,7 +3460,7 @@ const triggerSet: TriggerSet<Data> = {
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
-      netRegex: { id: 'BAFC', capture: false },
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 3;
       },
@@ -3511,7 +3510,7 @@ const triggerSet: TriggerSet<Data> = {
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
-      netRegex: { id: 'BAFC', capture: false },
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 4;
       },
@@ -3632,7 +3631,7 @@ const triggerSet: TriggerSet<Data> = {
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
-      netRegex: { id: 'BAFC', capture: false },
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 6;
       },
@@ -3681,7 +3680,7 @@ const triggerSet: TriggerSet<Data> = {
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
-      netRegex: { id: 'BAFC', capture: false },
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 7;
       },
@@ -3819,6 +3818,62 @@ const triggerSet: TriggerSet<Data> = {
             dir: output[dir]!(),
           }),
         };
+      },
+    },
+    {
+      id: 'DMU P3 Blizzard III Puddles',
+      // TODO: Get which role is doing stack + player, and which role is doing towers
+      type: 'StartsUsing',
+      netRegex: { id: 'BB0F', source: 'Exdeath', capture: false },
+      infoText: (_data, _matches, output) => {
+        return output.puddlesThenMech!({
+          bait: output.baitPuddles!(),
+          mech1: output.roleStack!(),
+          mech2: output.getTowers!(),
+        });
+      },
+      outputStrings: {
+        roleStack: {
+          en: 'Role Stack',
+        },
+        getTowers: Outputs.getTowers,
+        puddlesThenMech: {
+          en: '${bait} => ${mech1}/${mech2}',
+        },
+        baitPuddles: {
+          en: 'Bait Puddles x2',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Stomp-a-Mole Direction',
+      // In order to avoid 3s D98 Deep Freeze
+      type: 'StartsUsing',
+      netRegex: { id: 'BAEF', source: 'Kefka', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 5.6, // Time until last Tower
+      infoText: (_data, matches, output) => {
+        const heading = parseFloat(matches.heading);
+        const dirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
+        return output.text!({ dir: output[dirNum]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${dir} Kefka',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Blizzard III Keep Moving',
+      // In order to avoid 3s D98 Deep Freeze
+      // Players also need to avoid BB05 Big Bang at this time as well
+      // BB05 Big Bang goes off at the stack locations
+      type: 'StartsUsing',
+      netRegex: { id: 'BB11', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (_data, _matches, output) => output.keepMoving!(),
+      outputStrings: {
+        keepMoving: Outputs.moveAround,
       },
     },
   ],
