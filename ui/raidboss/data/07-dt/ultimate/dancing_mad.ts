@@ -74,10 +74,10 @@ export interface Data extends RaidbossData {
   firstAccretion?: string;
   secondAccretion?: string;
   hadAccretion: boolean;
+  blackHoleIdDirNums: { [id: string]: number };
   kefkaTeleportDirNum?: number;
-  blackHoleSet: number; // To be replaced?
   nothingnessCount: number;
-  // blackHoleDirNums: string[];
+  blackHoleTetherDirNums: number[];
 }
 
 const headMarkerData = {
@@ -488,9 +488,9 @@ const triggerSet: TriggerSet<Data> = {
       firstBlaster: [],
       inLine: {},
       hadAccretion: false,
-      blackHoleSet: 0, // To be replaced?
+      blackHoleIdDirNums: {},
       nothingnessCount: 0,
-      // blackHoleDirNums: [],
+      blackHoleTetherDirNums: [];
     };
   },
   triggers: [
@@ -3109,19 +3109,20 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Slap Happy Boss Teleport Collect',
+      // Boss' position data is (100, 100), but heading does update ~2.5s before cast
+      // 4 Invisible entities via 03 AddCombatant log lines correlate to the slap AoEs
+      // spawn at time of StartsUsing. These are also ordered in the order they occur.
       // TODO: Get earlier infoText call
       // This could be necessary to call which black holes to grab later
       type: 'StartsUsing',
       netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
       run: (data, matches) => {
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        data.kefkaTeleportDirNum = Directions.xyTo8DirNum(x, y, centerX, centerY);
+        const heading = parseFloat(matches.heading);
+        data.kefkaTeleportDirNum = Directions.hdgTo8DirNum(heading);
       },
     },
     {
       id: 'DMU P3 Slap Happy',
-      // TODO: Get boss location on teleport (could adjust call to be a direction of the slaps 1-3)
       // BAE6 Slap Happy: Boss slaps his right 3 times (party cleave) + left once
       // BAE7 Slap Happy: Boss slaps his left 3 times (role cleaves) + right once
       // Boss can be in different cardinal/intercardinals
@@ -3129,11 +3130,10 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
       alertText: (_data, matches, output) => {
         const id = matches.id;
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        const bossDirNum = Directions.xyTo8DirNum(x, y, centerX, centerY);
-        const clockDirNum = (bossDirNum + 2) % 8;
-        const counterDirNum = (bossDirNum + 6) % 8; // Wrap-around
+        const heading = parseFloat(matches.heading);
+        const bossDirNum = Directions.hdgTo8DirNum(heading);
+        const clockDirNum = (bossDirNum + 6) % 8; // Wrap-around
+        const counterDirNum = (bossDirNum + 2) % 8;
         const clockDir = Directions.output8Dir[clockDirNum] ?? 'unknown';
         const counterDir = Directions.output8Dir[counterDirNum] ?? 'unknown';
 
@@ -3182,6 +3182,35 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Black Hole Tracker',
+      // 11 are added with 0.2s of BAFB Black Hole Ability
+      // Both 261 CombatantMemory Add and 03 AddCombatant are available
+      // There are also 272 NPCSpawnExtra lines
+      // These have BNpcID 4C38
+      // They should only spawn at cardinals
+      // Interestingly, they have differing headings as well
+      // Spawn Location Example:
+      //             (100, 83)
+      //    (94.83, 87.53)
+      //     (93.64, 93.64) (106.36, 93.64)
+      //                        (112.47, 94.83)
+      //     (93.64, 106.36)(106.36, 106.36)
+      // (87.53, 105.17)
+      //                            (117, 100)
+      //                (105.17, 112.47)
+      //             (100, 117)
+      type: 'AddedCombatant',
+      netRegex: { name: 'Black Hole', capture: true },
+      run: (data, matches) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const dirNum = Directions.xyTo4DirNum(x, y, centerX, centerY);
+
+        // Storing as dirNum to be sorted later once we have tethers
+        data.blackHoleIdDirNums[matches.id] = dirNum;
+      },
+    },
+    {
       id: 'DMU P3 Nothingness Counter',
       // There are 10 sets of Nothingness from Black Holes to soak
       // They always spawn on a cardinal
@@ -3218,9 +3247,30 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       run: (data) => {
         data.nothingnessCount = data.nothingnessCount + 1;
-        // These will be replaced with either tether or actor tracker
-        // data.blackHoleDirNums = [];
-        data.blackHoleSet = data.blackHoleSet + 1;
+        // Reset the tether dirs for next round
+        data.blackHoleTetherDirNums = [];
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole Tether Collect',
+      type: 'Tether',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (matches.id === headMarkerData['exdeathTether'])
+          return false;
+        // No need to collect the single tether sets
+        return data.phase === 'p3' &&
+          (data.nothingnessCount !== 0 && data.nothingnessCount !== 9);
+      },
+      run: (data, matches) => {
+        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        if (dirNum === undefined)
+          return;
+
+        // Ignore the tether if it is already stored
+        // This allows for collection of tethers if instantaneous swap
+        if (!data.blackHoleTetherDirNums.includes(dirNum))
+          data.blackHoleTetherDirNums.push(dirNum);
       },
     },
     {
@@ -3234,12 +3284,15 @@ const triggerSet: TriggerSet<Data> = {
         return data.phase === 'p3' && data.nothingnessCount === 0;
       },
       suppressSeconds: 99999,
-      response: (data, _matches, output) => {
+      response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir = 'unknown'; // TBD
+        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
 
         if (
           config === 'kefka' && data.inLine[data.me] === 1 &&
@@ -3247,13 +3300,13 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir: output[dir]!(),
           }),
         };
@@ -3283,14 +3336,14 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir2]!(),
             }),
           };
@@ -3298,7 +3351,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.twoBlackHoles!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
           }),
@@ -3327,21 +3380,21 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir2]!(),
             }),
           };
@@ -3349,7 +3402,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.threeBlackHoles!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
             dir3: output[dir3]!(),
@@ -3366,6 +3419,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 3;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3387,7 +3441,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir]!(),
               }),
             };
@@ -3404,6 +3458,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 4;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3426,7 +3481,7 @@ const triggerSet: TriggerSet<Data> = {
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.takeDirTetherClockwise!({
-                  num: data.blackHoleSet,
+                  num: data.nothingnessCount,
                   dir: output[dir]!(),
                 }),
               };
@@ -3445,6 +3500,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 5;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3459,21 +3515,21 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir1]!(),
               }),
             };
           // Support #2
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir2]!(),
             }),
           };
@@ -3481,7 +3537,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.threeBlackHoles!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
             dir3: output[dir3]!(),
@@ -3498,6 +3554,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 6;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3518,7 +3575,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir]!(),
               }),
             };
@@ -3535,6 +3592,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 7;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3558,7 +3616,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir]!(),
               }),
             };
@@ -3574,6 +3632,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 8;
       },
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -3587,14 +3646,14 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.blackHoleSet,
+                num: data.nothingnessCount,
                 dir: output[dir1]!(),
               }),
             };
           // Support #3
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir2]!(),
             }),
           };
@@ -3602,7 +3661,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.twoBlackHoles!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
           }),
@@ -3618,12 +3677,15 @@ const triggerSet: TriggerSet<Data> = {
         return data.phase === 'p3' && data.nothingnessCount === 9;
       },
       suppressSeconds: 99999,
-      response: (data, _matches, output) => {
+      response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir = 'unknown'; // TBD
+        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
 
         if (
           config === 'kefka' && data.inLine[data.me] === 3 &&
@@ -3631,13 +3693,13 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.blackHoleSet,
+              num: data.nothingnessCount,
               dir: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.blackHoleSet,
+            num: data.nothingnessCount,
             dir: output[dir]!(),
           }),
         };
