@@ -3134,7 +3134,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
       run: (data, matches) => {
         const heading = parseFloat(matches.heading);
-        data.kefkaTeleportDirNum = Directions.hdgTo8DirNum(heading);
+        data.kefkaTeleportDirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
       },
     },
     {
@@ -3147,6 +3147,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, matches, output) => {
         const id = matches.id;
         const heading = parseFloat(matches.heading);
+        // NOTE: Using heading, which is flipped, so CW/CCW are flipped here
         const bossDirNum = Directions.hdgTo8DirNum(heading);
         const clockDirNum = (bossDirNum + 6) % 8; // Wrap-around
         const counterDirNum = (bossDirNum + 2) % 8;
