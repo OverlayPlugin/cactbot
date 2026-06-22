@@ -253,11 +253,21 @@ const trapOutputStrings: OutputStrings = {
 
 // Get Partner's HeadMarker following HTMR Priority
 // Requires data and Forsaken Group
-// Will return the forsaken headmarker of partner
+// Will return the forsaken headmarker of partner:
+// Tanks + Healers are partners
+// Melee DPS + Range/Caster are Partners
+// Tanks look for healer as they are left unless healer has it
+// Melee DPS look for the Range/Caster as they are left if ranged has it
+// Range/Caster looks for existence of a Melee DPS in case there is fake melee
 const getHTMRPartnerMarker = (
   data: Data,
   group: string[],
 ): forsakenHeadmarker => {
+  // Healer role should not be parsed with this function
+  // as they have highest priority left
+  if (data.role === 'healer')
+    return 'unknown';
+
   // Avoiding use of unbound method with `this` in data.party.isHealer
   const isHealer = (
     x: string,
@@ -298,19 +308,20 @@ const getHTMRPartnerMarker = (
     return isMeleeDPS;
   };
   const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-  // Need to look at what healer has in relation to us
-  // Partner is whoever has the same marker
-  const isMyRoleSameAs = getRoleFunction(data.role);
+
+  // Check each player in the group if they are our partner
+  const isMyPartner = getRoleFunction(data.role);
   const member1 = group[0] ?? '';
   const member2 = group[1] ?? '';
   const member3 = group[2] ?? '';
-  const partner = isMyRoleSameAs(member1)
+  const partner = isMyPartner(member1)
     ? member1
-    : isMyRoleSameAs(member2)
+    : isMyPartner(member2)
     ? member2
-    : isMyRoleSameAs(member3)
+    : isMyPartner(member3)
     ? member3
     : 'unknown';
+
   // Return partner's marker
   return playerHeadmarkers[partner ?? 0] ?? 'unknown';
 };
