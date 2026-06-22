@@ -268,15 +268,6 @@ const getHTMRPartnerMarker = (
   if (data.role === 'healer')
     return 'unknown';
 
-  // Avoiding use of unbound method with `this` in data.party.isHealer
-  const isHealer = (
-    x: string,
-  ): boolean => {
-    const jobName = data.party.jobName(x);
-    if (jobName === undefined)
-      return false;
-    return Util.isHealerJob(jobName);
-  };
   // Functions for determining party member DPS subroles
   const isRangedDPS = (
     x: string,
@@ -300,7 +291,7 @@ const getHTMRPartnerMarker = (
   ): (name: string) => boolean => {
     // Only a healer will supercede the tank
     if (role === 'tank')
-      return isHealer;
+      return data.party.isHealer.bind(data.party);
     if (Util.isMeleeDpsJob(data.job))
       return isRangedDPS;
     // If we find a melee in our group we are the ranged priority
