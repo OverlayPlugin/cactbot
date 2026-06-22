@@ -286,7 +286,7 @@ const getHTMRPartnerMarker = (
   };
   // Function to dynamically determine which role to check
   const getRoleFunction = (
-    role: string
+    role: string,
   ): (name: string) => boolean => {
     // Only a healer will supercede the tank
     if (role === 'tank')
@@ -1990,7 +1990,9 @@ const triggerSet: TriggerSet<Data> = {
                 nearfar: nearFar,
               });
             default: {
-              const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+              const group = config === 'kroxy-rinon'
+                ? data.forsakenGroupA
+                : data.forsakenGroupB;
               const pMarker = getHTMRPartnerMarker(data, group);
 
               // Could not get priority
@@ -2130,10 +2132,12 @@ const triggerSet: TriggerSet<Data> = {
                   return output.baitThenMarkerTower!({
                     bait: time,
                     marker: output[marker]!(),
-                    tower: output.leftTower!()
+                    tower: output.leftTower!(),
                   });
                 default: {
-                  const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+                  const group = config === 'kroxy-rinon'
+                    ? data.forsakenGroupA
+                    : data.forsakenGroupB;
                   const pMarker = getHTMRPartnerMarker(data, group);
 
                   // Could not get priority
@@ -2291,7 +2295,7 @@ const triggerSet: TriggerSet<Data> = {
                   return output.baitThenMarkerTower!({
                     bait: time,
                     marker: output[marker]!(),
-                    tower: output.leftTower!()
+                    tower: output.leftTower!(),
                   });
                 default: {
                   const group = config === 'abba' ? data.forsakenGroupA : data.forsakenGroupB;
@@ -2387,7 +2391,7 @@ const triggerSet: TriggerSet<Data> = {
                   return output.baitThenMarkerTower!({
                     bait: time,
                     marker: output[marker]!(),
-                    tower: output.leftTower!()
+                    tower: output.leftTower!(),
                   });
                 default: {
                   const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
@@ -2571,7 +2575,9 @@ const triggerSet: TriggerSet<Data> = {
                   nearfar: output.outerHitbox!(),
                 });
               default: {
-                const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+                const group = config === 'kroxy-rinon'
+                  ? data.forsakenGroupA
+                  : data.forsakenGroupB;
                 const pMarker = getHTMRPartnerMarker(data, group);
 
                 // Could not get priority
@@ -2914,7 +2920,9 @@ const triggerSet: TriggerSet<Data> = {
                   nearfar: output.outerHitbox!(),
                 });
               default: {
-                const group = config === 'abba' ? data.forsakenGroupA : data.forsakenGroupB;
+                const group = config === 'abba'
+                  ? data.forsakenGroupA
+                  : data.forsakenGroupB;
                 const pMarker = getHTMRPartnerMarker(data, group);
 
                 // Could not get priority
