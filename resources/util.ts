@@ -356,13 +356,6 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
-const xyToClockwiseAngle = (x: number, y: number, centerX: number, centerY: number): number => {
-  // Returns a continuous angle where north is 0 and values increase clockwise.
-  x = x - centerX;
-  y = y - centerY;
-  return (Math.PI - Math.atan2(x, y) + 2 * Math.PI) % (2 * Math.PI);
-};
-
 const hdgTo16DirNum = (heading: number): number => {
   // N = 0, NNE = 1, ..., NNW = 15
   return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
@@ -390,24 +383,31 @@ const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
 };
 
-interface SortablePoint {
+type Point = {
   x: number;
   y: number;
-}
+};
 
-type PointSortEntry<T extends SortablePoint> = {
+type PointSortEntry<T extends Point> = {
   point: T;
   angle: number;
 };
 
 const twoPi = 2 * Math.PI;
 
+const xyToClockwiseAngle = (x: number, y: number, centerX: number, centerY: number): number => {
+  // Returns a continuous angle where north is 0 and values increase clockwise.
+  x = x - centerX;
+  y = y - centerY;
+  return (Math.PI - Math.atan2(x, y) + 2 * Math.PI) % (2 * Math.PI);
+};
+
 const clockwiseAngleDelta = (toAngle: number, fromAngle: number): number => {
   // Normalize the wraparound case so the result is always in [0, 2π).
   return (toAngle - fromAngle + twoPi) % twoPi;
 };
 
-const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
+const sortPointEntriesClockwiseFrom = <T extends Point>(
   entries: PointSortEntry<T>[],
   referenceAngle: number,
 ): T[] => {
@@ -420,7 +420,7 @@ const sortPointEntriesClockwiseFrom = <T extends SortablePoint>(
     .map((entry) => entry.point);
 };
 
-const sortPointsClockwise = <T extends SortablePoint>(
+const sortPointsClockwise = <T extends Point>(
   points: readonly T[],
   centerX: number,
   centerY: number,
