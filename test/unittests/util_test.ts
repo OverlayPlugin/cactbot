@@ -2,10 +2,12 @@ import { assert } from 'chai';
 
 import Util, {
   allJobs,
+  AnyDirection,
   casterDpsJobs,
   craftingJobs,
-  Directions,
   gatheringJobs,
+  getSortDirectionsClockwiseFunction,
+  getSortPointsClockwiseFunction,
   healerJobs,
   limitedJobs,
   meleeDpsJobs,
@@ -95,6 +97,42 @@ describe('util tests', () => {
     );
   });
 
+  it('sorts directions clockwise from a reference direction and undefined reference', () => {
+    const dirs: AnyDirection[] = [
+      'dirNE',
+      'dirSW',
+      'dirN',
+      'dirNW',
+      'dirS',
+      'dirW',
+      'dirSE',
+      'dirE',
+    ];
+
+    let expected = ['dirNW', 'dirN', 'dirNE', 'dirE', 'dirSE', 'dirS', 'dirSW', 'dirW'];
+    let sorted = dirs.sort(getSortDirectionsClockwiseFunction('dirNW'));
+    assert.deepEqual(sorted, expected);
+
+    expected = ['dirN', 'dirNE', 'dirE', 'dirSE', 'dirS', 'dirSW', 'dirW', 'dirNW'];
+    sorted = dirs.sort(getSortDirectionsClockwiseFunction());
+    assert.deepEqual(sorted, expected);
+  });
+
+  it('sorts directions and unknowns, putting unknowns at the end', () => {
+    const dirs: AnyDirection[] = [
+      'dirNE',
+      'unknown',
+      'dirN',
+      'unknown',
+      'dirNW',
+      'dirS',
+    ];
+
+    const expected = ['dirN', 'dirNE', 'dirS', 'dirNW', 'unknown', 'unknown'];
+    const sorted = dirs.sort(getSortDirectionsClockwiseFunction());
+    assert.deepEqual(sorted, expected);
+  });
+
   it('sorts points clockwise from a reference point', () => {
     const points = [
       { id: 'NE', x: 1, y: -1 },
@@ -110,84 +148,39 @@ describe('util tests', () => {
     const expected = ['NW', 'N', 'NE', 'E', 'SE', 'S', 'SW', 'W'];
 
     let [refX, refY] = [-1, -1]; // same as NW
-    let sorted = Directions.sortPointsClockwise(points, 0, 0, {
-      reference: { x: refX, y: refY },
-    });
+    let sorted = points.sort(
+      getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }),
+    );
     assert.deepEqual(sorted.map((point) => point.id), expected);
 
     [refX, refY] = [-1.2, -0.8];
-    sorted = Directions.sortPointsClockwise(points, 0, 0, {
-      reference: { x: refX, y: refY },
-    });
+    sorted = points.sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }));
     assert.deepEqual(sorted.map((point) => point.id), expected);
   });
 
-  it('sorts clustered points clockwise when contained within a semicircle', () => {
+  it('sorts points clockwise with numeric reference', () => {
     const points = [
       { id: 'NE', x: 1, y: -1 },
       { id: 'NW', x: -1, y: -1 },
       { id: 'N', x: 0, y: -1 },
     ];
 
-    const sorted = Directions.sortPointsClockwise(points, 0, 0);
+    const sorted = points.sort(
+      getSortPointsClockwiseFunction({ x: 0, y: 0 }, 0), // reference is south
+    );
 
     assert.deepEqual(sorted.map((point) => point.id), ['NW', 'N', 'NE']);
   });
 
-  it('sorts points that are not contained within a semicircle', () => {
-    const points = [
-      { id: 'N', x: 0, y: -1 },
-      { id: 'E', x: 1, y: 0 },
-      { id: 'S', x: 0, y: 1 },
-      { id: 'W', x: -1, y: 0 },
-    ];
-
-    const sorted = Directions.sortPointsClockwise(points, 0, 0);
-
-    assert.deepEqual(sorted.map((point) => point.id), ['N', 'E', 'S', 'W']);
-  });
-
-  it('sorts points that are exactly opposite', () => {
-    const points = [
-      { id: 'N', x: 0, y: -1 },
-      { id: 'S', x: 0, y: 1 },
-    ];
-
-    const sorted = Directions.sortPointsClockwise(points, 0, 0);
-
-    assert.deepEqual(sorted.map((point) => point.id), ['N', 'S']);
-  });
-
-  it('sorts points clockwise from north when reference is the center', () => {
-    const points = [
-      { id: 'E', x: 1, y: 0 },
-      { id: 'S', x: 0, y: 1 },
-      { id: 'N', x: 0, y: -1 },
-      { id: 'W', x: -1, y: 0 },
-    ];
-
-    const sorted = Directions.sortPointsClockwise(points, 0, 0, {
-      reference: { x: 0, y: 0 },
-    });
-
-    assert.deepEqual(sorted.map((point) => point.id), ['N', 'E', 'S', 'W']);
-  });
-
   it('keeps points in input order when all angles are equal', () => {
     const points = [
-      { id: 'near', x: 0, y: -1 },
-      { id: 'far', x: 0, y: -2 },
+      { id: '1', x: 0, y: -3 },
+      { id: '2', x: 0, y: -4 },
+      { id: '3', x: 0, y: -1 },
+      { id: '4', x: 0, y: -2 },
     ];
 
-    const sorted = Directions.sortPointsClockwise(points, 0, 0);
-
-    assert.deepEqual(sorted.map((point) => point.id), ['near', 'far']);
-    assert.notStrictEqual(sorted, points);
-  });
-
-  it('handles empty point sorting', () => {
-    const points: { id: string; x: number; y: number }[] = [];
-
-    assert.deepEqual(Directions.sortPointsClockwise(points, 0, 0), []);
+    const sorted = points.sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }));
+    assert.deepEqual(sorted.map((point) => point.id), ['1', '2', '3', '4']);
   });
 });

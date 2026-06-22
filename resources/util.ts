@@ -264,16 +264,16 @@ const output16Dir: DirectionOutput16[] = [
 const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'dirW'];
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
-const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
-  const getIndex = (n: DirectionOutput16) => {
-    const index = output16Dir.indexOf(n);
-    // Values outside of output16Dir (i.e. 'unknown') sort last
-    if (index < 0)
-      return output16Dir.length;
-    return index;
-  };
+const getDirectionIndex = (n: DirectionOutput16) => {
+  const index = output16Dir.indexOf(n);
+  // Values outside of output16Dir (i.e. 'unknown') sort last
+  if (index < 0)
+    return output16Dir.length;
+  return index;
+};
 
-  return getIndex(a) - getIndex(b);
+const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
+  return getDirectionIndex(a) - getDirectionIndex(b);
 };
 
 const outputStrings16Dir: OutputStrings = {
@@ -383,96 +383,71 @@ const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
 };
 
+export type AnyDirection =
+  | DirectionOutputCardinal
+  | DirectionOutputIntercard
+  | DirectionOutput8
+  | DirectionOutput16;
+
+// Example usage:
+// const dirs: DirectionOutputCardinal[] = ['dirN', 'dirW'];
+// dirs.sort(getSortDirectionsClockwiseFunction('dirE'));
+// `dirs` should equal `['dirW', 'dirN']`
+export const getSortDirectionsClockwiseFunction = (
+  from?: AnyDirection,
+): (left: AnyDirection, right: AnyDirection) => number => {
+  // Default to dirN
+  let offset = 0;
+  if (from !== undefined)
+    offset = getDirectionIndex(from);
+
+  const count = output16Dir.length + 1; // +1 for unknown
+
+  return (left: AnyDirection, right: AnyDirection) => {
+    const rightIndex = (count + getDirectionIndex(right) - offset) % count;
+    const leftIndex = (count + getDirectionIndex(left) - offset) % count;
+    return leftIndex - rightIndex;
+  };
+};
+
 type Point = {
   x: number;
   y: number;
 };
 
-type PointSortEntry<T extends Point> = {
-  point: T;
-  angle: number;
-};
-
-const twoPi = 2 * Math.PI;
-
-const xyToClockwiseAngle = (x: number, y: number, centerX: number, centerY: number): number => {
-  // Returns a continuous angle where north is 0 and values increase clockwise.
+const xyToHeading = (x: number, y: number, centerX: number, centerY: number) => {
   x = x - centerX;
   y = y - centerY;
-  return (Math.PI - Math.atan2(x, y) + 2 * Math.PI) % (2 * Math.PI);
+  return Math.atan2(x, y);
 };
 
-const clockwiseAngleDelta = (toAngle: number, fromAngle: number): number => {
-  // Normalize the wraparound case so the result is always in [0, 2π).
-  return (toAngle - fromAngle + twoPi) % twoPi;
-};
+// Example usage:
+// getSortPointsClockwiseFunction
+// const points = [{ x: 101, y: 101 }, { x: 99, y: 99 }];
+// points.sort(getSortPointsClockwiseFunction({x: 100, y: 100}, {x: 99, y: 101}));
+// `points` should now equal `[{ x: 99, y: 99 }, { x: 101, y: 101 }]`
+export const getSortPointsClockwiseFunction = <T extends Point>(
+  center: T,
+  reference: number | T = Math.PI, // Default to north
+): (left: T, right: T) => number => {
+  // Convert point to heading if needed
+  const offset = typeof reference === 'object'
+    ? xyToHeading(reference.x, reference.y, center.x, center.y)
+    : reference;
 
-const sortPointEntriesClockwiseFrom = <T extends Point>(
-  entries: PointSortEntry<T>[],
-  referenceAngle: number,
-): T[] => {
-  return entries
-    .map((entry) => ({
-      ...entry,
-      delta: clockwiseAngleDelta(entry.angle, referenceAngle),
-    }))
-    .sort((a, b) => a.delta - b.delta)
-    .map((entry) => entry.point);
-};
+  const twoPI = Math.PI * 2;
 
-const sortPointsClockwise = <T extends Point>(
-  points: readonly T[],
-  centerX: number,
-  centerY: number,
-  options: { reference?: { x: number; y: number } } = {},
-): T[] => {
-  if (points.length <= 1)
-    return [...points];
+  return (left: T, right: T) => {
+    // Get our base headings for the two points
+    const rightHeading = xyToHeading(right.x, right.y, center.x, center.y);
+    const leftHeading = xyToHeading(left.x, left.y, center.x, center.y);
 
-  const entries: PointSortEntry<T>[] = points
-    .map((point) => ({
-      point: point,
-      angle: xyToClockwiseAngle(point.x, point.y, centerX, centerY),
-    }))
-    .sort((a, b) => a.angle - b.angle);
+    // Adjust by reference offset
+    const rightHeadingOffset = (twoPI + (offset - rightHeading)) % twoPI;
+    const leftHeadingOffset = (twoPI + (offset - leftHeading)) % twoPI;
 
-  const reference = options.reference;
-  if (reference !== undefined) {
-    const referenceAngle = reference.x === centerX && reference.y === centerY
-      ? 0
-      : xyToClockwiseAngle(reference.x, reference.y, centerX, centerY);
-    return sortPointEntriesClockwiseFrom(entries, referenceAngle);
-  }
-
-  const eps = 1e-9;
-  let largestGap = 0;
-  let startIdx = 0;
-  for (const [idx, entry] of entries.entries()) {
-    const nextIdx = (idx + 1) % entries.length;
-    const nextEntry = entries[nextIdx];
-    if (nextEntry === undefined)
-      continue;
-    const gap = clockwiseAngleDelta(nextEntry.angle, entry.angle);
-
-    const startEntry = entries[startIdx];
-    if (startEntry === undefined)
-      continue;
-    // If there are multiple largest gaps, start from the smallest angle.
-    if (
-      gap > largestGap + eps ||
-      (Math.abs(gap - largestGap) <= eps && nextEntry.angle < startEntry.angle)
-    ) {
-      largestGap = gap;
-      startIdx = nextIdx;
-    }
-  }
-
-  // With no angular separation, there is no clockwise ordering signal.
-  if (largestGap === 0)
-    return [...points];
-
-  const referenceAngle = entries[startIdx]?.angle ?? 0;
-  return sortPointEntriesClockwiseFrom(entries, referenceAngle);
+    return leftHeadingOffset - rightHeadingOffset;
+  };
 };
 
 export const Directions = {
@@ -494,7 +469,6 @@ export const Directions = {
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
-  sortPointsClockwise: sortPointsClockwise,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
