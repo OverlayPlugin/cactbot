@@ -506,7 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       hadAccretion: false,
       blackHoleIdDirNums: {},
       nothingnessCount: 0,
-      blackHoleTetherDirNums: [];
+      blackHoleTetherDirNums: [],
     };
   },
   triggers: [
