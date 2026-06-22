@@ -3788,7 +3788,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 6, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
+      netRegex: { capture: true },
       condition: (data) => {
         return data.phase === 'p3' && data.nothingnessCount === 9;
       },
