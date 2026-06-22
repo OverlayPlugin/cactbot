@@ -3124,14 +3124,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Slap Happy Boss Teleport Collect',
+      id: 'DMU P3 Boss Teleport Collect',
+      // For BAE6/BAE7 Slap Happy
       // Boss' position data is (100, 100), but heading does update ~2.5s before cast
       // 4 Invisible entities via 03 AddCombatant log lines correlate to the slap AoEs
       // spawn at time of StartsUsing. These are also ordered in the order they occur.
+      //
+      // For BAEC/BAED Look upon Me and Despair, boss also teleports
       // TODO: Get earlier infoText call
       // This could be necessary to call which black holes to grab later
       type: 'StartsUsing',
-      netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
+      netRegex: { id: ['BAE6', 'BAE7', 'BAEC', 'BAED'], source: 'Kefka', capture: true },
       run: (data, matches) => {
         const heading = parseFloat(matches.heading);
         data.kefkaTeleportDirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
