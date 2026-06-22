@@ -3474,7 +3474,6 @@ const triggerSet: TriggerSet<Data> = {
         const config = data.triggerSetConfig.blackhole;
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
-        const dir = 'unknown'; // TBD
 
         if (config === 'kefka') {
           if (line === 1) {
@@ -3484,6 +3483,18 @@ const triggerSet: TriggerSet<Data> = {
             return { alertText: output.passTether!() };
           }
           if (line === 2 && !hadAccretion && data.role === 'dps') {
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[0] !== undefined
+              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              : 'unknown';
+
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
@@ -3513,7 +3524,6 @@ const triggerSet: TriggerSet<Data> = {
         const config = data.triggerSetConfig.blackhole;
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
-        const dir = 'unknown'; // TBD
 
         if (config === 'kefka') {
           if (line === 1) {
@@ -3524,6 +3534,18 @@ const triggerSet: TriggerSet<Data> = {
           }
           if (line === 2 && !hadAccretion) {
             if (data.role !== 'dps') {
+              const kefkaDir = data.kefkaTeleportDirNum;
+              const dirNums = data.blackHoleTetherDirNums;
+
+              // Convert Kefka dir to 4Dir
+              const startDir = kefkaDir !== undefined
+                ? Math.round(kefkaDir / 2) % 4
+                : -1;
+              const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+              const dir = sorted[1] !== undefined
+                ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+                : 'unknown';
+
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.takeDirTetherClockwise!({
@@ -3622,7 +3644,6 @@ const triggerSet: TriggerSet<Data> = {
 
         const config = data.triggerSetConfig.blackhole;
         const line = data.inLine[data.me];
-        const dir = 'unknown'; // TBD
 
         if (config === 'kefka') {
           if (line === 2) {
@@ -3632,6 +3653,18 @@ const triggerSet: TriggerSet<Data> = {
             return { alertText: output.passTether!() };
           }
           if (line === 3 && data.role === 'dps') {
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[0] !== undefined
+              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              : 'unknown';
+
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
@@ -3660,7 +3693,6 @@ const triggerSet: TriggerSet<Data> = {
 
         const config = data.triggerSetConfig.blackhole;
         const line = data.inLine[data.me];
-        const dir = 'unknown'; // TBD
 
         if (config === 'kefka') {
           if (line === 2) {
@@ -3673,6 +3705,18 @@ const triggerSet: TriggerSet<Data> = {
             if (data.role === 'dps')
               return { infoText: output.keepTether!() };
             // Support #3
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[1] !== undefined
+              ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+              : 'unknown';
+
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
