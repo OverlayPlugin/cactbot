@@ -361,6 +361,22 @@ const boaOutputStrings: OutputStrings = {
   },
 };
 
+// Used to return clockwise from Kefka ordering of Black Hole Tethers
+const getCWOrderFromN = (
+  n: number,
+  dirNums: number[],
+): number[] => {
+  // Calculate distance from cardinal
+  const getCWDistance = (start: number, end: number): number => {
+    const diff = end - start;
+    return diff < 0 ? diff + 4 : diff;
+  };
+
+  return [...dirNums].sort((a, b) => {
+    return getCWDistance(n, a) - getCWDistance(n, b);
+  });
+};
+
 const blackHoleOutputStrings: OutputStrings = {
   ...Directions.outputStringsCardinalDir,
   num: {
@@ -3326,8 +3342,20 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir1 = 'unknown'; // TBD
-        const dir2 = 'unknown'; // TBD
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
 
         if (
           config === 'kefka' && data.inLine[data.me] === 1 &&
@@ -3372,9 +3400,23 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir1 = 'unknown'; // TBD
-        const dir2 = 'unknown'; // TBD
-        const dir3 = 'unknown'; // TBD
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const dir3 = sorted[2] !== undefined
+          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          : 'unknown';
 
         if (config === 'kefka' && data.inLine[data.me] === 1) {
           if (data.hadAccretion)
@@ -3507,9 +3549,23 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir1 = 'unknown'; // TBD
-        const dir2 = 'unknown'; // TBD
-        const dir3 = 'unknown'; // TBD
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const dir3 = sorted[2] !== undefined
+          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          : 'unknown';
 
         if (config === 'kefka' && data.inLine[data.me] === 2) {
           if (data.hadAccretion)
@@ -3639,8 +3695,20 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const dir1 = 'unknown'; // TBD
-        const dir2 = 'unknown'; // TBD
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
 
         if (config === 'kefka' && data.inLine[data.me] === 3) {
           if (data.role === 'dps')
