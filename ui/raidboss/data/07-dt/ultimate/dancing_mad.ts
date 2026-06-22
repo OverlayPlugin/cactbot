@@ -251,6 +251,70 @@ const trapOutputStrings: OutputStrings = {
   },
 };
 
+// Get Partner's HeadMarker following HTMR Priority
+// Requires data and Forsaken Group
+// Will return the forsaken headmarker of partner
+const getHTMRPartnerMarker = (
+  data: Data,
+  group: string[],
+): forsakenHeadmarker => {
+  // Avoiding use of unbound method with `this` in data.party.isHealer
+  const isHealer = (
+    x: string,
+  ): boolean => {
+    const jobName = data.party.jobName(x);
+    if (jobName === undefined)
+      return false;
+    return Util.isHealerJob(jobName);
+  };
+  // Functions for determining party member DPS subroles
+  const isRangedDPS = (
+    x: string,
+  ): boolean => {
+    const jobName = data.party.jobName(x);
+    if (jobName === undefined)
+      return false;
+    return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
+  };
+  const isMeleeDPS = (
+    x: string,
+  ): boolean => {
+    const jobName = data.party.jobName(x);
+    if (jobName === undefined)
+      return false;
+    return Util.isMeleeDpsJob(jobName);
+  };
+  // Function to dynamically determine which role to check
+  const getRoleFunction = (
+    role: string
+  ): (name: string) => boolean => {
+    // Only a healer will supercede the tank
+    if (role === 'tank')
+      return isHealer;
+    if (Util.isMeleeDpsJob(data.job))
+      return isRangedDPS;
+    // If we find a melee in our group we are the ranged priority
+    // Partner should be a melee dps, for optimal comp
+    return isMeleeDPS;
+  };
+  const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+  // Need to look at what healer has in relation to us
+  // Partner is whoever has the same marker
+  const isMyRoleSameAs = getRoleFunction(data.role);
+  const member1 = group[0] ?? '';
+  const member2 = group[1] ?? '';
+  const member3 = group[2] ?? '';
+  const partner = isMyRoleSameAs(member1)
+    ? member1
+    : isMyRoleSameAs(member2)
+    ? member2
+    : isMyRoleSameAs(member3)
+    ? member3
+    : 'unknown';
+  // Return partner's marker
+  return playerHeadmarkers[partner ?? 0] ?? 'unknown';
+};
+
 const forsakenOutputStrings: OutputStrings = {
   spreadBowtie: Outputs.spread,
   tower: Outputs.getTowers,
@@ -285,9 +349,7 @@ const forsakenOutputStrings: OutputStrings = {
   spread: {
     en: 'Spread on YOU',
   },
-  stack: { // This generally won't get called unless there is a wrong config or missed tower
-    en: 'Stack stored on YOU',
-  },
+  stack: Outputs.stackOnYou,
   num: {
     en: '${num}: ',
     de: '${num}: ',
@@ -322,7 +384,7 @@ const forsakenOutputStrings: OutputStrings = {
   stacksOnPlayers: {
     en: 'Stacks on ${players}',
   },
-  stacksOnPlayersTower: { // Used after first tower
+  stacksOnPlayersTower: { // Used after first tower for when partner couldn't be found or none config
     en: '${num}${stack} + ${tower}',
   },
   stackOnYouTower: { // Used in first tower only
@@ -331,8 +393,8 @@ const forsakenOutputStrings: OutputStrings = {
   markerOnYouStacksOnPlayers: { // Used only for first tower
     en: '${num}${marker} + ${stacks}',
   },
-  markerOnYouTowerOdds: { // Used for Cone or Spread (Stack gets separate output)
-    en: '${num}${marker} + ${tower} + ${far}',
+  markerOnYouTowerOdds: { // Used for Odd Towers (excluding first set)
+    en: '${num}${marker} + ${tower} + ${nearfar}',
   },
   markerOnYouTowerEvens: { // Used for Cones + Spreads (no stacks taking the towers)
     en: '${num}${marker} + ${tower} + ${nearfar}',
@@ -1919,137 +1981,55 @@ const triggerSet: TriggerSet<Data> = {
             ? output.beFar!()
             : output.beNear!();
 
-          if (data.role === 'healer') {
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
-
-          const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-          const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
-          const member1 = group[0] ?? '';
-          const member2 = group[1] ?? '';
-          const member3 = group[2] ?? '';
-          if (data.role === 'tank') {
-            // Need to look at what healer has in relation to us
-            // Partner is whoever has the same marker
-            const partner = data.party.isHealer(member1)
-              ? member1
-              : data.party.isHealer(member2)
-              ? member2
-              : data.party.isHealer(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
-
-            // Could not get priority
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+          switch (data.role) {
+            case 'healer':
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.leftTower!(),
                 nearfar: nearFar,
               });
+            default: {
+              const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+              const pMarker = getHTMRPartnerMarker(data, group);
 
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.rightTower!()
-                : output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.rightTower!()
+                    : output.leftTower!(),
+                  nearfar: nearFar,
+                });
 
-          if (Util.isMeleeDpsJob(data.job)) {
-            const isRangedDPS = (
-              x: string,
-            ): boolean => {
-              const jobName = data.party.jobName(x);
-              if (jobName === undefined)
-                return false;
-              return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
-            };
-            // Partner should be a ranged dps, for standard comp
-            const partner = isRangedDPS(member1)
-              ? member1
-              : isRangedDPS(member2)
-              ? member2
-              : isRangedDPS(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.leftTower!()
+                    : output.rightTower!(),
+                  nearfar: nearFar,
+                });
 
-            // Could not find caster or phys ranged partner
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+              // Ranged DPS highest priority right
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.rightTower!(),
                 nearfar: nearFar,
               });
-
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.leftTower!()
-                : output.rightTower!(),
-              nearfar: nearFar,
-            });
+            }
           }
-
-          // If we find a melee in our group we are the ranged priority
-          // Partner should be a melee dps, for optimal comp
-          const isMeleeDPS = (
-            x: string,
-          ): boolean => {
-            const jobName = data.party.jobName(x);
-            if (jobName === undefined)
-              return false;
-            return Util.isMeleeDpsJob(jobName);
-          };
-          const partner = isMeleeDPS(member1)
-            ? member1
-            : isMeleeDPS(member2)
-            ? member2
-            : isMeleeDPS(member3)
-            ? member3
-            : 'unknown';
-          // Get partner's marker
-          const pMarker = playerHeadmarkers[partner ?? 0];
-
-          // Could not find melee dps
-          if (
-            partner === 'unknown' ||
-            pMarker === undefined ||
-            pMarker === 'unknown'
-          )
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.tower!(),
-              nearfar: nearFar,
-            });
-
-          // Highest priority right
+          // Unable to determine priority
           return output.markerOnYouTowerEvens!({
             num: num,
             marker: output[marker]!(),
-            tower: output.rightTower!(),
+            tower: output.tower!(),
             nearfar: nearFar,
           });
         }
@@ -2143,25 +2123,65 @@ const triggerSet: TriggerSet<Data> = {
               (
                 isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')
               ) ||
-              (!isForsakenGroupA && config === 'abba') ||
-              (config === 'none')
+              (!isForsakenGroupA && config === 'abba')
             ) {
-              // Need to know for priority
-              const players = data.pathOfLightStackPlayers.map(
-                (player) => {
-                  if (player === data.me)
-                    return output.you!();
-                  return data.party.member(player);
-                },
-              );
-              const msg = players?.join(', ');
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.leftTower!()
+                  });
+                default: {
+                  const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+                  const pMarker = getHTMRPartnerMarker(data, group);
 
-              // Assuming none config soaks
-              return output.baitThenStacks!({
-                bait: time,
-                stacks: output.stacksOnPlayers!({ players: msg }),
-              });
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.rightTower!()
+                        : output.leftTower!(),
+                    });
+
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.leftTower!()
+                        : output.rightTower!(),
+                    });
+
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.rightTower!(),
+                  });
+                }
+              }
             }
+            // None config
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map(
+              (player) => {
+                if (player === data.me)
+                  return output.you!();
+                return data.party.member(player);
+              },
+            );
+            const msg = players?.join(', ');
+
+            // Assuming none config soaks
+            return output.baitThenStacks!({
+              bait: time,
+              stacks: output.stacksOnPlayers!({ players: msg }),
+            });
           }
 
           // Tower soakers, non stack markers
@@ -2265,6 +2285,49 @@ const triggerSet: TriggerSet<Data> = {
           // Tower Soaks
           // In AAAABBBB, there is no stack
           if (marker === 'stack') {
+            if (config !== 'none') {
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.leftTower!()
+                  });
+                default: {
+                  const group = config === 'abba' ? data.forsakenGroupA : data.forsakenGroupB;
+                  const pMarker = getHTMRPartnerMarker(data, group);
+
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.rightTower!()
+                        : output.leftTower!(),
+                    });
+
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.leftTower!()
+                        : output.rightTower!(),
+                    });
+
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.rightTower!(),
+                  });
+                }
+              }
+            }
+            // None config
             // Need to know for priority
             const players = data.pathOfLightStackPlayers.map(
               (player) => {
@@ -2299,43 +2362,84 @@ const triggerSet: TriggerSet<Data> = {
             marker: output[marker]!(),
           });
         } else if (count === 7) {
-          if (config !== 'none') {
-            if (isForsakenGroupA) {
-              // So long as it is standard party composition...
-              if (data.role === 'tank')
-                return output.baitThenMech!({
-                  bait: time,
-                  mech: output.leftStack!(),
-                });
-              if (data.role === 'healer')
-                return output.baitThenMech!({
-                  bait: time,
-                  mech: output.leftBaitOut!(),
-                });
-              // 2 DPS in stack
+          if (isForsakenGroupA && config !== 'none') {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
               return output.baitThenMech!({
                 bait: time,
-                mech: output.rightStack!(),
+                mech: output.leftStack!(),
               });
-            }
-            if (marker === 'stack') {
-              // Need to know for priority
-              const players = data.pathOfLightStackPlayers.map(
-                (player) => {
-                  if (player === data.me)
-                    return output.you!();
-                  return data.party.member(player);
-                },
-              );
-              const msg = players?.join(', ');
-
-              // Assuming none config soaks
-              return output.baitThenStacks!({
+            if (data.role === 'healer')
+              return output.baitThenMech!({
                 bait: time,
-                stacks: output.stacksOnPlayers!({ players: msg }),
+                mech: output.leftBaitOut!(),
               });
-            }
+            // 2 DPS in stack
+            return output.baitThenMech!({
+              bait: time,
+              mech: output.rightStack!(),
+            });
+          }
+          if (marker === 'stack') {
+            if (config !== 'none') {
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.leftTower!()
+                  });
+                default: {
+                  const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
 
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.rightTower!()
+                        : output.leftTower!(),
+                    });
+
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower!({
+                      bait: time,
+                      marker: output[marker]!(),
+                      tower: pMarker === marker
+                        ? output.leftTower!()
+                        : output.rightTower!(),
+                    });
+
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower!({
+                    bait: time,
+                    marker: output[marker]!(),
+                    tower: output.rightTower!(),
+                  });
+                }
+              }
+            }
+            // None config
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map(
+              (player) => {
+                if (player === data.me)
+                  return output.you!();
+                return data.party.member(player);
+              },
+            );
+            const msg = players?.join(', ');
+
+            // Assuming none config soaks
+            return output.baitThenStacks!({
+              bait: time,
+              stacks: output.stacksOnPlayers!({ players: msg }),
+            });
+          }
+          if (config !== 'none')
             return output.baitThenMarkerTower!({
               bait: time,
               marker: output[marker]!(),
@@ -2343,8 +2447,6 @@ const triggerSet: TriggerSet<Data> = {
                 ? output.leftTower!()
                 : output.rightTower!(),
             });
-          }
-
           // No config
           return output.baitThenMarker!({
             bait: time,
@@ -2364,6 +2466,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread on YOU',
         },
+        stack: Outputs.stackOnYou,
         you: {
           en: 'YOU',
         },
@@ -2459,23 +2562,72 @@ const triggerSet: TriggerSet<Data> = {
             (!isForsakenGroupA && config === 'abba') ||
             (config === 'none')
           ) {
-            // Need to know for priority
-            const players = data.pathOfLightStackPlayers.map(
-              (player) => {
-                if (player === data.me)
-                  return output.you!();
-                return data.party.member(player);
-              },
-            );
-            const msg = players?.join(', ');
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.leftTower!(),
+                  nearfar: output.outerHitbox!(),
+                });
+              default: {
+                const group = config === 'kroxy-rinon' ? data.forsakenGroupA : data.forsakenGroupB;
+                const pMarker = getHTMRPartnerMarker(data, group);
 
-            // Assuming none config soaks
-            return output.stacksOnPlayersTower!({
-              num: num,
-              stack: output.stacksOnPlayers!({ players: msg }),
-              tower: output.tower!(),
-            });
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.rightTower!()
+                      : output.leftTower!(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox!()
+                      : output.outerHitbox!(),
+                  });
+
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.leftTower!()
+                      : output.rightTower!(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox!()
+                      : output.innerHitbox!(),
+                  });
+
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.rightTower!(),
+                  nearfar: output.innerHitbox!(),
+                });
+              }
+            }
           }
+          // None config
+          // Need to know for priority
+          const players = data.pathOfLightStackPlayers.map(
+            (player) => {
+              if (player === data.me)
+                return output.you!();
+              return data.party.member(player);
+            },
+          );
+          const msg = players?.join(', ');
+
+          // Assuming none config soaks
+          return output.stacksOnPlayersTower!({
+            num: num,
+            stack: output.stacksOnPlayers!({ players: msg }),
+            tower: output.tower!(),
+          });
         }
 
         // Tower soakers, non stack markers
@@ -2491,7 +2643,7 @@ const triggerSet: TriggerSet<Data> = {
             tower: marker === 'cone'
               ? output.leftTower!()
               : output.rightTower!(),
-            far: output.beFar!(),
+            nearfar: output.beFar!(),
           });
         }
 
@@ -2623,137 +2775,54 @@ const triggerSet: TriggerSet<Data> = {
             ? output.beFar!()
             : output.beNear!();
 
-          if (data.role === 'healer') {
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
-
-          const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-          const group = data.forsakenGroupB;
-          const member1 = group[0] ?? '';
-          const member2 = group[1] ?? '';
-          const member3 = group[2] ?? '';
-          if (data.role === 'tank') {
-            // Need to look at what healer has in relation to us
-            // Partner is whoever has the same marker
-            const partner = data.party.isHealer(member1)
-              ? member1
-              : data.party.isHealer(member2)
-              ? member2
-              : data.party.isHealer(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
-
-            // Could not get priority
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+          switch (data.role) {
+            case 'healer':
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.leftTower!(),
                 nearfar: nearFar,
               });
+            default: {
+              const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
 
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.rightTower!()
-                : output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.rightTower!()
+                    : output.leftTower!(),
+                  nearfar: nearFar,
+                });
 
-          if (Util.isMeleeDpsJob(data.job)) {
-            const isRangedDPS = (
-              x: string,
-            ): boolean => {
-              const jobName = data.party.jobName(x);
-              if (jobName === undefined)
-                return false;
-              return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
-            };
-            // Partner should be a ranged dps, for standard comp
-            const partner = isRangedDPS(member1)
-              ? member1
-              : isRangedDPS(member2)
-              ? member2
-              : isRangedDPS(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.leftTower!()
+                    : output.rightTower!(),
+                  nearfar: nearFar,
+                });
 
-            // Could not find caster or phys ranged partner
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+              // Ranged DPS highest priority right
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.rightTower!(),
                 nearfar: nearFar,
               });
-
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.leftTower!()
-                : output.rightTower!(),
-              nearfar: nearFar,
-            });
+            }
           }
-
-          // If we find a melee in our group we are the ranged priority
-          // Partner should be a melee dps, for optimal comp
-          const isMeleeDPS = (
-            x: string,
-          ): boolean => {
-            const jobName = data.party.jobName(x);
-            if (jobName === undefined)
-              return false;
-            return Util.isMeleeDpsJob(jobName);
-          };
-          const partner = isMeleeDPS(member1)
-            ? member1
-            : isMeleeDPS(member2)
-            ? member2
-            : isMeleeDPS(member3)
-            ? member3
-            : 'unknown';
-          // Get partner's marker
-          const pMarker = playerHeadmarkers[partner ?? 0];
-
-          // Could not find melee dps
-          if (
-            partner === 'unknown' ||
-            pMarker === undefined ||
-            pMarker === 'unknown'
-          )
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.tower!(),
-              nearfar: nearFar,
-            });
-
-          // Highest priority right
+          // Unable to determine priority
           return output.markerOnYouTowerEvens!({
             num: num,
             marker: output[marker]!(),
-            tower: output.rightTower!(),
+            tower: output.tower!(),
             nearfar: nearFar,
           });
         }
@@ -2816,7 +2885,7 @@ const triggerSet: TriggerSet<Data> = {
               tower: marker === 'cone'
                 ? output.leftTower!()
                 : output.rightTower!(),
-              far: output.beFar!(),
+              nearfar: output.beFar!(),
             });
           }
           if (data.role === 'tank')
@@ -2835,6 +2904,57 @@ const triggerSet: TriggerSet<Data> = {
         // Tower Soaks
         // In AAAABBBB, there is no stack
         if (marker === 'stack') {
+          if (config !== 'none') {
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.leftTower!(),
+                  nearfar: output.outerHitbox!(),
+                });
+              default: {
+                const group = config === 'abba' ? data.forsakenGroupA : data.forsakenGroupB;
+                const pMarker = getHTMRPartnerMarker(data, group);
+
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.rightTower!()
+                      : output.leftTower!(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox!()
+                      : output.outerHitbox!(),
+                  });
+
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.leftTower!()
+                      : output.rightTower!(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox!()
+                      : output.innerHitbox!(),
+                  });
+
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.rightTower!(),
+                  nearfar: output.innerHitbox!(),
+                });
+              }
+            }
+          }
+          // None config
           // Need to know for priority
           const players = data.pathOfLightStackPlayers.map(
             (player) => {
@@ -2861,7 +2981,7 @@ const triggerSet: TriggerSet<Data> = {
             tower: marker === 'cone'
               ? output.leftTower!()
               : output.rightTower!(),
-            far: output.beFar!(),
+            nearfar: output.beFar!(),
           });
         }
 
@@ -2963,137 +3083,54 @@ const triggerSet: TriggerSet<Data> = {
             ? output.beFar!()
             : output.beNear!();
 
-          if (data.role === 'healer') {
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
-
-          const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-          const group = data.forsakenGroupB;
-          const member1 = group[0] ?? '';
-          const member2 = group[1] ?? '';
-          const member3 = group[2] ?? '';
-          if (data.role === 'tank') {
-            // Need to look at what healer has in relation to us
-            // Partner is whoever has the same marker
-            const partner = data.party.isHealer(member1)
-              ? member1
-              : data.party.isHealer(member2)
-              ? member2
-              : data.party.isHealer(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
-
-            // Could not get priority
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+          switch (data.role) {
+            case 'healer':
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.leftTower!(),
                 nearfar: nearFar,
               });
+            default: {
+              const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
 
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.rightTower!()
-                : output.leftTower!(),
-              nearfar: nearFar,
-            });
-          }
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.rightTower!()
+                    : output.leftTower!(),
+                  nearfar: nearFar,
+                });
 
-          if (Util.isMeleeDpsJob(data.job)) {
-            const isRangedDPS = (
-              x: string,
-            ): boolean => {
-              const jobName = data.party.jobName(x);
-              if (jobName === undefined)
-                return false;
-              return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
-            };
-            // Partner should be a ranged dps, for standard comp
-            const partner = isRangedDPS(member1)
-              ? member1
-              : isRangedDPS(member2)
-              ? member2
-              : isRangedDPS(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: pMarker === marker
+                    ? output.leftTower!()
+                    : output.rightTower!(),
+                  nearfar: nearFar,
+                });
 
-            // Could not find caster or phys ranged partner
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
+              // Ranged DPS highest priority right
               return output.markerOnYouTowerEvens!({
                 num: num,
                 marker: output[marker]!(),
-                tower: output.tower!(),
+                tower: output.rightTower!(),
                 nearfar: nearFar,
               });
-
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: pMarker === marker
-                ? output.leftTower!()
-                : output.rightTower!(),
-              nearfar: nearFar,
-            });
+            }
           }
-
-          // If we find a melee in our group we are the ranged priority
-          // Partner should be a melee dps, for optimal comp
-          const isMeleeDPS = (
-            x: string,
-          ): boolean => {
-            const jobName = data.party.jobName(x);
-            if (jobName === undefined)
-              return false;
-            return Util.isMeleeDpsJob(jobName);
-          };
-          const partner = isMeleeDPS(member1)
-            ? member1
-            : isMeleeDPS(member2)
-            ? member2
-            : isMeleeDPS(member3)
-            ? member3
-            : 'unknown';
-          // Get partner's marker
-          const pMarker = playerHeadmarkers[partner ?? 0];
-
-          // Could not find melee dps
-          if (
-            partner === 'unknown' ||
-            pMarker === undefined ||
-            pMarker === 'unknown'
-          )
-            return output.markerOnYouTowerEvens!({
-              num: num,
-              marker: output[marker]!(),
-              tower: output.tower!(),
-              nearfar: nearFar,
-            });
-
-          // Highest priority right
+          // Unable to determine priority
           return output.markerOnYouTowerEvens!({
             num: num,
             marker: output[marker]!(),
-            tower: output.rightTower!(),
+            tower: output.tower!(),
             nearfar: nearFar,
           });
         }
@@ -3148,6 +3185,56 @@ const triggerSet: TriggerSet<Data> = {
 
         // Tower soaks
         if (marker === 'stack') {
+          if (config !== 'none') {
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.leftTower!(),
+                  nearfar: output.outerHitbox!(),
+                });
+              default: {
+                const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
+
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.rightTower!()
+                      : output.leftTower!(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox!()
+                      : output.outerHitbox!(),
+                  });
+
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.leftTower!()
+                      : output.rightTower!(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox!()
+                      : output.innerHitbox!(),
+                  });
+
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds!({
+                  num: num,
+                  marker: output[marker]!(),
+                  tower: output.rightTower!(),
+                  nearfar: output.innerHitbox!(),
+                });
+              }
+            }
+          }
+          // None config
           // Need to know for priority
           const players = data.pathOfLightStackPlayers.map(
             (player) => {
@@ -3175,7 +3262,7 @@ const triggerSet: TriggerSet<Data> = {
             tower: marker === 'cone'
               ? output.leftTower!()
               : output.rightTower!(),
-            far: output.beFar!(),
+            nearfar: output.beFar!(),
           });
 
         // No strategy
@@ -3230,137 +3317,54 @@ const triggerSet: TriggerSet<Data> = {
               ? output.beFar!()
               : output.beNear!();
 
-            if (data.role === 'healer') {
-              return output.markerOnYouTowerEvens!({
-                num: num,
-                marker: output[marker]!(),
-                tower: output.leftTower!(),
-                nearfar: nearFar,
-              });
-            }
-
-            const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
-            const group = data.forsakenGroupA;
-            const member1 = group[0] ?? '';
-            const member2 = group[1] ?? '';
-            const member3 = group[2] ?? '';
-            if (data.role === 'tank') {
-              // Need to look at what healer has in relation to us
-              // Partner is whoever has the same marker
-              const partner = data.party.isHealer(member1)
-                ? member1
-                : data.party.isHealer(member2)
-                ? member2
-                : data.party.isHealer(member3)
-                ? member3
-                : 'unknown';
-              // Get partner's marker
-              const pMarker = playerHeadmarkers[partner ?? 0];
-
-              // Could not get priority
-              if (
-                partner === 'unknown' ||
-                pMarker === undefined ||
-                pMarker === 'unknown'
-              )
+            switch (data.role) {
+              case 'healer':
                 return output.markerOnYouTowerEvens!({
                   num: num,
                   marker: output[marker]!(),
-                  tower: output.tower!(),
+                  tower: output.leftTower!(),
                   nearfar: nearFar,
                 });
+              default: {
+                const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupA);
 
-              return output.markerOnYouTowerEvens!({
-                num: num,
-                marker: output[marker]!(),
-                tower: pMarker === marker
-                  ? output.rightTower!()
-                  : output.leftTower!(),
-                nearfar: nearFar,
-              });
-            }
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break;
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerEvens!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.rightTower!()
+                      : output.leftTower!(),
+                    nearfar: nearFar,
+                  });
 
-            if (Util.isMeleeDpsJob(data.job)) {
-              const isRangedDPS = (
-                x: string,
-              ): boolean => {
-                const jobName = data.party.jobName(x);
-                if (jobName === undefined)
-                  return false;
-                return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
-              };
-              // Partner should be a ranged dps, for standard comp
-              const partner = isRangedDPS(member1)
-                ? member1
-                : isRangedDPS(member2)
-                ? member2
-                : isRangedDPS(member3)
-                ? member3
-                : 'unknown';
-              // Get partner's marker
-              const pMarker = playerHeadmarkers[partner ?? 0];
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerEvens!({
+                    num: num,
+                    marker: output[marker]!(),
+                    tower: pMarker === marker
+                      ? output.leftTower!()
+                      : output.rightTower!(),
+                    nearfar: nearFar,
+                  });
 
-              // Could not find caster or phys ranged partner
-              if (
-                partner === 'unknown' ||
-                pMarker === undefined ||
-                pMarker === 'unknown'
-              )
+                // Ranged DPS highest priority right
                 return output.markerOnYouTowerEvens!({
                   num: num,
                   marker: output[marker]!(),
-                  tower: output.tower!(),
+                  tower: output.rightTower!(),
                   nearfar: nearFar,
                 });
-
-              return output.markerOnYouTowerEvens!({
-                num: num,
-                marker: output[marker]!(),
-                tower: pMarker === marker
-                  ? output.leftTower!()
-                  : output.rightTower!(),
-                nearfar: nearFar,
-              });
+              }
             }
-
-            // If we find a melee in our group we are the ranged priority
-            // Partner should be a melee dps, for optimal comp
-            const isMeleeDPS = (
-              x: string,
-            ): boolean => {
-              const jobName = data.party.jobName(x);
-              if (jobName === undefined)
-                return false;
-              return Util.isMeleeDpsJob(jobName);
-            };
-            const partner = isMeleeDPS(member1)
-              ? member1
-              : isMeleeDPS(member2)
-              ? member2
-              : isMeleeDPS(member3)
-              ? member3
-              : 'unknown';
-            // Get partner's marker
-            const pMarker = playerHeadmarkers[partner ?? 0];
-
-            // Could not find melee dps
-            if (
-              partner === 'unknown' ||
-              pMarker === undefined ||
-              pMarker === 'unknown'
-            )
-              return output.markerOnYouTowerEvens!({
-                num: num,
-                marker: output[marker]!(),
-                tower: output.tower!(),
-                nearfar: nearFar,
-              });
-
-            // Highest priority right
+            // Unable to determine priority
             return output.markerOnYouTowerEvens!({
               num: num,
               marker: output[marker]!(),
-              tower: output.rightTower!(),
+              tower: output.tower!(),
               nearfar: nearFar,
             });
           }
