@@ -91,7 +91,6 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prefer-arrow-functions": "^3.9.1",
     "eslint-plugin-rulesdir": "^0.2.2",
-    "eslint-plugin-tsc": "^2.0.0",
     "eslint-plugin-unicorn": "^63.0.0",
     "fast-levenshtein": "^3.0.0",
     "fork-ts-checker-webpack-plugin": "^9.1.0",
@@ -144,11 +143,8 @@
     "*.{ts,js,cjs,mjs,json}": [
       "dprint check"
     ],
-    "*.{js,cjs,mjs}": [
+    "*.{js,cjs,mjs,ts}": [
       "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
-    ],
-    "*.ts": [
-      "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0 --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.eslint.json\"}]'"
     ],
     "*.md": "markdownlint",
     "ui/(raidboss|oopsyraidsy)/data/**": [
