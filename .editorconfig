@@ -16,3 +16,6 @@ quote_type = single
 
 [*.py]
 indent_size = 4
+
+[.husky/*]
+end_of_line = lf
