@@ -6,9 +6,9 @@ import Regexes from '../../resources/regexes';
 import { NetFields } from '../../types/net_fields';
 import { RepeatingFieldsExtract } from '../../types/net_props';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import exampleLogLines, { ExampleLineName, ExampleRegex } from '../../util/example_log_lines';
+import exampleLogLines, { type ExampleLineName, type ExampleRegex } from '../../util/example_log_lines';
 
-import { RegexUtilParams } from './regex_util';
+import { type RegexUtilParams } from './regex_util';
 
 type RegexFunc<T extends ExampleLineName> = (params?: RegexUtilParams) => CactbotBaseRegExp<T>;
 

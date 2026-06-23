@@ -1,8 +1,8 @@
 import { assert } from 'chai';
 
 import NetRegexes, { buildRegex } from '../../resources/netregexes';
-import examples, { ExampleLineName } from '../../util/example_log_lines';
-import { RegexTestUtil, RegexUtilParams } from '../helper/regex_util';
+import examples, { type ExampleLineName } from '../../util/example_log_lines';
+import { RegexTestUtil, type RegexUtilParams } from '../helper/regex_util';
 
 const logDefsToTest = Object.keys(examples) as ExampleLineName[];
 

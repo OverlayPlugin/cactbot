@@ -8,5 +8,6 @@
   ],
   "exclude": [
     "./dist"
-  ]
+  ],
+  "references": [{ "path": "./tsconfig.json" }]
 }
