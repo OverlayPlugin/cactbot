@@ -5,7 +5,6 @@
  * node ./.github/scripts/lint-pr-title.cjs
  */
 
-
 const github = require('@actions/github');
 const levenshtein = require('fast-levenshtein');
 

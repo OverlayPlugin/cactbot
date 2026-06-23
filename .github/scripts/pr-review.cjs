@@ -7,7 +7,6 @@
  * node ./.github/scripts/pr-review.cjs
  */
 
-
 const github = require('@actions/github');
 const { execSync } = require('child_process');
 
