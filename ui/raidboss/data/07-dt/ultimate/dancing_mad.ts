@@ -690,7 +690,7 @@ const triggerSet: TriggerSet<Data> = {
           'Generic Calls': 'none',
         },
       },
-      default: 'none',   
+      default: 'none',
     },
     {
       id: 'boa',
