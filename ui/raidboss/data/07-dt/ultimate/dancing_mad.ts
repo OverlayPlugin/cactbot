@@ -466,8 +466,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'accretion',
       comment: {
-        en:
-          `Order in which players will be told to heal for resolving Accretion debuffs`,
+        en: `Order in which players will be told to heal for resolving Accretion debuffs`,
       },
       name: {
         en: 'P3 Accretion Heal Order',
