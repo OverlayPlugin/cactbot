@@ -398,12 +398,15 @@ export const getSortDirectionsClockwiseFunction = (
 ): (left: AnyDirection, right: AnyDirection) => number => {
   // Default to dirN
   let offset = 0;
-  if (from !== undefined)
+  if (from !== undefined && from !== 'unknown')
     offset = getDirectionIndex(from);
 
-  const count = output16Dir.length + 1; // +1 for unknown
+  const count = output16Dir.length;
 
   return (left: AnyDirection, right: AnyDirection) => {
+    if (left === 'unknown' || right === 'unknown') {
+      return left === right ? 0 : left === 'unknown' ? 1 : -1;
+    }
     const rightIndex = (count + getDirectionIndex(right) - offset) % count;
     const leftIndex = (count + getDirectionIndex(left) - offset) % count;
     return leftIndex - rightIndex;

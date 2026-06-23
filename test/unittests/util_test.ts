@@ -119,7 +119,7 @@ describe('util tests', () => {
   });
 
   it('sorts directions and unknowns, putting unknowns at the end', () => {
-    const dirs: AnyDirection[] = [
+    const dirs1: AnyDirection[] = [
       'dirNE',
       'unknown',
       'dirN',
@@ -128,13 +128,19 @@ describe('util tests', () => {
       'dirS',
     ];
 
-    const expected = ['dirN', 'dirNE', 'dirS', 'dirNW', 'unknown', 'unknown'];
-    const sorted = dirs.sort(getSortDirectionsClockwiseFunction());
-    assert.deepEqual(sorted, expected);
+    const expected1 = ['dirN', 'dirNE', 'dirS', 'dirNW', 'unknown', 'unknown'];
+    assert.deepEqual(dirs1.sort(getSortDirectionsClockwiseFunction()), expected1);
+
+    const dirs2: AnyDirection[] = ['dirNE', 'unknown', 'dirN', 'dirNW'];
+    const expected2 = ['dirNW', 'dirN', 'dirNE', 'unknown'];
+    assert.deepEqual(
+      dirs2.sort(getSortDirectionsClockwiseFunction('dirNW')),
+      expected2,
+    );
   });
 
   it('sorts points clockwise from a reference point', () => {
-    const points = [
+    const getPoints = () => [
       { id: 'NE', x: 1, y: -1 },
       { id: 'SW', x: -1, y: 1 },
       { id: 'N', x: 0, y: -1 },
@@ -148,13 +154,13 @@ describe('util tests', () => {
     const expected = ['NW', 'N', 'NE', 'E', 'SE', 'S', 'SW', 'W'];
 
     let [refX, refY] = [-1, -1]; // same as NW
-    let sorted = points.sort(
+    let sorted = getPoints().sort(
       getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }),
     );
     assert.deepEqual(sorted.map((point) => point.id), expected);
 
     [refX, refY] = [-1.2, -0.8];
-    sorted = points.sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }));
+    sorted = getPoints().sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }));
     assert.deepEqual(sorted.map((point) => point.id), expected);
   });
 
