@@ -3008,7 +3008,11 @@ const triggerSet: TriggerSet<Data> = {
       // One will have First in Line, the other will have Second in Line
       type: 'GainsEffect',
       netRegex: { effectId: '644', capture: true },
-      delaySeconds: 0.1, // Delay for In Line debuffs
+      delaySeconds: (data) => {
+        if (data.triggerSetConfig.accretion === 'line')
+          return 0.1; // Delay for In Line debuffs
+        return 0;
+      },
       run: (data, matches) => {
         const target = matches.target;
         const first = data.triggerSetConfig.accretion === 'line'
