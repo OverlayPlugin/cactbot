@@ -2993,7 +2993,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1, // Delay for In Line debuffs
       run: (data, matches) => {
         const target = matches.target;
-        if (data.party.isHealer(matches.target))
+        if (data.party.isHealer(target))
           data.firstAccretion = target;
         else
           data.secondAccretion = target;
