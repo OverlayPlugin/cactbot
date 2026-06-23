@@ -1,9 +1,9 @@
 import js from '@eslint/js';
 import stylisticPlugin from '@stylistic/eslint-plugin';
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import preferArrowFunctionsPlugin from 'eslint-plugin-prefer-arrow-functions';
 import unicornPlugin from 'eslint-plugin-unicorn';
-import { type Config, defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -15,57 +15,19 @@ import cactbotTimelineTriggers from './eslint/cactbot-timeline-triggers.js';
 import cactbotTriggerPropertyOrder from './eslint/cactbot-trigger-property-order.js';
 import cactbotTriggersetPropertyOrder from './eslint/cactbot-triggerset-property-order.js';
 
+type Config = ReturnType<typeof defineConfig>[number];
+
 // some jank here to work around a bug, ref https://github.com/JamieMason/eslint-plugin-prefer-arrow-functions/pull/70
 type PluginType = NonNullable<Config['plugins']>[string];
 const preferArrowFunctionsPluginTyped = preferArrowFunctionsPlugin as PluginType;
 
 // @TODO: TEMPORARY, REPLACE OR DELETE LATER (maybe use `gts` package?)
-type RulesConfig = NonNullable<(NonNullable<Config['rules']>)[string]>;
-const depNumToStr = (v: number | unknown[]): 'off' | 'warn' | 'error' | RulesConfig => {
-  switch (v) {
-    case 0:
-      return 'off';
-    case 1:
-      return 'warn';
-    case 2:
-      return 'error';
-    default:
-      if (Array.isArray(v)) {
-        const v2 = v[0];
-        if (typeof v2 === 'number')
-          return [depNumToStr(v2), ...v.slice(1)] as RulesConfig;
-      }
-      return 'error';
-  }
-};
-
 const fixedGoogleConfig: Config = {
   'rules': {
-    'no-cond-assign': 'off',
-    'no-irregular-whitespace': 'error',
-    'no-unexpected-multiline': 'error',
-    'valid-jsdoc': ['error', {
-      'requireParamDescription': false,
-      'requireReturnDescription': false,
-      'requireReturn': false,
-      'prefer': { 'returns': 'return' },
-    }],
-    'curly': ['error', 'multi-line'],
-    'guard-for-in': 'error',
-    'no-caller': 'error',
-    'no-extend-native': 'error',
-    'no-extra-bind': 'error',
-    'no-invalid-this': 'error',
-    'no-multi-spaces': 'error',
-    'no-multi-str': 'error',
-    'no-new-wrappers': 'error',
-    'no-throw-literal': 'error',
-    'no-with': 'error',
-    'prefer-promise-reject-errors': 'error',
-    'no-unused-vars': ['error', { 'args': 'none' }],
     'array-bracket-newline': 'off',
     'array-bracket-spacing': ['error', 'never'],
     'array-element-newline': 'off',
+    'arrow-parens': ['error', 'always'],
     'block-spacing': ['error', 'never'],
     'brace-style': 'error',
     'camelcase': ['error', { 'properties': 'never' }],
@@ -73,79 +35,100 @@ const fixedGoogleConfig: Config = {
     'comma-spacing': 'error',
     'comma-style': 'error',
     'computed-property-spacing': 'error',
+    'constructor-super': 'error',
+    'curly': ['error', 'multi-line'],
     'eol-last': 'error',
     'func-call-spacing': 'error',
+    'generator-star-spacing': ['error', 'after'],
+    'guard-for-in': 'error',
     'indent': ['error', 2, {
       'CallExpression': { 'arguments': 2 },
       'FunctionDeclaration': { 'body': 1, 'parameters': 2 },
       'FunctionExpression': { 'body': 1, 'parameters': 2 },
+      'ignoredNodes': ['ConditionalExpression'],
       'MemberExpression': 2,
       'ObjectExpression': 1,
       'SwitchCase': 1,
-      'ignoredNodes': ['ConditionalExpression'],
     }],
     'key-spacing': 'error',
     'keyword-spacing': 'error',
     'linebreak-style': 'error',
     'max-len': ['error', {
       'code': 80,
-      'tabWidth': 2,
-      'ignoreUrls': true,
       'ignorePattern': 'goog.(module|require)',
+      'ignoreUrls': true,
+      'tabWidth': 2,
     }],
     'new-cap': 'error',
     'no-array-constructor': 'error',
+    'no-caller': 'error',
+    'no-cond-assign': 'off',
+    'no-extend-native': 'error',
+    'no-extra-bind': 'error',
+    'no-invalid-this': 'error',
+    'no-irregular-whitespace': 'error',
     'no-mixed-spaces-and-tabs': 'error',
+    'no-multi-spaces': 'error',
+    'no-multi-str': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 2 }],
     'no-new-object': 'error',
+    'no-new-symbol': 'error',
+    'no-new-wrappers': 'error',
     'no-tabs': 'error',
+    'no-this-before-super': 'error',
+    'no-throw-literal': 'error',
     'no-trailing-spaces': 'error',
+    'no-unexpected-multiline': 'error',
+    'no-unused-vars': ['error', { 'args': 'none' }],
+    'no-var': 'error',
+    'no-with': 'error',
     'object-curly-spacing': 'error',
-    'one-var': ['error', { 'var': 'never', 'let': 'never', 'const': 'never' }],
+    'one-var': ['error', { 'const': 'never', 'let': 'never', 'var': 'never' }],
     'operator-linebreak': ['error', 'after'],
     'padded-blocks': ['error', 'never'],
+    'prefer-const': ['error', { 'destructuring': 'all' }],
+    'prefer-promise-reject-errors': 'error',
+    'prefer-rest-params': 'error',
+    'prefer-spread': 'error',
     'quote-props': ['error', 'consistent'],
     'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
     'require-jsdoc': ['error', {
       'require': {
+        'ClassDeclaration': true,
         'FunctionDeclaration': true,
         'MethodDefinition': true,
-        'ClassDeclaration': true,
       },
     }],
+    'rest-spread-spacing': 'error',
     'semi': 'error',
     'semi-spacing': 'error',
     'space-before-blocks': 'error',
     'space-before-function-paren': ['error', {
-      'asyncArrow': 'always',
       'anonymous': 'never',
+      'asyncArrow': 'always',
       'named': 'never',
     }],
     'spaced-comment': ['error', 'always'],
     'switch-colon-spacing': 'error',
-    'arrow-parens': ['error', 'always'],
-    'constructor-super': 'error',
-    'generator-star-spacing': ['error', 'after'],
-    'no-new-symbol': 'error',
-    'no-this-before-super': 'error',
-    'no-var': 'error',
-    'prefer-const': ['error', { 'destructuring': 'all' }],
-    'prefer-rest-params': 'error',
-    'prefer-spread': 'error',
-    'rest-spread-spacing': 'error',
+    'valid-jsdoc': ['error', {
+      'prefer': { 'returns': 'return' },
+      'requireParamDescription': false,
+      'requireReturn': false,
+      'requireReturnDescription': false,
+    }],
     'yield-star-spacing': ['error', 'after'],
   },
 };
 
 // @TODO: Move this to a separate file in eslint folder, convert all these rules to typescript
-type RuleModule = typeof cactbotLocaleOrder;
+type RuleModule = (typeof importPlugin.rules)[string];
 const cactbotLintPlugin = {
   rules: {
-    'locale-order': cactbotLocaleOrder,
-    'output-strings': cactbotOutputStrings,
+    'locale-order': cactbotLocaleOrder as RuleModule,
+    'output-strings': cactbotOutputStrings as RuleModule,
+    'party-member-property-access': cactbotPartyMemberPropertyAccess as RuleModule,
     'response-default-severities': cactbotResponseDefaultSeverities as RuleModule,
     'timeline-triggers': cactbotTimelineTriggers as RuleModule,
-    'party-member-property-access': cactbotPartyMemberPropertyAccess as RuleModule,
     'trigger-property-order': cactbotTriggerPropertyOrder as RuleModule,
     'triggerset-property-order': cactbotTriggersetPropertyOrder as RuleModule,
   },
@@ -159,6 +142,10 @@ const rules: Config['rules'] = {
       'after': true,
       'before': true,
     },
+  ],
+  'cactbot/locale-order': [
+    'warn',
+    ['en', 'de', 'fr', 'ja', 'cn', 'ko', 'tc'],
   ],
   'camelcase': [
     'error',
@@ -270,10 +257,6 @@ const rules: Config['rules'] = {
     },
   ],
   'require-jsdoc': 'off',
-  'cactbot/locale-order': [
-    'warn',
-    ['en', 'de', 'fr', 'ja', 'cn', 'ko', 'tc'],
-  ],
   'space-in-parens': [
     'warn',
     'never',
@@ -326,22 +309,22 @@ export default defineConfig(
   importPlugin.flatConfigs.recommended,
   // cactbot default
   {
-    languageOptions: {
-      globals: {
+    'ignores': cactbotGlobalIgnores,
+    'languageOptions': {
+      'ecmaVersion': 2022,
+      'globals': {
         ...globals.browser,
         ...globals.es2015,
       },
-      parser: tseslint.parser,
-      'ecmaVersion': 2022,
-      parserOptions: {
+      'parser': tseslint.parser,
+      'parserOptions': {
         'project': ['./tsconfig.eslint.json'],
       },
       'sourceType': 'module',
     },
-    'ignores': cactbotGlobalIgnores,
     'plugins': {
       '@typescript-eslint': tseslint.plugin,
-      cactbot: cactbotLintPlugin,
+      'cactbot': cactbotLintPlugin,
     },
     'settings': {
       'import/resolver': {
@@ -362,17 +345,28 @@ export default defineConfig(
       tseslint.configs.recommendedTypeChecked,
     ],
     'files': ['*.ts'],
-    languageOptions: {
+    'languageOptions': {
       parser: tseslint.parser,
       parserOptions: {
         'project': ['./tsconfig.eslint.json'],
       },
     },
     'plugins': {
-      '@typescript-eslint': tseslint.plugin,
       '@stylistic': stylisticPlugin,
+      '@typescript-eslint': tseslint.plugin,
     },
     'rules': {
+      '@stylistic/member-delimiter-style': ['error', {
+        'multiline': {
+          'delimiter': 'semi',
+          'requireLast': true,
+        },
+        'singleline': {
+          'delimiter': 'semi',
+          'requireLast': false,
+        },
+      }],
+      '@stylistic/object-curly-spacing': ['warn', 'always'],
       '@typescript-eslint/consistent-type-assertions': [
         'error',
         {
@@ -384,16 +378,6 @@ export default defineConfig(
         'error',
         { 'allowHigherOrderFunctions': false },
       ],
-      '@stylistic/member-delimiter-style': ['error', {
-        'multiline': {
-          'delimiter': 'semi',
-          'requireLast': true,
-        },
-        'singleline': {
-          'delimiter': 'semi',
-          'requireLast': false,
-        },
-      }],
       '@typescript-eslint/method-signature-style': ['error', 'property'],
       '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
@@ -404,7 +388,6 @@ export default defineConfig(
         'args': 'all',
         'argsIgnorePattern': '^_\\w?',
       }],
-      '@stylistic/object-curly-spacing': ['warn', 'always'],
       '@typescript-eslint/prefer-string-starts-ends-with': 'error',
       '@typescript-eslint/strict-boolean-expressions': ['error', {
         // @TODO: Remove these keys over time, setting them back to default
@@ -426,9 +409,9 @@ export default defineConfig(
   // Misc other overrides
   {
     'files': ['*.cjs'],
-    languageOptions: {
+    'languageOptions': {
       'ecmaVersion': 2022,
-      parserOptions: {
+      'parserOptions': {
         'project': ['./tsconfig.eslint.json'],
       },
       'sourceType': 'script',
@@ -450,6 +433,9 @@ export default defineConfig(
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       // Only meant to be used for `output` parameters!
       '@typescript-eslint/no-non-null-assertion': 'off',
+      'cactbot/output-strings': 'error',
+      'cactbot/response-default-severities': 'error',
+      'cactbot/timeline-triggers': 'error',
       'max-len': [
         'warn',
         {
@@ -457,9 +443,6 @@ export default defineConfig(
         },
       ],
       'prefer-arrow/prefer-arrow-functions': 'warn',
-      'cactbot/output-strings': 'error',
-      'cactbot/response-default-severities': 'error',
-      'cactbot/timeline-triggers': 'error',
     },
   },
   {
@@ -479,10 +462,10 @@ export default defineConfig(
   },
   // cactbot rule overrides
   {
+    'ignores': cactbotGlobalIgnores,
     'plugins': {
       'unicorn': unicornPlugin,
     },
-    ignores: cactbotGlobalIgnores,
-    rules: rules,
+    'rules': rules,
   },
 );

@@ -21,7 +21,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "dprint.dprint"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
@@ -43,5 +43,11 @@
     "tsconfig.json": "tsconfig.*.json,tsconfig-for-webpack.json",
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
+  },
+  "eslint.execArgv": [
+    "--experimental-strip-types"
+  ],
+  "eslint.options": {
+    "flags": ["unstable_native_nodejs_ts_config"]
   }
 }

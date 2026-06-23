@@ -6,7 +6,7 @@
  * set GH_TOKEN=**** GITHUB_REPOSITORY=OverlayPlugin/cactbot
  * node ./.github/scripts/pr-review.cjs
  */
-'use strict';
+
 
 const github = require('@actions/github');
 const { execSync } = require('child_process');
