@@ -27,6 +27,7 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
     boa: 'lb3' | 'sg3k' | 'none';
+    accretion: 'line' | 'role';
     blackhole: 'kefka' | 'none';
   };
   // General
@@ -461,6 +462,24 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
       default: 'sg3k',
+    },
+    {
+      id: 'accretion',
+      comment: {
+        en:
+          `Order in which players will be told to heal for resolving Accretion debuffs`,
+      },
+      name: {
+        en: 'P3 Accretion Heal Order',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'First In Line => Second In Line': 'line',
+          'Healer => DPS': 'role',
+        },
+      },
+      default: 'role',
     },
     {
       id: 'blackhole',
@@ -2993,7 +3012,10 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1, // Delay for In Line debuffs
       run: (data, matches) => {
         const target = matches.target;
-        if (data.party.isHealer(target))
+        const first = data.triggerSetConfig.accretion === 'line'
+          ? data.inLine[target] === 1
+          : data.party.isHealer(target);
+        if (first)
           data.firstAccretion = target;
         else
           data.secondAccretion = target;
