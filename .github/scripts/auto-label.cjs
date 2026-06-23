@@ -4,7 +4,7 @@
  * export GH_TOKEN=**** GITHUB_REPOSITORY=OverlayPlugin/cactbot PR_NUMBER=$NUM
  * node ./.github/scripts/auto-label.cjs
  */
-'use strict';
+
 const path = require('path');
 
 const json5 = require('json5');

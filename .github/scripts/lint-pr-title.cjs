@@ -4,7 +4,7 @@
  * export GH_TOKEN=**** GITHUB_REPOSITORY=OverlayPlugin/cactbot PR_NUMBER=$NUM
  * node ./.github/scripts/lint-pr-title.cjs
  */
-'use strict';
+
 
 const github = require('@actions/github');
 const levenshtein = require('fast-levenshtein');

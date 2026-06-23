@@ -146,7 +146,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         // always at least 2 tethered adds
         const coldAddsIds = data.ryoqorAddTether;
-        if (coldAddsIds === undefined || coldAddsIds.length < 2 === undefined)
+        if (coldAddsIds === undefined || coldAddsIds.length < 2)
           return output.avoidStart!();
 
         const coldDirs = coldAddsIds.map((id) => data.ryoqorAddCleaveDir[id] ?? 'unknown');
