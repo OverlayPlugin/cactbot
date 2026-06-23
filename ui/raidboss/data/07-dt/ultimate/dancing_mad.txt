@@ -145,7 +145,7 @@ hideall "--sync--"
 467.2 "Trine 2" #Ability { id: "BAE0", source: "Kefka" }
 469.2 "Trine 3" #Ability { id: "BAE0", source: "Kefka" }
 469.5 "Wings of Destruction" Ability { id: "C487", source: "Kefka" }
-471.8 "--sync--" HeadMarker { id: '0103' } window 216,5
+471.8 "--sync--" HeadMarker { id: '0103' }
 476.7 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
 480.1 "--untargetable?--"
 480.1 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
