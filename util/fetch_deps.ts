@@ -165,7 +165,7 @@ export const main = async (updateHashes = false): Promise<void> => {
           await downloadFile(meta['url'], dlname);
           if (_.has(meta, 'hash')) {
             log('Hashing...');
-            const content = (await fs.readFile(dlname));
+            const content = await fs.readFile(dlname);
             const h = hash(meta['hash'][0], content);
             if (updateHashes) {
               hashUpdateMap[meta['hash'][1]] = h;

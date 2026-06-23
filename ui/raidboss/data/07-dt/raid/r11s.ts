@@ -845,7 +845,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1, // Race condition with Tether lines and actor positions
       run: (data, matches) => {
         const actor = data.actorPositions[matches.sourceId];
-        const hasTether = (data.me === matches.target);
+        const hasTether = data.me === matches.target;
         if (actor === undefined) {
           if (hasTether)
             data.arenaSplitStretchDirNum = -1; // Return -1 so that we know we at least don't bait fire breath

@@ -616,7 +616,8 @@ const triggerSet: TriggerSet<Data> = {
           Package partenaire signifie support+dps (n'importe quelle combinaison fonctionne).
           Si votre groupe est composée de deux distants ou deux mêlées, "mêlées" ne sera jamais annoncé quelque soit l'option choisie.
           Les groupes ne contenant pas deux supports et deux dps ne peuvent pas être annoncés.`,
-        ja: `2人ペアで一緒にペアを作り優先順位を決めます。近接とタンクを組む場合は近接オプションを選んでください。
+        ja:
+          `2人ペアで一緒にペアを作り優先順位を決めます。近接とタンクを組む場合は近接オプションを選んでください。
           近接ペアは近接+タンクとヒーラ+遠隔を意味します。ロールはタンク+ヒーラ、近接+遠隔を意味します。
           遠隔まだは近接が2人の場合は、ここの設定を無視して近接呼び出しはありません。
           および、タンク+ヒーラ+DPS2人じゃないパティは志願しません。`,
@@ -626,7 +627,8 @@ const triggerSet: TriggerSet<Data> = {
            搭档分摊指的是 坦克 + DPS 和 治疗 + DPS (任意组合均可)。
            如果队伍中有两名远程 DPS 或近战 DPS, 无论此配置选项如何, 它都不会报“近战分摊”。
            没有考虑对非标准阵容队伍 (非1T1N2DPS) 构成的支持。`,
-        ko: `2인 쉐어에서, 함께 쉐어를 맞을 사람의 우선 순위를 지정합니다. 근딜과 탱커를 함께 배치하고 싶다면 근딜이 포함된 옵션을 선택하세요.
+        ko:
+          `2인 쉐어에서, 함께 쉐어를 맞을 사람의 우선 순위를 지정합니다. 근딜과 탱커를 함께 배치하고 싶다면 근딜이 포함된 옵션을 선택하세요.
            근딜 쉐어는 근딜+탱커와 힐러+원딜을 의미합니다. 역할별 쉐어는 탱커+힐러와 딜러+딜러를 의미합니다.
            파트너 쉐어는 탱힐+딜러와 탱힐+딜러를 의미합니다(어떤 조합도 가능).
            원딜이 두 명 또는 근딜이 두 명일 경우, 이 설정 옵션과 상관없이 "근딜"을 호출하지 않습니다.
@@ -1791,7 +1793,8 @@ const triggerSet: TriggerSet<Data> = {
            Mixé à moitié signifie que deux personnes ont les deux couleurs et deux ont la même couleur.`,
         cn: `“全异色” 指的是所有人的 3 个 buff 都有 2 种颜色 (2 个是一种颜色, 剩下 1 个是另一种)。
              “半异色” 指的是有 2 人的 3 个 buff 有 2 种颜色, 另外 2 人的 3 个 buff 全部是同一种颜色。`,
-        ko: `완전 혼합은 모든 사람이 두 가지 색을 가지고 있음을 의미합니다 (한 가지 색 두 개, 다른 색 하나).
+        ko:
+          `완전 혼합은 모든 사람이 두 가지 색을 가지고 있음을 의미합니다 (한 가지 색 두 개, 다른 색 하나).
              반혼합은 두 사람이 두 가지 종류를 가지고 있고, 다른 두 사람은 모두 같은 색을 가지고 있음을 의미합니다.`,
         tc: `“全異色” 指的是所有人的 3 個 buff 都有 2 種顏色 (2 個是一種顏色, 剩下 1 個是另一種)。
              “半異色” 指的是有 2 人的 3 個 buff 有 2 種顏色, 另外 2 人的 3 個 buff 全部是同一種顏色。`,

@@ -894,7 +894,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ja',
       'replaceSync': {
-        'Lyon the Beast King would do battle at Majesty\'s Place': '獣王ライアンは、王者の円壇での戦いを望んでいるようだ',
+        'Lyon the Beast King would do battle at Majesty\'s Place':
+          '獣王ライアンは、王者の円壇での戦いを望んでいるようだ',
         'Red Comet': 'レッドコメット',
         'Albeleo\'s Monstrosity': 'アルビレオズ・ビースト',
         'Albeleo\'s Hrodvitnir': 'アルビレオズ・フローズヴィトニル',
@@ -980,7 +981,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'cn',
       'replaceSync': {
-        'Lyon the Beast King would do battle at Majesty\'s Place': '兽王莱昂似乎很期待在王者圆坛战斗！',
+        'Lyon the Beast King would do battle at Majesty\'s Place':
+          '兽王莱昂似乎很期待在王者圆坛战斗！',
         'Red Comet': '红色彗星',
         'Albeleo\'s Monstrosity': '阿尔贝雷欧的巨兽',
         'Albeleo\'s Hrodvitnir': '阿尔贝雷欧的恶狼',
@@ -1066,7 +1068,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Lyon the Beast King would do battle at Majesty\'s Place': '獸王萊昂似乎很期待在王者圓壇戰鬥！',
+        'Lyon the Beast King would do battle at Majesty\'s Place':
+          '獸王萊昂似乎很期待在王者圓壇戰鬥！',
         'Red Comet': '紅色隕星',
         'Albeleo\'s Monstrosity': '阿爾貝雷歐的巨獸',
         'Albeleo\'s Hrodvitnir': '阿爾貝雷歐的惡狼',
@@ -1152,7 +1155,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ko',
       'replaceSync': {
-        'Lyon the Beast King would do battle at Majesty\'s Place': '마수왕 라이언이 왕의 단상에서 싸우려고 합니다!',
+        'Lyon the Beast King would do battle at Majesty\'s Place':
+          '마수왕 라이언이 왕의 단상에서 싸우려고 합니다!',
         'Red Comet': '붉은 혜성',
         'Albeleo\'s Monstrosity': '알비레오의 야수',
         'Albeleo\'s Hrodvitnir': '알비레오의 흐로드비트니르',

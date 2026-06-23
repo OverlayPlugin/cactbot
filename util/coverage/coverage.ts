@@ -1014,7 +1014,9 @@ aria-expanded="${
     zoneCoverage.timeline?.duration ?? 0
   }</td></tr>
         </table>
-        <div><a href="${linkUrl.toString()}">🔗 ${translate(miscStrings.linkToEntry, lang)}</a></div>
+        <div><a href="${linkUrl.toString()}">🔗 ${
+    translate(miscStrings.linkToEntry, lang)
+  }</a></div>
       </div>`;
 
   let translationsColumn = `

@@ -1010,9 +1010,12 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ja',
       'replaceSync': {
-        '724P-Operated Superior Flight Unit \\\\\\(A-Lpha\\\\\\)': '７２４Ｐ：強化型飛行ユニット［A-lpha］',
-        '767P-Operated Superior Flight Unit \\\\\\(B-Eta\\\\\\)': '７６７Ｐ：強化型飛行ユニット［B-eta］',
-        '772P-Operated Superior Flight Unit \\\\\\(C-Hi\\\\\\)': '７７２Ｐ：強化型飛行ユニット［C-hi］',
+        '724P-Operated Superior Flight Unit \\\\\\(A-Lpha\\\\\\)':
+          '７２４Ｐ：強化型飛行ユニット［A-lpha］',
+        '767P-Operated Superior Flight Unit \\\\\\(B-Eta\\\\\\)':
+          '７６７Ｐ：強化型飛行ユニット［B-eta］',
+        '772P-Operated Superior Flight Unit \\\\\\(C-Hi\\\\\\)':
+          '７７２Ｐ：強化型飛行ユニット［C-hi］',
         '813P-Operated Aegis Unit': '８１３Ｐ：拠点防衛ユニット装備',
         '905P-Operated Heavy Artillery Unit': '９０５Ｐ：重陸戦ユニット装備',
         'Compound 2P': '２Ｐ：融合体',

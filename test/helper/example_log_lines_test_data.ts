@@ -6,7 +6,10 @@ import Regexes from '../../resources/regexes';
 import { NetFields } from '../../types/net_fields';
 import { RepeatingFieldsExtract } from '../../types/net_props';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import exampleLogLines, { type ExampleLineName, type ExampleRegex } from '../../util/example_log_lines';
+import exampleLogLines, {
+  type ExampleLineName,
+  type ExampleRegex,
+} from '../../util/example_log_lines';
 
 import { type RegexUtilParams } from './regex_util';
 

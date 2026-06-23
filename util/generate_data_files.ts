@@ -55,8 +55,10 @@ const fileChoices: { name: FileLabelAll; value: FileKeyAll }[] = [
   ...fileKeys.map((k) => ({ name: k, value: k })),
 ];
 
-const fileKeyToFuncAll: { [filename in FileKeyAll]: (logLevel: LogLevelKey) => Promise<void> } =
-  ({ [allKey]: generateAll, ...fileKeyToFunc });
+const fileKeyToFuncAll: { [filename in FileKeyAll]: (logLevel: LogLevelKey) => Promise<void> } = {
+  [allKey]: generateAll,
+  ...fileKeyToFunc,
+};
 
 const logLevelChoices: { name: LogLevelLabel; value: LogLevelKey }[] = logLevels.map((ll) => ({
   name: ll[1],
