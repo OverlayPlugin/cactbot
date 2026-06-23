@@ -47,7 +47,8 @@
     "update-logdefs": "node --loader=ts-node/esm util/update_logdefs.ts",
     "validate-versions": "node --loader=ts-node/esm util/validate_versions.ts",
     "release": "node --loader=ts-node/esm util/do_release.ts",
-    "version": "node --loader=ts-node/esm util/bump_version.ts"
+    "version": "node --loader=ts-node/esm util/bump_version.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@actions/core": "^3.0.1",
