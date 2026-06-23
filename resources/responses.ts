@@ -648,27 +648,19 @@ export const Responses = {
   getTowers: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.getTowers),
 } as const;
 
+// Example usage:
+// {
+//   id: 'Some In => Out Mechanic',
+//   type: 'StartsUsing',
+//   netRegex: { id: '0000', source: 'Name' },
+//   response: compose(Outputs.in, [' => ', Outputs.out])(),
+// },
 export const compose = (
-  text1: LocaleText,
-  sep: string,
-  text2: LocaleText,
-  sev?: Severity,
-): StaticResponseFunc => {
-  return staticResponse(defaultInfoText(sev), combineLocaleText(text1, [sep, text2]));
-};
-
-export const compose3 = (
-  text1: LocaleText,
-  sep1: string,
-  text2: LocaleText,
-  sep2: string,
-  text3: LocaleText,
-  sev?: Severity,
-): StaticResponseFunc => {
-  return staticResponse(
-    defaultInfoText(sev),
-    combineLocaleText(text1, [sep1, text2], [sep2, text3]),
-  );
+  first: LocaleText,
+  ...rest: [sep: string, text: LocaleText][]
+): SingleSevToResponseFunc => {
+  return (sev?: Severity) =>
+    staticResponse(defaultInfoText(sev), combineLocaleText(first, ...rest));
 };
 
 // Don't give `Responses` a type in its declaration so that it can be treated as more strict
