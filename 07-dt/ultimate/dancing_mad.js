@@ -4,6 +4,13 @@ const phases = {
   'C2DC': 'p4',
   'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
+const centerX = 100;
+const centerY = 100;
+const forsakenHeadmarkerIdToName = {
+  '02CB': 'stack',
+  '02CD': 'cone',
+  '02CC': 'spread',
+};
 const headMarkerData = {
   // Phase 1 Boss
   'fakeFire': '02A1',
@@ -182,6 +189,201 @@ const trapOutputStrings = {
     ko: '${players}에서 넉백 (나중에)',
   },
 };
+// Get Partner's HeadMarker following HTMR Priority
+// Requires data and Forsaken Group
+// Will return the forsaken headmarker of partner:
+// Tanks + Healers are partners
+// Melee DPS + Range/Caster are Partners
+// Tanks look for healer as they are left unless healer has it
+// Melee DPS look for the Range/Caster as they are left if ranged has it
+// Range/Caster looks for existence of a Melee DPS in case there is fake melee
+const getHTMRPartnerMarker = (data, group) => {
+  // Healer role should not be parsed with this function
+  // as they have highest priority left
+  if (data.role === 'healer')
+    return 'unknown';
+  // Functions for determining party member DPS subroles
+  const isRangedDPS = (x) => {
+    const jobName = data.party.jobName(x);
+    if (jobName === undefined)
+      return false;
+    return Util.isRangedDpsJob(jobName) || Util.isCasterDpsJob(jobName);
+  };
+  const isMeleeDPS = (x) => {
+    const jobName = data.party.jobName(x);
+    if (jobName === undefined)
+      return false;
+    return Util.isMeleeDpsJob(jobName);
+  };
+  // Function to dynamically determine which role to check
+  const getRoleFunction = (role) => {
+    // Only a healer will supercede the tank
+    if (role === 'tank')
+      return data.party.isHealer.bind(data.party);
+    if (Util.isMeleeDpsJob(data.job))
+      return isRangedDPS;
+    // If we find a melee in our group we are the ranged priority
+    // Partner should be a melee dps, for optimal comp
+    return isMeleeDPS;
+  };
+  const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+  // Check each player in the group if they are our partner
+  const isMyPartner = getRoleFunction(data.role);
+  const member1 = group[0] ?? '';
+  const member2 = group[1] ?? '';
+  const member3 = group[2] ?? '';
+  const partner = isMyPartner(member1)
+    ? member1
+    : isMyPartner(member2)
+    ? member2
+    : isMyPartner(member3)
+    ? member3
+    : 'unknown';
+  // Return partner's marker
+  return playerHeadmarkers[partner ?? 0] ?? 'unknown';
+};
+const forsakenOutputStrings = {
+  spreadBowtie: Outputs.spread,
+  tower: Outputs.getTowers,
+  leftTower: {
+    en: 'Left Tower',
+  },
+  rightTower: {
+    en: 'Right Tower',
+  },
+  towerOrBeNear: {
+    en: '${tower} / ${near}',
+  },
+  avoid: {
+    en: 'Avoid towers',
+    de: 'Türme vermeiden',
+    fr: 'Évitez les tours',
+    ja: '塔回避',
+    cn: '远离塔',
+    ko: '기둥 피하기',
+    tc: '遠離塔',
+  },
+  outOfHitbox: Outputs.outOfHitbox,
+  innerHitbox: {
+    en: 'Inner Hitbox',
+  },
+  outerHitbox: {
+    en: 'Outer Hitbox',
+  },
+  cone: {
+    en: 'Cone on YOU',
+  },
+  spread: {
+    en: 'Spread on YOU',
+  },
+  stack: Outputs.stackOnYou,
+  num: {
+    en: '${num}: ',
+    de: '${num}: ',
+    fr: '${num}: ',
+    ja: '${num}: ',
+    cn: '${num}: ',
+    ko: '${num}: ',
+    tc: '${num}: ',
+  },
+  you: {
+    en: 'YOU',
+  },
+  beNear: {
+    en: 'Be Near',
+    de: 'Sei Nahe',
+    cn: '站近',
+    ko: '가까이 있기',
+  },
+  beFar: {
+    en: 'Be Far',
+    de: 'Sei Fern',
+    cn: '站远',
+    ko: '멀리 있기',
+  },
+  stackOnYou: Outputs.stackOnYou,
+  stackOnYouLocation: {
+    en: '${stack} ${location}',
+  },
+  stackOnPlayer: {
+    en: 'Stack is on ${player}',
+  },
+  stacksOnPlayers: {
+    en: 'Stacks on ${players}',
+  },
+  stacksOnPlayersTower: {
+    en: '${num}${stack} + ${tower}',
+  },
+  stackOnYouTower: {
+    en: '${num}${tower} + ${marker}',
+  },
+  markerOnYouStacksOnPlayers: {
+    en: '${num}${marker} + ${stacks}',
+  },
+  markerOnYouTowerOdds: {
+    en: '${num}${marker} + ${tower} + ${nearfar}',
+  },
+  markerOnYouTowerEvens: {
+    en: '${num}${marker} + ${tower} + ${nearfar}',
+  },
+  baitLeftConeOutOdds: {
+    en: '${num}Bait Left Cone Out',
+  },
+  baitLeftConeLeftEvens: {
+    en: '${num}Bait Left Cone Left',
+  },
+  leftStack: {
+    en: '${num}Left Stack',
+  },
+  rightStack: {
+    en: '${num}Right Stack',
+  },
+  bait: {
+    en: '${num}Bait Cone Right or Clone Near',
+  },
+  baitConeFromPlayer: {
+    en: 'Bait Cone from ${player}',
+  },
+  spreadWithPlayer: {
+    en: 'Spread with ${player}',
+  },
+  baitCloneOppositeTowers: {
+    en: '${num}Bait Clone Opposite Towers Near',
+  },
+  mechsBowtie: {
+    en: '${num}${mech1} + ${mech2}',
+  },
+  mechs3Bowtie: {
+    en: '${num}${mech1} + ${mech2} + ${mech3}',
+  },
+  numBeNearSpreadBowtie: {
+    en: '${num}${near} + ${spread}',
+  },
+  baitLeftConeOutBowtie: {
+    en: '${num}Bait Left Cone Out',
+  },
+  baitLeftConeLeftBowtie: {
+    en: '${num}Bait Left Cone Left',
+  },
+  getHitBySpreadRightBowtie: {
+    en: '${num}Get Right + Hit by Spread',
+  },
+  spreadTowersBowtie: {
+    en: '${num}${tower} + ${spread}',
+  },
+  markerOnYouNoStrategy: {
+    en: '${num}${marker}',
+  },
+  mechsNoStrategy: {
+    en: '${num}${marker} + ${mechs}',
+  },
+  baitNoStrategy: {
+    en: '${num}Bait Cone or Clone Near',
+  },
+  baitConeOrStackNoStrategy: {
+    en: '${num}Bait Cone or Stack',
+  },
+};
 Options.Triggers.push({
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -216,6 +418,29 @@ Options.Triggers.push({
       },
       default: 'none',
     },
+    {
+      id: 'forsaken',
+      comment: {
+        en: `There should be two groups of four players, choose tower soak order<br />
+          Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
+          Bowtie AAAABBBB 4/4: Using same priority as the kroxy-rinon. (Will require Tank LB3)<br />
+          Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in`,
+      },
+      name: {
+        en: 'P2 Forsaken Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
+          'ABBAABBA (1/2/2/2/1), Modified': 'abba',
+          'AAAABBBB (4/4), Bowtie': 'bowtie',
+          'Generic Calls': 'none',
+        },
+      },
+      default: 'none',
+    },
   ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
@@ -232,6 +457,13 @@ Options.Triggers.push({
       waveCannonTargets: [],
       doubleTroubleTrapTargets: [],
       // Phase 2
+      pathOfLightCounter: 1,
+      pathOfLightStackPlayers: [],
+      forsakenPlayerHeadmarkers: {},
+      isForsakenGroupA: false,
+      forsakenGroupA: [],
+      forsakenGroupB: [],
+      trineDirNums: [],
     };
   },
   triggers: [
@@ -1014,7 +1246,6 @@ Options.Triggers.push({
         southwest: Outputs.southwest,
         west: Outputs.west,
         northwest: Outputs.northwest,
-        unknown: Outputs.unknown,
         upup: {
           en: 'Up Portents',
           ko: '위쪽 화살표',
@@ -1405,7 +1636,32 @@ Options.Triggers.push({
       response: Responses.bigAoe('alert'),
     },
     {
-      id: 'DMU P2 Path of Light Headmarker',
+      id: 'DMU P2 Spell\'s Trouble Clear Current Headmarker',
+      // Each player gets 4 of these, using this to track when to clear from
+      // Track when last one is lost
+      type: 'LosesEffect',
+      netRegex: { effectId: '13DB', capture: true },
+      run: (data, matches) => {
+        const target = matches.target;
+        data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
+        delete data.forsakenPlayerHeadmarkers[target];
+      },
+    },
+    {
+      id: 'DMU P2 Path of Light Headmarker Tracker',
+      // When standing in Path of Light tower, causes BAC0 Spelldriver (3-person stack)
+      // When standing in Path of Light tower, causes BAC2 Spellwave (cone targetting nearest player)
+      // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
+      // Headmarkers update ~2.5s prior to 13DB Spell's Trouble debuff count decrementing
+      //
+      // Stacks cannot exist with Even towers, there isn't enough players for near Baits
+      // However, it is still possible to do an odd tower without having stacks
+      // This seems to be treated as a special case as we find tower 7 give 4 stacks
+      //
+      // Possible Group solutions:
+      // AAABBBBA
+      // ABBAABBA
+      // AAAABBBB, requires Tank LB3 due to forced 4 stacks from tower 7
       type: 'HeadMarker',
       netRegex: {
         id: [
@@ -1415,37 +1671,290 @@ Options.Triggers.push({
         ],
         capture: true,
       },
-      condition: Conditions.targetIsYou(),
-      infoText: (_data, matches, output) => {
+      run: (data, matches) => {
         const id = matches.id;
-        const markers = {
-          '02CB': 'stack',
-          '02CD': 'cone',
-          '02CC': 'spread',
-        };
-        const marker = markers[id];
-        if (marker === undefined)
-          return;
-        return output[marker]();
-      },
-      outputStrings: {
-        stack: {
-          en: 'Stack Path on YOU',
-          ko: '쉐어징 대상자',
-        },
-        cone: {
-          en: 'Cone Path on YOU',
-          ko: '부채꼴징 대상자',
-        },
-        spread: {
-          en: 'Spread Path on YOU',
-          ko: '산개징 대상자',
-        },
+        const target = matches.target;
+        // Clear previous Headmarker if set
+        data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
+        data.forsakenPlayerHeadmarkers[matches.target] = forsakenHeadmarkerIdToName[id] ??
+          'unknown';
+        // On first headmarker, start everyone in same group
+        // Excluding self as this reduces number of lookups to find partner
+        if (data.pathOfLightCounter === 1 && data.me !== matches.target)
+          data.forsakenGroupB.push(matches.target);
+        // If the groups are uneven a tower was missed and it's probably a wipe
+        if (data.pathOfLightCounter === 2) {
+          // Remove from Group B
+          data.forsakenGroupB = data.forsakenGroupB.filter((t) => t !== target);
+          if (data.me === matches.target)
+            data.isForsakenGroupA = true;
+          else
+            data.forsakenGroupA.push(matches.target);
+        }
+        if (id === headMarkerData['stackPath'])
+          data.pathOfLightStackPlayers.push(target);
       },
     },
     {
-      id: 'DMU P2 Future\'s End/Past\'s End',
+      id: 'DMU P2 Path of Light Towers 1',
+      // First Tower:
+      // 2 Soak markers
+      // 3 Cone markers (same role)
+      // 3 Spread markers (same role)
+      // If not marked for soak, check role of soak marked players, if matches
+      // player, add to output. Player will then know if they need to soak
+      // Unfortunately we do not know partners until the first tower is taken
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: true,
+      },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.pathOfLightCounter === 1;
+      },
+      delaySeconds: 0.1,
+      durationSeconds: 9,
+      infoText: (data, matches, output) => {
+        const id = matches.id;
+        const marker = forsakenHeadmarkerIdToName[id];
+        if (marker === undefined)
+          return;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const config = data.triggerSetConfig.forsaken;
+        if (marker === 'stack') {
+          // These players must get a tower
+          if (config !== 'none') {
+            if (data.role === 'healer' || data.role === 'tank')
+              return output.stackOnYouTower({
+                num: num,
+                tower: output.leftTower(),
+                marker: output.stackOnYouLocation({
+                  stack: output.stackOnYou(),
+                  location: output.outerHitbox(),
+                }),
+              });
+            return output.stackOnYouTower({
+              num: num,
+              tower: output.rightTower(),
+              marker: output.stackOnYouLocation({
+                stack: output.stackOnYou(),
+                location: output.innerHitbox(),
+              }),
+            });
+          }
+          // Assuming no strategy avoids stack soaking tower in first set
+          return output.stackOnYouTower({
+            num: num,
+            tower: output.tower(),
+            marker: output.stackOnYou(),
+          });
+        }
+        const stack1 = data.pathOfLightStackPlayers[0] ?? 'unknown';
+        const stack2 = data.pathOfLightStackPlayers[1] ?? 'unknown';
+        const stack1IsDPS = data.party.isDPS(stack1);
+        const stack2IsDPS = data.party.isDPS(stack2);
+        const myRoleIsDPS = data.party.isDPS(data.me);
+        // If both stack players are the same role, output both players
+        // This would be a non-standard composition
+        if (myRoleIsDPS === stack1IsDPS && myRoleIsDPS === stack2IsDPS) {
+          const players = data.pathOfLightStackPlayers.map((player) => {
+            return data.party.member(player);
+          });
+          const msg = players?.join(', ');
+          return output.markerOnYouStacksOnPlayers({
+            num: num,
+            marker: output[marker](),
+            stacks: output.stacksOnPlayers({ players: msg }),
+          });
+        }
+        // Our partner will be the role that matches us
+        // If not, then assuredly the strategy used something like conga line for each role
+        const possiblePartner = data.party.member(myRoleIsDPS === stack1IsDPS ? stack1 : stack2);
+        return output.markerOnYouStacksOnPlayers({
+          num: num,
+          marker: output[marker](),
+          stacks: output.stackOnPlayer({ player: possiblePartner }),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Counter',
+      // Used to track which step of the paths we are own
+      // 4 Players soak Odd Towers, 4 Players soak Even Towers
+      // Headmarkers get applied to those hit ~0.5s after
+      type: 'Ability',
+      netRegex: { id: 'BABE', source: 'Kefka', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.pathOfLightCounter = data.pathOfLightCounter + 1,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 2',
+      // Expecting 2 Cones and 2 Spreads soak towers
+      //
+      // Headmarkers come out ~2s before Future's/Past's End
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: false,
+      },
+      condition: (data) => data.pathOfLightCounter === 2,
+      delaySeconds: 0.1,
+      durationSeconds: 9,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        // Modified ABBA and Kroxy-Rinon Baits
+        if (
+          (!isForsakenGroupA && config === 'kroxy-rinon') ||
+          (isForsakenGroupA && config === 'abba')
+        ) {
+          if (data.role === 'healer')
+            return output.baitLeftConeLeftEvens({
+              num: num,
+            });
+          if (data.role === 'tank')
+            return output.baitCloneOppositeTowers({
+              num: num,
+            });
+          // DPS Unknown party composition
+          return output.bait({
+            num: num,
+          });
+        }
+        // ABBA (unmodified) and AAAABBBB, Baits
+        if (config === 'bowtie' && !data.isForsakenGroupA) {
+          // Group A Avoids Towers (ABBA)
+          // Group B Avoids Towers (AAAABBBB)
+          return output.mechsBowtie({
+            num: num,
+            mech1: output.beNear(),
+            mech2: output.avoid(),
+          });
+        }
+        // If someone has stack from beginning
+        if (
+          (config !== 'none') &&
+          (marker === 'stack' || marker === 'unknown')
+        )
+          return;
+        // Modified ABBA and Kroxy-Rinon Tower Soaks
+        if (
+          (isForsakenGroupA && config === 'kroxy-rinon') ||
+          (!isForsakenGroupA && config === 'abba')
+        ) {
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = marker === 'spread'
+            ? output.beFar()
+            : output.beNear();
+          switch (data.role) {
+            case 'healer':
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.leftTower(),
+                nearfar: nearFar,
+              });
+            default: {
+              const group = config === 'kroxy-rinon'
+                ? data.forsakenGroupA
+                : data.forsakenGroupB;
+              const pMarker = getHTMRPartnerMarker(data, group);
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.rightTower()
+                    : output.leftTower(),
+                  nearfar: nearFar,
+                });
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.leftTower()
+                    : output.rightTower(),
+                  nearfar: nearFar,
+                });
+              // Ranged DPS highest priority right
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.rightTower(),
+                nearfar: nearFar,
+              });
+            }
+          }
+          // Unable to determine priority
+          return output.markerOnYouTowerEvens({
+            num: num,
+            marker: output[marker](),
+            tower: output.tower(),
+            nearfar: nearFar,
+          });
+        }
+        // ABBA (unmodified) and AAAABBBB, Soaks
+        if (config === 'bowtie' && isForsakenGroupA) {
+          // Tower soakers don't bait ends
+          // Group B Soaks Towers (ABBA)
+          // Group A Soaks Towers (AAAA)
+          const group = data.forsakenGroupA;
+          // Partner is whoever has the same marker
+          const partner = playerHeadmarkers[group[0] ?? 0] === marker
+            ? group[0]
+            : playerHeadmarkers[group[1] ?? 0] === marker
+            ? group[1]
+            : group[2]; // Or unknown matched
+          const name = data.party.member(partner);
+          if (marker === 'spread')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.rightTower(),
+              mech2: output.spreadWithPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+          if (marker === 'cone')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.leftTower(),
+              mech2: output.baitConeFromPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+        }
+        // No strategy selected
+        // Many options: Tower, Bait Cone, Share Stack?
+        return output.mechsNoStrategy({
+          num: num,
+          marker: output[marker](),
+          mechs: output.towerOrBeNear({
+            tower: output.tower(),
+            near: output.beNear(),
+          }),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Future\'s End/Past\'s End (Early)',
       // There are four end casts
+      // This output will need to be short as in 1.4s another trigger will fire
       type: 'StartsUsing',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
       infoText: (_data, matches, output) => {
@@ -1463,13 +1972,1385 @@ Options.Triggers.push({
       },
     },
     {
+      id: 'DMU P2 All Things Ending Baits',
+      // Using the following spells for timing:
+      // BAD2 Future's End => Need to bait BADC All Things Ending
+      // BAD3 Past's End => Need to bait BADD All Things Ending
+      // There are four end casts, each 10s apart
+      // BAD2 and BAD3 are the castbar, damage doesn't go out until later
+      // TODO: Get Tower Locations
+      type: 'Ability',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      delaySeconds: 1.5,
+      alertText: (data, matches, output) => {
+        const isFuture = matches.id === 'BAD2';
+        const count = data.pathOfLightCounter;
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        const time = isFuture ? output.future() : output.past();
+        if (count === 3) {
+          // Stacks should soak towers
+          if (marker === 'stack') {
+            if (
+              (isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+              (!isForsakenGroupA && config === 'abba')
+            ) {
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.leftTower(),
+                  });
+                default: {
+                  const group = config === 'kroxy-rinon'
+                    ? data.forsakenGroupA
+                    : data.forsakenGroupB;
+                  const pMarker = getHTMRPartnerMarker(data, group);
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.rightTower()
+                        : output.leftTower(),
+                    });
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.leftTower()
+                        : output.rightTower(),
+                    });
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.rightTower(),
+                  });
+                }
+              }
+            }
+            // None config
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map((player) => {
+              if (player === data.me)
+                return output.you();
+              return data.party.member(player);
+            });
+            const msg = players?.join(', ');
+            // Assuming none config soaks
+            return output.baitThenStacks({
+              bait: time,
+              stacks: output.stacksOnPlayers({ players: msg }),
+            });
+          }
+          // Tower soakers, non stack markers
+          if (
+            (isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+            (!isForsakenGroupA && config === 'abba')
+          ) {
+            return output.baitThenMarkerTower({
+              bait: time,
+              marker: output[marker](),
+              tower: marker === 'cone'
+                ? output.leftTower()
+                : output.rightTower(),
+            });
+          }
+          // Baits and Stacks
+          if (
+            (!isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+            (isForsakenGroupA && config === 'abba')
+          ) {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftStack(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftBaitOut(),
+              });
+            // 2 DPS in stack
+            return output.baitThenMech({
+              bait: time,
+              mech: output.rightStack(),
+            });
+          }
+          // No config
+          return output.baitThenMarker({
+            bait: time,
+            marker: output[marker](),
+          });
+        } else if (count === 5) {
+          // Baits and Stacks
+          if (
+            (isForsakenGroupA && config === 'kroxy-rinon') ||
+            (!isForsakenGroupA && config === 'abba')
+          ) {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftStack(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftBaitOut(),
+              });
+            // 2 DPS in stack
+            return output.baitThenMech({
+              bait: time,
+              mech: output.rightStack(),
+            });
+          }
+          if (config === 'bowtie') {
+            // Bowtie has people bait cones, but cones could bait eachother if they wanted
+            if (!isForsakenGroupA) {
+              return output.baitThenMarkerTower({
+                bait: time,
+                marker: output[marker](),
+                tower: marker === 'cone'
+                  ? output.leftTower()
+                  : output.rightTower(),
+              });
+            }
+            if (data.role === 'tank')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftBaitLeftBowtie(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftBaitOutBowtie(),
+              });
+            // 2 DPS in spread
+            return output.baitThenMech({
+              bait: time,
+              mech: output.getHitRightSpreadBowtie(),
+            });
+          }
+          // Tower Soaks
+          // In AAAABBBB, there is no stack
+          if (marker === 'stack') {
+            if (config !== 'none') {
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.leftTower(),
+                  });
+                default: {
+                  const group = config === 'abba' ? data.forsakenGroupA : data.forsakenGroupB;
+                  const pMarker = getHTMRPartnerMarker(data, group);
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.rightTower()
+                        : output.leftTower(),
+                    });
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.leftTower()
+                        : output.rightTower(),
+                    });
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.rightTower(),
+                  });
+                }
+              }
+            }
+            // None config
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map((player) => {
+              if (player === data.me)
+                return output.you();
+              return data.party.member(player);
+            });
+            const msg = players?.join(', ');
+            // Assuming none config soaks
+            return output.baitThenStacks({
+              bait: time,
+              stacks: output.stacksOnPlayers({ players: msg }),
+            });
+          }
+          // This ends up being Group B || Group A for respective config
+          if (config === 'kroxy-rinon' || config === 'abba') {
+            return output.baitThenMarkerTower({
+              bait: time,
+              marker: output[marker](),
+              tower: marker === 'cone'
+                ? output.leftTower()
+                : output.rightTower(),
+            });
+          }
+          // No config
+          return output.baitThenMarker({
+            bait: time,
+            marker: output[marker](),
+          });
+        } else if (count === 7) {
+          if (isForsakenGroupA && config !== 'none') {
+            // So long as it is standard party composition...
+            if (data.role === 'tank')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftStack(),
+              });
+            if (data.role === 'healer')
+              return output.baitThenMech({
+                bait: time,
+                mech: output.leftBaitOut(),
+              });
+            // 2 DPS in stack
+            return output.baitThenMech({
+              bait: time,
+              mech: output.rightStack(),
+            });
+          }
+          if (marker === 'stack') {
+            if (config !== 'none') {
+              switch (data.role) {
+                case 'healer':
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.leftTower(),
+                  });
+                default: {
+                  const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
+                  // Could not get priority
+                  if (pMarker === 'unknown')
+                    break; // Fallback to none config
+                  if (data.role === 'tank')
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.rightTower()
+                        : output.leftTower(),
+                    });
+                  if (Util.isMeleeDpsJob(data.job))
+                    return output.baitThenMarkerTower({
+                      bait: time,
+                      marker: output[marker](),
+                      tower: pMarker === marker
+                        ? output.leftTower()
+                        : output.rightTower(),
+                    });
+                  // Ranged is highest priority right
+                  return output.baitThenMarkerTower({
+                    bait: time,
+                    marker: output[marker](),
+                    tower: output.rightTower(),
+                  });
+                }
+              }
+            }
+            // None config
+            // Need to know for priority
+            const players = data.pathOfLightStackPlayers.map((player) => {
+              if (player === data.me)
+                return output.you();
+              return data.party.member(player);
+            });
+            const msg = players?.join(', ');
+            // Assuming none config soaks
+            return output.baitThenStacks({
+              bait: time,
+              stacks: output.stacksOnPlayers({ players: msg }),
+            });
+          }
+          if (config !== 'none')
+            return output.baitThenMarkerTower({
+              bait: time,
+              marker: output[marker](),
+              tower: marker === 'cone'
+                ? output.leftTower()
+                : output.rightTower(),
+            });
+          // No config
+          return output.baitThenMarker({
+            bait: time,
+            marker: output[marker](),
+          });
+        }
+        return isFuture
+          ? output.lastFuture({ action: output.behind() })
+          : output.lastPast({ action: output.stay() });
+      },
+      outputStrings: {
+        tower: Outputs.getTowers,
+        behind: Outputs.getBehind,
+        cone: {
+          en: 'Cone on YOU',
+        },
+        spread: {
+          en: 'Spread on YOU',
+        },
+        stack: Outputs.stackOnYou,
+        you: {
+          en: 'YOU',
+        },
+        stacksOnPlayers: {
+          en: 'Stacks on ${players}',
+        },
+        stay: {
+          en: 'Stay',
+          de: 'Bleib stehen',
+          fr: 'Restez',
+          cn: '停',
+          ko: '대기',
+          tc: '停',
+        },
+        leftTower: {
+          en: 'Left Tower',
+        },
+        rightTower: {
+          en: 'Right Tower',
+        },
+        leftStack: {
+          en: 'Left Stack',
+        },
+        rightStack: {
+          en: 'Right Stack',
+        },
+        leftBaitOut: {
+          en: 'Left Bait Out',
+        },
+        baitOrStack: {
+          en: 'Bait/Stack',
+        },
+        future: {
+          en: 'Bait opposite Towers',
+        },
+        past: {
+          en: 'Bait between Towers',
+        },
+        baitThenMarker: {
+          en: '${bait} => ${marker}',
+        },
+        baitThenMech: {
+          en: '${bait} => ${mech}',
+        },
+        baitThenMarkerTower: {
+          en: '${bait} => ${marker} ${tower}',
+        },
+        baitThenTower: {
+          en: '${bait} => ${tower}',
+        },
+        baitThenStacks: {
+          en: '${bait} => ${stacks}',
+        },
+        lastFuture: {
+          en: 'Bait => ${action}',
+        },
+        lastPast: {
+          en: 'Bait => ${action}',
+        },
+        getHitRightSpreadBowtie: {
+          en: 'Hit by Right Spread',
+        },
+        leftBaitLeftBowtie: {
+          en: 'Left Bait Left',
+        },
+        leftBaitOutBowtie: {
+          en: 'Left Bait Out',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 3',
+      // BADC All Things Ending (Future)
+      // BADD All Things Ending (Past)
+      // Expecting 2 Stacks, 1 Cone, and 1 Spread soak towers
+      type: 'StartsUsing',
+      netRegex: { id: ['BADC', 'BADD'], source: 'Kefka', capture: false },
+      condition: (data) => data.pathOfLightCounter === 3,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        // Stacks should soak towers
+        if (marker === 'stack') {
+          if (
+            (isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+            (!isForsakenGroupA && config === 'abba') ||
+            (config === 'none')
+          ) {
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.leftTower(),
+                  nearfar: output.outerHitbox(),
+                });
+              default: {
+                const group = config === 'kroxy-rinon'
+                  ? data.forsakenGroupA
+                  : data.forsakenGroupB;
+                const pMarker = getHTMRPartnerMarker(data, group);
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.rightTower()
+                      : output.leftTower(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox()
+                      : output.outerHitbox(),
+                  });
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.leftTower()
+                      : output.rightTower(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox()
+                      : output.innerHitbox(),
+                  });
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.rightTower(),
+                  nearfar: output.innerHitbox(),
+                });
+              }
+            }
+          }
+          // None config
+          // Need to know for priority
+          const players = data.pathOfLightStackPlayers.map((player) => {
+            if (player === data.me)
+              return output.you();
+            return data.party.member(player);
+          });
+          const msg = players?.join(', ');
+          // Assuming none config soaks
+          return output.stacksOnPlayersTower({
+            num: num,
+            stack: output.stacksOnPlayers({ players: msg }),
+            tower: output.tower(),
+          });
+        }
+        // Tower soakers, non stack markers
+        if (
+          (isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+          (!isForsakenGroupA && config === 'abba')
+        ) {
+          return output.markerOnYouTowerOdds({
+            num: num,
+            marker: output[marker](),
+            tower: marker === 'cone'
+              ? output.leftTower()
+              : output.rightTower(),
+            nearfar: output.beFar(),
+          });
+        }
+        // Baits and Stacks
+        if (
+          (!isForsakenGroupA && (config === 'kroxy-rinon' || config === 'bowtie')) ||
+          (isForsakenGroupA && config === 'abba')
+        ) {
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
+            return output.leftStack({
+              num: num,
+            });
+          if (data.role === 'healer')
+            return output.baitLeftConeOutOdds({
+              num: num,
+            });
+          // 2 DPS in stack
+          return output.rightStack({
+            num: num,
+          });
+        }
+        // No strategy selected
+        return output.markerOnYouNoStrategy({
+          num: num,
+          marker: output[marker](),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 4',
+      // This set should not contain stack markers
+      // If stacks exist, they came from first set
+      // Expecting 2 Cones and 2 Spreads soak towers
+      //
+      // Headmarkers come out ~2s before Future's/Past's End
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: false,
+      },
+      condition: (data) => data.pathOfLightCounter === 4,
+      delaySeconds: 0.1,
+      durationSeconds: 9,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        // Baits
+        if (
+          (isForsakenGroupA && config === 'kroxy-rinon') ||
+          (!isForsakenGroupA && config === 'abba')
+        ) {
+          if (data.role === 'healer')
+            return output.baitLeftConeLeftEvens({
+              num: num,
+            });
+          if (data.role === 'tank')
+            return output.baitCloneOppositeTowers({
+              num: num,
+            });
+          // DPS Unknown party composition
+          return output.bait({
+            num: num,
+          });
+        }
+        // AAAABBBB, Baits
+        if (config === 'bowtie' && !isForsakenGroupA) {
+          // Group B Avoids Towers
+          return output.mechsBowtie({
+            num: num,
+            mech1: output.beNear(),
+            mech2: output.avoid(),
+          });
+        }
+        // If someone has stack from beginning
+        if (
+          (config !== 'none') &&
+          (marker === 'stack' || marker === 'unknown')
+        )
+          return;
+        // AAAABBBB, Soaks
+        if (config === 'bowtie' && isForsakenGroupA) {
+          // Tower soakers don't bait ends
+          // Group A Soaks Towers
+          const group = data.forsakenGroupA;
+          // Partner is whoever has the same marker
+          const partner = playerHeadmarkers[group[0] ?? 0] === marker
+            ? group[0]
+            : playerHeadmarkers[group[1] ?? 0] === marker
+            ? group[1]
+            : group[2]; // Or unknown matched
+          const name = data.party.member(partner);
+          if (marker === 'spread')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.rightTower(),
+              mech2: output.spreadWithPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+          if (marker === 'cone')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.leftTower(),
+              mech2: output.baitConeFromPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+        }
+        // Tower Soaks
+        if (config === 'kroxy-rinon' || config === 'abba') {
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = marker === 'spread'
+            ? output.beFar()
+            : output.beNear();
+          switch (data.role) {
+            case 'healer':
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.leftTower(),
+                nearfar: nearFar,
+              });
+            default: {
+              const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.rightTower()
+                    : output.leftTower(),
+                  nearfar: nearFar,
+                });
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.leftTower()
+                    : output.rightTower(),
+                  nearfar: nearFar,
+                });
+              // Ranged DPS highest priority right
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.rightTower(),
+                nearfar: nearFar,
+              });
+            }
+          }
+          // Unable to determine priority
+          return output.markerOnYouTowerEvens({
+            num: num,
+            marker: output[marker](),
+            tower: output.tower(),
+            nearfar: nearFar,
+          });
+        }
+        // No strategy selected
+        // Many options: Tower, Bait Cone, Share Stack?
+        return output.mechsNoStrategy({
+          num: num,
+          marker: output[marker](),
+          mechs: output.towerOrBeNear({
+            tower: output.tower(),
+            near: output.beNear(),
+          }),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 5',
+      // BADC All Things Ending (Future)
+      // BADD All Things Ending (Past)
+      // Expecting 2 Stacks, 1 Cone, and 1 Spread soak towers
+      // However, AAAABBBB has 2 Cones and 2 Spreads soak towers
+      type: 'StartsUsing',
+      netRegex: { id: ['BADC', 'BADD'], source: 'Kefka', capture: false },
+      condition: (data) => data.pathOfLightCounter === 5,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        // Baits and Stacks
+        if (
+          (isForsakenGroupA && config === 'kroxy-rinon') ||
+          (!isForsakenGroupA && config === 'abba')
+        ) {
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
+            return output.leftStack({
+              num: num,
+            });
+          if (data.role === 'healer')
+            return output.baitLeftConeOutOdds({
+              num: num,
+            });
+          return output.rightStack({
+            num: num,
+          });
+        }
+        if (config === 'bowtie') {
+          // Bowtie has  people bait cones, but cones could bait eachother if they wanted
+          if (!isForsakenGroupA) {
+            return output.markerOnYouTowerOdds({
+              num: num,
+              marker: output[marker](),
+              tower: marker === 'cone'
+                ? output.leftTower()
+                : output.rightTower(),
+              nearfar: output.beFar(),
+            });
+          }
+          if (data.role === 'tank')
+            return output.baitLeftConeLeftBowtie({
+              num: num,
+            });
+          if (data.role === 'healer')
+            return output.baitLeftConeOutBowtie({
+              num: num,
+            });
+          return output.getHitBySpreadRightBowtie({
+            num: num,
+          });
+        }
+        // Tower Soaks
+        // In AAAABBBB, there is no stack
+        if (marker === 'stack') {
+          if (config !== 'none') {
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.leftTower(),
+                  nearfar: output.outerHitbox(),
+                });
+              default: {
+                const group = config === 'abba'
+                  ? data.forsakenGroupA
+                  : data.forsakenGroupB;
+                const pMarker = getHTMRPartnerMarker(data, group);
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.rightTower()
+                      : output.leftTower(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox()
+                      : output.outerHitbox(),
+                  });
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.leftTower()
+                      : output.rightTower(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox()
+                      : output.innerHitbox(),
+                  });
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.rightTower(),
+                  nearfar: output.innerHitbox(),
+                });
+              }
+            }
+          }
+          // None config
+          // Need to know for priority
+          const players = data.pathOfLightStackPlayers.map((player) => {
+            if (player === data.me)
+              return output.you();
+            return data.party.member(player);
+          });
+          const msg = players?.join(', ');
+          // Assuming none config soaks
+          return output.stacksOnPlayersTower({
+            num: num,
+            stack: output.stacksOnPlayers({ players: msg }),
+            tower: output.tower(),
+          });
+        }
+        // This ends up being Group B || Group A for respective config
+        if (config === 'kroxy-rinon' || config === 'abba') {
+          return output.markerOnYouTowerOdds({
+            num: num,
+            marker: output[marker](),
+            tower: marker === 'cone'
+              ? output.leftTower()
+              : output.rightTower(),
+            nearfar: output.beFar(),
+          });
+        }
+        // No strategy
+        if (marker === 'unknown')
+          return output.baitConeOrStackNoStrategy({
+            num: num,
+          });
+        return output.markerOnYouNoStrategy({
+          num: num,
+          marker: output[marker](),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 6',
+      // Expecting 2 Cones and 2 Spreads soak towers
+      //
+      // Headmarkers come out ~2s before Future's/Past's End
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['stackPath'],
+          headMarkerData['conePath'],
+          headMarkerData['spreadPath'],
+        ],
+        capture: false,
+      },
+      condition: (data) => data.pathOfLightCounter === 6,
+      delaySeconds: 0.1,
+      durationSeconds: 9,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        const isForsakenGroupA = data.isForsakenGroupA;
+        // Baits
+        if (
+          isForsakenGroupA &&
+          (config === 'kroxy-rinon' || config === 'abba')
+        ) {
+          if (data.role === 'healer')
+            return output.baitLeftConeLeftEvens({
+              num: num,
+            });
+          if (data.role === 'tank')
+            return output.baitCloneOppositeTowers({
+              num: num,
+            });
+          // DPS Unknown party composition
+          return output.bait({
+            num: num,
+          });
+        }
+        if (config === 'bowtie') {
+          // Group A Baits Ends
+          if (isForsakenGroupA)
+            return output.numBeNearSpreadBowtie({
+              num: num,
+              near: output.beNear(),
+              spread: output.spreadBowtie(),
+            });
+          // Tower soakers don't bait ends
+          // Group B Soaks Towers
+          const group = data.forsakenGroupB;
+          // Partner is whoever has the same marker
+          const partner = playerHeadmarkers[group[0] ?? 0] === marker
+            ? group[0]
+            : playerHeadmarkers[group[1] ?? 0] === marker
+            ? group[1]
+            : group[2]; // Or unknown matched
+          const name = data.party.member(partner);
+          if (marker === 'spread')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.rightTower(),
+              mech2: output.spreadWithPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+          if (marker === 'cone')
+            return output.mechs3Bowtie({
+              num: num,
+              mech1: output.leftTower(),
+              mech2: output.baitConeFromPlayer({ player: name }),
+              mech3: output.outOfHitbox(),
+            });
+        }
+        // Group B
+        if (config === 'kroxy-rinon' || config === 'abba') {
+          // Spread Players have to be far in the tower, cones need to bait end
+          const nearFar = marker === 'spread'
+            ? output.beFar()
+            : output.beNear();
+          switch (data.role) {
+            case 'healer':
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.leftTower(),
+                nearfar: nearFar,
+              });
+            default: {
+              const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
+              // Could not get priority
+              if (pMarker === 'unknown')
+                break;
+              if (data.role === 'tank')
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.rightTower()
+                    : output.leftTower(),
+                  nearfar: nearFar,
+                });
+              if (Util.isMeleeDpsJob(data.job))
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: pMarker === marker
+                    ? output.leftTower()
+                    : output.rightTower(),
+                  nearfar: nearFar,
+                });
+              // Ranged DPS highest priority right
+              return output.markerOnYouTowerEvens({
+                num: num,
+                marker: output[marker](),
+                tower: output.rightTower(),
+                nearfar: nearFar,
+              });
+            }
+          }
+          // Unable to determine priority
+          return output.markerOnYouTowerEvens({
+            num: num,
+            marker: output[marker](),
+            tower: output.tower(),
+            nearfar: nearFar,
+          });
+        }
+        // No strategy selected
+        // Many options: Tower, Bait Cone, Share Stack?
+        if (marker === 'unknown')
+          return output.baitNoStrategy({
+            num: num,
+          });
+        return output.mechsNoStrategy({
+          num: num,
+          marker: output[marker](),
+          mechs: output.towerOrBeNear({
+            tower: output.tower(),
+            near: output.beNear(),
+          }),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 7',
+      // BADC All Things Ending (Future)
+      // BADD All Things Ending (Past)
+      // Expecting 2 Stacks, 1 Cone, and 1 Spread soak towers
+      type: 'StartsUsing',
+      netRegex: { id: ['BADC', 'BADD'], source: 'Kefka', capture: false },
+      condition: (data) => data.pathOfLightCounter === 7,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        // Baits and Stacks
+        if (data.isForsakenGroupA && config !== 'none') {
+          // So long as it is standard party composition...
+          if (data.role === 'tank')
+            return output.leftStack({
+              num: num,
+            });
+          if (data.role === 'healer')
+            return output.baitLeftConeOutOdds({
+              num: num,
+            });
+          return output.rightStack({
+            num: num,
+          });
+        }
+        // Tower soaks
+        if (marker === 'stack') {
+          if (config !== 'none') {
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.leftTower(),
+                  nearfar: output.outerHitbox(),
+                });
+              default: {
+                const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupB);
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break; // Fallback to none config
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.rightTower()
+                      : output.leftTower(),
+                    nearfar: pMarker === marker
+                      ? output.innerHitbox()
+                      : output.outerHitbox(),
+                  });
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerOdds({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.leftTower()
+                      : output.rightTower(),
+                    nearfar: pMarker === marker
+                      ? output.outerHitbox()
+                      : output.innerHitbox(),
+                  });
+                // Ranged is highest priority right
+                return output.markerOnYouTowerOdds({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.rightTower(),
+                  nearfar: output.innerHitbox(),
+                });
+              }
+            }
+          }
+          // None config
+          // Need to know for priority
+          const players = data.pathOfLightStackPlayers.map((player) => {
+            if (player === data.me)
+              return output.you();
+            return data.party.member(player);
+          });
+          const msg = players?.join(', ');
+          // Assuming none config soaks
+          return output.stacksOnPlayersTower({
+            num: num,
+            stack: output.stacksOnPlayers({ players: msg }),
+            tower: output.tower(),
+          });
+        }
+        // Cone/Stack Tower Soaks
+        // Group B
+        if (config !== 'none')
+          return output.markerOnYouTowerOdds({
+            num: num,
+            marker: output[marker](),
+            tower: marker === 'cone'
+              ? output.leftTower()
+              : output.rightTower(),
+            nearfar: output.beFar(),
+          });
+        // No strategy
+        if (marker === 'unknown')
+          return output.baitConeOrStackNoStrategy({
+            num: num,
+          });
+        return output.markerOnYouNoStrategy({
+          num: num,
+          marker: output[marker](),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Towers 8',
+      // Shouldn't be new headmarkers from previous towers
+      // This set should not contain stack markers
+      // Expecting 2 Cones and 2 Spreads soak towers
+      // However AAAABBBB will have 4 Stacks soak towers
+      //
+      // Track based on tower soak or fail
+      // BABF The River of Light
+      // BAC0 Spelldriver
+      // BAC1 Spellscatter
+      // BAC2 Spellwave
+      type: 'Ability',
+      netRegex: {
+        id: ['BABF', 'BAC0', 'BAC1', 'BAC2'],
+        source: 'Kefka',
+        capture: false,
+      },
+      condition: (data) => data.pathOfLightCounter === 8,
+      delaySeconds: 0.1,
+      durationSeconds: 9,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
+        const num = output.num({ num: data.pathOfLightCounter });
+        const marker = playerHeadmarkers[data.me] ?? 'unknown'; // Current headmarker
+        const config = data.triggerSetConfig.forsaken;
+        if (data.isForsakenGroupA) {
+          // Tower Soaks for ABBABBA and AAABBBBA
+          if (config === 'kroxy-rinon' || config === 'abba') {
+            // This means player from A accidentally took tower previously
+            if (marker === 'stack' || marker === 'unknown')
+              return;
+            // Spread Players have to be far in the tower, cones need to bait end
+            const nearFar = marker === 'spread'
+              ? output.beFar()
+              : output.beNear();
+            switch (data.role) {
+              case 'healer':
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.leftTower(),
+                  nearfar: nearFar,
+                });
+              default: {
+                const pMarker = getHTMRPartnerMarker(data, data.forsakenGroupA);
+                // Could not get priority
+                if (pMarker === 'unknown')
+                  break;
+                if (data.role === 'tank')
+                  return output.markerOnYouTowerEvens({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.rightTower()
+                      : output.leftTower(),
+                    nearfar: nearFar,
+                  });
+                if (Util.isMeleeDpsJob(data.job))
+                  return output.markerOnYouTowerEvens({
+                    num: num,
+                    marker: output[marker](),
+                    tower: pMarker === marker
+                      ? output.leftTower()
+                      : output.rightTower(),
+                    nearfar: nearFar,
+                  });
+                // Ranged DPS highest priority right
+                return output.markerOnYouTowerEvens({
+                  num: num,
+                  marker: output[marker](),
+                  tower: output.rightTower(),
+                  nearfar: nearFar,
+                });
+              }
+            }
+            // Unable to determine priority
+            return output.markerOnYouTowerEvens({
+              num: num,
+              marker: output[marker](),
+              tower: output.tower(),
+              nearfar: nearFar,
+            });
+          }
+          // End Baits for AAAABBBB
+          if (config === 'bowtie')
+            return output.numBeNearSpreadBowtie({
+              num: num,
+              near: output.beNear(),
+              spread: output.spreadBowtie(),
+            });
+        }
+        // Baits for ABBAABBA and AAABBBBA
+        if (config === 'kroxy-rinon' || config === 'abba') {
+          if (data.role === 'healer')
+            return output.baitLeftConeLeftEvens({
+              num: num,
+            });
+          if (data.role === 'tank')
+            return output.baitCloneOppositeTowers({
+              num: num,
+            });
+          return output.bait({
+            num: num,
+          });
+        }
+        if (config === 'bowtie') {
+          // Each person in Group B will have a stack marker
+          if (data.role === 'healer' || data.role === 'tank')
+            return output.spreadTowersBowtie({
+              num: num,
+              tower: output.leftTower(),
+              spread: output.spreadBowtie(),
+            });
+          return output.spreadTowersBowtie({
+            num: num,
+            tower: output.rightTower(),
+            spread: output.spreadBowtie(),
+          });
+        }
+        // No strategy selected
+        // Many options: Tower, Bait Cone, Share Stack?
+        if (marker === 'unknown')
+          return output.baitNoStrategy({
+            num: num,
+          });
+        return output.mechsNoStrategy({
+          num: num,
+          marker: output[marker](),
+          mechs: output.towerOrBeNear({
+            tower: output.tower(),
+            near: output.beNear(),
+          }),
+        });
+      },
+      outputStrings: forsakenOutputStrings,
+    },
+    {
+      id: 'DMU P2 Path of Light Tower 8 AAAABBBB Special',
+      // BAD2 Future's End or BAD3 Past's End will go off same time as 4 players
+      // take a 3-person stack solo
+      // For some reason the phase is coded such that the 7th tower will give 4 stacks
+      // under this scenario
+      type: 'StartsUsing',
+      netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
+      condition: (data) => {
+        return data.role === 'tank' && data.pathOfLightCounter === 8 &&
+          data.triggerSetConfig.forsaken === 'bowtie';
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      alarmText: (_data, _matches, output) => output.text(),
+      outputStrings: {
+        text: {
+          en: 'TANK LB!!',
+          de: 'TANK LB!!',
+          fr: 'LB TANK !!',
+          ja: 'タンクLB!!',
+          cn: '坦克LB!!',
+          ko: '탱리밋!!',
+          tc: '坦克LB!!',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Last All Things Ending Followup',
+      // BADC All Things Ending (Future)
+      type: 'StartsUsing',
+      netRegex: { id: 'BADC', source: 'Kefka', capture: false },
+      condition: (data) => data.pathOfLightCounter === 9,
+      suppressSeconds: 1,
+      response: Responses.getBehind(),
+    },
+    {
       id: 'DMU P2 Light of Judgment',
       type: 'StartsUsing',
       netRegex: { id: 'BABD', source: 'Kefka', capture: false },
       response: Responses.bigAoe('alert'),
     },
     {
-      id: 'DMU Single Wing of Destruction',
+      id: 'DMU P2 Trine Collector',
+      // Kefkabin solution: https://raidplan.io/plan/apkh6ytq72w8pt3v
+      // Trines are added ~0.5s after BADF Trine ability
+      // They have BNpcID 1EBFB3 and 1EBFB2.
+      // Pattern 1:
+      // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
+      // Set 2: Southeast-ish (115.55, 110)
+      // Set 3: West-ish (85.57, 105), Middle (100,100)*, East-ish(114.43, 95)
+      //
+      // Pattern 2:
+      // Set 1: Southeast-ish(111.55, 110), South-ish (97.11, 115) East-ish (114.43,95)
+      // Set 2: North-ish (102.89, 85)
+      // Set 3: West-ish (85.57, 105), Northwest-ish(88.45, 90), Middle (100, 100)*
+      //
+      // Pattern 3:
+      // Set 1: South-ish (97.11, 115), Southeast-ish (111.55, 110), East-ish (114.43, 95)
+      // Set 2: Northwest-ish (88.45, 90)
+      // Set 3: West-ish (85.57, 105), Middle (100, 100)*, North-ish (102.89, 85)
+      //
+      // Pattern 4:
+      // Set 1: Northwest-ish(88.45, 90), South-ish (97.11, 115), North-ish(102.89, 85)
+      // Set 2: East-ish (114.43, 95)
+      // Set 3: West-ish (85.57, 105), Middle (100,100)*, Southeast-ish (111.55, 110)
+      //
+      // There's probably more patterns
+      // * Guaranteed in set 3, and its heading points West or East
+      //
+      // 273 ActorControlExtra lines that follow:
+      // 019D|10|20 => Falling down animation?
+      // 019D|40|80 => Landed animation? (~1.4s after add)
+      // 019D|4|8 => Explosion animation?
+      //
+      // Trines starts with 3 Trines spawning, then 1, then 3 More
+      // BACD/BACE Wings of Destruction halfroom cleave happens while 3rd set is landing
+      // As Trines 1 detonate, the near/far tankbuster C487 Wings of Destruction begins casting
+      // At the 3rd detonation, the tankbuster will snapshot
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBFB2', '1EBFB3'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        // Need heading of middle trine for near tank bait and/or greedy melee
+        // Heading is defined by the BNpcID
+        // 1EBFB3 => West
+        // 1EBFB2 => East
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        // Exception for center trine
+        if (data.trineDirNums.length === 3) {
+          if (x > 99 && x < 101) {
+            data.middleTrineFacing = matches.pairBNpcID === '1EBFB2' ? 'east' : 'west';
+            return;
+          }
+        }
+        // Not storing the last two sets' x,y coords
+        if (data.trineDirNums.length !== 3) {
+          const dirNum = Directions.xyTo16DirNum(x, y, centerX, centerY);
+          data.trineDirNums.push(dirNum);
+        }
+      },
+    },
+    {
+      id: 'DMU P2 Trines 1 (Early)',
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBFB2', '1EBFB3'] }],
+        capture: false,
+      },
+      condition: (data) => data.trineDirNums.length === 3,
+      durationSeconds: 12,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const dirNums = data.trineDirNums;
+        const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
+        const trine1 = sorted[0] !== undefined
+          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const trine2 = sorted[1] !== undefined
+          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const trine3 = sorted[2] !== undefined
+          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+        return output.safeSpots({
+          dir1: output[trine1](),
+          dir2: output[trine2](),
+          dir3: output[trine3](),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        safeSpots: {
+          en: '${dir1}/${dir2}/${dir3} Later',
+        },
+      },
+    },
+    {
+      id: 'DMU P2 Single Wing of Destruction',
       // BACD Wings of Destruction, Left wing highlight
       // BACE Wingso of Desctruction, Right wing highlight
       // Halfroom cleaves
@@ -1483,6 +3364,65 @@ Options.Triggers.push({
       outputStrings: {
         right: Outputs.right,
         left: Outputs.left,
+      },
+    },
+    {
+      id: 'DMU P2 Wings of Destruction',
+      // In DMU, players need to move for trines at same time as the tankbuster call
+      // Melee most likely won't be able to hit the boss due to trine aoes
+      type: 'StartsUsing',
+      netRegex: { id: 'C487', source: 'Kefka', capture: false },
+      alertText: (data, _matches, output) => {
+        const dirNums = data.trineDirNums;
+        const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
+        const trine1 = sorted[0] !== undefined
+          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const trine2 = sorted[1] !== undefined
+          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const trine3 = sorted[2] !== undefined
+          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+        return output.dirWings({
+          dirs: output.safeSpots({
+            dir1: output[trine1](),
+            dir2: output[trine2](),
+            dir3: output[trine3](),
+          }),
+          wings: data.role !== 'tank'
+            ? output.wingsParty()
+            : data.middleTrineFacing
+            ? output.wingsTrine({
+              wings: output.wingsTank(),
+              trine: output[data.middleTrineFacing](),
+            })
+            : output.wingsTank(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        safeSpots: {
+          en: '${dir1}/${dir2}/${dir3}',
+        },
+        wingsTrine: {
+          en: '${wings} + ${trine}',
+        },
+        dirWings: {
+          en: '${dirs} + ${wings}',
+        },
+        wingsParty: {
+          en: 'Outer 2 Rings',
+        },
+        wingsTank: {
+          en: 'Be Near/Far',
+        },
+        east: {
+          en: 'Eastward Trine',
+        },
+        west: {
+          en: 'Westward Trine',
+        },
       },
     },
     {
