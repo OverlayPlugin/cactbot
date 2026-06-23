@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.37.2",
-  "releaseSummary": "7.51 resources; DMU phase 1 timeline/triggers; fixes for Jeuno/Enu/R12; i18n",
-  "releaseInDraft": "true",
+  "version": "0.37.3",
+  "releaseSummary": "Windhurst timeline, more UMAD, i18n",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
