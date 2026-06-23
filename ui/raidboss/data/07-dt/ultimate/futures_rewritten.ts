@@ -247,9 +247,12 @@ const triggerSet: TriggerSet<Data> = {
           `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        tc: `總是遠離, 180° 順時針: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn:
+          `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko:
+          `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        tc:
+          `總是遠離, 180° 順時針: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
@@ -384,9 +387,12 @@ const triggerSet: TriggerSet<Data> = {
           `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `Rollenquadranten, Heiler plazieren im NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
-        ko: `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        tc: `按職能四分組, 補師在西北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn:
+          `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
+        ko:
+          `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        tc:
+          `按職能四分組, 補師在西北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P4 Darklit Dragonsong',
@@ -428,7 +434,8 @@ const triggerSet: TriggerSet<Data> = {
         de:
           `Frühes explodieren, Winde Süden: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        ko: `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko:
+          `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         tc: `龍頭早撞, 風南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
@@ -1036,7 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const relPos = getRelativeClockPos(playerDir, addDir);
-        if (data.triggerSetConfig.sinboundRotate === 'aacc')
+        if (data.triggerSetConfig.sinboundRotate === 'aacc') {
           switch (relPos) {
             case 'same':
             case 'opposite':
@@ -1048,6 +1055,7 @@ const triggerSet: TriggerSet<Data> = {
             default:
               break;
           }
+        }
         return output[relPos]!();
       },
       outputStrings: {
@@ -2546,7 +2554,7 @@ const triggerSet: TriggerSet<Data> = {
             : defaultOutput; // could return a infoText indicating no swaps are needed?
 
         // stacks are together, so we need to call for a swap
-        if (isStackOnMe)
+        if (isStackOnMe) {
           switch (myRole) {
             case 'dps':
               return { alertText: output.dpsStackOnYouSwap!() };
@@ -2557,6 +2565,7 @@ const triggerSet: TriggerSet<Data> = {
             default:
               return defaultOutput;
           }
+        }
 
         // if the stack is on the other dps/support, player doesn't have to do anything
         // TODO: Could return an infoTexts indicating the bait with the stack needs to swap?

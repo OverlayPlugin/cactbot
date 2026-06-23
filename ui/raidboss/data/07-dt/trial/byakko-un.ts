@@ -326,7 +326,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Byakko': '白虎',
         'Hakutei': '白帝',
-        'Twofold is my wrath, twice-cursed my foes!': '駆けろ、我が半身ッ！歯向かう者どもに、牙と爪を突き立ててやれ！',
+        'Twofold is my wrath, twice-cursed my foes!':
+          '駆けろ、我が半身ッ！歯向かう者どもに、牙と爪を突き立ててやれ！',
       },
       'replaceText': {
         '--tiger untargetable--': '--白帝タゲ不可--',
@@ -358,7 +359,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Byakko': '白虎',
         'Hakutei': '白帝',
-        'Twofold is my wrath, twice-cursed my foes!': '半身分离，助我杀敌！向胆敢抵抗的家伙们露出你的爪牙！',
+        'Twofold is my wrath, twice-cursed my foes!':
+          '半身分离，助我杀敌！向胆敢抵抗的家伙们露出你的爪牙！',
       },
       'replaceText': {
         '--Hakutei Add--': '--白帝出现--',
@@ -392,7 +394,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Byakko': '白虎',
         'Hakutei': '白帝',
-        'Twofold is my wrath, twice-cursed my foes!': '半身分離，助我殺敵！向膽敢抵抗的傢伙們露出你的爪牙！',
+        'Twofold is my wrath, twice-cursed my foes!':
+          '半身分離，助我殺敵！向膽敢抵抗的傢伙們露出你的爪牙！',
       },
       'replaceText': {
         '--Hakutei Add--': '--白帝出現--',
@@ -426,7 +429,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Byakko': '백호',
         'Hakutei': '하얀 제왕',
-        'Twofold is my wrath, twice-cursed my foes!': '달려라! 나의 반신이여! 맞서는 자들에게 이빨과 발톱을 찔러넣어라!',
+        'Twofold is my wrath, twice-cursed my foes!':
+          '달려라! 나의 반신이여! 맞서는 자들에게 이빨과 발톱을 찔러넣어라!',
       },
       'replaceText': {
         '--Hakutei Add--': '--하얀 제왕 등장--',

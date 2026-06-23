@@ -2329,7 +2329,8 @@ const templateOptions: OptionsTemplate = {
              on utilise surnom/prénom. Vous pouvez afficher les jobs à la place.
              Si vous n'êtes pas dans une équipe ou si des joueurs sont déconnectés (ou s'il y a des bugs),
              on bascule l'affichage sur le surnom s'il n'y a pas d'autres informations.`,
-        ja: `トリガーでプレイヤーの名前を表示する方法です。基本であだ名・ファストネームをつかいます。
+        ja:
+          `トリガーでプレイヤーの名前を表示する方法です。基本であだ名・ファストネームをつかいます。
              あなたがパティに入ってない場合とパティ以外のプレイヤーはあだ名とファストネームが表示されます。`,
         cn: `在触发器输出中指定玩家的默认方式。默认选项为输出昵称/名字。
              使用此选项可将输出方式更改为玩家的职能名或职业名。

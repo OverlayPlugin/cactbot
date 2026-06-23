@@ -27,7 +27,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Provoke',
       comment: {
         cn: '仅在自身或团队成员释放“挑衅”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 도발을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 도발을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“挑釁”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -56,7 +57,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Frog Legs',
       comment: {
         cn: '仅在自身或团队成员释放“蛙腿”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 개구리 다리를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 개구리 다리를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“蛙腿”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -97,7 +99,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Shirk',
       comment: {
         cn: '仅在自身或团队成员释放“退避”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 기피를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 기피를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“退避”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -125,7 +128,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Holmgang',
       comment: {
         cn: '仅在自身或团队成员释放“死斗”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 일대일 결투를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 일대일 결투를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“死鬥”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -153,7 +157,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Hallowed',
       comment: {
         cn: '仅在自身或团队成员释放“神圣领域”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 천하무적을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 천하무적을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“神聖領域”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -181,7 +186,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Superbolide',
       comment: {
         cn: '仅在自身或团队成员释放“超火流星”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 폭발 유성을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 폭발 유성을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“超火流星”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -209,7 +215,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Living',
       comment: {
         cn: '仅在自身或团队成员释放“行尸走肉”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 산송장을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 산송장을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員釋放“行屍走肉”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'Ability',
@@ -237,7 +244,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Walking',
       comment: {
         cn: '仅在自身或团队成员获得“死而不僵”且自身为坦克/治疗/青魔法师时触发。',
-        ko: '본인 또는 파티원이 움직이는 시체 상태가 되었고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
+        ko:
+          '본인 또는 파티원이 움직이는 시체 상태가 되었고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
         tc: '僅在自身或團隊成員獲得“死而不僵”且自身為坦克/治療/青魔法師時觸發。',
       },
       type: 'GainsEffect',
@@ -330,7 +338,8 @@ const triggerSet: TriggerSet<Data> = {
         'You psych yourself up alongside the striking dummy': '.*は木人に活を入れた',
         'You burst out laughing at the striking dummy': '.*は木人のことを大笑いした',
         'You clap for the striking dummy': '.*は木人に拍手した',
-        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
+        '7 minutes have elapsed since your last activity.':
+          '操作がない状態になってから7分が経過しました。',
       },
     },
     {
@@ -366,7 +375,8 @@ const triggerSet: TriggerSet<Data> = {
         'You psych yourself up alongside the striking dummy': '.*나무인형에게 힘을 불어넣습니다',
         'You burst out laughing at the striking dummy': '.*나무인형을 보고 폭소를 터뜨립니다',
         'You clap for the striking dummy': '.*나무인형에게 박수를 보냅니다',
-        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
+        '7 minutes have elapsed since your last activity..*?':
+          '7분 동안 아무 조작을 하지 않았습니다',
       },
     },
   ],
