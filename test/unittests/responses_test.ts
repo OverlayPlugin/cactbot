@@ -5,7 +5,6 @@ import {
   builtInResponseStr,
   combineLocaleText,
   compose,
-  compose3,
   Responses,
   severityList,
   severityMap,
@@ -153,7 +152,7 @@ describe('response tests', () => {
     );
   });
   it('compose returns a built-in static response', () => {
-    const responseFunc = compose(Outputs.in, ' => ', Outputs.out);
+    const responseFunc = compose(Outputs.in, [' => ', Outputs.out])();
     assert.include(responseFunc.toString(), outputStringSetterStr);
     assert.include(responseFunc.toString(), builtInResponseStr);
 
@@ -175,7 +174,7 @@ describe('response tests', () => {
       en: 'Fallback',
       ja: 'Japanese Fallback',
     };
-    const responseFunc = compose(Outputs.spread, ' 😗 ', fallbackText, 'alarm');
+    const responseFunc = compose(Outputs.spread, [' 😗 ', fallbackText])('alarm');
 
     const [result, outputStrings] = runResponseFuncWithOutputStrings(responseFunc);
     assert.isObject(result);
@@ -190,15 +189,12 @@ describe('response tests', () => {
       tc: '分散 😗 Fallback',
     });
   });
-  it('compose3 returns a built-in static response', () => {
-    const responseFunc = compose3(
+  it('compose combines multiple pieces', () => {
+    const responseFunc = compose(
       Outputs.in,
-      ' => ',
-      Outputs.out,
-      ' + ',
-      Outputs.spread,
-      'alert',
-    );
+      [' => ', Outputs.out],
+      [' + ', Outputs.spread],
+    )('alert');
 
     const [result, outputStrings] = runResponseFuncWithOutputStrings(responseFunc);
     assert.isObject(result);
