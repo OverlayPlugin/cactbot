@@ -145,10 +145,10 @@
       "dprint check"
     ],
     "*.{js,cjs,mjs}": [
-      "eslint --max-warnings=0"
+      "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
     ],
     "*.ts": [
-      "eslint --max-warnings=0 --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.eslint.json\"}]'"
+      "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0 --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.eslint.json\"}]'"
     ],
     "*.md": "markdownlint",
     "ui/(raidboss|oopsyraidsy)/data/**": [

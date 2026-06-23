@@ -17,6 +17,7 @@
   "newLineKind": "crlf",
   "typescript": {
     "bracePosition": "maintain",
+    "module.sortImportDeclarations": "maintain",
     "nextControlFlowPosition": "sameLine",
     "operatorPosition": "maintain",
     "quoteStyle": "alwaysSingle",
