@@ -3989,6 +3989,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
       delaySeconds: 0.1,
+      durationSeconds: 18.9, // Duration of the short debuff
       infoText: (data, matches, output) => {
         const myElement = data.myElement;
         const short = data.isFireShort
