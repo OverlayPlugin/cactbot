@@ -1981,7 +1981,7 @@ Options.Triggers.push({
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.5,
+      delaySeconds: 1.6,
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
         const count = data.pathOfLightCounter;
