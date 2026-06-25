@@ -5394,7 +5394,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data, matches) => {
         // No need to collect the single tether sets
-        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9
+        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9;
       },
       run: (data, matches) => {
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
