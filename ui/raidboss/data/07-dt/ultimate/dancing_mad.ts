@@ -3989,7 +3989,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
       delaySeconds: 0.1,
-      durationSeconds: 18.9, // Duration of the short debuff
+      durationSeconds: 14.9, // Until Dynamic Fluid/Entropy trigger
       infoText: (data, matches, output) => {
         const myElement = data.myElement;
         const short = data.isFireShort
@@ -4906,6 +4906,7 @@ const triggerSet: TriggerSet<Data> = {
       // Party can Tank LB3 to survive stacking the winds
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime), // 8s
       alertText: (data, matches, output) => {
         const windDirNum = data.windCrystalDirNum;
         const windDir = windDirNum === undefined
