@@ -4843,9 +4843,15 @@ const triggerSet: TriggerSet<Data> = {
           // Return to get the next blaster
           return;
         }
+        
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
 
         // Calculate Determinant to determine if second blaster is clockwise or counterclock
-        data.blasterRotation = x1 * y2 - y1 * x2;
+        data.blasterRotation = ax * by - ay * bx;
       },
     },
     {
