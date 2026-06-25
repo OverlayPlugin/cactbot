@@ -235,34 +235,38 @@ hideall "--sync--"
 790.6 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 
 790.8 "Black Hole" Ability { id: "BAFB", source: "Exdeath" }
+791.2 "--1 tether--" #Tether { id: "0054", source: "Black Hole" }
+797.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+797.9 "Aetherlink" #Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
+797.9 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
+804.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+808.0 "--sync--" Ability { id: "BB09", source: "Exdeath" }
+808.0 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
+811.0 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
+812.3 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+816.0 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
+817.2 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
+818.0 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
+818.7 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
+819.5 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
+820.7 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
+820.7 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
+821.4 "--3 tethers--" #Tether { id: "0054", source: "Black Hole" }
+828.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+829.8 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+833.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+835.0 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+838.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+843.1 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
+843.5 "Look upon Me and Despair (castbar)" Ability { id: "BAEC", source: "Kefka" }
+844.4 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
+846.5 "--sync--" Ability { id: "C4BA", source: "Kefka" }
+847.1 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+848.8 "--sync--" Ability { id: "BB09", source: "Exdeath" }
+848.8 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
+851.8 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
 # TODO: Update remainder from network log
-798.3 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-798.3 "Aetherlink" #Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
-805.3 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-808.4 "--sync--" Ability { id: "BB09", source: "Exdeath" }
-808.4 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
-811.4 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
-812.7 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
-816.5 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
-817.7 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
-818.5 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
-819.2 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
-820.0 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
-821.2 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
-821.2 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-828.6 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-830.2 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
-833.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-835.4 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
-839.0 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-844.0 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
-844.4 "Look upon Me and Despair (castbar)" Ability { id: "BAEC", source: "Kefka" }
-845.4 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
-847.5 "Blackblood" Ability { id: "C4BA", source: "Kefka" }
-847.5 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
-849.7 "--sync--" Ability { id: "BB09", source: "Exdeath" }
-849.7 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
-852.7 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
+856.1 "--3 tethers--" #Tether { id: "0054", source: "Black Hole" }
 862.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 864.4 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 865.0 "Aetherlink" Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
@@ -280,7 +284,9 @@ hideall "--sync--"
 888.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 889.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 889.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
+889.8 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
 896.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+896.8 "--1 tether--" #Tether { id: "0054", source: "Black Hole" }
 902.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 903.2 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 903.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
@@ -723,7 +729,7 @@ hideall "--sync--"
 # C3FD --sync--: Boss jumps to middle
 # C403 Revolting Ruin III
 # C487 Wings of Destruction: VFX/castbar for BACF
-# C4BA Blackblood
+# C4BA --sync--
 # C4E1 Revolting Ruin III
 # C533 --sync--
 # C554 --sync--
