@@ -401,6 +401,15 @@ const forsakenOutputStrings: OutputStrings = {
     ko: '${num}: ',
     tc: '${num}: ',
   },
+  nothing: {
+    en: '${num}',
+    de: '${num}',
+    fr: '${num}',
+    ja: '${num}',
+    cn: '${num}',
+    ko: '${num}',
+    tc: '${num}',
+  },
   you: {
     en: 'YOU',
   },
@@ -5398,7 +5407,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole Tether Collect',
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data, matches) => {
+      condition: (data) => {
         // No need to collect the single tether sets
         return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
       },
@@ -5418,7 +5427,7 @@ const triggerSet: TriggerSet<Data> = {
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data, matches) => data.nothingnessTracker == 1,
+      condition: (data) => data.nothingnessTracker === 1,
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -5455,7 +5464,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
-        return (data.nothingnessTracker === 2 && data.blackHoleTetherDirNums.length === 2);
+        return data.nothingnessTracker === 2 && data.blackHoleTetherDirNums.length === 2;
       },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5515,7 +5524,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
-        return (data.nothingnessTracker === 3 && data.blackHoleTetherDirNums.length === 3);
+        return data.nothingnessTracker === 3 && data.blackHoleTetherDirNums.length === 3;
       },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5687,7 +5696,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
-        return (data.nothingnessTracker === 6 && data.blackHoleTetherDirNums.length === 3);
+        return data.nothingnessTracker === 6 && data.blackHoleTetherDirNums.length === 3;
       },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
