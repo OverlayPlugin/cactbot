@@ -119,6 +119,7 @@ const headMarkerData = {
   'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
   // Phase 3 Tethers
   'exdeathTether': '0040', // Exdeath "pulls energy" from Graven Image with BNpcID 4C31 with BB12 Thunder III
+  'blackHoleTether': '0054',
   // Phase 3 Players
   '1': '0150',
   '2': '0151',
@@ -5385,13 +5386,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole Tether Collect',
       type: 'Tether',
-      netRegex: { capture: true },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data, matches) => {
-        if (matches.id === headMarkerData['exdeathTether'])
-          return false;
         // No need to collect the single tether sets
-        return data.phase === 'p3' &&
-          (data.nothingnessCount !== 0 && data.nothingnessCount !== 9);
+        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9
       },
       run: (data, matches) => {
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
@@ -5408,11 +5406,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 1, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
-      netRegex: { capture: true },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data, matches) => {
-        if (matches.id === headMarkerData['exdeathTether'])
-          return false;
-        return data.phase === 'p3' && data.nothingnessCount === 0;
+        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9;
       },
       suppressSeconds: 99999,
       response: (data, matches, output) => {
@@ -5447,10 +5443,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 2, Nothingness 1',
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 1;
-      },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessCount === 1,
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5505,10 +5499,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 3, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 2;
-      },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessCount === 2,
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5573,9 +5565,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 3;
-      },
+      condition: (data) => data.nothingnessCount === 3,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5623,9 +5613,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 4;
-      },
+      condition: (data) => data.nothingnessCount === 4,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5675,10 +5663,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 4, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 5;
-      },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessCount === 5,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5744,9 +5730,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 6;
-      },
+      condition: (data) => data.nothingnessCount === 6,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5793,9 +5777,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 7;
-      },
+      condition: (data) => data.nothingnessCount === 7,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5843,10 +5825,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 5, Nothingness 1',
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
-      netRegex: { capture: false },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 8;
-      },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessCount === 8,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5899,10 +5879,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Black Hole 6, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
-      netRegex: { capture: true },
-      condition: (data) => {
-        return data.phase === 'p3' && data.nothingnessCount === 9;
-      },
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
+      condition: (data) => data.nothingnessCount === 9,
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
