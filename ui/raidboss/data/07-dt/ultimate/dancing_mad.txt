@@ -160,7 +160,7 @@ hideall "--sync--"
 
 ### Phase 3 - Chaos and Exdeath
 # TODO: Cleanup p3 as there are multiple sequences that could happen
-# em: 'Right! Let's see if I can't take the reins for a spell...'
+# en: 'Right! Let's see if I can't take the reins for a spell...'
 633.2 "--sync--" ActorControl { command: "80000027", data0: "14" }
 637.3 "Definition of Insanity" Ability { id: "BAE2", source: "Kefka" }
 640.3 "--both targetable--"
