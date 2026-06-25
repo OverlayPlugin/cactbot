@@ -5454,8 +5454,9 @@ const triggerSet: TriggerSet<Data> = {
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessTracker === 2,
-      delaySeconds: 0.1, // Delay for tether collect
+      condition: (data) => {
+        return (data.nothingnessTracker === 2 && data.blackHoleTetherDirNums.length === 2);
+      },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5513,8 +5514,9 @@ const triggerSet: TriggerSet<Data> = {
       // One tether at 0s, another at 0.2s, the last comes at 1.5s
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessTracker === 3,
-      delaySeconds: 1.5, // Delay for tether collect
+      condition: (data) => {
+        return (data.nothingnessTracker === 3 && data.blackHoleTetherDirNums.length === 3);
+      },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5684,8 +5686,9 @@ const triggerSet: TriggerSet<Data> = {
       // One tether at 0s, another at 0.2s, the last comes at 1.5s (TODO: Verify this)
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessTracker === 6,
-      delaySeconds: 1.5, // Delay for tether collect
+      condition: (data) => {
+        return (data.nothingnessTracker === 6 && data.blackHoleTetherDirNums.length === 3);
+      },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5851,8 +5854,9 @@ const triggerSet: TriggerSet<Data> = {
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessTracker === 9,
-      delaySeconds: 0.1, // Delay for tether collect
+      condition: (data) => {
+        return (data.nothingnessTracker === 9 && data.blackHoleTetherDirNums.length === 2);
+      },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
