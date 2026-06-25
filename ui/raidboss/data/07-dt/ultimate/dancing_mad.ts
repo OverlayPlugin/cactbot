@@ -4844,9 +4844,8 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        // Compute atan2 of determinant and dot product to get rotational direction
-        // Note: X and Y are flipped due to Y axis being reversed
-        data.blasterRotation = Math.atan2(y1 * x2 - x1 * y2, y1 * y2 + x1 * x2);
+        // Calculate Determinant to determine if second blaster is clockwise or counterclock
+        data.blasterRotation = x1 * y2 - y1 * x2;
       },
     },
     {
