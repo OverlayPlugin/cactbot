@@ -4123,7 +4123,7 @@ const triggerSet: TriggerSet<Data> = {
                     long: water,
                     mech: output.baitCrystal!({
                       crystal: fire,
-                      inout: Outputs.in,
+                      inout: output.in!(),
                     }),
                   });
                 }
