@@ -247,12 +247,15 @@ const forsakenOutputStrings = {
   tower: Outputs.getTowers,
   leftTower: {
     en: 'Left Tower',
+    ko: '왼쪽 탑',
   },
   rightTower: {
     en: 'Right Tower',
+    ko: '오른쪽 탑',
   },
   towerOrBeNear: {
     en: '${tower} / ${near}',
+    ko: '${tower} / ${near}',
   },
   avoid: {
     en: 'Avoid towers',
@@ -260,21 +263,25 @@ const forsakenOutputStrings = {
     fr: 'Évitez les tours',
     ja: '塔回避',
     cn: '远离塔',
-    ko: '기둥 피하기',
+    ko: '탑 피하기',
     tc: '遠離塔',
   },
   outOfHitbox: Outputs.outOfHitbox,
   innerHitbox: {
     en: 'Inner Hitbox',
+    ko: '안쪽 히트박스',
   },
   outerHitbox: {
     en: 'Outer Hitbox',
+    ko: '바깥쪽 히트박스',
   },
   cone: {
     en: 'Cone on YOU',
+    ko: '나에게 부채꼴',
   },
   spread: {
     en: 'Spread on YOU',
+    ko: '나에게 산개징',
   },
   stack: Outputs.stackOnYou,
   num: {
@@ -288,6 +295,7 @@ const forsakenOutputStrings = {
   },
   you: {
     en: 'YOU',
+    ko: '나',
   },
   beNear: {
     en: 'Be Near',
@@ -304,84 +312,111 @@ const forsakenOutputStrings = {
   stackOnYou: Outputs.stackOnYou,
   stackOnYouLocation: {
     en: '${stack} ${location}',
+    ko: '${stack} ${location}',
   },
   stackOnPlayer: {
     en: 'Stack is on ${player}',
+    ko: '${player}에게 쉐어',
   },
   stacksOnPlayers: {
     en: 'Stacks on ${players}',
+    ko: '${players}에게 쉐어',
   },
   stacksOnPlayersTower: {
     en: '${num}${stack} + ${tower}',
+    ko: '${num}${stack} + ${tower}',
   },
   stackOnYouTower: {
     en: '${num}${tower} + ${marker}',
+    ko: '${num}${tower} + ${marker}',
   },
   markerOnYouStacksOnPlayers: {
     en: '${num}${marker} + ${stacks}',
+    ko: '${num}${marker} + ${stacks}',
   },
   markerOnYouTowerOdds: {
     en: '${num}${marker} + ${tower} + ${nearfar}',
+    ko: '${num}${marker} + ${tower} + ${nearfar}',
   },
   markerOnYouTowerEvens: {
     en: '${num}${marker} + ${tower} + ${nearfar}',
+    ko: '${num}${marker} + ${tower} + ${nearfar}',
   },
   baitLeftConeOutOdds: {
     en: '${num}Bait Left Cone Out',
+    ko: '${num}왼쪽 부채꼴 바깥으로 유도',
   },
   baitLeftConeLeftEvens: {
     en: '${num}Bait Left Cone Left',
+    ko: '${num}왼쪽 부채꼴 왼쪽으로 유도',
   },
   leftStack: {
     en: '${num}Left Stack',
+    ko: '${num}왼쪽 쉐어',
   },
   rightStack: {
     en: '${num}Right Stack',
+    ko: '${num}오른쪽 쉐어',
   },
   bait: {
     en: '${num}Bait Cone Right or Clone Near',
+    ko: '${num}오른쪽 부채꼴 유도 또는 분신 유도',
   },
   baitConeFromPlayer: {
     en: 'Bait Cone from ${player}',
+    ko: '${player}의 부채꼴 유도',
   },
   spreadWithPlayer: {
     en: 'Spread with ${player}',
+    ko: '${player}와 산개',
   },
   baitCloneOppositeTowers: {
     en: '${num}Bait Clone Opposite Towers Near',
+    ko: '${num}탑 반대쪽에서 분신 가까이 유도',
   },
   mechsBowtie: {
     en: '${num}${mech1} + ${mech2}',
+    ko: '${num}${mech1} + ${mech2}',
   },
   mechs3Bowtie: {
     en: '${num}${mech1} + ${mech2} + ${mech3}',
+    ko: '${num}${mech1} + ${mech2} + ${mech3}',
   },
   numBeNearSpreadBowtie: {
     en: '${num}${near} + ${spread}',
+    ko: '${num}${near} + ${spread}',
   },
   baitLeftConeOutBowtie: {
     en: '${num}Bait Left Cone Out',
+    ko: '${num}왼쪽 부채꼴 바깥으로 유도',
   },
   baitLeftConeLeftBowtie: {
     en: '${num}Bait Left Cone Left',
+    ko: '${num}왼쪽 부채꼴 왼쪽으로 유도',
   },
   getHitBySpreadRightBowtie: {
     en: '${num}Get Right + Hit by Spread',
+    ko: '${num}오른쪽으로 + 산개징 맞기',
   },
   spreadTowersBowtie: {
     en: '${num}${tower} + ${spread}',
+    ko: '${num}${tower} + ${spread}',
   },
   markerOnYouNoStrategy: {
     en: '${num}${marker}',
+    ko: '${num}${marker}',
   },
   mechsNoStrategy: {
     en: '${num}${marker} + ${mechs}',
+    ko: '${num}${marker} + ${mechs}',
   },
   baitNoStrategy: {
     en: '${num}Bait Cone or Clone Near',
+    ko: '${num}부채꼴 유도 또는 분신 유도',
   },
   baitConeOrStackNoStrategy: {
     en: '${num}Bait Cone or Stack',
+    ko: '${num}부채꼴 유도 또는 쉐어',
   },
 };
 Options.Triggers.push({
@@ -426,9 +461,15 @@ Options.Triggers.push({
           Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
           Bowtie AAAABBBB 4/4: Using same priority as the kroxy-rinon. (Will require Tank LB3)<br />
           Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in`,
+        ko: `4명씩 두 그룹으로 나눠 순서를 정해 탑을 처리합니다.<br />
+          Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          변형 ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
+          Bowtie AAAABBBB 4/4: kroxy-rinon과 같은 우선순위를 사용합니다. (3단 탱리밋 필요)<br />
+          기본값은 바라보는 방향 기준으로 부채꼴 + 탱힐 쉐어 왼쪽, 산개 + 딜러 쉐어 오른쪽입니다.`,
       },
       name: {
         en: 'P2 Forsaken Strategy',
+        ko: '2페이즈 행방불명 전략',
       },
       type: 'select',
       options: {
@@ -437,6 +478,12 @@ Options.Triggers.push({
           'ABBAABBA (1/2/2/2/1), Modified': 'abba',
           'AAAABBBB (4/4), Bowtie': 'bowtie',
           'Generic Calls': 'none',
+        },
+        ko: {
+          'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
+          'ABBAABBA (1/2/2/2/1), 변형': 'abba',
+          'AAAABBBB (4/4), Bowtie': 'bowtie',
+          '기본값': 'none',
         },
       },
       default: 'none',
@@ -2307,16 +2354,20 @@ Options.Triggers.push({
         behind: Outputs.getBehind,
         cone: {
           en: 'Cone on YOU',
+          ko: '나에게 부채꼴',
         },
         spread: {
           en: 'Spread on YOU',
+          ko: '나에게 산개징',
         },
         stack: Outputs.stackOnYou,
         you: {
           en: 'YOU',
+          ko: '나',
         },
         stacksOnPlayers: {
           en: 'Stacks on ${players}',
+          ko: '${players}에게 쉐어',
         },
         stay: {
           en: 'Stay',
@@ -2328,57 +2379,75 @@ Options.Triggers.push({
         },
         leftTower: {
           en: 'Left Tower',
+          ko: '왼쪽 탑',
         },
         rightTower: {
           en: 'Right Tower',
+          ko: '오른쪽 탑',
         },
         leftStack: {
           en: 'Left Stack',
+          ko: '왼쪽 쉐어',
         },
         rightStack: {
           en: 'Right Stack',
+          ko: '오른쪽 쉐어',
         },
         leftBaitOut: {
           en: 'Left Bait Out',
+          ko: '왼쪽 유도 바깥으로',
         },
         baitOrStack: {
           en: 'Bait/Stack',
+          ko: '유도/쉐어',
         },
         future: {
           en: 'Bait opposite Towers',
+          ko: '탑 반대쪽으로 유도',
         },
         past: {
           en: 'Bait between Towers',
+          ko: '탑 사이로 유도',
         },
         baitThenMarker: {
           en: '${bait} => ${marker}',
+          ko: '${bait} => ${marker}',
         },
         baitThenMech: {
           en: '${bait} => ${mech}',
+          ko: '${bait} => ${mech}',
         },
         baitThenMarkerTower: {
           en: '${bait} => ${marker} ${tower}',
+          ko: '${bait} => ${marker} ${tower}',
         },
         baitThenTower: {
           en: '${bait} => ${tower}',
+          ko: '${bait} => ${tower}',
         },
         baitThenStacks: {
           en: '${bait} => ${stacks}',
+          ko: '${bait} => ${stacks}',
         },
         lastFuture: {
           en: 'Bait => ${action}',
+          ko: '유도 => ${action}',
         },
         lastPast: {
           en: 'Bait => ${action}',
+          ko: '유도 => ${action}',
         },
         getHitRightSpreadBowtie: {
           en: 'Hit by Right Spread',
+          ko: '오른쪽 산개 맞기',
         },
         leftBaitLeftBowtie: {
           en: 'Left Bait Left',
+          ko: '왼쪽 유도 왼쪽으로',
         },
         leftBaitOutBowtie: {
           en: 'Left Bait Out',
+          ko: '왼쪽 유도 바깥으로',
         },
       },
     },
@@ -3346,6 +3415,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3} Later',
+          ko: '${dir1}/${dir2}/${dir3} 나중에',
         },
       },
     },
@@ -3404,24 +3474,31 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3}',
+          ko: '${dir1}/${dir2}/${dir3}',
         },
         wingsTrine: {
           en: '${wings} + ${trine}',
+          ko: '${wings} + ${trine}',
         },
         dirWings: {
           en: '${dirs} + ${wings}',
+          ko: '${dirs} + ${wings}',
         },
         wingsParty: {
           en: 'Outer 2 Rings',
+          ko: '바깥쪽 2번째 원',
         },
         wingsTank: {
           en: 'Be Near/Far',
+          ko: '가까이/멀리 있기',
         },
         east: {
           en: 'Eastward Trine',
+          ko: '동쪽 트라인',
         },
         west: {
           en: 'Westward Trine',
+          ko: '서쪽 트라인',
         },
       },
     },
