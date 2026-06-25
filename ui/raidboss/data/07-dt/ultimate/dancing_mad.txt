@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BAF1 BB06 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BCCD BAF1 BB06 BB38
 # -p C403:15.6 C24C:320.1 C3F7:600.0 C2DC:1100.0 BB40:1400.0
 # -it Kefka Chaos Exdeath
 
@@ -250,7 +250,6 @@ hideall "--sync--"
 820.0 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 821.2 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 821.2 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-824.6 "Black Spark" Ability { id: "BCCD", source: "Black Hole" }
 828.6 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 830.2 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 833.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
@@ -281,7 +280,6 @@ hideall "--sync--"
 888.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 889.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 889.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-892.5 "Black Spark" Ability { id: "BCCD", source: ["Black Hole", "Kefka"] } # Supposed to be from Black Hole, but can bug
 896.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 902.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 903.2 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
@@ -547,6 +545,7 @@ hideall "--sync--"
 # BAF9 Stray Earth: Some sort of failed P3 mechanic
 # C572 Earthquake: VFX
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
+# BCCD Black Spark: Standing inside a black hole in P3, applies a 3-minute damage down
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
 # BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
@@ -665,7 +664,7 @@ hideall "--sync--"
 # BB23 Stray Flames
 # BB24 Stray Spray
 # BB25 Stray Spray
-# BCCD Black Spark
+# BCCD Black Spark: Standing inside a black hole in P3, applies a 3-minute damage down
 # BB35 Forsaken: Castbar + AOE Damage
 # BB36 Forsaken: AOE Damage
 # BB37 Forsaken Ground: puddles
