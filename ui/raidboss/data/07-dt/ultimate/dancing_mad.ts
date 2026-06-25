@@ -94,7 +94,7 @@ export interface Data extends RaidbossData {
   hadAccretion: boolean;
   blackHoleIdDirNums: { [id: string]: number };
   kefkaTeleportDirNum?: number;
-  nothingnessCount: number;
+  nothingnessTracker: number;
   blackHoleTetherDirNums: number[];
 }
 
@@ -620,10 +620,10 @@ const blackHoleOutputStrings: OutputStrings = {
     en: '${num} Take ${dir} Tether Clockwise',
   },
   keepTether: {
-    en: 'Keep Tether',
+    en: '${num}Keep Tether',
   },
   passTether: {
-    en: 'Pass Tether',
+    en: '${num}Pass Tether',
   },
   oneBlackHole: {
     en: '${num}${dir}',
@@ -780,7 +780,7 @@ const triggerSet: TriggerSet<Data> = {
       inLine: {},
       hadAccretion: false,
       blackHoleIdDirNums: {},
-      nothingnessCount: 0,
+      nothingnessTracker: 0,
       blackHoleTetherDirNums: [],
     };
   },
@@ -5383,7 +5383,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       suppressSeconds: 1,
       run: (data) => {
-        data.nothingnessCount = data.nothingnessCount + 1;
+        data.nothingnessTracker = data.nothingnessTracker + 1;
         // Reset the tether dirs for next round
         data.blackHoleTetherDirNums = [];
       },
@@ -5394,7 +5394,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data, matches) => {
         // No need to collect the single tether sets
-        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9;
+        return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
       },
       run: (data, matches) => {
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
@@ -5412,15 +5412,14 @@ const triggerSet: TriggerSet<Data> = {
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data, matches) => {
-        return data.nothingnessCount !== 0 && data.nothingnessCount !== 9;
-      },
+      condition: (data, matches) => data.nothingnessTracker == 1,
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
         const dir = dirNum === undefined
           ? 'unknown'
@@ -5432,13 +5431,13 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.nothingnessCount,
+            num: num,
             dir: output[dir]!(),
           }),
         };
@@ -5449,13 +5448,15 @@ const triggerSet: TriggerSet<Data> = {
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessCount === 1,
+      condition: (data) => data.nothingnessTracker === 2,
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
 
@@ -5471,6 +5472,7 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
           : 'unknown';
 
+
         if (
           config === 'kefka' && data.inLine[data.me] === 1 &&
           !data.hadAccretion
@@ -5478,14 +5480,14 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir2]!(),
             }),
           };
@@ -5493,7 +5495,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.twoBlackHoles!({
-            num: data.nothingnessCount,
+            num: num,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
           }),
@@ -5505,13 +5507,15 @@ const triggerSet: TriggerSet<Data> = {
       // Three Black Holes spawn, each cause three Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessCount === 2,
+      condition: (data) => data.nothingnessTracker === 3,
+      delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
 
@@ -5534,21 +5538,21 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir2]!(),
             }),
           };
@@ -5556,7 +5560,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.threeBlackHoles!({
-            num: data.nothingnessCount,
+            num: num,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
             dir3: output[dir3]!(),
@@ -5570,7 +5574,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => data.nothingnessCount === 3,
+      condition: (data) => data.nothingnessTracker === 4,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5578,15 +5582,16 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
           if (line === 1) {
             if (hadAccretion || (data.role !== 'dps'))
-              return { infoText: output.keepTether!() };
+              return { infoText: output.keepTether!({ num: num }) };
             // DPS #1
-            return { alertText: output.passTether!() };
+            return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 2 && !hadAccretion && data.role === 'dps') {
             const kefkaDir = data.kefkaTeleportDirNum;
@@ -5604,7 +5609,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir]!(),
               }),
             };
@@ -5618,7 +5623,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => data.nothingnessCount === 4,
+      condition: (data) => data.nothingnessTracker === 5,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5626,15 +5631,16 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
           if (line === 1) {
             if (hadAccretion)
-              return { infoText: output.keepTether!() };
+              return { infoText: output.keepTether!({ num: num }) };
             if (data.role !== 'dps')
-              return { alertText: output.passTether!() };
+              return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 2 && !hadAccretion) {
             if (data.role !== 'dps') {
@@ -5653,13 +5659,13 @@ const triggerSet: TriggerSet<Data> = {
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.takeDirTetherClockwise!({
-                  num: data.nothingnessCount,
+                  num: num,
                   dir: output[dir]!(),
                 }),
               };
             }
             // DPS #2
-            return { infoText: output.keepTether!() };
+            return { infoText: output.keepTether!({ num: num }) };
           }
         }
       },
@@ -5669,7 +5675,7 @@ const triggerSet: TriggerSet<Data> = {
       // Three Black Holes spawn, each cause three Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessCount === 5,
+      condition: (data) => data.nothingnessTracker === 6,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5677,6 +5683,7 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
 
@@ -5699,21 +5706,21 @@ const triggerSet: TriggerSet<Data> = {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #2
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir2]!(),
             }),
           };
@@ -5721,7 +5728,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.threeBlackHoles!({
-            num: data.nothingnessCount,
+            num: num,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
             dir3: output[dir3]!(),
@@ -5735,7 +5742,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => data.nothingnessCount === 6,
+      condition: (data) => data.nothingnessTracker === 7,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5743,14 +5750,15 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
           if (line === 2) {
             if (data.hadAccretion || data.role !== 'dps')
-              return { infoText: output.keepTether!() };
+              return { infoText: output.keepTether!({ num: num }) };
             // DPS #2
-            return { alertText: output.passTether!() };
+            return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 3 && data.role === 'dps') {
             const kefkaDir = data.kefkaTeleportDirNum;
@@ -5768,7 +5776,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir]!(),
               }),
             };
@@ -5782,7 +5790,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
-      condition: (data) => data.nothingnessCount === 7,
+      condition: (data) => data.nothingnessTracker === 8,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5790,18 +5798,19 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
           if (line === 2) {
             if (data.hadAccretion)
-              return { infoText: output.keepTether!() };
+              return { infoText: output.keepTether!({ num: num }) };
             if (data.role !== 'dps')
-              return { alertText: output.passTether!() };
+              return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 3) {
             if (data.role === 'dps')
-              return { infoText: output.keepTether!() };
+              return { infoText: output.keepTether!({ num: num }) };
             // Support #3
             const kefkaDir = data.kefkaTeleportDirNum;
             const dirNums = data.blackHoleTetherDirNums;
@@ -5818,7 +5827,7 @@ const triggerSet: TriggerSet<Data> = {
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir]!(),
               }),
             };
@@ -5831,7 +5840,7 @@ const triggerSet: TriggerSet<Data> = {
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => data.nothingnessCount === 8,
+      condition: (data) => data.nothingnessTracker === 9,
       delaySeconds: 0.1, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -5839,6 +5848,7 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
 
@@ -5858,14 +5868,14 @@ const triggerSet: TriggerSet<Data> = {
           if (data.role === 'dps')
             return {
               alertText: output.takeDirTetherClockwise!({
-                num: data.nothingnessCount,
+                num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #3
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir2]!(),
             }),
           };
@@ -5873,7 +5883,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return {
           infoText: output.twoBlackHoles!({
-            num: data.nothingnessCount,
+            num: num,
             dir1: output[dir1]!(),
             dir2: output[dir2]!(),
           }),
@@ -5885,13 +5895,14 @@ const triggerSet: TriggerSet<Data> = {
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data) => data.nothingnessCount === 9,
+      condition: (data) => data.nothingnessTracker === 10,
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
         const dir = dirNum === undefined
           ? 'unknown'
@@ -5903,13 +5914,13 @@ const triggerSet: TriggerSet<Data> = {
         )
           return {
             alertText: output.takeDirTetherClockwise!({
-              num: data.nothingnessCount,
+              num: num,
               dir: output[dir]!(),
             }),
           };
         return {
           infoText: output.oneBlackHole!({
-            num: data.nothingnessCount,
+            num: num,
             dir: output[dir]!(),
           }),
         };
