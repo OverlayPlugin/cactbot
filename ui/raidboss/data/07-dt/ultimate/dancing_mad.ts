@@ -5472,7 +5472,6 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
           : 'unknown';
 
-
         if (
           config === 'kefka' && data.inLine[data.me] === 1 &&
           !data.hadAccretion
