@@ -401,15 +401,6 @@ const forsakenOutputStrings: OutputStrings = {
     ko: '${num}: ',
     tc: '${num}: ',
   },
-  nothing: {
-    en: '${num}',
-    de: '${num}',
-    fr: '${num}',
-    ja: '${num}',
-    cn: '${num}',
-    ko: '${num}',
-    tc: '${num}',
-  },
   you: {
     en: 'YOU',
   },
@@ -624,6 +615,15 @@ const blackHoleOutputStrings: OutputStrings = {
     cn: '${num}: ',
     ko: '${num}: ',
     tc: '${num}: ',
+  },
+  nothing: {
+    en: '${num}',
+    de: '${num}',
+    fr: '${num}',
+    ja: '${num}',
+    cn: '${num}',
+    ko: '${num}',
+    tc: '${num}',
   },
   takeDirTetherClockwise: {
     en: '${num} Take ${dir} Tether Clockwise',
