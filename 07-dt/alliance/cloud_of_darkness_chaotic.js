@@ -931,44 +931,43 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Cloud Of Darkness': '黑暗之雲',
         'Cloud of Darkness': '黑暗之雲',
-        // 'Cloudlet of Darkness': '', // FIXME '暗黑之破片云'
-        // 'Stygian Shadow': '', // FIXME '生于黑暗之物'
+        'Cloudlet of Darkness': '黑暗之碎雨雲',
+        'Stygian Shadow': '暗之淤影',
       },
       'replaceText': {
-        // '--adds untargetable--': '', // FIXME '--小怪不可选中--'
-        // 'Active-pivot Particle Beam': '', // FIXME '回旋式波动炮'
+        '--adds untargetable--': '--小怪不可選中--',
+        'Active-pivot Particle Beam': '迴旋式波動砲',
         '(?<!En)Aero IV': '超勁風',
-        // 'Blade of Darkness': '', // FIXME '暗之刃'
-        // 'Break IV': '', // FIXME '超石化'
-        // 'Chaos-condensed Particle Beam': '', // FIXME '凝聚式波动炮'
-        // 'Core-lateral Phaser': '', // FIXME '正侧跳跃波动炮'
-        // 'Curse of Darkness': '', // FIXME '波动诅咒'
-        // 'Dark Dominion': '', // FIXME '深暗领域'
+        'Blade of Darkness': '暗之刃',
+        'Break IV': '超石化',
+        'Chaos-condensed Particle Beam': '凝聚式波動砲',
+        'Core-lateral Phaser': '正側跳躍波動砲',
+        'Curse of Darkness': '波動的詛咒',
+        'Dark Dominion': '深暗領域',
         'Dark-energy Particle Beam': '詛咒式波動砲',
-        // '(?<!En)Death IV': '', // FIXME '极死'
+        '(?<!En)Death IV': '極死',
         'Deluge of Darkness': '暗之大氾濫',
-        // 'Diffusive-force Particle Beam': '', // FIXME '分散式波动炮'
-        // 'Enaero IV': '', // FIXME '超附风'
-        // 'Endeath IV': '', // FIXME '超附死'
-        // 'Evaporation': '', // FIXME '云散'
+        'Diffusive-force Particle Beam': '分散式波動砲',
+        'Enaero IV': '附魔超勁風',
+        'Endeath IV': '附魔極死',
+        'Evaporation': '雲散',
         'Evil Seed': '種子彈',
-        // 'Excruciate': '', // FIXME '磔杀'
+        'Excruciate': '磔殺',
         'Feint Particle Beam': '潛地式波動砲',
         'Flare': '火光',
-        // 'Flood of Darkness': '', // FIXME '暗之泛滥'
-        // 'Ghastly Gloom': '', // FIXME '恐惧之云'
-        // 'Grim Embrace': '', // FIXME '阴冷拥抱'
-        // 'Lateral-core Phaser': '', // FIXME '侧正跳跃波动炮'
-        // 'Looming Chaos': '', // FIXME '混沌迫近'
+        'Flood of Darkness': '暗之氾濫',
+        'Ghastly Gloom': '恐懼之雲',
+        'Grim Embrace': '陰冷擁抱',
+        'Lateral-core Phaser': '側正跳躍波動砲',
+        'Looming Chaos': '混沌迫近',
         '(?<! )Particle Beam': '波動爆炸',
         'Particle Concentration': '波動球',
-        // '(?<! )Phaser': '', // FIXME '跳跃波动炮'
-        // 'Rapid-sequence Particle Beam': '', // FIXME '连射式波动炮'
-        // 'Razing-volley Particle Beam': '', // FIXME '齐射式波动炮'
+        '(?<! )Phaser': '跳躍波動砲',
+        'Rapid-sequence Particle Beam': '連射式波動砲',
+        'Razing-volley Particle Beam': '齊射式波動砲',
         'Thorny Vine': '荊棘叢生',
         'Unholy Darkness': '黑暗神聖',
         'Vortex': '吸引',
