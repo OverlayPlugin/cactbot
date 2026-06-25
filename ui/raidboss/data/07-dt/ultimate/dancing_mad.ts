@@ -5384,8 +5384,14 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       run: (data) => {
         data.nothingnessTracker = data.nothingnessTracker + 1;
-        // Reset the tether dirs for next round
-        data.blackHoleTetherDirNums = [];
+
+        // Reset the tether dirs for next round of black hole adds
+        if (
+          data.nothingnessTracker === 2 || data.nothingnessTracker === 3 ||
+          data.nothingnessTracker === 6 || data.nothingnessTracker === 9 ||
+          data.nothingnessTracker === 10
+        )
+          data.blackHoleTetherDirNums = [];
       },
     },
     {
@@ -5504,10 +5510,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 3, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
+      // One tether at 0s, another at 0.2s, the last comes at 1.4s
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 3,
-      delaySeconds: 0.1, // Delay for tether collect
+      delaySeconds: 1.4, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5676,10 +5683,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 4, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
+      // One tether at 0s, another at 0.2s, the last comes at 1.5s (TODO: Verify this)
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 6,
-      delaySeconds: 0.1, // Delay for tether collect
+      delaySeconds: 1.5, // Delay for tether collect
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
