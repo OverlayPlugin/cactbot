@@ -5582,7 +5582,8 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const num = output.num!({ num: data.nothingnessTracker });
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
@@ -5615,6 +5616,7 @@ const triggerSet: TriggerSet<Data> = {
             };
           }
         }
+        return { infoText: output.nothing!({ num: tracker }) };
       },
     },
     {
@@ -5631,7 +5633,8 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const num = output.num!({ num: data.nothingnessTracker });
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
@@ -5668,6 +5671,7 @@ const triggerSet: TriggerSet<Data> = {
             return { infoText: output.keepTether!({ num: num }) };
           }
         }
+        return { infoText: output.nothing!({ num: tracker }) };
       },
     },
     {
@@ -5750,7 +5754,8 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const num = output.num!({ num: data.nothingnessTracker });
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
@@ -5782,6 +5787,7 @@ const triggerSet: TriggerSet<Data> = {
             };
           }
         }
+        return { infoText: output.nothing!({ num: tracker }) };
       },
     },
     {
@@ -5798,7 +5804,8 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = blackHoleOutputStrings;
 
         const config = data.triggerSetConfig.blackhole;
-        const num = output.num!({ num: data.nothingnessTracker });
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
 
         if (config === 'kefka') {
@@ -5833,6 +5840,7 @@ const triggerSet: TriggerSet<Data> = {
             };
           }
         }
+        return { infoText: output.nothing!({ num: tracker }) };
       },
     },
     {
