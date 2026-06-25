@@ -4843,7 +4843,7 @@ const triggerSet: TriggerSet<Data> = {
           // Return to get the next blaster
           return;
         }
-        
+
         // Translate coords relative to center
         const ax = x1 - centerX;
         const ay = y1 - centerY;
