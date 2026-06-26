@@ -264,16 +264,16 @@ const output16Dir: DirectionOutput16[] = [
 const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'dirW'];
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
-const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
-  const getIndex = (n: DirectionOutput16) => {
-    const index = output16Dir.indexOf(n);
-    // Values outside of output16Dir (i.e. 'unknown') sort last
-    if (index < 0)
-      return output16Dir.length;
-    return index;
-  };
+const getDirectionIndex = (n: DirectionOutput16) => {
+  const index = output16Dir.indexOf(n);
+  // Values outside of output16Dir (i.e. 'unknown') sort last
+  if (index < 0)
+    return output16Dir.length;
+  return index;
+};
 
-  return getIndex(a) - getIndex(b);
+const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
+  return getDirectionIndex(a) - getDirectionIndex(b);
 };
 
 const outputStrings16Dir: OutputStrings = {
@@ -381,6 +381,76 @@ const outputFromCardinalNum = (dirNum: number): DirectionOutputCardinal => {
 
 const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
+};
+
+export type AnyDirection =
+  | DirectionOutputCardinal
+  | DirectionOutputIntercard
+  | DirectionOutput8
+  | DirectionOutput16;
+
+// Example usage:
+// const dirs: DirectionOutputCardinal[] = ['dirN', 'dirW'];
+// dirs.sort(getSortDirectionsClockwiseFunction('dirE'));
+// `dirs` should equal `['dirW', 'dirN']`
+export const getSortDirectionsClockwiseFunction = (
+  from?: AnyDirection,
+): (left: AnyDirection, right: AnyDirection) => number => {
+  // Default to dirN
+  let offset = 0;
+  if (from !== undefined && from !== 'unknown')
+    offset = getDirectionIndex(from);
+
+  const count = output16Dir.length;
+
+  return (left: AnyDirection, right: AnyDirection) => {
+    if (left === 'unknown' || right === 'unknown') {
+      return left === right ? 0 : left === 'unknown' ? 1 : -1;
+    }
+    const rightIndex = (count + getDirectionIndex(right) - offset) % count;
+    const leftIndex = (count + getDirectionIndex(left) - offset) % count;
+    return leftIndex - rightIndex;
+  };
+};
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+const xyToHeading = (x: number, y: number, centerX: number, centerY: number) => {
+  x = x - centerX;
+  y = y - centerY;
+  return Math.atan2(x, y);
+};
+
+// Example usage:
+// getSortPointsClockwiseFunction
+// const points = [{ x: 101, y: 101 }, { x: 99, y: 99 }];
+// points.sort(getSortPointsClockwiseFunction({x: 100, y: 100}, {x: 99, y: 101}));
+// `points` should now equal `[{ x: 99, y: 99 }, { x: 101, y: 101 }]`
+export const getSortPointsClockwiseFunction = <T extends Point>(
+  center: T,
+  reference: number | T = Math.PI, // Default to north
+): (left: T, right: T) => number => {
+  // Convert point to heading if needed
+  const offset = typeof reference === 'object'
+    ? xyToHeading(reference.x, reference.y, center.x, center.y)
+    : reference;
+
+  const twoPI = Math.PI * 2;
+
+  return (left: T, right: T) => {
+    // Get our base headings for the two points
+    const rightHeading = xyToHeading(right.x, right.y, center.x, center.y);
+    const leftHeading = xyToHeading(left.x, left.y, center.x, center.y);
+
+    // Adjust by reference offset
+    const rightHeadingOffset = (twoPI + (offset - rightHeading)) % twoPI;
+    const leftHeadingOffset = (twoPI + (offset - leftHeading)) % twoPI;
+
+    return leftHeadingOffset - rightHeadingOffset;
+  };
 };
 
 export const Directions = {
