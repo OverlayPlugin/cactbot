@@ -5500,6 +5500,26 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Black Hole Tether Collect 2',
+      // On sets with 3, one tether can be passed with 272 SpawnNpcExtra line
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
+      condition: (data, matches) => {
+        // No need to collect the single tether sets
+        return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
+      },
+      run: (data, matches) => {
+        const dirNum = data.blackHoleIdDirNums[matches.id];
+        if (dirNum === undefined)
+          return;
+
+        // Ignore the tether if it is already stored
+        // This allows for collection of tethers if instantaneous swap
+        if (!data.blackHoleTetherDirNums.includes(dirNum))
+          data.blackHoleTetherDirNums.push(dirNum);
+      },
+    },
+    {
       id: 'DMU P3 Black Hole 1, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
       type: 'Tether',
@@ -5597,7 +5617,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 3, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
-      // One tether at 0s, another at 0.2s, the last comes at 1.5s
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
@@ -5769,7 +5788,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 4, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
-      // One tether at 0s, another at 0.2s, the last comes at 1.5s (TODO: Verify this)
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
