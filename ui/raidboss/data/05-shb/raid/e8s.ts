@@ -401,7 +401,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'E8S Forgetful Tank Second Frost',
       type: 'StartsUsing',
       netRegex: { source: 'Shiva', id: '4D6[67]', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       delaySeconds: 43,
       suppressSeconds: 80,
       infoText: (data, _matches, output) => {
@@ -1208,7 +1208,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => Util.canCleanse(data.job),
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (data.job === 'BLU')
+        if (data.party.isLimitedJob(data.me))
           return output.bluCleanse!();
         return output.cleanseOnlyDPS!();
       },
