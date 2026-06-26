@@ -5382,7 +5382,7 @@ const triggerSet: TriggerSet<Data> = {
         const isRightSlap = matches.id === 'BAE6';
 
         return output.slapDirMechThenOut!({
-          dir: isRightSlap ? output.left!() : output.right!(),
+          dir: isRightSlap ? output.right!() : output.left!(),
           mech: isRightSlap
             ? output.partyStack!()
             : output.roleStacks!(),
