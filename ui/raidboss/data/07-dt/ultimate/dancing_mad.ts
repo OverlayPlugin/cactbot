@@ -5334,7 +5334,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { param1: '1E44', capture: true },
       condition: (data, matches) => matches.id === data.kefkaId,
-      run: (data, matches) => {
+      run: (data) => {
         // Get Boss, he has Unknown_9E8 buff and same one that casts Max
         const bossId = data.kefkaId ?? 0;
 
@@ -5352,7 +5352,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { param1: '1E44', capture: true },
       condition: (data, matches) => matches.id === data.kefkaId,
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         // Get Boss, he has Unknown_9E8 buff and same one that casts Max
         const bossId = data.kefkaId ?? 0;
 
