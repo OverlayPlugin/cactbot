@@ -88,6 +88,7 @@ export interface Data extends RaidbossData {
   firstBlaster: number[];
   firstBlasterDirNum?: number;
   blasterRotation?: number;
+  kefkaId?: string;
   inLine: { [name: string]: number };
   firstAccretion?: string;
   secondAccretion?: string;
@@ -5152,18 +5153,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Damning Edict',
+      id: 'DMU P3 Max Collect ID',
+      // Need the Boss' ID to know which 273 lines to be looking at for later
       type: 'StartsUsing',
-      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
-      infoText: (_data, matches, output) => {
-        return output.getBehindTarget!({ target: matches.source });
-      },
-      outputStrings: {
-        getBehindTarget: {
-          en: 'Get Behind ${target}',
-          ko: '${target} 뒤로',
-        },
-      },
+      netRegex: { id: 'BAE5', source: 'Kefka', capture: true },
+      run: (data, matches) => data.kefkaId = matches.sourceId,
     },
     {
       id: 'DMU P3 In Line Debuff Collector',
@@ -5328,19 +5322,53 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Boss Teleport Collect',
+      // About 0.4s prior to a 273 line, the boss teleports and this data is available from 271/261 lines
+      // 2.2s~2.5s later boss starts casting Slap Happy/Look upon Me and Despair
       // For BAE6/BAE7 Slap Happy
-      // Boss' position data is (100, 100), but heading does update ~2.5s before cast
+      // Boss' position data is (100, 100)
       // 4 Invisible entities via 03 AddCombatant log lines correlate to the slap AoEs
       // spawn at time of StartsUsing. These are also ordered in the order they occur.
       //
       // For BAEC/BAED Look upon Me and Despair, boss also teleports
-      // TODO: Get earlier infoText call
       // This could be necessary to call which black holes to grab later
-      type: 'StartsUsing',
-      netRegex: { id: ['BAE6', 'BAE7', 'BAEC', 'BAED'], source: 'Kefka', capture: true },
+      type: 'ActorControlExtra',
+      netRegex: { param1: '1E44', capture: true },
+      condition: (data, matches) => matches.id === data.kefkaId,
       run: (data, matches) => {
-        const heading = parseFloat(matches.heading);
-        data.kefkaTeleportDirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+
+        data.kefkaTeleportDirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+      },
+    },
+    {
+      id: 'DMU P3 Boss Teleport Location',
+      // About 0.4s prior to a 273 line, the boss teleports and this data is available from 271/261 lines
+      // 2.2s later boss starts casting Slap Happy/Look upon Me and Despair
+      type: 'ActorControlExtra',
+      netRegex: { param1: '1E44', capture: true },
+      condition: (data, matches) => matches.id === data.kefkaId,
+      infoText: (data, matches, output) => {
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+        const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        return output.text!({ dir: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${dir} Kefka',
+        },
       },
     },
     {
@@ -5351,20 +5379,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
       alertText: (_data, matches, output) => {
-        const id = matches.id;
-        const heading = parseFloat(matches.heading);
-        // NOTE: Using heading, which is flipped, so CW/CCW are flipped here
-        const bossDirNum = Directions.hdgTo8DirNum(heading);
-        const clockDirNum = (bossDirNum + 6) % 8; // Wrap-around
-        const counterDirNum = (bossDirNum + 2) % 8;
-        const clockDir = Directions.output8Dir[clockDirNum] ?? 'unknown';
-        const counterDir = Directions.output8Dir[counterDirNum] ?? 'unknown';
-
-        const isRightSlap = id === 'BAE6';
-        const dir = isRightSlap ? clockDir : counterDir;
+        const isRightSlap = matches.id === 'BAE6';
 
         return output.slapDirMechThenOut!({
-          dir1: output[dir]!(),
+          dir: isRightSlap ? output.left!() : output.right!(),
           mech: isRightSlap
             ? output.partyStack!()
             : output.roleStacks!(),
@@ -5372,7 +5390,8 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
+        left: Outputs.left,
+        right: Outputs.right,
         outOfMiddle: {
           en: 'Out Of Middle',
           de: 'Raus aus der Mitte',
@@ -5400,7 +5419,7 @@ const triggerSet: TriggerSet<Data> = {
           tc: '職能分攤',
         },
         slapDirMechThenOut: {
-          en: '${dir1} + ${mech} => ${out}',
+          en: '${dir} => ${mech} + ${out}',
         },
       },
     },
@@ -5612,6 +5631,20 @@ const triggerSet: TriggerSet<Data> = {
             dir2: output[dir2]!(),
           }),
         };
+      },
+    },
+    {
+      id: 'DMU P3 Damning Edict',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB01', source: 'Chaos', capture: true },
+      infoText: (_data, matches, output) => {
+        return output.getBehindTarget!({ target: matches.source });
+      },
+      outputStrings: {
+        getBehindTarget: {
+          en: 'Get Behind ${target}',
+          ko: '${target} 뒤로',
+        },
       },
     },
     {
