@@ -5504,7 +5504,7 @@ const triggerSet: TriggerSet<Data> = {
       // On sets with 3, one tether can be passed with 272 SpawnNpcExtra line
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data, matches) => {
+      condition: (data) => {
         // No need to collect the single tether sets
         return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
       },
