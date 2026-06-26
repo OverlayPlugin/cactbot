@@ -160,7 +160,7 @@ const callOverlayHandlerInternal: IOverlayHandler = (
         }
         const parsed = JSON.parse(data) as BaseResponse;
         if (parsed['$error'])
-          reject(parsed);
+          reject(new Error(data));
         else
           resolve(parsed);
       });
@@ -254,7 +254,7 @@ export const init = (): void => {
               processEvent(msg);
             }
           } catch (e) {
-            console.error('Invalid message received: ', _msg);
+            console.error('Invalid message received: ', _msg, e);
             return;
           }
         });
@@ -301,12 +301,12 @@ export const init = (): void => {
     // but this is mainly for backwards compatibility. For cactbot's built-in files,
     // it is recommended to use the various functions exported in resources/overlay_plugin_api.ts.
 
-    /* eslint-disable deprecation/deprecation */
+    /* eslint-disable @typescript-eslint/no-deprecated */
     window.addOverlayListener = addOverlayListener;
     window.removeOverlayListener = removeOverlayListener;
     window.callOverlayHandler = callOverlayHandler;
     window.dispatchOverlayEvent = dispatchOverlayEvent;
-    /* eslint-enable deprecation/deprecation */
+    /* eslint-enable @typescript-eslint/no-deprecated */
   }
 
   inited = true;

@@ -1081,6 +1081,7 @@ class RaidbossConfigurator {
           // Do nothing if this fails.
           // Functions are pretty uncommon in built-in timelines.
           // If user functions do funky things, those extra lines will be skipped.
+          console.error('Invalid timeline function', obj, e);
         }
       } else if (typeof obj === 'string') {
         text = `${text}\n${obj}`;
@@ -1429,6 +1430,7 @@ class RaidbossConfigurator {
 
         output[key] = resultStr;
         return true;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         // This is all totally bogus.  Many triggers assume fields on data
         // are properly defined when these calls happen, so will throw errors.
@@ -1458,6 +1460,7 @@ class RaidbossConfigurator {
           }
           break;
         } catch (e) {
+          console.error('Invalid trigger response', trig, e);
           continue;
         }
       }

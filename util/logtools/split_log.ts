@@ -27,26 +27,26 @@ class SplitLogArgs extends Namespace implements TimelineArgs {
 const timelineParse = new LogUtilArgParse();
 
 // Log anonymization happens by default in this script
-timelineParse.parser.addArgument(['-na', '--no-anonymize'], {
+timelineParse.parser.add_argument('-na', '--no-anonymize', {
   nargs: '0',
-  constant: false,
-  defaultValue: true,
+  const: false,
+  default: true,
   help: 'Log entries will not be automatically anonymized',
 });
 
-timelineParse.parser.addArgument(['-af', '--analysis-filter'], {
+timelineParse.parser.add_argument('-af', '--analysis-filter', {
   nargs: '0',
-  constant: false,
-  defaultValue: true,
+  const: false,
+  default: true,
   help: 'Filter log to include only \'interesting\' lines (for analysis)',
 });
 
 const args = new SplitLogArgs({});
-timelineParse.parser.parseArgs(undefined, args);
+timelineParse.parser.parse_args(undefined, args);
 
 const printHelpAndError = (errString: string): void => {
   console.error(errString);
-  timelineParse.parser.printHelp();
+  timelineParse.parser.print_help();
 };
 
 if (args.file === null) {
@@ -101,7 +101,10 @@ const writeFile = (
     // If --force is not passed, this will fail if the file already exists.
     const flags = args.force === null ? 'wx' : 'w';
     const writer = fs.createWriteStream(outputFile, { flags: flags });
-    writer.on('error', (err: string) => {
+    writer.on('error', (err: string | Error): void => {
+      if (typeof err !== 'string') {
+        err = JSON.stringify(err);
+      }
       errorFunc(err);
       reject(new Error(err));
       process.exit(-1);

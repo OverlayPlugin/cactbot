@@ -21,21 +21,22 @@ class ReleaseNamespace extends Namespace implements ReleaseNamespaceInterface {
 
 const configureParser = (): ArgumentParser => {
   const parser = new ArgumentParser({
-    addHelp: true,
+    // eslint-disable-next-line camelcase
+    add_help: true,
   });
-  parser.addArgument(['-t', '--type'], {
+  parser.add_argument('-t', '--type', {
     nargs: '1',
     type: 'string',
     choices: versionTypes,
     help: 'Type of version bump (e.g. 0.<minor>.<patch>)',
   });
-  parser.addArgument(['-s', '--summary'], {
+  parser.add_argument('-s', '--summary', {
     nargs: '1',
     help: 'Set release summary (appended to release name in GitHub)',
   });
-  parser.addArgument(['-d', '--draft'], {
+  parser.add_argument('-d', '--draft', {
     nargs: '?',
-    constant: true,
+    const: true,
     help: 'Create as a draft release (release must be manually published)',
   });
   return parser;
@@ -44,7 +45,7 @@ const configureParser = (): ArgumentParser => {
 const run = async (): Promise<unknown> => {
   const parser = configureParser();
   const args = new ReleaseNamespace({});
-  parser.parseArgs(undefined, args);
+  parser.parse_args(undefined, args);
 
   const questions = [
     {

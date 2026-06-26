@@ -16,6 +16,5 @@
   },
   "include": [
     "./webpack"
-  ],
-  "references": [{ "path": "./tsconfig.json" }]
+  ]
 }

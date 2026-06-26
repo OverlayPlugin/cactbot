@@ -1276,13 +1276,13 @@ const triggerSet: TriggerSet<Data> = {
         const numDir = [0, 0, 0, 0]; // north, east, south, west
         for (const bomb of bombs) {
           if (bomb.y < centerY)
-            numDir[0]++;
+            numDir[0]!++;
           else
-            numDir[2]++;
+            numDir[2]!++;
           if (bomb.x < centerX)
-            numDir[3]++;
+            numDir[3]!++;
           else
-            numDir[1]++;
+            numDir[1]!++;
         }
 
         for (let idx = 0; idx < numDir.length; ++idx) {

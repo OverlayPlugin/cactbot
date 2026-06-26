@@ -139,7 +139,7 @@ export class ComboTracker extends EventEmitter<{ combo: ComboCallback }> {
         if (typeof item === 'undefined')
           continue;
         if (item?.every((i) => typeof i === 'string')) {
-          result.push(item as string[]);
+          result.push(item);
           continue;
         }
         const idx = item.findIndex((i) => Array.isArray(i));

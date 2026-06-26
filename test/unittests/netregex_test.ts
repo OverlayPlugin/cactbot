@@ -12,14 +12,14 @@ describe('netregex tests', () => {
   // specific unit tests to preserve backwards compatibility.
 
   it('addedCombatant and addedCombatantFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(buildRegex('AddedCombatant').source, NetRegexes.addedCombatantFull().source);
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(NetRegexes.addedCombatant().source, NetRegexes.addedCombatantFull().source);
   });
 
   it('ability and abilityFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(NetRegexes.ability().source, NetRegexes.abilityFull().source);
   });
 

@@ -12,14 +12,14 @@ describe('regex tests', () => {
   // specific unit tests to preserve backwards compatibility.
 
   it('addedCombatant and addedCombatantFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(buildRegex('AddedCombatant').source, Regexes.addedCombatantFull().source);
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(Regexes.addedCombatant().source, Regexes.addedCombatantFull().source);
   });
 
   it('ability and abilityFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(Regexes.ability().source, Regexes.abilityFull().source);
   });
 

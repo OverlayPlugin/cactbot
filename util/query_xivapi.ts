@@ -169,9 +169,10 @@ export const registerQueryXivApi = (
     namespace: QueryXivApiNamespace,
   };
 
-  const queryParser = subparsers.addParser('query', {
+  const queryParser = subparsers.add_parser('query', {
     description: actionChoices.query.name,
-    formatterClass: RawTextHelpFormatter,
+    // eslint-disable-next-line camelcase
+    formatter_class: RawTextHelpFormatter,
     epilog: `
     ENDPOINT: Specify a single XIVAPI endpoint, e.g. Pet or Status/968.
 
@@ -188,25 +189,25 @@ export const registerQueryXivApi = (
  `,
   });
 
-  queryParser.addArgument(['-e', '--endpoint'], {
+  queryParser.add_argument('-e', '--endpoint', {
     nargs: 1,
     type: 'string',
     help: 'The name of the XIVAPI endpoint to query',
   });
 
-  queryParser.addArgument(['-c', '--columns'], {
+  queryParser.add_argument('-c', '--columns', {
     nargs: 1,
     type: 'string',
     help: 'Columns/parameters to obtain from the endpoint',
   });
 
-  queryParser.addArgument(['-f', '--filter'], {
+  queryParser.add_argument('-f', '--filter', {
     nargs: '+',
     type: 'string',
     help: 'Filter(s) to apply on returned data',
   });
 
-  queryParser.addArgument(['-ll', '--loglevel'], {
+  queryParser.add_argument('-ll', '--loglevel', {
     nargs: 1,
     type: 'string',
     choices: logLevels.map((ll) => ll[0]),
@@ -380,9 +381,9 @@ const applyFilters = (
   // But TypeScript doesn't seem to respect op<->value type limits when typeguarding just the op.
   // So, separately typeguard the value based on the given op.
   const isStringsFilter = (
-    str: string | string[] | number,
+    _str: string | string[] | number,
     op: AllOp,
-  ): str is string | string[] => {
+  ): _str is string | string[] => {
     return (allOps.filter((op) => !isArithmeticOp(op)) as readonly string[]).includes(op);
   };
 

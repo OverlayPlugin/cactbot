@@ -107,10 +107,10 @@ class FFLogs {
     const urlSegment = fightsOrEvents === 'fights' ? fightsOrEvents : `${fightsOrEvents}/summary`;
     const url = `https://${prefix}.fflogs.com:443/v1/report/${urlSegment}/${reportId}`;
 
-    let data = await makeRequest(url, options);
+    const data = await makeRequest(url, options);
 
     // For a simple list of encounters, one call should be enough.
-    if (fightsOrEvents === 'fights')
+    if (fightsOrEvents === 'fights' || !('events' in data))
       return data;
 
     // For Event retrieval, check whether the data is paginated.
@@ -118,7 +118,6 @@ class FFLogs {
     if (data.nextPageTimestamp !== undefined) {
       const nextOptions = new URLSearchParams(options);
       nextOptions.set('start', data.nextPageTimestamp.toString());
-      data = data as FFLogsEventResponse;
       const nextData = await this.callFFLogs(
         'events',
         reportId,
