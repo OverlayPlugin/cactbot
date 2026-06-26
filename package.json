@@ -129,9 +129,6 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint-staged"
