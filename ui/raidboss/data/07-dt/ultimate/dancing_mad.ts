@@ -5819,6 +5819,26 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P3 Look upon Me and Despair',
+      // BAEC Look upon Me and Despair: Kefka falls on his right side across center of arena
+      // BAED Look upon Me and Despair: Kefka falls on his left side across center of arena
+      // Boss can be in different cardinal/intercardinals
+      type: 'StartsUsing',
+      netRegex: { id: ['BAEC', 'BAED'], source: 'Kefka', capture: false },
+      alertText: (_data, _matches, output) => output.outOfMiddle!(),
+      outputStrings: {
+        outOfMiddle: {
+          en: 'Out Of Middle',
+          de: 'Raus aus der Mitte',
+          fr: 'Sortez du milieu',
+          ja: '横へ',
+          cn: '远离中间',
+          ko: '가운데 피하기',
+          tc: '遠離中間',
+        },
+      },
+    },
+    {
       id: 'DMU P3 Black Hole 4, Nothingness 1',
       // Three Black Holes spawn, each cause three Nothingness
       type: 'Tether',
