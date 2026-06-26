@@ -322,6 +322,10 @@ export default defineConfig(
       },
       'sourceType': 'module',
     },
+    'linterOptions': {
+      // @TODO: Remove this later
+      'reportUnusedDisableDirectives': 'off',
+    },
     'plugins': {
       '@typescript-eslint': tseslint.plugin,
       'cactbot': cactbotLintPlugin,
@@ -344,7 +348,7 @@ export default defineConfig(
       tseslint.configs.recommended,
       tseslint.configs.recommendedTypeChecked,
     ],
-    'files': ['*.ts'],
+    'files': ['*.ts', '**/*.ts'],
     'languageOptions': {
       parser: tseslint.parser,
       parserOptions: {
@@ -379,14 +383,21 @@ export default defineConfig(
         { 'allowHigherOrderFunctions': false },
       ],
       '@typescript-eslint/method-signature-style': ['error', 'property'],
+      // @TODO: We use this for removing indexes a lot, maybe revisit with a helper method of sorts instead?
+      '@typescript-eslint/no-array-delete': 'off',
       '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-invalid-this': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-restricted-types': ['error', {
+        'types': {
+          'object': true,
+        },
+      }],
       '@typescript-eslint/no-unsafe-argument': 'error',
       '@typescript-eslint/no-unused-vars': ['warn', {
         'args': 'all',
-        'argsIgnorePattern': '^_\\w?',
+        'argsIgnorePattern': '^_',
       }],
       '@typescript-eslint/prefer-string-starts-ends-with': 'error',
       '@typescript-eslint/strict-boolean-expressions': ['error', {

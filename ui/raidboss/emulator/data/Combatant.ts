@@ -100,8 +100,7 @@ export default class Combatant {
       return this.tempStates[timestamp] = props;
 
     const state = this.tempStates[timestamp];
-    if (!state)
-      throw new UnreachableCode();
+
     return this.tempStates[timestamp] = { ...state, ...props };
   }
 

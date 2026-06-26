@@ -7,29 +7,26 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Possibly add combo outputs for Vorpal/Double-Edged & Burst/Double-Edged?
 
-const syncPlatforms = ['northwest', 'northeast', 'southwest', 'southeast'] as const;
-type Platform = typeof syncPlatforms[number] | 'none';
+type Platform = 'northwest' | 'northeast' | 'southwest' | 'southeast' | 'none';
 
-const tileNames = [
-  'northCorner',
-  'northwestNorth',
-  'northeastNorth',
-  'northwestWest',
-  'insideNorth',
-  'northeastEast',
-  'westCorner',
-  'insideWest',
-  'insideEast',
-  'eastCorner',
-  'southwestWest',
-  'insideSouth',
-  'southeastEast',
-  'southwestSouth',
-  'southeastSouth',
-  'southCorner',
-] as const;
-
-type TileName = typeof tileNames[number] | 'unknown';
+type TileName =
+  | 'northCorner'
+  | 'northwestNorth'
+  | 'northeastNorth'
+  | 'northwestWest'
+  | 'insideNorth'
+  | 'northeastEast'
+  | 'westCorner'
+  | 'insideWest'
+  | 'insideEast'
+  | 'eastCorner'
+  | 'southwestWest'
+  | 'insideSouth'
+  | 'southeastEast'
+  | 'southwestSouth'
+  | 'southeastSouth'
+  | 'southCorner'
+  | 'unknown';
 type TileMap = { [y: number]: { [x: number]: TileName } };
 
 const syncTilesMap: TileMap = {

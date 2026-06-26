@@ -24,7 +24,7 @@ const runResponseFunc = (
 ): ResponseFuncOutput => {
   // Built-in responses must be callable with empty parameters.
   const empty = {};
-  return func(empty as RaidbossData, empty as Matches, empty as Output);
+  return func(empty as RaidbossData, empty, empty as Output);
 };
 
 describe('response tests', () => {

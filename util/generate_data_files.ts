@@ -125,18 +125,18 @@ export const registerGenerateDataFiles = (
     callback: generateDataFilesFunc,
     namespace: GenerateDataFilesNamespace,
   };
-  const generateParser = subparsers.addParser('generate', {
+  const generateParser = subparsers.add_parser('generate', {
     description: actionChoices.generate.name,
   });
 
-  generateParser.addArgument(['-f', '--file'], {
+  generateParser.add_argument('-f', '--file', {
     nargs: 1,
     type: 'string',
     choices: Object.keys(fileKeyToFuncAll),
     help: 'The data file to be generated (or \'all\')',
   });
 
-  generateParser.addArgument(['-ll', '--loglevel'], {
+  generateParser.add_argument('-ll', '--loglevel', {
     nargs: 1,
     type: 'string',
     choices: logLevels.map((ll) => ll[0]),

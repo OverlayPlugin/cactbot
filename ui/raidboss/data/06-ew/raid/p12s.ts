@@ -1302,8 +1302,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.darkTower!();
         }
 
-        const locations = ['NE', 'SW', 'SE', 'NW'] as const;
-        type TowerLocation = typeof locations[number];
+        type TowerLocation = 'NE' | 'SW' | 'SE' | 'NW';
         type CloneLocation = 'NNW' | 'NNE' | 'ENE' | 'ESE' | 'SSE' | 'SSW' | 'WNW' | 'WSW';
         type TowerData = {
           location: TowerLocation;

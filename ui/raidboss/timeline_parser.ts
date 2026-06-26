@@ -537,7 +537,7 @@ export class TimelineParser {
       this.errors.push({
         lineNumber: lineNumber,
         line: originalLine,
-        error: 'Invalid NetRegex JSON',
+        error: `Invalid NetRegex JSON: ${JSON.stringify(e)}`,
       });
       return line;
     }

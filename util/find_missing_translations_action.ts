@@ -74,14 +74,14 @@ export const registerFindMissingTranslations = (
     callback: findMissingTranslationsFunc,
     namespace: FindMissingTranslationsNamespace,
   };
-  const findParser = subparsers.addParser('findTranslations', {
+  const findParser = subparsers.add_parser('findTranslations', {
     description: actionChoices.findTranslations.name,
   });
 
-  findParser.addArgument(['-l', '--locale'], {
+  findParser.add_argument('-l', '--locale', {
     help: 'The locale to find missing translations for, e.g. de',
   });
-  findParser.addArgument(['-f', '--filter'], {
+  findParser.add_argument('-f', '--filter', {
     nargs: '?',
     type: 'string',
     help: 'Limits the results to only match specific files/path',

@@ -261,71 +261,73 @@ type ExtendedArgs = Partial<ExtendedArgsRequired>;
 
 class GenerateTriggersArgParse {
   parser = new argparse.ArgumentParser({
-    addHelp: true,
+    // eslint-disable-next-line camelcase
+    add_help: true,
   });
-  requiredGroup = this.parser.addMutuallyExclusiveGroup();
+  // eslint-disable-next-line camelcase
+  required_group = this.parser.add_mutually_exclusive_group();
 }
 
 const generateTriggersParse = new GenerateTriggersArgParse();
 
-generateTriggersParse.parser.addArgument(['--files', '-f'], {
+generateTriggersParse.parser.add_argument('--files', '-f', {
   nargs: '+',
   help: 'Files to scan for zones and encounters.',
 });
 
-generateTriggersParse.parser.addArgument(['--zone_id', '-z'], {
+generateTriggersParse.parser.add_argument('--zone_id', '-z', {
   nargs: '?',
   help: 'The zone ID, by name, that should be used. e.g. "ContainmentBayS1T7"',
 });
 
-generateTriggersParse.parser.addArgument(['--trigger_id_prefix', '-tp'], {
+generateTriggersParse.parser.add_argument('--trigger_id_prefix', '-tp', {
   nargs: '?',
   help: 'The prefix to use for auto-generated triggers, e.g. "Sephirot"',
 });
 
-generateTriggersParse.parser.addArgument(['--ignore_id', '-ii'], {
+generateTriggersParse.parser.add_argument('--ignore_id', '-ii', {
   nargs: '+',
   help: 'Ability IDs to ignore, e.g. 27EF',
 });
 
-generateTriggersParse.parser.addArgument(['--only_combatants', '-o'], {
+generateTriggersParse.parser.add_argument('--only_combatants', '-o', {
   nargs: '+',
   help: 'Only include actions from combatants from this list, e.g. "Sephirot"',
 });
 
-generateTriggersParse.parser.addArgument(['--track_mapeffect', '-tm'], {
+generateTriggersParse.parser.add_argument('--track_mapeffect', '-tm', {
   nargs: '?',
   help: 'Track "MapEffect" lines and generate a mapping table',
 });
 
-generateTriggersParse.parser.addArgument(['--track_battletalk2', '-tb'], {
+generateTriggersParse.parser.add_argument('--track_battletalk2', '-tb', {
   nargs: '?',
   help: 'Track "BattleTalk2" lines and generate a mapping table',
 });
 
-generateTriggersParse.parser.addArgument(['--track_npcyell', '-tn'], {
+generateTriggersParse.parser.add_argument('--track_npcyell', '-tn', {
   nargs: '?',
   help: 'Track "NpcYell" lines and generate a mapping table',
 });
 
-generateTriggersParse.parser.addArgument(['--track_actorsetpos', '-ta'], {
+generateTriggersParse.parser.add_argument('--track_actorsetpos', '-ta', {
   nargs: '?',
   help: 'Track "ActorSetPos" lines and generate a mapping table',
 });
 
-generateTriggersParse.parser.addArgument(['--first_headmarker_id', '-hm'], {
+generateTriggersParse.parser.add_argument('--first_headmarker_id', '-hm', {
   nargs: '?',
   help: 'Specify the first headmarker\'s VFX for randomized headmarkers',
 });
 
-generateTriggersParse.parser.addArgument(['--output_file', '-of'], {
+generateTriggersParse.parser.add_argument('--output_file', '-of', {
   nargs: '?',
   help: 'Specify an output file, instead of outputing to console',
 });
 
 const printHelpAndExit = (errString: string): void => {
   console.error(errString);
-  generateTriggersParse.parser.printHelp();
+  generateTriggersParse.parser.print_help();
   process.exit(-1);
 };
 
@@ -1024,7 +1026,7 @@ const headMarkerData = {
       const allOffsets = [
         ...new Set(
           headMarkerMap.byOffset
-            .filter((entry) => entry.vfx.find((subEntry) => subEntry === headmarker))
+            .filter((entry) => entry.vfx.find((subEntry) => subEntry === headmarker) !== undefined)
             .map((entry) => entry.offset),
         ),
       ].sort(numberSort);
@@ -1080,7 +1082,7 @@ On Player: ${onAPlayer ? 'Yes' : 'No'},
 Line Count: ${instances.length},
 Offsets: ${allOffsets.sort(numberSort).join(', ')}
 `,
-          choices: triggerSuggestOptions.map((e) => {
+          choices: headmarkerTriggerSuggestOptions.map((e) => {
             return {
               name: e,
               value: e,
@@ -1595,7 +1597,7 @@ export default triggerSet;
 
 const generateTriggers = async () => {
   const args: ExtendedArgs = new ExtendedArgsRequired({});
-  generateTriggersParse.parser.parseArgs(undefined, args);
+  generateTriggersParse.parser.parse_args(undefined, args);
   validateArgs(args);
 
   let triggersFile = '';

@@ -5,13 +5,11 @@ const hideEvents = [
   'blur',
 ] as const;
 
-const validDirections = [
-  'top',
-  'right',
-  'bottom',
-  'left',
-] as const;
-type ValidDirection = typeof validDirections[number];
+type ValidDirection =
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left';
 
 const showEvents = [
   'mouseenter',

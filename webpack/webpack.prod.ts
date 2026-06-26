@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { mergeWithRules } from 'webpack-merge';
@@ -56,6 +58,7 @@ export default mergeWithRules({
   cache: {
     type: 'filesystem',
     name: 'cactbot',
+    cacheDirectory: `${path.dirname(__dirname)}/node_modules/.cache/webpack.prod`,
   },
   ...optimizationOverride,
   ...cssMinifyConfigOverride,
