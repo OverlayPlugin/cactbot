@@ -55,6 +55,7 @@ export default mergeWithRules({
   devtool: 'source-map',
   ...tsConfigOverride,
   cache: {
+    type: 'filesystem',
     cacheDirectory: `${path.dirname(__dirname)}/node_modules/.cache/webpack.dev`,
   },
 });
