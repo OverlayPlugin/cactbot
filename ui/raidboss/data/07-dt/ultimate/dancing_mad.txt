@@ -379,7 +379,7 @@ hideall "--sync--"
 1173.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
 1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", "BB23"], source: "Chaos" } duration 5
 1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
-1185.3 "Stray Flames" Ability { id: ["BB22", BB23"], source: "Chaos" }
+1185.3 "Stray Flames" Ability { id: ["BB22", "BB23"], source: "Chaos" }
 
 1189.3 "--long debuffs--"
 1189.4 "Death Wave" Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
