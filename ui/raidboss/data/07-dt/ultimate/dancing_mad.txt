@@ -287,8 +287,8 @@ hideall "--sync--"
 889.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 889.8 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
 896.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-898.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 896.8 "--1 tether--" SpawnNpcExtra { tetherId: "0054" }
+898.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 902.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 903.2 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 903.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
@@ -377,7 +377,7 @@ hideall "--sync--"
 1164.4 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
 1172.4 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
 1173.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
-1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", BB23"], source: "Chaos" } duration 5
+1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", "BB23"], source: "Chaos" } duration 5
 1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
 1185.3 "Stray Flames" Ability { id: ["BB22", BB23"], source: "Chaos" }
 
