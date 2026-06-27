@@ -28,14 +28,14 @@ const timelineParse = new LogUtilArgParse();
 
 // Log anonymization happens by default in this script
 timelineParse.parser.add_argument('-na', '--no-anonymize', {
-  nargs: '0',
+  nargs: 0,
   const: false,
   default: true,
   help: 'Log entries will not be automatically anonymized',
 });
 
 timelineParse.parser.add_argument('-af', '--analysis-filter', {
-  nargs: '0',
+  nargs: 0,
   const: false,
   default: true,
   help: 'Filter log to include only \'interesting\' lines (for analysis)',
