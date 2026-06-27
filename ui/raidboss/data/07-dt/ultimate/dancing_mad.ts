@@ -3937,14 +3937,14 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: {
         effectId: [
-        '15A7',
-        '15A8',
-        '15A9',
-        '15AA',
-        '1317',
-        '1318',
-        '1558',
-        '1C6'
+          '15A7',
+          '15A8',
+          '15A9',
+          '15AA',
+          '1317',
+          '1318',
+          '1558',
+          '1C6',
         ],
         capture: true,
       },
