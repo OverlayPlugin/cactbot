@@ -5500,7 +5500,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole Tether Collect',
+      id: 'DMU P3 Black Hole Tether Collect (NetworkTether)',
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => {
@@ -5519,14 +5519,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole Tether Collect 2',
-      // On sets with 3, one tether can be passed with 272 SpawnNpcExtra line
+      id: 'DMU P3 Black Hole Tether Collect (SpawnNpcExtra)',
+      // 272 SpawnNpcExtra line tether has the tether first
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
-      condition: (data) => {
-        // No need to collect the single tether sets
-        return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
-      },
+      delaySeconds: 0.1, // Delay for AddCombatant
       run: (data, matches) => {
         const dirNum = data.blackHoleIdDirNums[matches.id];
         if (dirNum === undefined)
@@ -5541,9 +5538,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 1, Nothingness 1',
       // One Black Hole spawns, causes a single Nothingness
-      type: 'Tether',
-      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => data.nothingnessTracker === 1,
+      delaySeconds: 0.1, // Delay for AddedCombatant
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -5551,7 +5549,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
-        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        const dirNum = data.blackHoleIdDirNums[matches.id];
         const dir = dirNum === undefined
           ? 'unknown'
           : Directions.outputCardinalDir[dirNum] ?? 'unknown';
@@ -5575,8 +5573,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 2, Nothingness 1',
+      id: 'DMU P3 Black Hole 2, Nothingness 2',
       // Two Black Holes spawn, each cause a single Nothingness
+      // No SpawnNpcExtra seen on this one
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
@@ -5643,22 +5642,22 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         getBehindTarget: {
           en: 'Get Behind ${target}',
-          ko: '${target} 뒤로',
         },
       },
     },
     {
-      id: 'DMU P3 Black Hole 3, Nothingness 1',
+      id: 'DMU P3  Black Hole 3, Nothingness 3',
       // Three Black Holes spawn, each cause three Nothingness
-      type: 'Tether',
-      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => {
-        return data.nothingnessTracker === 3 && data.blackHoleTetherDirNums.length === 3;
-      },
-      suppressSeconds: 99999,
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessTracker === 3,
+      delaySeconds: 0.1, // Delay for AddCombatant
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
+
+        if (data.blackHoleTetherDirNums.length !== 3)
+          return;
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
@@ -5715,7 +5714,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 3, Nothingness 2',
+      id: 'DMU P3 Black Hole 3, Nothingness 4',
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
@@ -5765,7 +5764,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 3, Nothingness 3',
+      id: 'DMU P3 Black Hole 3, Nothingness 5',
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
@@ -5839,17 +5838,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 4, Nothingness 1',
+      id: 'DMU P3  Black Hole 4, Nothingness 6',
       // Three Black Holes spawn, each cause three Nothingness
-      type: 'Tether',
-      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => {
-        return data.nothingnessTracker === 6 && data.blackHoleTetherDirNums.length === 3;
-      },
-      suppressSeconds: 99999,
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessTracker === 6,
+      delaySeconds: 0.1, // Delay for AddedCombatant
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
+
+        if (data.blackHoleTetherDirNums.length !== 3)
+          return;
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
@@ -5906,7 +5906,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 4, Nothingness 2',
+      id: 'DMU P3 Black Hole 4, Nothingness 7',
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
@@ -5955,7 +5955,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 4, Nothingness 3',
+      id: 'DMU P3 Black Hole 4, Nothingness 8',
       // One player needs to swap tether
       // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
@@ -6007,12 +6007,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 5, Nothingness 1',
+      id: 'DMU P3 Black Hole 5, Nothingness 9',
       // Two Black Holes spawn, each cause a single Nothingness
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
-        return (data.nothingnessTracker === 9 && data.blackHoleTetherDirNums.length === 2);
+        return data.nothingnessTracker === 9 && data.blackHoleTetherDirNums.length === 2;
       },
       suppressSeconds: 99999,
       response: (data, _matches, output) => {
@@ -6063,10 +6063,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Black Hole 6, Nothingness 1',
+      id: 'DMU P3 Black Hole 6, Nothingness 10',
       // One Black Hole spawns, causes a single Nothingness
-      type: 'Tether',
-      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => data.nothingnessTracker === 10,
       suppressSeconds: 99999,
       response: (data, matches, output) => {
@@ -6075,7 +6075,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
-        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        const dirNum = data.blackHoleIdDirNums[matches.id];
         const dir = dirNum === undefined
           ? 'unknown'
           : Directions.outputCardinalDir[dirNum] ?? 'unknown';
