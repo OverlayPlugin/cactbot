@@ -285,7 +285,7 @@ hideall "--sync--"
 888.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 889.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 889.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-889.8 "--2 tethers--" Tether { id: "0054", source: "Black Hole" }
+889.8 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
 896.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 898.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 896.8 "--1 tether--" SpawnNpcExtra { tetherId: "0054" }
