@@ -79,6 +79,10 @@ export interface Data extends RaidbossData {
   longCompressedPlayers: string[];
   shortBombPlayers: string[];
   longBombPlayers: string[];
+  areFirstDebuffsTrue?: boolean;
+  isEntropyTrue?: boolean;
+  areSecondDebuffsTrue?: boolean;
+  isDynamicFluidTrue?: boolean;
   deathOrField?: 'death' | 'field';
   wound?: 'white' | 'black';
 }
@@ -3872,6 +3876,15 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
+      id: 'DMU P4 Tsunami/Inferno',
+      // BB14 Grand Cross AoE also happens ~4s after this cast starts
+      // BB20 Inferno / BB21 Tsunami are 9s castTime
+      type: 'StartsUsing',
+      netRegex: { id: ['BB20', 'BB21'], source: 'Chaos', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      response: Responses.aoe(),
+    },
+    {
       id: 'DMU P4 Grand Cross Counter',
       type: 'StartsUsing',
       netRegex: { id: 'BB14', source: 'Neo Exdeath', capture: false },
@@ -3984,7 +3997,6 @@ const triggerSet: TriggerSet<Data> = {
       // 15A8 Forked Lightning x2 76s
       // 15A9 Compressed Water x2 76s
       // 15AA Acceleration Bomb (2 Long 76s, 2 Short 51s)
-      // TODO: Detect if fake
       type: 'GainsEffect',
       netRegex: { effectId: ['15A7', '15A8', '15A9', '15AA'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -3995,22 +4007,28 @@ const triggerSet: TriggerSet<Data> = {
         const hasFork = data.longForkedPlayers.includes(data.me);
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
+        const isTrue = data.areFirstDebuffsTrue;
+
+        if (isTrue === undefined)
+          return;
 
         // Shriek players always are short bomb
         // This will be two players
         if (hasShreik)
           return output.firstGazeAndBomb!({
-            gaze: output.gaze!(),
-            bomb: output.bomb!(),
+            gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
+            bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
 
         // Remaing 6 players will get one debuff
-        if (hasFork)
+        if ((hasFork && isTrue) || (hasCompressed && !isTrue))
           return output.spreadSecond!({ mech: output.spread!() });
-        if (hasCompressed)
+        if ((hasFork && !isTrue) || (hasCompressed && isTrue))
           return output.stackSecond!({ mech: output.stack!() });
         if (hasBomb)
-          return output.bombSecond!({ mech: output.bomb!() });
+          return output.bombSecond!({
+            mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+          });
       },
       outputStrings: {
         firstGazeAndBomb: {
@@ -4032,9 +4050,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech} on YOU Second',
         },
         stack: Outputs.stackMarker,
-        fakeStack: Outputs.spread,
         spread: Outputs.spread,
-        fakeSpread: Outputs.stackMarker,
         bomb: {
           en: 'Stillness',
         },
@@ -4045,15 +4061,24 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 Dynamic Fluid (Early)',
-      // TODO: Detect if fake
       type: 'GainsEffect',
       netRegex: { effectId: '15AC', capture: false },
       delaySeconds: 0.1,
       suppressSeconds: 99999,
-      infoText: (_data, _matches, output) => output.text!(),
+      infoText: (data, _matches, output) => {
+        const isFluidTrue = data.isDynamicFluidTrue;
+        if (isFluidTrue === undefined)
+          return;
+        return isFluidTrue
+          ? output.donutsSecond!()
+          : output.twistersSecond!();
+      },
       outputStrings: {
-        text: {
-          en: 'Donuts or Twisters (later)',
+        twistersSecond: {
+          en: 'Twisters Second',
+        },
+        donutsSecond: {
+          en: 'Donuts Second',
         },
       },
     },
@@ -4064,7 +4089,6 @@ const triggerSet: TriggerSet<Data> = {
       // 15A7 Cursed Shriek x2 69s
       // 15A9 Compressed Water x2 36s
       // 15AA Acceleration Bomb (2 Long 61s, 2 Short 36s)
-      // TODO: Detect if fake
       type: 'GainsEffect',
       netRegex: { effectId: ['15A7', '15A8', '15A9', '15AA'], capture: true },
       condition: (data, matches) => {
@@ -4077,22 +4101,28 @@ const triggerSet: TriggerSet<Data> = {
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
+        const isTrue = data.areSecondDebuffsTrue;
+
+        if (isTrue === undefined)
+          return;
 
         // Shriek players always are short bomb
         // This will be two players
         if (hasShreik)
           return output.secondGazeAndBomb!({
-            gaze: output.gaze!(),
-            bomb: output.bomb!(),
+            gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
+            bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
 
         // Remaing 6 players will get one debuff
-        if (hasFork)
+        if ((hasFork && isTrue) || (hasCompressed && !isTrue))
           return output.spreadFirst!({ mech: output.spread!() });
-        if (hasCompressed)
+        if ((hasFork && !isTrue) || (hasCompressed && isTrue))
           return output.stackFirst!({ mech: output.stack!() });
         if (hasBomb)
-          return output.bombFirst!({ mech: output.bomb!() });
+          return output.bombFirst!({
+            mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+          });
       },
       outputStrings: {
         secondGazeAndBomb: {
@@ -4114,9 +4144,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech} on YOU First',
         },
         stack: Outputs.stackMarker,
-        fakeStack: Outputs.spread,
         spread: Outputs.spread,
-        fakeSpread: Outputs.stackMarker,
         bomb: {
           en: 'Stillness',
         },
@@ -4127,15 +4155,24 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 Entropy (Early)',
-      // TODO: Detect if fake
       type: 'GainsEffect',
       netRegex: { effectId: '15AB', capture: false },
       delaySeconds: 0.1,
       suppressSeconds: 99999,
-      infoText: (_data, _matches, output) => output.text!(),
+      infoText: (data, _matches, output) => {
+        const isEntropyTrue = data.isEntropyTrue;
+        if (isEntropyTrue === undefined)
+          return;
+        return isEntropyTrue
+          ? output.twistersFirst!()
+          : output.donutsFirst!();
+      },
       outputStrings: {
-        text: {
-          en: 'Twisters or Donuts (later)',
+        twistersFirst: {
+          en: 'Twisters First',
+        },
+        donutsFirst: {
+          en: 'Donuts First',
         },
       },
     },
@@ -4146,7 +4183,6 @@ const triggerSet: TriggerSet<Data> = {
       // 1318 Black Wound
       // 1558 Beyond Death x4 15s
       // 1C6 Allagan Field x4 15s
-      // TODO: Detect if short debuffs fake
       type: 'GainsEffect',
       netRegex: { effectId: ['1317', '1318', '1558', '1C6'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -4170,26 +4206,33 @@ const triggerSet: TriggerSet<Data> = {
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
+        const isTrue = data.areSecondDebuffsTrue;
+
+        if (isTrue === undefined)
+          return laser;
+
+        const isSpread = (hasFork && isTrue) || (hasCompressed && !isTrue);
+        const isStack = (hasFork && !isTrue) || (hasCompressed && isTrue);
 
         // Handle 2 Mechs
-        if (hasFork && hasBomb)
+        if (isSpread && hasBomb)
           return output.laserThenForkBomb!({
             mech1: laser,
             mech2: output.spread!(),
-            mech3: output.bomb!(),
+            mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (hasCompressed && hasBomb)
+        if (isStack && hasBomb)
           return output.laserThenCompressedBomb!({
             mech1: laser,
             mech2: output.stack!(),
-            mech3: output.bomb!(),
+            mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (hasFork)
+        if (isSpread)
           return output.laserThenSpread!({
             mech1: laser,
             mech2: output.spread!(),
           });
-        if (hasCompressed)
+        if (isStack)
           return output.laserThenStack!({
             mech1: laser,
             mech2: output.stack!(),
@@ -4197,7 +4240,7 @@ const triggerSet: TriggerSet<Data> = {
         if (hasBomb)
           return output.laserThenBomb!({
             mech1: laser,
-            mech2: output.bomb!(),
+            mech2: isTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: output.stack!(),
           });
       },
@@ -4230,9 +4273,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech1} => ${mech2} + ${mech3}',
         },
         stack: Outputs.stackMarker,
-        fakeStack: Outputs.spread,
         spread: Outputs.spread,
-        fakeSpread: Outputs.stackMarker,
         bomb: {
           en: 'Stillness',
         },
@@ -4247,7 +4288,6 @@ const triggerSet: TriggerSet<Data> = {
       // 1558 Beyond Death x4 15s
       // 1C6 Allagan Field x4 15s
       // The spells/abilities or losesEffect could be triggered from early deaths
-      // TODO: Detect if short debuffs fake
       type: 'GainsEffect',
       netRegex: { effectId: ['1558', '1C6'], capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
@@ -4256,6 +4296,11 @@ const triggerSet: TriggerSet<Data> = {
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is1stTrue = data.areFirstDebuffsTrue;
+
+        if (is2ndTrue === undefined || is1stTrue === undefined)
+          return;
 
         const players = data.shortShriekPlayers.map(
           (player) => {
@@ -4266,34 +4311,40 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
+        const gaze = is1stTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
+        const isSpread = (hasFork && is2ndTrue) || (hasCompressed && !is2ndTrue);
+        const isStack = (hasFork && !is2ndTrue) || (hasCompressed && is2ndTrue);
+
         // Handle 2 Mechs
-        if (hasFork && hasBomb)
+        if (isSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
-            mech2: output.bomb!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
           });
-        if (hasCompressed && hasBomb)
+        if (isStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
-            mech2: output.bomb!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
           });
-        if (hasFork)
+        if (isSpread)
           return output.spreadThenGaze!({
             mech1: output.spread!(),
-            mech2: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: gaze,
           });
-        if (hasCompressed)
+        if (isStack)
           return output.stackThenGaze!({
             mech1: output.stack!(),
-            mech2: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: gaze,
           });
         if (hasBomb)
           return output.bombThenGaze!({
-            mech1: output.bomb!(),
+            mech1: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech3: gaze,
           });
       },
       outputStrings: {
@@ -4316,9 +4367,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech1} + ${mech2} => ${mech3}',
         },
         stack: Outputs.stackMarker,
-        fakeStack: Outputs.spread,
         spread: Outputs.spread,
-        fakeSpread: Outputs.stackMarker,
         bomb: {
           en: 'Stillness',
         },
@@ -4335,7 +4384,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 First Cursed Shriek',
-      // TODO: Detect if short debuffs fake
       // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
@@ -4343,6 +4391,12 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const isEntropyTrue = data.isEntropyTrue;
+
+        if (is1stTrue === undefined || isEntropyTrue === undefined)
+          return;
+
         const players = data.shortShriekPlayers.map(
           (player) => {
             if (player === data.me)
@@ -4353,8 +4407,10 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
 
         return output.shriekThenEntropy!({
-          mech1: msg,
-          mech2: output.twistersOrDonuts!(),
+          mech1: is1stTrue
+            ? output.lookAwayFromPlayers!({ players: msg })
+            : output.lookAtPlayers!({ players: msg }),
+          mech2: isEntropyTrue ? output.twisters!() : output.donuts!(),
         });
       },
       outputStrings: {
@@ -4370,8 +4426,22 @@ const triggerSet: TriggerSet<Data> = {
         lookAwayFromPlayers: {
           en: 'Look Away from ${players}',
         },
-        twistersOrDonuts: {
-          en: 'Twisters or Donuts',
+        donuts: {
+          en: 'Stack for Donuts',
+          de: 'Für Donuts sammeln',
+          fr: 'Packez-vous pour les donuts',
+          cn: '集合放月环',
+          ko: '모여서 도넛장판 피하기',
+          tc: '集合放月環',
+        },
+        twisters: {
+          en: 'Twisters',
+          de: 'Wirbelstürme',
+          fr: 'Tornades',
+          ja: '大竜巻',
+          cn: '旋风',
+          ko: '회오리',
+          tc: '旋風',
         },
       },
     },
@@ -4379,17 +4449,36 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P4 Entropy',
       // Using the following as possible matches:
       // 15A7 Cursed Shriek x2 60s
-      // TODO: Detect if shriek debuffs fake
       // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) < 61,
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 99999,
-      alertText: (_data, _matches, output) => output.twistersOrDonuts!(),
+      alertText: (data, _matches, output) => {
+        const isEntropyTrue = data.isEntropyTrue;
+        if (isEntropyTrue === undefined)
+          return;
+
+        return isEntropyTrue ? output.twisters!() : output.donuts!();
+      },
       outputStrings: {
-        twistersOrDonuts: {
-          en: 'Twisters or Donuts',
+        donuts: {
+          en: 'Stack for Donuts',
+          de: 'Für Donuts sammeln',
+          fr: 'Packez-vous pour les donuts',
+          cn: '集合放月环',
+          ko: '모여서 도넛장판 피하기',
+          tc: '集合放月環',
+        },
+        twisters: {
+          en: 'Twisters',
+          de: 'Wirbelstürme',
+          fr: 'Tornades',
+          ja: '大竜巻',
+          cn: '旋风',
+          ko: '회오리',
+          tc: '旋風',
         },
       },
     },
@@ -4405,7 +4494,6 @@ const triggerSet: TriggerSet<Data> = {
       // 15A8 Forked Lightning x2 76s
       // 15A9 Compressed Water x2 76s
       // 15AA Acceleration Bomb (2 Long 76s)
-      // TODO: Detect if long debuffs fake
       type: 'GainsEffect',
       netRegex: { effectId: ['15A8', '15A9', '15AA'], capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) > 75,
@@ -4415,6 +4503,11 @@ const triggerSet: TriggerSet<Data> = {
         const hasFork = data.longForkedPlayers.includes(data.me);
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const is2ndTrue = data.areSecondDebuffsTrue;
+
+        if (is2ndTrue === undefined || is1stTrue === undefined)
+          return;
 
         const players = data.longShriekPlayers.map(
           (player) => {
@@ -4425,34 +4518,40 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
+        const gaze = is2ndTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
+        const isSpread = (hasFork && is1stTrue) || (hasCompressed && !is1stTrue);
+        const isStack = (hasFork && !is1stTrue) || (hasCompressed && is1stTrue);
+
         // Handle 2 Mechs
-        if (hasFork && hasBomb)
+        if (isSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
-            mech2: output.bomb!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
           });
-        if (hasCompressed && hasBomb)
+        if (isStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
-            mech2: output.bomb!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
           });
-        if (hasFork)
+        if (isSpread)
           return output.spreadThenGaze!({
             mech1: output.spread!(),
-            mech2: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: gaze,
           });
-        if (hasCompressed)
+        if (isStack)
           return output.stackThenGaze!({
             mech1: output.stack!(),
-            mech2: output.lookAwayFromPlayers!({ players: msg }),
+            mech2: gaze,
           });
         if (hasBomb)
           return output.bombThenGaze!({
-            mech1: output.bomb!(),
+            mech1: is1stTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
-            mech3: output.lookAwayFromPlayers!({ players: msg }),
+            mech3: gaze,
           });
       },
       outputStrings: {
@@ -4475,9 +4574,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech1} + ${mech2} => ${mech3}',
         },
         stack: Outputs.stackMarker,
-        fakeStack: Outputs.spread,
         spread: Outputs.spread,
-        fakeSpread: Outputs.stackMarker,
         bomb: {
           en: 'Stillness',
         },
@@ -4489,6 +4586,104 @@ const triggerSet: TriggerSet<Data> = {
         },
         lookAwayFromPlayers: {
           en: 'Look Away from ${players}',
+        },
+      },
+    },
+    {
+      id: 'DMU P4 Second Cursed Shriek',
+      type: 'GainsEffect',
+      netRegex: { effectId: '15A7', capture: true },
+      condition: (_data, matches) => parseFloat(matches.duration) > 68,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        const isFluidTrue = data.isDynamicFluidTrue;
+
+        if (is2ndTrue === undefined || isFluidTrue === undefined)
+          return;
+
+        const players = data.shortShriekPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        return output.shriekThenFluid!({
+          mech1: is2ndTrue
+            ? output.lookAwayFromPlayers!({ players: msg })
+            : output.lookAtPlayers!({ players: msg }),
+          mech2: isFluidTrue ? output.donuts!() : output.twisters!(),
+        });
+      },
+      outputStrings: {
+        you: {
+          en: 'YOU',
+        },
+        shriekThenFluid: {
+          en: '${mech1} => ${mech2}',
+        },
+        lookAtPlayers: {
+          en: 'Face ${players}',
+        },
+        lookAwayFromPlayers: {
+          en: 'Look Away from ${players}',
+        },
+        donuts: {
+          en: 'Stack for Donuts',
+          de: 'Für Donuts sammeln',
+          fr: 'Packez-vous pour les donuts',
+          cn: '集合放月环',
+          ko: '모여서 도넛장판 피하기',
+          tc: '集合放月環',
+        },
+        twisters: {
+          en: 'Twisters',
+          de: 'Wirbelstürme',
+          fr: 'Tornades',
+          ja: '大竜巻',
+          cn: '旋风',
+          ko: '회오리',
+          tc: '旋風',
+        },
+      },
+    },
+    {
+      id: 'DMU P4 Dynamic Fluid',
+      // Using the following as possible matches:
+      // 15A7 Cursed Shriek x2 69s
+      type: 'GainsEffect',
+      netRegex: { effectId: '15A7', capture: true },
+      condition: (_data, matches) => parseFloat(matches.duration) > 68,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 99999,
+      alertText: (data, _matches, output) => {
+        const isFluidTrue = data.isDynamicFluidTrue;
+        if (isFluidTrue === undefined)
+          return;
+
+        return isFluidTrue ? output.donuts!() : output.twisters!();
+      },
+      outputStrings: {
+        donuts: {
+          en: 'Stack for Donuts',
+          de: 'Für Donuts sammeln',
+          fr: 'Packez-vous pour les donuts',
+          cn: '集合放月环',
+          ko: '모여서 도넛장판 피하기',
+          tc: '集合放月環',
+        },
+        twisters: {
+          en: 'Twisters',
+          de: 'Wirbelstürme',
+          fr: 'Tornades',
+          ja: '大竜巻',
+          cn: '旋风',
+          ko: '회오리',
+          tc: '旋風',
         },
       },
     },
