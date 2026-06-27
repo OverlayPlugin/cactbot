@@ -5099,6 +5099,7 @@ const triggerSet: TriggerSet<Data> = {
         capture: true,
       },
       condition: Conditions.targetIsYou(),
+      durationSeconds: 12,
       infoText: (data, matches, output) => {
         const blasterNumberMap: { [id: string]: number } = {
           '0150': 1,
