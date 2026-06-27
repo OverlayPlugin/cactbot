@@ -6068,6 +6068,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => data.nothingnessTracker === 10,
+      delaySeconds: 0.1, // Delay for AddedCombatant
       suppressSeconds: 99999,
       response: (data, matches, output) => {
         // cactbot-builtin-response
