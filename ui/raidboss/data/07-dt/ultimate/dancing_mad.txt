@@ -377,8 +377,8 @@ hideall "--sync--"
 1164.4 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
 1172.4 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
 1173.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
-1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
 1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", BB23"], source: "Chaos" } duration 5
+1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
 1185.3 "Stray Flames" Ability { id: ["BB22", BB23"], source: "Chaos" }
 
 1189.3 "--long debuffs--"
@@ -668,8 +668,8 @@ hideall "--sync--"
 # BB13 Vacuum Wave
 # BB14 Grand Cross
 # BB15 Death Bomb: P3 Failing Acceleration Bomb by moving around
-# BB16 Death Shriek
-# BB17 Death Shriek
+# BB16 Death Shriek: P3 Cursed Shriek, Look Away
+# BB17 Death Shriek: P3 Fake Cursed Shriek, Look At
 # BB18 Death Bolt: P3 Forked Lightning, Spread
 # BB19 Death Bolt: P3 Fake Forked Lightning, Stack
 # BB1A Death Wave: P3 Compressed Wave, Stack
