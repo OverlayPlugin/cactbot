@@ -25,13 +25,13 @@ const configureParser = (): ArgumentParser => {
     add_help: true,
   });
   parser.add_argument('-t', '--type', {
-    nargs: '1',
+    nargs: 1,
     type: 'string',
     choices: versionTypes,
     help: 'Type of version bump (e.g. 0.<minor>.<patch>)',
   });
   parser.add_argument('-s', '--summary', {
-    nargs: '1',
+    nargs: 1,
     help: 'Set release summary (appended to release name in GitHub)',
   });
   parser.add_argument('-d', '--draft', {
