@@ -3876,15 +3876,6 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'DMU P4 Tsunami/Inferno',
-      // BB14 Grand Cross AoE also happens ~4s after this cast starts
-      // BB20 Inferno / BB21 Tsunami are 9s castTime
-      type: 'StartsUsing',
-      netRegex: { id: ['BB20', 'BB21'], source: 'Chaos', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
-      response: Responses.aoe(),
-    },
-    {
       id: 'DMU P4 Grand Cross Counter',
       type: 'StartsUsing',
       netRegex: { id: 'BB14', source: 'Neo Exdeath', capture: false },
