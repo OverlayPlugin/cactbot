@@ -387,7 +387,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: ['116E', '116F'] },
       preRun: (data, matches) => {
-        matches.effectId === '116E' ? data.wavelengthCount.alpha++ : data.wavelengthCount.beta++;
+        if (matches.effectId === '116E')
+          data.wavelengthCount.alpha++;
+        else
+          data.wavelengthCount.beta++;
       },
       durationSeconds: (_data, matches) => parseFloat(matches.duration),
       infoText: (data, matches, output) => {

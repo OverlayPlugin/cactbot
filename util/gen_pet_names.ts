@@ -72,7 +72,7 @@ const fetchLocaleCsvTables = async () => {
 const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
   log.debug('Processing & assembling data...');
   // This isn't really a locale object, and ordering is alpha in the current file, so:
-  // eslint-disable-next-line rulesdir/cactbot-locale-order
+  // eslint-disable-next-line cactbot/locale-order
   const formattedData: OutputPetNames = {
     cn: [],
     de: [],

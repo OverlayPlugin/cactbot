@@ -55,8 +55,7 @@ export default class CombatantTracker {
         const state = this.extractStateFromLine(line);
 
         this.addCombatantFromSourceLine(line, state);
-        eventTracker[line.id] = eventTracker[line.id] ?? 0;
-        ++eventTracker[line.id];
+        eventTracker[line.id] = (eventTracker[line.id] ?? 0) + 1;
         this.combatants[line.id]?.pushPartialState(line.timestamp, state);
       }
 
@@ -64,15 +63,13 @@ export default class CombatantTracker {
         const state = this.extractStateFromTargetLine(line);
 
         this.addCombatantFromTargetLine(line, state);
-        eventTracker[line.targetId] = eventTracker[line.targetId] ?? 0;
-        ++eventTracker[line.targetId];
+        eventTracker[line.targetId] = (eventTracker[line.targetId] ?? 0) + 1;
         this.combatants[line.targetId]?.pushPartialState(line.timestamp, state);
       }
 
       if (isLineEvent0x105(line)) {
         this.addCombatantFromCombatantMemoryLine(line);
-        eventTracker[line.idHex] = eventTracker[line.idHex] ?? 0;
-        ++eventTracker[line.idHex];
+        eventTracker[line.idHex] = (eventTracker[line.idHex] ?? 0) + 1;
         this.combatants[line.idHex]?.pushPartialState(line.timestamp, line.state);
       }
 

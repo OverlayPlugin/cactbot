@@ -1,6 +1,6 @@
 // EventBus by definition requires generic parameters.
 // Map our stand-in generics to actual generics here.
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-restricted-types
 type Scope = object;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Param = any;
@@ -53,6 +53,7 @@ export default class EventBus {
       return;
 
     for (const l of this.listeners[event] ?? []) {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions, @typescript-eslint/no-unsafe-argument
       const res = l.callback.apply(l.scope, eventArguments);
       await Promise.resolve(res);
     }

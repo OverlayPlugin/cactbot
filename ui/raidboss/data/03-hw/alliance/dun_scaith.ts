@@ -187,7 +187,10 @@ const triggerSet: TriggerSet<Data> = {
         data.cursing ??= [];
         data.wailing ??= [];
         const id = matches.id.toUpperCase();
-        matches.npcNameId === '5510' ? data.wailing.push(id) : data.cursing.push(id);
+        if (matches.npcNameId === '5510')
+          data.wailing.push(id);
+        else
+          data.cursing.push(id);
       },
     },
     {

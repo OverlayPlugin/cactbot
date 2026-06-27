@@ -3,12 +3,12 @@ import path from 'path';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 // copy-webpack-plugin has changed to a newer export syntax that current eslint
 // version doesn't support
-// eslint-disable-next-line import/default
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import isCI from 'is-ci';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 import { Configuration as WebpackConfiguration, WebpackPluginInstance } from 'webpack';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
@@ -85,6 +85,7 @@ export default (
         },
       ],
     }),
+    new NodePolyfillPlugin(),
   ];
 
   if (!isCI)
@@ -135,11 +136,19 @@ export default (
     module: {
       rules: [
         {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
+        {
           // this will allow importing without extension in js files.
           // Use babel to transform TypeScript files, but babel has no
           // type checking, so we need ForkTsCheckerWebpackPlugin.
-          test: /\.(m?j|t)s$/,
-          exclude: /(node_modules|bower_components)/,
+          test: /\.(m?j)s$/,
+          exclude: /(bower_components)/,
           use: {
             loader: 'babel-loader',
             options: {
@@ -160,6 +169,9 @@ export default (
           },
           resolve: {
             fullySpecified: false,
+            fallback: {
+              buffer: 'buffer/',
+            },
           },
         },
         {

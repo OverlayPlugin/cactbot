@@ -176,9 +176,7 @@ type Sound = typeof sounds[number];
 type SoundType = `${Sound}Sound`;
 type SoundTypeVolume = `${SoundType}Volume`;
 
-const texts = ['info', 'alert', 'alarm'] as const;
-
-export type Text = typeof texts[number];
+export type Text = 'info' | 'alert' | 'alarm';
 type TextUpper = `${Capitalize<Text>}`;
 export type TextText = `${Text}Text`;
 type TextUpperText = `${TextUpper}Text`;
@@ -429,6 +427,7 @@ class TriggerOutputProxy {
       return this.unknownValue;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const toStringVal: unknown = toStringFunc();
     if (typeof toStringVal !== 'string' && typeof toStringVal !== 'number') {
       console.error(
@@ -791,7 +790,7 @@ export class PopupText {
         continue;
       }
 
-      /* eslint-disable-next-line deprecation/deprecation */
+      /* eslint-disable-next-line @typescript-eslint/no-deprecated */
       const origZoneRegex = set.zoneRegex;
 
       if (set.zoneId !== undefined) {
@@ -1672,6 +1671,7 @@ export class PopupText {
     if (typeof text === 'number')
       text = text.toString();
     if (typeof text !== 'string')
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       text = String(text);
     // Ignore empty strings so that config ui "blank spaces" are ignored.
     text = text.trim();

@@ -191,7 +191,7 @@ const data${file.type !== '' ? `: ${file.type}` : ' '} = ${str}${file.asConst ? 
 export default data;`;
 
     this.log.info('Running eslint on output data...');
-    const linter = new eslint.ESLint({ fix: true });
+    const linter = new eslint.ESLint({ fix: true, flags: ['unstable_native_nodejs_ts_config'] });
     const results = await linter.lintText(fileOutput, { filePath: fullPath });
 
     // There's only one result from lintText, as per documentation.

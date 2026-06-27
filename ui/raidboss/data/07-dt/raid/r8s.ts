@@ -887,8 +887,8 @@ const triggerSet: TriggerSet<Data> = {
         const hdg2 = Directions.hdgTo8DirNum(actors[1].Heading);
 
         // Only trigger on the actor targetting intercards
-        const isFang1Plus = (hdg1 === 0 || hdg1 === 2 || hdg1 === 4 || hdg1 === 6);
-        const isFang2Plus = (hdg2 === 0 || hdg2 === 2 || hdg2 === 4 || hdg2 === 6);
+        const isFang1Plus = hdg1 === 0 || hdg1 === 2 || hdg1 === 4 || hdg1 === 6;
+        const isFang2Plus = hdg2 === 0 || hdg2 === 2 || hdg2 === 4 || hdg2 === 6;
         if ((isFang1Plus && isFang2Plus) || (!isFang1Plus && !isFang2Plus)) {
           console.error(
             `R8S Terrestrial Titans Safe Spot: Both fangs detected facing same way.`,

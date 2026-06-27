@@ -352,7 +352,7 @@ export class OopsyLiveList implements MistakeObserver {
       document.body.appendChild(el);
       el.select();
       // TODO: fix me
-      /* eslint-disable-next-line deprecation/deprecation */
+      /* eslint-disable-next-line @typescript-eslint/no-deprecated */
       document.execCommand('copy');
       document.body.removeChild(el);
 

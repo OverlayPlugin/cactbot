@@ -511,7 +511,9 @@ export default class EmulatedPartyInfo extends EventBus {
         $wrapper.classList.remove('d-none');
       else
         $wrapper.classList.add('d-none');
-      typeof params.onclick === 'function' && params.onclick();
+      if (typeof params.onclick === 'function')
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+        params.onclick();
     });
     $wrapper.append(params.$obj);
     return $ret;

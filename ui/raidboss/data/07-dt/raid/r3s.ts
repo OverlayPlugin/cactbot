@@ -43,7 +43,7 @@ const getSafeSpotsFromClones = (
     const dir = (otherClone.cleave + 6 + idx) % 8;
     safeSpots = safeSpots.filter((spot) => dir !== spot);
     // Track that this spot is getting hit for the last safe spot calc
-    lastSafeSpots[dir]++;
+    lastSafeSpots[dir]!++;
   }
 
   // Handle Murderous Mist if that's getting passed in
@@ -56,7 +56,7 @@ const getSafeSpotsFromClones = (
   // Figure out where our final safe spot is
   for (let idx = 0; idx < 5; ++idx) {
     const dir = (myClone.cleave + 6 + idx) % 8;
-    lastSafeSpots[dir]++;
+    lastSafeSpots[dir]!++;
   }
 
   const lastSafeSpot = (lastSafeSpots.findIndex((count) => count === 0) + 4) % 8;

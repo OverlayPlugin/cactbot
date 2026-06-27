@@ -125,15 +125,15 @@ export const registerTranslateTimeline = (
     callback: translateTimelineFunc,
     namespace: TranslateTimelineNamespace,
   };
-  const translateParser = subparsers.addParser('translateTimeline', {
+  const translateParser = subparsers.add_parser('translateTimeline', {
     description: actionChoices.translateTimeline.name,
   });
 
-  translateParser.addArgument(['-l', '--locale'], {
+  translateParser.add_argument('-l', '--locale', {
     type: 'string',
     help: 'The locale to translate the timeline for, e.g. de',
   });
-  translateParser.addArgument(['-t', '--timeline'], {
+  translateParser.add_argument('-t', '--timeline', {
     type: 'string',
     help: 'The timeline file to match, e.g. "a12s"',
   });

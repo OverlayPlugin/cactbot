@@ -212,8 +212,11 @@ class OopsyConfigurator {
         if (obj === undefined || obj === null)
           continue;
         if (typeof obj === 'object') {
-          for (const id in obj)
-            item.triggers[id] = { id: id };
+          if (!Array.isArray(obj)) {
+            for (const id in obj)
+              item.triggers[id] = { id: id };
+          }
+          // @TODO: Error log if we somehow get an invalid structure here due to user js maybe?
         }
       }
 

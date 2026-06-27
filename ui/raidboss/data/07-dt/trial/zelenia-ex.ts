@@ -37,10 +37,8 @@ const bloomTileFlags = {
   overlapRoses: '80000040',
 } as const;
 
-const tileLocs = ['NNE', 'ENE', 'ESE', 'SSE', 'SSW', 'WSW', 'WNW', 'NNW'] as const;
-type TileLocsType = (typeof tileLocs)[number];
-const tileInnerOuter = ['Inner', 'Outer'] as const;
-type TileInnerOuterType = (typeof tileInnerOuter)[number];
+type TileLocsType = 'NNE' | 'ENE' | 'ESE' | 'SSE' | 'SSW' | 'WSW' | 'WNW' | 'NNW';
+type TileInnerOuterType = 'Inner' | 'Outer';
 
 const tileSlots = [
   '04',
