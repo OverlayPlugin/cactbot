@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BCCD BAF1 BB06 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BACF C250 BAF7 BAF9 C572 BAFA BCCD BAF1 BB06 BB15 C5DE BB38
 # -p C403:15.6 C24C:320.1 C3F7:600.0 C2DC:1100.0 BB40:1400.0
 # -it Kefka Chaos Exdeath
 
@@ -24,7 +24,7 @@ hideall "--sync--"
 29.2 "Graven Image 1" Ability { id: "BCF2", source: "Kefka" }
 35.1 "Pulse Wave" Ability { id: "BAA9", source: "Graven Image" }
 37.4 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
-37.4 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+37.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 38.3 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
 42.5 "Wave Cannon" Ability { id: "BAA8", source: "Graven Image" }
 44.6 "Double-trouble Trap 1" Ability { id: "BAA6", source: "Kefka" }
@@ -32,8 +32,8 @@ hideall "--sync--"
 49.6 "--knockback--" # From Double-trouble Trap 1
 49.7 "Double-trouble Trap 2" Ability { id: "BAA7", source: "Kefka" }
 53.7 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
-53.7 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
-53.7 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+53.7 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+53.7 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 62.7 "Light of Judgment" Ability { id: "C622", source: "Kefka" }
 65.8 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
 67.8 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
@@ -41,7 +41,7 @@ hideall "--sync--"
 75.6 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
 80.0 "Graven Image 2" Ability { id: "BCF2", source: "Kefka" }
-87.1 "Blizzard III Blowout" #Ability { id: ["BA9B", "BA98"], source: "Kefka" }
+87.1 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 87.2 "Gravitas" Ability { id: "BAAC", source: "Graven Image" }
 91.2 "Vitrophyre" Ability { id: "BAB0", source: "Graven Image" }
 97.1 "Revolting Ruin III 1" Ability { id: "C403", source: "Kefka" }
@@ -69,7 +69,7 @@ hideall "--sync--"
 177.7 "--sync--" Ability { id: "C555", source: "Kefka" }
 179.7 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 186.3 "Mystery Magic" Ability { id: "BA94", source: "Kefka" }
-186.3 "Thrumming Thunder III" #Ability { id: ["BAA1", "BA9F"], source: "Kefka" }
+186.3 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
 186.3 "Ave Maria/Indolent Will" #Ability { id: ["BAB3", "BAB4"], source: "Graven Image" }
 187.1 "Flagrant Fire III" Ability { id: ["BAA2", "BAA3"], source: "Kefka" }
 
@@ -235,15 +235,15 @@ hideall "--sync--"
 790.6 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
 
 790.8 "Black Hole" Ability { id: "BAFB", source: "Exdeath" }
-791.2 "--1 tether--" #Tether { id: "0054", source: "Black Hole" }
+791.1 "--1 tether--" SpawnNpcExtra { tetherId: "0054" }
 797.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 797.9 "Aetherlink" #Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
 797.9 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
 804.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+806.5 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" } # If person who took first takes both
 808.0 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 808.0 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 811.0 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
-812.3 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 816.0 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
 817.2 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
 818.0 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
@@ -251,28 +251,29 @@ hideall "--sync--"
 819.5 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 820.7 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 820.7 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-821.4 "--3 tethers--" #Tether { id: "0054", source: "Black Hole" }
+821.4 "--3 tethers--" SpawnNpcExtra { tetherId: "0054" }
 828.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-829.8 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
+829.7 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 833.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 835.0 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 838.1 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+839.7 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" } # From here on it should be unavoidable quakes?
 843.1 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
 843.5 "Look upon Me and Despair (castbar)" Ability { id: "BAEC", source: "Kefka" }
 844.4 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 846.5 "--sync--" Ability { id: "C4BA", source: "Kefka" }
-847.1 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 848.8 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 848.8 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
 851.8 "Thunder III 2" #Ability { id: "BB0C", source: "Exdeath" }
+855.2 "--3 tethers--" SpawnNpcExtra { tetherId: "0054" }
+861.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+863.5 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
+864.0 "Aetherlink" Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
+866.9 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+868.5 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 # TODO: Update remainder from network log
-856.1 "--3 tethers--" #Tether { id: "0054", source: "Black Hole" }
-862.8 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-864.4 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
-865.0 "Aetherlink" Ability { id: ["C2E4", "C2E5"], source: ["Chaos", "Exdeath"] }
-868.0 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-869.6 "Primordial Crust Quake?" #Ability { id: "BAFA", source: "Chaos" }
 873.2 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+874.8 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 
 884.2 "White Hole" Ability { id: "BD66", source: "Exdeath" }
 884.2 "Longitudinal Implosion/Latitudinal Implosion (castbar)" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
@@ -284,12 +285,14 @@ hideall "--sync--"
 888.1 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 889.3 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 889.3 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
-889.8 "--2 tethers--" #Tether { id: "0054", source: "Black Hole" }
+889.8 "--2 tethers--" Tether { id: "0054", source: "Black Hole" }
 896.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-896.8 "--1 tether--" #Tether { id: "0054", source: "Black Hole" }
+898.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
+896.8 "--1 tether--" SpawnNpcExtra { tetherId: "0054" }
 902.2 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 903.2 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 903.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
+905.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 
 # Blizzards and Towers
 # Summary:
@@ -340,21 +343,24 @@ hideall "--sync--"
 1103.1 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
 1109.4 "Mystery Magic 1" Ability { id: "BA94", source: "Kefka" }
-1109.4 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
-1109.4 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1109.4 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1109.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 1113.7 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1113.7 "--first debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
 1118.7 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
 
 1124.1 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
-1124.1 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
-1124.1 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1124.1 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1124.1 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 1128.4 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1128.4 "--second debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
 1133.5 "Tsunami/Inferno" Ability { id: ["BB21", "BB20"], source: "Chaos" }
 
 1139.2 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
-1139.2 "Thrumming Thunder III" #Ability { id: "BAA1", source: "Kefka" }
-1139.2 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1139.2 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1139.2 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 1143.3 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1144.7 "--third debuffs--" #GainsEffect { effectId: ["1317", "1318", "1558", "1C6"] }
 
 1145.3 "--sync--" Ability { id: "C554", source: "Kefka" }
 
@@ -363,26 +369,28 @@ hideall "--sync--"
 1155.8 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
 1155.8 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
 1159.0 "--sync--" Ability { id: "C555", source: "Kefka" }
+
 1159.7 "Death Surge" Ability { id: "BB1D", source: "Neo Exdeath" }
 1164.1 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
-1164.4 "Death Bolt" #Ability { id: "BB18", source: "Neo Exdeath" }
-1164.4 "Death Wave" #Ability { id: "BB1A", source: "Neo Exdeath" }
-1172.4 "Thrumming Thunder III" Ability { id: "C5DE", source: "Kefka" }
-1172.4 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
-1173.4 "Death Shriek" Ability { id: "BB16", source: "Neo Exdeath" }
+1164.3 "--short debuffs--"
+1164.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
+1164.4 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
+1172.4 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1173.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
 1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
-1185.3 "Stray Flames" Ability { id: "BB23", source: "Chaos" }
-1189.4 "Death Wave" Ability { id: "BB1B", source: "Neo Exdeath" }
-1189.4 "Death Bolt" #Ability { id: "BB19", source: "Neo Exdeath" }
-1189.4 "Death Bomb" #Ability { id: "BB15", source: "Neo Exdeath" }
-1190.4 "Blizzard III Blowout" Ability { id: "BA9B", source: "Kefka" }
-1194.6 "Stray Spray" #Ability { id: "BB25", source: "Chaos" }
-1195.9 "Stray Spray" #Ability { id: "BB25", source: "Chaos" }
-1197.2 "Death Shriek" Ability { id: "BB17", source: "Neo Exdeath" }
+1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", BB23"], source: "Chaos" } duration 5
+1185.3 "Stray Flames" Ability { id: ["BB22", BB23"], source: "Chaos" }
+
+1189.3 "--long debuffs--"
+1189.4 "Death Wave" Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
+1189.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
+1190.4 "Blizzard III Blowout" Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1197.2 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
+1202.6 "--twisters/donuts?--" StartsUsing { id: ["BB24", "BB25"], source: "Chaos" } duration 5
 1203.5 "Mana Release" Ability { id: "BAA5", source: "Kefka" }
-1207.6 "Stray Spray" Ability { id: "BB25", source: "Chaos" }
-1208.5 "Thrumming Thunder III" #Ability { id: "BA9F", source: "Kefka" }
-1208.5 "Blizzard III Blowout" #Ability { id: "BA9B", source: "Kefka" }
+1207.6 "Stray Spray" Ability { id: ["BB24", "BB25"], source: "Chaos" }
+1208.5 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1208.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 
 1212.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
 1212.8 "--untargetable?--"
@@ -555,6 +563,10 @@ hideall "--sync--"
 # BAF1 Unmitigated Impact: P3 Failing to soak a tower
 # BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
+# P4 IGNORED Abilities
+# BB15 Death Bomb: P3 Failing Acceleration Bomb by moving around when true, not moving when fake
+# C5DE Thrumming Thunder III: VFX/Castbar used in P4
+
 # P5 IGNORED ABILITIES
 # BB38 Forsaken: VFX
 
@@ -655,21 +667,21 @@ hideall "--sync--"
 # BB12 Thunder III
 # BB13 Vacuum Wave
 # BB14 Grand Cross
-# BB15 Death Bomb
+# BB15 Death Bomb: P3 Failing Acceleration Bomb by moving around
 # BB16 Death Shriek
 # BB17 Death Shriek
-# BB18 Death Bolt
-# BB19 Death Bolt
-# BB1A Death Wave
-# BB1B Death Wave
+# BB18 Death Bolt: P3 Forked Lightning, Spread
+# BB19 Death Bolt: P3 Fake Forked Lightning, Stack
+# BB1A Death Wave: P3 Compressed Wave, Stack
+# BB1B Death Wave: P3 Fake Compressed Wave, Spread
 # BB1C Death Surge
 # BB1D Death Surge
 # BB20 Inferno
 # BB21 Tsunami
-# BB22 Stray Flames
-# BB23 Stray Flames
-# BB24 Stray Spray
-# BB25 Stray Spray
+# BB22 Stray Flames: P3 Entropy delayed Twister
+# BB23 Stray Flames: P3 Fake Entropy delayed Donut
+# BB24 Stray Spray: P3 Dynamic Fluid delayed Donut
+# BB25 Stray Spray: P3 Fake Dynamic Fluid delayed Twister
 # BCCD Black Spark: Standing inside a black hole in P3, applies a 3-minute damage down
 # BB35 Forsaken: Castbar + AOE Damage
 # BB36 Forsaken: AOE Damage
@@ -736,7 +748,7 @@ hideall "--sync--"
 # C555 --sync--
 # C571 Earthquake
 # C572 Earthquake: VFX
-# C5DE Thrumming Thunder III
+# C5DE Thrumming Thunder III: VFX/Castbar used in P4
 # C61E Meteor: Exdeath enrage when you kill Chaos first
 # C61F Bowels of Agony: Chaos Enrage when you kill Exdeath first
 # C622 Light of Judgment: P1 version
