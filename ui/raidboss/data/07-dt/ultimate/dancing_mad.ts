@@ -4,9 +4,13 @@ import { Responses } from '../../../../../resources/responses';
 import Util, { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
+import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
+// TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
+// TODO: P3 Better Blackhole no-config support via debuff tracking?
+// TODO: P3 Aoe calls for Earthquake and/or some call for those with no tether during swaps?
+// TODO: P3 Blizzard III Stack Headmarker/Player and Role Towers
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -32,6 +36,9 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
     forsaken: 'kroxy-rinon' | 'abba' | 'bowtie' | 'none';
+    boa: 'lb3' | 'sg3k' | 'none';
+    accretion: 'line' | 'role';
+    blackhole: 'kefka' | 'none';
   };
   // General
   phase: Phase | 'unknown';
@@ -68,6 +75,28 @@ export interface Data extends RaidbossData {
   forsakenGroupB: string[]; // List of players in Group B
   trineDirNums: number[];
   middleTrineFacing?: 'east' | 'west';
+  // Phase 3
+  isFireShort?: boolean;
+  windCrystalNext: boolean;
+  myElement?: 'fire' | 'water';
+  myWind?: 'head' | 'tail';
+  fireElementPlayers: string[];
+  waterElementPlayers: string[];
+  fireCrystalDirNum?: number;
+  waterCrystalDirNum?: number;
+  windCrystalDirNum?: number;
+  firstBlaster: number[];
+  firstBlasterDirNum?: number;
+  blasterRotation?: number;
+  kefkaId?: string;
+  inLine: { [name: string]: number };
+  firstAccretion?: string;
+  secondAccretion?: string;
+  hadAccretion: boolean;
+  blackHoleIdDirNums: { [id: string]: number };
+  kefkaTeleportDirNum?: number;
+  nothingnessTracker: number;
+  blackHoleTetherDirNums: number[];
 }
 
 const headMarkerData = {
@@ -89,6 +118,18 @@ const headMarkerData = {
   'stackPath': '02CB', // When standing in Path of Light tower, causes BAC0 Spelldriver (3-person stack)
   'conePath': '02CD', // When standing in Path of Light tower, causes BAC2 Spellwave (cone targetting nearest player)
   'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
+  // Phase 3 Tethers
+  'exdeathTether': '0040', // Exdeath "pulls energy" from Graven Image with BNpcID 4C31 with BB12 Thunder III
+  'blackHoleTether': '0054',
+  // Phase 3 Players
+  '1': '0150',
+  '2': '0151',
+  '3': '0152',
+  '4': '0153',
+  '5': '01B5',
+  '6': '01B6',
+  '7': '01B7',
+  '8': '01B8',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
@@ -495,6 +536,151 @@ const forsakenOutputStrings: OutputStrings = {
   },
 };
 
+const boaOutputStrings: OutputStrings = {
+  ...Directions.outputStringsIntercardDir,
+  in: Outputs.in,
+  out: Outputs.out,
+  moveExdeathAndChaosThenMech: {
+    en: 'Move ${exdeath} Middle / ${chaos} to ${dir} => ${mech}',
+  },
+  moveExdeathThenMech: {
+    en: 'Move ${exdeath} to ${long} => ${mech}',
+  },
+  crystals: {
+    en: '${short} => ${long} => ${wind} (later)',
+  },
+  shortLongCrystals: {
+    en: '${short} => ${long}',
+  },
+  crystalsMech: {
+    en: '${crystals}; ${mech}',
+  },
+  fire: {
+    en: 'Fire ${dir}',
+  },
+  water: {
+    en: 'Water ${dir}',
+  },
+  wind: {
+    en: 'Wind ${dir}',
+  },
+  tail: {
+    en: 'Face ${name}',
+  },
+  head: Outputs.lookAwayFromTarget,
+  you: {
+    en: 'YOU',
+  },
+  baitFireDonut: {
+    en: 'Bait Fire Donut',
+  },
+  baitWaterAoe: {
+    en: 'Bait Water AOE',
+  },
+  baitCrystal: {
+    en: 'Bait ${crystal} ${inout}',
+  },
+  fireOnPlayersCrystalDirNum: {
+    en: '${spread}/${dir} => ${bait}',
+  },
+  fireOnPlayers: {
+    en: 'Spread on ${players}',
+  },
+  waterOnPlayersCrystalDirNum: {
+    en: '${donut}/${dir} => ${bait}',
+  },
+  waterOnPlayers: {
+    en: 'Donut on ${players}',
+  },
+  mechThenMech: {
+    en: '${mech1} => ${mech2}',
+  },
+  getMiddleNearPlayer: {
+    en: 'Get Middle Near ${player}',
+  },
+  getHitByDonut: Outputs.goIntoMiddle,
+  knockbackToDir: {
+    en: 'Knockback to ${dir} ${facing}',
+  },
+  beNearWind: {
+    en: 'Be Near ${dir}',
+  },
+  stackPartner: Outputs.stackPartner,
+  donutLater: {
+    en: 'Donut (later)',
+  },
+  roleStacks: {
+    en: 'Role Stacks',
+    de: 'Rollengruppe sammeln',
+    fr: 'Package par rôle',
+    cn: '职能分摊',
+    ko: '역할별 쉐어',
+    tc: '職能分攤',
+  },
+  beNearExdeath: {
+    en: 'Be Near ${name}',
+  },
+  baitJump: {
+    en: 'Bait Jump',
+  },
+};
+
+// Used to return clockwise from Kefka ordering of Black Hole Tethers
+const getCWOrderFromN = (
+  n: number,
+  dirNums: number[],
+): number[] => {
+  // Calculate distance from cardinal
+  const getCWDistance = (start: number, end: number): number => {
+    const diff = end - start;
+    return diff < 0 ? diff + 4 : diff;
+  };
+
+  return [...dirNums].sort((a, b) => {
+    return getCWDistance(n, a) - getCWDistance(n, b);
+  });
+};
+
+const blackHoleOutputStrings: OutputStrings = {
+  ...Directions.outputStringsCardinalDir,
+  num: {
+    en: '${num}: ',
+    de: '${num}: ',
+    fr: '${num}: ',
+    ja: '${num}: ',
+    cn: '${num}: ',
+    ko: '${num}: ',
+    tc: '${num}: ',
+  },
+  nothing: {
+    en: '${num}',
+    de: '${num}',
+    fr: '${num}',
+    ja: '${num}',
+    cn: '${num}',
+    ko: '${num}',
+    tc: '${num}',
+  },
+  takeDirTetherClockwise: {
+    en: '${num} Take ${dir} Tether Clockwise',
+  },
+  keepTether: {
+    en: '${num}Keep Tether',
+  },
+  passTether: {
+    en: '${num}Pass Tether',
+  },
+  oneBlackHole: {
+    en: '${num}${dir}',
+  },
+  twoBlackHoles: {
+    en: '${num}${dir1}/${dir2}',
+  },
+  threeBlackHoles: {
+    en: '${num}${dir1}/${dir2}/${dir3}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -564,6 +750,62 @@ const triggerSet: TriggerSet<Data> = {
       },
       default: 'none',
     },
+    {
+      id: 'boa',
+      comment: {
+        en:
+          `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
+        Entropy/Dynamic Fluid Bait (Default): Follows <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: Entropy/Fluid bait their crystals and get hit by crystal's aoe<br \>
+        None: Only calls debuffs and locations`,
+      },
+      name: {
+        en: 'P3 Bowels of Agony Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Tank LB3': 'lb3',
+          'Entropy/Dynamic Fluid Bait': 'sg3k',
+          'Generic Calls': 'none',
+        },
+      },
+      default: 'sg3k',
+    },
+    {
+      id: 'accretion',
+      comment: {
+        en: `Order in which players will be told to heal for resolving Accretion debuffs`,
+      },
+      name: {
+        en: 'P3 Accretion Heal Order',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'First In Line => Second In Line': 'line',
+          'Healer => DPS': 'role',
+        },
+      },
+      default: 'role',
+    },
+    {
+      id: 'blackhole',
+      comment: {
+        en:
+          `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
+      },
+      name: {
+        en: 'P3 Black Hole Order',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Kefkabin': 'kefka',
+          'Generic Calls': 'none',
+        },
+      },
+      default: 'none',
+    },
   ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
@@ -587,6 +829,16 @@ const triggerSet: TriggerSet<Data> = {
       forsakenGroupA: [],
       forsakenGroupB: [],
       trineDirNums: [],
+      // Phase 3
+      windCrystalNext: false,
+      fireElementPlayers: [],
+      waterElementPlayers: [],
+      firstBlaster: [],
+      inLine: {},
+      hadAccretion: false,
+      blackHoleIdDirNums: {},
+      nothingnessTracker: 0,
+      blackHoleTetherDirNums: [],
     };
   },
   triggers: [
@@ -3771,25 +4023,865 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'DMU P3 Headwind/Tailwind Debuffs',
+      id: 'DMU P3 Entropy and Dynamic Fluid Debuff Collector',
+      // TODO: Get crystal element spawn locations
       // Applied at BAF2 Bowels of Agony
-      // Debuffs trigger if hit by certain sources, causing a knockback
-      // 642 Headwind: Face away from damage source
-      // 643 Tailwind: Face towards damage source
+      // 640 Entropy: On expiration player is hit with point blank AoE and fire
+      // crystal targets two closest players with donut AoEs
+      // 641 Dynamic Flood: On expiration creates donut AoE around the player
+      // and water crystal targets two closest players with point-blank AoEs
+      //
+      // Entropy or Dynamic Fluid will have 19s and the other 46s duration
+      // At the same time, elemental crystals spawn at intercardinals
+      // Fire and Water Crystals will be opposite each other
+      // Wind Crystal will be between on the opposite side
+      //
+      // Exdeath Tank needs to go to element that has the long timer
+      // Chaos Tank needs to go between wind crystal and element with short timer
+      type: 'GainsEffect',
+      netRegex: { effectId: ['640', '641'], capture: true },
+      run: (data, matches) => {
+        const id = matches.effectId;
+        if (data.isFireShort === undefined) {
+          const isShort = parseFloat(matches.duration) < 20;
+          data.isFireShort = (isShort && id === '640') ||
+              (!isShort && id === '641')
+            ? true
+            : false;
+        }
+        if (data.me === matches.target)
+          data.myElement = id === '640' ? 'fire' : 'water';
+
+        if (id === '640')
+          data.fireElementPlayers.push(matches.target);
+        else
+          data.waterElementPlayers.push(matches.target);
+      },
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuff Collector',
+      // Applied at BAF2 Bowels of Agony
+      // 642 Headwind: Face away from knockback source, wind crystal targets
+      // nearest player with 2-person stack
+      // 643 Tailwind: Face towards knockback source, wind crystal targets
+      // nearest player with 2-person stack
+      // These have a 68s duration
       type: 'GainsEffect',
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
-      infoText: (_data, matches, output) => {
-        return matches.effectId === '642' ? output.headwind!() : output.tailwind!();
+      run: (data, matches) => data.myWind = matches.effectId === '642' ? 'head' : 'tail',
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Debuff',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1,
+      durationSeconds: 14.9, // Until Dynamic Fluid/Entropy trigger
+      infoText: (data, matches, output) => {
+        const myElement = data.myElement;
+        const short = data.isFireShort
+          ? output.shortFire!()
+          : output.shortWater!();
+        const wind = matches.effectId === '642'
+          ? output.headwind!()
+          : output.tailwind!();
+        if (myElement !== undefined)
+          return output.withElement!({
+            short: short,
+            element: output[myElement]!(),
+            wind: wind,
+          });
+        return output.withoutElement!({
+          short: short,
+          wind: wind,
+        });
       },
       outputStrings: {
+        shortFire: {
+          en: 'Short Fire',
+        },
+        shortWater: {
+          en: 'Short Water',
+        },
+        fire: {
+          en: 'Fire',
+        },
+        water: {
+          en: 'Water',
+        },
         headwind: {
           en: 'Headwind on YOU',
-          ko: '혼돈의 바람 대상자',
         },
         tailwind: {
-          en: 'Tailwind on You',
-          ko: '혼돈의 역풍 대상자',
+          en: 'Tailwind on YOU',
+        },
+        withElement: {
+          en: '${short}: ${element} + ${wind}',
+        },
+        withoutElement: {
+          en: '${short}: ${wind}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Crystal Location Collector',
+      // Crystals are added at same time as BAF2 Bowels of Agony
+      //
+      // First set spawns at intercardinals
+      // Wind will be inbetween Fire and Water
+      // The following are their BNpcIDs:
+      // 1EC03A => Fire (Red Triangle) Crystal
+      // 1EC03B => Water (Blue Square) Crystal
+      // 1EC03C => Wind (Green Diamond) Crystal
+      //
+      // Later the Earth Crystal will spawn in the center
+      // 1EC03D => Earth (Yellow Arrowhead) Crystal (TODO: Verify this BNnpcID)
+      // They are removed once players lose their respective debuffs
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03A', '1EC03B', '1EC03C'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const bnpcid = matches.pairBNpcID;
+        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
+
+        if (bnpcid === '1EC03A')
+          data.fireCrystalDirNum = dirNum;
+        else if (bnpcid === '1EC03B')
+          data.waterCrystalDirNum = dirNum;
+        else
+          data.windCrystalDirNum = dirNum;
+      },
+    },
+    {
+      id: 'DMU P3 Short Crystal and Crystal Locations',
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: '1EC03C' }],
+        capture: false,
+      },
+      delaySeconds: 3, // To prevent overlap with debuffs and time for collect
+      durationSeconds: 16, // Duration of the first debuff
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const config = data.triggerSetConfig.boa;
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+        const fShort = data.isFireShort;
+
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
+        if (config !== 'none') {
+          const myElement = data.myElement;
+          // Tank will need to first position Exdeath for Thunder III AOE
+          if (data.role === 'tank') {
+            const exdeathLocaleNames: LocaleText = {
+              en: 'Exdeath',
+              de: 'Exdeath',
+              fr: 'Exdeath',
+              ja: 'エクスデス',
+              cn: '艾克斯迪司',
+              ko: '엑스데스',
+              tc: '艾克斯迪司',
+            };
+            const exdeathName = exdeathLocaleNames[data.parserLang];
+            if (config === 'sg3k') {
+              if (myElement === 'fire') {
+                if (fShort) {
+                  return output.moveExdeathThenMech!({
+                    exdeath: exdeathName,
+                    long: water,
+                    mech: output.baitCrystal!({
+                      crystal: fire,
+                      inout: output.in!(),
+                    }),
+                  });
+                }
+
+                // Get player expected to be inner water bait
+                const players = data.waterElementPlayers.filter(
+                  (player) => data.party.isDPS(player),
+                );
+                const player = data.party.member(players[0]);
+
+                return output.moveExdeathThenMech!({
+                  exdeath: exdeathName,
+                  long: fire,
+                  mech: output.getMiddleNearPlayer!({
+                    player: player,
+                  }),
+                });
+              }
+
+              if (myElement === 'water') {
+                if (fShort)
+                  return output.moveExdeathThenMech!({
+                    exdeath: exdeathName,
+                    long: water,
+                    mech: output.getHitByDonut!(),
+                  });
+
+                return output.moveExdeathThenMech!({
+                  exdeath: exdeathName,
+                  long: fire,
+                  mech: output.baitCrystal!({
+                    crystal: water,
+                    inout: output.in!(),
+                  }),
+                });
+              }
+            }
+
+            // LB3 Config
+            const chaosLocaleNames: LocaleText = {
+              en: 'Chaos',
+              de: 'Chaos',
+              fr: 'Chaos',
+              ja: 'カオス',
+              cn: '卡奥斯',
+              ko: '카오스',
+              tc: '卡奧斯',
+            };
+            const chaosName = chaosLocaleNames[data.parserLang];
+            return output.moveExdeathAndChaosThenMech!({
+              exdeath: exdeathName,
+              chaos: chaosName,
+              dir: wind,
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+
+          if (config === 'sg3k') {
+            if (myElement === 'fire') {
+              if (fShort)
+                return output.crystalsMech!({
+                  crystals: output.shortLongCrystals!({
+                    short: fire,
+                    long: water,
+                  }),
+                  mech: output.baitCrystal!({
+                    crystal: fire,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  }),
+                });
+
+              // Get player expected to be inner water bait
+              const players = data.waterElementPlayers.filter(
+                (player) => data.party.isDPS(player),
+              );
+              const player = data.party.member(players[0]);
+
+              return output.crystalsMech!({
+                crystals: output.shortLongCrystals!({
+                  short: water,
+                  long: fire,
+                }),
+                mech: output.getMiddleNearPlayer!({
+                  player: player,
+                }),
+              });
+            }
+
+            if (myElement === 'water') {
+              if (fShort)
+                return output.crystalsMech!({
+                  crystals: output.shortLongCrystals!({
+                    short: fire,
+                    long: water,
+                  }),
+                  mech: output.getHitByDonut!(),
+                });
+              return output.crystalsMech!({
+                crystals: output.shortLongCrystals!({
+                  short: water,
+                  long: fire,
+                }),
+                mech: output.baitCrystal!({
+                  crystal: water,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                }),
+              });
+            }
+            return output.crystalsMech!({
+              crystals: output.shortLongCrystals!({
+                short: fShort ? fire : water,
+                long: fShort ? water : fire,
+              }),
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+
+          // LB3 Config
+          if (data.role !== 'dps' || Util.isMeleeDpsJob(data.job)) {
+            return output.crystalsMech!({
+              crystals: output.shortLongCrystals!({
+                short: fShort ? fire : water,
+                long: fShort ? water : fire,
+              }),
+              mech: output.beNearWind!({
+                dir: wind,
+              }),
+            });
+          }
+          // Ranged DPS Bait
+          return output.crystalsMech!({
+            crystals: output.shortLongCrystals!({
+              short: fShort ? fire : water,
+              long: fShort ? water : fire,
+            }),
+            mech: output.baitCrystal!({
+              crystal: fShort ? fire : water,
+              inout: output.out!(),
+            }),
+          });
+        }
+
+        return output.crystals!({
+          short: fShort ? fire : water,
+          long: fShort ? water : fire,
+          wind: wind,
+        });
+      },
+      outputStrings: boaOutputStrings,
+    },
+    {
+      id: 'DMU P3 Entropy and Fire Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '640', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4, // 6s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = boaOutputStrings;
+        const config = data.triggerSetConfig.boa;
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+        const fShort = data.isFireShort;
+        const myElement = data.myElement;
+        const myWind = data.myWind;
+
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
+        const players = data.fireElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+        const spread = output.fireOnPlayers!({ players: msg });
+
+        const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
+        const severity = config === 'lb3' && isRangedDPS
+          ? 'alertText'
+          : myElement === 'fire'
+          ? 'alertText'
+          : 'infoText';
+
+        if (fShort) {
+          if (config === 'lb3') {
+            const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: isNotRanged ? spread : output.baitCrystal!({
+                  crystal: fire,
+                  inout: output.out!(),
+                }),
+                mech2: isNotRanged
+                  ? output.donutLater!()
+                  : output.baitCrystal!({
+                    crystal: water,
+                    inout: output.out!(),
+                  }),
+              }),
+            };
+          }
+
+          if (config === 'sg3k') {
+            // Get player expected to be inner water bait
+            const players = data.waterElementPlayers.filter(
+              (player) => data.party.isDPS(player),
+            );
+            const player = data.party.member(players[0]);
+
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: myElement === 'fire'
+                  ? output.baitCrystal!({
+                    crystal: fire,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  })
+                  : myElement === 'water'
+                  ? output.getHitByDonut!()
+                  : output.beNearWind!({ dir: wind }),
+                mech2: myElement === 'fire'
+                  ? output.getMiddleNearPlayer!({
+                    player: player,
+                  })
+                  : myElement === 'water'
+                  ? output.knockbackToDir!({
+                    facing: output[myWind ?? 'unknown']!({ name: output[fireDir]!() }),
+                    dir: output[waterDir]!(),
+                  })
+                  : output.stackPartner!(),
+              }),
+            };
+          }
+        }
+        const exdeathLocaleNames: LocaleText = {
+          en: 'Exdeath',
+          de: 'Exdeath',
+          fr: 'Exdeath',
+          ja: 'エクスデス',
+          cn: '艾克斯迪司',
+          ko: '엑스데스',
+          tc: '艾克斯迪司',
+        };
+        const exdeathName = exdeathLocaleNames[data.parserLang];
+        if (config === 'lb3') {
+          const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: isNotRanged ? spread : output.baitCrystal!({
+                crystal: fire,
+                inout: output.out!(),
+              }),
+              mech2: Util.isRangedDpsJob(data.job)
+                ? output.baitJump!()
+                : output.beNearExdeath!({ name: exdeathName }),
+            }),
+          };
+        }
+
+        if (config === 'sg3k') {
+          // Players will need to get to opposite side of Wind Crystal
+          const exDeathDir = windDirNum === undefined
+            ? 'unknown'
+            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: myElement === 'fire'
+                ? output.baitCrystal!({
+                  crystal: fire,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                })
+                : myElement === 'water'
+                ? output.getHitByDonut!()
+                : output.beNearWind!({ dir: wind }),
+              mech2: myElement === 'fire'
+                ? output.beNearExdeath!({ name: exdeathName })
+                : myElement === 'water'
+                ? output.knockbackToDir!({
+                  facing: output[myWind ?? 'unknown']!({
+                    name: output[fireDir]!(),
+                  }),
+                  dir: output[exDeathDir]!(),
+                })
+                : output.stackPartner!(),
+            }),
+          };
+        }
+        return {
+          [severity]: output.fireOnPlayersCrystalDirNum!({
+            spread: spread,
+            dir: fire,
+            bait: output.baitFireDonut!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Dynamic Fluid and Water Crystal',
+      // Late goes off 2s after BAFF Shockwave
+      type: 'GainsEffect',
+      netRegex: { effectId: '641', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4, // 6s after Lat/Long when Late
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = boaOutputStrings;
+        const config = data.triggerSetConfig.boa;
+        const fireDirNum = data.fireCrystalDirNum;
+        const waterDirNum = data.waterCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+        const fireDir = fireDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+        const waterDir = waterDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+        const fShort = data.isFireShort;
+        const myElement = data.myElement;
+        const myWind = data.myWind;
+
+        const fire = output.fire!({ dir: output[fireDir]!() });
+        const water = output.water!({ dir: output[waterDir]!() });
+        const wind = output.wind!({ dir: output[windDir]!() });
+
+        const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
+        const severity = config === 'lb3' && isRangedDPS
+          ? 'alertText'
+          : myElement === 'water'
+          ? 'alertText'
+          : 'infoText';
+
+        const players = data.waterElementPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+        const donut = output.waterOnPlayers!({ players: msg });
+
+        if (!fShort) {
+          if (config === 'lb3') {
+            const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: isNotRanged ? donut : output.baitCrystal!({
+                  crystal: water,
+                  inout: output.out!(),
+                }),
+                mech2: isNotRanged
+                  ? output.roleStacks!()
+                  : output.baitCrystal!({
+                    crystal: fire,
+                    inout: output.out!(),
+                  }),
+              }),
+            };
+          }
+
+          if (config === 'sg3k') {
+            // Get player expected to be inner water bait
+            const players = data.waterElementPlayers.filter(
+              (player) => data.party.isDPS(player),
+            );
+            const player = data.party.member(players[0]);
+
+            return {
+              [severity]: output.mechThenMech!({
+                mech1: myElement === 'fire'
+                  ? output.getMiddleNearPlayer!({
+                    player: player,
+                  })
+                  : myElement === 'water'
+                  ? output.baitCrystal!({
+                    crystal: water,
+                    inout: data.role === 'dps' ? output.in!() : output.out!(),
+                  })
+                  : output.beNearWind!({ dir: wind }),
+                mech2: myElement === 'fire'
+                  ? output.knockbackToDir!({
+                    facing: output[myWind ?? 'unknown']!({ name: output[waterDir]!() }),
+                    dir: output[fireDir]!(),
+                  })
+                  : myElement === 'water'
+                  ? output.getHitByDonut!()
+                  : output.stackPartner!(),
+              }),
+            };
+          }
+        }
+        const exdeathLocaleNames: LocaleText = {
+          en: 'Exdeath',
+          de: 'Exdeath',
+          fr: 'Exdeath',
+          ja: 'エクスデス',
+          cn: '艾克斯迪司',
+          ko: '엑스데스',
+          tc: '艾克斯迪司',
+        };
+        const exdeathName = exdeathLocaleNames[data.parserLang];
+        if (config === 'lb3') {
+          const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: isNotRanged ? donut : output.baitCrystal!({
+                crystal: water,
+                inout: output.out!(),
+              }),
+              mech2: Util.isRangedDpsJob(data.job)
+                ? output.baitJump!()
+                : output.beNearExdeath!({ name: exdeathName }),
+            }),
+          };
+        }
+
+        if (config === 'sg3k') {
+          // Get player expected to be inner water bait
+          const players = data.waterElementPlayers.filter(
+            (player) => data.party.isDPS(player),
+          );
+          const player = data.party.member(players[0]);
+          // Players will need to get to opposite side of Wind Crystal
+          const exDeathDir = windDirNum === undefined
+            ? 'unknown'
+            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
+          return {
+            [severity]: output.mechThenMech!({
+              mech1: myElement === 'fire'
+                ? output.getMiddleNearPlayer!({
+                  player: player,
+                })
+                : myElement === 'water'
+                ? output.baitCrystal!({
+                  crystal: water,
+                  inout: data.role === 'dps' ? output.in!() : output.out!(),
+                })
+                : output.beNearWind!({ dir: wind }),
+              mech2: myElement === 'fire'
+                ? output.beNearExdeath!({ name: exdeathName })
+                : myElement === 'water'
+                ? output.knockbackToDir!({
+                  facing: output[myWind ?? 'unknown']!({
+                    name: output[waterDir]!(),
+                  }),
+                  dir: output[exDeathDir]!(),
+                })
+                : output.stackPartner!(),
+            }),
+          };
+        }
+
+        return {
+          [severity]: output.waterOnPlayersCrystalDirNum!({
+            donut: donut,
+            dir: water,
+            bait: output.baitWaterAoe!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Long Crystal and Wind Crystal Locations',
+      // Inform that long is next, location it will Be
+      // One of these spells will trigger:
+      // BAF3 Stray Flames
+      // BAF6 Stray Spray
+      type: 'Ability',
+      netRegex: { id: ['BAF3', 'BAF6'], source: 'Chaos', capture: true },
+      condition: (data, matches) => {
+        const fShort = data.isFireShort;
+        const id = matches.id;
+        // Ensure this only outputs if expected crystal went off
+        return (fShort && id === 'BAF3') || (!fShort && id === 'BAF6');
+      },
+      durationSeconds: 27, // Duration of the first debuff
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const fShort = data.isFireShort;
+        const longCrystalDirNum = fShort
+          ? data.waterCrystalDirNum
+          : data.fireCrystalDirNum;
+        const windDirNum = data.windCrystalDirNum;
+
+        const longDir = longCrystalDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[longCrystalDirNum] ?? 'unknown';
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+
+        return output.crystals!({
+          long: fShort
+            ? output.water!({ dir: output[longDir]!() })
+            : output.fire!({ dir: output[longDir]!() }),
+          wind: output.wind!({ dir: output[windDir]!() }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        fire: {
+          en: 'Fire ${dir}',
+        },
+        water: {
+          en: 'Water ${dir}',
+        },
+        wind: {
+          en: 'Wind ${dir}',
+        },
+        crystals: {
+          en: '${long} => ${wind} (later)',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Wind Crystal Next Flag',
+      // By the BAFF Shockwave, the next BAF3 Stray Flames / BAF6 Stray Spray
+      // Will mean we will need to resolve the wind crystal next
+      type: 'Ability',
+      netRegex: { id: 'BAFF', source: 'Chaos', capture: false },
+      suppressSeconds: 99999,
+      run: (data) => data.windCrystalNext = true,
+    },
+    {
+      id: 'DMU P3 Wind Crystal Location',
+      // Inform that wind is next
+      // One of these spells will trigger:
+      // BAF3 Stray Flames
+      // BAF6 Stray Spray
+      type: 'Ability',
+      netRegex: { id: ['BAF3', 'BAF6'], source: 'Chaos', capture: false },
+      condition: (data) => data.windCrystalNext,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const windDirNum = data.windCrystalDirNum;
+        const config = data.triggerSetConfig.boa;
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : config !== 'lb3'
+          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
+          : data.role === 'healer'
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
+          : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
+
+        return config !== 'lb3'
+          ? output.wind!({ dir: output[windDir]!() })
+          : output.knockbackToDir!({ dir: output[windDir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        wind: {
+          en: 'Knockback to Wind ${dir} (later)',
+        },
+        knockbackToDir: {
+          en: 'Knockback to ${dir} (later)',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Headwind/Tailwind Cleanup',
+      // If players resolve winds prior to Exdeath's Vacuum Wave
+      // Long debuffs could get knocked back into the other crystal
+      // Short Debuffs could run to other crystal's donut if fire or stack/bait if water
+      // The remaining 4 players will have to resolve during knockback
+      // Note that each time these are lost, the wind crystal triggers nearest player with 2-person stack
+      type: 'LosesEffect',
+      netRegex: { effectId: ['642', '643'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => delete data.myWind,
+    },
+    {
+      id: 'DMU P3 Thunder III AOE',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB12', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime), // 7s castTime
+      infoText: (_data, matches, output) => {
+        const boss = matches.source;
+        return output.awayFromBoss!({ boss: boss });
+      },
+      outputStrings: {
+        awayFromBoss: {
+          en: 'Away from ${boss}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Thunder III Tankbuster',
+      // Tankbuster that targets nearest player and then nearest again after 3s
+      type: 'StartsUsing',
+      netRegex: { id: 'BB09', source: 'Exdeath', capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          avoid: {
+            en: '${boss}${cleaves}',
+          },
+          tankCleaveNearThenSwap: {
+            en: 'Near ${boss}${cleave} => ${swap}',
+          },
+          boss: {
+            en: '${boss}: ',
+          },
+          tankCleave: Outputs.tankCleave,
+          avoidTankCleaves: Outputs.avoidTankCleaves,
+          tankSwap: Outputs.tankSwap,
+        };
+
+        const severity = data.role === 'tank' || data.role === 'healer'
+          ? 'alertText'
+          : 'infoText';
+        const boss = output.boss!({ boss: matches.source });
+
+        if (data.role === 'tank')
+          return {
+            [severity]: output.tankCleaveNearThenSwap!({
+              boss: boss,
+              cleave: output.tankCleave!(),
+              swap: output.tankSwap!(),
+            }),
+          };
+
+        return {
+          [severity]: output.avoid!({
+            boss: boss,
+            cleaves: output.avoidTankCleaves!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Thunder III Tank Swap',
+      type: 'Ability',
+      netRegex: { id: 'BB09', source: 'Exdeath', capture: true },
+      condition: (data) => data.role === 'tank',
+      suppressSeconds: 4,
+      alertText: (data, matches, output) => {
+        const boss = matches.source;
+        if (matches.target === data.me)
+          return output.awayFromBoss!({ boss: boss });
+        return output.beNearBoss!({ boss: boss });
+      },
+      outputStrings: {
+        beNearBoss: {
+          en: 'Be Near ${boss} (swap)',
+        },
+        awayFromBoss: {
+          en: 'Away from ${boss} (swap)',
         },
       },
     },
@@ -3812,17 +4904,733 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Vaccuum Wave',
-      type: 'StartsUsing',
-      netRegex: { id: 'BB13', source: 'Chaos', capture: true },
-      infoText: (_data, matches, output) => {
-        return output.knockbackFromBoss!({ chaos: matches.source });
+      id: 'DMU P3 Ultima Blaster Collect',
+      // Starts from random cardinal/intercardinal then rotates either CW or CCW
+      // These are raidwide AOEs, but also include telegraphed lines and explosions
+      // Ability lines can have erroneous values
+      // Entity that does these has BNpcID 4BFB, added shortly before
+      // 271 ActorSetPos and 261 CombatantMemory Change lines are updated just prior to the ability
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
+      condition: (data) => data.blasterRotation === undefined,
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const x2 = actor.x;
+        const y2 = actor.y;
+        // Get rotation of first and second Kefka blasters
+        const x1 = data.firstBlaster[0];
+        const y1 = data.firstBlaster[1];
+        if (x1 === undefined || y1 === undefined) {
+          data.firstBlaster = [x2, y2];
+          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
+          // Return to get the next blaster
+          return;
+        }
+
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
+
+        // Calculate Determinant to determine if second blaster is clockwise or counterclock
+        data.blasterRotation = ax * by - ay * bx;
+      },
+    },
+    {
+      id: 'DMU P3 Ultima Blaster Rotation',
+      type: 'Ability',
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: false },
+      condition: (data) => data.blasterRotation !== undefined,
+      durationSeconds: 10,
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const rotation = data.blasterRotation;
+        const dirNum = data.firstBlasterDirNum;
+        if (rotation === undefined || dirNum === undefined)
+          return;
+
+        // Will need 16Dir for positions later
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        if (rotation < 0)
+          return output.clockwise!({ card: output[dir]!() });
+        if (rotation > 0)
+          return output.counterclockwise!({ card: output[dir]!() });
       },
       outputStrings: {
-        knockbackFromBoss: {
-          en: 'Knockback from ${chaos}',
-          ko: '${chaos}에서 넉백',
+        ...Directions.outputStrings8Dir,
+        clockwise: {
+          en: '<== ${card} Clockwise (Later)',
         },
+        counterclockwise: {
+          en: '${card} Counterclockwise (Later) ==>',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Umbra Smash',
+      // At start of cast the target of BB00 Umbra Smash has been locked
+      // Instead of a timeline trigger, ues one of these abilities to trigger:
+      // BAFD Longitudinal Implosion
+      // BAFE  Latitudinal Implosion
+      type: 'Ability',
+      netRegex: { id: ['BAFD', 'BAFE'], source: 'Chaos', capture: false },
+      delaySeconds: 10,
+      suppressSeconds: 99999,
+      infoText: (_data, _matches, output) => output.baitJump!(),
+      outputStrings: {
+        baitJump: {
+          en: 'Bait Jump',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Vacuum Wave',
+      // If players have not yet resolved their headwinds, then they will need
+      // to do so:
+      // Headwind look at Exdeath
+      // Tailwind look away from Exdeath
+      //
+      // Party can Tank LB3 to survive stacking the winds
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime), // 8s
+      alertText: (data, matches, output) => {
+        const windDirNum = data.windCrystalDirNum;
+        const windDir = windDirNum === undefined
+          ? 'unknown'
+          : data.triggerSetConfig.boa !== 'lb3'
+          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
+          : data.role === 'healer'
+          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
+          : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
+          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
+          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
+        const exdeath = matches.source;
+
+        if (data.myWind === undefined) {
+          const knockback = output.knockbackFromExdeath!({ name: exdeath });
+          if (windDir === undefined)
+            return output.knockbackToCrystal!({
+              knockback: knockback,
+            });
+          return output.knockbackToDir!({
+            knockback: knockback,
+            dir: output[windDir]!(),
+          });
+        }
+
+        const knockbackFacing = output.knockbackFromFacingExdeath!({
+          facing: output[data.myWind]!({ name: exdeath }),
+        });
+
+        if (windDir === undefined)
+          return output.knockbackToCrystal!({
+            knockback: knockbackFacing,
+          });
+        return output.knockbackToDir!({
+          knockback: knockbackFacing,
+          dir: output[windDir]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        tail: {
+          en: 'Face ${name}',
+        },
+        head: Outputs.lookAwayFromTarget,
+        knockbackFromExdeath: {
+          en: 'Knockback from ${name}',
+        },
+        knockbackFromFacingExdeath: {
+          en: 'Knockback from + ${facing}',
+        },
+        knockbackToDir: {
+          en: '${knockback} to ${dir}',
+        },
+        knockbackToCrystal: {
+          en: '${knockback} to Crystal',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Vacuum Wave Tank LB3',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
+      condition: (data) => {
+        return data.role === 'tank' &&
+          data.triggerSetConfig.boa === 'lb3';
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // 8s castTime, damage expected 3.9s after cast
+      alarmText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'TANK LB!!',
+          de: 'TANK LB!!',
+          fr: 'LB TANK !!',
+          ja: 'タンクLB!!',
+          cn: '坦克LB!!',
+          ko: '탱리밋!!',
+          tc: '坦克LB!!',
+        },
+      },
+    },
+    {
+      id: 'DMU P1 Ultima Blaster Location',
+      // Nearest inter-inter cardinal opposite that of first blaster
+      // Could also account for player missing a marker as these are added sequentially
+      type: 'HeadMarker',
+      netRegex: {
+        id: [
+          headMarkerData['1'],
+          headMarkerData['2'],
+          headMarkerData['3'],
+          headMarkerData['4'],
+          headMarkerData['5'],
+          headMarkerData['6'],
+          headMarkerData['7'],
+          headMarkerData['8'],
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: 12,
+      infoText: (data, matches, output) => {
+        const blasterNumberMap: { [id: string]: number } = {
+          '0150': 1,
+          '0151': 2,
+          '0152': 3,
+          '0153': 4,
+          '01B5': 5,
+          '01B6': 6,
+          '01B7': 7,
+          '01B8': 8,
+        };
+        const blasterDirNum = data.firstBlasterDirNum;
+        const rotation = data.blasterRotation;
+        const id = matches.id;
+        const myNum = blasterNumberMap[id];
+        if (myNum === undefined)
+          return;
+
+        if (blasterDirNum === undefined || rotation === undefined || rotation === 0)
+          return output.num!({ num: myNum });
+
+        // Subtract 1 from ourself as 1 is 0th position
+        const adjNum = (myNum - 1) * 2; // Convert our number to 16Dir format
+        const adjBlaster = blasterDirNum * 2; // Convert blasterDirNum to 16Dir format
+
+        // Boss is at an intercard, so +1 or -1 to get inter-inter safe spot
+        const adjustedDirNum = rotation < 0
+          ? (adjNum + adjBlaster + 1) % 16 // Clockwise
+          : ((adjBlaster - 1 - adjNum) + 16) % 16; // Counterclock
+
+        // Find inter-inter cardinal
+        const safeDir = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
+        return output.text!({
+          num: output.num!({ num: myNum }),
+          dir: output[safeDir]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        num: {
+          en: '#${num}',
+          de: '#${num}',
+          fr: '#${num}',
+          ja: '${num}番',
+          cn: '#${num}',
+          ko: '${num}번째',
+          tc: '#${num}',
+        },
+        text: {
+          en: '${num}: ${dir}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Max Collect ID',
+      // Need the Boss' ID to know which 273 lines to be looking at for later
+      type: 'StartsUsing',
+      netRegex: { id: 'BAE5', source: 'Kefka', capture: true },
+      run: (data, matches) => data.kefkaId = matches.sourceId,
+    },
+    {
+      id: 'DMU P3 In Line Debuff Collector',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['BBC', 'BBD', 'BBE'] },
+      run: (data, matches) => {
+        const effectToNum: { [effectId: string]: number } = {
+          BBC: 1,
+          BBD: 2,
+          BBE: 3,
+        } as const;
+        const num = effectToNum[matches.effectId];
+        if (num === undefined)
+          return;
+        data.inLine[matches.target] = num;
+      },
+    },
+    {
+      id: 'DMU P3 Accretion Collector',
+      // Will be applied to 1 DPS and 1 Healer
+      // One will have First in Line, the other will have Second in Line
+      type: 'GainsEffect',
+      netRegex: { effectId: '644', capture: true },
+      delaySeconds: (data) => {
+        if (data.triggerSetConfig.accretion === 'line')
+          return 0.1; // Delay for In Line debuffs
+        return 0;
+      },
+      run: (data, matches) => {
+        const target = matches.target;
+        const first = data.triggerSetConfig.accretion === 'line'
+          ? data.inLine[target] === 1
+          : data.party.isHealer(target);
+        if (first)
+          data.firstAccretion = target;
+        else
+          data.secondAccretion = target;
+
+        // Store for Black Hole Order
+        if (data.me === target)
+          data.hadAccretion = true;
+      },
+    },
+    {
+      id: 'DMU P3 In Line Debuff + Accretion 1',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
+      delaySeconds: 0.2,
+      durationSeconds: 5,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined)
+          return;
+
+        // Let healers know Accretion order
+        // String may be too long to provide list of partners
+        if (data.role === 'healer') {
+          const first = data.firstAccretion;
+          const second = data.secondAccretion;
+          const player1 = first === data.me
+            ? output.you!()
+            : data.party.member(first);
+          const player2 = second === data.me
+            ? output.you!()
+            : data.party.member(second);
+
+          return output.accretionHealer!({
+            num: myNum,
+            player1: player1,
+            player2: player2,
+          });
+        }
+
+        // Rest of players will get partners
+        const partners = [];
+        for (const [name, num] of Object.entries(data.inLine))
+          if (num === myNum && name !== data.me)
+            partners.push(data.party.member(name));
+        const msg = partners?.join(', ');
+
+        return output.text!({ num: myNum, players: msg });
+      },
+      outputStrings: {
+        you: {
+          en: 'YOU',
+        },
+        text: {
+          en: '${num} (with ${players})',
+          de: '${num} (mit ${players})',
+          fr: '${num} (avec ${players})',
+          ja: '${num} (${players})',
+          cn: '${num} (与${players})',
+          ko: '${num} (+ ${players})',
+          tc: '${num} (與${players})',
+        },
+        accretionHealer: {
+          en: '${num}: Accretion on ${player1} => ${player2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Accretion Cleanup',
+      type: 'LosesEffect',
+      netRegex: { effectId: '644', capture: true },
+      run: (data, matches) => {
+        const target = matches.target;
+        if (target === data.firstAccretion)
+          delete data.firstAccretion;
+        // There is no one else it could be but second
+        else
+          delete data.secondAccretion;
+      },
+    },
+    {
+      id: 'DMU P3 Accretion 2',
+      // Cleansing 644 Accretion or 154E Primordial Crust triggers BAFA Earthquake
+      // on all but the player that had Accretion
+      // BAFA Earthquake targets receive D2C Earth Resistance Down II (1.96s)
+      // Utilizing D2C Earth Resistance Down II to call for healing next player
+      // NOTE: This will still trigger if 154E Primordial Crust is cleansed early
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D2C', capture: true },
+      condition: (data) => {
+        return data.firstAccretion !== undefined || data.secondAccretion !== undefined;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          healPlayerFull: {
+            en: 'Heal ${player} to full',
+            de: 'Heile ${player} voll',
+            fr: 'Soin complet sur ${player}',
+            ja: '${player} を全回復して',
+            cn: '奶满${player}',
+            ko: '완전 회복: ${player}',
+            tc: '奶滿${player}',
+          },
+        };
+        const first = data.firstAccretion;
+        const second = data.secondAccretion;
+        const player = first !== undefined
+          ? first
+          : second !== undefined
+          ? second
+          : undefined;
+
+        // This happens if players get cleansed within the delaySeconds, likely causing a wipe
+        if (player === undefined)
+          return;
+
+        const severity = data.role === 'healer' ? 'alertText' : 'infoText';
+
+        return {
+          [severity]: output.healPlayerFull!({
+            player: data.party.member(player),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Boss Teleport Collect',
+      // About 0.4s prior to a 273 line, the boss teleports and this data is available from 271/261 lines
+      // 2.2s~2.5s later boss starts casting Slap Happy/Look upon Me and Despair
+      // For BAE6/BAE7 Slap Happy
+      // Boss' position data is (100, 100)
+      // 4 Invisible entities via 03 AddCombatant log lines correlate to the slap AoEs
+      // spawn at time of StartsUsing. These are also ordered in the order they occur.
+      //
+      // For BAEC/BAED Look upon Me and Despair, boss also teleports
+      // This could be necessary to call which black holes to grab later
+      type: 'ActorControlExtra',
+      netRegex: { param1: '1E44', capture: true },
+      condition: (data, matches) => matches.id === data.kefkaId,
+      run: (data) => {
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+
+        data.kefkaTeleportDirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+      },
+    },
+    {
+      id: 'DMU P3 Boss Teleport Location',
+      // About 0.4s prior to a 273 line, the boss teleports and this data is available from 271/261 lines
+      // 2.2s later boss starts casting Slap Happy/Look upon Me and Despair
+      type: 'ActorControlExtra',
+      netRegex: { param1: '1E44', capture: true },
+      condition: (data, matches) => matches.id === data.kefkaId,
+      infoText: (data, _matches, output) => {
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+        const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        return output.text!({ dir: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${dir} Kefka',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Slap Happy',
+      // BAE6 Slap Happy: Boss slaps his right 3 times (party cleave) + left once
+      // BAE7 Slap Happy: Boss slaps his left 3 times (role cleaves) + right once
+      // Boss can be in different cardinal/intercardinals
+      type: 'StartsUsing',
+      netRegex: { id: ['BAE6', 'BAE7'], source: 'Kefka', capture: true },
+      alertText: (_data, matches, output) => {
+        const isRightSlap = matches.id === 'BAE6';
+
+        return output.slapDirMechThenOut!({
+          dir: isRightSlap ? output.right!() : output.left!(),
+          mech: isRightSlap
+            ? output.partyStack!()
+            : output.roleStacks!(),
+          out: output.outOfMiddle!(),
+        });
+      },
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
+        outOfMiddle: {
+          en: 'Out Of Middle',
+          de: 'Raus aus der Mitte',
+          fr: 'Sortez du milieu',
+          ja: '横へ',
+          cn: '远离中间',
+          ko: '가운데 피하기',
+          tc: '遠離中間',
+        },
+        partyStack: {
+          en: 'Party Stack',
+          de: 'In der Gruppe sammeln',
+          fr: 'Package en groupe',
+          ja: 'あたまわり',
+          cn: '人群分摊',
+          ko: '본대 쉐어',
+          tc: '分攤',
+        },
+        roleStacks: {
+          en: 'Role Stacks',
+          de: 'Rollengruppe sammeln',
+          fr: 'Package par rôle',
+          cn: '职能分摊',
+          ko: '역할별 쉐어',
+          tc: '職能分攤',
+        },
+        slapDirMechThenOut: {
+          en: '${dir} => ${mech} + ${out}',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole Tracker',
+      // 11 are added with 0.2s of BAFB Black Hole Ability
+      // Both 261 CombatantMemory Add and 03 AddCombatant are available
+      // There are also 272 NPCSpawnExtra lines
+      // These have BNpcID 4C38
+      // They should only spawn at cardinals
+      // Interestingly, they have differing headings as well
+      // Spawn Location Example:
+      //             (100, 83)
+      //    (94.83, 87.53)
+      //     (93.64, 93.64) (106.36, 93.64)
+      //                        (112.47, 94.83)
+      //     (93.64, 106.36)(106.36, 106.36)
+      // (87.53, 105.17)
+      //                            (117, 100)
+      //                (105.17, 112.47)
+      //             (100, 117)
+      type: 'AddedCombatant',
+      netRegex: { name: 'Black Hole', capture: true },
+      run: (data, matches) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const dirNum = Directions.xyTo4DirNum(x, y, centerX, centerY);
+
+        // Storing as dirNum to be sorted later once we have tethers
+        data.blackHoleIdDirNums[matches.id] = dirNum;
+      },
+    },
+    {
+      id: 'DMU P3 Nothingness Counter',
+      // There are 10 sets of Nothingness from Black Holes to soak
+      // They always spawn on a cardinal
+      // The Nothingness beams should be baited cw or ccw for melee uptime
+      // Getting hit by Nothingness gives 154C Unbecoming
+      // If hit by Nothingness with 154C Unbecoming, it becomes 154D Meanest Existence
+      // If hit by Nothingness with 154D Meanest Existence, lethal damage is taken which
+      // expires 154E Primordial Crust causing an BAFA Earthquake AOE
+      //
+      // Accretions Resolve => Slap Happy
+      // Black Hole Set 1 spawns 1 Black Hole
+      // 1 => 1 Nothingness (Taken by a 1)
+      // Black Holes Set 2 spawns 2 Black Holes
+      // 2 => 2 Nothingness (Taken by two 1s)
+      // TBs => Damning Edict => Slap Happy
+      // Black Hole Set 3 spawns 3 Black Holes
+      // 3 => 3 Nothingness (Taken by two 1s and Accretion 1), 1 player swaps tether
+      // 4 => 3 Nothingness (Taken by one 1, Accretion 1, and one 2), 1 player swaps tether
+      // 5 => 3 Nothingness (Taken by two 2s and Accretion 1)
+      // Damning Edict => Look upon Me and Despair => TBs
+      // Black Hole Set 3 spawns 3 Black Holes
+      // 6 => 3 Black Holes (Taken by two 2s and Accretion 2), 1 player swaps tether
+      // 7 => 3 Black Holes (Taken by one 3, one 2, and Accretion 2), 1 player swaps tether
+      // 8 => 3 Black Holes (Taken by two 3s, and Accretion 2)
+      // Lat/Long (White Hole cast here too) => Slap Happy  => Look upon Me and Despair
+      // Black Hole Set 5 spawns 2 Black Holes
+      // 9 => 2 Black Holes (Taken by two 3s)
+      // Black Hole Set 6 spawns 1 Black Hole
+      // 10 => 1 Black Hole (Taken by last 3)
+      // However, there are will be 10 BAFC Nothingness casts
+      // Using BAFC Nothingness to track which set we are on
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        data.nothingnessTracker = data.nothingnessTracker + 1;
+
+        // Reset the tether dirs for next round of black hole adds
+        if (
+          data.nothingnessTracker === 2 || data.nothingnessTracker === 3 ||
+          data.nothingnessTracker === 6 || data.nothingnessTracker === 9 ||
+          data.nothingnessTracker === 10
+        )
+          data.blackHoleTetherDirNums = [];
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole Tether Collect (NetworkTether)',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
+      condition: (data) => {
+        // No need to collect the single tether sets
+        return data.nothingnessTracker !== 1 && data.nothingnessTracker !== 10;
+      },
+      run: (data, matches) => {
+        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
+        if (dirNum === undefined)
+          return;
+
+        // Ignore the tether if it is already stored
+        // This allows for collection of tethers if instantaneous swap
+        if (!data.blackHoleTetherDirNums.includes(dirNum))
+          data.blackHoleTetherDirNums.push(dirNum);
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole Tether Collect (SpawnNpcExtra)',
+      // 272 SpawnNpcExtra line tether has the tether first
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
+      delaySeconds: 0.1, // Delay for AddCombatant
+      run: (data, matches) => {
+        const dirNum = data.blackHoleIdDirNums[matches.id];
+        if (dirNum === undefined)
+          return;
+
+        // Ignore the tether if it is already stored
+        // This allows for collection of tethers if instantaneous swap
+        if (!data.blackHoleTetherDirNums.includes(dirNum))
+          data.blackHoleTetherDirNums.push(dirNum);
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 1, Nothingness 1',
+      // One Black Hole spawns, causes a single Nothingness
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
+      condition: (data) => data.nothingnessTracker === 1,
+      delaySeconds: 0.1, // Delay for AddedCombatant
+      suppressSeconds: 99999,
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const dirNum = data.blackHoleIdDirNums[matches.id];
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 1 &&
+          !data.hadAccretion && data.role === 'dps'
+        )
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir]!(),
+            }),
+          };
+        return {
+          infoText: output.oneBlackHole!({
+            num: num,
+            dir: output[dir]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 2, Nothingness 2',
+      // Two Black Holes spawn, each cause a single Nothingness
+      // No SpawnNpcExtra seen on this one
+      type: 'Tether',
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => {
+        return data.nothingnessTracker === 2 && data.blackHoleTetherDirNums.length === 2;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 1 &&
+          !data.hadAccretion
+        ) {
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir1]!(),
+              }),
+            };
+          // Support #1
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.twoBlackHoles!({
+            num: num,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+          }),
+        };
       },
     },
     {
@@ -3835,8 +5643,517 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         getBehindTarget: {
           en: 'Get Behind ${target}',
-          ko: '${target} 뒤로',
         },
+      },
+    },
+    {
+      id: 'DMU P3  Black Hole 3, Nothingness 3',
+      // Three Black Holes spawn, each cause three Nothingness
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessTracker === 3,
+      delaySeconds: 0.1, // Delay for AddCombatant
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        if (data.blackHoleTetherDirNums.length !== 3)
+          return;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const dir3 = sorted[2] !== undefined
+          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+
+        if (config === 'kefka' && data.inLine[data.me] === 1) {
+          if (data.hadAccretion)
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir3]!(),
+              }),
+            };
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir1]!(),
+              }),
+            };
+          // Support #1
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.threeBlackHoles!({
+            num: num,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+            dir3: output[dir3]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 3, Nothingness 4',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      condition: (data) => data.nothingnessTracker === 4,
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
+        const hadAccretion = data.hadAccretion;
+        const line = data.inLine[data.me];
+
+        if (config === 'kefka') {
+          if (line === 1) {
+            if (hadAccretion || (data.role !== 'dps'))
+              return { infoText: output.keepTether!({ num: num }) };
+            // DPS #1
+            return { alertText: output.passTether!({ num: num }) };
+          }
+          if (line === 2 && !hadAccretion && data.role === 'dps') {
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[0] !== undefined
+              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              : 'unknown';
+
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+        return { infoText: output.nothing!({ num: tracker }) };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 3, Nothingness 5',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      condition: (data) => data.nothingnessTracker === 5,
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
+        const hadAccretion = data.hadAccretion;
+        const line = data.inLine[data.me];
+
+        if (config === 'kefka') {
+          if (line === 1) {
+            if (hadAccretion)
+              return { infoText: output.keepTether!({ num: num }) };
+            if (data.role !== 'dps')
+              return { alertText: output.passTether!({ num: num }) };
+          }
+          if (line === 2 && !hadAccretion) {
+            if (data.role !== 'dps') {
+              const kefkaDir = data.kefkaTeleportDirNum;
+              const dirNums = data.blackHoleTetherDirNums;
+
+              // Convert Kefka dir to 4Dir
+              const startDir = kefkaDir !== undefined
+                ? Math.round(kefkaDir / 2) % 4
+                : -1;
+              const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+              const dir = sorted[1] !== undefined
+                ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+                : 'unknown';
+
+              // We could get the player they are taking from, but seems unnecessary at the time
+              return {
+                alertText: output.takeDirTetherClockwise!({
+                  num: num,
+                  dir: output[dir]!(),
+                }),
+              };
+            }
+            // DPS #2
+            return { infoText: output.keepTether!({ num: num }) };
+          }
+        }
+        return { infoText: output.nothing!({ num: tracker }) };
+      },
+    },
+    {
+      id: 'DMU P3 Look upon Me and Despair',
+      // BAEC Look upon Me and Despair: Kefka falls on his right side across center of arena
+      // BAED Look upon Me and Despair: Kefka falls on his left side across center of arena
+      // Boss can be in different cardinal/intercardinals
+      type: 'StartsUsing',
+      netRegex: { id: ['BAEC', 'BAED'], source: 'Kefka', capture: false },
+      alertText: (_data, _matches, output) => output.outOfMiddle!(),
+      outputStrings: {
+        outOfMiddle: {
+          en: 'Out Of Middle',
+          de: 'Raus aus der Mitte',
+          fr: 'Sortez du milieu',
+          ja: '横へ',
+          cn: '远离中间',
+          ko: '가운데 피하기',
+          tc: '遠離中間',
+        },
+      },
+    },
+    {
+      id: 'DMU P3  Black Hole 4, Nothingness 6',
+      // Three Black Holes spawn, each cause three Nothingness
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessTracker === 6,
+      delaySeconds: 0.1, // Delay for AddedCombatant
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        if (data.blackHoleTetherDirNums.length !== 3)
+          return;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+        const dir3 = sorted[2] !== undefined
+          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          : 'unknown';
+
+        if (config === 'kefka' && data.inLine[data.me] === 2) {
+          if (data.hadAccretion)
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir3]!(),
+              }),
+            };
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir1]!(),
+              }),
+            };
+          // Support #2
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.threeBlackHoles!({
+            num: num,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+            dir3: output[dir3]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 4, Nothingness 7',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      condition: (data) => data.nothingnessTracker === 7,
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
+        const line = data.inLine[data.me];
+
+        if (config === 'kefka') {
+          if (line === 2) {
+            if (data.hadAccretion || data.role !== 'dps')
+              return { infoText: output.keepTether!({ num: num }) };
+            // DPS #2
+            return { alertText: output.passTether!({ num: num }) };
+          }
+          if (line === 3 && data.role === 'dps') {
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[0] !== undefined
+              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              : 'unknown';
+
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+        return { infoText: output.nothing!({ num: tracker }) };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 4, Nothingness 8',
+      // One player needs to swap tether
+      // TODO: Move the players with previous tethers to a trigger condition on hit?
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      condition: (data) => data.nothingnessTracker === 8,
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const tracker = data.nothingnessTracker;
+        const num = output.num!({ num: tracker });
+        const line = data.inLine[data.me];
+
+        if (config === 'kefka') {
+          if (line === 2) {
+            if (data.hadAccretion)
+              return { infoText: output.keepTether!({ num: num }) };
+            if (data.role !== 'dps')
+              return { alertText: output.passTether!({ num: num }) };
+          }
+          if (line === 3) {
+            if (data.role === 'dps')
+              return { infoText: output.keepTether!({ num: num }) };
+            // Support #3
+            const kefkaDir = data.kefkaTeleportDirNum;
+            const dirNums = data.blackHoleTetherDirNums;
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir = sorted[1] !== undefined
+              ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+              : 'unknown';
+
+            // We could get the player they are taking from, but seems unnecessary at the time
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir]!(),
+              }),
+            };
+          }
+        }
+        return { infoText: output.nothing!({ num: tracker }) };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 5, Nothingness 9',
+      // Two Black Holes spawn, each cause a single Nothingness
+      type: 'Tether',
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => {
+        return data.nothingnessTracker === 9 && data.blackHoleTetherDirNums.length === 2;
+      },
+      suppressSeconds: 99999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const kefkaDir = data.kefkaTeleportDirNum;
+        const dirNums = data.blackHoleTetherDirNums;
+
+        // Convert Kefka dir to 4Dir
+        const startDir = kefkaDir !== undefined
+          ? Math.round(kefkaDir / 2) % 4
+          : -1;
+        const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+        const dir1 = sorted[0] !== undefined
+          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          : 'unknown';
+        const dir2 = sorted[1] !== undefined
+          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          : 'unknown';
+
+        if (config === 'kefka' && data.inLine[data.me] === 3) {
+          if (data.role === 'dps')
+            return {
+              alertText: output.takeDirTetherClockwise!({
+                num: num,
+                dir: output[dir1]!(),
+              }),
+            };
+          // Support #3
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir2]!(),
+            }),
+          };
+        }
+
+        return {
+          infoText: output.twoBlackHoles!({
+            num: num,
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Black Hole 6, Nothingness 10',
+      // One Black Hole spawns, causes a single Nothingness
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
+      condition: (data) => data.nothingnessTracker === 10,
+      delaySeconds: 0.1, // Delay for AddedCombatant
+      suppressSeconds: 99999,
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = blackHoleOutputStrings;
+
+        const config = data.triggerSetConfig.blackhole;
+        const num = output.num!({ num: data.nothingnessTracker });
+        const dirNum = data.blackHoleIdDirNums[matches.id];
+        const dir = dirNum === undefined
+          ? 'unknown'
+          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
+
+        if (
+          config === 'kefka' && data.inLine[data.me] === 3 &&
+          data.role !== 'dps'
+        )
+          return {
+            alertText: output.takeDirTetherClockwise!({
+              num: num,
+              dir: output[dir]!(),
+            }),
+          };
+        return {
+          infoText: output.oneBlackHole!({
+            num: num,
+            dir: output[dir]!(),
+          }),
+        };
+      },
+    },
+    {
+      id: 'DMU P3 Blizzard III Puddles',
+      // TODO: Get which role is doing stack + player, and which role is doing towers
+      type: 'StartsUsing',
+      netRegex: { id: 'BB0F', source: 'Exdeath', capture: false },
+      infoText: (_data, _matches, output) => {
+        return output.puddlesThenMech!({
+          bait: output.baitPuddles!(),
+          mech1: output.roleStack!(),
+          mech2: output.getTowers!(),
+        });
+      },
+      outputStrings: {
+        roleStack: {
+          en: 'Role Stack',
+        },
+        getTowers: Outputs.getTowers,
+        puddlesThenMech: {
+          en: '${bait} => ${mech1}/${mech2}',
+        },
+        baitPuddles: {
+          en: 'Bait Puddles x2',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Stomp-a-Mole Direction',
+      // In order to avoid 3s D98 Deep Freeze
+      type: 'StartsUsing',
+      netRegex: { id: 'BAEF', source: 'Kefka', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 5.6, // Time until last Tower
+      infoText: (_data, matches, output) => {
+        const heading = parseFloat(matches.heading);
+        const dirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
+        return output.text!({ dir: output[dirNum]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${dir} Kefka',
+        },
+      },
+    },
+    {
+      id: 'DMU P3 Blizzard III Keep Moving',
+      // In order to avoid 3s D98 Deep Freeze
+      // Players also need to avoid BB05 Big Bang at this time as well
+      // BB05 Big Bang goes off at the stack locations
+      type: 'StartsUsing',
+      netRegex: { id: 'BB11', source: 'Exdeath', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (_data, _matches, output) => output.keepMoving!(),
+      outputStrings: {
+        keepMoving: Outputs.moveAround,
       },
     },
   ],

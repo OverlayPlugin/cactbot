@@ -402,6 +402,7 @@ export const Directions = {
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
+  outputFromIntercardNum: outputFromIntercardNum,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
