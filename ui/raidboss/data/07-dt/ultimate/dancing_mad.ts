@@ -6077,7 +6077,7 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
           : 'unknown';
 
-        if (config === 'dsa' || config === 'sda' && data.inLine[data.me] === 3) {
+        if ((config === 'dsa' || config === 'sda') && data.inLine[data.me] === 3) {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
           if (role)
             return {
