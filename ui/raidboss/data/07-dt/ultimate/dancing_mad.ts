@@ -661,8 +661,11 @@ const blackHoleOutputStrings: OutputStrings = {
     ko: '${num}',
     tc: '${num}',
   },
-  takeDirTetherClockwise: {
-    en: '${num} Take ${dir} Tether Clockwise',
+  getDirTetherClockwise: {
+    en: '${num} Get ${dir} Tether Clockwise',
+  },
+  getDirTethers: {
+    en: '${num} Get ${dir1}/${dir2} Tethers',
   },
   keepTether: {
     en: '${num}Keep Tether',
@@ -792,11 +795,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'blackhole',
       comment: {
         en:
-        `Tether priority configured relative to Kefka: DPS CW, Support 2nd CW, Accretion 3rd CW<br />
+          `Tether priority configured relative to Kefka: DPS CW, Support 2nd CW, Accretion 3rd CW<br />
         D>S>A: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support<br />
         S>D>A: #1 Support, #1 DPS, #1 Accretion, #2 Support, #2 DPS, #2 Accretion, #3 Support, #2 DPS<br />
         D>S>A Double Tether: BH1 & BH 4 only 1 person grab tethers. BH1 #1 Support, #1 DPS; BH4 #3 Support, #3 DPS<br />
-        Generic: Calls the Nothingness set number and tether directions in CW order from Kefka`
+        Generic: Calls the Nothingness set number and tether directions in CW order from Kefka`,
       },
       name: {
         en: 'P3 Black Hole Order',
