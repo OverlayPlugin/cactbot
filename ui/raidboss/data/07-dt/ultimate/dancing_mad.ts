@@ -5704,21 +5704,21 @@ const triggerSet: TriggerSet<Data> = {
         if (config !== 'none' && data.inLine[data.me] === 1) {
           if (data.hadAccretion)
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #1
           return {
-            alertText: output.takeDirTetherClockwise!({
+            alertText: output.getDirTetherClockwise!({
               num: num,
               dir: output[dir2]!(),
             }),
@@ -5780,7 +5780,7 @@ const triggerSet: TriggerSet<Data> = {
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir]!(),
               }),
