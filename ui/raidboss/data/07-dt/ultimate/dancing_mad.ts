@@ -7,9 +7,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
-// TODO: P3 Rework blackhole triggers for player that got hit to receive output over assuming they followed the plan?
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
-// TODO: P3 Aoe calls for Earthquake and/or some call for those with no tether during swaps?
 // TODO: P3 Blizzard III Stack Headmarker/Player and Role Towers
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
@@ -5006,9 +5004,11 @@ const triggerSet: TriggerSet<Data> = {
       // Tailwind look away from Exdeath
       //
       // Party can Tank LB3 to survive stacking the winds
+      // castTime is 7.7s, but the kockback occurs slightly after
+      // Debuffs come off about 0.8s later
       type: 'StartsUsing',
       netRegex: { id: 'BB13', source: 'Exdeath', capture: true },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime), // 8s
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 0.8,
       alertText: (data, matches, output) => {
         const windDirNum = data.windCrystalDirNum;
         const windDir = windDirNum === undefined
@@ -5739,7 +5739,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 3, Nothingness 4',
       // One player needs to swap tether
-      // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => data.nothingnessTracker === 4,
@@ -5794,7 +5793,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 3, Nothingness 5',
       // One player needs to swap tether
-      // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => data.nothingnessTracker === 5,
@@ -5939,7 +5937,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 4, Nothingness 7',
       // One player needs to swap tether
-      // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => data.nothingnessTracker === 7,
@@ -5993,7 +5990,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 4, Nothingness 8',
       // One player needs to swap tether
-      // TODO: Move the players with previous tethers to a trigger condition on hit?
       type: 'Ability',
       netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
       condition: (data) => data.nothingnessTracker === 8,
