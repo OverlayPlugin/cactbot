@@ -38,7 +38,7 @@ export interface Data extends RaidbossData {
     forsaken: 'kroxy-rinon' | 'abba' | 'bowtie' | 'none';
     boa: 'lb3' | 'sg3k' | 'none';
     accretion: 'line' | 'role';
-    blackhole: 'kefka' | 'none';
+    blackhole: 'dsa' | 'sda' | 'modified' | 'none';
   };
   // General
   phase: Phase | 'unknown';
@@ -792,7 +792,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'blackhole',
       comment: {
         en:
-          `Kefkabin: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support`,
+        `Tether priority configured relative to Kefka: DPS CW, Support 2nd CW, Accretion 3rd CW<br />
+        D>S>A: #1 DPS, #1 Support, #1 Accretion, #2 DPS, #2 Support, #2 Accretion, #3 DPS, #3 Support<br />
+        S>D>A: #1 Support, #1 DPS, #1 Accretion, #2 Support, #2 DPS, #2 Accretion, #3 Support, #2 DPS<br />
+        D>S>A Double Tether: BH1 & BH 4 only 1 person grab tethers. BH1 #1 Support, #1 DPS; BH4 #3 Support, #3 DPS<br />
+        Generic: Calls the Nothingness set number and tether directions in CW order from Kefka`
       },
       name: {
         en: 'P3 Black Hole Order',
@@ -800,8 +804,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'Kefkabin': 'kefka',
-          'Generic Calls': 'none',
+          'D>S>A': 'dsa',
+          'S>D>A': 'sda',
+          'D>S>A Double Tether': 'modified',
+          'Generic calls': 'none',
         },
       },
       default: 'none',
@@ -5555,16 +5561,18 @@ const triggerSet: TriggerSet<Data> = {
           ? 'unknown'
           : Directions.outputCardinalDir[dirNum] ?? 'unknown';
 
-        if (
-          config === 'kefka' && data.inLine[data.me] === 1 &&
-          !data.hadAccretion && data.role === 'dps'
-        )
-          return {
-            alertText: output.takeDirTetherClockwise!({
-              num: num,
-              dir: output[dir]!(),
-            }),
-          };
+        if (config !== 'none') {
+          const role = config === 'sda' || config === 'modified'
+            ? data.role !== 'dps'
+            : data.role === 'dps';
+          if (data.inLine[data.me] === 1 && !data.hadAccretion && role)
+            return {
+              alertText: output.getDirTetherClockwise!({
+                num: num,
+                dir: output[dir]!(),
+              }),
+            };
+        }
         return {
           infoText: output.oneBlackHole!({
             num: num,
@@ -5604,25 +5612,35 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
           : 'unknown';
 
-        if (
-          config === 'kefka' && data.inLine[data.me] === 1 &&
-          !data.hadAccretion
-        ) {
-          if (data.role === 'dps')
+        if (config === 'dsa' || config === 'sda') {
+          const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
+          if (data.inLine[data.me] === 1 && !data.hadAccretion) {
+            if (role)
+              return {
+                alertText: output.getDirTetherClockwise!({
+                  num: num,
+                  dir: output[dir1]!(),
+                }),
+              };
+            // DPS #1 (DSA), Support #1 (SDA)
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir1]!(),
+                dir: output[dir2]!(),
               }),
             };
-          // Support #1
+          }
+        } else if (
+          config === 'modified' && data.inLine[data.me] === 1 &&
+          !data.hadAccretion && data.role === 'dps'
+        )
           return {
-            alertText: output.takeDirTetherClockwise!({
+            alertText: output.getDirTethers!({
               num: num,
-              dir: output[dir2]!(),
+              dir1: output[dir1]!(),
+              dir2: output[dir2]!(),
             }),
           };
-        }
 
         return {
           infoText: output.twoBlackHoles!({
@@ -5680,7 +5698,7 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
           : 'unknown';
 
-        if (config === 'kefka' && data.inLine[data.me] === 1) {
+        if (config !== 'none' && data.inLine[data.me] === 1) {
           if (data.hadAccretion)
             return {
               alertText: output.takeDirTetherClockwise!({
@@ -5732,14 +5750,17 @@ const triggerSet: TriggerSet<Data> = {
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
-        if (config === 'kefka') {
+        if (config !== 'none') {
+          const dsaOrModified = config === 'dsa' || config === 'modified';
+          const roleKeep = dsaOrModified ? data.role !== 'dps' : data.role === 'dps';
+          const roleSwap = dsaOrModified ? data.role === 'dps' : data.role !== 'dps';
           if (line === 1) {
-            if (hadAccretion || (data.role !== 'dps'))
+            if (hadAccretion || (roleKeep))
               return { infoText: output.keepTether!({ num: num }) };
-            // DPS #1
+            // DPS #1 (DSA/Modified), Support #1 (SDA)
             return { alertText: output.passTether!({ num: num }) };
           }
-          if (line === 2 && !hadAccretion && data.role === 'dps') {
+          if (line === 2 && !hadAccretion && roleSwap) {
             const kefkaDir = data.kefkaTeleportDirNum;
             const dirNums = data.blackHoleTetherDirNums;
 
@@ -5748,8 +5769,10 @@ const triggerSet: TriggerSet<Data> = {
               ? Math.round(kefkaDir / 2) % 4
               : -1;
             const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
-            const dir = sorted[0] !== undefined
-              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+            // Tether to grab will change depending on role
+            const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
+            const dir = sortedDir !== undefined
+              ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
               : 'unknown';
 
             // We could get the player they are taking from, but seems unnecessary at the time
@@ -5782,15 +5805,17 @@ const triggerSet: TriggerSet<Data> = {
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
 
-        if (config === 'kefka') {
+        if (config !== 'none') {
+          const dsaOrModified = config === 'dsa' || config === 'modified';
+          const roleSwap = dsaOrModified ? data.role !== 'dps' : data.role === 'dps';
           if (line === 1) {
             if (hadAccretion)
               return { infoText: output.keepTether!({ num: num }) };
-            if (data.role !== 'dps')
+            if (roleSwap)
               return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 2 && !hadAccretion) {
-            if (data.role !== 'dps') {
+            if (roleSwap) {
               const kefkaDir = data.kefkaTeleportDirNum;
               const dirNums = data.blackHoleTetherDirNums;
 
@@ -5799,19 +5824,21 @@ const triggerSet: TriggerSet<Data> = {
                 ? Math.round(kefkaDir / 2) % 4
                 : -1;
               const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
-              const dir = sorted[1] !== undefined
-                ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+              // Tether to grab will change depending on role
+              const sortedDir = dsaOrModified ? sorted[1] : sorted[0];
+              const dir = sortedDir !== undefined
+                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
-                alertText: output.takeDirTetherClockwise!({
+                alertText: output.getDirTetherClockwise!({
                   num: num,
                   dir: output[dir]!(),
                 }),
               };
             }
-            // DPS #2
+            // DPS #2 (DSA/Modified), Support #2 (SDA)
             return { infoText: output.keepTether!({ num: num }) };
           }
         }
@@ -5872,24 +5899,24 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
           : 'unknown';
 
-        if (config === 'kefka' && data.inLine[data.me] === 2) {
+        if (config !== 'none' && data.inLine[data.me] === 2) {
           if (data.hadAccretion)
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir3]!(),
               }),
             };
           if (data.role === 'dps')
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir1]!(),
               }),
             };
           // Support #2
           return {
-            alertText: output.takeDirTetherClockwise!({
+            alertText: output.getDirTetherClockwise!({
               num: num,
               dir: output[dir2]!(),
             }),
@@ -5923,14 +5950,17 @@ const triggerSet: TriggerSet<Data> = {
         const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
 
-        if (config === 'kefka') {
+        if (config !== 'none') {
+          const dsaOrModified = config === 'dsa' || config === 'modified';
+          const roleKeep = dsaOrModified ? data.role !== 'dps' : data.role === 'dps';
+          const roleSwap = dsaOrModified ? data.role === 'dps' : data.role !== 'dps';
           if (line === 2) {
-            if (data.hadAccretion || data.role !== 'dps')
+            if (data.hadAccretion || roleKeep)
               return { infoText: output.keepTether!({ num: num }) };
-            // DPS #2
+            // DPS #2 (DSA/Modified), Support #2 (SDA)
             return { alertText: output.passTether!({ num: num }) };
           }
-          if (line === 3 && data.role === 'dps') {
+          if (line === 3 && roleSwap) {
             const kefkaDir = data.kefkaTeleportDirNum;
             const dirNums = data.blackHoleTetherDirNums;
 
@@ -5939,13 +5969,15 @@ const triggerSet: TriggerSet<Data> = {
               ? Math.round(kefkaDir / 2) % 4
               : -1;
             const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
-            const dir = sorted[0] !== undefined
-              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+            // Tether to grab will change depending on role
+            const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
+            const dir = sortedDir !== undefined
+              ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
               : 'unknown';
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir]!(),
               }),
@@ -5972,17 +6004,20 @@ const triggerSet: TriggerSet<Data> = {
         const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
 
-        if (config === 'kefka') {
+        if (config !== 'none') {
+          const dsaOrModified = config === 'dsa' || config === 'modified';
+          const roleSwap = dsaOrModified ? data.role !== 'dps' : data.role === 'dps';
+          const roleKeep = dsaOrModified ? data.role === 'dps' : data.role !== 'dps';
           if (line === 2) {
             if (data.hadAccretion)
               return { infoText: output.keepTether!({ num: num }) };
-            if (data.role !== 'dps')
+            if (roleSwap)
               return { alertText: output.passTether!({ num: num }) };
           }
           if (line === 3) {
-            if (data.role === 'dps')
+            if (roleKeep)
               return { infoText: output.keepTether!({ num: num }) };
-            // Support #3
+            // Support #3 (DSA/Modified), DPS #3 (SDA)
             const kefkaDir = data.kefkaTeleportDirNum;
             const dirNums = data.blackHoleTetherDirNums;
 
@@ -5991,13 +6026,15 @@ const triggerSet: TriggerSet<Data> = {
               ? Math.round(kefkaDir / 2) % 4
               : -1;
             const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
-            const dir = sorted[1] !== undefined
-              ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+            // Tether to grab will change depending on role
+            const sortedDir = dsaOrModified ? sorted[1] : sorted[0];
+            const dir = sortedDir !== undefined
+              ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
               : 'unknown';
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir]!(),
               }),
@@ -6037,22 +6074,33 @@ const triggerSet: TriggerSet<Data> = {
           ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
           : 'unknown';
 
-        if (config === 'kefka' && data.inLine[data.me] === 3) {
-          if (data.role === 'dps')
+        if (config === 'dsa' || config === 'sda' && data.inLine[data.me] === 3) {
+          const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
+          if (role)
             return {
-              alertText: output.takeDirTetherClockwise!({
+              alertText: output.getDirTetherClockwise!({
                 num: num,
                 dir: output[dir1]!(),
               }),
             };
-          // Support #3
+          // Support #3 (DSA), DPS #3 (SDA)
           return {
-            alertText: output.takeDirTetherClockwise!({
+            alertText: output.getDirTetherClockwise!({
               num: num,
               dir: output[dir2]!(),
             }),
           };
-        }
+        } else if (
+          config === 'modified' && data.role !== 'dps' &&
+          data.inLine[data.me] === 3
+        )
+          return {
+            alertText: output.getDirTethers!({
+              num: num,
+              dir1: output[dir1]!(),
+              dir2: output[dir2]!(),
+            }),
+          };
 
         return {
           infoText: output.twoBlackHoles!({
@@ -6082,16 +6130,18 @@ const triggerSet: TriggerSet<Data> = {
           ? 'unknown'
           : Directions.outputCardinalDir[dirNum] ?? 'unknown';
 
-        if (
-          config === 'kefka' && data.inLine[data.me] === 3 &&
-          data.role !== 'dps'
-        )
-          return {
-            alertText: output.takeDirTetherClockwise!({
-              num: num,
-              dir: output[dir]!(),
-            }),
-          };
+        if (config !== 'none') {
+          const role = config === 'sda' || config === 'modified'
+            ? data.role === 'dps'
+            : data.role !== 'dps';
+          if (data.inLine[data.me] === 3 && role)
+            return {
+              alertText: output.getDirTetherClockwise!({
+                num: num,
+                dir: output[dir]!(),
+              }),
+            };
+        }
         return {
           infoText: output.oneBlackHole!({
             num: num,
