@@ -5617,19 +5617,20 @@ const triggerSet: TriggerSet<Data> = {
 
         if (config === 'dsa' || config === 'sda') {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
+          const dir = config === 'dsa' ? dir1 : dir2;
           if (data.inLine[data.me] === 1 && !data.hadAccretion) {
             if (role)
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir1]!(),
+                  dir: output[dir]!(),
                 }),
               };
             // DPS #1 (DSA), Support #1 (SDA)
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir2]!(),
+                dir: output[dir]!(),
               }),
             };
           }
@@ -6079,18 +6080,19 @@ const triggerSet: TriggerSet<Data> = {
 
         if ((config === 'dsa' || config === 'sda') && data.inLine[data.me] === 3) {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
+          const dir = config === 'dsa' ? dir1 : dir2;
           if (role)
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir1]!(),
+                dir: output[dir]!(),
               }),
             };
           // Support #3 (DSA), DPS #3 (SDA)
           return {
             alertText: output.getDirTetherClockwise!({
               num: num,
-              dir: output[dir2]!(),
+              dir: output[dir]!(),
             }),
           };
         } else if (
