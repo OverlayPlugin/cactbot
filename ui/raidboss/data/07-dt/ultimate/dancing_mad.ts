@@ -95,6 +95,7 @@ export interface Data extends RaidbossData {
   kefkaTeleportDirNum?: number;
   nothingnessTracker: number;
   blackHoleTetherDirNums: number[];
+  isKnockDown2: boolean;
 }
 
 const headMarkerData = {
@@ -128,6 +129,7 @@ const headMarkerData = {
   '6': '01B6',
   '7': '01B7',
   '8': '01B8',
+  'stompStack': '00A1',
 } as const;
 
 const mysteryMagicOutputStrings: OutputStrings = {
@@ -846,6 +848,7 @@ const triggerSet: TriggerSet<Data> = {
       blackHoleIdDirNums: {},
       nothingnessTracker: 0,
       blackHoleTetherDirNums: [],
+      isKnockDown2: false,
     };
   },
   triggers: [
@@ -6173,45 +6176,79 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Blizzard III Puddles',
-      // TODO: Get which role is doing stack + player, and which role is doing towers
       type: 'StartsUsing',
       netRegex: { id: 'BB0F', source: 'Exdeath', capture: false },
-      infoText: (_data, _matches, output) => {
-        return output.puddlesThenMech!({
-          bait: output.baitPuddles!(),
-          mech1: output.roleStack!(),
-          mech2: output.getTowers!(),
-        });
-      },
+      infoText: (_data, _matches, output) => output.baitPuddles!(),
       outputStrings: {
-        roleStack: {
-          en: 'Role Stack',
-        },
-        getTowers: Outputs.getTowers,
-        puddlesThenMech: {
-          en: '${bait} => ${mech1}/${mech2}',
-        },
         baitPuddles: {
           en: 'Bait Puddles x2',
         },
       },
     },
     {
-      id: 'DMU P3 Stomp-a-Mole Direction',
-      // In order to avoid 3s D98 Deep Freeze
-      type: 'StartsUsing',
-      netRegex: { id: 'BAEF', source: 'Kefka', capture: true },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 5.6, // Time until last Tower
-      infoText: (_data, matches, output) => {
-        const heading = parseFloat(matches.heading);
-        const dirNum = (Directions.hdgTo8DirNum(heading) + 4) % 8;
-        return output.text!({ dir: output[dirNum]!() });
+      id: 'DMU P3 Knock Down 1',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: true },
+      suppressSeconds: 99999,
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+        if (target === data.me)
+          return output.mechThenMech!({
+            mech1: output.stackOnYou!(),
+            mech2: output.getTowers!(),
+          });
+
+        const isDPSStack = data.party.isDPS(matches.target);
+        const amDPS = data.role === 'dps';
+
+        if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
+          return output.mechThenMech!({
+            mech1: output.stackOnPlayer!({ player: data.party.member(target) }),
+            mech2: output.getTowers!(),
+          });
+        return output.mechThenMech!({
+          mech1: output.getTowers!(),
+          mech2: output.stack!(),
+        });
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
-        text: {
-          en: '${dir} Kefka',
+        getTowers: Outputs.getTowers,
+        stackOnYou: Outputs.stackOnYou,
+        stackOnPlayer: Outputs.stackOnPlayer,
+        stack: Outputs.stackMarker,
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
         },
+      },
+    },
+    {
+      id: 'DMU P3 Knock Down State',
+      type: 'Ability',
+      netRegex: { id: 'BB02', source: 'Chaos', capture: false },
+      suppressSeconds: 99999,
+      run: (data) => data.isKnockDown2 = true,
+    },
+    {
+      id: 'DMU P3 Knock Down 2',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: true },
+      condition: (data) => data.isKnockDown2,
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+        if (target === data.me)
+          return output.stackOnYou!();
+
+        const isDPSStack = data.party.isDPS(matches.target);
+        const amDPS = data.role === 'dps';
+
+        if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
+          return output.stackOnPlayer!({ player: data.party.member(target) });
+        return output.getTowers!();
+      },
+      outputStrings: {
+        getTowers: Outputs.getTowers,
+        stackOnYou: Outputs.stackOnYou,
+        stackOnPlayer: Outputs.stackOnPlayer,
       },
     },
     {
