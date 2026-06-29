@@ -5620,7 +5620,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (config === 'dsa' || config === 'sda') {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
-          const dir = config === 'dsa' ? dir1 : dir2;
+          const dir = data.role === 'dps' ? dir1 : dir2;
           if (data.inLine[data.me] === 1 && !data.hadAccretion) {
             if (role)
               return {
@@ -6078,7 +6078,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if ((config === 'dsa' || config === 'sda') && data.inLine[data.me] === 3) {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
-          const dir = config === 'dsa' ? dir1 : dir2;
+          const dir = data.role === 'dps' ? dir1 : dir2;
           if (role)
             return {
               alertText: output.getDirTetherClockwise!({
