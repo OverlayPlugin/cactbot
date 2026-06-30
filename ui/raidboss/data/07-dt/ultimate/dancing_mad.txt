@@ -423,7 +423,7 @@ hideall "--sync--"
 1416.5 "--Flood Tell 3--" #Ability { id: "C183", source: "Kefka" }
 1417.5 "--Flood Tell 4--" #Ability { id: "C183", source: "Kefka" }
 1417.9 "Flood (castbar)" Ability { id: "C13F", source: "Kefka" }
-1418.9 "Chaotic Flood x4" #Ability { id: "BB4F", source: "Kefka" } duration 2,9
+1418.9 "Chaotic Flood x4" #Ability { id: "BB4F", source: "Kefka" } duration 2.9
 1418.9 "Flood 1" #Ability { id: "C269", source: "Kefka" }
 1419.9 "Flood 2" #Ability { id: "C269", source: "Kefka" }
 1420.9 "Flood 3" #Ability { id: "C269", source: "Kefka" }
