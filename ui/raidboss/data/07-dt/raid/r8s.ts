@@ -907,9 +907,9 @@ const triggerSet: TriggerSet<Data> = {
         // Assume towerDirs from Fang if received bad coords for towers
         if (data.towerDirs === undefined) {
           if (y > 99 && y < 100)
-            data.towerDirs === 'NS';
+            data.towerDirs = 'NS';
           else if (x > 99 && x < 101)
-            data.towerDirs === 'EW';
+            data.towerDirs = 'EW';
           else
             return;
         }
