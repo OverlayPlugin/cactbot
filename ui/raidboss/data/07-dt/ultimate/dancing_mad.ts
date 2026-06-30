@@ -5809,8 +5809,8 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
               const dir = sortedDir !== undefined
-              ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
-              : 'unknown';
+                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                : 'unknown';
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.getDirTetherClockwise!({
