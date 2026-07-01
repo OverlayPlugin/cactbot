@@ -308,7 +308,7 @@ const triggerSet: TriggerSet<Data> = {
         data0: '1[0-9A-F]{7}',
         capture: true,
       },
-      condition: (data, matches) => data.me === data.party?.idToName_?.[matches.data0],
+      condition: (data, matches) => data.meId === matches.data0,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {

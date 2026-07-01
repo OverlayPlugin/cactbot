@@ -224,7 +224,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Doomtrain Add Train Direction Predictor',
       type: 'HeadMarker',
       netRegex: { id: '0282', data0: '1[0-9A-F]{7}', capture: true },
-      condition: (data, matches) => data.me === data.party?.idToName_?.[matches.data0],
+      condition: (data, matches) => data.meId === matches.data0,
       durationSeconds: 7.6,
       countdownSeconds: 7.6,
       alertText: (data, matches, output) => {
