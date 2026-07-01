@@ -26,7 +26,7 @@ const actionChoices: ActionChoiceType = {};
 const argumentParser = new ArgumentParser({
   description: 'A collection of common util functions for developing cactbot.',
 });
-const subparsers = argumentParser.addSubparsers({
+const subparsers = argumentParser.add_subparsers({
   title: 'action',
   help: 'sub-command help',
   dest: 'action',
@@ -79,12 +79,12 @@ const run = (args: UtilNamespace): Promise<unknown> => {
       return;
     const reparsedArgs = new actionMap.namespace({});
     if (process.argv.length > 2)
-      argumentParser.parseArgs(undefined, reparsedArgs);
+      argumentParser.parse_args(undefined, reparsedArgs);
     return actionMap.callback(reparsedArgs);
   }).catch(console.error);
 };
 
 if (process.argv.length > 2)
-  argumentParser.parseArgs(undefined, utilArgs);
+  argumentParser.parse_args(undefined, utilArgs);
 
 void run(utilArgs);

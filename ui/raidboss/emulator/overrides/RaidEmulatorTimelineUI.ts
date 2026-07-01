@@ -55,7 +55,8 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
       this.emulatedTimerBars = this.emulatedTimerBars.filter((bar: EmulatorTimerBar) => {
         return bar.forceRemoveAt > currentLogTime;
       });
-      this.timeline && this.timeline.timebase && this.timeline._OnUpdateTimer(lastLogLineTime);
+      if (this.timeline && this.timeline.timebase)
+        this.timeline._OnUpdateTimer(lastLogLineTime);
     });
     emulator.on('play', () => {
       this.emulatedStatus = 'play';
@@ -66,7 +67,8 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
       this.emulatedStatus = 'pause';
     });
     emulator.on('preSeek', (_time) => {
-      this.timeline && this.timeline.Stop();
+      if (this.timeline)
+        this.timeline.Stop();
       for (const bar of this.emulatedTimerBars)
         bar.$progress.remove();
 
@@ -83,7 +85,8 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
   }
 
   stop(): void {
-    this.timeline && this.timeline.Stop();
+    if (this.timeline)
+      this.timeline.Stop();
     for (const bar of this.emulatedTimerBars)
       bar.$progress.remove();
 

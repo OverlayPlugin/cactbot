@@ -1,8 +1,8 @@
 import { assert } from 'chai';
 
 import Regexes, { buildRegex } from '../../resources/regexes';
-import examples, { ExampleLineName } from '../../util/example_log_lines';
-import { RegexTestUtil, RegexUtilParams } from '../helper/regex_util';
+import examples, { type ExampleLineName } from '../../util/example_log_lines';
+import { RegexTestUtil, type RegexUtilParams } from '../helper/regex_util';
 
 const logDefsToTest = Object.keys(examples) as ExampleLineName[];
 
@@ -12,14 +12,14 @@ describe('regex tests', () => {
   // specific unit tests to preserve backwards compatibility.
 
   it('addedCombatant and addedCombatantFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(buildRegex('AddedCombatant').source, Regexes.addedCombatantFull().source);
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(Regexes.addedCombatant().source, Regexes.addedCombatantFull().source);
   });
 
   it('ability and abilityFull use the same regex', () => {
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     assert.equal(Regexes.ability().source, Regexes.abilityFull().source);
   });
 

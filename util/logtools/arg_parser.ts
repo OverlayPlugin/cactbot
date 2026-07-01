@@ -14,10 +14,11 @@ type TimelineArgs = {
 
 class LogUtilArgParse {
   parser = new argparse.ArgumentParser({
-    addHelp: true,
+    // eslint-disable-next-line camelcase
+    add_help: true,
   });
   // At least one argument must be selected from this group.
-  fileGroup = this.parser.addArgumentGroup({
+  fileGroup = this.parser.add_argument_group({
     title: 'File Args',
     description: 'A file, report, and/or timeline must be selected before performing operations',
   });
@@ -32,65 +33,65 @@ class LogUtilArgParse {
   // so we leave that level of validation to the consuming scripts.
   // The only validation done here is to ensure that at least one
   // of these arguments is present.
-  requiredGroup = this.parser.addMutuallyExclusiveGroup();
-  reportGroup = this.requiredGroup.addArgumentGroup({
+  requiredGroup = this.parser.add_mutually_exclusive_group();
+  reportGroup = this.requiredGroup.add_argument_group({
     title: 'Report Args',
     description: 'Using an FFLogs report requires use of an API key and report information',
   });
   args?: TimelineArgs;
 
   constructor() {
-    this.fileGroup.addArgument(['-f', '--file'], {
+    this.fileGroup.add_argument('-f', '--file', {
       help: 'Network log file to analyze',
     });
-    this.fileGroup.addArgument(['-t', '--timeline'], {
+    this.fileGroup.add_argument('-t', '--timeline', {
       help: 'The filename of the timeline to test against, e.g. ultima_weapon_ultimate',
     });
-    this.fileGroup.addArgument(['-r', '--report_id'], {
+    this.fileGroup.add_argument('-r', '--report_id', {
       nargs: '?',
       help: 'The ID of an FFLogs report',
     });
-    this.parser.addArgument(['--force'], {
+    this.parser.add_argument('--force', {
       nargs: '?',
-      constant: true,
+      const: true,
       help: 'Overwrite files when exporting',
     });
-    this.requiredGroup.addArgument(['-lf', '--search-fights'], {
+    this.requiredGroup.add_argument('-lf', '--search-fights', {
       nargs: '?',
-      constant: -1,
+      const: -1,
       type: 'int',
       help: 'Fight in log to export, e.g. \'1\'. ' +
         'If no number is specified, returns a list of fights.',
     });
-    this.requiredGroup.addArgument(['-lz', '--search-zones'], {
+    this.requiredGroup.add_argument('-lz', '--search-zones', {
       nargs: '?',
-      constant: -1,
+      const: -1,
       type: 'int',
       help: 'Zone in log to export, e.g. \'1\'. ' +
         'If no number is specified, returns a list of zones.',
     });
-    this.requiredGroup.addArgument(['-fr', '--fight-regex'], {
+    this.requiredGroup.add_argument('-fr', '--fight-regex', {
       nargs: '?',
-      constant: -1,
+      const: -1,
       type: 'string',
       help: 'Export all fights that match this regex',
     });
-    this.requiredGroup.addArgument(['-zr', '--zone-regex'], {
+    this.requiredGroup.add_argument('-zr', '--zone-regex', {
       nargs: '?',
-      constant: -1,
+      const: -1,
       type: 'string',
       help: 'Export all zones that match this regex',
     });
-    this.requiredGroup.addArgument(['-a', '--adjust'], {
+    this.requiredGroup.add_argument('-a', '--adjust', {
       nargs: '?',
-      constant: 0,
+      const: 0,
       type: 'float',
       help: 'Adjust all entries in a timeline file by this amount',
     });
-    this.reportGroup.addArgument(['-k', '--key'], {
+    this.reportGroup.add_argument('-k', '--key', {
       help: 'The FFLogs API key to use, from https://www.fflogs.com/profile.',
     });
-    this.reportGroup.addArgument(['-rf', '--report-fight'], {
+    this.reportGroup.add_argument('-rf', '--report-fight', {
       help: 'Fight ID of the report to use.',
       type: 'int',
     });

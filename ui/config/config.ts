@@ -673,7 +673,7 @@ export class CactbotConfigurator {
 
     const a = document.createElement('a');
     // TODO: fix me
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     a.name = group;
     collapser.appendChild(a);
 
@@ -1100,7 +1100,7 @@ export class CactbotConfigurator {
       let zoneId: number | undefined = undefined;
       let zoneLabel: LocaleText | undefined = undefined;
 
-      /* eslint-disable-next-line deprecation/deprecation */
+      /* eslint-disable-next-line @typescript-eslint/no-deprecated */
       const origZoneRegex = triggerSet.zoneRegex;
 
       // if a zoneLabel is set, use for the title

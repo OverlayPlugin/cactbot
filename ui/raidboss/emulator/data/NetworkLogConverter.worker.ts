@@ -6,14 +6,6 @@ import LineEvent from './network_log_converter/LineEvent';
 import LogRepository from './network_log_converter/LogRepository';
 import NetworkLogConverter from './NetworkLogConverter';
 
-declare global {
-  // Using `let` or `const` isn't allowed in declare
-  // eslint-disable-next-line no-var
-  var scheduler: {
-    yield?: () => Promise<void>;
-  } | undefined;
-}
-
 const ctx: Worker = self as unknown as Worker;
 
 ctx.addEventListener('message', (msg) => {

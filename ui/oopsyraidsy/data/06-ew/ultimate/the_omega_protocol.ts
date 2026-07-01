@@ -1363,7 +1363,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           cannonCount[line.target] ??= 0;
           if (parseInt(line.targetCount) >= 2)
             clippedAnotherPlayer[line.target] ??= true;
-          cannonCount[line.target]++;
+          cannonCount[line.target]!++;
         }
 
         for (const [player, count] of Object.entries(cannonCount)) {
@@ -1435,7 +1435,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         const cannonCount: { [name: string]: number } = {};
         for (const line of data.waveCannonStackCollect ?? []) {
           cannonCount[line.target] ??= 0;
-          cannonCount[line.target]++;
+          cannonCount[line.target]!++;
         }
 
         for (const [player, count] of Object.entries(cannonCount)) {

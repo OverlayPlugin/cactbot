@@ -136,7 +136,7 @@ class LogDefUpdater {
     // In theory, these are set to 'never' because we really don't care about them for analysis,
     // but a periodic reminder to re-evaluate never hurts.
     for (const type of this.logDefsNeverInclude) {
-      const numMatches = (this.matches[type]?.length ?? 0);
+      const numMatches = this.matches[type]?.length ?? 0;
       if (numMatches > 0) {
         console.log(`** ${type} **`);
         console.log(

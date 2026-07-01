@@ -30,7 +30,7 @@ describe('compile test', () => {
         },
       });
       if (execError)
-        throw output;
+        throw new Error(output);
     } catch (err) {
       console.error(err);
       execError = true;

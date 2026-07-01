@@ -208,7 +208,7 @@ Object.defineProperty(Header.prototype, 'render', {
     return (
       React.createElement(
         'div',
-        { className: ('header ' + (this.state.expanded ? '' : 'collapsed')) },
+        { className: 'header ' + (this.state.expanded ? '' : 'collapsed') },
         React.createElement(
           'div',
           { className: 'encounter-header' },
@@ -225,8 +225,8 @@ Object.defineProperty(Header.prototype, 'render', {
               React.createElement(
                 'div',
                 {
-                  className: ('dropdown-menu encounters-list-dropdown ' +
-                    (this.state.showEncountersList ? '' : 'hidden')),
+                  className: 'dropdown-menu encounters-list-dropdown ' +
+                    (this.state.showEncountersList ? '' : 'hidden'),
                 },
                 React.createElement('div', {
                   onClick: this.props.onSelectEncounter.bind(this, null),
@@ -243,7 +243,7 @@ Object.defineProperty(Header.prototype, 'render', {
             ),
             React.createElement('span', { className: 'duration' }, '(', encounter.duration, ')'),
             React.createElement('span', {
-              className: ('arrow ' + (this.state.expanded ? 'up' : 'down')),
+              className: 'arrow ' + (this.state.expanded ? 'up' : 'down'),
               onClick: this.handleExtraDetails.bind(this),
             }),
           ),

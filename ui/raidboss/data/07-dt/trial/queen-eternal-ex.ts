@@ -392,9 +392,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A013', source: 'Queen Eternal', capture: false },
       promise: async (data) => {
-        const combatants = (await callOverlayHandler({
+        const combatants = await callOverlayHandler({
           call: 'getCombatants',
-        }));
+        });
 
         if (combatants === null) {
           console.error(`Coronation Laser Collector: null data`);
@@ -555,10 +555,10 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '0039', capture: true },
       condition: Conditions.targetIsYou(),
       promise: async (data, matches) => {
-        const combatants = (await callOverlayHandler({
+        const combatants = await callOverlayHandler({
           call: 'getCombatants',
           ids: [parseInt(matches.sourceId, 16)],
-        }));
+        });
 
         if (combatants === null) {
           console.error(`Ice Phase Icecicles: null data`);

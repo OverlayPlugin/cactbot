@@ -10,7 +10,7 @@
     "./user",
     "./.github/scripts",
     "./eslint",
-    "./.eslintrc.cjs",
+    "./*.ts",
     "./.mocharc.cjs"
   ],
   "exclude": [
