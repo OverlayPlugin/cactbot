@@ -325,6 +325,7 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'Windurst: The Third Walk',
   zoneId: ZoneId.WindurstTheThirdWalk,
+  timelineFile: 'windurst-third-walk.txt',
   initData: () => {
     return {
       leyCollectionActive: false,
@@ -1765,12 +1766,15 @@ const triggerSet: TriggerSet<Data> = {
       replaceSync: {
         'Alexander Resurrected': '巨神重现 亚历山大',
         'Arcane Sphere': '立体魔法阵',
+        'Aw\'aern': '阿瓦·艾恩',
         'Empty Thinker': '空虚思考之物',
         'Empty Wanderer': '空虚彷徨之物',
         'Empty Weeper': '空虚叹息之物',
         'Gordius System': '戈耳狄系统',
         'Hollow King': '虚无之王',
+        'Medusa Swarmsinger': '军团歌者 美杜莎',
         'Memory Receptacle': '记忆容器',
+        'Nemean Lion': '尼米亚猛狮',
         'Promathia': '普罗玛西亚',
         'Shantotto the Demon': '恶魔香托托',
         'Shinryu Paradox': '神龙',
