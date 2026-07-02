@@ -291,7 +291,6 @@ hideall "--sync--"
 900.8 "Look upon Me and Despair (castbar)" Ability { id: "BAED", source: "Kefka" }
 901.9 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
 902.5 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
-904.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 
 # Blizzards and Towers
 # Summary:
@@ -304,6 +303,7 @@ hideall "--sync--"
 # 7. Role 2 4-Stack
 # 8. Deep Freeze (Blizzard)
 903.9 "--sync--" Ability { id: "C533", source: "Kefka" }
+904.1 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 911.3 "Blizzard III (castbar)" Ability { id: "BB0F", source: "Exdeath" }
 914.3 "Blizzard III 1" Ability { id: "BB0D", source: "Exdeath" }
 914.9 "Stomp-a-Mole (castbar)" Ability { id: "BAEF", source: "Kefka" } # Possibly determines which foot he starts with and/or its based on facing?
