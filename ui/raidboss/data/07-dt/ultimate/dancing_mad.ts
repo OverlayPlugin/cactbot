@@ -2157,7 +2157,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.6, // Time until headmarker and future/past damage
+      delaySeconds: 1.7, // Time until headmarker and future/past damage
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
         const count = data.pathOfLightCounter;
