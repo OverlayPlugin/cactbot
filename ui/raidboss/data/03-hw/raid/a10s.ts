@@ -195,7 +195,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.role === 'tank')
           return output.tankSwap!();
 
-        if (data.role === 'healer' || data.job === 'BLU')
+        if (data.role === 'healer' || data.party.isLimitedJob(data.me))
           return output.shieldPlayer!({ player: data.party.member(matches.target) });
       },
       outputStrings: {

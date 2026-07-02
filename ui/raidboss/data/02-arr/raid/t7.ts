@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'T7 Tail Slap',
       type: 'Ability',
       netRegex: { id: '7A8', source: 'Melusine' },
-      condition: (data, matches) => data.me === matches.target && data.job === 'BLU',
+      condition: (data, matches) => data.me === matches.target && data.party.isLimitedJob(data.me),
       delaySeconds: 6,
       suppressSeconds: 5,
       infoText: (_data, _matches, output) => output.text!(),

@@ -187,7 +187,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O2S Elevated',
       type: 'GainsEffect',
       netRegex: { effectId: '54E', capture: false },
-      condition: (data) => data.job !== 'BLU',
+      condition: (data) => !data.party.isLimitedJob(data.me),
       alarmText: (data, _matches, output) => {
         if (data.role.startsWith('dps') && !data.levitating)
           return output.dpsLevitate!();
@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O2S Maniacal Probe',
       type: 'StartsUsing',
       netRegex: { id: '235A', source: 'Catastrophe', capture: false },
-      condition: (data) => data.job !== 'BLU',
+      condition: (data) => !data.party.isLimitedJob(data.me),
       alertText: (data, _matches, output) => {
         if (data.myProbe) {
           if (!data.dpsProbe)
