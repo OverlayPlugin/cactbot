@@ -5368,7 +5368,7 @@ const triggerSet: TriggerSet<Data> = {
       // 2.2s later boss starts casting Slap Happy/Look upon Me and Despair
       type: 'ActorControlExtra',
       netRegex: { param1: '1E44', capture: true },
-      condition: (data, matches) => matches.id === data.kefkaId,
+      condition: (data, matches) => matches.id === data.kefkaId && data.nothingnessTracker !== 9,
       delaySeconds: 0.1,
       infoText: (data, _matches, output) => {
         // Get Boss, he has Unknown_9E8 buff and same one that casts Max
@@ -6198,6 +6198,53 @@ const triggerSet: TriggerSet<Data> = {
             dir2: output[dir2]!(),
           }),
         };
+      },
+    },
+    {
+      id: 'DMU P3 White Hole + Boss Teleport Location',
+      // Any players not healed to full will suffer 3s BBF Petrification
+      // BD66 White Hole is a 4.7s castTime
+      // We would use BAFC Nothnginess + 1.6s (time of Primordial Crust's BAFA Earthquake)
+      // Which would be roughly 9.6s before the cast, however this conflicts
+      // with Kefka's teleport, so the two calls have been merged
+      type: 'ActorControlExtra',
+      netRegex: { param1: '1E44', capture: true },
+      condition: (data, matches) => matches.id === data.kefkaId && data.nothingnessTracker === 9,
+      delaySeconds: 0.1, // Delayed for actor collect
+      durationSeconds: 9.1, // Time until end of BD66 White Hole cast
+      suppressSeconds: 99999,
+      alertText: (data, _matches, output) => {
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+        const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        return output.text!({
+          heal: output.fullHeal!(),
+          dir: output.dirKefka!({ dir: output[dir]!() }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        fullHeal: {
+          en: 'Heal to full',
+          de: 'Voll heilen',
+          fr: 'Soignez complètement',
+          ja: 'HPを全回復する',
+          cn: '奶满全队',
+          ko: '체력 풀피로',
+          tc: '補滿全隊',
+        },
+        dirKefka: {
+          en: '${dir} Kefka',
+        },
+        text: {
+          en: '${heal} + ${dir}',
+        },
       },
     },
     {
