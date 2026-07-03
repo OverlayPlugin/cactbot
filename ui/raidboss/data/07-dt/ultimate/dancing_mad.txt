@@ -232,7 +232,7 @@ hideall "--sync--"
 781.2 "Accretion Earthquake 2?" #Ability { id: "BAFA", source: "Chaos" } # Determined by healing player to full
 787.5 "Slap Happy (castbar)" Ability { id: ["BAE6", "BAE7"], source: "Kefka" }
 788.3 "Slap Happy 1" #Ability { id: "BAE8", source: "Kefka" }
-790.0 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
+789.1 "Slap Happy 2" #Ability { id: "BAE8", source: "Kefka" }
 789.8 "Slap Happy 3" #Ability { id: "BAE8", source: "Kefka" }
 790.8 "Slap Happy 4" Ability { id: "BAE9", source: "Kefka" }
 790.8 "Shocking Impact/Shockwave" #Ability { id: ["BAEA", "BAEB"], source: "Kefka" }
