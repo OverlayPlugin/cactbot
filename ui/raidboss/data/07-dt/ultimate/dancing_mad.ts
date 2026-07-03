@@ -849,7 +849,7 @@ const triggerSet: TriggerSet<Data> = {
       inLine: {},
       hadAccretion: false,
       blackHoleIdDirNums: {},
-      nothingnessTracker: 0,
+      nothingnessTracker: 1,
       blackHoleTetherDirNums: [],
       isKnockDown2: false,
     };
@@ -863,7 +863,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU ActorSetPos Tracker',
-      // Only in use for P1 Graven Image tethers
+      // P1 Graven Image tethers
+      // P3 Ultima Blaster location
+      // P3 Max actor location
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       run: (data, matches) =>
@@ -5895,7 +5897,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Look upon Me and Despair',
+      id: 'DMU P3 Look upon Me and Despair 1',
       // BAEC Look upon Me and Despair: Kefka falls on his right side across center of arena
       // Boss can be in different cardinal/intercardinals
       type: 'StartsUsing',
