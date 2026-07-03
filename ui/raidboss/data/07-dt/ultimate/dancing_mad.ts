@@ -6135,15 +6135,16 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 5, Nothingness 9',
       // Two Black Holes spawn, each cause a single Nothingness
-      type: 'Tether',
-      netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
-      condition: (data) => {
-        return data.nothingnessTracker === 9 && data.blackHoleTetherDirNums.length === 2;
-      },
-      suppressSeconds: 99999,
+      type: 'SpawnNpcExtra',
+      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
+      condition: (data) => data.nothingnessTracker === 9,
+      delaySeconds: 0.1, // Delay for AddedCombatant
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
+
+        if (data.blackHoleTetherDirNums.length !== 2)
+          return;
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
@@ -6233,8 +6234,8 @@ const triggerSet: TriggerSet<Data> = {
         fullHeal: {
           en: 'Heal to full',
           de: 'Voll heilen',
-          fr: 'Soignez complètement',
-          ja: 'HPを全回復する',
+          fr: 'Soin complet',
+          ja: 'HPを満タンに',
           cn: '奶满全队',
           ko: '체력 풀피로',
           tc: '補滿全隊',
@@ -6250,8 +6251,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 6, Nothingness 10',
       // One Black Hole spawns, causes a single Nothingness
-      type: 'SpawnNpcExtra',
-      netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: true },
+      type: 'Tether',
+      netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => data.nothingnessTracker === 10,
       delaySeconds: 0.1, // Delay for AddedCombatant
       suppressSeconds: 99999,
@@ -6261,7 +6262,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const config = data.triggerSetConfig.blackhole;
         const num = output.num!({ num: data.nothingnessTracker });
-        const dirNum = data.blackHoleIdDirNums[matches.id];
+        const dirNum = data.blackHoleIdDirNums[matches.sourceId];
         const dir = dirNum === undefined
           ? 'unknown'
           : Directions.outputCardinalDir[dirNum] ?? 'unknown';
