@@ -114,7 +114,7 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
   trueThunder: {
     en: 'Avoid Tell',
-    cn: '躲避预兆',
+    cn: '躲避直线',
     ko: '예고 피하기',
   },
   fakeThunder: {
@@ -124,7 +124,7 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
   trueIce: {
     en: 'Avoid Tell',
-    cn: '躲避预兆',
+    cn: '躲避扇形',
     ko: '예고 피하기',
   },
   fakeIce: {
@@ -164,7 +164,7 @@ const mysteryMagicOutputStrings: OutputStrings = {
   },
   trueIceTrueThunder: {
     en: 'Avoid Tells',
-    cn: '躲避预兆',
+    cn: '躲避扇形+直线',
     ko: '예고 다 피하기',
   },
   fakeIceTrueThunder: {
@@ -376,12 +376,12 @@ const forsakenOutputStrings: OutputStrings = {
   outOfHitbox: Outputs.outOfHitbox,
   innerHitbox: {
     en: 'Inner Hitbox',
-    cn: '钢铁',
+    cn: '目标圈内环',
     ko: '안쪽 히트박스',
   },
   outerHitbox: {
     en: 'Outer Hitbox',
-    cn: '月环',
+    cn: '目标圈外环',
     ko: '바깥쪽 히트박스',
   },
   cone: {
