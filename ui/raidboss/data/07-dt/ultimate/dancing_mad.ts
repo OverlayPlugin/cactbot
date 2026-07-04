@@ -662,8 +662,8 @@ const blackHoleOutputStrings: OutputStrings = {
     ko: '${num}',
     tc: '${num}',
   },
-  getDirTetherClockwise: {
-    en: '${num} Get ${dir} Tether Clockwise',
+  getDirTether: {
+    en: '${num} Get ${dir} Tether',
   },
   getDirTethers: {
     en: '${num} Get ${dir1}/${dir2} Tethers',
@@ -5609,7 +5609,7 @@ const triggerSet: TriggerSet<Data> = {
           const relDir = relConfig === 'true' ? dir : 'clockwiseOne';
           if (data.inLine[data.me] === 1 && !data.hadAccretion && role)
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -5666,14 +5666,14 @@ const triggerSet: TriggerSet<Data> = {
           if (data.inLine[data.me] === 1 && !data.hadAccretion) {
             if (role)
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
               };
             // DPS #1 (DSA), Support #1 (SDA)
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -5758,7 +5758,7 @@ const triggerSet: TriggerSet<Data> = {
             if (hadAccretion) {
               const relDir = relConfig === 'true' ? dir3 : 'clockwiseThree';
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -5767,7 +5767,7 @@ const triggerSet: TriggerSet<Data> = {
             if (data.role === 'dps') {
               const relDir = relConfig === 'true' ? dir1 : 'clockwiseOne';
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -5776,7 +5776,7 @@ const triggerSet: TriggerSet<Data> = {
             // Support #1
             const relDir = relConfig === 'true' ? dir2 : 'clockwiseTwo';
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -5871,7 +5871,7 @@ const triggerSet: TriggerSet<Data> = {
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -5951,7 +5951,7 @@ const triggerSet: TriggerSet<Data> = {
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -6027,7 +6027,7 @@ const triggerSet: TriggerSet<Data> = {
                 ? dir3
                 : 'clockwiseThree';
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -6038,7 +6038,7 @@ const triggerSet: TriggerSet<Data> = {
                 ? dir1
                 : 'clockwiseOne';
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -6049,7 +6049,7 @@ const triggerSet: TriggerSet<Data> = {
               : 'clockwiseTwo';
             // Support #2
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -6143,7 +6143,7 @@ const triggerSet: TriggerSet<Data> = {
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
-                alertText: output.getDirTetherClockwise!({
+                alertText: output.getDirTether!({
                   num: num,
                   dir: output[relDir]!(),
                 }),
@@ -6226,7 +6226,7 @@ const triggerSet: TriggerSet<Data> = {
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -6278,7 +6278,7 @@ const triggerSet: TriggerSet<Data> = {
             : 'clockwiseTwo';
           if (role) {
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
@@ -6286,7 +6286,7 @@ const triggerSet: TriggerSet<Data> = {
           }
           // Support #3 (DSA), DPS #3 (SDA)
           return {
-            alertText: output.getDirTetherClockwise!({
+            alertText: output.getDirTether!({
               num: num,
               dir: output[relDir]!(),
             }),
@@ -6389,7 +6389,7 @@ const triggerSet: TriggerSet<Data> = {
           const relDir = relConfig === 'true' ? dir : 'clockwiseOne';
           if (data.inLine[data.me] === 3 && role)
             return {
-              alertText: output.getDirTetherClockwise!({
+              alertText: output.getDirTether!({
                 num: num,
                 dir: output[relDir]!(),
               }),
