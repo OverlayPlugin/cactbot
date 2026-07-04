@@ -36,7 +36,8 @@ export interface Data extends RaidbossData {
     forsaken: 'kroxy-rinon' | 'abba' | 'bowtie' | 'none';
     boa: 'lb3' | 'sg3k' | 'none';
     accretion: 'line' | 'role';
-    blackhole: 'dsa' | 'sda' | 'modified' | 'none';
+    blackHole: 'dsa' | 'sda' | 'modified' | 'none';
+    blackHoleTether: 'true' | 'clock';
   };
   // General
   phase: Phase | 'unknown';
@@ -673,6 +674,15 @@ const blackHoleOutputStrings: OutputStrings = {
   passTether: {
     en: '${num}Pass Tether',
   },
+  clockwiseOne: {
+    en: 'Clockwise 1',
+  },
+  clockwiseTwo: {
+    en: 'Clockwise 2',
+  },
+  clockwiseThree: { // Player code change this to CCW 1
+    en: 'Clockwise 3',
+  },
   middleThenGetDirTether: {
     en: '${num}Middle => Get ${dir} Tether',
   },
@@ -795,7 +805,7 @@ const triggerSet: TriggerSet<Data> = {
       default: 'role',
     },
     {
-      id: 'blackhole',
+      id: 'blackHole',
       comment: {
         en:
           `Tether priority configured relative to Kefka: DPS CW, Support 2nd CW, Accretion 3rd CW<br />
@@ -817,6 +827,23 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
       default: 'none',
+    },
+    {
+      id: 'blackHoleTether',
+      comment: {
+        en: `Whether to call true north or clockwise number from Kefka`,
+      },
+      name: {
+        en: 'P3 Black Hole Tether True North or Clockwise Number',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'True North': 'true',
+          'Clockwise Number': 'clock',
+        },
+      },
+      default: 'true',
     },
   ],
   timelineFile: 'dancing_mad.txt',
@@ -5567,7 +5594,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const dirNum = data.blackHoleIdDirNums[matches.id];
         const dir = dirNum === undefined
@@ -5578,11 +5606,12 @@ const triggerSet: TriggerSet<Data> = {
           const role = config === 'sda' || config === 'modified'
             ? data.role !== 'dps'
             : data.role === 'dps';
+          const relDir = relConfig === 'true' ? dir : 'clockwiseOne';
           if (data.inLine[data.me] === 1 && !data.hadAccretion && role)
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir]!(),
+                dir: output[relDir]!(),
               }),
             };
         }
@@ -5608,7 +5637,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
@@ -5628,33 +5658,41 @@ const triggerSet: TriggerSet<Data> = {
         if (config === 'dsa' || config === 'sda') {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
           const dir = data.role === 'dps' ? dir1 : dir2;
+          const relDir = relConfig === 'true'
+            ? dir
+            : data.role === 'dps'
+            ? 'clockwiseOne'
+            : 'clockwiseTwo';
           if (data.inLine[data.me] === 1 && !data.hadAccretion) {
             if (role)
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             // DPS #1 (DSA), Support #1 (SDA)
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
         } else if (
           config === 'modified' && data.inLine[data.me] === 1 &&
           !data.hadAccretion && data.role === 'dps'
-        )
+        ) {
+          const relDir1 = relConfig === 'true' ? dir1 : 'clockwiseOne';
+          const relDir2 = relConfig === 'true' ? dir2 : 'clockwiseTwo';
           return {
             alertText: output.getDirTethers!({
               num: num,
-              dir1: output[dir1]!(),
-              dir2: output[dir2]!(),
+              dir1: output[relDir1]!(),
+              dir2: output[relDir2]!(),
             }),
           };
+        }
 
         return {
           infoText: output.twoBlackHoles!({
@@ -5692,7 +5730,8 @@ const triggerSet: TriggerSet<Data> = {
         if (data.blackHoleTetherDirNums.length !== 3)
           return;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
@@ -5716,25 +5755,30 @@ const triggerSet: TriggerSet<Data> = {
 
         if (config !== 'none') {
           if (line === 1) {
-            if (hadAccretion)
+            if (hadAccretion) {
+              const relDir = relConfig === 'true' ? dir3 : 'clockwiseThree';
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir3]!(),
+                  dir: output[relDir]!(),
                 }),
               };
-            if (data.role === 'dps')
+            }
+            if (data.role === 'dps') {
+              const relDir = relConfig === 'true' ? dir1 : 'clockwiseOne';
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir1]!(),
+                  dir: output[relDir]!(),
                 }),
               };
+            }
             // Support #1
+            const relDir = relConfig === 'true' ? dir2 : 'clockwiseTwo';
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir2]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
@@ -5749,12 +5793,17 @@ const triggerSet: TriggerSet<Data> = {
               const dir = sortedDir !== undefined
                 ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
+              const relDir = relConfig === 'true'
+                ? dir
+                : dsaOrModified
+                ? 'clockwiseOne'
+                : 'clockWiseTwo';
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 infoText: output.middleThenGetDirTether!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             }
@@ -5782,7 +5831,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const tracker = data.nothingnessTracker;
         const num = output.num!({ num: tracker });
         const hadAccretion = data.hadAccretion;
@@ -5813,11 +5863,17 @@ const triggerSet: TriggerSet<Data> = {
               const dir = sortedDir !== undefined
                 ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
+              const relDir = relConfig === 'true'
+                ? dir
+                : dsaOrModified
+                ? 'clockwiseOne'
+                : 'clockWiseTwo';
+
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             }
@@ -5827,10 +5883,16 @@ const triggerSet: TriggerSet<Data> = {
             const dir2 = sortedDir2 !== undefined
               ? Directions.outputCardinalDir[sortedDir2] ?? 'unknown'
               : 'unknown';
+            const relDir = relConfig === 'true'
+              ? dir2
+              : dsaOrModified
+              ? 'clockwiseTwo'
+              : 'clockWiseOne';
+
             return {
               infoText: output.middleThenGetDirTether!({
                 num: num,
-                dir: output[dir2]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
@@ -5850,7 +5912,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const tracker = data.nothingnessTracker;
         const num = output.num!({ num: tracker });
         const hadAccretion = data.hadAccretion;
@@ -5880,12 +5943,17 @@ const triggerSet: TriggerSet<Data> = {
               const dir = sortedDir !== undefined
                 ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
+              const relDir = relConfig === 'true'
+                ? dir
+                : dsaOrModified
+                ? 'clockwiseTwo'
+                : 'clockWiseOne';
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             }
@@ -5929,7 +5997,8 @@ const triggerSet: TriggerSet<Data> = {
         if (data.blackHoleTetherDirNums.length !== 3)
           return;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const hadAccretion = data.hadAccretion;
         const line = data.inLine[data.me];
@@ -5953,25 +6022,36 @@ const triggerSet: TriggerSet<Data> = {
 
         if (config !== 'none') {
           if (line === 2) {
-            if (hadAccretion)
+            if (hadAccretion) {
+              const relDir = relConfig === 'true'
+                ? dir3
+                : 'clockwiseThree';
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir3]!(),
+                  dir: output[relDir]!(),
                 }),
               };
-            if (data.role === 'dps')
+            }
+            if (data.role === 'dps') {
+              const relDir = relConfig === 'true'
+                ? dir1
+                : 'clockwiseOne';
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir1]!(),
+                  dir: output[relDir]!(),
                 }),
               };
+            }
+            const relDir = relConfig === 'true'
+              ? dir2
+              : 'clockwiseTwo';
             // Support #2
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir2]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
@@ -5986,12 +6066,17 @@ const triggerSet: TriggerSet<Data> = {
               const dir = sortedDir !== undefined
                 ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
+              const relDir = relConfig === 'true'
+                ? dir
+                : dsaOrModified
+                ? 'clockwiseOne'
+                : 'clockwiseTwo';
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 infoText: output.middleThenGetDirTether!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             }
@@ -6019,7 +6104,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const tracker = data.nothingnessTracker;
         const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
@@ -6049,12 +6135,17 @@ const triggerSet: TriggerSet<Data> = {
               const dir = sortedDir !== undefined
                 ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
                 : 'unknown';
+              const relDir = relConfig === 'true'
+                ? dir
+                : dsaOrModified
+                ? 'clockwiseOne'
+                : 'clockwiseTwo';
 
               // We could get the player they are taking from, but seems unnecessary at the time
               return {
                 alertText: output.getDirTetherClockwise!({
                   num: num,
-                  dir: output[dir]!(),
+                  dir: output[relDir]!(),
                 }),
               };
             }
@@ -6064,12 +6155,17 @@ const triggerSet: TriggerSet<Data> = {
             const dir2 = sortedDir2 !== undefined
               ? Directions.outputCardinalDir[sortedDir2] ?? 'unknown'
               : 'unknown';
+            const relDir = relConfig === 'true'
+              ? dir2
+              : dsaOrModified
+              ? 'clockwiseTwo'
+              : 'clockwiseOne';
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               infoText: output.middleThenGetDirTether!({
                 num: num,
-                dir: output[dir2]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
@@ -6089,7 +6185,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const tracker = data.nothingnessTracker;
         const num = output.num!({ num: tracker });
         const line = data.inLine[data.me];
@@ -6121,12 +6218,17 @@ const triggerSet: TriggerSet<Data> = {
             const dir = sortedDir !== undefined
               ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
               : 'unknown';
+            const relDir = relConfig === 'true'
+              ? dir
+              : dsaOrModified
+              ? 'clockwiseTwo'
+              : 'clockwiseOne';
 
             // We could get the player they are taking from, but seems unnecessary at the time
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir]!(),
+                dir: output[relDir]!(),
               }),
             };
           }
@@ -6148,7 +6250,8 @@ const triggerSet: TriggerSet<Data> = {
         if (data.blackHoleTetherDirNums.length !== 2)
           return;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const kefkaDir = data.kefkaTeleportDirNum;
         const dirNums = data.blackHoleTetherDirNums;
@@ -6168,31 +6271,40 @@ const triggerSet: TriggerSet<Data> = {
         if ((config === 'dsa' || config === 'sda') && data.inLine[data.me] === 3) {
           const role = config === 'dsa' ? data.role === 'dps' : data.role !== 'dps';
           const dir = data.role === 'dps' ? dir1 : dir2;
-          if (role)
+          const relDir = relConfig === 'true'
+            ? dir
+            : data.role === 'dps'
+            ? 'clockwiseOne'
+            : 'clockwiseTwo';
+          if (role) {
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir]!(),
+                dir: output[relDir]!(),
               }),
             };
+          }
           // Support #3 (DSA), DPS #3 (SDA)
           return {
             alertText: output.getDirTetherClockwise!({
               num: num,
-              dir: output[dir]!(),
+              dir: output[relDir]!(),
             }),
           };
         } else if (
           config === 'modified' && data.role !== 'dps' &&
           data.inLine[data.me] === 3
-        )
+        ) {
+          const relDir1 = relConfig === 'true' ? dir1 : 'clockwiseOne';
+          const relDir2 = relConfig === 'true' ? dir2 : 'clockwiseTwo';
           return {
             alertText: output.getDirTethers!({
               num: num,
-              dir1: output[dir1]!(),
-              dir2: output[dir2]!(),
+              dir1: output[relDir1]!(),
+              dir2: output[relDir2]!(),
             }),
           };
+        }
 
         return {
           infoText: output.twoBlackHoles!({
@@ -6262,7 +6374,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        const config = data.triggerSetConfig.blackhole;
+        const config = data.triggerSetConfig.blackHole;
+        const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
         const dir = dirNum === undefined
@@ -6273,11 +6386,12 @@ const triggerSet: TriggerSet<Data> = {
           const role = config === 'sda' || config === 'modified'
             ? data.role === 'dps'
             : data.role !== 'dps';
+          const relDir = relConfig === 'true' ? dir : 'clockwiseOne';
           if (data.inLine[data.me] === 3 && role)
             return {
               alertText: output.getDirTetherClockwise!({
                 num: num,
-                dir: output[dir]!(),
+                dir: output[relDir]!(),
               }),
             };
         }
