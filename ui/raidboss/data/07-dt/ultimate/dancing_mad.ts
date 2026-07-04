@@ -7,7 +7,6 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
-// TODO: P4 Add detection for Fake Chaos and Fake Neo Exdeath debuffs
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -3864,6 +3863,32 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Behind ${target}',
           ko: '${target} 뒤로',
         },
+      },
+    },
+    {
+      id: 'DMU P4 Chaos and Neo Exdeath Debuff Collect',
+      // In the count field of Effect 808, the bosses receive these values:
+      // Fake Chaos: 45F
+      // True Chaos: 460
+      // Fake Neo Exdeath: 461
+      // True Neo Exdeath: 462
+      type: 'GainsEffect',
+      netRegex: { effectId: '808', source: ['Chaos', 'Neo Exdeath'], capture: true },
+      run: (data, matches) => {
+        const count = matches.count;
+        const grandCrossCount = data.grandCrossCount;
+        const isTrue = count === '460' || (count === '462')
+          ? true
+          : false;
+        if (grandCrossCount === 0)
+          data.areFirstDebuffsTrue = isTrue;
+        else if (grandCrossCount === 1)
+          data.isEntropyTrue = isTrue;
+        else if (grandCrossCount === 2)
+          data.areSecondDebuffsTrue = isTrue;
+        else if (grandCrossCount === 3)
+          data.isDynamicFluidTrue = isTrue;
+        // Last set has a double negative, so only tracking debuffs
       },
     },
     {
