@@ -665,8 +665,11 @@ const blackHoleOutputStrings: OutputStrings = {
   getDirTether: {
     en: '${num} Get ${dir} Tether',
   },
-  getDirTethers: {
+  getDirTethers: { // Instead of Clockwise 1/Clockwise 2
     en: '${num} Get ${dir1}/${dir2} Tethers',
+  },
+  getBothTethers: {
+    en: '${num} Get Both Tethers',
   },
   keepTether: {
     en: '${num}Keep Tether',
@@ -5682,17 +5685,18 @@ const triggerSet: TriggerSet<Data> = {
         } else if (
           config === 'modified' && data.inLine[data.me] === 1 &&
           !data.hadAccretion && data.role === 'dps'
-        ) {
-          const relDir1 = relConfig === 'true' ? dir1 : 'clockwiseOne';
-          const relDir2 = relConfig === 'true' ? dir2 : 'clockwiseTwo';
+        )
           return {
-            alertText: output.getDirTethers!({
-              num: num,
-              dir1: output[relDir1]!(),
-              dir2: output[relDir2]!(),
-            }),
+            alertText: relConfig === 'true'
+              ? output.getDirTethers!({
+                num: num,
+                dir1: output[dir1]!(),
+                dir2: output[dir2]!(),
+              })
+              : output.getBothTethers!({
+                num: num,
+              }),
           };
-        }
 
         return {
           infoText: output.twoBlackHoles!({
@@ -6294,17 +6298,18 @@ const triggerSet: TriggerSet<Data> = {
         } else if (
           config === 'modified' && data.role !== 'dps' &&
           data.inLine[data.me] === 3
-        ) {
-          const relDir1 = relConfig === 'true' ? dir1 : 'clockwiseOne';
-          const relDir2 = relConfig === 'true' ? dir2 : 'clockwiseTwo';
+        )
           return {
-            alertText: output.getDirTethers!({
-              num: num,
-              dir1: output[relDir1]!(),
-              dir2: output[relDir2]!(),
-            }),
+            alertText: relConfig === 'true'
+              ? output.getDirTethers!({
+                num: num,
+                dir1: output[dir1]!(),
+                dir2: output[dir2]!(),
+              })
+              : output.getBothTethers!({
+                num: num,
+              }),
           };
-        }
 
         return {
           infoText: output.twoBlackHoles!({
