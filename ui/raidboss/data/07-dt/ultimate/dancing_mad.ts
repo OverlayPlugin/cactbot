@@ -8,7 +8,6 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
-// TODO: P3 Blizzard III Stack Headmarker/Player and Role Towers
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -96,6 +95,8 @@ export interface Data extends RaidbossData {
   kefkaTeleportDirNum?: number;
   nothingnessTracker: number;
   blackHoleTetherDirNums: number[];
+  isSecondPuddle: boolean;
+  knockDownTarget?: string;
   isKnockDown2: boolean;
 }
 
@@ -881,6 +882,7 @@ const triggerSet: TriggerSet<Data> = {
       blackHoleIdDirNums: {},
       nothingnessTracker: 1,
       blackHoleTetherDirNums: [],
+      isSecondPuddle: false,
       isKnockDown2: false,
     };
   },
@@ -6431,29 +6433,72 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Blizzard III Puddles',
-      type: 'StartsUsing',
-      netRegex: { id: 'BB0F', source: 'Exdeath', capture: false },
-      infoText: (_data, _matches, output) => output.baitPuddles!(),
+      // Earlier call for BB0F Blizzard III to get into position with Kefka Dir
+      // Using last BAFC Nothingness
+      // as it is slightly after the BAEE Look upon Me and Despair ability
+      type: 'Ability',
+      netRegex: { id: 'BAFC', source: 'Black Hole', capture: false },
+      condition: (data) => data.nothingnessTracker === 11,
+      durationSeconds: 8.6, // Time until BB0F cast
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        // Get Boss, he has Unknown_9E8 buff and same one that casts Max
+        const bossId = data.kefkaId ?? 0;
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return;
+        const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        return output.text!({ dir: output[dir]!() });
+      },
       outputStrings: {
-        baitPuddles: {
-          en: 'Bait Puddles x2',
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${dir} Kefka: Bait Puddles x2',
         },
       },
     },
     {
-      id: 'DMU P3 Knock Down 1',
+      id: 'DMU P3 Knock Down 1 Collect',
+      // Need to collect this and output later due to puddles
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
       suppressSeconds: 99999,
-      alertText: (data, matches, output) => {
-        const target = matches.target;
+      run: (data, matches) => data.knockDownTarget = matches.target,
+    },
+    {
+      id: 'DMU P3 Knock Down State',
+      // Using BB02 Knock Down (castbar)
+      type: 'Ability',
+      netRegex: { id: 'BB02', source: 'Chaos', capture: false },
+      suppressSeconds: 99999,
+      run: (data) => data.isKnockDown2 = true,
+    },
+    {
+      id: 'DMU P3 Knock Down 1',
+      // Using BB0D Blizzard III as the second puddle occurs after the stack marker
+      // Log can have wrong source
+      type: 'StartsUsing',
+      netRegex: { id: 'BB0D', source: ['Exdeath', 'Kefka'], capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const isSecondPuddle = data.isSecondPuddle;
+        const target = data.knockDownTarget;
+        if (!isSecondPuddle) {
+          data.isSecondPuddle = true;
+          return;
+        }
+        if (target === undefined)
+          return;
         if (target === data.me)
           return output.mechThenMech!({
             mech1: output.stackOnYou!(),
             mech2: output.getTowers!(),
           });
 
-        const isDPSStack = data.party.isDPS(matches.target);
+        const isDPSStack = data.party.isDPS(target);
         const amDPS = data.role === 'dps';
 
         if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
@@ -6477,13 +6522,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Knock Down State',
-      type: 'Ability',
-      netRegex: { id: 'BB02', source: 'Chaos', capture: false },
-      suppressSeconds: 99999,
-      run: (data) => data.isKnockDown2 = true,
-    },
-    {
       id: 'DMU P3 Knock Down 2',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
@@ -6493,7 +6531,7 @@ const triggerSet: TriggerSet<Data> = {
         if (target === data.me)
           return output.stackOnYou!();
 
-        const isDPSStack = data.party.isDPS(matches.target);
+        const isDPSStack = data.party.isDPS(target);
         const amDPS = data.role === 'dps';
 
         if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
