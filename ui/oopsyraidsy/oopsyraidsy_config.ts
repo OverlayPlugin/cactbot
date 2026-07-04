@@ -215,8 +215,9 @@ class OopsyConfigurator {
           if (!Array.isArray(obj)) {
             for (const id in obj)
               item.triggers[id] = { id: id };
+          } else {
+            console.error('Invalid Oopsy TriggerSet property:', obj);
           }
-          // @TODO: Error log if we somehow get an invalid structure here due to user js maybe?
         }
       }
 

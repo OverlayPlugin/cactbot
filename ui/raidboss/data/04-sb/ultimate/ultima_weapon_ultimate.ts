@@ -120,7 +120,6 @@ const triggerSet: TriggerSet<Data> = {
     // Yes yes, a textarea would be nice here to put everything on separate lines,
     // but OverlayPlugin does not seem to support delivering the enter key and
     // so there's no way to have one box with names on separate lines.  Sorry!
-
     {
       ...gaolConfig('gaolOrder1'),
       comment: {
