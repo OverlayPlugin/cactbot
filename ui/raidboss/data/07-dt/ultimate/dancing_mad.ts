@@ -6482,6 +6482,7 @@ const triggerSet: TriggerSet<Data> = {
       // Log can have wrong source
       type: 'StartsUsing',
       netRegex: { id: 'BB0D', source: ['Exdeath', 'Kefka'], capture: false },
+      durationSeconds: 2.8,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         const isSecondPuddle = data.isSecondPuddle;
