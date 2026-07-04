@@ -3873,7 +3873,11 @@ const triggerSet: TriggerSet<Data> = {
       // Fake Neo Exdeath: 461
       // True Neo Exdeath: 462
       type: 'GainsEffect',
-      netRegex: { effectId: '808', capture: true },
+      netRegex: {
+        effectId: '808',
+        count: ['45F', '460', '461', '462'],
+        capture: true,
+      },
       run: (data, matches) => {
         const count = matches.count;
         const grandCrossCount = data.grandCrossCount;
