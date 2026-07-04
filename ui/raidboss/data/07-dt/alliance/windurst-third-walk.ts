@@ -258,6 +258,7 @@ const promathiaExplosionOutputStrings: OutputStrings = {
   southeast: Outputs.southeast,
   avoidExplosions: {
     en: ' Avoid Puddle Explosions',
+    cn: ' 躲避爆炸圈圈',
   },
 } as const;
 
@@ -390,16 +391,20 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} + ${prox}',
+          cn: '${dir} + ${prox}',
         },
         ...cardDirToOutputStrings,
         close: {
           en: 'Get close',
+          cn: '靠近',
         },
         far: {
           en: 'Get far',
+          cn: '远离',
         },
         unknown: {
           en: 'Avoid rock crusher',
+          cn: '躲避岩石挤压',
         },
       },
     },
@@ -480,10 +485,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Move ${dir} + ${under}',
+          cn: '去${dir} + ${under}',
         },
         under: Outputs.getUnder,
         unknown: {
           en: 'Move to next circle',
+          cn: '去下一个圈圈',
         },
         ...cardDirToOutputStrings,
       },
@@ -527,6 +534,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         proxAOE: {
           en: 'Avoid Proximity AoEs',
+          cn: '远离距离衰减 AOE',
         },
       },
     },
@@ -558,6 +566,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockWest: {
           en: 'Knockback west into wall',
+          cn: '向左击退至墙',
         },
       },
     },
@@ -570,6 +579,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockEast: {
           en: 'Knockback east into wall',
+          cn: '向右击退至墙',
         },
       },
     },
@@ -769,15 +779,18 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         pinwheel: {
           en: 'Pinwheel: Lean ${rot} close',
+          cn: '旋转焰火：向${rot}侧靠近',
         },
         cardSafe: {
           en: 'Go ${dir} close',
+          cn: '去${dir}靠近',
         },
         ...cardDirToOutputStrings,
         cw: Outputs.clockwise,
         ccw: Outputs.counterclockwise,
         unknownSpear: {
           en: 'Avoid spear triangles',
+          cn: '躲避旋转扇形',
         },
       },
     },
@@ -811,6 +824,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         noShields: {
           en: 'Attack only unshielded Gordius',
+          cn: '只攻击无护盾的戈耳狄系统',
         },
       },
     },
@@ -907,9 +921,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wheelLasers: {
           en: '${out} + ${behind} => avoid lasers',
+          cn: '${out} + ${behind} => 躲避激光',
         },
         wheelBlessing: {
           en: '${out} + ${dir}',
+          cn: '${out} + ${dir}',
         },
         behind: Outputs.getBehind,
         left: Outputs.left,
@@ -947,6 +963,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bastionLasers: {
           en: '${behind} + ${under} => avoid lasers',
+          cn: '${behind} + ${under} => 躲避激光',
         },
         bastionBlessing: {
           en: '${under} + ${dir}',
@@ -1082,6 +1099,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidAuroral: {
           en: 'Go To Safe Corner',
+          cn: '前往安全角落',
         },
       },
     },
@@ -1098,6 +1116,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidBeleaguer: {
           en: 'Dodge 2-1',
+          cn: '躲避 2-1',
         },
       },
     },
@@ -1110,6 +1129,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         aoePlusStun: {
           en: 'AoE + stun',
+          cn: 'AoE + 眩晕',
         },
       },
     },
@@ -1291,6 +1311,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goDown: {
           en: 'Go lower platform',
+          cn: '去下平台',
         },
       },
     },
@@ -1302,6 +1323,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goUp: {
           en: 'Go upper platform',
+          cn: '去上平台',
         },
       },
     },
@@ -1315,6 +1337,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lightLater: {
           en: 'Light safe later',
+          cn: '稍后光安全',
         },
       },
     },
@@ -1328,6 +1351,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         darkLater: {
           en: 'Dark safe later',
+          cn: '稍后暗安全',
         },
       },
     },
@@ -1345,12 +1369,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         upLightSafe: {
           en: 'Up on light platform',
+          cn: '去上光平台',
         },
         downDarkSafe: {
           en: 'Down on dark platform',
+          cn: '去下暗平台',
         },
         unknownSafe: {
           en: 'Match platform + debuff color',
+          cn: '去 debuff 同色平台',
         },
       },
     },
@@ -1390,6 +1417,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goUp: {
           en: 'Go upper platform',
+          cn: '去上平台',
         },
       },
     },
@@ -1486,6 +1514,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidSwords: {
           en: 'Avoid sword cones',
+          cn: '躲避扇形剑击',
         },
       },
     },
