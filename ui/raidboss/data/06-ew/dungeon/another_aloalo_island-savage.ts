@@ -1658,7 +1658,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 7,
       durationSeconds: 5,
       alertText: (data, matches, output) => {
-        let mech = output.unknown!();
+        let mech;
 
         const num = data.staticeTriggerHappy;
         if (num !== undefined) {

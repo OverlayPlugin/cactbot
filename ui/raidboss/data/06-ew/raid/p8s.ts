@@ -1113,8 +1113,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['7A04', '7A05'], source: 'Hephaistos' },
       promise: async (data, matches) => {
         // select the Hephaistoss with same source id
-        let hephaistosData = null;
-        hephaistosData = await callOverlayHandler({
+        const hephaistosData = await callOverlayHandler({
           call: 'getCombatants',
           ids: [parseInt(matches.sourceId, 16)],
         });

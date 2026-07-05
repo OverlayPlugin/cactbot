@@ -208,7 +208,7 @@ export default class CombatantTracker {
     const combatant = this.combatants[line.targetId] ??
       this.initCombatant(line.targetId);
 
-    let initState: Partial<CombatantState> | undefined = combatant.getTempState(
+    const initState: Partial<CombatantState> | undefined = combatant.getTempState(
       this.firstTimestamp,
     );
 
@@ -217,7 +217,7 @@ export default class CombatantTracker {
     if (line.targetName !== undefined)
       newState.setName(line.targetName);
 
-    initState = combatant.pushPartialState(this.firstTimestamp, newState);
+    combatant.pushPartialState(this.firstTimestamp, newState);
   }
 
   extractStateFromLine(line: LineEventSource): Partial<CombatantState> {

@@ -2878,7 +2878,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.superchain2bSecondDir === undefined || x === undefined)
           return output.combined!({ mechanic: mechanicStr, dir: output.avoid!() });
 
-        let safeLane = output.avoid!(); // default if unable to determine safe lane
+        let safeLane;
 
         // In Ray 2 (SC IIB), the adds spawn with PosX of [87, 103] or [97, 113].
         // Because of mech timing, there is only realistically time to move either inside or outside

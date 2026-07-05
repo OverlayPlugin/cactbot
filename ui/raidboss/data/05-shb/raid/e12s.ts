@@ -1250,8 +1250,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.5,
       promise: async (data, matches, output) => {
         // select the Oracle Of Darkness with same source id
-        let oracleData = null;
-        oracleData = await callOverlayHandler({
+        const oracleData = await callOverlayHandler({
           call: 'getCombatants',
           ids: [parseInt(matches.sourceId, 16)],
         });

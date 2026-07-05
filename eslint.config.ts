@@ -1,7 +1,7 @@
 import js from '@eslint/js';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import { defineConfig } from 'eslint/config';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin, { flatConfigs as importPluginConfig } from 'eslint-plugin-import-x';
 import preferArrowFunctionsPlugin from 'eslint-plugin-prefer-arrow-functions';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
@@ -162,19 +162,19 @@ const rules: Config['rules'] = {
   ],
   'eqeqeq': 'error',
   'guard-for-in': 'off',
-  'import/export': 'error',
-  'import/no-duplicates': 'error',
-  'import/no-mutable-exports': 'error',
-  'import/no-named-as-default': 'error',
-  'import/no-named-as-default-member': 'error',
-  'import/no-unresolved': [
+  'import-x/export': 'error',
+  'import-x/no-duplicates': 'error',
+  'import-x/no-mutable-exports': 'error',
+  'import-x/no-named-as-default': 'error',
+  'import-x/no-named-as-default-member': 'error',
+  'import-x/no-unresolved': [
     'error',
     {
       'caseSensitive': true,
     },
   ],
-  'import/no-useless-path-segments': 'error',
-  'import/no-webpack-loader-syntax': 'error',
+  'import-x/no-useless-path-segments': 'error',
+  'import-x/no-webpack-loader-syntax': 'error',
   // Handled by dprint.
   'indent': 'off',
   'linebreak-style': [
@@ -306,7 +306,7 @@ export default defineConfig(
   // Google configs for eslint, deprecated
   fixedGoogleConfig,
   // import plugin default
-  importPlugin.flatConfigs.recommended,
+  importPluginConfig.recommended,
   // cactbot default
   {
     'ignores': cactbotGlobalIgnores,
@@ -331,7 +331,7 @@ export default defineConfig(
       'cactbot': cactbotLintPlugin,
     },
     'settings': {
-      'import/resolver': {
+      'import-x/resolver': {
         'node': {
           'extensions': ['.d.ts', '.ts', '.js'],
         },
@@ -406,7 +406,7 @@ export default defineConfig(
         'allowNullableNumber': true,
       }],
       'func-style': ['error', 'expression', { 'allowArrowFunctions': true }],
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           'alphabetize': { 'caseInsensitive': true, 'order': 'asc' },

@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         if (bait1 === undefined || bait2 === undefined)
           return;
 
-        let first = 'unknown';
+        let first;
 
         if (data.triggerSetConfig.escelonsFall === 'dpsIn') {
           if (data.role === 'tank' || data.role === 'healer') {

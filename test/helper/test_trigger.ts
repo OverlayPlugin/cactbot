@@ -294,15 +294,15 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
         }
 
         // Find common prefix.
-        let idx = 0;
+        let idx;
         const len = Math.min(prefix.length, trigger.id.length);
         for (idx = 0; idx < len; ++idx) {
           if (prefix[idx] !== trigger.id[idx])
             break;
         }
         if (idx === 0) {
-          assert.fail(`${file}: No common id prefix in '${prefix}' and '${trigger.id}'`);
           brokenPrefixes = true;
+          assert.fail(`${file}: No common id prefix in '${prefix}' and '${trigger.id}'`);
           continue;
         }
         prefix = prefix.slice(0, idx);

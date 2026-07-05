@@ -25,10 +25,10 @@
     "tsc-no-emit": "tsc --noEmit",
     "lint": "run-s lint:**",
     "lint:dprint": "dprint check",
-    "lint:eslint": "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 ./",
+    "lint:eslint": "eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 ./",
     "lintfix": "run-s lintfix:**",
     "lintfix:dprint": "dprint fmt",
-    "lintfix:eslint": "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 --fix ./",
+    "lintfix:eslint": "eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 --fix ./",
     "stylelint": "stylelint \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "stylelintfix": "stylelint --fix \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "markdownlint": "markdownlint . --ignore node_modules --ignore publish --ignore plugin/ThirdParty",
@@ -61,6 +61,7 @@
     "@babel/preset-typescript": "^8.0.1",
     "@dprint/json": "^0.21.3",
     "@dprint/typescript": "^0.96.1",
+    "@eslint/js": "^10.0.1",
     "@octokit/core": "^7.0.6",
     "@octokit/plugin-paginate-rest": "^14.0.0",
     "@stylistic/eslint-plugin": "^5.10.0",
@@ -84,10 +85,10 @@
     "css-loader": "^7.1.4",
     "css-minimizer-webpack-plugin": "^8.0.0",
     "dprint": "^0.54.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.6.0",
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-prefer-arrow-functions": "^3.9.1",
     "eslint-plugin-unicorn": "^63.0.0",
     "fast-levenshtein": "^3.0.0",
@@ -140,7 +141,7 @@
       "dprint check"
     ],
     "*.{js,cjs,mjs,ts}": [
-      "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --experimental-strip-types\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
+      "eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
     ],
     "*.md": "markdownlint",
     "ui/(raidboss|oopsyraidsy)/data/**": [

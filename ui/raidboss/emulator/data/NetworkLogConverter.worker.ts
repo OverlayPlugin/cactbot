@@ -82,6 +82,8 @@ ctx.addEventListener('message', (msg) => {
     if (lines.length > 0) {
       lines = logConverter.convertLines(lines, repo);
       localLogHandler.parseLogs(lines);
+      // Disable "no useless statement" rule. We deliberately clear the array to release memory
+      // eslint-disable-next-line no-useless-assignment
       lines = [];
     }
     ctx.postMessage({
@@ -92,6 +94,7 @@ ctx.addEventListener('message', (msg) => {
     });
 
     // Unset the buffer to free memory before passing message back to main window
+    // eslint-disable-next-line no-useless-assignment
     buf = undefined;
 
     localLogHandler.endFight();

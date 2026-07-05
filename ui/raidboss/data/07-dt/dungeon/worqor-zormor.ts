@@ -152,7 +152,7 @@ const triggerSet: TriggerSet<Data> = {
         const coldDirs = coldAddsIds.map((id) => data.ryoqorAddCleaveDir[id] ?? 'unknown');
 
         let firstDirs: DirectionOutput8[] = [];
-        let secondDirs: DirectionOutput8[] = [];
+        let secondDirs: DirectionOutput8[];
 
         if (data.fluffleUpCount === 1) {
           // 2 intercards will be safe first, then the other 2

@@ -65,7 +65,7 @@ module.exports = {
         const validList = generateValidList(orderList, properties);
 
         if (validList.length >= 1) {
-          const sourceCode = context.getSourceCode();
+          const sourceCode = context.sourceCode;
           validList.forEach((valid) => {
             context.report({
               node,

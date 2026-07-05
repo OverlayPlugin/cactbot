@@ -1257,7 +1257,7 @@ const generateTriggersTextFromTriggerInfo = async (
     const instances = mapInfo.fights.flatMap((fight) => fight.instances);
     const abilityLineTypes = [...new Set(instances.map((instance) => instance.groups?.type ?? ''))];
 
-    let suggestedOperation: TriggerSuggestTypes = 'Skip';
+    let suggestedOperation: TriggerSuggestTypes;
 
     const hitAPlayer = mapInfo.fights
       .find((fight) =>

@@ -1,4 +1,4 @@
-import EventEmitter from 'eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 
 import logDefinitions from '../../resources/netlog_defs';
 import { addOverlayListener } from '../../resources/overlay_plugin_api';

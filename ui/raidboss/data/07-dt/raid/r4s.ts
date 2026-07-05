@@ -2524,7 +2524,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
-          let locStr = output['unknown']!();
+          let locStr;
 
           if (data.triggerSetConfig.sunrise === 'snakePrio') {
             const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW'];

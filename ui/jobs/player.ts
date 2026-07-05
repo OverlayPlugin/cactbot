@@ -1,4 +1,4 @@
-import EventEmitter from 'eventemitter3';
+import { EventEmitter } from 'eventemitter3';
 import { isEqual } from 'lodash';
 
 import logDefinitions from '../../resources/netlog_defs';
@@ -156,7 +156,7 @@ export class PlayerBase {
 
   /** compute cooldown based on the current player's stat data */
   getActionCooldown(originalCd: number, type: 'skill' | 'spell'): number {
-    let speed = 0;
+    let speed;
     if (type === 'skill')
       speed = this.stats.skillSpeed;
     else if (type === 'spell')

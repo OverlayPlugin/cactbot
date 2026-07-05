@@ -1646,9 +1646,6 @@ class RaidbossConfigurator {
 
       input.onchange = () => {
         updateLabel(input);
-        let value = input.value;
-        if (value.includes('default'))
-          value = 'default';
         this.base.setOption('raidboss', [kOptionKeys.triggers, trigId, optionKey], input.value);
       };
     }

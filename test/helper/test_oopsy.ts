@@ -52,15 +52,15 @@ const testOopsyFile = (file: string, info: OopsyTriggerSetInfo) => {
       info.triggerId[id] = file;
 
       // Find common prefix.
-      let idx = 0;
+      let idx;
       const len = Math.min(prefix.length, id.length);
       for (idx = 0; idx < len; ++idx) {
         if (prefix[idx] !== id[idx])
           break;
       }
       if (idx === 0) {
-        assert.fail(`${file}: No common id prefix in '${prefix}' and '${id}'`);
         brokenPrefixes = true;
+        assert.fail(`${file}: No common id prefix in '${prefix}' and '${id}'`);
         return;
       }
       prefix = prefix.slice(0, idx);

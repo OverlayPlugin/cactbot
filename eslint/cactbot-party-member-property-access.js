@@ -12,6 +12,9 @@ module.exports = {
     schema: [],
   },
 
+  /**
+   * @param {@} context
+   */
   create(context) {
     return {
       'Property[key.name=/(timelineTriggers|triggers)/] > ArrayExpression > ObjectExpression': (
@@ -20,7 +23,7 @@ module.exports = {
         // Look for any use of data.party.member().[property],
         const matchRegex = /data\.party\.member\(([^)]+)\)\.\w+/;
 
-        const trigger = context.getSourceCode().getText(node);
+        const trigger = context.sourceCode.getText(node);
         const lines = trigger.split('\n').map((l) => l.trim());
         lines.forEach((line) => {
           const match = matchRegex.exec(line);

@@ -166,9 +166,6 @@ class OopsyConfigurator {
 
       input.onchange = () => {
         updateLabel(input);
-        let value = input.value;
-        if (value.includes('default'))
-          value = 'default';
         this.base.setOption(this.optionKey, ['triggers', id, kField], input.value);
       };
     }

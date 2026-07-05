@@ -1,5 +1,5 @@
 // TODO: Fix import/order
-/* eslint-disable import/order */
+/* eslint-disable import-x/order */
 import { BaseOptions } from '../types/data';
 import { CactbotLoadUserRet, SavedConfig, SavedConfigEntry } from '../types/event';
 import { LocaleObject, LocaleText } from '../types/trigger';

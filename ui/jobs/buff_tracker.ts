@@ -128,7 +128,7 @@ export class Buff {
 
     // TODO: could consider looking at the party list to make initials unique?
     const initials = source.split(' ');
-    let txt = '';
+    let txt;
     if (initials.length === 2)
       txt = initials.map((str) => str.charAt(0)).join('');
     else

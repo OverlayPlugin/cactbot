@@ -556,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
           if (remainingSpots.length > 1 || !spot)
             continue;
 
-          let finalSpot: GaleSafeSpots | undefined = 'unknown';
+          let finalSpot: GaleSafeSpots | undefined;
 
           if (spot[0] === 'middle')
             finalSpot = 'middle';

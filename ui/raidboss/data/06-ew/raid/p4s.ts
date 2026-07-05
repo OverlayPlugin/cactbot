@@ -162,7 +162,7 @@ const triggerSet: TriggerSet<Data> = {
       regex: /Kothornos Kick/,
       beforeSeconds: 5.3,
       infoText: (data, _matches, output) => {
-        let jumpDir = '';
+        let jumpDir;
         if (data.jumpDir1 === 'east')
           jumpDir = !data.kickTwo ? output.west!() : output.east!();
         else if (data.jumpDir1 === 'west')
@@ -841,8 +841,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '6A0C', source: 'Hesperos' },
       promise: async (data, matches, _output) => {
         // Collect all Hesperos entities up front
-        let combatantName = null;
-        combatantName = matches.source;
+        const combatantName = matches.source;
 
         let combatantData = null;
         if (combatantName) {
