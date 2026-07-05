@@ -5835,12 +5835,12 @@ const triggerSet: TriggerSet<Data> = {
             if (config === 'modified') {
               return {
                 infoText: relConfig === 'true'
-                ? output.middleThenGetDirTethers!({
-                  num: num,
-                  dir1: output[dir1]!(),
-                  dir2: output[dir2]!(),
-                })
-                : output.middleThenGetBothTethers!({ num: num }),
+                  ? output.middleThenGetDirTethers!({
+                    num: num,
+                    dir1: output[dir1]!(),
+                    dir2: output[dir2]!(),
+                  })
+                  : output.middleThenGetBothTethers!({ num: num }),
               };
             }
 
