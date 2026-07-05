@@ -1042,7 +1042,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: trapOutputStrings,
     },
     {
-      id: 'DMU P1 Mystery Magic Ice and Thunder',
+      id: 'DMU P1 and P4 Mystery Magic Ice and Thunder',
       // Set 2: Only Ice and Thunder should be set
       type: 'StartsUsing',
       netRegex: { id: 'BA94', source: 'Kefka', capture: false },
@@ -1078,8 +1078,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P1 Mystery Magic Ice, and Gravitas and Vitrophyre Tethers 1',
-      // Occurs between Set 2 and Set 3
-      // BA95 Blizzard Blowout III cast
+      // Occurs between Graven Image Set 2 and Set 3
+      // BA95 Blizzard III Blowout cast
       type: 'StartsUsing',
       netRegex: { id: 'BA95', source: 'Kefka', capture: false },
       condition: (data) => {
@@ -1649,7 +1649,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P1 Ave Maria / Indolent Will Collect',
-      // Collect for reminder with Myster Magic
+      // Collect for reminder with Mystery Magic
       type: 'ActorControlExtra',
       netRegex: { category: '019D', param1: '40', param2: '80', capture: true },
       run: (data, matches) => {
@@ -1745,56 +1745,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
-      id: 'DMU P4 Mystery Magic Fire and Thunder',
-      type: 'StartsUsing',
-      netRegex: { id: 'BA94', source: 'Kefka', capture: false },
-      condition: (data) => {
-        if (
-          data.isFireTrue !== undefined &&
-          data.isThunderTrue !== undefined &&
-          data.phase === 'p4'
-        )
-          return true;
-        return false;
-      },
-      infoText: (data, _matches, output) => {
-        const fireMarker = data.fireMarker;
-        if (
-          (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
-        )
-          return data.isThunderTrue
-            ? output.spreadTrueThunder!({
-              mech: output.spread!(),
-              thunder: output.trueThunder!(),
-            })
-            : output.spreadFakeThunder!({
-              mech: output.spread!(),
-              thunder: output.fakeThunder!(),
-            });
-
-        if (
-          (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && data.isFireTrue)
-        ) {
-          return data.isThunderTrue
-            ? output.stackTrueThunder!({
-              mech: output.stack!(),
-              thunder: output.trueThunder!(),
-            })
-            : output.stackFakeThunder!({
-              mech: output.stack!(),
-              thunder: output.fakeThunder!(),
-            });
-        }
-      },
-      outputStrings: mysteryMagicOutputStrings,
-    },
-    {
-      id: 'DMU P1 Mystery Magic Cleanup',
+      id: 'DMU P1 and P4 Mystery Magic Cleanup',
       // C622 Light of Judgment to reset for the Graven Image 2
+      // BB14 Grand Cross to reset between Myster Magic casts
       type: 'StartsUsing',
-      netRegex: { id: ['BA94', 'C622'], source: 'Kefka', capture: false },
+      netRegex: {
+        id: ['BA94', 'C622', 'BB14'],
+        source: ['Kefka', 'Neo Exdeath'],
+        capture: false,
+      },
       run: (data) => {
         delete data.isFireTrue;
         delete data.isIceTrue;
@@ -4403,6 +4362,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P4 Thrumming Thunder III',
+      // BAA4 Mana Charge signifies that the true/fake will be stored for later
+      // Indicated with boss buff 5CA Mana Charged and 5CD Thunder Charged
+      type: 'StartsUsing',
+      netRegex: { id: 'C5DE', source: 'Kefka', capture: false },
+      infoText: (data, _matches, output) => {
+        return data.isThunderTrue ? output.trueThunder!() : output.fakeThunder!();
+      },
+      outputStrings: mysteryMagicOutputStrings,
+    },
+    {
       id: 'DMU P4 First Cursed Shriek',
       // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
@@ -4610,6 +4580,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P4 Blizzard III Blowout',
+      // BAA4 Mana Charge signifies that the true/fake will be stored for later
+      // Indicated with boss buff 5CA Mana Charged and 5CC Blizzard Charged
+      type: 'StartsUsing',
+      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
+      // Prevent triggering on earlier P1 or P4 triggers
+      condition: (data) => data.grandCrossCount === 3,
+      infoText: (data, _matches, output) => {
+        return data.isIceTrue ? output.trueIce!() : output.fakeIce!();
+      },
+      outputStrings: mysteryMagicOutputStrings,
+    },
+    {
       id: 'DMU P4 Second Cursed Shriek',
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
@@ -4706,6 +4689,28 @@ const triggerSet: TriggerSet<Data> = {
           tc: '旋風',
         },
       },
+    },
+    {
+      id: 'DMU P4 Mana Release',
+      // 5CA Mana Charged falls off ~5.4s prior to startsUsing
+      // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
+      // Thrumming Thunder III and Blizzard III Blowout startsUsing
+      type: 'StartsUsing',
+      netRegex: { id: 'BAA5', source: 'Kefka', capture: false },
+      condition: (data) => {
+        return data.isIceTrue !== undefined && data.isThunderTrue !== undefined;
+      },
+      infoText: (data, _matches, output) => {
+        if (data.isThunderTrue) {
+          return data.isIceTrue
+            ? output.trueIceTrueThunder!()
+            : output.fakeIceTrueThunder!();
+        }
+        return data.isIceTrue
+          ? output.trueIceFakeThunder!()
+          : output.fakeIceFakeThunder!();
+      },
+      outputStrings: mysteryMagicOutputStrings,
     },
   ],
   timelineReplace: [
