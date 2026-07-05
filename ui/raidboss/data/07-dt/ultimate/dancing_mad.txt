@@ -264,6 +264,7 @@ hideall "--sync--"
 843.9 "Damning Edict" Ability { id: "BB01", source: "Chaos" }
 844.3 "Look upon Me and Despair (castbar)" Ability { id: "BAEC", source: "Kefka" }
 845.4 "Look upon Me and Despair" Ability { id: "BAEE", source: "Kefka" }
+# First in Line Primordial Crusts (72s) would expire around 846.4
 847.5 "--sync--" Ability { id: "C4BA", source: "Kefka" }
 849.8 "--sync--" Ability { id: "BB09", source: "Exdeath" }
 849.8 "Thunder III 1" #Ability { id: "BB0C", source: "Exdeath" }
@@ -276,6 +277,7 @@ hideall "--sync--"
 869.7 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
 873.2 "Nothingness" Ability { id: "BAFC", source: "Black Hole" }
 874.8 "Primordial Crust Quake" #Ability { id: "BAFA", source: "Chaos" }
+# Second in Line Primordial Crusts (106s) would expire around 880.4
 
 884.4 "White Hole" #Ability { id: "BD66", source: "Exdeath" }
 884.4 "Longitudinal Implosion/Latitudinal Implosion (castbar)" Ability { id: ["BAFD", "BAFE"], source: "Chaos" }
@@ -308,8 +310,9 @@ hideall "--sync--"
 # 8. Deep Freeze (Blizzard)
 905.5 "--sync--" Ability { id: "C533", source: "Kefka" }
 912.7 "Blizzard III (castbar)" Ability { id: "BB0F", source: "Exdeath" }
+# Third in Line Primordial Crusts (139s) would expire around 913.4
 915.8 "Blizzard III 1" Ability { id: "BB0D", source: "Exdeath" }
-916.7 "Stomp-a-Mole (castbar)" Ability { id: "BAEF", source: "Kefka" } # Possibly determines which foot he starts with and/or its based on facing?
+916.7 "Stomp-a-Mole (castbar)" Ability { id: "BAEF", source: "Kefka" } # Always starts with his right foot
 918.3 "Stomp-a-Mole 1" #Ability { id: "BAF0", source: "Kefka" }
 918.3 "Knock Down 1" Ability { id: "BB03", source: "Chaos" }
 918.8 "Blizzard III 2" Ability { id: "BB0D", source: "Exdeath" }
