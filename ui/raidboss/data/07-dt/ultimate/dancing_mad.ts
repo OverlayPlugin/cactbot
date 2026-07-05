@@ -5254,6 +5254,8 @@ const triggerSet: TriggerSet<Data> = {
         head: Outputs.lookAwayFromTarget,
         knockbackFromExdeath: {
           en: 'Knockback from ${name}',
+          cn: '被${name}击退',
+          ko: '${name}에서 넉백',
         },
         knockbackFromFacingExdeath: {
           en: 'Knockback from + ${facing}',
