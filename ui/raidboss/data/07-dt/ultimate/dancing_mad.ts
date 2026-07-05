@@ -5783,6 +5783,7 @@ const triggerSet: TriggerSet<Data> = {
                 dir: output[relDir]!(),
               }),
             };
+
           // Provide heads up to next player
           // Could tell to 1st tether but it may add confusion
           if (data.inLine[data.me] === 1 && !data.hadAccretion && !role) {
@@ -5798,8 +5799,8 @@ const triggerSet: TriggerSet<Data> = {
             // If can't get dirNum, default to relative
             if (dirNum1 === undefined || dirNum2 === undefined) {
               const dir = data.role === 'dps'
-              ? 'clockwiseOne'
-              : 'clockwiseTwo';
+                ? 'clockwiseOne'
+                : 'clockwiseTwo';
               return {
                 infoText: output.middleThenGetDirTether!({
                   num: num,
