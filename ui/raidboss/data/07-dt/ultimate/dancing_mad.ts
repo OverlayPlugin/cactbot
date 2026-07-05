@@ -5765,6 +5765,7 @@ const triggerSet: TriggerSet<Data> = {
         const config = data.triggerSetConfig.blackHole;
         const relConfig = data.triggerSetConfig.blackHoleTether;
         const num = output.num!({ num: data.nothingnessTracker });
+        const kefkaDir = data.kefkaTeleportDirNum;
         const dirNum = data.blackHoleIdDirNums[matches.id];
         const dir = dirNum === undefined
           ? 'unknown'
@@ -5782,6 +5783,59 @@ const triggerSet: TriggerSet<Data> = {
                 dir: output[relDir]!(),
               }),
             };
+          // Provide heads up to next player
+          // Could tell to 1st tether but it may add confusion
+          if (data.inLine[data.me] === 1 && !data.hadAccretion && !role) {
+            // Next set will start accross from dir
+            const dirNum1 = dirNum === undefined
+              ? undefined
+              : (dirNum + 2) % 4;
+            // Second one is next clockwise
+            const dirNum2 = dirNum === undefined
+              ? undefined
+              : (dirNum + 3) % 4;
+
+            // If can't get dirNum, default to relative
+            if (dirNum1 === undefined || dirNum2 === undefined) {
+              const dir = data.role === 'dps'
+              ? 'clockwiseOne'
+              : 'clockwiseTwo';
+              return {
+                infoText: output.middleThenGetDirTether!({
+                  num: num,
+                  dir: output[dir]!(),
+                }),
+              };
+            }
+            const dirNums = [dirNum1, dirNum2];
+
+            // Convert Kefka dir to 4Dir
+            const startDir = kefkaDir !== undefined
+              ? Math.round(kefkaDir / 2) % 4
+              : -1;
+            const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
+            const dir1 = sorted[0] !== undefined
+              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              : 'unknown';
+            const dir2 = sorted[1] !== undefined
+              ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+              : 'unknown';
+
+            const dir = data.role === 'dps' ? dir1 : dir2;
+            const relDir = relConfig === 'true'
+              ? dir
+              : data.role === 'dps'
+              ? 'clockwiseOne'
+              : 'clockwiseTwo';
+
+            // DPS #1 (DSA), Support #1 (SDA)
+            return {
+              infoText: output.middleThenGetDirTether!({
+                num: num,
+                dir: output[relDir]!(),
+              }),
+            };
+          }
         }
         return {
           infoText: output.oneBlackHole!({
