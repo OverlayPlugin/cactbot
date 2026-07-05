@@ -6469,6 +6469,44 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.knockDownTarget = matches.target,
     },
     {
+      id: 'DMU P3 Knock Down 1 (Early)',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: true },
+      durationSeconds: 2.6,
+      suppressSeconds: 99999,
+      infoText: (data, matches, output) => {
+        const isDPSStack = data.party.isDPS(matches.target);
+        const amDPS = data.role === 'dps';
+        if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
+          return output.mechThenMech!({
+            mech1: output.puddle!(),
+            mech2: output.stack!(),
+          });
+        return output.mechThenMech!({
+          mech1: output.puddle!(),
+          mech2: output.towers!(),
+        });
+      },
+      outputStrings: {
+        puddle: {
+          en: 'Puddle',
+        },
+        stack: Outputs.stackMarker,
+        towers: {
+          en: 'Towers',
+          de: 'Türme',
+          fr: 'Tours',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '장판 들어가기',
+          tc: '踩塔',
+        },
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
       id: 'DMU P3 Knock Down State',
       // Using BB02 Knock Down (castbar)
       type: 'Ability',
@@ -6493,19 +6531,14 @@ const triggerSet: TriggerSet<Data> = {
         }
         if (target === undefined)
           return;
-        if (target === data.me)
-          return output.mechThenMech!({
-            mech1: output.stackOnYou!(),
-            mech2: output.getTowers!(),
-          });
 
         const isDPSStack = data.party.isDPS(target);
         const amDPS = data.role === 'dps';
 
         if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
           return output.mechThenMech!({
-            mech1: output.stackOnPlayer!({ player: data.party.member(target) }),
-            mech2: output.getTowers!(),
+            mech1: output.stackMiddle!(),
+            mech2: output.towers!(),
           });
         return output.mechThenMech!({
           mech1: output.getTowers!(),
@@ -6514,8 +6547,24 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         getTowers: Outputs.getTowers,
-        stackOnYou: Outputs.stackOnYou,
-        stackOnPlayer: Outputs.stackOnPlayer,
+        stackMiddle: {
+          en: 'Stack Middle',
+          de: 'Mittig sammeln',
+          fr: 'Packez-vous au milieu',
+          ja: '中央で頭割り',
+          cn: '中间分摊',
+          ko: '중앙에서 쉐어',
+          tc: '中間分攤',
+        },
+        towers: {
+          en: 'Towers',
+          de: 'Türme',
+          fr: 'Tours',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '장판 들어가기',
+          tc: '踩塔',
+        },
         stack: Outputs.stackMarker,
         mechThenMech: {
           en: '${mech1} => ${mech2}',
@@ -6528,21 +6577,24 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: headMarkerData['stompStack'], capture: true },
       condition: (data) => data.isKnockDown2,
       alertText: (data, matches, output) => {
-        const target = matches.target;
-        if (target === data.me)
-          return output.stackOnYou!();
-
-        const isDPSStack = data.party.isDPS(target);
+        const isDPSStack = data.party.isDPS(matches.target);
         const amDPS = data.role === 'dps';
 
         if ((isDPSStack && amDPS) || (!isDPSStack && !amDPS))
-          return output.stackOnPlayer!({ player: data.party.member(target) });
+          return output.stackMiddle!();
         return output.getTowers!();
       },
       outputStrings: {
         getTowers: Outputs.getTowers,
-        stackOnYou: Outputs.stackOnYou,
-        stackOnPlayer: Outputs.stackOnPlayer,
+        stackMiddle: {
+          en: 'Stack Middle',
+          de: 'Mittig sammeln',
+          fr: 'Packez-vous au milieu',
+          ja: '中央で頭割り',
+          cn: '中间分摊',
+          ko: '중앙에서 쉐어',
+          tc: '中間分攤',
+        },
       },
     },
     {
