@@ -98,6 +98,7 @@ export interface Data extends RaidbossData {
   isSecondPuddle: boolean;
   knockDownTarget?: string;
   isKnockDown2: boolean;
+  blizzardStarted: boolean;
 }
 
 const headMarkerData = {
@@ -969,6 +970,7 @@ const triggerSet: TriggerSet<Data> = {
       blackHoleTetherDirNums: [],
       isSecondPuddle: false,
       isKnockDown2: false,
+      blizzardStarted: false,
     };
   },
   triggers: [
@@ -6624,11 +6626,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Knock Down 1 Collect',
+      id: 'DMU P3 Knock Down Collect',
       // Need to collect this and output later due to puddles
+      // Will also need this to determine the role that is stacking last
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
-      suppressSeconds: 99999,
       run: (data, matches) => data.knockDownTarget = matches.target,
     },
     {
@@ -6670,7 +6672,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Knock Down State',
+      id: 'DMU P3 Knock Down 1 State',
       // Using BB02 Knock Down (castbar)
       type: 'Ability',
       netRegex: { id: 'BB02', source: 'Chaos', capture: false },
@@ -6761,13 +6763,54 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Blizzard III Keep Moving',
+      id: 'DMU P3 Blizzard III State',
+      type: 'StartsUsing',
+      netRegex: { id: 'BB11', source: 'Exdeath', capture: false },
+      run: (data) => data.blizzardStarted = true,
+    },
+    {
+      id: 'DMU P3 Blizzard III Keep Moving (Tower Role)',
       // In order to avoid 3s D98 Deep Freeze
       // Players also need to avoid BB05 Big Bang at this time as well
       // BB05 Big Bang goes off at the stack locations
       type: 'StartsUsing',
       netRegex: { id: 'BB11', source: 'Exdeath', capture: true },
+      condition: (data) => {
+        const target = data.knockDownTarget;
+        // Output if we don't have a stack marker target
+        if (target === undefined)
+          return true;
+
+        const isDPSStack = data.party.isDPS(target);
+        const amDPS = data.role === 'dps';
+        // Only output to the role that was getting towers
+        return (isDPSStack && !amDPS) || (!isDPSStack && amDPS);
+      },
       durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (_data, _matches, output) => output.keepMoving!(),
+      outputStrings: {
+        keepMoving: Outputs.moveAround,
+      },
+    },
+    {
+      id: 'DMU P3 Blizzard III Keep Moving (Stack Role)',
+      // BB03 Knock Down happens after BB11 Blizzard III startsCasting
+      // For players that are stacked, they need a later call
+      type: 'Ability',
+      netRegex: { id: 'BB03', source: 'Chaos', capture: false },
+      condition: (data) => {
+        const target = data.knockDownTarget;
+        // Don't trigger without stack and only trigger on second Knock Down
+        if (target === undefined || !data.blizzardStarted)
+          return false;
+
+        const isDPSStack = data.party.isDPS(target);
+        const amDPS = data.role === 'dps';
+        // Only output to the role that was stacking
+        return (isDPSStack && amDPS) || (!isDPSStack && !amDPS);
+      },
+      durationSeconds: 3.2, // Time when BB11 Blizzard will have ended (~3.121s)
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.keepMoving!(),
       outputStrings: {
         keepMoving: Outputs.moveAround,
