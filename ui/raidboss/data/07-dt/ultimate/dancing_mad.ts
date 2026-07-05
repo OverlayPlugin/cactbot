@@ -3839,17 +3839,17 @@ const triggerSet: TriggerSet<Data> = {
       },
       run: (data, matches) => {
         const count = matches.count;
-        const grandCrossCount = data.grandCrossCount;
         const isTrue = count === '460' || (count === '462')
           ? true
           : false;
-        if (grandCrossCount === 0)
+        // These always come out in order
+        if (data.areFirstDebuffsTrue === undefined)
           data.areFirstDebuffsTrue = isTrue;
-        else if (grandCrossCount === 1)
+        else if (data.isEntropyTrue === undefined)
           data.isEntropyTrue = isTrue;
-        else if (grandCrossCount === 2)
+        else if (data.areSecondDebuffsTrue === undefined)
           data.areSecondDebuffsTrue = isTrue;
-        else if (grandCrossCount === 3)
+        else if (data.isDynamicFluidTrue === undefined)
           data.isDynamicFluidTrue = isTrue;
         // Last set has a double negative, so only tracking debuffs
       },
@@ -3857,10 +3857,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Tsunami/Inferno',
       // BB14 Grand Cross AoE also happens ~4s after this cast starts
-      // BB20 Inferno / BB21 Tsunami are 9s castTime
+      // BB20 Inferno / BB21 Tsunami are 8.7s castTime
       type: 'StartsUsing',
       netRegex: { id: ['BB20', 'BB21'], source: 'Chaos', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
       response: Responses.aoe(),
     },
     {
@@ -3871,10 +3871,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 Grand Cross',
-      // 9s castTime
+      // 8.7s castTime
       type: 'StartsUsing',
       netRegex: { id: 'BB14', source: 'Neo Exdeath', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
       response: Responses.aoe(),
     },
     {
@@ -3894,13 +3894,13 @@ const triggerSet: TriggerSet<Data> = {
       // Chaos Debuffs 2: 12:50.485
       // 15AB Entroy x8 45s                               => 13:35.485
       // Neo Exdeath Debuffs Cast 3: (13:00.002)
-      // 1317 White Wound
-      // 1318 Black Wound
-      // 1558 Beyond Death x4 15s                         => 13:15.002
+      // 15A5 White Wound or 1317 (Fake)
+      // 15A6 Black Wound or 1318 (Fake)
+      // 1558 Beyond Death or 556 (Fake) x4 15s           => 13:15.002
       // 1C6 Allagan Field x4 15s                         => 13:15.002
       // Neo Exdeath Final: (13:11.383)
-      // 1317 or 15A5 White Wound
-      // 1318 or 15A6 Black Wound
+      // 1317 White Wound (Fake) or 15A5 White Wound
+      // 1318 Black Wound (Fake) or 15A6 Black Wound
       //
       // For Neo Exdeath, after the second Grand Cross cast there will be:
       // 1 Support, 1 DPS with Short 3-Person Stack (Compressed Water and/or Fake Forked Lightning)
@@ -3916,6 +3916,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: {
         effectId: [
+          '15A5',
+          '15A6',
           '15A7',
           '15A8',
           '15A9',
@@ -3923,6 +3925,7 @@ const triggerSet: TriggerSet<Data> = {
           '1317',
           '1318',
           '1558',
+          '566',
           '1C6',
         ],
         capture: true,
@@ -3958,7 +3961,7 @@ const triggerSet: TriggerSet<Data> = {
             data.longBombPlayers.push(target);
         } else if (data.me === target) {
           // Cast 5 / 6 Debuffs
-          if (id === '1558')
+          if (id === '1558' || id === '566')
             data.deathOrField = 'death';
           else if (id === '1C6')
             data.deathOrField = 'field';
@@ -4039,25 +4042,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Dynamic Fluid (Early)',
+      id: 'DMU P4 Entropy (Early)',
       type: 'GainsEffect',
-      netRegex: { effectId: '15AC', capture: false },
+      netRegex: { effectId: '15AB', capture: false },
       delaySeconds: 0.1,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const isFluidTrue = data.isDynamicFluidTrue;
-        if (isFluidTrue === undefined)
+        const isEntropyTrue = data.isEntropyTrue;
+        if (isEntropyTrue === undefined)
           return;
-        return isFluidTrue
-          ? output.donutsSecond!()
-          : output.twistersSecond!();
+        return isEntropyTrue
+          ? output.twistersFirst!()
+          : output.donutsFirst!();
       },
       outputStrings: {
-        twistersSecond: {
-          en: 'Twisters Second',
+        twistersFirst: {
+          en: 'Twisters First',
         },
-        donutsSecond: {
-          en: 'Donuts Second',
+        donutsFirst: {
+          en: 'Donuts First',
         },
       },
     },
@@ -4133,25 +4136,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Entropy (Early)',
+      id: 'DMU P4 Dynamic Fluid (Early)',
       type: 'GainsEffect',
-      netRegex: { effectId: '15AB', capture: false },
+      netRegex: { effectId: '15AC', capture: false },
       delaySeconds: 0.1,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const isEntropyTrue = data.isEntropyTrue;
-        if (isEntropyTrue === undefined)
+        const isFluidTrue = data.isDynamicFluidTrue;
+        if (isFluidTrue === undefined)
           return;
-        return isEntropyTrue
-          ? output.twistersFirst!()
-          : output.donutsFirst!();
+        return isFluidTrue
+          ? output.donutsSecond!()
+          : output.twistersSecond!();
       },
       outputStrings: {
-        twistersFirst: {
-          en: 'Twisters First',
+        twistersSecond: {
+          en: 'Twisters Second',
         },
-        donutsFirst: {
-          en: 'Donuts First',
+        donutsSecond: {
+          en: 'Donuts Second',
         },
       },
     },
