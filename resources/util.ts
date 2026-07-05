@@ -356,6 +356,12 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
+const xyToHeading = (x: number, y: number, centerX: number, centerY: number): number => {
+  x = x - centerX;
+  y = y - centerY;
+  return Math.atan2(x, y);
+};
+
 const hdgTo16DirNum = (heading: number): number => {
   // N = 0, NNE = 1, ..., NNW = 15
   return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
@@ -418,12 +424,6 @@ type Point = {
   y: number;
 };
 
-const xyToHeading = (x: number, y: number, centerX: number, centerY: number) => {
-  x = x - centerX;
-  y = y - centerY;
-  return Math.atan2(x, y);
-};
-
 // Example usage:
 // getSortPointsClockwiseFunction
 // const points = [{ x: 101, y: 101 }, { x: 99, y: 99 }];
@@ -467,6 +467,7 @@ export const Directions = {
   xyTo16DirNum: xyTo16DirNum,
   xyTo8DirNum: xyTo8DirNum,
   xyTo4DirNum: xyTo4DirNum,
+  xyToHeading: xyToHeading,
   hdgTo16DirNum: hdgTo16DirNum,
   hdgTo8DirNum: hdgTo8DirNum,
   hdgTo4DirNum: hdgTo4DirNum,
