@@ -729,13 +729,13 @@ const blackHoleOutputStrings: OutputStrings = {
     tc: '${num}',
   },
   getDirTether: {
-    en: '${num} Get ${dir} Tether',
+    en: '${num}Get ${dir} Tether',
   },
-  getDirTethers: { // Instead of Clockwise 1/Clockwise 2
-    en: '${num} Get ${dir1}/${dir2} Tethers',
+  getDirTethers: {
+    en: '${num}Get ${dir1}/${dir2} Tethers',
   },
-  getBothTethers: {
-    en: '${num} Get Both Tethers',
+  getBothTethers: { // Instead of Clockwise 1/Clockwise 2
+    en: '${num}Get Both Tethers',
   },
   keepTether: {
     en: '${num}Keep Tether',
@@ -754,6 +754,12 @@ const blackHoleOutputStrings: OutputStrings = {
   },
   middleThenGetDirTether: {
     en: '${num}Middle => Get ${dir} Tether',
+  },
+  middleThenGetDirTethers: {
+    en: '${num}Middle => Get ${dir1}/${dir2} Tethers',
+  },
+  middleThenGetBothTethers: {
+    en: '${num}Middle => Get Both Tethers',
   },
   oneBlackHole: {
     en: '${num}${dir}',
@@ -5798,6 +5804,10 @@ const triggerSet: TriggerSet<Data> = {
 
             // If can't get dirNum, default to relative
             if (dirNum1 === undefined || dirNum2 === undefined) {
+              if (config === 'modified')
+                return {
+                  infoText: output.middleThenGetBothTethers!({ num: num }),
+                };
               const dir = data.role === 'dps'
                 ? 'clockwiseOne'
                 : 'clockwiseTwo';
@@ -5821,6 +5831,18 @@ const triggerSet: TriggerSet<Data> = {
             const dir2 = sorted[1] !== undefined
               ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
               : 'unknown';
+
+            if (config === 'modified') {
+              return {
+                infoText: relConfig === 'true'
+                ? output.middleThenGetDirTethers!({
+                  num: num,
+                  dir1: output[dir1]!(),
+                  dir2: output[dir2]!(),
+                })
+                : output.middleThenGetBothTethers!({ num: num }),
+              };
+            }
 
             const dir = data.role === 'dps' ? dir1 : dir2;
             const relDir = relConfig === 'true'
