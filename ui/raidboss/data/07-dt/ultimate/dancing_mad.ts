@@ -3896,7 +3896,7 @@ const triggerSet: TriggerSet<Data> = {
       // Neo Exdeath Debuffs Cast 3: (13:00.002)
       // 15A5 White Wound or 1317 (Fake)
       // 15A6 Black Wound or 1318 (Fake)
-      // 1558 Beyond Death or 556 (Fake) x4 15s           => 13:15.002
+      // 1558 Beyond Death (Fake) or 566 x4 15s           => 13:15.002
       // 1C6 Allagan Field x4 15s                         => 13:15.002
       // Neo Exdeath Final: (13:11.383)
       // 1317 White Wound (Fake) or 15A5 White Wound
@@ -4163,7 +4163,7 @@ const triggerSet: TriggerSet<Data> = {
       // Neo Exdeath Debuffs Cast 3
       // 1317 White Wound (Fake) or 15A5 White Wound
       // 1318 Black Wound (Fake) or 15A6 Black Wound
-      // 566 Beyond Death (Fake) or 1558 Beyond Death
+      // 1558 Beyond Death (Fake) or 566 Beyond Death
       // 1C6 Allagan Field
       type: 'GainsEffect',
       netRegex: {
@@ -4275,7 +4275,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Short Debuffs',
       // Using the following as possible matches:
-      // 566 Beyond Death (Fake) or 1558 Beyond Death
+      // 1558 Beyond Death (Fake) or 566 Beyond Death
       // 1C6 Allagan Field
       // The spells/abilities or losesEffect could be triggered from early deaths
       type: 'GainsEffect',
