@@ -398,13 +398,12 @@ export type AnyDirection =
 /**
  * Get a function to pass to Array.sort to sort an array of DirectionOutput entries
  *
- * Example usage:
- *
+ * @example
  * const dirs: DirectionOutputCardinal[] = ['dirN', 'dirW'];
  *
  * dirs.sort(getSortDirectionsClockwiseFunction('dirE'));
  *
- * `dirs` should equal `['dirW', 'dirN']`
+ * // `dirs` should equal `['dirW', 'dirN']`
  *
  * @param from The DirectionOutput to treat as the start point for sort comparison
  * @returns A function to pass to the Array.sort function
@@ -437,13 +436,12 @@ type Point = {
 /**
  * Get a function to pass to Array.sort to sort an array of objects with `x` and `y` properties
  *
- * Example usage:
- *
+ * @example
  * const points = [{ x: 101, y: 101 }, { x: 99, y: 99 }];
  *
  * points.sort(getSortPointsClockwiseFunction({x: 100, y: 100}, {x: 99, y: 101}));
  *
- * `points` should now equal `[{ x: 99, y: 99 }, { x: 101, y: 101 }]`
+ * // `points` should now equal `[{ x: 99, y: 99 }, { x: 101, y: 101 }]`
  *
  * @param center The x/y point to treat as the center to calculate headings from
  * @param reference The heading or x/y point to treat as the start point for sort comparison
