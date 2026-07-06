@@ -4161,12 +4161,15 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Third Debuffs',
       // Neo Exdeath Debuffs Cast 3
-      // 1317 White Wound
-      // 1318 Black Wound
-      // 1558 Beyond Death x4 15s
-      // 1C6 Allagan Field x4 15s
+      // 1317 White Wound (Fake) or 15A5 White Wound
+      // 1318 Black Wound (Fake) or 15A6 Black Wound
+      // 566 Beyond Death (Fake) or 1558 Beyond Death
+      // 1C6 Allagan Field
       type: 'GainsEffect',
-      netRegex: { effectId: ['1317', '1318', '1558', '1C6'], capture: true },
+      netRegex: {
+        effectId: ['1317', '15A5', '1318', '15A6', '566', '1558', '1C6'],
+        capture: true,
+      },
       condition: Conditions.targetIsYou(),
       delaySeconds: 0.1,
       durationSeconds: 9,
@@ -4193,28 +4196,28 @@ const triggerSet: TriggerSet<Data> = {
         if (isTrue === undefined)
           return laser;
 
-        const isSpread = (hasFork && isTrue) || (hasCompressed && !isTrue);
-        const isStack = (hasFork && !isTrue) || (hasCompressed && isTrue);
+        const hasSpread = (hasFork && isTrue) || (hasCompressed && !isTrue);
+        const hasStack = (hasFork && !isTrue) || (hasCompressed && isTrue);
 
         // Handle 2 Mechs
-        if (isSpread && hasBomb)
+        if (hasSpread && hasBomb)
           return output.laserThenForkBomb!({
             mech1: laser,
             mech2: output.spread!(),
             mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (isStack && hasBomb)
+        if (hasStack && hasBomb)
           return output.laserThenCompressedBomb!({
             mech1: laser,
             mech2: output.stack!(),
             mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (isSpread)
+        if (hasSpread)
           return output.laserThenSpread!({
             mech1: laser,
             mech2: output.spread!(),
           });
-        if (isStack)
+        if (hasStack)
           return output.laserThenStack!({
             mech1: laser,
             mech2: output.stack!(),
@@ -4225,6 +4228,11 @@ const triggerSet: TriggerSet<Data> = {
             mech2: isTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: output.stack!(),
           });
+        // Has either nothing or long debuffs
+        return output.laserThenStack!({
+          mech1: laser,
+          mech2: output.stack!(),
+        });
       },
       outputStrings: {
         death: {
@@ -4267,11 +4275,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Short Debuffs',
       // Using the following as possible matches:
-      // 1558 Beyond Death x4 15s
-      // 1C6 Allagan Field x4 15s
+      // 566 Beyond Death (Fake) or 1558 Beyond Death
+      // 1C6 Allagan Field
       // The spells/abilities or losesEffect could be triggered from early deaths
       type: 'GainsEffect',
-      netRegex: { effectId: ['1558', '1C6'], capture: true },
+      netRegex: { effectId: ['566', '1558', '1C6'], capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
@@ -4296,28 +4304,28 @@ const triggerSet: TriggerSet<Data> = {
         const gaze = is1stTrue
           ? output.lookAwayFromPlayers!({ players: msg })
           : output.lookAtPlayers!({ players: msg });
-        const isSpread = (hasFork && is2ndTrue) || (hasCompressed && !is2ndTrue);
-        const isStack = (hasFork && !is2ndTrue) || (hasCompressed && is2ndTrue);
+        const hasSpread = (hasFork && is2ndTrue) || (hasCompressed && !is2ndTrue);
+        const hasStack = (hasFork && !is2ndTrue) || (hasCompressed && is2ndTrue);
 
         // Handle 2 Mechs
-        if (isSpread && hasBomb)
+        if (hasSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
             mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
-        if (isStack && hasBomb)
+        if (hasStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
             mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
-        if (isSpread)
+        if (hasSpread)
           return output.spreadThenGaze!({
             mech1: output.spread!(),
             mech2: gaze,
           });
-        if (isStack)
+        if (hasStack)
           return output.stackThenGaze!({
             mech1: output.stack!(),
             mech2: gaze,
@@ -4328,6 +4336,11 @@ const triggerSet: TriggerSet<Data> = {
             mech2: output.stack!(),
             mech3: gaze,
           });
+        // Has either nothing or long debuffs
+        return output.stackThenGaze!({
+          mech1: output.stack!(),
+          mech2: gaze,
+        });
       },
       outputStrings: {
         you: {
@@ -4514,28 +4527,28 @@ const triggerSet: TriggerSet<Data> = {
         const gaze = is2ndTrue
           ? output.lookAwayFromPlayers!({ players: msg })
           : output.lookAtPlayers!({ players: msg });
-        const isSpread = (hasFork && is1stTrue) || (hasCompressed && !is1stTrue);
-        const isStack = (hasFork && !is1stTrue) || (hasCompressed && is1stTrue);
+        const hasSpread = (hasFork && is1stTrue) || (hasCompressed && !is1stTrue);
+        const hasStack = (hasFork && !is1stTrue) || (hasCompressed && is1stTrue);
 
         // Handle 2 Mechs
-        if (isSpread && hasBomb)
+        if (hasSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
             mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
-        if (isStack && hasBomb)
+        if (hasStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
             mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
-        if (isSpread)
+        if (hasSpread)
           return output.spreadThenGaze!({
             mech1: output.spread!(),
             mech2: gaze,
           });
-        if (isStack)
+        if (hasStack)
           return output.stackThenGaze!({
             mech1: output.stack!(),
             mech2: gaze,
