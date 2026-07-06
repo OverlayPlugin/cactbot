@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB15 C5DE BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB1E BB1F BB15 C5DE BB38
 # -p C403:15.6 C24C:320.1 C3F7:600.0 C2DC:1100.0 BB40:1400.0
 # -it Kefka Chaos Exdeath
 
@@ -336,45 +336,46 @@ hideall "--sync--"
 
 ### Phase 4 - Kefka with Chaos and Neo Exdeath
 # TODO: Cleanup p4 as there are multiple sequences that could happen
-# TODO: Update with network log
-# TODO: Add voiceline sync?
 # en: 'Boring!'
+1087.7 "--sync--" ActorControl { command: "80000027", data0: "2E" } window 1088,14000 # Escape from the p3 exdeath enrage or chaos
 # NOTE: Label not used due to unknown timing between Chaos/Exdeath kill order and time from Kefka Says
-1095.0 "--sync--" StartsUsing { id: "C2DC", source: "Kefka" } window 1095,14000 # Escape from the p3 exdeath enrage or chaos
+1089.9 "--targetable--" # This happens ~4.4s after killing Exdeath and Chaos
+1095.0 "--sync--" StartsUsing { id: "C2DC", source: "Kefka" }
 1100.0 "Kefka Says" Ability { id: "C2DC", source: "Kefka" }
 1103.1 "--middle--" Ability { id: "C3FD", source: "Kefka" }
 
-1109.4 "Mystery Magic 1" Ability { id: "BA94", source: "Kefka" }
-1109.4 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1109.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1113.7 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1113.7 "--first debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
-1118.7 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
+1109.5 "Mystery Magic 1" Ability { id: "BA94", source: "Kefka" }
+1109.5 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1109.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1113.8 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1113.8 "--first debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
+1118.8 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
 
-1124.1 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
-1124.1 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1124.1 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1128.4 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1128.4 "--second debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
-1133.5 "Tsunami/Inferno" Ability { id: ["BB21", "BB20"], source: "Chaos" }
+1124.4 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
+1124.4 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1124.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1128.6 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1128.6 "--second debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
+1133.7 "Tsunami/Inferno" Ability { id: ["BB21", "BB20"], source: "Chaos" }
 
-1139.2 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
-1139.2 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1139.2 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1143.3 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1144.7 "--third debuffs--" #GainsEffect { effectId: ["1317", "1318", "1558", "1C6"] }
+1139.5 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
+1139.5 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1139.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1143.5 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1144.5 "--third debuffs--" #GainsEffect { effectId: ["1317", "1318", "1558", "1C6"] }
 
-1145.3 "--sync--" Ability { id: "C554", source: "Kefka" }
+1145.5 "--sync--" Ability { id: "C554", source: "Kefka" }
 
-1155.4 "Flood of Naught" Ability { id: "C393", source: "Neo Exdeath" }
-1155.8 "Edge of Death" Ability { id: "C396", source: "Neo Exdeath" }
-1155.8 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
-1155.8 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
-1159.0 "--sync--" Ability { id: "C555", source: "Kefka" }
+1155.5 "Flood of Naught" Ability { id: ["C392", "C393"], source: "Neo Exdeath" }
+1155.9 "Edge of Death" Ability { id: "C396", source: "Neo Exdeath" }
+1155.9 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
+1155.9 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
+1159.1 "--sync--" Ability { id: "C555", source: "Kefka" }
+# TODO: Update remainder with network log
+1159.7 "Death Surge" Ability { id: ["BB1C", "BB1D"], source: "Neo Exdeath" }
+1164.0 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
+1164.2 "--short debuffs--"
 
-1159.7 "Death Surge" Ability { id: "BB1D", source: "Neo Exdeath" }
-1164.1 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
-1164.3 "--short debuffs--"
 1164.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
 1164.4 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
 1172.4 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
@@ -565,6 +566,8 @@ hideall "--sync--"
 # BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
 # P4 IGNORED Abilities
+# BB1E Inferno: VFX (True) TODO: Verify there is a fake version
+# BB1F Tsunami: VFX (True) TODO: Verify there is a fake version
 # BB15 Death Bomb: P3 Failing Acceleration Bomb by moving around when true, not moving when fake
 # C5DE Thrumming Thunder III: VFX/Castbar used in P4
 
@@ -676,8 +679,10 @@ hideall "--sync--"
 # BB19 Death Bolt: P3 Fake Forked Lightning, Stack
 # BB1A Death Wave: P3 Compressed Wave, Stack
 # BB1B Death Wave: P3 Fake Compressed Wave, Spread
-# BB1C Death Surge
-# BB1D Death Surge
+# BB1C Death Surge: Associated with C392 Flood of Naught (True)
+# BB1D Death Surge: Associated with C393 Flood of Naught (Fake)
+# BB1E Inferno: VFX (True) TODO: Verify there is a fake version
+# BB1F Tsunami: VFX (True) TODO: Verify there is a fake version
 # BB20 Inferno
 # BB21 Tsunami
 # BB22 Stray Flames: P3 Entropy delayed Twister
@@ -733,8 +738,8 @@ hideall "--sync--"
 # C2E3 The Decisive Battle: Cast by Exdeath, shares health pool with Chaos
 # C2E4 Aetherlink: Cast by Chaos
 # C2E5 Aetherlink: Cast by Exdeath
-# C392 Flood of Naught
-# C393 Flood of Naught
+# C392 Flood of Naught: True Cast
+# C393 Flood of Naught: Fake Cast
 # C394 White Antilight
 # C395 Black Antilight
 # C396 Edge of Death
