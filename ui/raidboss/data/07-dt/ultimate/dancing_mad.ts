@@ -4546,7 +4546,7 @@ const triggerSet: TriggerSet<Data> = {
       // 5CD Thunder Charged: Store the value of isThunderTrue for later
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
       type: 'GainsEffect',
-      netRegex: { effectId: ['5CD', '5CC'], capture: false },
+      netRegex: { effectId: ['5CD', '5CC'], capture: true },
       run: (data, matches) => {
         if (matches.effectId === '5CD')
           data.isThunderChargedTrue = data.isThunderTrue;
