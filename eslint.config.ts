@@ -1,19 +1,13 @@
 import js from '@eslint/js';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import { defineConfig } from 'eslint/config';
-import importPlugin, { flatConfigs as importPluginConfig } from 'eslint-plugin-import-x';
+import { flatConfigs as importPluginConfig } from 'eslint-plugin-import-x';
 import preferArrowFunctionsPlugin from 'eslint-plugin-prefer-arrow-functions';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import cactbotLocaleOrder from './eslint/cactbot-locale-order';
-import cactbotOutputStrings from './eslint/cactbot-output-strings';
-import cactbotPartyMemberPropertyAccess from './eslint/cactbot-party-member-property-access';
-import cactbotResponseDefaultSeverities from './eslint/cactbot-response-default-severities';
-import cactbotTimelineTriggers from './eslint/cactbot-timeline-triggers';
-import cactbotTriggerPropertyOrder from './eslint/cactbot-trigger-property-order';
-import cactbotTriggersetPropertyOrder from './eslint/cactbot-triggerset-property-order';
+import cactbotLintPlugin from './eslint/plugin';
 
 type Config = ReturnType<typeof defineConfig>[number];
 
@@ -117,20 +111,6 @@ const fixedGoogleConfig: Config = {
       'requireReturnDescription': false,
     }],
     'yield-star-spacing': ['error', 'after'],
-  },
-};
-
-// @TODO: Move this to a separate file in eslint folder, convert all these rules to typescript
-type RuleModule = (typeof importPlugin.rules)[string];
-const cactbotLintPlugin = {
-  rules: {
-    'locale-order': cactbotLocaleOrder as unknown as RuleModule,
-    'output-strings': cactbotOutputStrings as unknown as RuleModule,
-    'party-member-property-access': cactbotPartyMemberPropertyAccess as unknown as RuleModule,
-    'response-default-severities': cactbotResponseDefaultSeverities as unknown as RuleModule,
-    'timeline-triggers': cactbotTimelineTriggers as unknown as RuleModule,
-    'trigger-property-order': cactbotTriggerPropertyOrder as unknown as RuleModule,
-    'triggerset-property-order': cactbotTriggersetPropertyOrder as unknown as RuleModule,
   },
 };
 
