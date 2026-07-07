@@ -4097,7 +4097,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         flood: {
-          en: 'Avoid Flood'
+          en: 'Avoid Flood',
         },
         stack4: {
           en: 'Stack x4',
@@ -4261,7 +4261,9 @@ const triggerSet: TriggerSet<Data> = {
           },
         };
         const surprise = data.mySurprise;
-        const severity = (surprise !== undefined || data.role === 'healer') ? 'alertText' : 'infoText';
+        const severity = (surprise !== undefined || data.role === 'healer')
+          ? 'alertText'
+          : 'infoText';
         if (surprise === 'flare')
           return { [severity]: output.flare!() };
         if (surprise === 'holy')
