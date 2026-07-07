@@ -4859,6 +4859,7 @@ const triggerSet: TriggerSet<Data> = {
         puddles: Outputs.baitPuddles,
       },
     },
+    {
       id: 'DMU P4 Mana Release',
       // 5CA Mana Charged falls off ~5.4s prior to startsUsing
       // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
