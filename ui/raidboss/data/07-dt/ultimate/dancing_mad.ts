@@ -4770,14 +4770,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
-      id: 'DMU P4 Blizzard Charge Collect',
-      // Store the value of the isIceTrue for later
-      type: 'StartsUsing',
-      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
-      condition: (data) => data.grandCrossCount === 3,
-      run: (data) => data.chargeBlizzardTrue = data.isIceTrue,
-    },
-    {
       id: 'DMU P4 Second Cursed Shriek',
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
