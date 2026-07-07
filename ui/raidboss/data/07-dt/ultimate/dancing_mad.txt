@@ -415,11 +415,11 @@ hideall "--sync--"
 1402.6 "Ultima Repeater 3" #Ability { id: "BB41", source: "Kefka" }
 1403.4 "Ultima Repeater 4" #Ability { id: "BB41", source: "Kefka" }
 1405.4 "--sync--" Ability { id: "C652", source: "Kefka" }
-1406.3 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1406.3 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1408.6 "--sync--" Ability { id: "C652", source: "Kefka" }
-1409.5 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1409.5 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1411.7 "--sync--" Ability { id: "C652", source: "Kefka" }
-1412.6 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1412.6 "Fell Forces 3" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1414.5 "--Flood Tell 1--" #Ability { id: "C183", source: "Kefka" }
 1415.5 "--Flood Tell 2--" #Ability { id: "C183", source: "Kefka" }
@@ -438,13 +438,12 @@ hideall "--sync--"
 1434.0 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
 1434.9 "Holy" Ability { id: "BB54", source: "Kefka" }
 1434.9 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
-1434.9 "Holy" Ability { id: "BB54", source: "Kefka" }
 1438.3 "Chaotic Holy" Ability { id: "BB56", source: "Kefka" }
 1438.3 "Flare Diffusion" #Ability { id: "BB55", source: "Kefka" }
 1442.2 "--sync--" Ability { id: "C652", source: "Kefka" }
-1443.1 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1443.1 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1445.4 "--sync--" Ability { id: "C652", source: "Kefka" }
-1446.3 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1446.3 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1452.9 "Celestriad" Ability { id: "BB42", source: "Kefka" }
 1461.3 "Catastrophic Choice" Ability { id: "C24F", source: "Kefka" }
@@ -461,9 +460,9 @@ hideall "--sync--"
 1484.8 "Ultima Repeater 3" #Ability { id: "BB41", source: "Kefka" }
 1485.6 "Ultima Repeater 4" #Ability { id: "BB41", source: "Kefka" }
 1487.6 "--sync--" Ability { id: "C652", source: "Kefka" }
-1488.5 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1488.5 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1490.8 "--sync--" Ability { id: "C652", source: "Kefka" }
-1491.7 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1491.7 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1497.1 "Stray Apocalypse (castbar)" Ability { id: "BB3B", source: "Kefka" }
 1497.1 "--sync--" #Ability { id: "BB3C", source: "Kefka" }
@@ -490,11 +489,11 @@ hideall "--sync--"
 1528.7 "Flare Diffusion" Ability { id: "BB55", source: "Kefka" }
 1528.7 "Chaotic Holy" #Ability { id: "BB56", source: "Kefka" }
 1532.5 "--sync--" Ability { id: "C652", source: "Kefka" }
-1533.4 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1533.4 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1535.7 "--sync--" Ability { id: "C652", source: "Kefka" }
-1536.6 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1536.6 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1538.9 "--sync--" Ability { id: "C652", source: "Kefka" }
-1539.8 "Fell Forces" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1539.8 "Fell Forces 3" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 # P5 Enrage sequence
 1551.1 "Forsaken 1" Ability { id: "BB35", source: "Kefka" }
