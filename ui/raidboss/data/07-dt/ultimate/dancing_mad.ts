@@ -124,96 +124,118 @@ const mysteryMagicOutputStrings: OutputStrings = {
     de: 'Stacken',
     fr: 'Packez-vous',
     ja: 'スタック',
-    cn: '集合',
+    cn: '分摊',
     ko: '쉐어',
     tc: '集合',
   },
   trueThunder: {
     en: 'Avoid Tell',
+    cn: '躲避直线',
     ko: '예고 피하기',
   },
   fakeThunder: {
     en: 'In Line',
+    cn: '进入直线',
     ko: '직선 안으로',
   },
   trueIce: {
     en: 'Avoid Tell',
+    cn: '躲避扇形',
     ko: '예고 피하기',
   },
   fakeIce: {
     en: 'In Cone',
+    cn: '进入扇形',
     ko: '부채꼴 안으로',
   },
   trueIcePuddle: {
     en: '${mech1} + ${mech2} => ${mech3}',
+    cn: '${mech1} + ${mech2} => ${mech3}',
     ko: '${mech1} + ${mech2} => ${mech3}',
   },
   fakeIcePuddle: {
     en: '${mech1} + ${mech2} => ${mech3}',
+    cn: '${mech1} + ${mech2} => ${mech3}',
     ko: '${mech1} + ${mech2} => ${mech3}',
   },
   stackTrueIce: {
     en: '${mech} + ${ice}',
+    cn: '${mech} + ${ice}',
     ko: '${mech} + ${ice}',
   },
   stackFakeIce: {
     en: '${mech} + ${ice}',
+    cn: '${mech} + ${ice}',
     ko: '${mech} + ${ice}',
   },
   spreadTrueIce: {
     en: '${mech} + ${ice}',
+    cn: '${mech} + ${ice}',
     ko: '${mech} + ${ice}',
   },
   spreadFakeIce: {
     en: '${mech} + ${ice}',
+    cn: '${mech} + ${ice}',
     ko: '${mech} + ${ice}',
   },
   trueIceTrueThunder: {
     en: 'Avoid Tells',
+    cn: '躲避扇形+直线',
     ko: '예고 다 피하기',
   },
   fakeIceTrueThunder: {
     en: 'Cone (only)',
+    cn: '仅扇形',
     ko: '부채꼴만',
   },
   trueIceFakeThunder: {
     en: 'Line (only)',
+    cn: '仅直线',
     ko: '직선만',
   },
   fakeIceFakeThunder: {
     en: 'Cone + Line',
+    cn: '扇形+直线',
     ko: '부채꼴 + 직선',
   },
   stackTrueThunderLook: {
     en: '${mech} + ${thunder} + ${look}',
+    cn: '${mech} + ${thunder} + ${look}',
     ko: '${mech} + ${thunder} + ${look}',
   },
   stackFakeThunderLook: {
     en: '${mech} + ${thunder} + ${look}',
+    cn: '${mech} + ${thunder} + ${look}',
     ko: '${mech} + ${thunder} + ${look}',
   },
   spreadTrueThunderLook: {
     en: '${mech} + ${thunder} + ${look}',
+    cn: '${mech} + ${thunder} + ${look}',
     ko: '${mech} + ${thunder} + ${look}',
   },
   spreadFakeThunderLook: {
     en: '${mech} + ${thunder} + ${look}',
+    cn: '${mech} + ${thunder} + ${look}',
     ko: '${mech} + ${thunder} + ${look}',
   },
   stackTrueThunder: {
     en: '${mech} + ${thunder}',
+    cn: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
   },
   stackFakeThunder: {
     en: '${mech} + ${thunder}',
+    cn: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
   },
   spreadTrueThunder: {
     en: '${mech} + ${thunder}',
+    cn: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
   },
   spreadFakeThunder: {
     en: '${mech} + ${thunder}',
+    cn: '${mech} + ${thunder}',
     ko: '${mech} + ${thunder}',
   },
   lookAway: {
@@ -239,30 +261,37 @@ const mysteryMagicOutputStrings: OutputStrings = {
 const trapOutputStrings: OutputStrings = {
   you: {
     en: 'YOU',
+    cn: '你',
     ko: '나',
   },
   knockbackFrom1: {
     en: 'Knockback from ${players}',
+    cn: '被${players}击退',
     ko: '${players}에서 넉백',
   },
   knockbackFrom2: {
     en: 'Knockback from ${players}',
+    cn: '被${players}击退',
     ko: '${players}에서 넉백',
   },
   knockbackFrom3: {
     en: 'Knockback from ${players} => Debuffs',
+    cn: '被${players}击退 => Debuff',
     ko: '${players}에서 넉백 => 디버프',
   },
   knockbackFrom3Sleep: {
     en: 'Knockback from ${players} => Sleep',
+    cn: '被${players}击退 => 睡眠',
     ko: '${players}에서 넉백 => 수면',
   },
   knockbackFrom3Confuse: {
     en: 'Knockback from ${players} => Confuse',
+    cn: '被${players}击退 => 混乱',
     ko: '${players}에서 넉백 => 혼란',
   },
   knockbackFromLater: {
     en: 'Knockback from ${players} (later)',
+    cn: '被${players}击退 (稍后)',
     ko: '${players}에서 넉백 (나중에)',
   },
 };
@@ -338,14 +367,17 @@ const forsakenOutputStrings: OutputStrings = {
   tower: Outputs.getTowers,
   leftTower: {
     en: 'Left Tower',
+    cn: '踩左塔',
     ko: '왼쪽 탑',
   },
   rightTower: {
     en: 'Right Tower',
+    cn: '踩右塔',
     ko: '오른쪽 탑',
   },
   towerOrBeNear: { // Used in even towers with no strategy
     en: '${tower} / ${near}',
+    cn: '${tower} / ${near}',
     ko: '${tower} / ${near}',
   },
   avoid: {
@@ -360,18 +392,22 @@ const forsakenOutputStrings: OutputStrings = {
   outOfHitbox: Outputs.outOfHitbox,
   innerHitbox: {
     en: 'Inner Hitbox',
+    cn: '目标圈内环',
     ko: '안쪽 히트박스',
   },
   outerHitbox: {
     en: 'Outer Hitbox',
+    cn: '目标圈外环',
     ko: '바깥쪽 히트박스',
   },
   cone: {
     en: 'Cone on YOU',
+    cn: '扇形点名',
     ko: '나에게 부채꼴',
   },
   spread: {
     en: 'Spread on YOU',
+    cn: '分散点名',
     ko: '나에게 산개징',
   },
   stack: Outputs.stackOnYou,
@@ -386,6 +422,7 @@ const forsakenOutputStrings: OutputStrings = {
   },
   you: {
     en: 'YOU',
+    cn: '你',
     ko: '나',
   },
   beNear: {
@@ -403,110 +440,137 @@ const forsakenOutputStrings: OutputStrings = {
   stackOnYou: Outputs.stackOnYou,
   stackOnYouLocation: { // Used only in first tower
     en: '${stack} ${location}',
+    cn: '${stack} ${location}',
     ko: '${stack} ${location}',
   },
   stackOnPlayer: { // Used only in first tower (role-based)
     en: 'Stack is on ${player}',
+    cn: '分摊点${player}',
     ko: '${player}에게 쉐어',
   },
   stacksOnPlayers: {
     en: 'Stacks on ${players}',
+    cn: '分摊点${players}',
     ko: '${players}에게 쉐어',
   },
   stacksOnPlayersTower: { // Used after first tower for when partner couldn't be found or none config
     en: '${num}${stack} + ${tower}',
+    cn: '${num}${stack} + ${tower}',
     ko: '${num}${stack} + ${tower}',
   },
   stackOnYouTower: { // Used in first tower only
     en: '${num}${tower} + ${marker}',
+    cn: '${num}${tower} + ${marker}',
     ko: '${num}${tower} + ${marker}',
   },
   markerOnYouStacksOnPlayers: { // Used only for first tower
     en: '${num}${marker} + ${stacks}',
+    cn: '${num}${marker} + ${stacks}',
     ko: '${num}${marker} + ${stacks}',
   },
   markerOnYouTowerOdds: { // Used for Odd Towers (excluding first set)
     en: '${num}${marker} + ${tower} + ${nearfar}',
+    cn: '${num}${marker} + ${tower} + ${nearfar}',
     ko: '${num}${marker} + ${tower} + ${nearfar}',
   },
   markerOnYouTowerEvens: { // Used for Cones + Spreads (no stacks taking the towers)
     en: '${num}${marker} + ${tower} + ${nearfar}',
+    cn: '${num}${marker} + ${tower} + ${nearfar}',
     ko: '${num}${marker} + ${tower} + ${nearfar}',
   },
   baitLeftConeOutOdds: {
     en: '${num}Bait Left Cone Out',
+    cn: '${num}左扇形向外引导',
     ko: '${num}왼쪽 부채꼴 바깥으로 유도',
   },
   baitLeftConeLeftEvens: {
     en: '${num}Bait Left Cone Left',
+    cn: '${num}左扇形向左引导',
     ko: '${num}왼쪽 부채꼴 왼쪽으로 유도',
   },
   leftStack: {
     en: '${num}Left Stack',
+    cn: '${num}左分摊',
     ko: '${num}왼쪽 쉐어',
   },
   rightStack: {
     en: '${num}Right Stack',
+    cn: '${num}右分摊',
     ko: '${num}오른쪽 쉐어',
   },
   bait: {
     en: '${num}Bait Cone Right or Clone Near',
+    cn: '${num}向右引导扇形或靠近分身',
     ko: '${num}오른쪽 부채꼴 유도 또는 분신 유도',
   },
   baitConeFromPlayer: {
     en: 'Bait Cone from ${player}',
+    cn: '引导${player}的扇形',
     ko: '${player}의 부채꼴 유도',
   },
   spreadWithPlayer: {
     en: 'Spread with ${player}',
+    cn: '与${player}分散',
     ko: '${player}와 산개',
   },
   baitCloneOppositeTowers: {
     en: '${num}Bait Clone Opposite Towers Near',
+    cn: '${num}靠近引导塔对面分身',
     ko: '${num}탑 반대쪽에서 분신 가까이 유도',
   },
   mechsBowtie: {
     en: '${num}${mech1} + ${mech2}',
+    cn: '${num}${mech1} + ${mech2}',
     ko: '${num}${mech1} + ${mech2}',
   },
   mechs3Bowtie: {
     en: '${num}${mech1} + ${mech2} + ${mech3}',
+    cn: '${num}${mech1} + ${mech2} + ${mech3}',
     ko: '${num}${mech1} + ${mech2} + ${mech3}',
   },
   numBeNearSpreadBowtie: {
     en: '${num}${near} + ${spread}',
+    cn: '${num}${near} + ${spread}',
     ko: '${num}${near} + ${spread}',
   },
   baitLeftConeOutBowtie: {
     en: '${num}Bait Left Cone Out',
+    cn: '${num}左扇形向外引导',
     ko: '${num}왼쪽 부채꼴 바깥으로 유도',
   },
   baitLeftConeLeftBowtie: {
     en: '${num}Bait Left Cone Left',
+    cn: '${num}左扇形向左引导',
     ko: '${num}왼쪽 부채꼴 왼쪽으로 유도',
   },
   getHitBySpreadRightBowtie: { // Used only in 5th tower for AAAABBBB
     en: '${num}Get Right + Hit by Spread',
+    cn: '${num}向右+吃分散',
     ko: '${num}오른쪽으로 + 산개징 맞기',
   },
   spreadTowersBowtie: { // Used only in last tower for AAAABBBB
     en: '${num}${tower} + ${spread}',
+    cn: '${num}${tower} + ${spread}',
     ko: '${num}${tower} + ${spread}',
   },
   markerOnYouNoStrategy: { // Odd Towers
     en: '${num}${marker}',
+    cn: '${num}${marker}',
     ko: '${num}${marker}',
   },
   mechsNoStrategy: {
     en: '${num}${marker} + ${mechs}',
+    cn: '${num}${marker} + ${mechs}',
     ko: '${num}${marker} + ${mechs}',
   },
   baitNoStrategy: { // No marker and no strategy was selected
     en: '${num}Bait Cone or Clone Near',
+    cn: '${num}引导扇形或靠近分身',
     ko: '${num}부채꼴 유도 또는 분신 유도',
   },
   baitConeOrStackNoStrategy: {
     en: '${num}Bait Cone or Stack',
+    cn: '${num}引导扇形或分摊',
     ko: '${num}부채꼴 유도 또는 쉐어',
   },
 };
@@ -522,12 +586,16 @@ const triggerSet: TriggerSet<Data> = {
           `Outputs up to 12 locations to drop first arrow. Second call will be relative to first<br />
           Clockwise: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
+        cn: `输出最多12个首个箭头放置的位置。第二次将相对于首个位置播报<br />
+          顺时针: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
         ko: `최대 12곳의 후보 장소 중에서 첫 번째 화살표를 설치할 위치를 알립니다. 두 번째 호출은 첫 번째 위치를 기준으로 합니다.<br />
           시계 방향: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
       },
       name: {
         en: 'P1 Graven Image 3 Tele-Portent Strategy',
+        cn: 'P1众神之像3传送策略',
         ko: '1페이즈 신들의 상 3 텔레포 전략',
       },
       type: 'select',
@@ -536,6 +604,11 @@ const triggerSet: TriggerSet<Data> = {
           'Clockwise Big Box': 'clockwise',
           'Filipino Box (Intercardinals)': 'filipino',
           'Call Debuffs only': 'none',
+        },
+        cn: {
+          '顺时针大圈': 'clockwise',
+          'Filipino Box (对角)': 'filipino',
+          '仅报Debuff': 'none',
         },
         ko: {
           '시계 방향 큰 네모': 'clockwise',
@@ -553,6 +626,11 @@ const triggerSet: TriggerSet<Data> = {
           Modified ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
           Bowtie AAAABBBB 4/4: Using same priority as the kroxy-rinon. (Will require Tank LB3)<br />
           Default will be Cones + Support Stack Left and Spread + DPS Stack Right, relative towers to facing in`,
+        cn: `玩家分为两个四人小组，选择踩塔顺序<br />
+          Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
+          改良 ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
+          Bowtie AAAABBBB 4/4: 使用与kroxy-rinon相同的优先级(需要坦克 LB3)<br />
+          默认设置为:扇形+支援职业分摊左塔,分散+DPS 分摊右塔(相对塔面向内)`,
         ko: `4명씩 두 그룹으로 나눠 순서를 정해 탑을 처리합니다.<br />
           Kroxy-Rinon 3/4/1: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           변형 ABBA: <a href="https://raidplan.io/plan/b5tgewax4kb746sf" target="_blank">Raidplan</a><br />
@@ -561,6 +639,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       name: {
         en: 'P2 Forsaken Strategy',
+        cn: 'P2遗弃末世策略',
         ko: '2페이즈 행방불명 전략',
       },
       type: 'select',
@@ -570,6 +649,12 @@ const triggerSet: TriggerSet<Data> = {
           'ABBAABBA (1/2/2/2/1), Modified': 'abba',
           'AAAABBBB (4/4), Bowtie': 'bowtie',
           'Generic Calls': 'none',
+        },
+        cn: {
+          'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
+          'ABBAABBA (1/2/2/2/1), 改良': 'abba',
+          'AAAABBBB (4/4), Bowtie': 'bowtie',
+          '通用报点': 'none',
         },
         ko: {
           'AAABBBBA (3/4/1), Kroxy-Rinon': 'kroxy-rinon',
@@ -664,10 +749,12 @@ const triggerSet: TriggerSet<Data> = {
         avoidCleaves: Outputs.avoidTankCleaves,
         cleaveOnPlayer: {
           en: 'Tank Cleave on ${player}',
+          cn: '坦克顺劈点${player}',
           ko: '${player}에게 광역 탱버',
         },
         cleaveSwap: { // Defaulting to same output as cleaveOnPlayer
           en: 'Tank Cleave on ${player}',
+          cn: '坦克顺劈点${player}',
           ko: '${player}에게 광역 탱버',
         },
       },
@@ -903,6 +990,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         waveCannonLine: {
           en: 'E/W Spread',
+          cn: '左/右分散',
           ko: '동/서 산개',
         },
       },
@@ -948,6 +1036,7 @@ const triggerSet: TriggerSet<Data> = {
           },
           extra: {
             en: 'Extra Tower',
+            cn: '额外塔',
             ko: '남는 탑',
           },
         };
@@ -1121,10 +1210,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidTethers: {
           en: 'Avoid Tethered Players',
+          cn: '避开连线玩家',
           ko: '선 대상자 피하기',
         },
         spread: {
           en: 'Spread (avoid puddles)',
+          cn: '分散(避开圈圈)',
           ko: '산개 (장판 피하기)',
         },
       },
@@ -1230,10 +1321,12 @@ const triggerSet: TriggerSet<Data> = {
         },
         gravitas: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
         vitrophyre: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
       },
@@ -1425,90 +1518,112 @@ const triggerSet: TriggerSet<Data> = {
         northwest: Outputs.northwest,
         upup: {
           en: 'Up Portents',
+          cn: '上箭头',
           ko: '위쪽 화살표',
         },
         downdown: {
           en: 'Down Portents',
+          cn: '下箭头',
           ko: '아래쪽 화살표',
         },
         rightright: {
           en: 'Right Portents',
+          cn: '右箭头',
           ko: '오른쪽 화살표',
         },
         leftleft: {
           en: 'Left Portents',
+          cn: '左箭头',
           ko: '왼쪽 화살표',
         },
         downleft: {
           en: 'Down => Left Portent',
+          cn: '下 => 左箭头',
           ko: '아래 => 왼쪽 화살표',
         },
         downright: {
           en: 'Down => Right Portent',
+          cn: '下 => 右箭头',
           ko: '아래 => 오른쪽 화살표',
         },
         rightup: {
           en: 'Right => Up Portent',
+          cn: '右 => 上箭头',
           ko: '오른쪽 => 위 화살표',
         },
         rightdown: {
           en: 'Right => Down Portent',
+          cn: '右 => 下箭头',
           ko: '오른쪽 => 아래 화살표',
         },
         leftup: {
           en: 'Left => Up Portent',
+          cn: '左 => 上箭头',
           ko: '왼쪽 => 위 화살표',
         },
         leftdown: {
           en: 'Left => Down Portent',
+          cn: '左 => 下箭头',
           ko: '왼쪽 => 아래 화살표',
         },
         upright: {
           en: 'Up => Right Portent',
+          cn: '上 => 右箭头',
           ko: '위 => 오른쪽 화살표',
         },
         upleft: {
           en: 'Up => Left Portent',
+          cn: '上 => 左箭头',
           ko: '위 => 왼쪽 화살표',
         },
         clockwise: {
           en: '${dir1} => ${dir2}',
+          cn: '${dir1} => ${dir2}',
           ko: '${dir1} => ${dir2}',
         },
         filipino: {
           en: '${dir1} => ${dir2}',
+          cn: '${dir1} => ${dir2}',
           ko: '${dir1} => ${dir2}',
         },
         southeastOut: { // upup for Filipino
           en: 'Southeast Out',
+          cn: '右下外',
           ko: '남동쪽 밖',
         },
         northwestOut: { // downdown for Filipino
           en: 'Northwest Out',
+          cn: '左上外',
           ko: '북서쪽 밖',
         },
         southwestOut: { // rightright for Filipino
           en: 'Southwest Out',
+          cn: '左下外',
           ko: '남서쪽 밖',
         },
         northeastOut: { // leftleft for Filipino
           en: 'Northeast Out',
+          cn: '右上外',
           ko: '북동쪽 밖',
         },
         southeastIn: { // downright for Filipino
           en: 'Southeast In',
+          cn: '右下内',
           ko: '남동쪽 안',
         },
         northeastIn: { // rightup for Filipino
           en: 'Northeast In',
+          cn: '右上内',
           ko: '북동쪽 안',
         },
         southwestIn: { // leftdown for Filipino
           en: 'Southwest In',
+          cn: '左下内',
           ko: '남서쪽 안',
         },
         northwestIn: { // upleft for Filipino
           en: 'Northwest In',
+          cn: '左上内',
           ko: '북서쪽 안',
         },
       },
@@ -1598,10 +1713,12 @@ const triggerSet: TriggerSet<Data> = {
         },
         indulgent: {
           en: 'Confuse Tether on YOU',
+          cn: '混乱连线点名',
           ko: '혼란 선 대상자',
         },
         idyllic: {
           en: 'Sleep Tether on YOU',
+          cn: '睡眠连线点名',
           ko: '수면 선 대상자',
         },
       },
@@ -1639,10 +1756,12 @@ const triggerSet: TriggerSet<Data> = {
         },
         indulgent: {
           en: 'Confuse Tether on YOU',
+          cn: '混乱连线点名',
           ko: '혼란 선 대상자',
         },
         idyllic: {
           en: 'Sleep Tether on YOU',
+          cn: '睡眠连线点名',
           ko: '수면 선 대상자',
         },
       },
@@ -1673,6 +1792,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lookAtLater: {
           en: 'Look At Statue (later)',
+          cn: '面对神像(稍后)',
           ko: '시선 바라보기 (나중에)',
         },
       },
@@ -1688,6 +1808,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lookAwayLater: {
           en: 'Look Away From Statue (later)',
+          cn: '背对神像(稍后)',
           ko: '시선 피하기 (나중에)',
         },
       },
@@ -2124,10 +2245,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         future: {
           en: 'Future',
+          cn: '未来',
           ko: '미래',
         },
         past: {
           en: 'Past',
+          cn: '过去',
           ko: '과거',
         },
       },
@@ -2142,7 +2265,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Get Tower Locations
       type: 'Ability',
       netRegex: { id: ['BAD2', 'BAD3'], source: 'Kefka', capture: true },
-      delaySeconds: 1.6, // Time until headmarker and future/past damage
+      delaySeconds: 1.7, // Time until headmarker and future/past damage
       alertText: (data, matches, output) => {
         const isFuture = matches.id === 'BAD2';
         const count = data.pathOfLightCounter;
@@ -2500,19 +2623,23 @@ const triggerSet: TriggerSet<Data> = {
         behind: Outputs.getBehind,
         cone: {
           en: 'Cone on YOU',
+          cn: '扇形点名',
           ko: '나에게 부채꼴',
         },
         spread: {
           en: 'Spread on YOU',
+          cn: '分散点名',
           ko: '나에게 산개징',
         },
         stack: Outputs.stackOnYou,
         you: {
           en: 'YOU',
+          cn: '你',
           ko: '나',
         },
         stacksOnPlayers: {
           en: 'Stacks on ${players}',
+          cn: '分摊点${players}',
           ko: '${players}에게 쉐어',
         },
         stay: {
@@ -2525,74 +2652,92 @@ const triggerSet: TriggerSet<Data> = {
         },
         leftTower: {
           en: 'Left Tower',
+          cn: '左塔',
           ko: '왼쪽 탑',
         },
         rightTower: {
           en: 'Right Tower',
+          cn: '右塔',
           ko: '오른쪽 탑',
         },
         leftStack: {
           en: 'Left Stack',
+          cn: '左分摊',
           ko: '왼쪽 쉐어',
         },
         rightStack: {
           en: 'Right Stack',
+          cn: '右分摊',
           ko: '오른쪽 쉐어',
         },
         leftBaitOut: {
           en: 'Left Bait Out',
+          cn: '左侧向外引导',
           ko: '왼쪽 유도 바깥으로',
         },
         baitOrStack: {
           en: 'Bait/Stack',
+          cn: '引导/分摊',
           ko: '유도/쉐어',
         },
         future: {
           en: 'Bait opposite Towers',
+          cn: '向塔的反方向引导',
           ko: '탑 반대쪽으로 유도',
         },
         past: {
           en: 'Bait between Towers',
+          cn: '向塔之间引导',
           ko: '탑 사이로 유도',
         },
         baitThenMarker: {
           en: '${bait} => ${marker}',
+          cn: '${bait} => ${marker}',
           ko: '${bait} => ${marker}',
         },
         baitThenMech: {
           en: '${bait} => ${mech}',
+          cn: '${bait} => ${mech}',
           ko: '${bait} => ${mech}',
         },
         baitThenMarkerTower: {
           en: '${bait} => ${marker} ${tower}',
+          cn: '${bait} => ${marker} ${tower}',
           ko: '${bait} => ${marker} ${tower}',
         },
         baitThenTower: {
           en: '${bait} => ${tower}',
+          cn: '${bait} => ${tower}',
           ko: '${bait} => ${tower}',
         },
         baitThenStacks: {
           en: '${bait} => ${stacks}',
+          cn: '${bait} => ${stacks}',
           ko: '${bait} => ${stacks}',
         },
         lastFuture: {
           en: 'Bait => ${action}',
+          cn: '引导 => ${action}',
           ko: '유도 => ${action}',
         },
         lastPast: {
           en: 'Bait => ${action}',
+          cn: '引导 => ${action}',
           ko: '유도 => ${action}',
         },
         getHitRightSpreadBowtie: {
           en: 'Hit by Right Spread',
+          cn: '吃右侧分散',
           ko: '오른쪽 산개 맞기',
         },
         leftBaitLeftBowtie: {
           en: 'Left Bait Left',
+          cn: '左侧向左引导',
           ko: '왼쪽 유도 왼쪽으로',
         },
         leftBaitOutBowtie: {
           en: 'Left Bait Out',
+          cn: '左侧向外引导',
           ko: '왼쪽 유도 바깥으로',
         },
       },
@@ -3629,6 +3774,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3} Later',
+          cn: '稍后 ${dir1}/${dir2}/${dir3}',
           ko: '${dir1}/${dir2}/${dir3} 나중에',
         },
       },
@@ -3689,30 +3835,37 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         safeSpots: {
           en: '${dir1}/${dir2}/${dir3}',
+          cn: '${dir1}/${dir2}/${dir3}',
           ko: '${dir1}/${dir2}/${dir3}',
         },
         wingsTrine: {
           en: '${wings} + ${trine}',
+          cn: '${wings} + ${trine}',
           ko: '${wings} + ${trine}',
         },
         dirWings: {
           en: '${dirs} + ${wings}',
+          cn: '${dirs} + ${wings}',
           ko: '${dirs} + ${wings}',
         },
         wingsParty: {
           en: 'Outer 2 Rings',
+          cn: '外侧第2环',
           ko: '바깥쪽 2번째 원',
         },
         wingsTank: {
           en: 'Be Near/Far',
+          cn: '靠近/远离',
           ko: '가까이/멀리 있기',
         },
         east: {
           en: 'Eastward Trine',
+          cn: '右侧异三角',
           ko: '동쪽 트라인',
         },
         west: {
           en: 'Westward Trine',
+          cn: '左侧异三角',
           ko: '서쪽 트라인',
         },
       },
@@ -3741,10 +3894,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         epic: {
           en: 'Attack Chaos',
+          cn: '攻击卡奥斯',
           ko: '카오스 공격',
         },
         fated: {
           en: 'Attack Exdeath',
+          cn: '攻击艾克斯迪司',
           ko: '엑스데스 공격',
         },
       },
@@ -3770,10 +3925,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         headwind: {
           en: 'Headwind on YOU',
+          cn: '混沌之逆风点名',
           ko: '혼돈의 바람 대상자',
         },
         tailwind: {
           en: 'Tailwind on You',
+          cn: '混沌之风点名',
           ko: '혼돈의 역풍 대상자',
         },
       },
@@ -3806,6 +3963,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockbackFromBoss: {
           en: 'Knockback from ${chaos}',
+          cn: '被${chaos}击退',
           ko: '${chaos}에서 넉백',
         },
       },
@@ -3820,6 +3978,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         getBehindTarget: {
           en: 'Get Behind ${target}',
+          cn: '到${target}背后',
           ko: '${target} 뒤로',
         },
       },
@@ -5064,24 +5223,46 @@ const triggerSet: TriggerSet<Data> = {
         'Neo Exdeath': '新生艾克斯迪司',
       },
       'replaceText': {
+        '\\(castbar\\)': '(咏唱栏)',
+        '\\(Chaos': '(卡奥斯',
+        '\\(Exdeath': '(艾克斯迪司',
+        '\\(Pop Window\\)': '(引爆)',
+        '--accretion\\?--': '--混沌之泥土?--',
+        '--both targetable--': '--都可选中--',
+        '--Chaos untargetable\\?--': '--卡奥斯不可选中?--',
+        '--Exdeath untargetable\\?--': '--艾克斯迪司不可选中?--',
+        '--middle\\?--': '--中间?--',
+        '--numbers--': '--麻将--',
+        '--single target--': '--单目标--',
+        '--untargetable\\?--': '--不可选中?--',
+        'Accretion Earthquake': '混沌之泥土 地震',
         'Aero III Assault': '疼飕飕暴风',
+        'Aetherlink': '以太连接',
         'All Things Ending': '消灭之脚',
         'Ave Maria': '圣母颂',
         'Big Bang': '顶起',
         'Black Antilight': '死者暗黑光',
         'Black Hole': '黑洞',
         'Black Spark': '暗黑火花',
+        'Blackblood': '흑혈',
         'Blizzard III(?! Blowout)': '冰封',
         'Blizzard III Blowout': '扩大大冰封',
         'Bowels of Agony': '深层痛楚',
+        'Catastrophic Choice': '二选一的灾祟',
         'Celestriad': '三星',
+        'Chaotic Flare': '混沌核爆',
+        'Chaotic Flood': '混沌洪水',
+        'Chaotic Holy': '混沌神圣',
+        'Cyclone': '龙卷风',
         'Damning Edict': '诅咒敕令',
         'Death Bolt': '死亡落雷',
         'Death Bomb': '死亡爆弹',
         'Death Shriek': '死亡尖叫',
         'Death Surge': '死亡波涛',
         'Death Wave': '死亡波纹',
+        'Definition of Insanity': '重构',
         'Double-Trouble Trap': '连环环陷阱',
+        'Down for the Count': '击倒',
         '(?<! )Earthquake': '地震',
         'Edge of Death': '生死之境',
         'Explosion': '爆炸',
@@ -5089,9 +5270,13 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Fire III': '爆炎',
         'Flagrant Fire III': '呼啦啦爆炎',
         '(?<! )Flare(?! )': '核爆',
+        'Flare Diffusion': '核爆扩散',
         '(?<! )Flood(?! )': '洪水',
         'Flood of Naught': '无之泛滥',
         'Forsaken(?! [BGN])': '遗弃末世',
+        'Forsaken Bonds': '遗弃末狱',
+        'Forsaken Ground': '遗弃末地',
+        'Forsaken Null': '遗弃末点',
         'Future\'s End': '未来终结',
         'Grand Cross': '大十字',
         'Graven Image': '众神之像',
@@ -5103,11 +5288,15 @@ const triggerSet: TriggerSet<Data> = {
         'Idyllic Will': '睡魔的神气',
         'Indolent Will': '懒惰的神气',
         'Indulgent Will': '圣母的神气',
+        'Inferno': '烈焰',
         'Intemperate Will': '扑杀的神气',
+        'Kefka Says': '闹哄哄魂击',
         'Knock Down': '轰击',
         'Latitudinal Implosion': '纬度聚爆',
         'Light of Judgment': '制裁之光',
         'Longitudinal Implosion': '经度聚爆',
+        'Look upon Me and Despair': '本色出演的我',
+        'Maddening Orchestra': '癫狂交响曲',
         'Mana Charge': '魔法储存',
         'Mana Release': '魔法放出',
         'Max': '放大',
@@ -5115,13 +5304,19 @@ const triggerSet: TriggerSet<Data> = {
         'Mystery Magic': '玄乎乎魔法',
         'Nothingness': '无之波动',
         'Past\'s End': '过去终结',
+        'Primordial Crust Quake': '混沌之土 地震',
         'Pulse Wave': '波动弹',
         '(?<![ h])Quake': '地震',
         'Revolting Ruin III': '恶狠狠毁荡',
+        'Shocking Impact': '重冲击',
         'Shockwave': '冲击波',
+        'Slap Happy': '响亮亮耳光',
         'Spelldriver': '咏唱危机·驱动',
         'Spellscatter': '咏唱危机·散碎',
         'Spellwave': '咏唱危机·波动',
+        'Stomp-a-Mole': '轰隆隆跺脚',
+        'Stray Apocalypse': '混沌末世',
+        'Stray Entropy': '混沌涡旋',
         'Stray Flames': '混沌之炎',
         'Stray Spray': '混沌之水',
         'Tele-trouncing': '唰啦啦传送',
@@ -5130,7 +5325,11 @@ const triggerSet: TriggerSet<Data> = {
         'Thrumming Thunder III': '劈啪啪暴雷',
         '(?<! )Thunder III': '暴雷',
         'Tornado': '龙卷',
+        'Trance': '幻化',
         'Trine': '异三角',
+        'Tsunami': '海啸',
+        'Ultima Blaster': '究极冲击波',
+        'Ultima Repeater': '连续究极',
         'Ultima Upsurge': '扑腾腾究极',
         'Ultimate Embrace': '终末双腕',
         'Umbra Smash': '本影爆碎',

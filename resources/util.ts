@@ -264,16 +264,16 @@ const output16Dir: DirectionOutput16[] = [
 const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'dirW'];
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
-const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
-  const getIndex = (n: DirectionOutput16) => {
-    const index = output16Dir.indexOf(n);
-    // Values outside of output16Dir (i.e. 'unknown') sort last
-    if (index < 0)
-      return output16Dir.length;
-    return index;
-  };
+const getDirectionIndex = (n: DirectionOutput16) => {
+  const index = output16Dir.indexOf(n);
+  // Values outside of output16Dir (i.e. 'unknown') sort last
+  if (index < 0)
+    return output16Dir.length;
+  return index;
+};
 
-  return getIndex(a) - getIndex(b);
+const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
+  return getDirectionIndex(a) - getDirectionIndex(b);
 };
 
 const outputStrings16Dir: OutputStrings = {
@@ -356,6 +356,12 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
+const xyToHeading = (x: number, y: number, centerX: number, centerY: number): number => {
+  x = x - centerX;
+  y = y - centerY;
+  return Math.atan2(x, y);
+};
+
 const hdgTo16DirNum = (heading: number): number => {
   // N = 0, NNE = 1, ..., NNW = 15
   return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
@@ -383,6 +389,88 @@ const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
   return outputIntercardDir[dirNum] ?? 'unknown';
 };
 
+export type AnyDirection =
+  | DirectionOutputCardinal
+  | DirectionOutputIntercard
+  | DirectionOutput8
+  | DirectionOutput16;
+
+/**
+ * Get a function to pass to Array.sort to sort an array of DirectionOutput entries
+ *
+ * @example
+ * const dirs: DirectionOutputCardinal[] = ['dirN', 'dirW'];
+ *
+ * dirs.sort(getSortDirectionsClockwiseFunction('dirE'));
+ *
+ * // `dirs` should equal `['dirW', 'dirN']`
+ *
+ * @param from The DirectionOutput to treat as the start point for sort comparison
+ * @returns A function to pass to the Array.sort function
+ */
+export const getSortDirectionsClockwiseFunction = (
+  from?: AnyDirection,
+): (left: AnyDirection, right: AnyDirection) => number => {
+  // Default to dirN
+  let offset = 0;
+  if (from !== undefined && from !== 'unknown')
+    offset = getDirectionIndex(from);
+
+  const count = output16Dir.length;
+
+  return (left: AnyDirection, right: AnyDirection) => {
+    if (left === 'unknown' || right === 'unknown') {
+      return left === right ? 0 : left === 'unknown' ? 1 : -1;
+    }
+    const rightIndex = (count + getDirectionIndex(right) - offset) % count;
+    const leftIndex = (count + getDirectionIndex(left) - offset) % count;
+    return leftIndex - rightIndex;
+  };
+};
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+/**
+ * Get a function to pass to Array.sort to sort an array of objects with `x` and `y` properties
+ *
+ * @example
+ * const points = [{ x: 101, y: 101 }, { x: 99, y: 99 }];
+ *
+ * points.sort(getSortPointsClockwiseFunction({x: 100, y: 100}, {x: 99, y: 101}));
+ *
+ * // `points` should now equal `[{ x: 99, y: 99 }, { x: 101, y: 101 }]`
+ *
+ * @param center The x/y point to treat as the center to calculate headings from
+ * @param reference The heading or x/y point to treat as the start point for sort comparison
+ * @returns A function to pass to the Array.sort function
+ */
+export const getSortPointsClockwiseFunction = <T extends Point>(
+  center: T,
+  reference: number | T = Math.PI, // Default to north
+): (left: T, right: T) => number => {
+  // Convert point to heading if needed
+  const offset = typeof reference === 'object'
+    ? xyToHeading(reference.x, reference.y, center.x, center.y)
+    : reference;
+
+  const twoPI = Math.PI * 2;
+
+  return (left: T, right: T) => {
+    // Get our base headings for the two points
+    const rightHeading = xyToHeading(right.x, right.y, center.x, center.y);
+    const leftHeading = xyToHeading(left.x, left.y, center.x, center.y);
+
+    // Adjust by reference offset
+    const rightHeadingOffset = (twoPI + (offset - rightHeading)) % twoPI;
+    const leftHeadingOffset = (twoPI + (offset - leftHeading)) % twoPI;
+
+    return leftHeadingOffset - rightHeadingOffset;
+  };
+};
+
 export const Directions = {
   output8Dir: output8Dir,
   output16Dir: output16Dir,
@@ -397,6 +485,7 @@ export const Directions = {
   xyTo16DirNum: xyTo16DirNum,
   xyTo8DirNum: xyTo8DirNum,
   xyTo4DirNum: xyTo4DirNum,
+  xyToHeading: xyToHeading,
   hdgTo16DirNum: hdgTo16DirNum,
   hdgTo8DirNum: hdgTo8DirNum,
   hdgTo4DirNum: hdgTo4DirNum,

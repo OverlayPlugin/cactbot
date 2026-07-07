@@ -2,9 +2,12 @@ import { assert } from 'chai';
 
 import Util, {
   allJobs,
+  AnyDirection,
   casterDpsJobs,
   craftingJobs,
   gatheringJobs,
+  getSortDirectionsClockwiseFunction,
+  getSortPointsClockwiseFunction,
   healerJobs,
   limitedJobs,
   meleeDpsJobs,
@@ -92,5 +95,98 @@ describe('util tests', () => {
     allJobs.filter((job) => !limitedJobs.includes(job)).forEach((job) =>
       assert(!Util.isLimitedJob(job))
     );
+  });
+
+  it('sorts directions clockwise from a reference direction and undefined reference', () => {
+    const dirs: AnyDirection[] = [
+      'dirNE',
+      'dirSW',
+      'dirN',
+      'dirNW',
+      'dirS',
+      'dirW',
+      'dirSE',
+      'dirE',
+    ];
+
+    let expected = ['dirNW', 'dirN', 'dirNE', 'dirE', 'dirSE', 'dirS', 'dirSW', 'dirW'];
+    let sorted = dirs.sort(getSortDirectionsClockwiseFunction('dirNW'));
+    assert.deepEqual(sorted, expected);
+
+    expected = ['dirN', 'dirNE', 'dirE', 'dirSE', 'dirS', 'dirSW', 'dirW', 'dirNW'];
+    sorted = dirs.sort(getSortDirectionsClockwiseFunction());
+    assert.deepEqual(sorted, expected);
+  });
+
+  it('sorts directions and unknowns, putting unknowns at the end', () => {
+    const dirs1: AnyDirection[] = [
+      'dirNE',
+      'unknown',
+      'dirN',
+      'unknown',
+      'dirNW',
+      'dirS',
+    ];
+
+    const expected1 = ['dirN', 'dirNE', 'dirS', 'dirNW', 'unknown', 'unknown'];
+    assert.deepEqual(dirs1.sort(getSortDirectionsClockwiseFunction()), expected1);
+
+    const dirs2: AnyDirection[] = ['dirNE', 'unknown', 'dirN', 'dirNW'];
+    const expected2 = ['dirNW', 'dirN', 'dirNE', 'unknown'];
+    assert.deepEqual(
+      dirs2.sort(getSortDirectionsClockwiseFunction('dirNW')),
+      expected2,
+    );
+  });
+
+  it('sorts points clockwise from a reference point', () => {
+    const getPoints = () => [
+      { id: 'NE', x: 1, y: -1 },
+      { id: 'SW', x: -1, y: 1 },
+      { id: 'N', x: 0, y: -1 },
+      { id: 'NW', x: -1, y: -1 },
+      { id: 'S', x: 0, y: 1 },
+      { id: 'W', x: -1, y: 0 },
+      { id: 'SE', x: 3, y: 3 },
+      { id: 'E', x: 2, y: 0 },
+    ];
+
+    const expected = ['NW', 'N', 'NE', 'E', 'SE', 'S', 'SW', 'W'];
+
+    let [refX, refY] = [-1, -1]; // same as NW
+    let sorted = getPoints().sort(
+      getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }),
+    );
+    assert.deepEqual(sorted.map((point) => point.id), expected);
+
+    [refX, refY] = [-1.2, -0.8];
+    sorted = getPoints().sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }, { x: refX, y: refY }));
+    assert.deepEqual(sorted.map((point) => point.id), expected);
+  });
+
+  it('sorts points clockwise with numeric reference', () => {
+    const points = [
+      { id: 'NE', x: 1, y: -1 },
+      { id: 'NW', x: -1, y: -1 },
+      { id: 'N', x: 0, y: -1 },
+    ];
+
+    const sorted = points.sort(
+      getSortPointsClockwiseFunction({ x: 0, y: 0 }, 0), // reference is south
+    );
+
+    assert.deepEqual(sorted.map((point) => point.id), ['NW', 'N', 'NE']);
+  });
+
+  it('keeps points in input order when all angles are equal', () => {
+    const points = [
+      { id: '1', x: 0, y: -3 },
+      { id: '2', x: 0, y: -4 },
+      { id: '3', x: 0, y: -1 },
+      { id: '4', x: 0, y: -2 },
+    ];
+
+    const sorted = points.sort(getSortPointsClockwiseFunction({ x: 0, y: 0 }));
+    assert.deepEqual(sorted.map((point) => point.id), ['1', '2', '3', '4']);
   });
 });
