@@ -84,6 +84,8 @@ export interface Data extends RaidbossData {
   isDynamicFluidTrue?: boolean;
   deathOrField?: 'death' | 'field';
   wound?: 'white' | 'black';
+  isThunderChargedTrue?: boolean;
+  isBlizzardChargedTrue?: boolean;
 }
 
 const headMarkerData = {
@@ -4551,6 +4553,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
+      id: 'DMU P4 Mana Charge Collect',
+      // 5CD Thunder Charged: Store the value of isThunderTrue for later
+      // 5CC Blizzard Charged: Store the value of isIceTrue for later
+      type: 'GainsEffect',
+      netRegex: { effectId: ['5CD', '5CC'], capture: false },
+      run: (data, matches) => {
+        if (matches.effectId === '5CD')
+          data.isThunderChargedTrue = data.isThunderTrue;
+        else
+          data.isBlizzardChargedTrue = data.isIceTrue;
+      },
+    },
+    {
       id: 'DMU P4 First Cursed Shriek',
       // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
@@ -4755,6 +4770,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: mysteryMagicOutputStrings,
     },
     {
+      id: 'DMU P4 Blizzard Charge Collect',
+      // Store the value of the isIceTrue for later
+      type: 'StartsUsing',
+      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
+      condition: (data) => data.grandCrossCount === 3,
+      run: (data) => data.chargeBlizzardTrue = data.isIceTrue,
+    },
+    {
       id: 'DMU P4 Second Cursed Shriek',
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
@@ -4836,7 +4859,6 @@ const triggerSet: TriggerSet<Data> = {
         puddles: Outputs.baitPuddles,
       },
     },
-    {
       id: 'DMU P4 Mana Release',
       // 5CA Mana Charged falls off ~5.4s prior to startsUsing
       // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
@@ -4847,12 +4869,19 @@ const triggerSet: TriggerSet<Data> = {
         return data.isIceTrue !== undefined && data.isThunderTrue !== undefined;
       },
       infoText: (data, _matches, output) => {
-        if (data.isThunderTrue) {
-          return data.isIceTrue
+        const isThunderCharged = data.isThunderChargedTrue;
+        const isBlizzardCharged = data.isBlizzardChargedTrue;
+        const trueThunder = (isThunderCharged && data.isThunderTrue) ||
+          (!isThunderCharged && !data.isThunderTrue);
+        const trueIce = (isBlizzardCharged && data.isIceTrue) ||
+          (!isBlizzardCharged && !data.isIceTrue);
+
+        if (trueThunder) {
+          return trueIce
             ? output.trueIceTrueThunder!()
             : output.fakeIceTrueThunder!();
         }
-        return data.isIceTrue
+        return trueIce
           ? output.trueIceFakeThunder!()
           : output.fakeIceFakeThunder!();
       },
