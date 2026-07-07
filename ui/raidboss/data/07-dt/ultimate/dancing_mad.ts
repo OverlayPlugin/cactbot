@@ -8,6 +8,10 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
+// TODO: Flood CW/CCW direction
+// TODO: Celestriad triggers
+// TODO: Stray Apocalypse exa location triggers
+// TODO: Forsaken triggers and stack headmarker
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -68,6 +72,11 @@ export interface Data extends RaidbossData {
   forsakenGroupB: string[]; // List of players in Group B
   trineDirNums: number[];
   middleTrineFacing?: 'east' | 'west';
+  // Phase 5
+  repeaterCount: number;
+  orchestraCount: number;
+  mySurprise?: 'flare' | 'holy';
+  hitByHoly: boolean;
 }
 
 const headMarkerData = {
@@ -672,6 +681,10 @@ const triggerSet: TriggerSet<Data> = {
       forsakenGroupA: [],
       forsakenGroupB: [],
       trineDirNums: [],
+      // Phase 5
+      repeaterCount: 0,
+      orchestraCount: 0,
+      hitByHoly: false,
     };
   },
   triggers: [
@@ -3996,6 +4009,264 @@ const triggerSet: TriggerSet<Data> = {
           cn: '到${target}背后',
           ko: '${target} 뒤로',
         },
+      },
+    },
+    {
+      id: 'DMU P5 Ultima Repeater',
+      // 3.7s castTime, followed by 1.1s until first Hit
+      // Hits are 0.7s apart
+      type: 'StartsUsing',
+      netRegex: { id: 'BB40', source: 'Kefka', capture: false },
+      durationSeconds: 7,
+      infoText: (data, _matches, output) => {
+        return output.mechThenMech!({
+          mech1: output.aoe4!(),
+          mech2: data.orchestraCount === 0
+            ? output.roleStacks3!()
+            : output.roleStacks2!(),
+        });
+      },
+      outputStrings: {
+        aoe4: {
+          en: 'AoE x4',
+        },
+        roleStacks2: {
+          en: 'Role Stacks x2',
+        },
+        roleStacks3: {
+          en: 'Role Stacks x3',
+        },
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Ultima Repeater Count',
+      type: 'Ability',
+      netRegex: { id: 'BB41', source: 'Kefka', capture: false },
+      suppressSeconds: 0.6,
+      run: (data) => data.repeaterCount = data.repeaterCount + 1,
+    },
+    {
+      id: 'DMU P5 Fell Forces',
+      // BB41 Ultima Repeater
+      // BB56 Chaotic Holy
+      type: 'Ability',
+      netRegex: { id: ['BB41', 'BB56'], source: 'Kefka', capture: false },
+      condition: (data) => data.repeaterCount === 4 || data.repeaterCount === 8,
+      durationSeconds: (data) => {
+        // Time from last BB41 Ultima Repeater/BB56 Chaotic Holy to C652 Fell Forces
+        const repeaterCount = data.repeaterCount;
+        const orchestraCount = data.orchestraCount;
+        return orchestraCount === 0
+          ? 8.3
+          : orchestraCount === 1 && repeaterCount === 4
+          ? 7.1
+          : orchestraCount === 2 && repeaterCount === 8
+          ? 5.2
+          : 10.2;
+      },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        // 3 Hits => 2 Hits => 2 Hits => 3 Hits
+        return data.orchestraCount === 1
+          ? output.roleStacks2!()
+          : output.roleStacks3!();
+      },
+      outputStrings: {
+        roleStacks2: {
+          en: 'Role Stacks x2',
+        },
+        roleStacks3: {
+          en: 'Role Stacks x3',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Flood',
+      // TODO: Get Clockwise/Counterclockwise of C183 Flood
+      type: 'StartsUsing',
+      netRegex: { id: 'C13F', source: 'Kefka', capture: false },
+      durationSeconds: 8.9,
+      infoText: (_data, _matches, output) => {
+        return output.mechPlusMech!({
+          mech1: output.flood!(),
+          mech2: output.stack4!(),
+        });
+      },
+      outputStrings: {
+        flood: {
+          en: 'Avoid Flood'
+        },
+        stack4: {
+          en: 'Stack x4',
+        },
+        mechPlusMech: {
+          en: '${mech1} + ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Maddening Orchestra',
+      // This may want to be more based on where Fell Forces role stacks will be
+      // Tanks may aslso want to be near each other for the subsequent sharedTankbuster
+      type: 'StartsUsing',
+      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
+      infoText: (data, _matches, output) => {
+        if (data.role !== 'dps')
+          return output.mechThenMech!({
+            mech1: output.clockSpots!(),
+            mech2: output.sharedTankbuster!(),
+          });
+        return output.clockSpots!();
+      },
+      outputStrings: {
+        clockSpots: {
+          en: 'Clock spots',
+          de: 'Himmelsrichtungen',
+          ja: '八方向',
+          cn: '八方',
+          ko: '8방향',
+          tc: '八方',
+        },
+        sharedTankbuster: Outputs.sharedTankbuster,
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Suprise Flare/Holy Collect',
+      // 14E6 Suprise Flare
+      // 14E7 Surpise Holy
+      type: 'GainsEffect',
+      netRegex: { effectId: ['14E6', '14E7'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.mySurprise = matches.effectId === '14E6' ? 'flare' : 'holy',
+    },
+    {
+      id: 'DMU P5 Suprise Flare/Holy',
+      // 14E6 Suprise Flare
+      // 14E7 Surpise Holy
+      // MT will get 1x Suprise Flare, OT will get 1x Suprise Holy
+      // This should only go on tanks and is applied by BB52 Flare
+      // Next BB53 Chaotic Flare sharedTankbuster occurs on the Surprise Flare target
+      type: 'GainsEffect',
+      netRegex: { effectId: ['14E6', '14E7'], capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, matches, output) => {
+        return output.mechThenMech!({
+          mech1: output.sharedTankbuster!(),
+          mech2: matches.effectId === '14E6'
+            ? output.flare!()
+            : output.holy!(),
+        });
+      },
+      outputStrings: {
+        sharedTankbuster: Outputs.sharedTankbuster,
+        flare: {
+          en: 'Big AOE on YOU',
+        },
+        holy: {
+          en: 'Small AOE on YOU',
+        },
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Maddening Orchestra Count',
+      type: 'Ability',
+      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
+      run: (data) => {
+        data.orchestraCount = data.orchestraCount + 1;
+
+        // These will need to be reset prior to 2nd orchestra
+        if (data.orchestraCount === 2) {
+          data.hitByHoly = false;
+          delete data.mySurprise;
+        }
+      },
+    },
+    {
+      id: 'DMU P5 Holy Collect',
+      // First set is random, rest are on nearest players to boss
+      type: 'Ability',
+      netRegex: { id: 'BB54', source: 'Kefka', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hitByHoly = true,
+    },
+    {
+      id: 'DMU P5 Holy',
+      // First set is random, rest are on nearest players to boss
+      type: 'Ability',
+      netRegex: { id: 'BB54', source: 'Kefka', capture: false },
+      condition: (data) => data.mySurprise === undefined,
+      delaySeconds: 0.1,
+      suppressSeconds: 6, // Don't output for the second Holy in orchestra
+      alertText: (data, _matches, output) => {
+        const nearFar = data.hitByHoly ? output.beFar!() : output.beNear!();
+        if (data.role !== 'dps')
+          return output.mechPlusMech!({
+            mech1: nearFar,
+            mech2: output.sharedTankbuster!(),
+          });
+        return nearFar;
+      },
+      outputStrings: {
+        beFar: {
+          en: 'Be Far',
+          de: 'Sei Fern',
+          cn: '站远',
+          ko: '멀리 있기',
+        },
+        beNear: {
+          en: 'Be Near',
+          de: 'Sei Nahe',
+          cn: '站近',
+          ko: '가까이 있기',
+        },
+        sharedTankbuster: Outputs.sharedTankbuster,
+        mechPlusMech: {
+          en: '${mech1} + ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Chaotic Holy/Flare Diffusion',
+      // Trigger on BB53 Chaotic Flare
+      // BB55 Flare Diffusion: Big tank buster AOE on the 14E6 Surprise Flare player
+      // BB56 Chaotic Holy: Small tank buster AOE on the 14E7 Surprise Holy player
+      type: 'Ability',
+      netRegex: { id: 'BB53', source: 'Kefka', capture: false },
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          flare: {
+            en: 'Big Tank Buster AOE on YOU',
+          },
+          holy: {
+            en: 'Small Tank Buster AOE on YOU',
+          },
+          tankBusters: {
+            en: 'Tank Busters',
+            de: 'Tank busters',
+            fr: 'Tank busters',
+            ja: 'タンク強攻撃',
+            cn: '坦克死刑',
+            ko: '탱버',
+            tc: '坦克死刑',
+          },
+        };
+        const surprise = data.mySurprise;
+        const severity = (surprise !== undefined || data.role === 'healer') ? 'alertText' : 'infoText';
+        if (surprise === 'flare')
+          return { [severity]: output.flare!() };
+        if (surprise === 'holy')
+          return { [severity]: output.holy!() };
+        return { [severity]: output.tankBusters!() };
       },
     },
   ],
