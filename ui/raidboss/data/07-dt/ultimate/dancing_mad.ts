@@ -4052,12 +4052,12 @@ const triggerSet: TriggerSet<Data> = {
         if (isEntropyTrue === undefined)
           return;
         return isEntropyTrue
-          ? output.twistersFirst!()
+          ? output.puddlesFirst!()
           : output.donutsFirst!();
       },
       outputStrings: {
-        twistersFirst: {
-          en: 'Twisters First',
+        puddlesFirst: {
+          en: 'Puddles First',
         },
         donutsFirst: {
           en: 'Donuts First',
@@ -4147,11 +4147,11 @@ const triggerSet: TriggerSet<Data> = {
           return;
         return isFluidTrue
           ? output.donutsSecond!()
-          : output.twistersSecond!();
+          : output.puddlesSecond!();
       },
       outputStrings: {
-        twistersSecond: {
-          en: 'Twisters Second',
+        puddlesSecond: {
+          en: 'Puddles Second',
         },
         donutsSecond: {
           en: 'Donuts Second',
@@ -4269,6 +4269,9 @@ const triggerSet: TriggerSet<Data> = {
         },
         fakeBomb: {
           en: 'Motion',
+        },
+        text: {
+          en: 'unknown',
         },
       },
     },
@@ -4416,7 +4419,7 @@ const triggerSet: TriggerSet<Data> = {
           mech1: is1stTrue
             ? output.lookAwayFromPlayers!({ players: msg })
             : output.lookAtPlayers!({ players: msg }),
-          mech2: isEntropyTrue ? output.twisters!() : output.donuts!(),
+          mech2: isEntropyTrue ? output.puddles!() : output.donuts!(),
         });
       },
       outputStrings: {
@@ -4440,15 +4443,7 @@ const triggerSet: TriggerSet<Data> = {
           ko: '모여서 도넛장판 피하기',
           tc: '集合放月環',
         },
-        twisters: {
-          en: 'Twisters',
-          de: 'Wirbelstürme',
-          fr: 'Tornades',
-          ja: '大竜巻',
-          cn: '旋风',
-          ko: '회오리',
-          tc: '旋風',
-        },
+        puddles: Outputs.baitPuddles,
       },
     },
     {
@@ -4466,7 +4461,7 @@ const triggerSet: TriggerSet<Data> = {
         if (isEntropyTrue === undefined)
           return;
 
-        return isEntropyTrue ? output.twisters!() : output.donuts!();
+        return isEntropyTrue ? output.puddles!() : output.donuts!();
       },
       outputStrings: {
         donuts: {
@@ -4477,15 +4472,7 @@ const triggerSet: TriggerSet<Data> = {
           ko: '모여서 도넛장판 피하기',
           tc: '集合放月環',
         },
-        twisters: {
-          en: 'Twisters',
-          de: 'Wirbelstürme',
-          fr: 'Tornades',
-          ja: '大竜巻',
-          cn: '旋风',
-          ko: '회오리',
-          tc: '旋風',
-        },
+        puddles: Outputs.baitPuddles,
       },
     },
     {
@@ -4635,7 +4622,7 @@ const triggerSet: TriggerSet<Data> = {
           mech1: is2ndTrue
             ? output.lookAwayFromPlayers!({ players: msg })
             : output.lookAtPlayers!({ players: msg }),
-          mech2: isFluidTrue ? output.donuts!() : output.twisters!(),
+          mech2: isFluidTrue ? output.donuts!() : output.puddles!(),
         });
       },
       outputStrings: {
@@ -4659,15 +4646,7 @@ const triggerSet: TriggerSet<Data> = {
           ko: '모여서 도넛장판 피하기',
           tc: '集合放月環',
         },
-        twisters: {
-          en: 'Twisters',
-          de: 'Wirbelstürme',
-          fr: 'Tornades',
-          ja: '大竜巻',
-          cn: '旋风',
-          ko: '회오리',
-          tc: '旋風',
-        },
+        puddles: Outputs.baitPuddles,
       },
     },
     {
@@ -4684,7 +4663,7 @@ const triggerSet: TriggerSet<Data> = {
         if (isFluidTrue === undefined)
           return;
 
-        return isFluidTrue ? output.donuts!() : output.twisters!();
+        return isFluidTrue ? output.donuts!() : output.puddles!();
       },
       outputStrings: {
         donuts: {
@@ -4695,15 +4674,7 @@ const triggerSet: TriggerSet<Data> = {
           ko: '모여서 도넛장판 피하기',
           tc: '集合放月環',
         },
-        twisters: {
-          en: 'Twisters',
-          de: 'Wirbelstürme',
-          fr: 'Tornades',
-          ja: '大竜巻',
-          cn: '旋风',
-          ko: '회오리',
-          tc: '旋風',
-        },
+        puddles: Outputs.baitPuddles,
       },
     },
     {
