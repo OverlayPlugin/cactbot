@@ -4542,17 +4542,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Thrumming Thunder III',
-      // BAA4 Mana Charge signifies that the true/fake will be stored for later
-      // Indicated with boss buff 5CA Mana Charged and 5CD Thunder Charged
-      type: 'StartsUsing',
-      netRegex: { id: 'C5DE', source: 'Kefka', capture: false },
-      infoText: (data, _matches, output) => {
-        return data.isThunderTrue ? output.trueThunder!() : output.fakeThunder!();
-      },
-      outputStrings: mysteryMagicOutputStrings,
-    },
-    {
       id: 'DMU P4 Mana Charge Collect',
       // 5CD Thunder Charged: Store the value of isThunderTrue for later
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
@@ -4564,6 +4553,17 @@ const triggerSet: TriggerSet<Data> = {
         else
           data.isBlizzardChargedTrue = data.isIceTrue;
       },
+    },
+    {
+      id: 'DMU P4 Thrumming Thunder III',
+      // BAA4 Mana Charge signifies that the true/fake will be stored for later
+      // Indicated with boss buff 5CA Mana Charged and 5CD Thunder Charged
+      type: 'StartsUsing',
+      netRegex: { id: 'C5DE', source: 'Kefka', capture: false },
+      infoText: (data, _matches, output) => {
+        return data.isThunderTrue ? output.trueThunder!() : output.fakeThunder!();
+      },
+      outputStrings: mysteryMagicOutputStrings,
     },
     {
       id: 'DMU P4 First Cursed Shriek',
