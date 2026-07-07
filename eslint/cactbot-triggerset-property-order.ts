@@ -1,6 +1,24 @@
-const { generateValidList, generateValidObject } = require('./eslint-utils');
+import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
 
-module.exports = {
+import { Docs, generateValidList, generateValidObject } from './tslint-utils';
+
+type Options = [
+  {
+    module: 'oopsyraidsy' | 'raidboss';
+  }?,
+];
+
+type MessageIds = 'sortKeys';
+
+// ------------------------------------------------------------------------------
+// Rule Definition
+// ------------------------------------------------------------------------------
+const createRule = ESLintUtils.RuleCreator<Docs>(
+  (_) =>
+    `https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties`,
+);
+const ruleModule = createRule<Options, MessageIds>({
+  name: 'cactbot-triggerset-property-order',
   meta: {
     type: 'suggestion',
     docs: {
@@ -11,17 +29,15 @@ module.exports = {
         'https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties',
     },
     fixable: 'code',
-    schema: [
-      {
-        'type': 'object',
-        'properties': {
-          'module': {
-            'enum': ['oopsyraidsy', 'raidboss'],
-          },
+    schema: [{
+      type: 'object',
+      properties: {
+        module: {
+          type: 'string',
+          enum: ['oopsyraidsy', 'raidboss'],
         },
-        'additionalProperties': false,
       },
-    ],
+    }],
     messages: {
       sortKeys:
         'Expected triggerSet properties ordered like {{expectedOrder}} (\'{{beforeKey}}\' should be before \'{{nextKey}}\')',
@@ -56,10 +72,12 @@ module.exports = {
     ];
     const optionModule = context.options[0] ? context.options[0].module : undefined;
     if (!optionModule || optionModule !== 'oopsyraidsy' && optionModule !== 'raidboss')
-      return;
+      return {};
     const orderList = optionModule === 'oopsyraidsy' ? oopsyraidsyOrderList : raidbossOrderList;
     return {
-      'VariableDeclarator[id.name=\'triggerSet\'] > ObjectExpression': (node) => {
+      'VariableDeclarator[id.name=\'triggerSet\'] > ObjectExpression': (
+        node: TSESTree.ObjectExpression,
+      ) => {
         const properties = node.properties;
 
         const validList = generateValidList(orderList, properties);
@@ -68,7 +86,7 @@ module.exports = {
           const sourceCode = context.sourceCode;
           validList.forEach((valid) => {
             context.report({
-              node,
+              node: node,
               loc: node.loc,
               messageId: 'sortKeys',
               data: {
@@ -78,8 +96,9 @@ module.exports = {
               },
               fix: (fixer) => {
                 const replacementText = generateValidObject(orderList, properties, sourceCode);
-                if (replacementText)
+                if (replacementText !== undefined)
                   return fixer.replaceTextRange(node.range, replacementText);
+                return null;
               },
             });
           });
@@ -87,4 +106,6 @@ module.exports = {
       },
     };
   },
-};
+});
+
+export default ruleModule;

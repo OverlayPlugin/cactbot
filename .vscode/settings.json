@@ -44,8 +44,9 @@
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
   },
+  "eslint.debug": true,
   "eslint.execArgv": [
-    "--experimental-strip-types"
+    "--loader=ts-node/esm"
   ],
   "eslint.options": {
     "flags": ["unstable_native_nodejs_ts_config"]

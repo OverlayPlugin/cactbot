@@ -1,4 +1,16 @@
-module.exports = {
+import { ESLintUtils } from '@typescript-eslint/utils';
+
+import { Docs } from './tslint-utils';
+
+// ------------------------------------------------------------------------------
+// Rule Definition
+// ------------------------------------------------------------------------------
+const createRule = ESLintUtils.RuleCreator<Docs>(
+  (_) =>
+    `https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties`,
+);
+const ruleModule = createRule({
+  name: 'cactbot-party-member-property-access',
   meta: {
     type: 'suggestion',
     docs: {
@@ -10,12 +22,12 @@ module.exports = {
     },
     fixable: 'code',
     schema: [],
+    messages: {
+      dataPartyMember:
+        `"{{line}}": Use data.party.member(); do not directly access its properties in triggers.`,
+    },
   },
-
-  /**
-   * @param {@} context
-   */
-  create(context) {
+  create: function(context) {
     return {
       'Property[key.name=/(timelineTriggers|triggers)/] > ArrayExpression > ObjectExpression': (
         node,
@@ -29,13 +41,17 @@ module.exports = {
           const match = matchRegex.exec(line);
           if (match) {
             context.report({
-              node,
-              message: `"${line}"
-              Use data.party.member(); do not directly access its properties in triggers.`,
+              node: node,
+              messageId: 'dataPartyMember',
+              data: {
+                line: line,
+              },
             });
           }
         });
       },
     };
   },
-};
+});
+
+export default ruleModule;

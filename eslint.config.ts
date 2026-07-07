@@ -7,13 +7,13 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import cactbotLocaleOrder from './eslint/cactbot-locale-order.js';
-import cactbotOutputStrings from './eslint/cactbot-output-strings.js';
-import cactbotPartyMemberPropertyAccess from './eslint/cactbot-party-member-property-access.js';
-import cactbotResponseDefaultSeverities from './eslint/cactbot-response-default-severities.js';
-import cactbotTimelineTriggers from './eslint/cactbot-timeline-triggers.js';
-import cactbotTriggerPropertyOrder from './eslint/cactbot-trigger-property-order.js';
-import cactbotTriggersetPropertyOrder from './eslint/cactbot-triggerset-property-order.js';
+import cactbotLocaleOrder from './eslint/cactbot-locale-order';
+import cactbotOutputStrings from './eslint/cactbot-output-strings';
+import cactbotPartyMemberPropertyAccess from './eslint/cactbot-party-member-property-access';
+import cactbotResponseDefaultSeverities from './eslint/cactbot-response-default-severities';
+import cactbotTimelineTriggers from './eslint/cactbot-timeline-triggers';
+import cactbotTriggerPropertyOrder from './eslint/cactbot-trigger-property-order';
+import cactbotTriggersetPropertyOrder from './eslint/cactbot-triggerset-property-order';
 
 type Config = ReturnType<typeof defineConfig>[number];
 
@@ -124,13 +124,13 @@ const fixedGoogleConfig: Config = {
 type RuleModule = (typeof importPlugin.rules)[string];
 const cactbotLintPlugin = {
   rules: {
-    'locale-order': cactbotLocaleOrder as RuleModule,
-    'output-strings': cactbotOutputStrings as RuleModule,
-    'party-member-property-access': cactbotPartyMemberPropertyAccess as RuleModule,
-    'response-default-severities': cactbotResponseDefaultSeverities as RuleModule,
-    'timeline-triggers': cactbotTimelineTriggers as RuleModule,
-    'trigger-property-order': cactbotTriggerPropertyOrder as RuleModule,
-    'triggerset-property-order': cactbotTriggersetPropertyOrder as RuleModule,
+    'locale-order': cactbotLocaleOrder as unknown as RuleModule,
+    'output-strings': cactbotOutputStrings as unknown as RuleModule,
+    'party-member-property-access': cactbotPartyMemberPropertyAccess as unknown as RuleModule,
+    'response-default-severities': cactbotResponseDefaultSeverities as unknown as RuleModule,
+    'timeline-triggers': cactbotTimelineTriggers as unknown as RuleModule,
+    'trigger-property-order': cactbotTriggerPropertyOrder as unknown as RuleModule,
+    'triggerset-property-order': cactbotTriggersetPropertyOrder as unknown as RuleModule,
   },
 };
 

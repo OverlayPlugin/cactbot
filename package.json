@@ -25,10 +25,10 @@
     "tsc-no-emit": "tsc --noEmit",
     "lint": "run-s lint:**",
     "lint:dprint": "dprint check",
-    "lint:eslint": "eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 ./",
+    "lint:eslint": "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --loader=ts-node/esm\" eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 ./",
     "lintfix": "run-s lintfix:**",
     "lintfix:dprint": "dprint fmt",
-    "lintfix:eslint": "eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 --fix ./",
+    "lintfix:eslint": "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --loader=ts-node/esm\" eslint --flag unstable_native_nodejs_ts_config --max-warnings=0 --fix ./",
     "stylelint": "stylelint \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "stylelintfix": "stylelint --fix \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "markdownlint": "markdownlint . --ignore node_modules --ignore publish --ignore plugin/ThirdParty",
@@ -141,7 +141,7 @@
       "dprint check"
     ],
     "*.{js,cjs,mjs,ts}": [
-      "eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
+      "cross-env-shell \"NODE_OPTIONS=$NODE_OPTIONS --loader=ts-node/esm\" eslint --flag unstable_native_nodejs_ts_config eslint --max-warnings=0"
     ],
     "*.md": "markdownlint",
     "ui/(raidboss|oopsyraidsy)/data/**": [
