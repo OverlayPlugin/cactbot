@@ -4110,7 +4110,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P5 Maddening Orchestra',
       // This may want to be more based on where Fell Forces role stacks will be
-      // Tanks may aslso want to be near each other for the subsequent sharedTankbuster
+      // Tanks may also want to be near each other for the subsequent sharedTankbuster
       type: 'StartsUsing',
       netRegex: { id: 'BB50', source: 'Kefka', capture: false },
       infoText: (data, _matches, output) => {
