@@ -4388,9 +4388,9 @@ const triggerSet: TriggerSet<Data> = {
             ? output.black!()
             : output.white!(),
           dir: (keep && wound === 'white' && isBlueLeft) ||
-            (keep && wound === 'black' && !isBlueLeft) ||
-            (!keep && wound === 'white' && !isBlueLeft) ||
-            (!keep && wound === 'black' && isBlueLeft)
+              (keep && wound === 'black' && !isBlueLeft) ||
+              (!keep && wound === 'white' && !isBlueLeft) ||
+              (!keep && wound === 'black' && isBlueLeft)
             ? output.right!()
             : output.left!(),
         });
