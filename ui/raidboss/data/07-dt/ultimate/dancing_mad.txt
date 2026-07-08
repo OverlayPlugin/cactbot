@@ -565,8 +565,8 @@ hideall "--sync--"
 # BB06 Big Bang: 2 Circle AOEs that target locations where BB03 Knock Down stacks occurred
 
 # P4 IGNORED Abilities
-# BB1E Inferno: VFX (True) TODO: Verify there is a fake version
-# BB1F Tsunami: VFX (True) TODO: Verify there is a fake version
+# BB1E Inferno: VFX
+# BB1F Tsunami: VFX
 # BB15 Death Bomb: P3 Failing Acceleration Bomb by moving around when true, not moving when fake
 # C5DE Thrumming Thunder III: VFX/Castbar used in P4
 
@@ -680,8 +680,8 @@ hideall "--sync--"
 # BB1B Death Wave: P3 Fake Compressed Wave, Spread
 # BB1C Death Surge: True Wound and Allagan Field/Beyond death
 # BB1D Death Surge: Fake Wound and Allagan Field/Beyond Death
-# BB1E Inferno: VFX (True) TODO: Verify there is a fake version
-# BB1F Tsunami: VFX (True) TODO: Verify there is a fake version
+# BB1E Inferno: VFX
+# BB1F Tsunami: VFX
 # BB20 Inferno
 # BB21 Tsunami
 # BB22 Stray Flames: P3 Entropy delayed Twister
