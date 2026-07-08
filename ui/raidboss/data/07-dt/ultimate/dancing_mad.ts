@@ -4012,7 +4012,8 @@ const triggerSet: TriggerSet<Data> = {
           data.areSecondDebuffsTrue = isTrue;
         else if (data.isDynamicFluidTrue === undefined)
           data.isDynamicFluidTrue = isTrue;
-        // Last set has a double negative, so only tracking debuffs
+        // Last two are not needed as the next is a double negative and last
+        // has unique cast ids for true/fake
       },
     },
     {
@@ -4333,20 +4334,65 @@ const triggerSet: TriggerSet<Data> = {
       },
       condition: Conditions.targetIsYou(),
       delaySeconds: 0.1,
-      durationSeconds: 9,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
+        const wound = data.wound;
+        const deathOrField = data.deathOrField;
+        if (wound === undefined || deathOrField === undefined)
+          return;
+
+        return output.debuffsOnYou!({
+          wound: output[wound]!(),
+          deathOrField: output[deathOrField]!(),
+        });
+      },
+      outputStrings: {
+        death: {
+          en: 'Death',
+        },
+        field: {
+          en: 'Field',
+        },
+        white: {
+          en: 'Purple Debuff',
+        },
+        black: {
+          en: 'Blue Debuff',
+        },
+        debuffsOnYou: {
+          en: '${wound} + ${deathOrField} on YOU',
+        },
+      },
+    },
+    {
+      id: 'DMU P4 Flood of Naught',
+      type: 'StartsUsing',
+      netRegex: { id: ['C392', 'C393', 'C3A1', 'C3A2'], source: 'Neo Exdeath', capture: true },
+      alertText: (data, matches, output) => {
         const wound = data.wound;
         const deathOrField = data.deathOrField;
 
         if (wound === undefined || deathOrField === undefined)
           return;
+
+        const id = matches.id;
+        const isFloodTrue = id === 'C392' || id === 'C393';
+        const isBlueLeft = id === 'C3A1' || id === 'C393'; // Our left
+        const keep = (deathOrField === 'death' && isFloodTrue) ||
+          (deathOrField === 'field' && !isFloodTrue);
+
         const laser = output[deathOrField]!({
-          color: deathOrField === 'death'
+          color: keep
             ? output[wound]!()
             : wound === 'white'
             ? output.black!()
             : output.white!(),
+          dir: (keep && wound === 'white' && isBlueLeft) ||
+            (keep && wound === 'black' && !isBlueLeft) ||
+            (!keep && wound === 'white' && !isBlueLeft) ||
+            (!keep && wound === 'black' && isBlueLeft)
+            ? output.right!()
+            : output.left!(),
         });
 
         const hasFork = data.shortForkedPlayers.includes(data.me);
@@ -4397,10 +4443,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         death: {
-          en: 'Stand in ${color}',
+          en: 'Stand in ${color} (${dir})',
         },
         field: {
-          en: 'Stand in ${color}',
+          en: 'Stand in ${color} (${dir})',
         },
         white: {
           en: 'Purple',
@@ -4408,6 +4454,8 @@ const triggerSet: TriggerSet<Data> = {
         black: {
           en: 'Blue',
         },
+        left: Outputs.left,
+        right: Outputs.right,
         laserThenSpread: {
           en: '${mech1} => ${mech2}',
         },
@@ -4431,20 +4479,13 @@ const triggerSet: TriggerSet<Data> = {
         fakeBomb: {
           en: 'Motion',
         },
-        text: {
-          en: 'unknown',
-        },
       },
     },
     {
       id: 'DMU P4 Short Debuffs',
-      // Using the following as possible matches:
-      // 1558 Beyond Death (Fake) or 566 Beyond Death
-      // 1C6 Allagan Field
-      // The spells/abilities or losesEffect could be triggered from early deaths
-      type: 'GainsEffect',
-      netRegex: { effectId: ['566', '1558', '1C6'], capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      // Once hit by C394 White Antilight or C395 Black Antilight, it is safe to move
+      type: 'Ability',
+      netRegex: { id: ['C394', 'C395'], source: 'Neo Exdeath', capture: false },
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const hasFork = data.shortForkedPlayers.includes(data.me);
