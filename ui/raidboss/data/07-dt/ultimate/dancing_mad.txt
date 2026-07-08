@@ -678,8 +678,8 @@ hideall "--sync--"
 # BB19 Death Bolt: P3 Fake Forked Lightning, Stack
 # BB1A Death Wave: P3 Compressed Wave, Stack
 # BB1B Death Wave: P3 Fake Compressed Wave, Spread
-# BB1C Death Surge: True Wound and Allagan Field/Beyond death
-# BB1D Death Surge: Fake Wound and Allagan Field/Beyond Death
+# BB1C Death Surge: True Allagan Field explosion
+# BB1D Death Surge: Fake Beyond Death explosion
 # BB1E Inferno: VFX
 # BB1F Tsunami: VFX
 # BB20 Inferno
