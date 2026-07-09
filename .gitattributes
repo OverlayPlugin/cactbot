@@ -1,5 +1,5 @@
 * text eol=crlf
-.husky/* text eof=lf
+.husky/* text eol=lf
 
 *.png binary
 *.ogg binary
