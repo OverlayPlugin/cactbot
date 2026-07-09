@@ -4377,7 +4377,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const id = matches.id;
         const isFloodTrue = id === 'C392' || id === 'C393';
-        const isBlueLeft = id === 'C3A1' || id === 'C393'; // Our left
+        const isBlueLeft = id === 'C3A2' || id === 'C393'; // Our left
         const keep = (deathOrField === 'death' && isFloodTrue) ||
           (deathOrField === 'field' && !isFloodTrue);
 
