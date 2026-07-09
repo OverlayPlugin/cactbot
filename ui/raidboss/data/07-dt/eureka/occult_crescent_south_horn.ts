@@ -7897,7 +7897,8 @@ const triggerSet: TriggerSet<Data> = {
         'Deep Freeze': '빙결',
         'Delta Attack': '델타 공격',
         'Demonic Dark II': '악마의 다라',
-        'Demonograph of Dangers Near / Demonograph of Expulsion Afar': '압축식/배척식 악마의 상형문자',
+        'Demonograph of Dangers Near / Demonograph of Expulsion Afar':
+          '압축식/배척식 악마의 상형문자',
         'Demonography': '악마의 상형문자',
         '(?<!-)Destruct': '자폭 지시',
         'Dirty Nails': '더러운 발톱',
@@ -8034,7 +8035,8 @@ const triggerSet: TriggerSet<Data> = {
         'Tidal Breath': '해일 숨결',
         'Tidal Guillotine': '해일 단두대',
         'To the Winds': '폭발 분산',
-        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation': '한/두/네 닢 저주 폭풍 (넉백)',
+        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
+          '한/두/네 닢 저주 폭풍 (넉백)',
         'Unseal(?!ed)': '봉인 해방',
         'Unsealed Aura': '오라 해방',
         'Vengeful Bio III': '복수의 바이오가',

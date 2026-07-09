@@ -11,6 +11,5 @@
   "include": [
     "./util",
     "./test"
-  ],
-  "references": [{ "path": "./tsconfig.json" }]
+  ]
 }

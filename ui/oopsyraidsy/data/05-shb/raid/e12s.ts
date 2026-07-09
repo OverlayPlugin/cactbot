@@ -331,7 +331,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           const centerY = -75;
           const x = parseFloat(matches.x);
           const y = parseFloat(matches.y);
-          let dirObj = null;
+          let dirObj;
           if (y < centerY) {
             if (x > 0)
               dirObj = Outputs.dirNE;

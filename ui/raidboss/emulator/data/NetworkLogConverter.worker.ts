@@ -6,14 +6,6 @@ import LineEvent from './network_log_converter/LineEvent';
 import LogRepository from './network_log_converter/LogRepository';
 import NetworkLogConverter from './NetworkLogConverter';
 
-declare global {
-  // Using `let` or `const` isn't allowed in declare
-  // eslint-disable-next-line no-var
-  var scheduler: {
-    yield?: () => Promise<void>;
-  } | undefined;
-}
-
 const ctx: Worker = self as unknown as Worker;
 
 ctx.addEventListener('message', (msg) => {
@@ -90,6 +82,8 @@ ctx.addEventListener('message', (msg) => {
     if (lines.length > 0) {
       lines = logConverter.convertLines(lines, repo);
       localLogHandler.parseLogs(lines);
+      // Disable "no useless statement" rule. We deliberately clear the array to release memory
+      // eslint-disable-next-line no-useless-assignment
       lines = [];
     }
     ctx.postMessage({
@@ -100,6 +94,7 @@ ctx.addEventListener('message', (msg) => {
     });
 
     // Unset the buffer to free memory before passing message back to main window
+    // eslint-disable-next-line no-useless-assignment
     buf = undefined;
 
     localLogHandler.endFight();

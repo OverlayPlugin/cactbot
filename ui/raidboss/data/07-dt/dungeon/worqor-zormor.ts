@@ -146,13 +146,13 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         // always at least 2 tethered adds
         const coldAddsIds = data.ryoqorAddTether;
-        if (coldAddsIds === undefined || coldAddsIds.length < 2 === undefined)
+        if (coldAddsIds === undefined || coldAddsIds.length < 2)
           return output.avoidStart!();
 
         const coldDirs = coldAddsIds.map((id) => data.ryoqorAddCleaveDir[id] ?? 'unknown');
 
         let firstDirs: DirectionOutput8[] = [];
-        let secondDirs: DirectionOutput8[] = [];
+        let secondDirs: DirectionOutput8[];
 
         if (data.fluffleUpCount === 1) {
           // 2 intercards will be safe first, then the other 2

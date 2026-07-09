@@ -201,8 +201,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.puffCounter < 4, // don't track for Fresh Puff 4
       delaySeconds: 0.2, // sometimes a small delay between effects and updated pos data
       promise: async (data, matches) => {
-        let puffCombatantData = null;
-        puffCombatantData = await callOverlayHandler({
+        const puffCombatantData = await callOverlayHandler({
           call: 'getCombatants',
           ids: [parseInt(matches.targetId, 16)],
         });

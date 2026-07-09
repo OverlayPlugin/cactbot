@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           const isTethered: boolean = tetheredTiles.includes(startTile);
 
           if (unsafeMap[startTile] !== undefined)
-            delete safe[unsafeMap[startTile]![1]]; // delete tile where effect appears, as it will always be unsafe
+            delete safe[unsafeMap[startTile][1]]; // delete tile where effect appears, as it will always be unsafe
           if (
             effect.flags === crossTileFlags && !isTethered ||
             effect.flags === diagonalTileFlags && isTethered
@@ -252,7 +252,7 @@ const triggerSet: TriggerSet<Data> = {
             relCrossTiles.forEach((tileMod) => {
               const deleteTile: number = startTile + tileMod;
               if (unsafeMap[deleteTile] !== undefined)
-                delete safe[unsafeMap[deleteTile]![1]];
+                delete safe[unsafeMap[deleteTile][1]];
             });
           } else if (
             effect.flags === diagonalTileFlags && !isTethered ||
@@ -261,7 +261,7 @@ const triggerSet: TriggerSet<Data> = {
             relDiagonalTiles.forEach((tileMod) => {
               const deleteTile: number = startTile + tileMod;
               if (unsafeMap[deleteTile] !== undefined)
-                delete safe[unsafeMap[deleteTile]![1]];
+                delete safe[unsafeMap[deleteTile][1]];
             });
           } else {
             return;
@@ -300,14 +300,14 @@ const triggerSet: TriggerSet<Data> = {
           case 2: // one inside safe spot
             if (safeTiles.length !== 1 || output[safe0] === undefined)
               return;
-            return output.single!({ dir1: output[safe0]!() });
+            return output.single!({ dir1: output[safe0]() });
           case 3: // two inside safe spots
             if (
               safeTiles.length !== 2 || safe1 === undefined || output[safe0] === undefined ||
               output[safe1] === undefined
             )
               return;
-            return output.combo!({ dir1: output[safe0]!(), dir2: output[safe1]!() });
+            return output.combo!({ dir1: output[safe0](), dir2: output[safe1]() });
           case 4: // here for completeness, but should never be run
             return;
           case 5: // two outside safe spots (reduced to one by Chorus Ixou)
@@ -361,7 +361,7 @@ const triggerSet: TriggerSet<Data> = {
           case 7: // one inside safe spot
             if (safeTiles.length !== 1 || output[safe0] === undefined)
               return;
-            return output.single!({ dir1: output[safe0]!() });
+            return output.single!({ dir1: output[safe0]() });
           case 8: // four safe spots: two inside (east or west pair) and two outside (opposite east or west pair)
             if (safeTiles.length !== 4)
               return;

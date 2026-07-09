@@ -1,4 +1,16 @@
-module.exports = {
+import { ESLintUtils, TSESTree } from '@typescript-eslint/utils';
+
+import { Docs } from './tslint-utils';
+
+// ------------------------------------------------------------------------------
+// Rule Definition
+// ------------------------------------------------------------------------------
+const createRule = ESLintUtils.RuleCreator<Docs>(
+  (_) =>
+    `https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties`,
+);
+const ruleModule = createRule({
+  name: 'cactbot-response-default-severities',
   meta: {
     type: 'suggestion',
     docs: {
@@ -10,10 +22,14 @@ module.exports = {
     },
     fixable: 'code',
     schema: [],
+    messages: {
+      defaultSeverity:
+        'Use default severity in cases where the severity override matches the response default',
+    },
   },
 
   create: (context) => {
-    const defaultSeverityResponseMap = {
+    const defaultSeverityResponseMap: { [key: string]: string[] } = {
       'info': [
         'tankCleave',
         'miniBuster',
@@ -87,24 +103,40 @@ module.exports = {
     };
     return {
       'Property[key.name=\'response\'] > CallExpression[callee.object.name=\'Responses\'][arguments.length!=0]':
-        (node) => {
-          const responseSeverity = node.arguments.map((arg) => arg.value).join(', ');
+        (node: TSESTree.CallExpression) => {
+          const args = node.arguments.filter((arg) => 'value' in arg);
+          const responseSeverity = args.map((arg) => arg.value).join(', ');
           const defaultSeverity = defaultSeverityResponseMap[responseSeverity];
-          if (defaultSeverity && defaultSeverity.includes(node.callee.property.name)) {
+          const callee = node.callee;
+          if (!('property' in callee))
+            return;
+          const calleeProperty = callee.property;
+          if (!('name' in calleeProperty))
+            return;
+          if (defaultSeverity && defaultSeverity.includes(calleeProperty.name)) {
             context.report({
-              node,
-              message:
-                'Use default severity in cases where the severity override matches the response default',
+              node: node,
+              messageId: 'defaultSeverity',
 
               fix: (fixer) => {
-                return fixer.replaceTextRange(
-                  [node.arguments[0].range[0], node.arguments[node.arguments.length - 1].range[1]],
-                  '',
-                );
+                const arg0Start = node.arguments[0]?.range[0];
+                const argNEnd = node.arguments[node.arguments.length - 1]?.range[1];
+                if (arg0Start !== undefined && argNEnd !== undefined) {
+                  return fixer.replaceTextRange(
+                    [
+                      arg0Start,
+                      argNEnd,
+                    ],
+                    '',
+                  );
+                }
+                return null;
               },
             });
           }
         },
     };
   },
-};
+});
+
+export default ruleModule;

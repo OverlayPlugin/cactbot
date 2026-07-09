@@ -408,8 +408,7 @@ const triggerSet: TriggerSet<Data> = {
       promise: async (data, matches) => {
         data.firstAdelphelJump = false;
         // Select Ser Adelphel
-        let adelphelData = null;
-        adelphelData = await callOverlayHandler({
+        const adelphelData = await callOverlayHandler({
           call: 'getCombatants',
           ids: [parseInt(matches.id, 16)],
         });
@@ -858,8 +857,7 @@ const triggerSet: TriggerSet<Data> = {
         };
 
         // Select Ser Janlenoux
-        let combatantNameJanlenoux = null;
-        combatantNameJanlenoux = janlenouxLocaleNames[data.parserLang];
+        const combatantNameJanlenoux = janlenouxLocaleNames[data.parserLang];
 
         let combatantDataJanlenoux = null;
         if (combatantNameJanlenoux !== undefined) {

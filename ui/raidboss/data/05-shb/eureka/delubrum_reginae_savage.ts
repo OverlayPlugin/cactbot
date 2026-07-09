@@ -690,7 +690,7 @@ const triggerSet: TriggerSet<Data> = {
         if (firstDir === undefined || secondDir === undefined)
           throw new UnreachableCode();
 
-        let rotateStr = output.unknown!();
+        let rotateStr;
         let safeDir;
         if (Math.abs(secondDir - firstDir) === 1) {
           rotateStr = secondDir > firstDir ? output.clockwise!() : output.counterclockwise!();
@@ -698,7 +698,7 @@ const triggerSet: TriggerSet<Data> = {
         } else {
           // edge case where one dir is 0 and the other is 7.
           rotateStr = firstDir === 7 ? output.clockwise!() : output.counterclockwise!();
-          safeDir = firstDir === 7 ? safeDir = 6 : safeDir = 1;
+          safeDir = firstDir === 7 ? 6 : 1;
         }
 
         const initialDir = [
@@ -1924,10 +1924,8 @@ const triggerSet: TriggerSet<Data> = {
         };
 
         // select the Trinity and Avatars
-        let combatantNameBoss = null;
-        let combatantNameAvatar = null;
-        combatantNameBoss = trinityLocaleNames[data.parserLang];
-        combatantNameAvatar = avatarLocaleNames[data.parserLang];
+        const combatantNameBoss = trinityLocaleNames[data.parserLang];
+        const combatantNameAvatar = avatarLocaleNames[data.parserLang];
 
         let combatantDataBoss = null;
         let combatantDataAvatars = null;
@@ -2068,8 +2066,8 @@ const triggerSet: TriggerSet<Data> = {
         // because if the clone is cleaving inside, then we know where other clones
         // are cleaving in order to make a '+' where the ends are each cleaved by one
         // clone and the middle square is safe
-        let safeZone = null;
-        let adjacentZones: { [dir: number]: number } = {};
+        let safeZone;
+        let adjacentZones: { [dir: number]: number };
         if (
           northCombatantFacing === dirNum.north && bladeSides[northCombatantBlade] ||
           northCombatantFacing === dirNum.south && !bladeSides[northCombatantBlade]

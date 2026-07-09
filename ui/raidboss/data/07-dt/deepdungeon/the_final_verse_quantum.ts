@@ -469,8 +469,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AC4F', 'AC50'], source: 'Eminent Grief', capture: true },
       run: (data, matches) => {
-        const id = matches.id;
-        id === 'AC4F' ? data.exaflaresFrontBack = 'front' : data.exaflaresFrontBack = 'back';
+        data.exaflaresFrontBack = matches.id === 'AC4F' ? 'front' : 'back';
         data.abyssalScourging = 'abyssal';
       },
     },
@@ -528,8 +527,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AEFD', 'AEFE'], source: 'Eminent Grief', capture: true },
       run: (data, matches) => {
-        const id = matches.id;
-        id === 'AEFD' ? data.exaflaresFrontBack = 'front' : data.exaflaresFrontBack = 'back';
+        data.exaflaresFrontBack = matches.id === 'AEFD' ? 'front' : 'back';
         data.abyssalScourging = 'scourging';
       },
     },
@@ -1095,8 +1093,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AC7D', 'AC7E'], source: 'Eminent Grief', capture: true },
       run: (data, matches) => {
-        const id = matches.id;
-        id === 'AC7D' ? data.manifoldLashings = 'left' : data.manifoldLashings = 'right';
+        data.manifoldLashings = matches.id === 'AC7D' ? 'left' : 'right';
       },
     },
     {

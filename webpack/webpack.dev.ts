@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import { mergeWithRules } from 'webpack-merge';
 
 import { cactbotChunks, cactbotHtmlChunksMap, cactbotModules } from './constants';
@@ -52,4 +54,8 @@ export default mergeWithRules({
   mode: 'development',
   devtool: 'source-map',
   ...tsConfigOverride,
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: `${path.dirname(__dirname)}/node_modules/.cache/webpack.dev`,
+  },
 });

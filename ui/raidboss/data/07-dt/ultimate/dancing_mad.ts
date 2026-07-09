@@ -573,7 +573,8 @@ const triggerSet: TriggerSet<Data> = {
         cn: `输出最多12个首个箭头放置的位置。第二次将相对于首个位置播报<br />
           顺时针: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
-        ko: `최대 12곳의 후보 장소 중에서 첫 번째 화살표를 설치할 위치를 알립니다. 두 번째 호출은 첫 번째 위치를 기준으로 합니다.<br />
+        ko:
+          `최대 12곳의 후보 장소 중에서 첫 번째 화살표를 설치할 위치를 알립니다. 두 번째 호출은 첫 번째 위치를 기준으로 합니다.<br />
           시계 방향: <a href="https://pastebin.com/7fs57PyQ" target="_blank">Kefka Bin</a><br />
           Filipino Box: <a href="https://raidplan.io/plan/5rf2uhud5ztsbud5" target="_blank">Raidplan</a><br />`,
       },
@@ -1620,9 +1621,10 @@ const triggerSet: TriggerSet<Data> = {
         capture: true,
       },
       condition: (data, matches) => {
-        if (data.me === matches.target)
+        if (data.me === matches.target) {
           if (data.myTelePortent1 !== undefined)
             return true;
+        }
         return false;
       },
       durationSeconds: 3,

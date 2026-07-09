@@ -166,9 +166,6 @@ class OopsyConfigurator {
 
       input.onchange = () => {
         updateLabel(input);
-        let value = input.value;
-        if (value.includes('default'))
-          value = 'default';
         this.base.setOption(this.optionKey, ['triggers', id, kField], input.value);
       };
     }
@@ -212,8 +209,12 @@ class OopsyConfigurator {
         if (obj === undefined || obj === null)
           continue;
         if (typeof obj === 'object') {
-          for (const id in obj)
-            item.triggers[id] = { id: id };
+          if (!Array.isArray(obj)) {
+            for (const id in obj)
+              item.triggers[id] = { id: id };
+          } else {
+            console.error('Invalid Oopsy TriggerSet property:', obj);
+          }
         }
       }
 

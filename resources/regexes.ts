@@ -744,7 +744,7 @@ export default class Regexes {
         return `${elem instanceof RegExp ? elem.source : elem}`;
       return `(?:${array.map((elem) => elem instanceof RegExp ? elem.source : elem).join('|')})`;
     };
-    let array: readonly (string | RegExp)[] = [];
+    let array: readonly (string | RegExp)[];
     const [firstArg] = args;
     if (args.length === 1) {
       if (typeof firstArg === 'string' || firstArg instanceof RegExp)

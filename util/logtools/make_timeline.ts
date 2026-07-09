@@ -70,62 +70,64 @@ type ExtendedArgs = Partial<ExtendedArgsRequired>;
 
 const timelineParse = new LogUtilArgParse();
 
-timelineParse.parser.addArgument(['--output_file', '-of'], {
+timelineParse.parser.add_argument('--output_file', '-of', {
   nargs: '?',
   type: 'string',
   help: 'Optional location to write timeline to file.',
 });
 
-timelineParse.parser.addArgument(['--ignore_id', '-ii'], {
+timelineParse.parser.add_argument('--ignore_id', '-ii', {
   nargs: '+',
   help: 'Ability IDs to ignore, e.g. 27EF',
 });
 
-timelineParse.parser.addArgument(['--ignore_ability', '-ia'], {
+timelineParse.parser.add_argument('--ignore_ability', '-ia', {
   nargs: '+',
   help: 'Ability names to ignore, e.g. Attack',
 });
 
-timelineParse.parser.addArgument(['--ignore_combatant', '-ic'], {
+timelineParse.parser.add_argument('--ignore_combatant', '-ic', {
   nargs: '+',
   help: 'Combatant names to ignore, e.g. "Aratama Soul"',
 });
 
-timelineParse.parser.addArgument(['--only_combatant', '-oc'], {
+timelineParse.parser.add_argument('--only_combatant', '-oc', {
   nargs: '+',
   help: 'Only the listed combatants will generate timeline data, e.g. "Aratama Soul"',
 });
 
-timelineParse.parser.addArgument(['--phase', '-p'], {
+timelineParse.parser.add_argument('--phase', '-p', {
   nargs: '+',
   help: 'Abilities that indicate a new phase, and the time to jump to, e.g. 28EC:1000',
 });
 
-timelineParse.parser.addArgument(['--include_targetable', '-it'], {
+timelineParse.parser.add_argument('--include_targetable', '-it', {
   nargs: '+',
   help: 'Set this flag to include "34" log lines when making the timeline',
 });
 
-timelineParse.parser.addArgument(['--list_abilities', '-la'], {
+timelineParse.parser.add_argument('--list_abilities', '-la', {
   nargs: '?',
   help: 'Set this flag to include a complete/unfiltered ability list after the timeline',
 });
 
-timelineParse.parser.addArgument(
-  ['-s', '--start'],
+timelineParse.parser.add_argument(
+  '-s',
+  '--start',
   {
     type: 'string',
     help: 'Timestamp of the start, e.g. \'12:34:56.789',
   },
 );
-timelineParse.parser.addArgument(
-  ['-e', '--end'],
+timelineParse.parser.add_argument(
+  '-e',
+  '--end',
   { type: 'string', help: 'Timestamp of the end, e.g. \'12:34:56.789' },
 );
 
 const printHelpAndExit = (errString: string): void => {
   console.error(errString);
-  timelineParse.parser.printHelp();
+  timelineParse.parser.print_help();
   process.exit(-1);
 };
 
@@ -395,10 +397,9 @@ const findTimeDifferences = (lastTimeDiff: number): { diffSeconds: number; drift
   } else if (diffMilliSeconds > 400) {
     // Round down, warning of exceptional drift
     drift = diffMilliSeconds;
-  } else {
-    // If <20ms then there's no need to adjust sec or drift
-    true;
   }
+
+  // If <20ms then there's no need to adjust sec or drift
   return { diffSeconds: diffSeconds, drift: drift };
 };
 
@@ -702,7 +703,7 @@ const writeTimelineToFile = (entryList: string[], fileName: string, force: boole
 
 const makeTimeline = async () => {
   const args: ExtendedArgs = new ExtendedArgsRequired({});
-  timelineParse.parser.parseArgs(undefined, args);
+  timelineParse.parser.parse_args(undefined, args);
   validateArgs(args);
 
   let assembled: string[] = [];

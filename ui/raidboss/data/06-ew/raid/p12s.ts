@@ -543,11 +543,14 @@ const triggerSet: TriggerSet<Data> = {
           `Afficher la position finale uniquement dans l\'ordre des paires choisies, sans inversion.
             Par exemple, pour le BPOG, le X bleu (croix) sera loin à l\'ouest.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        cn: `直接报自己图案的最终位置，不报变换前的。例如，对于 BPOG 打法，蓝 X 会直接报第一列（西面最远）。
+        cn:
+          `直接报自己图案的最终位置，不报变换前的。例如，对于 BPOG 打法，蓝 X 会直接报第一列（西面最远）。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        ko: `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
+        ko:
+          `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列(西面最遠)。
+        tc:
+          `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列(西面最遠)。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
       },
       name: {
@@ -1299,8 +1302,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.darkTower!();
         }
 
-        const locations = ['NE', 'SW', 'SE', 'NW'] as const;
-        type TowerLocation = typeof locations[number];
+        type TowerLocation = 'NE' | 'SW' | 'SE' | 'NW';
         type CloneLocation = 'NNW' | 'NNE' | 'ENE' | 'ESE' | 'SSE' | 'SSW' | 'WNW' | 'WSW';
         type TowerData = {
           location: TowerLocation;
@@ -2876,7 +2878,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.superchain2bSecondDir === undefined || x === undefined)
           return output.combined!({ mechanic: mechanicStr, dir: output.avoid!() });
 
-        let safeLane = output.avoid!(); // default if unable to determine safe lane
+        let safeLane;
 
         // In Ray 2 (SC IIB), the adds spawn with PosX of [87, 103] or [97, 113].
         // Because of mech timing, there is only realistically time to move either inside or outside

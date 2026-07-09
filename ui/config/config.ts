@@ -673,7 +673,7 @@ export class CactbotConfigurator {
 
     const a = document.createElement('a');
     // TODO: fix me
-    /* eslint-disable-next-line deprecation/deprecation */
+    /* eslint-disable-next-line @typescript-eslint/no-deprecated */
     a.name = group;
     collapser.appendChild(a);
 
@@ -1063,12 +1063,9 @@ export class CactbotConfigurator {
           title = this.translate(zoneInfo.name);
       }
 
-      let zoneLabel: LocaleText | undefined = undefined;
-
       // if a zoneLabel is set, use for the title
       if (triggerSet.zoneLabel) {
-        zoneLabel = triggerSet.zoneLabel;
-        title = this.translate(zoneLabel);
+        title = this.translate(triggerSet.zoneLabel);
       }
 
       const fileKey = filename.replace(/\//g, '-').replace(/.[jt]s$/, '');
@@ -1098,15 +1095,13 @@ export class CactbotConfigurator {
       // may also use zoneRegex or also have errors and not have either.
       let title = '???';
       let zoneId: number | undefined = undefined;
-      let zoneLabel: LocaleText | undefined = undefined;
 
-      /* eslint-disable-next-line deprecation/deprecation */
+      /* eslint-disable-next-line @typescript-eslint/no-deprecated */
       const origZoneRegex = triggerSet.zoneRegex;
 
       // if a zoneLabel is set, use for the title
       if (triggerSet.zoneLabel) {
-        zoneLabel = triggerSet.zoneLabel;
-        title = this.translate(zoneLabel);
+        title = this.translate(triggerSet.zoneLabel);
         if (typeof triggerSet.zoneId === 'number') {
           zoneId = triggerSet.zoneId;
         }

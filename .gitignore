@@ -4,6 +4,7 @@ bin/
 obj/
 packages/
 user/
+.husky/_
 
 !user/README.txt
 plugin/**/*.csproj.user

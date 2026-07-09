@@ -401,8 +401,8 @@ export class EncounterFinder {
   }
 
   onCE(line: string, matches: NetMatches['ActorControl']): void {
-    let validDirectorIds = undefined;
-    let validCEs = undefined;
+    let validDirectorIds;
+    let validCEs;
     if (this.currentZone.zoneId === ZoneId.TheBozjanSouthernFront) {
       validDirectorIds = BozjaDirectorIds;
       validCEs = BozjaCEs;

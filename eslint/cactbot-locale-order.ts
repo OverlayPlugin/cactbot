@@ -1,4 +1,6 @@
-const { generateValidList, generateValidObject, getUnknownLocales } = require('./eslint-utils');
+import { ESLintUtils } from '@typescript-eslint/utils';
+
+import { Docs, generateValidList, generateValidObject, getUnknownLocales } from './tslint-utils';
 
 const defaultOrderList = [
   'en',
@@ -10,16 +12,21 @@ const defaultOrderList = [
   'tc',
 ];
 
-let orderList = [];
+type Options = [
+  string[],
+];
+
+type MessageIds = 'sortKeys' | 'unknownLocale';
 
 // ------------------------------------------------------------------------------
 // Rule Definition
 // ------------------------------------------------------------------------------
-
-/**
- * @type Rule.RuleModule
- */
-const ruleModule = {
+const createRule = ESLintUtils.RuleCreator<Docs>(
+  (_) =>
+    `https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties`,
+);
+const ruleModule = createRule<Options, MessageIds>({
+  name: 'cactbot-locale-order',
   meta: {
     type: 'suggestion',
 
@@ -33,9 +40,10 @@ const ruleModule = {
     fixable: 'code',
     schema: [
       {
-        'type': 'array',
-        'items': {
-          'type': 'string',
+        type: 'array',
+        items: {
+          type: 'string',
+          enum: defaultOrderList,
         },
       },
     ],
@@ -48,7 +56,7 @@ const ruleModule = {
   create: function(context) {
     // fill orderList with option,
     // otherwise use the default one.
-    orderList = context.options[0] || defaultOrderList;
+    const orderList = context.options[0] ?? defaultOrderList;
 
     return {
       ObjectExpression(node) {
@@ -71,10 +79,10 @@ const ruleModule = {
         const validList = generateValidList(orderList, properties);
 
         if (validList.length >= 1) {
-          const sourceCode = context.getSourceCode();
+          const sourceCode = context.sourceCode;
           validList.forEach((valid) => {
             context.report({
-              node,
+              node: node,
               loc: node.loc,
               messageId: 'sortKeys',
               data: {
@@ -84,8 +92,9 @@ const ruleModule = {
               },
               fix: (fixer) => {
                 const replacementText = generateValidObject(orderList, properties, sourceCode);
-                if (replacementText)
+                if (replacementText !== undefined)
                   return fixer.replaceTextRange(node.range, replacementText);
+                return null;
               },
             });
           });
@@ -93,6 +102,6 @@ const ruleModule = {
       },
     };
   },
-};
+});
 
-module.exports = ruleModule;
+export default ruleModule;

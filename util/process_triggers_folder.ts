@@ -136,7 +136,9 @@ const processAllFiles = async (root: string) => {
   });
 
   // the --excludes here is to override excludes in config file, doesn't have any meanings.
-  await exec('npx dprint fmt dist/triggers/**/*.js --excludes node_modules');
+  await exec(
+    'npx dprint fmt dist/triggers/**/*.js --no-gitignore --excludes-override node_modules',
+  );
 
   process.exit(0);
 };

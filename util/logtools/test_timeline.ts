@@ -55,7 +55,7 @@ const testLineArray = async (
   const repo = new LogRepository();
   const lineEvents = lines.map((line) => ParseLine.parse(repo, line)).filter((l) =>
     l !== undefined
-  ) as LineEvent[];
+  );
   return await testLineEvents(lineEvents, timelineName, driftWarn, driftFail);
 };
 
@@ -379,24 +379,27 @@ export const main = async (): Promise<void> => {
   const parser = timelineParse.parser;
 
   // Log file arguments
-  parser.addArgument(
-    ['-s', '--start'],
+  parser.add_argument(
+    '-s',
+    '--start',
     {
       type: 'string',
       help: 'Timestamp of the start, e.g. \'2024-01-23T12:34:56.7890000-04:00\'',
     },
   );
-  parser.addArgument(
-    ['-e', '--end'],
+  parser.add_argument(
+    '-e',
+    '--end',
     { type: 'string', help: 'Timestamp of the end, e.g. \'2024-01-23T12:34:56.7890000-04:00\'' },
   );
 
   // Output Format arguments
-  parser.addArgument(
-    ['-df', '--drift_failure'],
+  parser.add_argument(
+    '-df',
+    '--drift_failure',
     {
       nargs: '?',
-      defaultValue: defaultDriftFail,
+      default: defaultDriftFail,
       type: 'float',
       help:
         `If an entry misses its timestamp by more than this value in seconds, it is displayed in red. Defaults to ${
@@ -404,11 +407,12 @@ export const main = async (): Promise<void> => {
         }.`,
     },
   );
-  parser.addArgument(
-    ['-dw', '--drift_warning'],
+  parser.add_argument(
+    '-dw',
+    '--drift_warning',
     {
       nargs: '?',
-      defaultValue: defaultDriftWarn,
+      default: defaultDriftWarn,
       type: 'float',
       help:
         `If an entry misses its timestamp by more than this value in seconds, it is displayed in yellow. Defaults to ${
@@ -418,7 +422,7 @@ export const main = async (): Promise<void> => {
   );
 
   const args: TestTimelineNamespace = new TestTimelineNamespaceRequired({});
-  timelineParse.parser.parseArgs(undefined, args);
+  timelineParse.parser.parse_args(undefined, args);
 
   return testTimelineFunc(args);
 };

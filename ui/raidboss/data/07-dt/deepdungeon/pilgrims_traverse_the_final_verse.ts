@@ -462,8 +462,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: ['AC2A', 'AC2C'], source: 'Eminent Grief', capture: true },
       preRun: (data, matches) => {
-        const id = matches.id;
-        id === 'AC2A' ? data.abyssalFrontBack = 'front' : data.abyssalFrontBack = 'back';
+        data.abyssalFrontBack = matches.id === 'AC2A' ? 'front' : 'back';
         data.abyssalSides = false;
       },
       infoText: (data, _matches, output) => {

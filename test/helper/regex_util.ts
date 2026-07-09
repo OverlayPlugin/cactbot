@@ -4,7 +4,7 @@ import logDefinitions from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 import LogRepository from '../../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../../ui/raidboss/emulator/data/network_log_converter/ParseLine';
-import { ExampleLineDef, ExampleLineName } from '../../util/example_log_lines';
+import { type ExampleLineDef, type ExampleLineName } from '../../util/example_log_lines';
 
 import lineTests, {
   ExampleLineNameWithRepeating,

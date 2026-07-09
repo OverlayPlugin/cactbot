@@ -120,7 +120,6 @@ const triggerSet: TriggerSet<Data> = {
     // Yes yes, a textarea would be nice here to put everything on separate lines,
     // but OverlayPlugin does not seem to support delivering the enter key and
     // so there's no way to have one box with names on separate lines.  Sorry!
-    /* eslint-disable max-len */
     {
       ...gaolConfig('gaolOrder1'),
       comment: {
@@ -159,7 +158,6 @@ const triggerSet: TriggerSet<Data> = {
     gaolConfig('gaolOrder18'),
     gaolConfig('gaolOrder19'),
     gaolConfig('gaolOrder20'),
-    /* eslint-enable max-len */
   ],
   timelineFile: 'ultima_weapon_ultimate.txt',
   initData: () => {
@@ -448,9 +446,11 @@ const triggerSet: TriggerSet<Data> = {
           'Wo sich die beiden Schwestern befinden, die die Tanks blockieren sollen. dir1 ist immer die erste Schwester, die im Norden beginnt und im Uhrzeigersinn verläuft.',
         fr:
           'L\'emplacement des deux sœurs à bloquer pour les tanks. dir1 est toujours le premier emplacement de la sœur en commençant par le nord et en allant dans le sens des aiguilles d\'une montre.',
-        ja: 'タンクがブロックする2人の分身の位置。dir1 は基本的に「北」から始まり、時計回りに最初の分身の位置に戻ります。',
+        ja:
+          'タンクがブロックする2人の分身の位置。dir1 は基本的に「北」から始まり、時計回りに最初の分身の位置に戻ります。',
         cn: '两分身待坦克阻挡的位置。dir1 始终是从地图上方开始顺时针方向的第一个分身位置',
-        ko: '탱커가 막을 두 분신의 위치. dir1은 북쪽에서 시계방향으로 도는 것을 기준으로 항상 첫 번째 분신의 위치입니다',
+        ko:
+          '탱커가 막을 두 분신의 위치. dir1은 북쪽에서 시계방향으로 도는 것을 기준으로 항상 첫 번째 분신의 위치입니다',
         tc: '兩分身待坦克阻擋的位置。dir1 始終是從地圖上方開始順時針方向的第一個分身位置',
       },
       type: 'StartsUsing',
@@ -986,7 +986,8 @@ const triggerSet: TriggerSet<Data> = {
           `Si le premier clou était en intercardinal, alors le premier dash d'Ifrit est en intercardinal
              et cette annonce optionnelle vous préviens de vous déplacer pour être adjacent à ce premier dash.
              Si vous êtes déjà en sécurité, cette option n'est pas activée.`,
-        ja: `最初の楔が北東、南東、南西、北西なら、最初のイフリートの突進も北東、南東、南西、北西になり、
+        ja:
+          `最初の楔が北東、南東、南西、北西なら、最初のイフリートの突進も北東、南東、南西、北西になり、
              このオプションはその最初のダッシュに隣接するように移動するためのものです。
              すでに安地にいる場合、これは呼び出されません。`,
         cn: `如果第一个火神柱在对角线上，那么第一次火神冲也在对角线上。
@@ -1274,13 +1275,13 @@ const triggerSet: TriggerSet<Data> = {
         const numDir = [0, 0, 0, 0]; // north, east, south, west
         for (const bomb of bombs) {
           if (bomb.y < centerY)
-            numDir[0]++;
+            numDir[0]!++;
           else
-            numDir[2]++;
+            numDir[2]!++;
           if (bomb.x < centerX)
-            numDir[3]++;
+            numDir[3]!++;
           else
-            numDir[1]++;
+            numDir[1]!++;
         }
 
         for (let idx = 0; idx < numDir.length; ++idx) {

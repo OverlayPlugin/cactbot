@@ -45,7 +45,7 @@ const triggerSet: TriggerSet<Data> = {
         };
 
         // select the 4 most recent Ifrit or Raktapaksa's depending on phase
-        let combatantName = null;
+        let combatantName;
         if (data.phase === 'ifrit')
           combatantName = ifritLocaleNames[data.parserLang];
         else

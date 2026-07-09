@@ -956,7 +956,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: 'D2' },
       run: (data, matches) => {
         data.dooms ??= [null, null, null];
-        let order = null;
+        let order;
         if (parseFloat(matches.duration) < 9)
           order = 0;
         else if (parseFloat(matches.duration) < 14)

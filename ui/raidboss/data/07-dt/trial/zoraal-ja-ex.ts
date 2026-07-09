@@ -79,8 +79,7 @@ const findClosestTile: (x: number, y: number) => TileName = (x, y) => {
 const quadrantNames = ['north', 'east', 'south', 'west'] as const;
 type QuadrantName = typeof quadrantNames[number];
 
-const knockPlatforms = ['northwest', 'northeast', 'southwest', 'southeast'] as const;
-type Intercard = typeof knockPlatforms[number];
+type Intercard = 'northwest' | 'northeast' | 'southwest' | 'southeast';
 
 // Forged Track
 // The NE & NW platforms always have wind+fire tethers; SE & SW platforms always have line cleaves

@@ -190,7 +190,7 @@ export const getLocaleTable: {
 };
 
 export const getRawCsv = async (table: string, locale: Lang): Promise<string> => {
-  let url = '';
+  let url;
   if (locale === 'cn')
     url = `${baseGithub}${cnGithub}${table}.csv`;
   else if (locale === 'tc')

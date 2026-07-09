@@ -21,14 +21,14 @@
   "[typescript]": {
     "editor.defaultFormatter": "dprint.dprint"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts",
-    "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,.eslintrc.cjs,.markdownlint.yml,.mocharc.cjs",
+    "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,eslint.config.ts,.markdownlint.jsonc,.mocharc.cjs,.yamllint.yml,dprint.json,stylelint.config.ts",
     "tsconfig.json": "tsconfig.*.json,tsconfig-for-webpack.json",
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
@@ -39,9 +39,16 @@
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts",
-    "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,.eslintrc.cjs,.markdownlint.yml,.mocharc.cjs",
+    "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,eslint.config.ts,.markdownlint.jsonc,.mocharc.cjs,.yamllint.yml,dprint.json,stylelint.config.ts",
     "tsconfig.json": "tsconfig.*.json,tsconfig-for-webpack.json",
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
+  },
+  "eslint.debug": true,
+  "eslint.execArgv": [
+    "--loader=ts-node/esm"
+  ],
+  "eslint.options": {
+    "flags": ["unstable_native_nodejs_ts_config"]
   }
 }
