@@ -737,13 +737,13 @@ hideall "--sync--"
 # C2E3 The Decisive Battle: Cast by Exdeath, shares health pool with Chaos
 # C2E4 Aetherlink: Cast by Chaos
 # C2E5 Aetherlink: Cast by Exdeath
-# C392 Flood of Naught: True Cast, C394 White Antilight is on boss' right, C395 Black Antilight on boss' left
-# C393 Flood of Naught: True Cast, C395 Black Antilight is on boss' right, C394 White Antilight on boss' left
+# C392 Flood of Naught: True Cast, C394 White Antilight (Purple) is on boss' right, C395 Black Antilight (Blue) on boss' left
+# C393 Flood of Naught: True Cast, C395 Black Antilight (Blue) is on boss' right, C394 White Antilight (Purple) on boss' left
 # C394 White Antilight
 # C395 Black Antilight
 # C396 Edge of Death
-# C3A1 Flood of Naught: Fake Cast, C395 Black Antilight is on boss' right, C394 White Antilight on boss' left
-# C3A2 Flood of Naught: Fake Cast, C394 White Antilight is on boss' right, C395 Black Antilight on boss' left
+# C3A1 Flood of Naught: Fake Cast, C395 Black Antilight (Purple) is on boss' right, C394 White Antilight (Blue) on boss' left
+# C3A2 Flood of Naught: Fake Cast, C394 White Antilight (Blue) is on boss' right, C395 Black Antilight (Purple) on boss' left
 # C3F7 Aero III Assault
 # C3FD --sync--: Boss jumps to middle
 # C403 Revolting Ruin III
