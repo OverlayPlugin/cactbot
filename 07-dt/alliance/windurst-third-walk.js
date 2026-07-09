@@ -198,6 +198,7 @@ const promathiaExplosionOutputStrings = {
   avoidExplosions: {
     en: ' Avoid Puddle Explosions',
     cn: ' 躲避爆炸圈圈',
+    ko: ' 장판 폭발 피하기',
   },
 };
 // Return combatant's platform by number.
@@ -300,19 +301,23 @@ Options.Triggers.push({
         combo: {
           en: '${dir} + ${prox}',
           cn: '${dir} + ${prox}',
+          ko: '${dir} + ${prox}',
         },
         ...cardDirToOutputStrings,
         close: {
           en: 'Get close',
           cn: '靠近',
+          ko: '가까이 붙기',
         },
         far: {
           en: 'Get far',
           cn: '远离',
+          ko: '멀리 떨어지기',
         },
         unknown: {
           en: 'Avoid rock crusher',
           cn: '躲避岩石挤压',
+          ko: '바위 압착 피하기',
         },
       },
     },
@@ -393,11 +398,13 @@ Options.Triggers.push({
         combo: {
           en: 'Move ${dir} + ${under}',
           cn: '去${dir} + ${under}',
+          ko: '${dir}으로 이동 + ${under}',
         },
         under: Outputs.getUnder,
         unknown: {
           en: 'Move to next circle',
           cn: '去下一个圈圈',
+          ko: '다음 원으로 이동',
         },
         ...cardDirToOutputStrings,
       },
@@ -442,6 +449,7 @@ Options.Triggers.push({
         proxAOE: {
           en: 'Avoid Proximity AoEs',
           cn: '远离距离衰减 AOE',
+          ko: '거리 감쇠 장판 피하기',
         },
       },
     },
@@ -474,6 +482,7 @@ Options.Triggers.push({
         knockWest: {
           en: 'Knockback west into wall',
           cn: '向左击退至墙',
+          ko: '서쪽 벽으로 넉백',
         },
       },
     },
@@ -487,6 +496,7 @@ Options.Triggers.push({
         knockEast: {
           en: 'Knockback east into wall',
           cn: '向右击退至墙',
+          ko: '동쪽 벽으로 넉백',
         },
       },
     },
@@ -676,10 +686,12 @@ Options.Triggers.push({
         pinwheel: {
           en: 'Pinwheel: Lean ${rot} close',
           cn: '旋转焰火：向${rot}侧靠近',
+          ko: '회전: ${rot}쪽으로 가까이 붙기',
         },
         cardSafe: {
           en: 'Go ${dir} close',
           cn: '去${dir}靠近',
+          ko: '${dir} 가까이 붙기',
         },
         ...cardDirToOutputStrings,
         cw: Outputs.clockwise,
@@ -687,6 +699,7 @@ Options.Triggers.push({
         unknownSpear: {
           en: 'Avoid spear triangles',
           cn: '躲避旋转扇形',
+          ko: '회전하는 부채꼴 피하기',
         },
       },
     },
@@ -721,6 +734,7 @@ Options.Triggers.push({
         noShields: {
           en: 'Attack only unshielded Gordius',
           cn: '只攻击无护盾的戈耳狄系统',
+          ko: '보호막 없는 시스템만 공격',
         },
       },
     },
@@ -814,10 +828,12 @@ Options.Triggers.push({
         wheelLasers: {
           en: '${out} + ${behind} => avoid lasers',
           cn: '${out} + ${behind} => 躲避激光',
+          ko: '${out} + ${behind} => 레이저 피하기',
         },
         wheelBlessing: {
           en: '${out} + ${dir}',
           cn: '${out} + ${dir}',
+          ko: '${out} + ${dir}',
         },
         behind: Outputs.getBehind,
         left: Outputs.left,
@@ -856,6 +872,7 @@ Options.Triggers.push({
         bastionLasers: {
           en: '${behind} + ${under} => avoid lasers',
           cn: '${behind} + ${under} => 躲避激光',
+          ko: '${behind} + ${under} => 레이저 피하기',
         },
         bastionBlessing: {
           en: '${under} + ${dir}',
@@ -992,6 +1009,7 @@ Options.Triggers.push({
         avoidAuroral: {
           en: 'Go To Safe Corner',
           cn: '前往安全角落',
+          ko: '안전한 구석으로 이동',
         },
       },
     },
@@ -1009,6 +1027,7 @@ Options.Triggers.push({
         avoidBeleaguer: {
           en: 'Dodge 2-1',
           cn: '躲避 2-1',
+          ko: '2-1 피하기',
         },
       },
     },
@@ -1022,6 +1041,7 @@ Options.Triggers.push({
         aoePlusStun: {
           en: 'AoE + stun',
           cn: 'AoE + 眩晕',
+          ko: '전체공격 + 기절',
         },
       },
     },
@@ -1198,6 +1218,7 @@ Options.Triggers.push({
         goDown: {
           en: 'Go lower platform',
           cn: '去下平台',
+          ko: '아래 플랫폼으로 이동',
         },
       },
     },
@@ -1210,6 +1231,7 @@ Options.Triggers.push({
         goUp: {
           en: 'Go upper platform',
           cn: '去上平台',
+          ko: '위 플랫폼으로 이동',
         },
       },
     },
@@ -1224,6 +1246,7 @@ Options.Triggers.push({
         lightLater: {
           en: 'Light safe later',
           cn: '稍后光安全',
+          ko: '나중에 빛 안전',
         },
       },
     },
@@ -1238,6 +1261,7 @@ Options.Triggers.push({
         darkLater: {
           en: 'Dark safe later',
           cn: '稍后暗安全',
+          ko: '나중에 어둠 안전',
         },
       },
     },
@@ -1256,14 +1280,17 @@ Options.Triggers.push({
         upLightSafe: {
           en: 'Up on light platform',
           cn: '去上光平台',
+          ko: '위쪽 빛 플랫폼으로 이동',
         },
         downDarkSafe: {
           en: 'Down on dark platform',
           cn: '去下暗平台',
+          ko: '아래쪽 어둠 플랫폼으로 이동',
         },
         unknownSafe: {
           en: 'Match platform + debuff color',
           cn: '去 debuff 同色平台',
+          ko: '플랫폼과 디버프 색 맞추기',
         },
       },
     },
@@ -1304,6 +1331,7 @@ Options.Triggers.push({
         goUp: {
           en: 'Go upper platform',
           cn: '去上平台',
+          ko: '위 플랫폼으로 이동',
         },
       },
     },
@@ -1401,6 +1429,7 @@ Options.Triggers.push({
         avoidSwords: {
           en: 'Avoid sword cones',
           cn: '躲避扇形剑击',
+          ko: '검 부채꼴 피하기',
         },
       },
     },
@@ -1796,16 +1825,18 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Alexander Resurrected': '부활한 알렉산더',
         'Arcane Sphere': '신비로운 구체',
+        'Aw\'aern': '오아언',
         'Empty Thinker': '허무의 사색가',
         'Empty Wanderer': '허무의 방랑자',
         'Empty Weeper': '허무의 통곡자',
         'Gordius System': '고르디우스 시스템',
         'Hollow King': '공허의 왕',
+        'Medusa Swarmsinger': '메두사 군단가수',
         'Memory Receptacle': '기억의 그릇',
+        'Nemean Lion': '네메아 사자',
         'Promathia': '프로마시아',
         'Shantotto the Demon': '악마 샨토토',
         'Shinryu Paradox': '신룡',
@@ -1844,6 +1875,7 @@ Options.Triggers.push({
         'Cataclysmic Blade': '파멸의 칼날',
         'Cataclysmic Vortex': '파멸의 소용돌이',
         'Celestial Trail': '천계의 궤적',
+        'Circuit Shock': '환형 방전',
         'Circumscribed Fire': '멀어지면 파이어',
         'Cloak of Twilight': '황혼 망토',
         'Comet': '혜성',
