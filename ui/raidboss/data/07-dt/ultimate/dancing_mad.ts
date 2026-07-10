@@ -4234,7 +4234,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Entropy and Dynamic Fluid Debuff Collector',
-      // TODO: Get crystal element spawn locations
       // Applied at BAF2 Bowels of Agony
       // 640 Entropy: On expiration player is hit with point blank AoE and fire
       // crystal targets two closest players with donut AoEs
@@ -4350,7 +4349,7 @@ const triggerSet: TriggerSet<Data> = {
       // 1EC03C => Wind (Green Diamond) Crystal
       //
       // Later the Earth Crystal will spawn in the center
-      // 1EC03D => Earth (Yellow Arrowhead) Crystal (TODO: Verify this BNnpcID)
+      // 1EC03D => Earth (Yellow Arrowhead) Crystal
       // They are removed once players lose their respective debuffs
       type: 'CombatantMemory',
       netRegex: {
