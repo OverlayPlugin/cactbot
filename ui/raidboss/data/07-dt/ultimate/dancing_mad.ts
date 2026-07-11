@@ -4671,6 +4671,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) < 61,
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      durationSeconds: 6.9, // Time until Stray Flames
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const isEntropyTrue = data.isEntropyTrue;
@@ -4698,15 +4699,115 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
     {
-      id: 'DMU P4 Long Debuffs',
-      // Using the following as possible matches:
+      id: 'DMU P4 Stray Flames and Long Debuffs',
+      // Puddles have been baited, these will be going off next:
       // 15A8 Forked Lightning x2 76s
       // 15A9 Compressed Water x2 76s
       // 15AA Acceleration Bomb (2 Long 76s)
-      type: 'GainsEffect',
-      netRegex: { effectId: ['15A8', '15A9', '15AA'], capture: true },
-      condition: (_data, matches) => parseFloat(matches.duration) > 75,
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      type: 'StartsUsing',
+      netRegex: { id: 'BB22', source: 'Chaos', capture: false },
+      durationSeconds: 9, // Time until debuffs expire
+      suppressSeconds: 99999,
+      alertText: (data, _matches, output) => {
+        const hasFork = data.longForkedPlayers.includes(data.me);
+        const hasCompressed = data.longCompressedPlayers.includes(data.me);
+        const hasBomb = data.longBombPlayers.includes(data.me);
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const is2ndTrue = data.areSecondDebuffsTrue;
+
+        if (is2ndTrue === undefined || is1stTrue === undefined)
+          return;
+
+        const players = data.longShriekPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        const gaze = is2ndTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
+        const hasSpread = (hasFork && is1stTrue) || (hasCompressed && !is1stTrue);
+        const hasStack = (hasFork && !is1stTrue) || (hasCompressed && is1stTrue);
+
+        // Handle 2 Mechs
+        if (hasSpread && hasBomb)
+          return output.forkBombThenGaze!({
+            mech1: output.spread!(),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
+          });
+        if (hasStack && hasBomb)
+          return output.compressedBombThenGaze!({
+            mech1: output.stack!(),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: gaze,
+          });
+        if (hasSpread)
+          return output.spreadThenGaze!({
+            mech1: output.spread!(),
+            mech2: gaze,
+          });
+        if (hasStack)
+          return output.stackThenGaze!({
+            mech1: output.stack!(),
+            mech2: gaze,
+          });
+        if (hasBomb)
+          return output.bombThenGaze!({
+            mech1: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: output.stack!(),
+            mech3: gaze,
+          });
+      },
+      outputStrings: {
+        you: {
+          en: 'YOU',
+        },
+        spreadThenGaze: {
+          en: '${mech1} => ${mech2}',
+        },
+        stackThenGaze: {
+          en: '${mech1} => ${mech2}',
+        },
+        bombThenGaze: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+        forkBombThenGaze: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+        compressedBombThenGaze: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+        stack: Outputs.stackMarker,
+        spread: Outputs.spread,
+        bomb: {
+          en: 'Stillness',
+        },
+        fakeBomb: {
+          en: 'Motion',
+        },
+        lookAtPlayers: {
+          en: 'Face ${players}',
+        },
+        lookAwayFromPlayers: {
+          en: 'Look Away from ${players}',
+        },
+      },
+    },
+    {
+      id: 'DMU P4 Fake Stray Flames and Long Debuffs',
+      // Need to wait for the donut then these will be going off next:
+      // 15A8 Forked Lightning x2 76s
+      // 15A9 Compressed Water x2 76s
+      // 15AA Acceleration Bomb (2 Long 76s)
+      type: 'StartsUsing',
+      netRegex: { id: 'BB23', source: 'Chaos', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime), // 4.7s
+      durationSeconds: (_data, matches) => 9 - parseFloat(matches.castTime),
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const hasFork = data.longForkedPlayers.includes(data.me);
@@ -4873,6 +4974,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) > 68,
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      durationSeconds: 6.9, // Time until Stray Spray
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const isFluidTrue = data.isDynamicFluidTrue;
@@ -4921,6 +5023,14 @@ const triggerSet: TriggerSet<Data> = {
           : output.fakeIceFakeThunder!();
       },
       outputStrings: mysteryMagicOutputStrings,
+    },
+    {
+      id: 'DMU P4 Fake Stray Spray',
+      // Puddles have been baited, need to move away
+      type: 'StartsUsing',
+      netRegex: { id: 'BB25', source: 'Chaos', capture: false },
+      suppressSeconds: 99999,
+      response: Responses.moveAway('alert'),
     },
   ],
   timelineReplace: [
