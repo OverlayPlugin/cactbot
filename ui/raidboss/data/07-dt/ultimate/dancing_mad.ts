@@ -4017,68 +4017,6 @@ const triggerSet: TriggerSet<Data> = {
         // has unique cast ids for true/fake
       },
     },
-/*
-    {
-      id: 'DMU P4 Chaos and Neo Exdeath Debuff Info',
-      // In the count field of Effect 808, the bosses receive these values:
-      // Fake Chaos: 45F
-      // True Chaos: 460
-      // Fake Neo Exdeath: 461
-      // True Neo Exdeath: 462
-      type: 'GainsEffect',
-      netRegex: {
-        effectId: '808',
-        count: ['45F', '460', '461', '462'],
-        capture: true,
-      },
-      infoText: (data, matches, output) => {
-        const count = matches.count;
-        if (count === '45F' || count === '460') {
-          const chaosLocaleNames: LocaleText = {
-            en: 'Chaos',
-            de: 'Chaos',
-            fr: 'Chaos',
-            ja: 'カオス',
-            cn: '卡奥斯',
-            ko: '카오스',
-            tc: '卡奧斯',
-          };
-          const chaosName = chaosLocaleNames[data.parserLang];
-          return count === '45F'
-            ? output.fakeChaos!({ chaos: chaosName })
-            : output.trueChaos!({ chaos: chaosName });
-        }
-
-        const exdeathLocaleNames: LocaleText = {
-          en: 'Exdeath',
-          de: 'Exdeath',
-          fr: 'Exdeath',
-          ja: 'エクスデス',
-          cn: '艾克斯迪司',
-          ko: '엑스데스',
-          tc: '艾克斯迪司',
-        };
-        const exdeathName = exdeathLocaleNames[data.parserLang];
-        return count === '461'
-          ? output.fakeExdeath!({ exdeath: exdeathName })
-          : output.trueExdeath!({ exdeath: exdeathName });
-      },
-      outputStrings: {
-        fakeExdeath: {
-          en: 'Fake ${exdeath}',
-        },
-        fakeChaos: {
-          en: 'Fake ${chaos}',
-        },
-        trueExdeath: {
-          en: 'True ${exdeath}',
-        },
-        trueChaos: {
-          en: 'True ${chaos}',
-        },
-      },
-    },
-*/
     {
       id: 'DMU P4 Tsunami/Inferno',
       // BB14 Grand Cross AoE also happens ~4s after this cast starts
