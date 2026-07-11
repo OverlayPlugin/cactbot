@@ -4169,7 +4169,6 @@ const triggerSet: TriggerSet<Data> = {
           : data.longForkedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
 
-
         // Shriek players always are short bomb
         // This will be two players
         if (hasShreik)
