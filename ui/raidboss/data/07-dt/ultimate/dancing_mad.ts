@@ -5206,7 +5206,6 @@ const triggerSet: TriggerSet<Data> = {
           ko: '점프 유도?',
           tc: '引導跳躍?',
         },
-        },
       },
     },
     {
