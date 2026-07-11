@@ -4833,7 +4833,7 @@ const triggerSet: TriggerSet<Data> = {
         if (is2ndTrue === undefined || isFluidTrue === undefined)
           return;
 
-        const players = data.shortShriekPlayers.map(
+        const players = data.longShriekPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
