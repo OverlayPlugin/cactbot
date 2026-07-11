@@ -191,6 +191,7 @@ hideall "--sync--"
 711.7 "Cyclone" Ability { id: "BAF8", source: "Chaos" }
 
 # Ultima Blaster Preview
+719.2 "--jump baited--" StartsUsing { id: "BB00", source: "Chaos" }
 720.1 "Ultima Blaster 1" #Ability { id: "BAE3", source: "Kefka" }
 722.1 "Ultima Blaster 2" #Ability { id: "BAE3", source: "Kefka" }
 724.1 "Ultima Blaster 3" #Ability { id: "BAE3", source: "Kefka" }
