@@ -72,6 +72,7 @@ export interface Data extends RaidbossData {
   grandCrossCount: number;
   shortShriekPlayers: string[];
   longShriekPlayers: string[];
+  isFirstDebuffShort?: boolean;
   shortForkedPlayers: string[];
   longForkedPlayers: string[];
   shortCompressedPlayers: string[];
@@ -4016,6 +4017,68 @@ const triggerSet: TriggerSet<Data> = {
         // has unique cast ids for true/fake
       },
     },
+/*
+    {
+      id: 'DMU P4 Chaos and Neo Exdeath Debuff Info',
+      // In the count field of Effect 808, the bosses receive these values:
+      // Fake Chaos: 45F
+      // True Chaos: 460
+      // Fake Neo Exdeath: 461
+      // True Neo Exdeath: 462
+      type: 'GainsEffect',
+      netRegex: {
+        effectId: '808',
+        count: ['45F', '460', '461', '462'],
+        capture: true,
+      },
+      infoText: (data, matches, output) => {
+        const count = matches.count;
+        if (count === '45F' || count === '460') {
+          const chaosLocaleNames: LocaleText = {
+            en: 'Chaos',
+            de: 'Chaos',
+            fr: 'Chaos',
+            ja: 'カオス',
+            cn: '卡奥斯',
+            ko: '카오스',
+            tc: '卡奧斯',
+          };
+          const chaosName = chaosLocaleNames[data.parserLang];
+          return count === '45F'
+            ? output.fakeChaos!({ chaos: chaosName })
+            : output.trueChaos!({ chaos: chaosName });
+        }
+
+        const exdeathLocaleNames: LocaleText = {
+          en: 'Exdeath',
+          de: 'Exdeath',
+          fr: 'Exdeath',
+          ja: 'エクスデス',
+          cn: '艾克斯迪司',
+          ko: '엑스데스',
+          tc: '艾克斯迪司',
+        };
+        const exdeathName = exdeathLocaleNames[data.parserLang];
+        return count === '461'
+          ? output.fakeExdeath!({ exdeath: exdeathName })
+          : output.trueExdeath!({ exdeath: exdeathName });
+      },
+      outputStrings: {
+        fakeExdeath: {
+          en: 'Fake ${exdeath}',
+        },
+        fakeChaos: {
+          en: 'Fake ${chaos}',
+        },
+        trueExdeath: {
+          en: 'True ${exdeath}',
+        },
+        trueChaos: {
+          en: 'True ${chaos}',
+        },
+      },
+    },
+*/
     {
       id: 'DMU P4 Tsunami/Inferno',
       // BB14 Grand Cross AoE also happens ~4s after this cast starts
@@ -4044,15 +4107,15 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P4 Debuff Collect',
       // Neo Exdeath Debuffs Cast 1: (12:28.672)
       // 15A7 Cursed Shriek x2 60s                        =>          13:28.672
-      // 15A8 Forked Lightning x2 76s                     =>                    13:44.672
-      // 15A9 Compressed Water x2 76s                     =>                    13:44.672
+      // 15A8 Forked Lightning x2 76s or 51s              => 13:19.578          13:44.672
+      // 15A9 Compressed Water x2 76s or 51s              => 13:19.578          13:44.672
       // 15AA Acceleration Bomb (2 Long 76s, 2 Short 51s) => 13:19.672          13:44.672
       // Chaos Debuffs 1: (12:34.341)
       // 15AC Dynamic Fluid x8 84s                        => 13:48.672
       // Neo Exdeath Debuffs Cast 2: (12:43.578)
-      // 15A8 Forked Lightning x2 36s                     => 13:19.578
+      // 15A8 Forked Lightning x2 36s or 61s              => 13:19.578          13.44.578
       // 15A7 Cursed Shriek x2 69s                        => 13:52.578
-      // 15A9 Compressed Water x2 36s                     => 13:19.578
+      // 15A9 Compressed Water x2 36s or 61s              => 13:19.578          13.44.578
       // 15AA Acceleration Bomb (2 Long 61s, 2 Short 36s) => 13:19.578          13:44.578
       // Chaos Debuffs 2: 12:50.485
       // 15AB Entroy x8 45s                               => 13:35.485
@@ -4072,6 +4135,7 @@ const triggerSet: TriggerSet<Data> = {
       // 1 Support, 1 DPS with Long Gaze (Cursed Shriek or Fake Cursed Shriek)
       // 2 Support, 2 DPS with Short Stillness (Acceleration Bomb or Fake Acceleration Bomb)
       // 2 Support, 2 DPS with Long Stillness (Acceleration Bomb or Fake Acceleration Bomb)
+      // 1st and 2nd set debuffs can swap Forked + Compressed Timings
       // For 3rd set of debuffs we do not need to know real/fake:
       // Allagan Field players swap their color by getting hit with opposite color Angilight
       // Beyond Death field players keep their color by getting hit with same colore Antilight
@@ -4106,15 +4170,19 @@ const triggerSet: TriggerSet<Data> = {
             data.longShriekPlayers.push(target);
         } else if (id === '15A8') {
           // Forked Lightning
-          if (duration < 37)
+          if (duration < 52) { // Capture both 51s and 36s
+            if (data.isFirstDebuffShort === undefined)
+              data.isFirstDebuffShort = duration > 37 ? true : false;
             data.shortForkedPlayers.push(target);
-          else
+          } else
             data.longForkedPlayers.push(target);
         } else if (id === '15A9') {
           // Compressed Water
-          if (duration < 37)
+          if (duration < 52) { // Capture both 51s and 36s
+            if (data.isFirstDebuffShort === undefined)
+              data.isFirstDebuffShort = duration > 37 ? true : false;
             data.shortCompressedPlayers.push(target);
-          else
+          } else
             data.longCompressedPlayers.push(target);
         } else if (id === '15AA') {
           // Acceleration Bomb
@@ -4139,8 +4207,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P4 First Debuffs (Early)',
       // Cast 1:
       // 15A7 Cursed Shriek x2 60s
-      // 15A8 Forked Lightning x2 76s
-      // 15A9 Compressed Water x2 76s
+      // 15A8 Forked Lightning x2 76s or 51s
+      // 15A9 Compressed Water x2 76s or 51s
       // 15AA Acceleration Bomb (2 Long 76s, 2 Short 51s)
       type: 'GainsEffect',
       netRegex: { effectId: ['15A7', '15A8', '15A9', '15AA'], capture: true },
@@ -4148,14 +4216,21 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const hasShreik = data.shortShriekPlayers.includes(data.me);
-        const hasFork = data.longForkedPlayers.includes(data.me);
-        const hasCompressed = data.longCompressedPlayers.includes(data.me);
-        const hasBomb = data.longBombPlayers.includes(data.me);
         const isTrue = data.areFirstDebuffsTrue;
+        const isShort = data.isFirstDebuffShort;
 
-        if (isTrue === undefined)
+        if (isTrue === undefined || isShort === undefined)
           return;
+
+        const hasShreik = data.shortShriekPlayers.includes(data.me);
+        const hasFork = isShort
+          ? data.shortForkedPlayers.includes(data.me)
+          : data.longForkedPlayers.includes(data.me);
+        const hasCompressed = isShort
+          ? data.shortForkedPlayers.includes(data.me)
+          : data.longForkedPlayers.includes(data.me);
+        const hasBomb = data.longBombPlayers.includes(data.me);
+
 
         // Shriek players always are short bomb
         // This will be two players
@@ -4167,13 +4242,22 @@ const triggerSet: TriggerSet<Data> = {
 
         // Remaing 6 players will get one debuff
         if ((hasFork && isTrue) || (hasCompressed && !isTrue))
-          return output.spreadSecond!({ mech: output.spread!() });
+          return isShort
+            ? output.spreadFirst!({ mech: output.spread!() })
+            : output.spreadSecond!({ mech: output.spread!() });
         if ((hasFork && !isTrue) || (hasCompressed && isTrue))
-          return output.stackSecond!({ mech: output.stack!() });
+          return isShort
+            ? output.stackFirst!({ mech: output.stack!() })
+            : output.stackSecond!({ mech: output.stack!() });
         if (hasBomb)
           return output.bombSecond!({
             mech: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
+
+        // No debuff, they will be a stack player
+        return isShort
+          ? output.stackFirstNoDebuff!({ mech: output.stack!() })
+          : output.stackSecondNoDebuff!({ mech: output.stack!() });
       },
       outputStrings: {
         firstGazeAndBomb: {
@@ -4185,10 +4269,22 @@ const triggerSet: TriggerSet<Data> = {
         fakeGaze: {
           en: 'Look At',
         },
-        spreadSecond: {
-          en: '${mech} on YOU Second',
+        spreadFirst: {
+          en: '${mech} on YOU First',
+        },
+        stackFirst: {
+          en: '${mech} on YOU First',
+        },
+        stackFirstNoDebuff: {
+          en: 'No Debuff, ${mech} First',
+        },
+        stackSecondNoDebuff: {
+          en: 'No Debuff, ${mech} Second',
         },
         stackSecond: {
+          en: '${mech} on YOU Second',
+        },
+        spreadSecond: {
           en: '${mech} on YOU Second',
         },
         bombSecond: {
@@ -4230,9 +4326,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Second Debuffs (Early)',
       // Cast 2:
-      // 15A8 Forked Lightning x2 36s
+      // 15A8 Forked Lightning x2 36s or 61s
       // 15A7 Cursed Shriek x2 69s
-      // 15A9 Compressed Water x2 36s
+      // 15A9 Compressed Water x2 36s or 61s
       // 15AA Acceleration Bomb (2 Long 61s, 2 Short 36s)
       type: 'GainsEffect',
       netRegex: { effectId: ['15A7', '15A8', '15A9', '15AA'], capture: true },
@@ -4242,14 +4338,20 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const hasShreik = data.longShriekPlayers.includes(data.me);
-        const hasFork = data.shortForkedPlayers.includes(data.me);
-        const hasCompressed = data.shortCompressedPlayers.includes(data.me);
-        const hasBomb = data.shortBombPlayers.includes(data.me);
         const isTrue = data.areSecondDebuffsTrue;
+        const isShort = data.isFirstDebuffShort;
 
-        if (isTrue === undefined)
+        if (isTrue === undefined || isShort === undefined)
           return;
+
+        const hasShreik = data.longShriekPlayers.includes(data.me);
+        const hasFork = isShort
+          ? data.longForkedPlayers.includes(data.me)
+          : data.shortForkedPlayers.includes(data.me);
+        const hasCompressed = isShort
+          ? data.longForkedPlayers.includes(data.me)
+          : data.shortForkedPlayers.includes(data.me);
+        const hasBomb = data.shortBombPlayers.includes(data.me);
 
         // Shriek players always are short bomb
         // This will be two players
@@ -4261,13 +4363,22 @@ const triggerSet: TriggerSet<Data> = {
 
         // Remaing 6 players will get one debuff
         if ((hasFork && isTrue) || (hasCompressed && !isTrue))
-          return output.spreadFirst!({ mech: output.spread!() });
+          return isShort
+            ? output.spreadSecond!({ mech: output.spread!() })
+            : output.spreadFirst!({ mech: output.spread!() });
         if ((hasFork && !isTrue) || (hasCompressed && isTrue))
-          return output.stackFirst!({ mech: output.stack!() });
+          return isShort
+            ? output.stackSecond!({ mech: output.stack!() })
+            : output.stackFirst!({ mech: output.stack!() });
         if (hasBomb)
           return output.bombFirst!({
             mech: isTrue ? output.bomb!() : output.fakeBomb!(),
           });
+
+        // No debuff, they will be a stack player
+        return isShort
+          ? output.stackSecondNoDebuff!({ mech: output.stack!() })
+          : output.stackFirstNoDebuff!({ mech: output.stack!() });
       },
       outputStrings: {
         secondGazeAndBomb: {
@@ -4287,6 +4398,18 @@ const triggerSet: TriggerSet<Data> = {
         },
         bombFirst: {
           en: '${mech} on YOU First',
+        },
+        stackFirstNoDebuff: {
+          en: 'No Debuff, ${mech} First',
+        },
+        stackSecondNoDebuff: {
+          en: 'No Debuff, ${mech} Second',
+        },
+        spreadSecond: {
+          en: '${mech} on YOU Second',
+        },
+        stackSecond: {
+          en: '${mech} on YOU Second',
         },
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
@@ -4396,13 +4519,13 @@ const triggerSet: TriggerSet<Data> = {
             : output.left!(),
         });
 
+        const isTrue = data.areSecondDebuffsTrue;
+        if (isTrue === undefined)
+          return laser;
+
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
-        const isTrue = data.areSecondDebuffsTrue;
-
-        if (isTrue === undefined)
-          return laser;
 
         const hasSpread = (hasFork && isTrue) || (hasCompressed && !isTrue);
         const hasStack = (hasFork && !isTrue) || (hasCompressed && isTrue);
@@ -4489,14 +4612,14 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['C394', 'C395'], source: 'Neo Exdeath', capture: false },
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is1stTrue = data.areFirstDebuffsTrue;
+        if (is2ndTrue === undefined || is1stTrue === undefined)
+          return;
+
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
-        const is2ndTrue = data.areSecondDebuffsTrue;
-        const is1stTrue = data.areFirstDebuffsTrue;
-
-        if (is2ndTrue === undefined || is1stTrue === undefined)
-          return;
 
         const players = data.shortShriekPlayers.map(
           (player) => {
@@ -4717,14 +4840,14 @@ const triggerSet: TriggerSet<Data> = {
       },
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        if (is2ndTrue === undefined || is1stTrue === undefined)
+          return;
+
         const hasFork = data.longForkedPlayers.includes(data.me);
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
-        const is1stTrue = data.areFirstDebuffsTrue;
-        const is2ndTrue = data.areSecondDebuffsTrue;
-
-        if (is2ndTrue === undefined || is1stTrue === undefined)
-          return;
 
         const players = data.longShriekPlayers.map(
           (player) => {
