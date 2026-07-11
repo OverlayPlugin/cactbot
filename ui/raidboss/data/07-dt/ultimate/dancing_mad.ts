@@ -5199,6 +5199,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitJump: {
           en: 'Bait Jump?',
+          de: 'Sprung ködern?',
+          fr: 'Attirez le saut ?',
+          ja: 'ジャンプ誘導?',
+          cn: '引导跳跃?',
+          ko: '점프 유도?',
+          tc: '引導跳躍?',
+        },
         },
       },
     },
