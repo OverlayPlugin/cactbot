@@ -5198,7 +5198,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.baitJump!(),
       outputStrings: {
         baitJump: {
-          en: 'Bait Jump',
+          en: 'Bait Jump?',
         },
       },
     },
