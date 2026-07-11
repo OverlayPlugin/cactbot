@@ -4649,6 +4649,7 @@ const triggerSet: TriggerSet<Data> = {
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
       type: 'GainsEffect',
       netRegex: { effectId: ['5CD', '5CC'], capture: true },
+      delaySeconds: 0.1, // Delay for headmarker collect
       run: (data, matches) => {
         if (matches.effectId === '5CD')
           data.isThunderChargedTrue = data.isThunderTrue;
