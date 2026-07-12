@@ -4853,6 +4853,11 @@ const triggerSet: TriggerSet<Data> = {
             mech2: output.stack!(),
             mech3: gaze,
           });
+        // Has nothing
+        return output.stackThenGaze!({
+          mech1: output.stack!(),
+          mech2: gaze,
+        });
       },
       outputStrings: {
         you: {
