@@ -370,20 +370,20 @@ hideall "--sync--"
 1156.1 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
 1156.1 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
 1159.1 "--sync--" Ability { id: "C555", source: "Kefka" }
-1159.9 "Death Surge" Ability { id: ["BB1C", "BB1D"] } # These can incorrectly attributed to any boss
+1159.9 "Death Surge" Ability { id: ["BB1C", "BB1D"] } # These can be incorrectly attributed to any boss
 1164.2 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
 
 1164.2 "--short debuffs--"
 1164.5 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
 1164.5 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
 1172.5 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1173.5 "Death Shriek" Ability { id: ["BB16", "BB17"] } # These can incorrectly attributed to any boss
+1173.5 "Death Shriek" Ability { id: ["BB16", "BB17"] } # These can be incorrectly attributed to any boss
 1180.2 "--twisters/donuts?--" StartsUsing { id: ["BB22", "BB23"], source: "Chaos" } duration 5
 1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
 1185.2 "Stray Flames" Ability { id: ["BB22", "BB23"], source: "Chaos" }
 
 1189.3 "--long debuffs--"
-1189.4 "Death Wave" Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
+1189.4 "Death Wave" Ability { id: ["BB1A", "BB1B"] } # These can be incorrectly attributed to any boss
 1189.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
 1190.5 "Blizzard III Blowout" Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 1197.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
