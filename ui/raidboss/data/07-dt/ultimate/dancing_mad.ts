@@ -4294,10 +4294,10 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const id = matches.effectId;
         const res = id === 'B56'
-        ? 'fire'
-        : id === 'B57'
-        ? 'ice'
-        : 'lightning';
+          ? 'fire'
+          : id === 'B57'
+          ? 'ice'
+          : 'lightning';
         data.myResistances.push(res);
       },
     },
