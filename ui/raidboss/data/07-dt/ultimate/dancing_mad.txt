@@ -445,11 +445,11 @@ hideall "--sync--"
 1452.9 "Celestriad" Ability { id: "BB42", source: "Kefka" }
 1461.3 "Catastrophic Choice" Ability { id: "C24F", source: "Kefka" }
 1462.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
-1462.1 "Tornado" Ability { id: "BB4B", source: "Kefka" }
+1462.1 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
 1468.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1473.4 "Catastrophic Choice" Ability { id: "C24E", source: "Kefka" }
 1474.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
-1474.2 "Quake" Ability { id: "BB4A", source: "Kefka" }
+1474.2 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
 
 1482.2 "Ultima Repeater (castbar)" Ability { id: "BB40", source: "Kefka" }
 1483.3 "Ultima Repeater 1" #Ability { id: "BB41", source: "Kefka" }
