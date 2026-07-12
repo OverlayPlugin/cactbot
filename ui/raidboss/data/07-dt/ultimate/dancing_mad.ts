@@ -32,6 +32,8 @@ const forsakenHeadmarkerIdToName: forsakenHeadmarkerMap = {
   '02CC': 'spread',
 } as const;
 
+type resistance = 'fire' | 'ice' | 'lightning';
+
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     teleportent: 'clockwise' | 'filipino' | 'none';
@@ -77,6 +79,9 @@ export interface Data extends RaidbossData {
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
+  myResistances: resistance[];
+  isCelestriadTower3?: boolean;
+  hadNoInitialResistance?: boolean;
 }
 
 const headMarkerData = {
@@ -685,6 +690,7 @@ const triggerSet: TriggerSet<Data> = {
       repeaterCount: 0,
       orchestraCount: 0,
       hitByHoly: false,
+      myResistances: [],
     };
   },
   triggers: [
@@ -4269,6 +4275,239 @@ const triggerSet: TriggerSet<Data> = {
         if (surprise === 'holy')
           return { [severity]: output.holy!() };
         return { [severity]: output.tankBusters!() };
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Debuff Collect',
+      // Celestriad will give 6 players random 20s debuffs
+      // These tell us which towers players will need to take
+      // Debuffed players cannot take towers for which they have resistance to
+      // Non-debuffs take tower of element with 2x towers
+      // Towers require 2 people to soak
+      // B56 Fire Resistance Down II
+      // B57 Ice Resistance Down II
+      // BB6 Lightning Resistance Down II, NOTE: This is also given by Exdeath's Thunder III in P3
+      // We could tell who they are soaking tower with as well if requested
+      type: 'GainsEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: true },
+      condition: (data, matches) => matches.target === data.me && data.phase === 'p5',
+      run: (data, matches) => {
+        const id = matches.effectId;
+        const res = id === 'B56'
+        ? 'fire'
+        : id === 'B57'
+        ? 'ice'
+        : 'lightning';
+        data.myResistances.push(res);
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad No Debuff Collect',
+      // Collect this for player to get two element towers
+      type: 'GainsEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: false },
+      condition: (data) => data.phase === 'p5',
+      delaySeconds: 0.1, // Delay for Collect
+      run: (data) => data.hadNoInitialResistance = data.myResistances[0] === undefined,
+    },
+    {
+      id: 'DMU P5 Celestriad Tower 1 (Early)',
+      // TODO: Get Location of Towers and add config
+      // One strategy involves looking for tower your vuln matches, then soaking tower CW
+      type: 'GainsEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: false },
+      condition: (data) => data.phase === 'p5',
+      delaySeconds: 0.1, // Delay for collect
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const res = data.myResistances[0];
+        if (res === undefined)
+          return output.twoTowerElement!();
+        return output[res]!();
+      },
+      outputStrings: {
+        fire: {
+          en: 'Ice/Thunder Tower (later)',
+        },
+        ice: {
+          en: 'Fire/Thunder Tower (later)',
+        },
+        lightning: {
+          en: 'Fire/Ice Tower (later)',
+        },
+        twoTowerElement: {
+          en: 'Two Element Tower (later)',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Catastrophic Choice 1, Tower 1',
+      // C24E follows up with BB4A Quake (Chariot)
+      // C24F follows up with BB4B Tornado (Dynamo)
+      type: 'StartsUsing',
+      netRegex: { id: ['C24E', 'C24F'], source: 'Kefka', capture: true },
+      suppressSeconds: 99999,
+      alertText: (data, matches, output) => {
+        const inOut = matches.id === 'C24E' ? 'in' : 'out';
+        const res = data.myResistances[0];
+        return output.inOutTower!({
+          inout: output[inOut]!(),
+          tower: res === undefined
+            ? output.twoTowerElement!()
+            : output[res]!(),
+        });
+      },
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+        fire: {
+          en: 'Get Ice/Thunder Tower',
+        },
+        ice: {
+          en: 'Get Fire/Thunder Tower',
+        },
+        lightning: {
+          en: 'Get Fire/Ice Tower',
+        },
+        twoTowerElement: {
+          en: 'Get Two Element Tower',
+        },
+        inOutTower: {
+          en: '${inout} + ${tower}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Tower Tracker',
+      type: 'Ability',
+      netRegex: { id: ['BB43', 'BB44', 'BB45'], source: 'Kefka', capture: false },
+      suppressSeconds: 99999,
+      run: (data) => data.isCelestriadTower3 = true,
+    },
+    {
+      id: 'DMU P5 Celestriad Debuff Cleanup',
+      // Debuffs will last 20s, which covers two tower sets
+      // Need to remove the first one from collection for 3rd set
+      type: 'LosesEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: true },
+      condition: (data, matches) => matches.target === data.me && data.phase === 'p5',
+      run: (data) => data.myResistances.shift(), // Remove in same order as added
+    },
+    {
+      id: 'DMU P5 Celestriad Tower 2',
+      // Using BB4A Quake or BB4B Tornado as these come right after tower explosion
+      type: 'Ability',
+      netRegex: { id: ['BB4A', 'BB4B'], source: 'Kefka', capture: false },
+      suppressSeconds: 99999,
+      alertText: (data, _matches, output) => {
+        // These players should have 1 debuff, but it doesn't matter
+        if (data.hadNoInitialResistance)
+          return output.twoTowerElement!();
+
+        const res1 = data.myResistances[0];
+        const res2 = data.myResistances[1];
+        if (res1 === undefined || res2 === undefined)
+          return output.tower!();
+
+        // Check which two vulns player has to determine the safe tower element
+        const fireIce = (res1 === 'fire' || res2 === 'fire') &&
+          (res2 === 'ice' || res1 === 'ice');
+        const lightningIce = (res1 === 'lightning' || res2 === 'lightning') &&
+          (res2 === 'ice' || res1 === 'ice');
+        const fireLightning = (res1 === 'fire' || res2 === 'fire') &&
+          (res1 === 'lightning' || res2 === 'lightning');
+        const safe = fireIce
+          ? 'lightning'
+          : lightningIce
+          ? 'fire'
+          : fireLightning
+          ? 'ice'
+          : 'tower'; // Default to getTowers
+
+        return output[safe]!();
+      },
+      outputStrings: {
+        fire: {
+          en: 'Fire/Red Tower',
+        },
+        ice: {
+          en: 'Ice/Blue Tower',
+        },
+        lightning: {
+          en: 'Lightning/Yellow Tower',
+        },
+        twoTowerElement: {
+          en: 'Two Element Tower',
+        },
+        tower: Outputs.getTowers,
+      },
+    },
+    {
+      id: 'DMU P5 Catastrophic Choice 2, Tower 3',
+      // C24E follows up with BB4A Quake (Chariot)
+      // C24F follows up with BB4B Tornado (Dynamo)
+      type: 'StartsUsing',
+      netRegex: { id: ['C24E', 'C24F'], source: 'Kefka', capture: true },
+      condition: (data) => data.isCelestriadTower3,
+      alertText: (data, matches, output) => {
+        const inOut = matches.id === 'C24E' ? 'in' : 'out';
+        const res1 = data.myResistances[0];
+        const res2 = data.myResistances[1];
+
+        // Everyone should have two resistances here
+        if (res1 === undefined || res2 === undefined)
+          return output.inOutTower!({
+            inout: output[inOut]!(),
+            tower: output.tower!(),
+          });
+
+        // Check which two vulns player has to determine the safe tower element
+        const fireIce = (res1 === 'fire' || res2 === 'fire') &&
+          (res2 === 'ice' || res1 === 'ice');
+        const lightningIce = (res1 === 'lightning' || res2 === 'lightning') &&
+          (res2 === 'ice' || res1 === 'ice');
+        const fireLightning = (res1 === 'fire' || res2 === 'fire') &&
+          (res1 === 'lightning' || res2 === 'lightning');
+        const safe = fireIce
+          ? 'lightning'
+          : lightningIce
+          ? 'fire'
+          : fireLightning
+          ? 'ice'
+          : 'tower'; // Default to getTowers
+
+        if (data.hadNoInitialResistance)
+          return output.inOutTower!({
+            inout: output[inOut]!(),
+            tower: output.twoTowerElement!({
+              tower: output[safe]!(),
+            }),
+          });
+
+        return output.inOutTower!({
+          inout: output[inOut]!(),
+          tower: output[safe]!(),
+        });
+      },
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+        fire: {
+          en: 'Fire/Red Tower',
+        },
+        ice: {
+          en: 'Ice/Blue Tower',
+        },
+        lightning: {
+          en: 'Lightning/Yellow Tower',
+        },
+        twoTowerElement: {
+          en: 'Two ${tower}',
+        },
+        tower: Outputs.getTowers,
+        inOutTower: {
+          en: '${inout} + ${tower}',
+        },
       },
     },
   ],
