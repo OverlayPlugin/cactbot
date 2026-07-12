@@ -443,11 +443,11 @@ hideall "--sync--"
 1446.3 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1452.9 "Celestriad" Ability { id: "BB42", source: "Kefka" }
-1461.3 "Catastrophic Choice" Ability { id: "C24F", source: "Kefka" }
+1461.3 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
 1462.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1462.1 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
 1468.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
-1473.4 "Catastrophic Choice" Ability { id: "C24E", source: "Kefka" }
+1473.4 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
 1474.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1474.2 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
 
@@ -721,8 +721,8 @@ hideall "--sync--"
 # C24A Ultima Upsurge
 # C24B Hyperdrive
 # C24C Ultimate Embrace
-# C24E Catastrophic Choice
-# C24F Catastrophic Choice
+# C24E Catastrophic Choice: Will be followed up with BB4A Quake (Chariot) at tower soak
+# C24F Catastrophic Choice: Will be followed up with BB4B Tornado (Dynamo) at tower soak
 # C250 Attack: P3 Exdeath attack
 # C252 Attack: P1 Kefka attack and P3 Chaos attack
 # C258 Meteor: P3 Chaos Enrage
