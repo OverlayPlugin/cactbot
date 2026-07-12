@@ -693,6 +693,15 @@ const triggerSet: TriggerSet<Data> = {
       myResistances: [],
     };
   },
+  timelineTriggers: [
+    {
+      id: 'DMU P5 Forsaken (Untelegraphed)',
+      regex: /Forsaken [2-3]/,
+      beforeSeconds: 4.7,
+      durationSeconds: 4.7,
+      response: Responses.bigAoe('alert'),
+    },
+  ],
   triggers: [
     {
       id: 'DMU Phase Tracker',
@@ -4509,6 +4518,23 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inout} + ${tower}',
         },
       },
+    },
+    {
+      id: 'DMU P5 Stray Entropy Spread',
+      // This occurs during last set of exaflares
+      type: 'StartsUsing',
+      netRegex: { id: 'BB3E', source: 'Kefka', capture: false },
+      response: Responses.spread('alert'),
+    },
+    {
+      id: 'DMU P5 Forsaken',
+      // 9.7s castTime
+      // This is followed by three untelegraphed BB36 roughly every 8.1s
+      type: 'StartsUsing',
+      netRegex: { id: 'BB35', source: 'Kefka', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      response: Responses.bigAoe('alert'),
     },
   ],
   timelineReplace: [
