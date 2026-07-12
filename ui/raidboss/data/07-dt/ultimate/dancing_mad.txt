@@ -336,7 +336,6 @@ hideall "--sync--"
 951.8 "Meteor (Exdeath Enrage)?" Ability { id: "C61E", source: "Exdeath" } # Exdeath > 0% HP, Chaos killed first
 
 ### Phase 4 - Kefka with Chaos and Neo Exdeath
-# TODO: Cleanup p4 as there are multiple sequences that could happen
 # en: 'Boring!'
 1087.7 "--sync--" ActorControl { command: "80000027", data0: "2E" } window 1088,14000 # Escape from the p3 exdeath enrage or chaos
 # NOTE: Label not used due to unknown timing between Chaos/Exdeath kill order and time from Kefka Says
@@ -348,61 +347,58 @@ hideall "--sync--"
 1109.5 "Mystery Magic 1" Ability { id: "BA94", source: "Kefka" }
 1109.5 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
 1109.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1113.8 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1113.8 "--first debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
-1118.8 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
+1113.9 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1113.9 "--first debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
+1118.9 "Inferno/Tsunami" Ability { id: ["BB20","BB21"], source: "Chaos" }
 
-1124.4 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
-1124.4 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1124.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1128.6 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1128.6 "--second debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
+1124.3 "Mystery Magic 2" Ability { id: "BA94", source: "Kefka" }
+1124.3 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1124.3 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1128.7 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1128.7 "--second debuffs--" #GainsEffect { effectId: ["15A7", "15A8", "15A9", "15AA"] }
 1133.7 "Tsunami/Inferno" Ability { id: ["BB21", "BB20"], source: "Chaos" }
 
-1139.5 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
-1139.5 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1139.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1143.5 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
-1144.5 "--third debuffs--" #GainsEffect { effectId: ["1317", "1318", "1558", "1C6"] }
-
+1139.4 "Mystery Magic 3" Ability { id: "BA94", source: "Kefka" }
+1139.4 "Thrumming Thunder III" #Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1139.4 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1143.6 "Grand Cross" Ability { id: "BB14", source: "Neo Exdeath" }
+1144.6 "--third debuffs--" #GainsEffect { effectId: ["1317", "1318", "1558", "1C6"] }
 1145.5 "--sync--" Ability { id: "C554", source: "Kefka" }
 
-1155.5 "Flood of Naught" Ability { id: ["C392", "C393", "C3A1", "C3A2"], source: "Neo Exdeath" }
-1155.9 "Edge of Death" Ability { id: "C396", source: "Neo Exdeath" }
-1155.9 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
-1155.9 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
+1155.7 "Flood of Naught" Ability { id: ["C392", "C393", "C3A1", "C3A2"], source: "Neo Exdeath" }
+1156.1 "Edge of Death" Ability { id: "C396", source: "Neo Exdeath" }
+1156.1 "White Antilight" #Ability { id: "C394", source: "Neo Exdeath" }
+1156.1 "Black Antilight" #Ability { id: "C395", source: "Neo Exdeath" }
 1159.1 "--sync--" Ability { id: "C555", source: "Kefka" }
-# TODO: Update remainder with network log
-1159.7 "Death Surge" Ability { id: ["BB1C", "BB1D"] } # These can incorrectly attributed to any boss
-1164.0 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
-1164.2 "--short debuffs--"
+1159.9 "Death Surge" Ability { id: ["BB1C", "BB1D"] } # These can incorrectly attributed to any boss
+1164.2 "Mana Charge" Ability { id: "BAA4", source: "Kefka" }
 
-1164.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
-1164.4 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
-1172.4 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1173.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
-1180.3 "--twisters/donuts?--" StartsUsing { id: ["BB22", "BB23"], source: "Chaos" } duration 5
+1164.2 "--short debuffs--"
+1164.5 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
+1164.5 "Death Wave" #Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
+1172.5 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1173.5 "Death Shriek" Ability { id: ["BB16", "BB17"] } # These can incorrectly attributed to any boss
+1180.2 "--twisters/donuts?--" StartsUsing { id: ["BB22", "BB23"], source: "Chaos" } duration 5
 1182.5 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
-1185.3 "Stray Flames" Ability { id: ["BB22", "BB23"], source: "Chaos" }
+1185.2 "Stray Flames" Ability { id: ["BB22", "BB23"], source: "Chaos" }
 
 1189.3 "--long debuffs--"
 1189.4 "Death Wave" Ability { id: ["BB1A", "BB1B"], source: "Neo Exdeath" }
 1189.4 "Death Bolt" #Ability { id: ["BB18", "BB19"], source: "Neo Exdeath" }
-1190.4 "Blizzard III Blowout" Ability { id: ["BA98", "BA9B"], source: "Kefka" }
-1197.2 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
-1202.6 "--twisters/donuts?--" StartsUsing { id: ["BB24", "BB25"], source: "Chaos" } duration 5
-1203.5 "Mana Release" Ability { id: "BAA5", source: "Kefka" }
-1207.6 "Stray Spray" Ability { id: ["BB24", "BB25"], source: "Chaos" }
-1208.5 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
-1208.5 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1190.5 "Blizzard III Blowout" Ability { id: ["BA98", "BA9B"], source: "Kefka" }
+1197.4 "Death Shriek" Ability { id: ["BB16", "BB17"], source: "Neo Exdeath" }
+1203.0 "--twisters/donuts?--" StartsUsing { id: ["BB24", "BB25"], source: "Chaos" } duration 5
+1203.8 "Mana Release" Ability { id: "BAA5", source: "Kefka" }
+1208.0 "Stray Spray" Ability { id: ["BB24", "BB25"], source: "Chaos" }
+1208.9 "Thrumming Thunder III" Ability { id: ["BA9F", "BAA1"], source: "Kefka" }
+1208.9 "Blizzard III Blowout" #Ability { id: ["BA98", "BA9B"], source: "Kefka" }
 
-1212.8 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
-1212.8 "--untargetable?--"
-1214.8 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
-1217.8 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
-1221.3 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
-1259.2 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
-
+1213.0 "--untargetable?--"
+1213.2 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
+1218.1 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
+1218.1 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
+1224.6 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
+1297.1 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
 
 ### Phase 5 - Kefka
 # TODO: Add voiceline sync?
