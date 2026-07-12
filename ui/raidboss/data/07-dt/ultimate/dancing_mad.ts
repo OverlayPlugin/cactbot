@@ -4644,6 +4644,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P4 Acceleration Bomb Reminder',
+      // Shorts are 51 (First), 36 (Second)
+      // Longs are 76 (First), 61 (Second)
+      type: 'GainsEffect',
+      netRegex: { effectId: '15AA', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      durationSeconds: 3,
+      alertText: (data, matches, output) => {
+        const duration = parseFloat(matches.duration);
+        const isFirstDebuff = duration > 75 || (duration < 52 && duration > 50);
+        const isTrue = isFirstDebuff
+          ? data.areFirstDebuffsTrue
+          : data.areSecondDebuffsTrue;
+        return isTrue ? output.stopEverything!() : output.keepMoving!();
+      },
+      outputStrings: {
+        keepMoving: {
+          en: 'Keep Moving',
+          de: 'weiter bewegen',
+          fr: 'Continuez à bouger',
+          ja: '最後は動く',
+          cn: '后行动',
+          ko: '마지막엔 움직이기',
+          tc: '後行動',
+        },
+        stopEverything: {
+          en: 'Stop Everything',
+          de: 'Alles stoppen',
+          fr: 'Arrêtez tout',
+          ja: '最後は止まる',
+          cn: '后静止',
+          ko: '마지막엔 멈추기',
+          tc: '後靜止',
+        },
+      },
+    },
+    {
       id: 'DMU P4 Mana Charge Collect',
       // 5CD Thunder Charged: Store the value of isThunderTrue for later
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
@@ -4670,17 +4708,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 First Cursed Shriek',
-      // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) < 61,
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      durationSeconds: 3,
       suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
+      alertText: (data, _matches, output) => {
         const is1stTrue = data.areFirstDebuffsTrue;
-        const isEntropyTrue = data.isEntropyTrue;
-
-        if (is1stTrue === undefined || isEntropyTrue === undefined)
+        if (is1stTrue === undefined)
           return;
 
         const players = data.shortShriekPlayers.map(
@@ -4692,19 +4728,13 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
-        return output.shriekThenEntropy!({
-          mech1: is1stTrue
-            ? output.lookAwayFromPlayers!({ players: msg })
-            : output.lookAtPlayers!({ players: msg }),
-          mech2: isEntropyTrue ? output.puddles!() : output.donuts!(),
-        });
+        return is1stTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
-        },
-        shriekThenEntropy: {
-          en: '${mech1} => ${mech2}',
         },
         lookAtPlayers: {
           en: 'Face ${players}',
@@ -4712,15 +4742,6 @@ const triggerSet: TriggerSet<Data> = {
         lookAwayFromPlayers: {
           en: 'Look Away from ${players}',
         },
-        donuts: {
-          en: 'Stack for Donuts',
-          de: 'Für Donuts sammeln',
-          fr: 'Packez-vous pour les donuts',
-          cn: '集合放月环',
-          ko: '모여서 도넛장판 피하기',
-          tc: '集合放月環',
-        },
-        puddles: Outputs.baitPuddles,
       },
     },
     {
@@ -4885,13 +4906,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) > 68,
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      durationSeconds: 3,
       suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
+      alertText: (data, _matches, output) => {
         const is2ndTrue = data.areSecondDebuffsTrue;
-        const isFluidTrue = data.isDynamicFluidTrue;
-
-        if (is2ndTrue === undefined || isFluidTrue === undefined)
+        if (is2ndTrue === undefined)
           return;
 
         const players = data.longShriekPlayers.map(
@@ -4903,19 +4923,13 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
-        return output.shriekThenFluid!({
-          mech1: is2ndTrue
-            ? output.lookAwayFromPlayers!({ players: msg })
-            : output.lookAtPlayers!({ players: msg }),
-          mech2: isFluidTrue ? output.donuts!() : output.puddles!(),
-        });
+        return is2ndTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
-        },
-        shriekThenFluid: {
-          en: '${mech1} => ${mech2}',
         },
         lookAtPlayers: {
           en: 'Face ${players}',
@@ -4923,15 +4937,6 @@ const triggerSet: TriggerSet<Data> = {
         lookAwayFromPlayers: {
           en: 'Look Away from ${players}',
         },
-        donuts: {
-          en: 'Stack for Donuts',
-          de: 'Für Donuts sammeln',
-          fr: 'Packez-vous pour les donuts',
-          cn: '集合放月环',
-          ko: '모여서 도넛장판 피하기',
-          tc: '集合放月環',
-        },
-        puddles: Outputs.baitPuddles,
       },
     },
     {
