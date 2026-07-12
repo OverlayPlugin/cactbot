@@ -4110,15 +4110,16 @@ const triggerSet: TriggerSet<Data> = {
           // Forked Lightning
           if (duration < 52) { // Capture both 51s and 36s
             if (data.isFirstDebuffShort === undefined)
-              data.isFirstDebuffShort = duration > 37 ? true : false;
+              data.isFirstDebuffShort = true;
             data.shortForkedPlayers.push(target);
-          } else
+          } else {
+            if (data.isFirstDebuffShort === undefined)
+              data.isFirstDebuffShort = false;
             data.longForkedPlayers.push(target);
+          }
         } else if (id === '15A9') {
           // Compressed Water
           if (duration < 52) { // Capture both 51s and 36s
-            if (data.isFirstDebuffShort === undefined)
-              data.isFirstDebuffShort = duration > 37 ? true : false;
             data.shortCompressedPlayers.push(target);
           } else
             data.longCompressedPlayers.push(target);
