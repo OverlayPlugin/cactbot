@@ -4706,7 +4706,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       suppressSeconds: 1,
       infoText: (data, matches, output) => {
-        const isShortDebuffs =  parseFloat(matches.duration) < 61;
+        const isShortDebuffs = parseFloat(matches.duration) < 61;
         const isTrue = isShortDebuffs ? data.areFirstDebuffsTrue : data.areSecondDebuffsTrue;
         if (isTrue === undefined)
           return;
