@@ -4698,15 +4698,15 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Cursed Shriek (Early)',
       // This may be more important for those that have it to get into position
-      // Not defining source due to possibility of source being incorrect
-      // Using BB18, BB19 Death Wave or BB1A, BB1B Death Bolt
-      // This occurs roughly 5-6s before the alert version
-      type: 'Ability',
-      netRegex: { id: ['BB18', 'BB19', 'BB1A', 'BB1B'], capture: false },
-      suppressSeconds: 24,
-      infoText: (data, _matches, output) => {
-        // Check Mana Charge related value to see if first shriek
-        const isShortDebuffs = data.isThunderChargedTrue === undefined;
+      // Using the debuff as a timer as player deaths would cause early trigger
+      type: 'GainsEffect',
+      netRegex: { effectId: '15A7', capture: true },
+      delaySeconds: (_data, matches, output) => {
+        return parseFloat(matches.duration) < 61 ? 51.1 : 61.1;
+      },
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        const isShortDebuffs =  parseFloat(matches.duration) < 61;
         const isTrue = isShortDebuffs ? data.areFirstDebuffsTrue : data.areSecondDebuffsTrue;
         if (isTrue === undefined)
           return;
@@ -4755,7 +4755,7 @@ const triggerSet: TriggerSet<Data> = {
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
       type: 'GainsEffect',
       netRegex: { effectId: ['5CD', '5CC'], capture: true },
-      delaySeconds: 0.1, // Delay for headmarker collect
+      delaySeconds: 0.2, // Delay for headmarker collect
       run: (data, matches) => {
         if (matches.effectId === '5CD')
           data.isThunderChargedTrue = data.isThunderTrue;
