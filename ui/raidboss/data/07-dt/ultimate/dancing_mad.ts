@@ -4696,6 +4696,45 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P4 Cursed Shriek (Early)',
+      // This may be more important for those that have it to get into position
+      // Not defining source due to possibility of source being incorrect
+      // Using BB18, BB19 Death Wave or BB1A, BB1B Death Bolt
+      // This occurs roughly 5-6s before the alert version
+      type: 'Ability',
+      netRegex: { id: ['BB18', 'BB19', 'BB1A', 'BB1B'], capture: false },
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        // Check Mana Charge related value to see if first shriek
+        const isShortDebuffs = data.isThunderChargedTrue === undefined;
+        const isTrue = isShortDebuffs ? data.areFirstDebuffsTrue : data.areSecondDebuffsTrue;
+        if (isTrue === undefined)
+          return;
+
+        const shriekPlayers = isShortDebuffs ? data.shortShriekPlayers : data.longShriekPlayers;
+        const players = shriekPlayers.map(
+          (player) => {
+            if (player === data.me)
+              return output.you!();
+            return data.party.member(player);
+          },
+        );
+        const msg = players?.join(', ');
+
+        return isTrue
+          ? output.lookAwayFromPlayers!({ players: msg })
+          : output.lookAtPlayers!({ players: msg });
+      },
+      outputStrings: {
+        lookAtPlayers: {
+          en: 'Face ${players} (later)',
+        },
+        lookAwayFromPlayers: {
+          en: 'Look Away from ${players} (later)',
+        },
+      },
+    },
+    {
       id: 'DMU P4 Mana Charge Collect',
       // 5CD Thunder Charged: Store the value of isThunderTrue for later
       // 5CC Blizzard Charged: Store the value of isIceTrue for later
