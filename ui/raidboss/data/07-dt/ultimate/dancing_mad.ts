@@ -4179,8 +4179,8 @@ const triggerSet: TriggerSet<Data> = {
           ? data.shortForkedPlayers.includes(data.me)
           : data.longForkedPlayers.includes(data.me);
         const hasCompressed = isShort
-          ? data.shortForkedPlayers.includes(data.me)
-          : data.longForkedPlayers.includes(data.me);
+          ? data.shortCompressedPlayers.includes(data.me)
+          : data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
 
         // Shriek players always are short bomb
@@ -4300,8 +4300,8 @@ const triggerSet: TriggerSet<Data> = {
           ? data.longForkedPlayers.includes(data.me)
           : data.shortForkedPlayers.includes(data.me);
         const hasCompressed = isShort
-          ? data.longForkedPlayers.includes(data.me)
-          : data.shortForkedPlayers.includes(data.me);
+          ? data.longCompressedPlayers.includes(data.me)
+          : data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
 
         // Shriek players always are short bomb
