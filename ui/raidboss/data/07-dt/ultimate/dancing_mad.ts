@@ -739,12 +739,12 @@ const triggerSet: TriggerSet<Data> = {
       // BA94 Myster Magic
       // BA95 Blizzard III Blowout
       // C5DE Thrumming Thunder III
-      // BAA5 Mana Release
+      // BAA5 Mana Release (6.7s castTime, but there is additional ~0.382 delay until tells
       type: 'StartsUsing',
       netRegex: { id: ['BA94', 'BA95', 'C5DE', 'BAA5'], source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => {
         if (matches.id === 'BAA5')
-          return parseFloat(matches.castTime); // Mana Release happens before the tells
+          return parseFloat(matches.castTime) + 0.4;
         return 0;
       },
       infoText: (data, matches, output) => {
