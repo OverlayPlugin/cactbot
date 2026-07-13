@@ -4170,7 +4170,6 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const isTrue = data.areFirstDebuffsTrue;
         const isShort = data.isFirstDebuffShort;
-
         if (isTrue === undefined || isShort === undefined)
           return;
 
@@ -4291,7 +4290,6 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const isTrue = data.areSecondDebuffsTrue;
         const isShort = data.isFirstDebuffShort;
-
         if (isTrue === undefined || isShort === undefined)
           return;
 
@@ -4446,7 +4444,6 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, matches, output) => {
         const wound = data.wound;
         const deathOrField = data.deathOrField;
-
         if (wound === undefined || deathOrField === undefined)
           return;
 
@@ -4470,29 +4467,32 @@ const triggerSet: TriggerSet<Data> = {
             : output.left!(),
         });
 
-        const isTrue = data.areSecondDebuffsTrue;
-        if (isTrue === undefined)
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        const isFirstShort = data.isFirstDebuffShort;
+        if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return laser;
+        const isShortTrue = isFirstShort ? is1stTrue : is2ndTrue;
 
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
 
-        const hasSpread = (hasFork && isTrue) || (hasCompressed && !isTrue);
-        const hasStack = (hasFork && !isTrue) || (hasCompressed && isTrue);
+        const hasSpread = (hasFork && isShortTrue) || (hasCompressed && !isShortTrue);
+        const hasStack = (hasFork && !isShortTrue) || (hasCompressed && isShortTrue);
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
           return output.laserThenForkBomb!({
             mech1: laser,
             mech2: output.spread!(),
-            mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: isShortTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasStack && hasBomb)
           return output.laserThenCompressedBomb!({
             mech1: laser,
             mech2: output.stack!(),
-            mech3: isTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: isShortTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasSpread)
           return output.laserThenSpread!({
@@ -4507,7 +4507,7 @@ const triggerSet: TriggerSet<Data> = {
         if (hasBomb)
           return output.laserThenBomb!({
             mech1: laser,
-            mech2: isTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: output.stack!(),
           });
         // Has either nothing or long debuffs
@@ -4563,10 +4563,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['C394', 'C395'], source: 'Neo Exdeath', capture: false },
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
-        const is2ndTrue = data.areSecondDebuffsTrue;
         const is1stTrue = data.areFirstDebuffsTrue;
-        if (is2ndTrue === undefined || is1stTrue === undefined)
+        const is2ndTrue = data.areSecondDebuffsTrue;
+        const isFirstShort = data.isFirstDebuffShort;
+        if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return;
+        const isShortTrue = isFirstShort ? is1stTrue : is2ndTrue;
 
         const hasFork = data.shortForkedPlayers.includes(data.me);
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
@@ -4584,20 +4586,20 @@ const triggerSet: TriggerSet<Data> = {
         const gaze = is1stTrue
           ? output.lookAwayFromPlayers!({ players: msg })
           : output.lookAtPlayers!({ players: msg });
-        const hasSpread = (hasFork && is2ndTrue) || (hasCompressed && !is2ndTrue);
-        const hasStack = (hasFork && !is2ndTrue) || (hasCompressed && is2ndTrue);
+        const hasSpread = (hasFork && isShortTrue) || (hasCompressed && !isShortTrue);
+        const hasStack = (hasFork && !isShortTrue) || (hasCompressed && isShortTrue);
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
-            mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
         if (hasStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
-            mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
         if (hasSpread)
@@ -4612,7 +4614,7 @@ const triggerSet: TriggerSet<Data> = {
           });
         if (hasBomb)
           return output.bombThenGaze!({
-            mech1: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
+            mech1: isShortTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
             mech3: gaze,
           });
@@ -4858,8 +4860,10 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         const is1stTrue = data.areFirstDebuffsTrue;
         const is2ndTrue = data.areSecondDebuffsTrue;
-        if (is2ndTrue === undefined || is1stTrue === undefined)
+        const isFirstShort = data.isFirstDebuffShort;
+        if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return;
+        const isLongTrue = isFirstShort ? is2ndTrue : is1stTrue;
 
         const hasFork = data.longForkedPlayers.includes(data.me);
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
@@ -4877,20 +4881,20 @@ const triggerSet: TriggerSet<Data> = {
         const gaze = is2ndTrue
           ? output.lookAwayFromPlayers!({ players: msg })
           : output.lookAtPlayers!({ players: msg });
-        const hasSpread = (hasFork && is1stTrue) || (hasCompressed && !is1stTrue);
-        const hasStack = (hasFork && !is1stTrue) || (hasCompressed && is1stTrue);
+        const hasSpread = (hasFork && isLongTrue) || (hasCompressed && !isLongTrue);
+        const hasStack = (hasFork && !isLongTrue) || (hasCompressed && isLongTrue);
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
           return output.forkBombThenGaze!({
             mech1: output.spread!(),
-            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
         if (hasStack && hasBomb)
           return output.compressedBombThenGaze!({
             mech1: output.stack!(),
-            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: gaze,
           });
         if (hasSpread)
@@ -4905,7 +4909,7 @@ const triggerSet: TriggerSet<Data> = {
           });
         if (hasBomb)
           return output.bombThenGaze!({
-            mech1: is1stTrue ? output.bomb!() : output.fakeBomb!(),
+            mech1: isLongTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
             mech3: gaze,
           });
