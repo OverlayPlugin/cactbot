@@ -552,8 +552,8 @@ hideall "--sync--"
 
 # P3 IGNORED ABILITIES
 # C250 Attack: P3 Exdeath attack
-# BAF7 Stray Gusts: Some sort of failed P3 mechanic
-# BAF9 Stray Earth: Some sort of failed P3 mechanic
+# BAF7 Stray Gusts: P3 Failing to face the direction of source of damage that triggers Tailwind or Headwind
+# BAF9 Stray Earth: P3 Failing to remove Primordial Crust in time, possibly also happens with Accretion
 # C572 Earthquake: VFX
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BCCD Black Spark: Standing inside a black hole in P3, applies a 3-minute damage down
@@ -645,9 +645,9 @@ hideall "--sync--"
 # BAF4 Inferno
 # BAF5 Tsunami
 # BAF6 Stray Spray
-# BAF7 Stray Gusts: Some sort of failed P3 mechanic
+# BAF7 Stray Gusts: P3 Failing to face the direction of source of damage that triggers Tailwind or Headwind
 # BAF8 Cyclone
-# BAF9 Stray Earth: Some sort of failed P3 mechanic
+# BAF9 Stray Earth: P3 Failing to remove Primordial Crust in time, possibly also happens with Accretion
 # BAFA Earthquake: Cast when Accretion or Primordial Crust are cleansed
 # BAFB Black Hole
 # BAFC Nothingness
