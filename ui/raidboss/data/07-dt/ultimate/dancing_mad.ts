@@ -110,157 +110,6 @@ const headMarkerData = {
   'spreadPath': '02CC', // When standing in Path of Light tower, causes BAC1 Spellscatter (small aoe on the player)
 } as const;
 
-const mysteryMagicOutputStrings: OutputStrings = {
-  puddle: {
-    en: 'Bait Puddle',
-    de: 'Fläche ködern',
-    fr: 'Déposez',
-    ja: 'AOE誘導',
-    cn: '诱导AOE',
-    ko: '장판 유도',
-    tc: '誘導AOE',
-  },
-  spread: Outputs.spread,
-  middle: Outputs.goIntoMiddle,
-  stack: {
-    en: 'Stack',
-    de: 'Stacken',
-    fr: 'Packez-vous',
-    ja: 'スタック',
-    cn: '分摊',
-    ko: '쉐어',
-    tc: '集合',
-  },
-  trueThunder: {
-    en: 'Avoid Tell',
-    cn: '躲避直线',
-    ko: '예고 피하기',
-  },
-  fakeThunder: {
-    en: 'In Line',
-    cn: '进入直线',
-    ko: '직선 안으로',
-  },
-  trueIce: {
-    en: 'Avoid Tell',
-    cn: '躲避扇形',
-    ko: '예고 피하기',
-  },
-  fakeIce: {
-    en: 'In Cone',
-    cn: '进入扇形',
-    ko: '부채꼴 안으로',
-  },
-  trueIcePuddle: {
-    en: '${mech1} + ${mech2} => ${mech3}',
-    cn: '${mech1} + ${mech2} => ${mech3}',
-    ko: '${mech1} + ${mech2} => ${mech3}',
-  },
-  fakeIcePuddle: {
-    en: '${mech1} + ${mech2} => ${mech3}',
-    cn: '${mech1} + ${mech2} => ${mech3}',
-    ko: '${mech1} + ${mech2} => ${mech3}',
-  },
-  stackTrueIce: {
-    en: '${mech} + ${ice}',
-    cn: '${mech} + ${ice}',
-    ko: '${mech} + ${ice}',
-  },
-  stackFakeIce: {
-    en: '${mech} + ${ice}',
-    cn: '${mech} + ${ice}',
-    ko: '${mech} + ${ice}',
-  },
-  spreadTrueIce: {
-    en: '${mech} + ${ice}',
-    cn: '${mech} + ${ice}',
-    ko: '${mech} + ${ice}',
-  },
-  spreadFakeIce: {
-    en: '${mech} + ${ice}',
-    cn: '${mech} + ${ice}',
-    ko: '${mech} + ${ice}',
-  },
-  trueIceTrueThunder: {
-    en: 'Avoid Tells',
-    cn: '躲避扇形+直线',
-    ko: '예고 다 피하기',
-  },
-  fakeIceTrueThunder: {
-    en: 'Cone (only)',
-    cn: '仅扇形',
-    ko: '부채꼴만',
-  },
-  trueIceFakeThunder: {
-    en: 'Line (only)',
-    cn: '仅直线',
-    ko: '직선만',
-  },
-  fakeIceFakeThunder: {
-    en: 'Cone + Line',
-    cn: '扇形+直线',
-    ko: '부채꼴 + 직선',
-  },
-  stackTrueThunderLook: {
-    en: '${mech} + ${thunder} + ${look}',
-    cn: '${mech} + ${thunder} + ${look}',
-    ko: '${mech} + ${thunder} + ${look}',
-  },
-  stackFakeThunderLook: {
-    en: '${mech} + ${thunder} + ${look}',
-    cn: '${mech} + ${thunder} + ${look}',
-    ko: '${mech} + ${thunder} + ${look}',
-  },
-  spreadTrueThunderLook: {
-    en: '${mech} + ${thunder} + ${look}',
-    cn: '${mech} + ${thunder} + ${look}',
-    ko: '${mech} + ${thunder} + ${look}',
-  },
-  spreadFakeThunderLook: {
-    en: '${mech} + ${thunder} + ${look}',
-    cn: '${mech} + ${thunder} + ${look}',
-    ko: '${mech} + ${thunder} + ${look}',
-  },
-  stackTrueThunder: {
-    en: '${mech} + ${thunder}',
-    cn: '${mech} + ${thunder}',
-    ko: '${mech} + ${thunder}',
-  },
-  stackFakeThunder: {
-    en: '${mech} + ${thunder}',
-    cn: '${mech} + ${thunder}',
-    ko: '${mech} + ${thunder}',
-  },
-  spreadTrueThunder: {
-    en: '${mech} + ${thunder}',
-    cn: '${mech} + ${thunder}',
-    ko: '${mech} + ${thunder}',
-  },
-  spreadFakeThunder: {
-    en: '${mech} + ${thunder}',
-    cn: '${mech} + ${thunder}',
-    ko: '${mech} + ${thunder}',
-  },
-  lookAway: {
-    en: 'Look Away From Statue',
-    de: 'Von Statue wegschauen',
-    fr: 'Ne regardez pas la statue',
-    ja: '塔を見ない！',
-    cn: '背对神像',
-    ko: '시선 피하기',
-    tc: '背對神像',
-  },
-  lookAt: {
-    en: 'Look At Statue',
-    de: 'Statue anschauen',
-    fr: 'Regardez la statue',
-    ja: '像を見る！',
-    cn: '面对神像',
-    ko: '시선 바라보기',
-    tc: '面對神像',
-  },
-};
-
 const trapOutputStrings: OutputStrings = {
   you: {
     en: 'YOU',
@@ -886,33 +735,300 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.fireMarker = matches.id,
     },
     {
-      id: 'DMU P1 Mystery Magic Ice and Fire',
-      // Set 1: Only Ice and Fire should be set
+      id: 'DMU P1 and P4 Mystery Magic',
+      // BA94 Myster Magic
+      // BA95 Blizzard III Blowout
+      // C5DE Thrumming Thunder III
+      // BAA5 Mana Release
       type: 'StartsUsing',
-      netRegex: { id: 'BA94', source: 'Kefka', capture: false },
-      condition: (data) => {
-        return data.isIceTrue !== undefined && data.isFireTrue !== undefined;
-      },
-      infoText: (data, _matches, output) => {
-        const fireMarker = data.fireMarker;
-        if (
-          (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
-        )
-          return data.isIceTrue
-            ? output.spreadTrueIce!({ mech: output.spread!(), ice: output.trueIce!() })
-            : output.spreadFakeIce!({ mech: output.spread!(), ice: output.fakeIce!() });
+      netRegex: { id: ['BA94', 'BA95', 'C5DE', 'BAA5'], source: 'Kefka', capture: true },
+      infoText: (data, matches, output) => {
+        const id = matches.id;
+        if (id === 'BA94') {
+          // Set 1: P1 Ice and Fire
+          if (data.isIceTrue !== undefined && data.isFireTrue !== undefined) {
+            const fireMarker = data.fireMarker;
+            if (
+              (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
+              (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
+            )
+              return data.isIceTrue
+                ? output.spreadTrueIce!({ mech: output.spread!(), ice: output.trueIce!() })
+                : output.spreadFakeIce!({ mech: output.spread!(), ice: output.fakeIce!() });
 
-        if (
-          (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && data.isFireTrue)
-        ) {
-          return data.isIceTrue
-            ? output.stackTrueIce!({ mech: output.stack!(), ice: output.trueIce!() })
-            : output.stackFakeIce!({ mech: output.stack!(), ice: output.fakeIce!() });
+            if (
+              (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
+              (fireMarker === headMarkerData['stack'] && data.isFireTrue)
+            ) {
+              return data.isIceTrue
+                ? output.stackTrueIce!({ mech: output.stack!(), ice: output.trueIce!() })
+                : output.stackFakeIce!({ mech: output.stack!(), ice: output.fakeIce!() });
+            }
+          }
+
+          // Set 2 and P4: Ice and Thunder
+          if (data.isIceTrue !== undefined && data.isThunderTrue !== undefined) {
+            if (data.isThunderTrue) {
+              return data.isIceTrue
+                ? output.trueIceTrueThunder!()
+                : output.fakeIceTrueThunder!();
+            }
+            return data.isIceTrue
+              ? output.trueIceFakeThunder!()
+              : output.fakeIceFakeThunder!();
+          }
+
+          // Set 4: P1 Fire and Thunder
+          if (
+            data.isFireTrue !== undefined &&
+            data.isThunderTrue !== undefined &&
+            data.phase === 'p1'
+          ) {
+            const fireMarker = data.fireMarker;
+            const look = data.isTowerLookAway ? output.lookAway!() : output.lookAt!();
+            if (
+              (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
+              (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
+            )
+              return data.isThunderTrue
+                ? output.spreadTrueThunderLook!({
+                  mech: output.spread!(),
+                  thunder: output.trueThunder!(),
+                  look: look,
+                })
+                : output.spreadFakeThunderLook!({
+                  mech: output.spread!(),
+                  thunder: output.fakeThunder!(),
+                  look: look,
+                });
+
+            if (
+              (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
+              (fireMarker === headMarkerData['stack'] && data.isFireTrue)
+            ) {
+              return data.isThunderTrue
+                ? output.stackTrueThunderLook!({
+                  mech: output.stack!(),
+                  thunder: output.trueThunder!(),
+                  look: look,
+                })
+                : output.stackFakeThunderLook!({
+                  mech: output.stack!(),
+                  thunder: output.fakeThunder!(),
+                  look: look,
+                });
+            }
+          }
+        }
+
+        if (id === 'BA95') {
+          // Set 3: P1 Ice Only, and Gravitas and Vitrophyre Tethers
+          // Occurs between Graven Image Set 2 and Set 3
+          if (
+            data.isIceTrue !== undefined &&
+            data.isThunderTrue === undefined &&
+            data.isFireTrue === undefined
+          ) {
+            const hasVitrophyre = data.gravenImageTether === 'vitrophyre';
+            return data.isIceTrue
+              ? output.trueIcePuddle!({
+                mech1: output.trueIce!(),
+                mech2: output.puddle!(),
+                mech3: hasVitrophyre ? output.spread!() : output.middle!(),
+              })
+              : output.fakeIcePuddle!({
+                mech1: output.fakeIce!(),
+                mech2: output.puddle!(),
+                mech3: hasVitrophyre ? output.spread!() : output.middle!(),
+              });
+          }
+
+          // P4 Only
+          // BAA4 Mana Charge signifies that the true/fake will be stored for later
+          // Indicated with boss buff 5CA Mana Charged and 5CC Blizzard Charged
+          // Prevent triggering on earlier P1 or P4 triggers
+          if (data.grandCrossCount === 3)
+            return data.isIceTrue ? output.trueIce!() : output.fakeIce!();
+        }
+
+        // P4 Only
+        // BAA4 Mana Charge signifies that the true/fake will be stored for later
+        // Indicated with boss buff 5CA Mana Charged and 5CD Thunder Charged
+        if (id === 'C5DE')
+          return data.isThunderTrue ? output.trueThunder!() : output.fakeThunder!();
+
+        // P4 Only
+        // 5CA Mana Charged falls off ~5.4s prior to startsUsing
+        // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
+        // Thrumming Thunder III and Blizzard III Blowout startsUsing
+        if (id === 'BAA5' && data.isIceTrue !== undefined && data.isThunderTrue !== undefined) {
+          const isThunderCharged = data.isThunderChargedTrue;
+          const isBlizzardCharged = data.isBlizzardChargedTrue;
+          const trueThunder = (isThunderCharged && data.isThunderTrue) ||
+            (!isThunderCharged && !data.isThunderTrue);
+          const trueIce = (isBlizzardCharged && data.isIceTrue) ||
+            (!isBlizzardCharged && !data.isIceTrue);
+
+          if (trueThunder) {
+            return trueIce
+              ? output.trueIceTrueThunder!()
+              : output.fakeIceTrueThunder!();
+          }
+          return trueIce
+            ? output.trueIceFakeThunder!()
+            : output.fakeIceFakeThunder!();
         }
       },
-      outputStrings: mysteryMagicOutputStrings,
+      outputStrings: {
+        puddle: {
+          en: 'Bait Puddle',
+          de: 'Fläche ködern',
+          fr: 'Déposez',
+          ja: 'AOE誘導',
+          cn: '诱导AOE',
+          ko: '장판 유도',
+          tc: '誘導AOE',
+        },
+        spread: Outputs.spread,
+        middle: Outputs.goIntoMiddle,
+        stack: {
+          en: 'Stack',
+          de: 'Stacken',
+          fr: 'Packez-vous',
+          ja: 'スタック',
+          cn: '分摊',
+          ko: '쉐어',
+          tc: '集合',
+        },
+        trueThunder: {
+          en: 'Avoid Tell',
+          cn: '躲避直线',
+          ko: '예고 피하기',
+        },
+        fakeThunder: {
+          en: 'In Line',
+          cn: '进入直线',
+          ko: '직선 안으로',
+        },
+        trueIce: {
+          en: 'Avoid Tell',
+          cn: '躲避扇形',
+          ko: '예고 피하기',
+        },
+        fakeIce: {
+          en: 'In Cone',
+          cn: '进入扇形',
+          ko: '부채꼴 안으로',
+        },
+        trueIcePuddle: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+          cn: '${mech1} + ${mech2} => ${mech3}',
+          ko: '${mech1} + ${mech2} => ${mech3}',
+        },
+        fakeIcePuddle: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+          cn: '${mech1} + ${mech2} => ${mech3}',
+          ko: '${mech1} + ${mech2} => ${mech3}',
+        },
+        stackTrueIce: {
+          en: '${mech} + ${ice}',
+          cn: '${mech} + ${ice}',
+          ko: '${mech} + ${ice}',
+        },
+        stackFakeIce: {
+          en: '${mech} + ${ice}',
+          cn: '${mech} + ${ice}',
+          ko: '${mech} + ${ice}',
+        },
+        spreadTrueIce: {
+          en: '${mech} + ${ice}',
+          cn: '${mech} + ${ice}',
+          ko: '${mech} + ${ice}',
+        },
+        spreadFakeIce: {
+          en: '${mech} + ${ice}',
+          cn: '${mech} + ${ice}',
+          ko: '${mech} + ${ice}',
+        },
+        trueIceTrueThunder: {
+          en: 'Avoid Tells',
+          cn: '躲避扇形+直线',
+          ko: '예고 다 피하기',
+        },
+        fakeIceTrueThunder: {
+          en: 'Cone (only)',
+          cn: '仅扇形',
+          ko: '부채꼴만',
+        },
+        trueIceFakeThunder: {
+          en: 'Line (only)',
+          cn: '仅直线',
+          ko: '직선만',
+        },
+        fakeIceFakeThunder: {
+          en: 'Cone + Line',
+          cn: '扇形+直线',
+          ko: '부채꼴 + 직선',
+        },
+        stackTrueThunderLook: {
+          en: '${mech} + ${thunder} + ${look}',
+          cn: '${mech} + ${thunder} + ${look}',
+          ko: '${mech} + ${thunder} + ${look}',
+        },
+        stackFakeThunderLook: {
+          en: '${mech} + ${thunder} + ${look}',
+          cn: '${mech} + ${thunder} + ${look}',
+          ko: '${mech} + ${thunder} + ${look}',
+        },
+        spreadTrueThunderLook: {
+          en: '${mech} + ${thunder} + ${look}',
+          cn: '${mech} + ${thunder} + ${look}',
+          ko: '${mech} + ${thunder} + ${look}',
+        },
+        spreadFakeThunderLook: {
+          en: '${mech} + ${thunder} + ${look}',
+          cn: '${mech} + ${thunder} + ${look}',
+          ko: '${mech} + ${thunder} + ${look}',
+        },
+        stackTrueThunder: {
+          en: '${mech} + ${thunder}',
+          cn: '${mech} + ${thunder}',
+          ko: '${mech} + ${thunder}',
+        },
+        stackFakeThunder: {
+          en: '${mech} + ${thunder}',
+          cn: '${mech} + ${thunder}',
+          ko: '${mech} + ${thunder}',
+        },
+        spreadTrueThunder: {
+          en: '${mech} + ${thunder}',
+          cn: '${mech} + ${thunder}',
+          ko: '${mech} + ${thunder}',
+        },
+        spreadFakeThunder: {
+          en: '${mech} + ${thunder}',
+          cn: '${mech} + ${thunder}',
+          ko: '${mech} + ${thunder}',
+        },
+        lookAway: {
+          en: 'Look Away From Statue',
+          de: 'Von Statue wegschauen',
+          fr: 'Ne regardez pas la statue',
+          ja: '塔を見ない！',
+          cn: '背对神像',
+          ko: '시선 피하기',
+          tc: '背對神像',
+        },
+        lookAt: {
+          en: 'Look At Statue',
+          de: 'Statue anschauen',
+          fr: 'Regardez la statue',
+          ja: '像を見る！',
+          cn: '面对神像',
+          ko: '시선 바라보기',
+          tc: '面對神像',
+        },
+      },
     },
     {
       id: 'DMU P1 Graven Image Tether Cleanup',
@@ -1134,26 +1250,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: trapOutputStrings,
     },
     {
-      id: 'DMU P1 and P4 Mystery Magic Ice and Thunder',
-      // Set 2: Only Ice and Thunder should be set
-      type: 'StartsUsing',
-      netRegex: { id: 'BA94', source: 'Kefka', capture: false },
-      condition: (data) => {
-        return data.isIceTrue !== undefined && data.isThunderTrue !== undefined;
-      },
-      infoText: (data, _matches, output) => {
-        if (data.isThunderTrue) {
-          return data.isIceTrue
-            ? output.trueIceTrueThunder!()
-            : output.fakeIceTrueThunder!();
-        }
-        return data.isIceTrue
-          ? output.trueIceFakeThunder!()
-          : output.fakeIceFakeThunder!();
-      },
-      outputStrings: mysteryMagicOutputStrings,
-    },
-    {
       id: 'DMU P1 Light of Judgment',
       type: 'StartsUsing',
       netRegex: { id: 'C622', source: 'Kefka', capture: false },
@@ -1167,37 +1263,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C622', source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2, // Result in ~5.1s warning
       response: Responses.tankBuster(),
-    },
-    {
-      id: 'DMU P1 Mystery Magic Ice, and Gravitas and Vitrophyre Tethers 1',
-      // Occurs between Graven Image Set 2 and Set 3
-      // BA95 Blizzard III Blowout cast
-      type: 'StartsUsing',
-      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
-      condition: (data) => {
-        if (
-          data.isIceTrue !== undefined &&
-          data.isThunderTrue === undefined &&
-          data.isFireTrue === undefined
-        )
-          return true;
-        return false;
-      },
-      infoText: (data, _matches, output) => {
-        const hasVitrophyre = data.gravenImageTether === 'vitrophyre';
-        return data.isIceTrue
-          ? output.trueIcePuddle!({
-            mech1: output.trueIce!(),
-            mech2: output.puddle!(),
-            mech3: hasVitrophyre ? output.spread!() : output.middle!(),
-          })
-          : output.fakeIcePuddle!({
-            mech1: output.fakeIce!(),
-            mech2: output.puddle!(),
-            mech3: hasVitrophyre ? output.spread!() : output.middle!(),
-          });
-      },
-      outputStrings: mysteryMagicOutputStrings,
     },
     {
       id: 'DMU P1 Vitrophyre',
@@ -1815,58 +1880,6 @@ const triggerSet: TriggerSet<Data> = {
           ko: '시선 피하기 (나중에)',
         },
       },
-    },
-    {
-      id: 'DMU P1 Mystery Magic Fire and Thunder',
-      // Set 3: Only Fire and Thunder should be set
-      type: 'StartsUsing',
-      netRegex: { id: 'BA94', source: 'Kefka', capture: false },
-      condition: (data) => {
-        if (
-          data.isFireTrue !== undefined &&
-          data.isThunderTrue !== undefined &&
-          data.phase === 'p1'
-        )
-          return true;
-        return false;
-      },
-      infoText: (data, _matches, output) => {
-        const fireMarker = data.fireMarker;
-        const look = data.isTowerLookAway ? output.lookAway!() : output.lookAt!();
-        if (
-          (fireMarker === headMarkerData['dorito'] && data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && !data.isFireTrue)
-        )
-          return data.isThunderTrue
-            ? output.spreadTrueThunderLook!({
-              mech: output.spread!(),
-              thunder: output.trueThunder!(),
-              look: look,
-            })
-            : output.spreadFakeThunderLook!({
-              mech: output.spread!(),
-              thunder: output.fakeThunder!(),
-              look: look,
-            });
-
-        if (
-          (fireMarker === headMarkerData['dorito'] && !data.isFireTrue) ||
-          (fireMarker === headMarkerData['stack'] && data.isFireTrue)
-        ) {
-          return data.isThunderTrue
-            ? output.stackTrueThunderLook!({
-              mech: output.stack!(),
-              thunder: output.trueThunder!(),
-              look: look,
-            })
-            : output.stackFakeThunderLook!({
-              mech: output.stack!(),
-              thunder: output.fakeThunder!(),
-              look: look,
-            });
-        }
-      },
-      outputStrings: mysteryMagicOutputStrings,
     },
     {
       id: 'DMU P1 and P4 Mystery Magic Cleanup',
@@ -4697,17 +4710,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Thrumming Thunder III',
-      // BAA4 Mana Charge signifies that the true/fake will be stored for later
-      // Indicated with boss buff 5CA Mana Charged and 5CD Thunder Charged
-      type: 'StartsUsing',
-      netRegex: { id: 'C5DE', source: 'Kefka', capture: false },
-      infoText: (data, _matches, output) => {
-        return data.isThunderTrue ? output.trueThunder!() : output.fakeThunder!();
-      },
-      outputStrings: mysteryMagicOutputStrings,
-    },
-    {
       id: 'DMU P4 First Cursed Shriek',
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
@@ -4895,19 +4897,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Blizzard III Blowout',
-      // BAA4 Mana Charge signifies that the true/fake will be stored for later
-      // Indicated with boss buff 5CA Mana Charged and 5CC Blizzard Charged
-      type: 'StartsUsing',
-      netRegex: { id: 'BA95', source: 'Kefka', capture: false },
-      // Prevent triggering on earlier P1 or P4 triggers
-      condition: (data) => data.grandCrossCount === 3,
-      infoText: (data, _matches, output) => {
-        return data.isIceTrue ? output.trueIce!() : output.fakeIce!();
-      },
-      outputStrings: mysteryMagicOutputStrings,
-    },
-    {
       id: 'DMU P4 Second Cursed Shriek',
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
@@ -4973,35 +4962,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         puddles: Outputs.baitPuddles,
       },
-    },
-    {
-      id: 'DMU P4 Mana Release',
-      // 5CA Mana Charged falls off ~5.4s prior to startsUsing
-      // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
-      // Thrumming Thunder III and Blizzard III Blowout startsUsing
-      type: 'StartsUsing',
-      netRegex: { id: 'BAA5', source: 'Kefka', capture: false },
-      condition: (data) => {
-        return data.isIceTrue !== undefined && data.isThunderTrue !== undefined;
-      },
-      infoText: (data, _matches, output) => {
-        const isThunderCharged = data.isThunderChargedTrue;
-        const isBlizzardCharged = data.isBlizzardChargedTrue;
-        const trueThunder = (isThunderCharged && data.isThunderTrue) ||
-          (!isThunderCharged && !data.isThunderTrue);
-        const trueIce = (isBlizzardCharged && data.isIceTrue) ||
-          (!isBlizzardCharged && !data.isIceTrue);
-
-        if (trueThunder) {
-          return trueIce
-            ? output.trueIceTrueThunder!()
-            : output.fakeIceTrueThunder!();
-        }
-        return trueIce
-          ? output.trueIceFakeThunder!()
-          : output.fakeIceFakeThunder!();
-      },
-      outputStrings: mysteryMagicOutputStrings,
     },
     {
       id: 'DMU P4 Fake Stray Spray',
