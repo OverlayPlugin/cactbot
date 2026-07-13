@@ -744,7 +744,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['BA94', 'BA95', 'C5DE', 'BAA5'], source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => {
         if (matches.id === 'BAA5')
-          return parseFloat(matches.castTime) + 0.4;
+          return parseFloat(matches.castTime) + 0.3;
         return 0;
       },
       infoText: (data, matches, output) => {
