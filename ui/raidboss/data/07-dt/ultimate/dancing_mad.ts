@@ -4721,15 +4721,30 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
+        // Seperate configurable output if you have it
+        if (shriekPlayers.includes(data.me)) {
+          return isTrue
+            ? output.lookAwayFromPlayerYou!({ players: msg })
+            : output.lookAtPlayerYou!({ players: msg });
+        }
         return isTrue
           ? output.lookAwayFromPlayers!({ players: msg })
           : output.lookAtPlayers!({ players: msg });
       },
       outputStrings: {
+        you: {
+          en: 'YOU',
+        },
         lookAtPlayers: {
           en: 'Face ${players} (later)',
         },
         lookAwayFromPlayers: {
+          en: 'Look Away from ${players} (later)',
+        },
+        lookAtPlayerYou: {
+          en: 'Face ${players} (later)',
+        },
+        lookAwayFromPlayerYou: {
           en: 'Look Away from ${players} (later)',
         },
       },
