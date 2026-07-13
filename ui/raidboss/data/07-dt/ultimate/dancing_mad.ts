@@ -4701,7 +4701,7 @@ const triggerSet: TriggerSet<Data> = {
       // Using the debuff as a timer as player deaths would cause early trigger
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
-      delaySeconds: (_data, matches, output) => {
+      delaySeconds: (_data, matches) => {
         return parseFloat(matches.duration) < 61 ? 51.1 : 61.1;
       },
       suppressSeconds: 1,
