@@ -4703,7 +4703,7 @@ const triggerSet: TriggerSet<Data> = {
       // This occurs roughly 5-6s before the alert version
       type: 'Ability',
       netRegex: { id: ['BB18', 'BB19', 'BB1A', 'BB1B'], capture: false },
-      suppressSeconds: 1,
+      suppressSeconds: 24,
       infoText: (data, _matches, output) => {
         // Check Mana Charge related value to see if first shriek
         const isShortDebuffs = data.isThunderChargedTrue === undefined;
