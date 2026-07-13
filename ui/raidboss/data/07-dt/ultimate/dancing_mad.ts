@@ -742,6 +742,11 @@ const triggerSet: TriggerSet<Data> = {
       // BAA5 Mana Release
       type: 'StartsUsing',
       netRegex: { id: ['BA94', 'BA95', 'C5DE', 'BAA5'], source: 'Kefka', capture: true },
+      delaySeconds: (_data, matches) => {
+        if (matches.id === 'BAA5')
+          return parseFloat(matches.castTime); // Mana Release happens before the tells
+        return 0;
+      },
       infoText: (data, matches, output) => {
         const id = matches.id;
         if (id === 'BA94') {
@@ -4584,8 +4589,8 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
 
         const gaze = is1stTrue
-          ? output.fakeCursedShriekOnPlayers!({ players: msg })
-          : output.cursedShriekOnPlayers!({ players: msg });
+          ? output.fakeGazeOnPlayers!({ players: msg })
+          : output.gazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isShortTrue) || (hasCompressed && !isShortTrue);
         const hasStack = (hasFork && !isShortTrue) || (hasCompressed && isShortTrue);
 
@@ -4651,10 +4656,10 @@ const triggerSet: TriggerSet<Data> = {
         fakeBomb: {
           en: 'Motion',
         },
-        cursedShriekOnPlayers: {
+        gazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeCursedShriekOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Look Away from ${players}',
         },
       },
@@ -4726,27 +4731,27 @@ const triggerSet: TriggerSet<Data> = {
         // Seperate configurable output if you have it
         if (shriekPlayers.includes(data.me)) {
           return isTrue
-            ? output.fakeCursedShriekOnYou!({ players: msg })
-            : output.cursedShriekOnYou!({ players: msg });
+            ? output.fakeGazeOnYou!({ players: msg })
+            : output.gazeOnYou!({ players: msg });
         }
         return isTrue
-          ? output.fakeCursedShriekOnPlayers!({ players: msg })
-          : output.cursedShriekOnPlayers!({ players: msg });
+          ? output.fakeGazeOnPlayers!({ players: msg })
+          : output.gazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        cursedShriekOnPlayers: {
+        gazeOnPlayers: {
           en: 'Face ${players} (later)',
         },
-        fakeCursedShriekOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Look Away from ${players} (later)',
         },
-        cursedShriekOnYou: {
+        gazeOnYou: {
           en: 'Face ${players} (later)',
         },
-        fakeCursedShriekOnYou: {
+        fakeGazeOnYou: {
           en: 'Look Away from ${players} (later)',
         },
       },
@@ -4788,17 +4793,17 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
 
         return is1stTrue
-          ? output.fakeCursedShriekOnPlayers!({ players: msg })
-          : output.cursedShriekOnPlayers!({ players: msg });
+          ? output.fakeGazeOnPlayers!({ players: msg })
+          : output.gazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        cursedShriekOnPlayers: {
+        gazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeCursedShriekOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Look Away from ${players}',
         },
       },
@@ -4879,8 +4884,8 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
 
         const gaze = is2ndTrue
-          ? output.fakeCursedShriekOnPlayers!({ players: msg })
-          : output.cursedShriekOnPlayers!({ players: msg });
+          ? output.fakeGazeOnPlayers!({ players: msg })
+          : output.gazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isLongTrue) || (hasCompressed && !isLongTrue);
         const hasStack = (hasFork && !isLongTrue) || (hasCompressed && isLongTrue);
 
@@ -4946,10 +4951,10 @@ const triggerSet: TriggerSet<Data> = {
         fakeBomb: {
           en: 'Motion',
         },
-        cursedShriekOnPlayers: {
+        gazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeCursedShriekOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Look Away from ${players}',
         },
       },
@@ -4977,17 +4982,17 @@ const triggerSet: TriggerSet<Data> = {
         const msg = players?.join(', ');
 
         return is2ndTrue
-          ? output.fakeCursedShriekOnPlayers!({ players: msg })
-          : output.cursedShriekOnPlayers!({ players: msg });
+          ? output.fakeGazeOnPlayers!({ players: msg })
+          : output.gazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        cursedShriekOnPlayers: {
+        gazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeCursedShriekOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Look Away from ${players}',
         },
       },
