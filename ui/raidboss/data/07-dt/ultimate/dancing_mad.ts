@@ -4026,11 +4026,11 @@ const triggerSet: TriggerSet<Data> = {
         if (data.areFirstDebuffsTrue === undefined)
           data.areFirstDebuffsTrue = isTrue;
         else if (data.isEntropyTrue === undefined)
-          data.isEntropyTrue = isTrue;
+          data.isDynamicFluidTrue = isTrue;
         else if (data.areSecondDebuffsTrue === undefined)
           data.areSecondDebuffsTrue = isTrue;
         else if (data.isDynamicFluidTrue === undefined)
-          data.isDynamicFluidTrue = isTrue;
+          data.isEntropyTrue = isTrue;
         // Last two are not needed as the next is a double negative and last
         // has unique cast ids for true/fake
       },
