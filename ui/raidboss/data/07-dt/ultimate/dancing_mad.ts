@@ -4441,7 +4441,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Third Debuffs',
+      id: 'DMU P4 Fifth Debuffs',
       // Neo Exdeath Debuffs Cast 3
       // 1317 White Wound (Fake) or 15A5 White Wound
       // 1318 Black Wound (Fake) or 15A6 Black Wound
