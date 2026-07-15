@@ -80,9 +80,11 @@ export interface Data extends RaidbossData {
   shortBombPlayers: string[];
   longBombPlayers: string[];
   areFirstDebuffsTrue?: boolean;
-  isEntropyTrue?: boolean;
   areSecondDebuffsTrue?: boolean;
-  isDynamicFluidTrue?: boolean;
+  areThirdDebuffsTrue?: boolean;
+  areFourthDebuffsTrue?: boolean;
+  isEntropyTrue?: boolean;
+  isFluidTrue?: boolean;
   deathOrField?: 'death' | 'field';
   wound?: 'white' | 'black';
   isThunderChargedTrue?: boolean;
@@ -4025,12 +4027,12 @@ const triggerSet: TriggerSet<Data> = {
         // These always come out in order
         if (data.areFirstDebuffsTrue === undefined)
           data.areFirstDebuffsTrue = isTrue;
-        else if (data.isEntropyTrue === undefined)
-          data.isDynamicFluidTrue = isTrue;
         else if (data.areSecondDebuffsTrue === undefined)
           data.areSecondDebuffsTrue = isTrue;
-        else if (data.isDynamicFluidTrue === undefined)
-          data.isEntropyTrue = isTrue;
+        else if (data.areThirdDebuffsTrue === undefined)
+          data.areThirdDebuffsTrue = isTrue;
+        else if (data.areFourthDebuffsTrue === undefined)
+          data.areFourthDebuffsTrue = isTrue;
         // Last two are not needed as the next is a double negative and last
         // has unique cast ids for true/fake
       },
@@ -4067,14 +4069,14 @@ const triggerSet: TriggerSet<Data> = {
       // 15A9 Compressed Water x2 76s or 51s              => 13:19.578          13:44.672
       // 15AA Acceleration Bomb (2 Long 76s, 2 Short 51s) => 13:19.672          13:44.672
       // Chaos Debuffs 1: (12:34.341)
-      // 15AC Dynamic Fluid x8 84s                        => 13:48.672
+      // 15AC Dynamic Fluid x8 84s or 15AB Entropy x8 60s => 13:58.341          13:35.485
       // Neo Exdeath Debuffs Cast 2: (12:43.578)
       // 15A8 Forked Lightning x2 36s or 61s              => 13:19.578          13.44.578
       // 15A7 Cursed Shriek x2 69s                        => 13:52.578
       // 15A9 Compressed Water x2 36s or 61s              => 13:19.578          13.44.578
       // 15AA Acceleration Bomb (2 Long 61s, 2 Short 36s) => 13:19.578          13:44.578
       // Chaos Debuffs 2: 12:50.485
-      // 15AB Entroy x8 45s                               => 13:35.485
+      // 15AB Entropy x8 45s or 15AC Dynamic Fluid 8x 69s => 13:35.485          13:58.341
       // Neo Exdeath Debuffs Cast 3: (13:00.002)
       // 15A5 White Wound or 1317 (Fake)
       // 15A6 Black Wound or 1318 (Fake)
@@ -4095,7 +4097,7 @@ const triggerSet: TriggerSet<Data> = {
       // For 3rd set of debuffs we do not need to know real/fake:
       // Allagan Field players swap their color by getting hit with opposite color Angilight
       // Beyond Death field players keep their color by getting hit with same colore Antilight
-      // Entropy and Dynamic Fluids will be handled seperately
+      // Entropy and Dynamic Fluids debuffs can be 2nd or 4rth, but resolution is at same time
       type: 'GainsEffect',
       netRegex: {
         effectId: [
@@ -4256,30 +4258,62 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Entropy (Early)',
+      id: 'DMU P4 Entropy/Dynamic Fluid Collect',
+      // Separate trigger as we only need to capture one
+      // 15AB Entropy
+      // 15AC Dynamic Fluid
       type: 'GainsEffect',
-      netRegex: { effectId: '15AB', capture: false },
+      netRegex: { effectId: ['15AB', '15AC'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        const duration = parseFloat(matches.duration);
+        // These could be undefined if the true/false trigger fails to collect
+        // Checking for undefined should be handled in an output trigger
+
+        if (matches.effectId === '15AB') {
+          data.isEntropyTrue = duration > 46
+            ? data.areSecondDebuffsTrue
+            : data.areFourthDebuffsTrue;
+          return;
+        }
+        data.isFluidTrue = duration > 83
+          ? data.areSecondDebuffsTrue
+          : data.areFourthDebuffsTrue;
+      },
+    },
+    {
+      id: 'DMU P4 Second Debuffs (Early)',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['15AB', '15AC'], capture: true },
+      condition: (data) => data.grandCrossCount === 1,
       delaySeconds: 0.1,
       suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
-        const isEntropyTrue = data.isEntropyTrue;
-        if (isEntropyTrue === undefined)
+      infoText: (data, matches, output) => {
+        const areSecondDebuffsTrue = data.areSecondDebuffsTrue;
+        if (areSecondDebuffsTrue === undefined)
           return;
-        return isEntropyTrue
-          ? output.puddlesFirst!()
-          : output.donutsFirst!();
+        const isEntropy = matches.id === '15AB';
+        if (isEntropy)
+          return areSecondDebuffsTrue ? output.puddlesFirst!() : output.donutsFirst!();
+        return areSecondDebuffsTrue ? output.donutsSecond!() : output.puddlesSecond!();
       },
       outputStrings: {
         puddlesFirst: {
           en: 'Puddles First',
         },
+        puddlesSecond: {
+          en: 'Puddles Second',
+        },
         donutsFirst: {
           en: 'Donuts First',
+        },
+        donutsSecond: {
+          en: 'Donuts Second',
         },
       },
     },
     {
-      id: 'DMU P4 Second Debuffs (Early)',
+      id: 'DMU P4 Third Debuffs (Early)',
       // Cast 2:
       // 15A8 Forked Lightning x2 36s or 61s
       // 15A7 Cursed Shriek x2 69s
@@ -4293,7 +4327,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1,
       suppressSeconds: 99999,
       infoText: (data, _matches, output) => {
-        const isTrue = data.areSecondDebuffsTrue;
+        const isTrue = data.areThirdDebuffsTrue;
         const isShort = data.isFirstDebuffShort;
         if (isTrue === undefined || isShort === undefined)
           return;
@@ -4376,22 +4410,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Dynamic Fluid (Early)',
+      id: 'DMU P4 Fourth Debuffs (Early)',
       type: 'GainsEffect',
-      netRegex: { effectId: '15AC', capture: false },
+      netRegex: { effectId: ['15AB', '15AC'], capture: true },
+      condition: (data) => data.grandCrossCount === 2,
       delaySeconds: 0.1,
       suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
-        const isFluidTrue = data.isDynamicFluidTrue;
-        if (isFluidTrue === undefined)
+      infoText: (data, matches, output) => {
+        const areFourthDebuffsTrue = data.areFourthDebuffsTrue;
+        if (areFourthDebuffsTrue === undefined)
           return;
-        return isFluidTrue
-          ? output.donutsSecond!()
-          : output.puddlesSecond!();
+        const isEntropy = matches.id === '15AB';
+        if (isEntropy)
+          return areFourthDebuffsTrue ? output.puddlesFirst!() : output.donutsFirst!();
+        return areFourthDebuffsTrue ? output.donutsSecond!() : output.puddlesSecond!();
       },
       outputStrings: {
+        puddlesFirst: {
+          en: 'Puddles First',
+        },
         puddlesSecond: {
           en: 'Puddles Second',
+        },
+        donutsFirst: {
+          en: 'Donuts First',
         },
         donutsSecond: {
           en: 'Donuts Second',
@@ -4473,7 +4515,7 @@ const triggerSet: TriggerSet<Data> = {
         });
 
         const is1stTrue = data.areFirstDebuffsTrue;
-        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is2ndTrue = data.areThirdDebuffsTrue;
         const isFirstShort = data.isFirstDebuffShort;
         if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return laser;
@@ -4569,7 +4611,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const is1stTrue = data.areFirstDebuffsTrue;
-        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is2ndTrue = data.areThirdDebuffsTrue;
         const isFirstShort = data.isFirstDebuffShort;
         if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return;
@@ -4678,7 +4720,7 @@ const triggerSet: TriggerSet<Data> = {
         const isFirstDebuff = duration > 75 || (duration < 52 && duration > 50);
         const isTrue = isFirstDebuff
           ? data.areFirstDebuffsTrue
-          : data.areSecondDebuffsTrue;
+          : data.areThirdDebuffsTrue;
         return isTrue ? output.stopEverything!() : output.keepMoving!();
       },
       outputStrings: {
@@ -4714,7 +4756,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       infoText: (data, matches, output) => {
         const isShortDebuffs = parseFloat(matches.duration) < 61;
-        const isTrue = isShortDebuffs ? data.areFirstDebuffsTrue : data.areSecondDebuffsTrue;
+        const isTrue = isShortDebuffs ? data.areFirstDebuffsTrue : data.areThirdDebuffsTrue;
         if (isTrue === undefined)
           return;
 
@@ -4864,7 +4906,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
         const is1stTrue = data.areFirstDebuffsTrue;
-        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is2ndTrue = data.areThirdDebuffsTrue;
         const isFirstShort = data.isFirstDebuffShort;
         if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return;
@@ -4968,7 +5010,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 3,
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
-        const is2ndTrue = data.areSecondDebuffsTrue;
+        const is2ndTrue = data.areThirdDebuffsTrue;
         if (is2ndTrue === undefined)
           return;
 
@@ -5008,7 +5050,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 6.9, // Time until Stray Spray
       suppressSeconds: 99999,
       alertText: (data, _matches, output) => {
-        const isFluidTrue = data.isDynamicFluidTrue;
+        const isFluidTrue = data.isFluidTrue;
         if (isFluidTrue === undefined)
           return;
 
