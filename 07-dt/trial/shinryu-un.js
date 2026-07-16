@@ -88,6 +88,7 @@ Options.Triggers.push({
           de: 'Eis: Sammeln + nicht bewegen',
           cn: '冰: 集合 + 不要动',
           ko: '얼음: 모이기 + 이동 멈추기',
+          tc: '冰: 集合 + 不要動',
         },
       },
     },
@@ -747,7 +748,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Cocoon': '光繭',
         'Icicle': '冰柱',
