@@ -4621,7 +4621,9 @@ const triggerSet: TriggerSet<Data> = {
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
 
-        const players = data.shortShriekPlayers.map(
+        const shriekPlayers = data.shortShriekPlayers;
+        const shriekOnYou = shriekPlayers.includes(data.me);
+        const players = shriekPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
@@ -4630,9 +4632,13 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
-        const gaze = is1stTrue
-          ? output.fakeGazeOnPlayers!({ players: msg })
-          : output.gazeOnPlayers!({ players: msg });
+        const gaze = (is1stTrue && shriekOnYou)
+          ? output.gazeOnPlayersYou!({ players: msg })
+          : (!is2ndTrue && shriekOnYou)
+          ? output.fakeGazeOnPlayersYou!({ players: msg })
+          : is1stTrue
+          ? output.gazeOnPlayers!({ players: msg })
+          : output.fakeGazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isShortTrue) || (hasCompressed && !isShortTrue);
         const hasStack = (hasFork && !isShortTrue) || (hasCompressed && isShortTrue);
 
@@ -4698,10 +4704,16 @@ const triggerSet: TriggerSet<Data> = {
         fakeBomb: {
           en: 'Motion',
         },
-        gazeOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeGazeOnPlayers: {
+        gazeOnPlayers: {
+          en: 'Look Away from ${players}',
+        },
+        fakeGazeOnPlayersYou: {
+          en: 'Face ${players}',
+        },
+        gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
         },
       },
@@ -4773,27 +4785,27 @@ const triggerSet: TriggerSet<Data> = {
         // Seperate configurable output if you have it
         if (shriekPlayers.includes(data.me)) {
           return isTrue
-            ? output.fakeGazeOnYou!({ players: msg })
-            : output.gazeOnYou!({ players: msg });
+            ? output.gazeOnYou!({ players: msg })
+            : output.fakeGazeOnYou!({ players: msg });
         }
         return isTrue
-          ? output.fakeGazeOnPlayers!({ players: msg })
-          : output.gazeOnPlayers!({ players: msg });
+          ? output.gazeOnPlayers!({ players: msg })
+          : output.fakeGazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        gazeOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Face ${players} (later)',
         },
-        fakeGazeOnPlayers: {
+        gazeOnPlayers: {
           en: 'Look Away from ${players} (later)',
         },
-        gazeOnYou: {
+        fakeGazeOnYou: {
           en: 'Face ${players} (later)',
         },
-        fakeGazeOnYou: {
+        gazeOnYou: {
           en: 'Look Away from ${players} (later)',
         },
       },
@@ -4825,7 +4837,8 @@ const triggerSet: TriggerSet<Data> = {
         if (is1stTrue === undefined)
           return;
 
-        const players = data.shortShriekPlayers.map(
+        const shriekPlayers = data.shortShriekPlayers;
+        const players = shriekPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
@@ -4834,18 +4847,28 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
+        if (shriekPlayers.includes(data.me))
+          return is1stTrue
+            ? output.gazeOnPlayersYou!({ players: msg })
+            : output.fakeGazeOnPlayersYou!({ players: msg });
         return is1stTrue
-          ? output.fakeGazeOnPlayers!({ players: msg })
-          : output.gazeOnPlayers!({ players: msg });
+          ? output.gazeOnPlayers!({ players: msg })
+          : output.fakeGazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        gazeOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeGazeOnPlayers: {
+        gazeOnPlayers: {
+          en: 'Look Away from ${players}',
+        },
+        fakeGazeOnPlayersYou: {
+          en: 'Face ${players}',
+        },
+        gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
         },
       },
@@ -4916,7 +4939,9 @@ const triggerSet: TriggerSet<Data> = {
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
 
-        const players = data.longShriekPlayers.map(
+        const shriekPlayers = data.longShriekPlayers;
+        const shriekOnYou = shriekPlayers.includes(data.me);
+        const players = shriekPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
@@ -4925,9 +4950,13 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
-        const gaze = is2ndTrue
-          ? output.fakeGazeOnPlayers!({ players: msg })
-          : output.gazeOnPlayers!({ players: msg });
+        const gaze = (is2ndTrue && shriekOnYou)
+          ? output.gazeOnPlayersYou!({ players: msg })
+          : (!is2ndTrue && shriekOnYou)
+          ? output.fakeGazeOnPlayersYou!({ players: msg })
+          : is2ndTrue
+          ? output.gazeOnPlayers!({ players: msg })
+          : output.fakeGazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isLongTrue) || (hasCompressed && !isLongTrue);
         const hasStack = (hasFork && !isLongTrue) || (hasCompressed && isLongTrue);
 
@@ -4993,10 +5022,16 @@ const triggerSet: TriggerSet<Data> = {
         fakeBomb: {
           en: 'Motion',
         },
-        gazeOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeGazeOnPlayers: {
+        gazeOnPlayers: {
+          en: 'Look Away from ${players}',
+        },
+        fakeGazeOnPlayersYou: {
+          en: 'Face ${players}',
+        },
+        gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
         },
       },
@@ -5014,7 +5049,8 @@ const triggerSet: TriggerSet<Data> = {
         if (is2ndTrue === undefined)
           return;
 
-        const players = data.longShriekPlayers.map(
+        const shriekPlayers = data.longShriekPlayers;
+        const players = shriekPlayers.map(
           (player) => {
             if (player === data.me)
               return output.you!();
@@ -5023,18 +5059,28 @@ const triggerSet: TriggerSet<Data> = {
         );
         const msg = players?.join(', ');
 
+        if (shriekPlayers.includes(data.me))
+          return is2ndTrue
+            ? output.gazeOnPlayersYou!({ players: msg })
+            : output.fakeGazeOnPlayersYou!({ players: msg });
         return is2ndTrue
-          ? output.fakeGazeOnPlayers!({ players: msg })
-          : output.gazeOnPlayers!({ players: msg });
+          ? output.gazeOnPlayers!({ players: msg })
+          : output.fakeGazeOnPlayers!({ players: msg });
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        gazeOnPlayers: {
+        fakeGazeOnPlayers: {
           en: 'Face ${players}',
         },
-        fakeGazeOnPlayers: {
+        gazeOnPlayers: {
+          en: 'Look Away from ${players}',
+        },
+        fakeGazeOnPlayersYou: {
+          en: 'Face ${players}',
+        },
+        gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
         },
       },
