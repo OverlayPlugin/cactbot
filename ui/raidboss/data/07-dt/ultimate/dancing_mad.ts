@@ -4559,9 +4559,9 @@ const triggerSet: TriggerSet<Data> = {
             mech3: output.stack!(),
           });
         // Has either nothing or long debuffs
-        return output.laserThenStack!({
+        return output.laserThenNoDebuff!({
           mech1: laser,
-          mech2: output.stack!(),
+          mech2: output.noDebuff!(),
         });
       },
       outputStrings: {
@@ -4594,6 +4594,10 @@ const triggerSet: TriggerSet<Data> = {
         laserThenCompressedBomb: {
           en: '${mech1} => ${mech2} + ${mech3}',
         },
+        laserThenNoDebuff: {
+          en: '${mech1} => ${mech2}',
+        },
+        noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
@@ -4622,81 +4626,46 @@ const triggerSet: TriggerSet<Data> = {
         const hasCompressed = data.shortCompressedPlayers.includes(data.me);
         const hasBomb = data.shortBombPlayers.includes(data.me);
 
-        const shriekPlayers = data.shortShriekPlayers;
-        const shriekOnYou = shriekPlayers.includes(data.me);
-        const players = shriekPlayers.map(
-          (player) => {
-            if (player === data.me)
-              return output.you!();
-            return data.party.member(player);
-          },
-        );
-        const msg = players?.join(', ');
-
-        const gaze = (is1stTrue && shriekOnYou)
-          ? output.gazeOnPlayersYou!({ players: msg })
-          : (!is2ndTrue && shriekOnYou)
-          ? output.fakeGazeOnPlayersYou!({ players: msg })
-          : is1stTrue
-          ? output.gazeOnPlayers!({ players: msg })
-          : output.fakeGazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isShortTrue) || (hasCompressed && !isShortTrue);
         const hasStack = (hasFork && !isShortTrue) || (hasCompressed && isShortTrue);
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
-          return output.forkBombThenGaze!({
+          return output.forkBomb!({
             mech1: output.spread!(),
             mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
-            mech3: gaze,
           });
         if (hasStack && hasBomb)
-          return output.compressedBombThenGaze!({
+          return output.compressedBomb!({
             mech1: output.stack!(),
             mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
-            mech3: gaze,
           });
         if (hasSpread)
-          return output.spreadThenGaze!({
-            mech1: output.spread!(),
-            mech2: gaze,
-          });
+          return output.spread!();
         if (hasStack)
-          return output.stackThenGaze!({
-            mech1: output.stack!(),
-            mech2: gaze,
-          });
+          return output.stack!();
         if (hasBomb)
-          return output.bombThenGaze!({
+          return output.bombStack!({
             mech1: isShortTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
-            mech3: gaze,
           });
         // Has either nothing or long debuffs
-        return output.stackThenGaze!({
-          mech1: output.stack!(),
-          mech2: gaze,
-        });
+        return output.noDebuff!();
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        spreadThenGaze: {
-          en: '${mech1} => ${mech2}',
+        bombStack: {
+          en: '${mech1} + ${mech2}',
         },
-        stackThenGaze: {
-          en: '${mech1} => ${mech2}',
+        forkBomb: {
+          en: '${mech1} + ${mech2}',
         },
-        bombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
+        compressedBomb: {
+          en: '${mech1} + ${mech2}',
         },
-        forkBombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
-        },
-        compressedBombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
-        },
+        noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
@@ -4704,18 +4673,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         fakeBomb: {
           en: 'Motion',
-        },
-        fakeGazeOnPlayers: {
-          en: 'Face ${players}',
-        },
-        gazeOnPlayers: {
-          en: 'Look Away from ${players}',
-        },
-        fakeGazeOnPlayersYou: {
-          en: 'Face ${players}',
-        },
-        gazeOnPlayersYou: {
-          en: 'Look Away from ${players}',
         },
       },
     },
@@ -4939,81 +4896,46 @@ const triggerSet: TriggerSet<Data> = {
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
         const hasBomb = data.longBombPlayers.includes(data.me);
 
-        const shriekPlayers = data.longShriekPlayers;
-        const shriekOnYou = shriekPlayers.includes(data.me);
-        const players = shriekPlayers.map(
-          (player) => {
-            if (player === data.me)
-              return output.you!();
-            return data.party.member(player);
-          },
-        );
-        const msg = players?.join(', ');
-
-        const gaze = (is2ndTrue && shriekOnYou)
-          ? output.gazeOnPlayersYou!({ players: msg })
-          : (!is2ndTrue && shriekOnYou)
-          ? output.fakeGazeOnPlayersYou!({ players: msg })
-          : is2ndTrue
-          ? output.gazeOnPlayers!({ players: msg })
-          : output.fakeGazeOnPlayers!({ players: msg });
         const hasSpread = (hasFork && isLongTrue) || (hasCompressed && !isLongTrue);
         const hasStack = (hasFork && !isLongTrue) || (hasCompressed && isLongTrue);
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
-          return output.forkBombThenGaze!({
+          return output.forkBomb!({
             mech1: output.spread!(),
             mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
-            mech3: gaze,
           });
         if (hasStack && hasBomb)
-          return output.compressedBombThenGaze!({
+          return output.compressedBomb!({
             mech1: output.stack!(),
             mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
-            mech3: gaze,
           });
         if (hasSpread)
-          return output.spreadThenGaze!({
-            mech1: output.spread!(),
-            mech2: gaze,
-          });
+          return output.spread!();
         if (hasStack)
-          return output.stackThenGaze!({
-            mech1: output.stack!(),
-            mech2: gaze,
-          });
+          return output.stack!();
         if (hasBomb)
-          return output.bombThenGaze!({
+          return output.bombStack!({
             mech1: isLongTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
-            mech3: gaze,
           });
         // Has nothing
-        return output.stackThenGaze!({
-          mech1: output.stack!(),
-          mech2: gaze,
-        });
+        return output.noDebuff!();
       },
       outputStrings: {
         you: {
           en: 'YOU',
         },
-        spreadThenGaze: {
-          en: '${mech1} => ${mech2}',
+        bombStack: {
+          en: '${mech1} + ${mech2}',
         },
-        stackThenGaze: {
-          en: '${mech1} => ${mech2}',
+        forkBomb: {
+          en: '${mech1} + ${mech2}',
         },
-        bombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
+        compressedBomb: {
+          en: '${mech1} + ${mech2}',
         },
-        forkBombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
-        },
-        compressedBombThenGaze: {
-          en: '${mech1} + ${mech2} => ${mech3}',
-        },
+        noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
@@ -5021,18 +4943,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         fakeBomb: {
           en: 'Motion',
-        },
-        fakeGazeOnPlayers: {
-          en: 'Face ${players}',
-        },
-        gazeOnPlayers: {
-          en: 'Look Away from ${players}',
-        },
-        fakeGazeOnPlayersYou: {
-          en: 'Face ${players}',
-        },
-        gazeOnPlayersYou: {
-          en: 'Look Away from ${players}',
         },
       },
     },
