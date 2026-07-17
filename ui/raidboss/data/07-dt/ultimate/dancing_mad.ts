@@ -4870,27 +4870,58 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P4 Stray Flames and Long Debuffs',
       // BB22 Stray Flames: Puddles have been baited, these will be going off next
       // BB23 Fake Stray Flames: Wait until Donuts happen
+      // These have a 4.7s castTime, using GainsEffect from 15AB Entropy to prevent early triggers
       // 15A8 Forked Lightning x2 76s
       // 15A9 Compressed Water x2 76s
       // 15AA Acceleration Bomb (2 Long 76s)
-      // Thes have a 4.7s castTime
-      type: 'StartsUsing',
-      netRegex: { id: ['BB22', 'BB23'], source: 'Chaos', capture: true },
-      delaySeconds: (_data, matches) => {
-        return matches.id === 'BB23' ? parseFloat(matches.castTime) : 0;
+      type: 'GainsEffect',
+      netRegex: { effectId: '15AB', capture: true },
+      delaySeconds: (data, matches) => {
+        const duration = parseFloat(matches.duration);
+        return (data.isEntropyTrue || data.isEntropyTrue === undefined)
+          ? duration
+          : duration + 4.7;
       },
-      durationSeconds: (_data, matches) => {
-        // Time until debuffs expire
-        return matches.id === 'BB22' ? 9 : 9 - parseFloat(matches.castTime);
+      durationSeconds: (data) => {
+        // Time until 15A8, 15A9, 15AA debuffs expire
+        return (data.isEntropyTrue || data.isEntropyTrue === undefined) ? 9.1 : 4.4;
       },
       suppressSeconds: 99999,
-      alertText: (data, _matches, output) => {
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          you: {
+            en: 'YOU',
+          },
+          bombStack: {
+            en: '${mech1} + ${mech2}',
+          },
+          forkBomb: {
+            en: '${mech1} + ${mech2}',
+          },
+          compressedBomb: {
+            en: '${mech1} + ${mech2}',
+          },
+          noDebuff: Outputs.stackMarker,
+          stack: Outputs.stackMarker,
+          spread: Outputs.spread,
+          bomb: {
+            en: 'Stillness',
+          },
+          fakeBomb: {
+            en: 'Motion',
+          },
+        };
+
         const is1stTrue = data.areFirstDebuffsTrue;
         const is2ndTrue = data.areThirdDebuffsTrue;
         const isFirstShort = data.isFirstDebuffShort;
         if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
           return;
         const isLongTrue = isFirstShort ? is2ndTrue : is1stTrue;
+
+        // Drop severity if fail to get true/false for Entropy as we default to end of debuffs
+        const severity = data.isEntropyTrue === undefined ? 'infoText' : 'alertText';
 
         const hasFork = data.longForkedPlayers.includes(data.me);
         const hasCompressed = data.longCompressedPlayers.includes(data.me);
@@ -4901,49 +4932,32 @@ const triggerSet: TriggerSet<Data> = {
 
         // Handle 2 Mechs
         if (hasSpread && hasBomb)
-          return output.forkBomb!({
-            mech1: output.spread!(),
-            mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
-          });
+          return {
+            [severity]: output.forkBomb!({
+              mech1: output.spread!(),
+              mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
+          };
         if (hasStack && hasBomb)
-          return output.compressedBomb!({
-            mech1: output.stack!(),
-            mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
-          });
+          return {
+            [severity]: output.compressedBomb!({
+              mech1: output.stack!(),
+              mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
+          };
         if (hasSpread)
-          return output.spread!();
+          return { [severity]: output.spread!() };
         if (hasStack)
-          return output.stack!();
+          return { [severity]: output.stack!() };
         if (hasBomb)
-          return output.bombStack!({
-            mech1: isLongTrue ? output.bomb!() : output.fakeBomb!(),
-            mech2: output.stack!(),
-          });
+          return {
+            [severity]: output.bombStack!({
+              mech1: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+              mech2: output.stack!(),
+            }),
+          };
         // Has nothing
-        return output.noDebuff!();
-      },
-      outputStrings: {
-        you: {
-          en: 'YOU',
-        },
-        bombStack: {
-          en: '${mech1} + ${mech2}',
-        },
-        forkBomb: {
-          en: '${mech1} + ${mech2}',
-        },
-        compressedBomb: {
-          en: '${mech1} + ${mech2}',
-        },
-        noDebuff: Outputs.stackMarker,
-        stack: Outputs.stackMarker,
-        spread: Outputs.spread,
-        bomb: {
-          en: 'Stillness',
-        },
-        fakeBomb: {
-          en: 'Motion',
-        },
+        return { [severity]: output.noDebuff!() };
       },
     },
     {
@@ -5027,8 +5041,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P4 Fake Stray Spray',
       // Puddles have been baited, need to move away
-      type: 'StartsUsing',
-      netRegex: { id: 'BB25', source: 'Chaos', capture: false },
+      // Using GainsEffect of 15AC Dynamic Fluid prevents early trigger
+      type: 'GainsEffect',
+      netRegex: { effectId: '15AC', capture: true },
+      condition: (data) => !data.isFluidTrue,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 99999,
       response: Responses.moveAway('alert'),
     },
