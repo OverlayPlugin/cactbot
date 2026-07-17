@@ -4251,10 +4251,10 @@ const triggerSet: TriggerSet<Data> = {
 
         // No debuff, they will be a stack player
         return output.aoeDebuff!({
-            aoe: output.aoe!(),
-            debuff: isShort
-              ? output.stackFirstNoDebuff!({ mech: output.stack!() })
-              : output.stackSecondNoDebuff!({ mech: output.stack!() }),
+          aoe: output.aoe!(),
+          debuff: isShort
+            ? output.stackFirstNoDebuff!({ mech: output.stack!() })
+            : output.stackSecondNoDebuff!({ mech: output.stack!() }),
         });
       },
       outputStrings: {
@@ -4390,10 +4390,10 @@ const triggerSet: TriggerSet<Data> = {
 
         // No debuff, they will be a stack player
         return output.aoeDebuff!({
-            aoe: output.aoe!(),
-            debuff: isShort
-              ? output.stackSecondNoDebuff!({ mech: output.stack!() })
-              : output.stackFirstNoDebuff!({ mech: output.stack!() }),
+          aoe: output.aoe!(),
+          debuff: isShort
+            ? output.stackSecondNoDebuff!({ mech: output.stack!() })
+            : output.stackFirstNoDebuff!({ mech: output.stack!() }),
         });
       },
       outputStrings: {
