@@ -4038,14 +4038,38 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Tsunami/Inferno',
-      // BB14 Grand Cross AoE also happens ~4s after this cast starts
-      // BB20 Inferno / BB21 Tsunami are 8.7s castTime
+      id: 'DMU P4 Second and Fourth Debuffs (Early)',
+      // Using BB20 Inferno / BB21 Tsunami
       // Source can be innaccurate
       type: 'StartsUsing',
       netRegex: { id: ['BB20', 'BB21'], capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
-      response: Responses.aoe(),
+      delaySeconds: 1, // Delay for boss true/false effect and avoid TTS AoE conflict
+      infoText: (data, matches, output) => {
+        const isTrue = data.areFourthDebuffsTrue !== undefined
+          ? data.areFourthDebuffsTrue
+          : data.areSecondDebuffsTrue;
+        if (isTrue === undefined)
+          return; // Failed to capture true/false
+
+        const isInferno = matches.id === 'BB20';
+        if (isInferno)
+          return isTrue ? output.puddlesFirst!() : output.donutsFirst!();
+        return isTrue ? output.donutsSecond!() : output.puddlesSecond!();
+      },
+      outputStrings: {
+        puddlesFirst: {
+          en: 'Puddles First',
+        },
+        puddlesSecond: {
+          en: 'Puddles Second',
+        },
+        donutsFirst: {
+          en: 'Donuts First',
+        },
+        donutsSecond: {
+          en: 'Donuts Second',
+        },
+      },
     },
     {
       id: 'DMU P4 Grand Cross Counter',
@@ -4163,7 +4187,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 First Debuffs (Early)',
+      id: 'DMU P4 Tsunami/Inferno and First Debuffs (Early)',
+      // Tsunami/Inferno are 8.7s castTime, but a delay of 5s leads to TTS overlap
+      // The two are merged resulting in a delay of ~4.7s
       // Cast 1:
       // 15A7 Cursed Shriek x2 60s
       // 15A8 Forked Lightning x2 76s or 51s
@@ -4178,7 +4204,7 @@ const triggerSet: TriggerSet<Data> = {
         const isTrue = data.areFirstDebuffsTrue;
         const isShort = data.isFirstDebuffShort;
         if (isTrue === undefined || isShort === undefined)
-          return;
+          return output.aoe!();
 
         const hasShreik = data.shortShriekPlayers.includes(data.me);
         const hasFork = isShort
@@ -4192,31 +4218,50 @@ const triggerSet: TriggerSet<Data> = {
         // Shriek players always are short bomb
         // This will be two players
         if (hasShreik)
-          return output.firstGazeAndBomb!({
-            gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
-            bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: output.firstGazeAndBomb!({
+              gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
+              bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
           });
 
         // Remaing 6 players will get one debuff
         if ((hasFork && isTrue) || (hasCompressed && !isTrue))
-          return isShort
-            ? output.spreadFirst!({ mech: output.spread!() })
-            : output.spreadSecond!({ mech: output.spread!() });
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.spreadFirst!({ mech: output.spread!() })
+              : output.spreadSecond!({ mech: output.spread!() }),
+          });
         if ((hasFork && !isTrue) || (hasCompressed && isTrue))
-          return isShort
-            ? output.stackFirst!({ mech: output.stack!() })
-            : output.stackSecond!({ mech: output.stack!() });
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.stackFirst!({ mech: output.stack!() })
+              : output.stackSecond!({ mech: output.stack!() }),
+          });
         if (hasBomb)
-          return output.bombSecond!({
-            mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: output.bombSecond!({
+              mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
           });
 
         // No debuff, they will be a stack player
-        return isShort
-          ? output.stackFirstNoDebuff!({ mech: output.stack!() })
-          : output.stackSecondNoDebuff!({ mech: output.stack!() });
+        return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.stackFirstNoDebuff!({ mech: output.stack!() })
+              : output.stackSecondNoDebuff!({ mech: output.stack!() }),
+        });
       },
       outputStrings: {
+        aoe: Outputs.aoe,
+        aoeDebuff: {
+          en: '${aoe} + ${debuff}',
+        },
         firstGazeAndBomb: {
           en: '${gaze} + ${bomb} on YOU First',
         },
@@ -4259,12 +4304,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P4 Entropy/Dynamic Fluid Collect',
-      // Separate trigger as we only need to capture one
       // 15AB Entropy
       // 15AC Dynamic Fluid
       type: 'GainsEffect',
       netRegex: { effectId: ['15AB', '15AC'], capture: true },
-      condition: Conditions.targetIsYou(),
+      suppressSeconds: 1,
       run: (data, matches) => {
         const duration = parseFloat(matches.duration);
         // These could be undefined if the true/false trigger fails to collect
@@ -4282,38 +4326,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4 Second Debuffs (Early)',
-      type: 'GainsEffect',
-      netRegex: { effectId: ['15AB', '15AC'], capture: true },
-      condition: (data) => data.grandCrossCount === 1,
-      delaySeconds: 0.1,
-      suppressSeconds: 99999,
-      infoText: (data, matches, output) => {
-        const areSecondDebuffsTrue = data.areSecondDebuffsTrue;
-        if (areSecondDebuffsTrue === undefined)
-          return;
-        const isEntropy = matches.id === '15AB';
-        if (isEntropy)
-          return areSecondDebuffsTrue ? output.puddlesFirst!() : output.donutsFirst!();
-        return areSecondDebuffsTrue ? output.donutsSecond!() : output.puddlesSecond!();
-      },
-      outputStrings: {
-        puddlesFirst: {
-          en: 'Puddles First',
-        },
-        puddlesSecond: {
-          en: 'Puddles Second',
-        },
-        donutsFirst: {
-          en: 'Donuts First',
-        },
-        donutsSecond: {
-          en: 'Donuts Second',
-        },
-      },
-    },
-    {
-      id: 'DMU P4 Third Debuffs (Early)',
+      id: 'DMU P4 Tsunami/Inferno and Third Debuffs (Early)',
       // Cast 2:
       // 15A8 Forked Lightning x2 36s or 61s
       // 15A7 Cursed Shriek x2 69s
@@ -4330,7 +4343,7 @@ const triggerSet: TriggerSet<Data> = {
         const isTrue = data.areThirdDebuffsTrue;
         const isShort = data.isFirstDebuffShort;
         if (isTrue === undefined || isShort === undefined)
-          return;
+          return output.aoe!();
 
         const hasShreik = data.longShriekPlayers.includes(data.me);
         const hasFork = isShort
@@ -4344,31 +4357,50 @@ const triggerSet: TriggerSet<Data> = {
         // Shriek players always are short bomb
         // This will be two players
         if (hasShreik)
-          return output.secondGazeAndBomb!({
-            gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
-            bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: output.secondGazeAndBomb!({
+              gaze: isTrue ? output.gaze!() : output.fakeGaze!(),
+              bomb: isTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
           });
 
         // Remaing 6 players will get one debuff
         if ((hasFork && isTrue) || (hasCompressed && !isTrue))
-          return isShort
-            ? output.spreadSecond!({ mech: output.spread!() })
-            : output.spreadFirst!({ mech: output.spread!() });
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.spreadSecond!({ mech: output.spread!() })
+              : output.spreadFirst!({ mech: output.spread!() }),
+          });
         if ((hasFork && !isTrue) || (hasCompressed && isTrue))
-          return isShort
-            ? output.stackSecond!({ mech: output.stack!() })
-            : output.stackFirst!({ mech: output.stack!() });
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.stackSecond!({ mech: output.stack!() })
+              : output.stackFirst!({ mech: output.stack!() }),
+          });
         if (hasBomb)
-          return output.bombFirst!({
-            mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+          return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: output.bombFirst!({
+              mech: isTrue ? output.bomb!() : output.fakeBomb!(),
+            }),
           });
 
         // No debuff, they will be a stack player
-        return isShort
-          ? output.stackSecondNoDebuff!({ mech: output.stack!() })
-          : output.stackFirstNoDebuff!({ mech: output.stack!() });
+        return output.aoeDebuff!({
+            aoe: output.aoe!(),
+            debuff: isShort
+              ? output.stackSecondNoDebuff!({ mech: output.stack!() })
+              : output.stackFirstNoDebuff!({ mech: output.stack!() }),
+        });
       },
       outputStrings: {
+        aoe: Outputs.aoe,
+        aoeDebuff: {
+          en: '${aoe} + ${debuff}',
+        },
         secondGazeAndBomb: {
           en: '${gaze} + ${bomb} on YOU Second',
         },
@@ -4406,37 +4438,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         fakeBomb: {
           en: 'Motion',
-        },
-      },
-    },
-    {
-      id: 'DMU P4 Fourth Debuffs (Early)',
-      type: 'GainsEffect',
-      netRegex: { effectId: ['15AB', '15AC'], capture: true },
-      condition: (data) => data.grandCrossCount === 2,
-      delaySeconds: 0.1,
-      suppressSeconds: 99999,
-      infoText: (data, matches, output) => {
-        const areFourthDebuffsTrue = data.areFourthDebuffsTrue;
-        if (areFourthDebuffsTrue === undefined)
-          return;
-        const isEntropy = matches.id === '15AB';
-        if (isEntropy)
-          return areFourthDebuffsTrue ? output.puddlesFirst!() : output.donutsFirst!();
-        return areFourthDebuffsTrue ? output.donutsSecond!() : output.puddlesSecond!();
-      },
-      outputStrings: {
-        puddlesFirst: {
-          en: 'Puddles First',
-        },
-        puddlesSecond: {
-          en: 'Puddles Second',
-        },
-        donutsFirst: {
-          en: 'Donuts First',
-        },
-        donutsSecond: {
-          en: 'Donuts Second',
         },
       },
     },
@@ -4877,7 +4878,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P4 Entropy',
       // Using the following as possible matches:
       // 15A7 Cursed Shriek x2 60s
-      // TODO: Merge this with Mana Charge (stored fake/real thunder)
       type: 'GainsEffect',
       netRegex: { effectId: '15A7', capture: true },
       condition: (_data, matches) => parseFloat(matches.duration) < 61,
