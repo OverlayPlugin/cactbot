@@ -867,23 +867,36 @@ const triggerSet: TriggerSet<Data> = {
         // P4 Only
         // 5CA Mana Charged falls off ~5.4s prior to startsUsing
         // 5CD Thunder Charged and 5CC Blizzard Charged fall off after subsequent
-        // Thrumming Thunder III and Blizzard III Blowout startsUsing
+        // This will need to be done while stacking donuts if Dynamic Fluid is true
         if (id === 'BAA5' && data.isIceTrue !== undefined && data.isThunderTrue !== undefined) {
           const isThunderCharged = data.isThunderChargedTrue;
           const isBlizzardCharged = data.isBlizzardChargedTrue;
+          const isFluidTrue = data.isFluidTrue;
           const trueThunder = (isThunderCharged && data.isThunderTrue) ||
             (!isThunderCharged && !data.isThunderTrue);
           const trueIce = (isBlizzardCharged && data.isIceTrue) ||
             (!isBlizzardCharged && !data.isIceTrue);
 
           if (trueThunder) {
-            return trueIce
+            const tells = trueIce
               ? output.trueIceTrueThunder!()
               : output.fakeIceTrueThunder!();
+            return isFluidTrue
+              ? output.tellsDonut!({
+                tells: tells,
+                donut: output.inDonut!(),
+              })
+              : tells;
           }
-          return trueIce
+          const tells = trueIce
             ? output.trueIceFakeThunder!()
             : output.fakeIceFakeThunder!();
+          return isFluidTrue
+            ? output.tellsDonut!({
+              tells: tells,
+              donut: output.inDonut!(),
+            })
+            : tells;
         }
       },
       outputStrings: {
@@ -1034,6 +1047,12 @@ const triggerSet: TriggerSet<Data> = {
           cn: '面对神像',
           ko: '시선 바라보기',
           tc: '面對神像',
+        },
+        inDonut: {
+          en: 'In Donut',
+        },
+        tellsDonut: {
+          en: '${tells} + ${donut}',
         },
       },
     },
