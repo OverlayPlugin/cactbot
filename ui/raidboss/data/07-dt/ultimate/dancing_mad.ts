@@ -1917,7 +1917,7 @@ const triggerSet: TriggerSet<Data> = {
         source: ['Kefka', 'Neo Exdeath'],
         capture: false,
       },
-      delaySeconds: 0.1, // Possible for this to delete on BA94 before output
+      delaySeconds: 0.1, // BB14 could trigger delete prior to P4's BA94 output
       run: (data) => {
         delete data.isFireTrue;
         delete data.isIceTrue;
