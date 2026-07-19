@@ -4554,13 +4554,13 @@ const triggerSet: TriggerSet<Data> = {
           return output.laserThenForkBomb!({
             mech1: laser,
             mech2: output.spread!(),
-            mech3: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: is1stTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasStack && hasBomb)
           return output.laserThenCompressedBomb!({
             mech1: laser,
             mech2: output.stack!(),
-            mech3: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech3: is1stTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasSpread)
           return output.laserThenSpread!({
@@ -4575,7 +4575,7 @@ const triggerSet: TriggerSet<Data> = {
         if (hasBomb)
           return output.laserThenBomb!({
             mech1: laser,
-            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
             mech3: output.stack!(),
           });
         // Has either nothing or long debuffs
@@ -4653,12 +4653,12 @@ const triggerSet: TriggerSet<Data> = {
         if (hasSpread && hasBomb)
           return output.forkBomb!({
             mech1: output.spread!(),
-            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasStack && hasBomb)
           return output.compressedBomb!({
             mech1: output.stack!(),
-            mech2: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: is1stTrue ? output.bomb!() : output.fakeBomb!(),
           });
         if (hasSpread)
           return output.spread!();
@@ -4666,7 +4666,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.stack!();
         if (hasBomb)
           return output.bombStack!({
-            mech1: isShortTrue ? output.bomb!() : output.fakeBomb!(),
+            mech1: is1stTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
           });
         // Has either nothing or long debuffs
@@ -4955,14 +4955,14 @@ const triggerSet: TriggerSet<Data> = {
           return {
             [severity]: output.forkBomb!({
               mech1: output.spread!(),
-              mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+              mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
             }),
           };
         if (hasStack && hasBomb)
           return {
             [severity]: output.compressedBomb!({
               mech1: output.stack!(),
-              mech2: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+              mech2: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
             }),
           };
         if (hasSpread)
@@ -4972,7 +4972,7 @@ const triggerSet: TriggerSet<Data> = {
         if (hasBomb)
           return {
             [severity]: output.bombStack!({
-              mech1: isLongTrue ? output.bomb!() : output.fakeBomb!(),
+              mech1: is2ndTrue ? output.bomb!() : output.fakeBomb!(),
               mech2: output.stack!(),
             }),
           };
