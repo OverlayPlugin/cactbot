@@ -5976,7 +5976,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 3,
       delaySeconds: 0.1, // Delay for AddCombatant
-      suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
@@ -6244,7 +6243,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 6,
       delaySeconds: 0.1, // Delay for AddedCombatant
-      suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
@@ -6498,7 +6496,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 9,
       delaySeconds: 0.1, // Delay for AddedCombatant
-      suppressSeconds: 99999,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
