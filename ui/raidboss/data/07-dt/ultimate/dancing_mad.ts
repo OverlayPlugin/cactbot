@@ -86,6 +86,9 @@ export interface Data extends RaidbossData {
   firstBlaster: number[];
   firstBlasterDirNum?: number;
   blasterRotation?: number;
+  firstBlaster2: number[];
+  firstBlasterDirNum2?: number;
+  blasterRotationTriggered?: boolean;
   kefkaId?: string;
   inLine: { [name: string]: number };
   firstAccretion?: string;
@@ -969,6 +972,7 @@ const triggerSet: TriggerSet<Data> = {
       fireElementPlayers: [],
       waterElementPlayers: [],
       firstBlaster: [],
+      firstBlaster2: [],
       inLine: {},
       hadAccretion: false,
       blackHoleIdDirNums: {},
@@ -5157,16 +5161,45 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 Ultima Blaster Rotation',
+      // This needs to be its own collector/output in order to allow users to disable it and
+      // maintain collection for later trigger, else this would fire 2 seconds late
       type: 'Ability',
-      netRegex: { id: 'BAE3', source: 'Kefka', capture: false },
-      condition: (data) => data.blasterRotation !== undefined,
+      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
+      condition: (data) => data.blasterRotationTriggered === undefined,
+      delaySeconds: 0.1, // Need to delay sometimes for actor data to update
       durationSeconds: 10,
-      suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
-        const rotation = data.blasterRotation;
-        const dirNum = data.firstBlasterDirNum;
-        if (rotation === undefined || dirNum === undefined)
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
           return;
+
+        const x2 = actor.x;
+        const y2 = actor.y;
+        // Get rotation of first and second Kefka blasters
+        const x1 = data.firstBlaster2[0];
+        const y1 = data.firstBlaster2[1];
+        if (x1 === undefined || y1 === undefined) {
+          data.firstBlaster2 = [x2, y2];
+          data.firstBlasterDirNum2 = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
+          // Return to get the next blaster
+          return;
+        }
+
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
+
+        // Calculate Determinant to determine if second blaster is clockwise or counterclock
+        const rotation = ax * by - ay * bx;
+        const dirNum = data.firstBlasterDirNum2;
+        if (dirNum === undefined)
+          return;
+
+        // Prevent re-firing of the trigger
+        data.blasterRotationTriggered = true;
 
         // Will need 16Dir for positions later
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
