@@ -400,7 +400,6 @@ hideall "--sync--"
 1221.7 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
 1221.7 "--untargetable--"
 1252.7 "--targetable?--"
-1225.66
 1259.7 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
 
 ### Phase 5 - Kefka
