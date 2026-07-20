@@ -8,7 +8,6 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
-// TODO: Flood CW/CCW direction
 // TODO: Celestriad triggers
 // TODO: Stray Apocalypse exa location triggers
 // TODO: Forsaken triggers and stack headmarker
@@ -76,6 +75,9 @@ export interface Data extends RaidbossData {
   middleTrineFacing?: 'east' | 'west';
   // Phase 5
   repeaterCount: number;
+  firstFlood: number[];
+  firstFloodDirNum?: number;
+  floodRotation?: number;
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
@@ -689,6 +691,7 @@ const triggerSet: TriggerSet<Data> = {
       // Phase 5
       repeaterCount: 0,
       orchestraCount: 0,
+      firstFlood: [],
       hitByHoly: false,
       myResistances: [],
     };
@@ -4100,19 +4103,74 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P5 Flood',
-      // TODO: Get Clockwise/Counterclockwise of C183 Flood
+      // Source and data on this can be inaccurate
+      // Invisible actors spawn at the center of the line and their heading
+      // is the direction that the flood is
+      // There are two at a time, one on outter and one inner
+      // Clockwise Example:
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
       type: 'StartsUsing',
-      netRegex: { id: 'C13F', source: 'Kefka', capture: false },
-      durationSeconds: 8.9,
-      infoText: (_data, _matches, output) => {
+      netRegex: { id: 'C183', capture: true },
+      condition: (data) => data.floodRotation === undefined,
+      delaySeconds: 0.1, // Delay for late set position updates
+      durationSeconds: 7.9, // Last C269 Flood
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const x2 = actor.x;
+        const y2 = actor.y;
+
+        // Ignore the outer ones
+        if (x2 < 96 || x2 > 104)
+          return;
+
+        // Get rotation of first and second Flood
+        const x1 = data.firstFlood[0];
+        const y1 = data.firstFlood[1];
+        if (x1 === undefined || y1 === undefined) {
+          data.firstFlood = [x2, y2];
+          data.firstFloodDirNum = Directions.xyTo4DirIntercardNum(x2, y2, centerX, centerY);
+          // Return to get the next flood
+          return;
+        }
+
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
+
+        // Calculate Determinant to determine if second flood is clockwise or counterclock
+        data.floodRotation = ax * by - ay * bx;
+
+        const firstDirNum = data.firstFloodDirNum;
+        if (firstDirNum === undefined)
+          return;
+        const isClockwise = data.floodRotation > 0;
+        const startDirNum = isClockwise
+          ? ((firstDirNum + 1) % 4)
+          : ((firstDirNum + 5) % 4);
+        const startDir = Directions.outputIntercardDir[startDirNum] ?? 'unknown';
+
         return output.mechPlusMech!({
-          mech1: output.flood!(),
+          mech1: output.floodDirClock!({
+            dir: output[startDir]!(),
+            clock: isClockwise ? output.clockwise!() : output.counterclock!(),
+          }),
           mech2: output.stack4!(),
         });
       },
       outputStrings: {
-        flood: {
-          en: 'Avoid Flood',
+        ...Directions.outputStringsIntercardDir,
+        clockwise: Outputs.clockwise,
+        counterclock: Outputs.counterclockwise,
+        floodDirClock: {
+          en: 'Start ${dir} => ${clock}',
         },
         stack4: {
           en: 'Stack x4',
