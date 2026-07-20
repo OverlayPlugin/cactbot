@@ -95,6 +95,7 @@ export interface Data extends RaidbossData {
   secondAccretion?: string;
   hadAccretion: boolean;
   blackHoleIdDirNums: { [id: string]: number };
+  blackHoleTetherDisable?: boolean;
   kefkaTeleportDirNum?: number;
   nothingnessTracker: number;
   blackHoleTetherDirNums: number[];
@@ -5755,8 +5756,10 @@ const triggerSet: TriggerSet<Data> = {
           data.nothingnessTracker === 2 || data.nothingnessTracker === 3 ||
           data.nothingnessTracker === 6 || data.nothingnessTracker === 9 ||
           data.nothingnessTracker === 10
-        )
+        ) {
+          delete data.blackHoleTetherDisable; // For SpawnNpcExtra triggers with >1 black hole
           data.blackHoleTetherDirNums = [];
+        }
       },
     },
     {
@@ -6014,8 +6017,9 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        if (data.blackHoleTetherDirNums.length !== 3)
+        if (data.blackHoleTetherDirNums.length !== 3 || data.blackHoleTetherDisable)
           return;
+        data.blackHoleTetherDisable = true;
 
         const config = data.triggerSetConfig.blackHole;
         const relConfig = data.triggerSetConfig.blackHoleTether;
@@ -6281,8 +6285,9 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        if (data.blackHoleTetherDirNums.length !== 3)
+        if (data.blackHoleTetherDirNums.length !== 3 || data.blackHoleTetherDisable)
           return;
+        data.blackHoleTetherDisable = true;
 
         const config = data.triggerSetConfig.blackHole;
         const relConfig = data.triggerSetConfig.blackHoleTether;
@@ -6534,8 +6539,9 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = blackHoleOutputStrings;
 
-        if (data.blackHoleTetherDirNums.length !== 2)
+        if (data.blackHoleTetherDirNums.length !== 2 || data.blackHoleTetherDisable)
           return;
+        data.blackHoleTetherDisable = true;
 
         const config = data.triggerSetConfig.blackHole;
         const relConfig = data.triggerSetConfig.blackHoleTether;
