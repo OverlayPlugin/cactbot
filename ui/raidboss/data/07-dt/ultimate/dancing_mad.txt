@@ -52,7 +52,7 @@ hideall "--sync--"
 114.4 "Intemperate Will/Gravitational Wave" Ability { id: ["BAB2", "BAB1"], source: "Graven Image" }
 117.0 "Gravity III (Pop Window)" #Ability { id: "BAAF", source: "Kefka" } duration 6 # ~1s remaining on debuff and until 45s on next
 118.0 "--knockback--" # From Double-trouble Trap 2
-118.1 "Double-Trouble Trap 3" Ability { id: "BAA7", source: "Kefka" } # NOTE: If it was passed after first set.
+118.1 "Double-trouble Trap 3" Ability { id: "BAA7", source: "Kefka" } # NOTE: If it was passed after first set.
 132.4 "Light of Judgment" Ability { id: "C622", source: "Kefka" }
 135.6 "Hyperdrive 1" #Ability { id: "C24B", source: "Kefka" }
 137.7 "Hyperdrive 2" #Ability { id: "C24B", source: "Kefka" }
@@ -395,17 +395,22 @@ hideall "--sync--"
 
 1213.0 "--untargetable?--"
 1213.2 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
-1218.1 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
+1215.3 "--middle?--" Ability { id: "C3FD", source: "Kefka" } window 90,5 jump "p4-success" # Kefka <20% HP
 1218.1 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >20% HP
-1224.6 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
-1297.1 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
+1221.7 "Ultima Upsurge?" #Ability { id: "C24A", source: "Kefka" }
+1221.7 "--untargetable--"
+1252.7 "--targetable?--"
+1225.66
+1259.7 "Ultima Repeater (castbar)?" #Ability { id: "BB40", source: "Kefka" }
 
 ### Phase 5 - Kefka
-# TODO: Add voiceline sync?
-# en: 'Destruction is the fate of all things.'
 1355.6 label "p4-success"
-1355.6 "--middle--" Ability { id: "C3FD", source: "Kefka" }
-1361.9 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
+1362.0 "Ultima Upsurge" Ability { id: "C24A", source: "Kefka" }
+1362.0 "--untargetable--"
+# en: 'Destruction is the fate of all things.'
+1366.1 "--sync--" ActorControl { command: "80000027", data0: "22" }
+1393.0 "--targetable--"
+1396.2 "--sync--" StartsUsing { id: "BB40", source: "Kefka" } window 1400,0
 1400.0 "Ultima Repeater (castbar)" Ability { id: "BB40", source: "Kefka" }
 1401.1 "Ultima Repeater 1" #Ability { id: "BB41", source: "Kefka" }
 1401.9 "Ultima Repeater 2" #Ability { id: "BB41", source: "Kefka" }
@@ -415,26 +420,27 @@ hideall "--sync--"
 1406.3 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 1408.6 "--sync--" Ability { id: "C652", source: "Kefka" }
 1409.5 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
-1411.7 "--sync--" Ability { id: "C652", source: "Kefka" }
-1412.6 "Fell Forces 3" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1411.8 "--sync--" Ability { id: "C652", source: "Kefka" }
+1412.7 "Fell Forces 3" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
-1414.5 "--Flood Tell 1--" #Ability { id: "C183", source: "Kefka" }
-1415.5 "--Flood Tell 2--" #Ability { id: "C183", source: "Kefka" }
-1416.5 "--Flood Tell 3--" #Ability { id: "C183", source: "Kefka" }
-1417.5 "--Flood Tell 4--" #Ability { id: "C183", source: "Kefka" }
-1417.9 "Flood (castbar)" Ability { id: "C13F", source: "Kefka" }
-1418.9 "Chaotic Flood x4" #Ability { id: "BB4F", source: "Kefka" } duration 2.9
-1418.9 "Flood 1" #Ability { id: "C269", source: "Kefka" }
-1419.9 "Flood 2" #Ability { id: "C269", source: "Kefka" }
-1420.9 "Flood 3" #Ability { id: "C269", source: "Kefka" }
-1421.9 "Flood 4" #Ability { id: "C269", source: "Kefka" }
+1414.6 "--Flood Tell 1--" #Ability { id: "C183", source: "Kefka" }
+1415.6 "--Flood Tell 2--" #Ability { id: "C183", source: "Kefka" }
+1416.6 "--Flood Tell 3--" #Ability { id: "C183", source: "Kefka" }
+1417.6 "--Flood Tell 4--" #Ability { id: "C183", source: "Kefka" }
+1418.0 "Flood (castbar)" Ability { id: "C13F", source: "Kefka" }
+1419.0 "Chaotic Flood x4" #Ability { id: "BB4F", source: "Kefka" } duration 2.9
+1419.0 "Flood 1" #Ability { id: "C269", source: "Kefka" }
+1420.0 "Flood 2" #Ability { id: "C269", source: "Kefka" }
+1421.0 "Flood 3" #Ability { id: "C269", source: "Kefka" }
+1422.0 "Flood 4" #Ability { id: "C269", source: "Kefka" }
 
-1430.9 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
-1431.8 "Holy" Ability { id: "BB54", source: "Kefka" }
-1431.8 "Flare" #Ability { id: "BB52", source: "Kefka" }
-1434.0 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
-1434.9 "Holy" Ability { id: "BB54", source: "Kefka" }
-1434.9 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
+1431.1 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
+1432.0 "Holy" Ability { id: "BB54", source: "Kefka" }
+1432.0 "Flare" #Ability { id: "BB52", source: "Kefka" }
+1434.2 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
+1435.1 "Holy" Ability { id: "BB54", source: "Kefka" }
+1435.1 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
+# TODO: Update rest with network log
 1438.3 "Chaotic Holy" Ability { id: "BB56", source: "Kefka" }
 1438.3 "Flare Diffusion" #Ability { id: "BB55", source: "Kefka" }
 1442.2 "--sync--" Ability { id: "C652", source: "Kefka" }
@@ -583,8 +589,8 @@ hideall "--sync--"
 # BAA3 Flagrant Fire III: Stack Damage
 # BAA4 Mana Charge
 # BAA5 Mana Release
-# BAA6 Double-Trouble Trap: VFX
-# BAA7 Double-Trouble Trap
+# BAA6 Double-trouble Trap: VFX
+# BAA7 Double-trouble Trap
 # BAA8 Wave Cannon
 # BAA9 Pulse Wave
 # BAAA Explosion: Cast by towers that are dropped from getting hit by BAA8 Wave Cannon
@@ -599,8 +605,8 @@ hideall "--sync--"
 # BAB4 Indolent Will
 # BAB5 Indulgent Will
 # BAB6 Idyllic Will
-# BAB9 Tele-Trouncing: VFX
-# BABA Tele-Trouncing
+# BAB9 Tele-trouncing: VFX
+# BABA Tele-trouncing
 # BABB Light of Judgment: P1 Enrage and P4 Enrage
 # BABC Forsaken
 # BABD Light of Judgment: P2 version
