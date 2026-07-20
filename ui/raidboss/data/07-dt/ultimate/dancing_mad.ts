@@ -5126,6 +5126,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
       condition: (data) => data.blasterRotation === undefined,
+      delaySeconds: 0.1, // Need to delay sometimes for actor data to update
       suppressSeconds: 1,
       run: (data, matches) => {
         const actor = data.actorPositions[matches.sourceId];
