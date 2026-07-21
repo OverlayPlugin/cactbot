@@ -4155,7 +4155,7 @@ const triggerSet: TriggerSet<Data> = {
         const startDirNum = isClockwise
           ? ((firstDirNum + 1) % 4)
           : ((firstDirNum + 5) % 4);
-        const startDir = Directions.outputIntercardDir[startDirNum] ?? 'unknown';
+        const startDir = Directions.outputFromIntercardNum(startDirNum);
 
         return output.mechPlusMech!({
           mech1: output.floodDirClock!({
