@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Vor der 7.5 Überarbeitung',
     cn: '7.5改版前',
     ko: '7.5 개편 전',
+    tc: '7.5改版前',
   },
   timelineFile: 'shisui_of_the_violet_tides.txt',
   triggers: [
