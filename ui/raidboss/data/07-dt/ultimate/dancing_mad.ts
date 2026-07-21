@@ -74,6 +74,7 @@ export interface Data extends RaidbossData {
   trineDirNums: number[];
   middleTrineFacing?: 'east' | 'west';
   // Phase 3
+  heroDebuff?: 'chaos' | 'exdeath';
   isFireShort?: boolean;
   windCrystalNext: boolean;
   myElement?: 'fire' | 'water';
@@ -83,7 +84,7 @@ export interface Data extends RaidbossData {
   fireCrystalDirNum?: number;
   waterCrystalDirNum?: number;
   windCrystalDirNum?: number;
-  firstBlaster: number[];
+  firstBlasterHdg?: number;
   firstBlasterDirNum?: number;
   blasterRotation?: number;
   firstBlaster2: number[];
@@ -128,14 +129,14 @@ const headMarkerData = {
   'exdeathTether': '0040', // Exdeath "pulls energy" from Graven Image with BNpcID 4C31 with BB12 Thunder III
   'blackHoleTether': '0054',
   // Phase 3 Players
-  '1': '0150',
-  '2': '0151',
-  '3': '0152',
-  '4': '0153',
-  '5': '01B5',
-  '6': '01B6',
-  '7': '01B7',
-  '8': '01B8',
+  'limitCutBlue1': '0150',
+  'limitCutRed2': '0151',
+  'limitCutBlue3': '0152',
+  'limitCutRed4': '0153',
+  'limitCutBlue5': '01B5',
+  'limitCutRed6': '01B6',
+  'limitCutBlue7': '01B7',
+  'limitCutRed8': '01B8',
   'stompStack': '00A1',
 } as const;
 
@@ -607,6 +608,26 @@ const forsakenOutputStrings: OutputStrings = {
   },
 };
 
+const exdeathLocaleNames: LocaleText = {
+  en: 'Exdeath',
+  de: 'Exdeath',
+  fr: 'Exdeath',
+  ja: 'エクスデス',
+  cn: '艾克斯迪司',
+  ko: '엑스데스',
+  tc: '艾克斯迪司',
+};
+
+const chaosLocaleNames: LocaleText = {
+  en: 'Chaos',
+  de: 'Chaos',
+  fr: 'Chaos',
+  ja: 'カオス',
+  cn: '卡奥斯',
+  ko: '카오스',
+  tc: '卡奧斯',
+};
+
 const boaOutputStrings: OutputStrings = {
   ...Directions.outputStringsIntercardDir,
   in: Outputs.in,
@@ -753,7 +774,7 @@ const blackHoleOutputStrings: OutputStrings = {
   clockwiseTwo: {
     en: 'Clockwise 2',
   },
-  clockwiseThree: { // Player code change this to CCW 1
+  clockwiseThree: { // Player could change this to CCW 1
     en: 'Clockwise 3',
   },
   middleThenGetDirTether: {
@@ -994,7 +1015,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU ActorSetPos Tracker',
       // P1 Graven Image tethers
-      // P3 Ultima Blaster location
       // P3 Max actor location
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
@@ -4206,12 +4226,24 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getUnder('alert'),
     },
     {
-      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
-      // Applied to 4 nearest players when Chaos and Exdeath finish casting
-      // C2E2/C2E3 The Decisive Battle
+      id: 'DMU P3 Epic Hero/Fated Hero Collect',
+      // When Chaos finishes casting C2E2 The Decisive Battle:
+      //   4 nearest players to Chaos receive 1060 Epic Hero
+      //   4 furthest players from Cahos receive 1062 Fated Hero
       // 1060 Epic Hero: Can only damage Chaos, preferred by Melee DPS
       // 1062 Fated Hero: Can only damage Exdeath, preferred by Ranged DPS
       // These fall off once Exdeath casts BB12 Thunder III
+      // After Chaos' BB05 Big Bang, they fall off when one of the two bosses dies
+      // Additionally, the bosses are 0.1% HP limited until end of Chaos' BB05 Big Bang
+      //
+      // This collect is here to track which boss the tank is on for boss positioning
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1060', '1062'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.heroDebuff = matches.effectId === '1060' ? 'chaos' : 'exdeath',
+    },
+    {
+      id: 'DMU P3 Epic Hero/Fated Hero Debuffs',
       type: 'GainsEffect',
       netRegex: { effectId: ['1060', '1062'], capture: true },
       condition: Conditions.targetIsYou(),
@@ -4286,11 +4318,12 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.myWind = matches.effectId === '642' ? 'head' : 'tail',
     },
     {
-      id: 'DMU P3 Headwind/Tailwind Debuff',
+      id: 'DMU P3 Bowels of Agony Debuffs and Short Element',
+      // Triggers on 642 Headwind or 643 Tailwind as all players get at least one of these
       type: 'GainsEffect',
       netRegex: { effectId: ['642', '643'], capture: true },
       condition: Conditions.targetIsYou(),
-      delaySeconds: 0.1,
+      delaySeconds: 0.1, // Delayed for Dynamic Fluid/Entropy debuff collect
       durationSeconds: 14.9, // Until Dynamic Fluid/Entropy trigger
       infoText: (data, matches, output) => {
         const myElement = data.myElement;
@@ -4326,13 +4359,9 @@ const triggerSet: TriggerSet<Data> = {
         },
         headwind: {
           en: 'Headwind on YOU',
-          cn: '混沌之逆风点名',
-          ko: '혼돈의 바람 대상자',
         },
         tailwind: {
           en: 'Tailwind on YOU',
-          cn: '混沌之风点名',
-          ko: '혼돈의 역풍 대상자',
         },
         withElement: {
           en: '${short}: ${element} + ${wind}',
@@ -4392,15 +4421,16 @@ const triggerSet: TriggerSet<Data> = {
         const fireDirNum = data.fireCrystalDirNum;
         const waterDirNum = data.waterCrystalDirNum;
         const windDirNum = data.windCrystalDirNum;
+        const heroDebuff = data.heroDebuff;
         const fireDir = fireDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(fireDirNum);
         const waterDir = waterDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(waterDirNum);
         const windDir = windDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(windDirNum);
         const fShort = data.isFireShort;
 
         const fire = output.fire!({ dir: output[fireDir]!() });
@@ -4411,19 +4441,12 @@ const triggerSet: TriggerSet<Data> = {
           const myElement = data.myElement;
           // Tank will need to first position Exdeath for Thunder III AOE
           if (data.role === 'tank') {
-            const exdeathLocaleNames: LocaleText = {
-              en: 'Exdeath',
-              de: 'Exdeath',
-              fr: 'Exdeath',
-              ja: 'エクスデス',
-              cn: '艾克斯迪司',
-              ko: '엑스데스',
-              tc: '艾克斯迪司',
-            };
             const exdeathName = exdeathLocaleNames[data.parserLang];
             if (config === 'sg3k') {
               if (myElement === 'fire') {
                 if (fShort) {
+                  if (heroDebuff === 'chaos')
+                    return output.baitCrystal!({ crystal: fire, inout: output.in!() });
                   return output.moveExdeathThenMech!({
                     exdeath: exdeathName,
                     long: water,
@@ -4440,6 +4463,8 @@ const triggerSet: TriggerSet<Data> = {
                 );
                 const player = data.party.member(players[0]);
 
+                if (heroDebuff === 'chaos')
+                  return output.getMiddleNearPlayer!({ player: player });
                 return output.moveExdeathThenMech!({
                   exdeath: exdeathName,
                   long: fire,
@@ -4450,13 +4475,21 @@ const triggerSet: TriggerSet<Data> = {
               }
 
               if (myElement === 'water') {
-                if (fShort)
+                if (fShort) {
+                  if (heroDebuff === 'chaos')
+                    return output.getHitByDonut!();
                   return output.moveExdeathThenMech!({
                     exdeath: exdeathName,
                     long: water,
                     mech: output.getHitByDonut!(),
                   });
+                }
 
+                if (heroDebuff === 'chaos')
+                  return output.baitCrystal!({
+                    crystal: water,
+                    inout: output.in!(),
+                  });
                 return output.moveExdeathThenMech!({
                   exdeath: exdeathName,
                   long: fire,
@@ -4469,20 +4502,17 @@ const triggerSet: TriggerSet<Data> = {
             }
 
             // LB3 Config
-            const chaosLocaleNames: LocaleText = {
-              en: 'Chaos',
-              de: 'Chaos',
-              fr: 'Chaos',
-              ja: 'カオス',
-              cn: '卡奥斯',
-              ko: '카오스',
-              tc: '卡奧斯',
-            };
             const chaosName = chaosLocaleNames[data.parserLang];
-            return output.moveExdeathAndChaosThenMech!({
-              exdeath: exdeathName,
-              chaos: chaosName,
-              dir: wind,
+            const boss = heroDebuff === 'chaos'
+              ? output.chaosDir!({ chaos: chaosName, dir: wind })
+              : heroDebuff === 'exdeath'
+              ? output.exdeathMiddle!({ exdeath: exdeathName })
+              : undefined;
+            if (boss === undefined)
+              return output.beNearWind!({ dir: wind });
+
+            return output.moveBossThenMech!({
+              boss: boss,
               mech: output.beNearWind!({
                 dir: wind,
               }),
@@ -4600,13 +4630,13 @@ const triggerSet: TriggerSet<Data> = {
         const windDirNum = data.windCrystalDirNum;
         const fireDir = fireDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(fireDirNum);
         const waterDir = waterDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(waterDirNum);
         const windDir = windDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(windDirNum);
         const fShort = data.isFireShort;
         const myElement = data.myElement;
         const myWind = data.myWind;
@@ -4626,29 +4656,28 @@ const triggerSet: TriggerSet<Data> = {
         const spread = output.fireOnPlayers!({ players: msg });
 
         const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
-        const severity = config === 'lb3' && isRangedDPS
-          ? 'alertText'
-          : myElement === 'fire'
-          ? 'alertText'
-          : 'infoText';
+        let severity = 'infoText';
+        if (config === 'lb3' && isRangedDPS)
+          severity = 'alertText';
+        else if (myElement === 'fire')
+          severity = 'alertText';
 
         if (fShort) {
           if (config === 'lb3') {
             const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
-            return {
-              [severity]: output.mechThenMech!({
-                mech1: isNotRanged ? spread : output.baitCrystal!({
-                  crystal: fire,
-                  inout: output.out!(),
-                }),
-                mech2: isNotRanged
-                  ? output.donutLater!()
-                  : output.baitCrystal!({
-                    crystal: water,
-                    inout: output.out!(),
-                  }),
-              }),
-            };
+            const mech1 = isNotRanged
+              ? spread
+              : output.baitCrystal!({
+                crystal: fire,
+                inout: output.out!(),
+              });
+            const mech2 = isNotRanged
+              ? output.donutLater!()
+              : output.baitCrystal!({
+                crystal: water,
+                inout: output.out!(),
+              });
+            return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
           }
 
           if (config === 'sg3k') {
@@ -4658,82 +4687,74 @@ const triggerSet: TriggerSet<Data> = {
             );
             const player = data.party.member(players[0]);
 
-            return {
-              [severity]: output.mechThenMech!({
-                mech1: myElement === 'fire'
-                  ? output.baitCrystal!({
-                    crystal: fire,
-                    inout: data.role === 'dps' ? output.in!() : output.out!(),
-                  })
-                  : myElement === 'water'
-                  ? output.getHitByDonut!()
-                  : output.beNearWind!({ dir: wind }),
-                mech2: myElement === 'fire'
-                  ? output.getMiddleNearPlayer!({
-                    player: player,
-                  })
-                  : myElement === 'water'
-                  ? output.knockbackToDir!({
-                    facing: output[myWind ?? 'unknown']!({ name: output[fireDir]!() }),
-                    dir: output[waterDir]!(),
-                  })
-                  : output.stackPartner!(),
-              }),
-            };
+            const mech1 = myElement === 'fire'
+              ? output.baitCrystal!({
+                crystal: fire,
+                inout: data.role === 'dps' ? output.in!() : output.out!(),
+              })
+              : myElement === 'water'
+              ? output.getHitByDonut!()
+              : output.beNearWind!({ dir: wind });
+
+            const mech2 = myElement === 'fire'
+              ? output.getMiddleNearPlayer!({
+                player: player,
+              })
+              : myElement === 'water'
+              ? output.knockbackToDir!({
+                facing: output[myWind ?? 'unknown']!({ name: output[fireDir]!() }),
+                dir: output[waterDir]!(),
+              })
+              : output.stackPartner!();
+
+            return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
           }
         }
-        const exdeathLocaleNames: LocaleText = {
-          en: 'Exdeath',
-          de: 'Exdeath',
-          fr: 'Exdeath',
-          ja: 'エクスデス',
-          cn: '艾克斯迪司',
-          ko: '엑스데스',
-          tc: '艾克斯迪司',
-        };
         const exdeathName = exdeathLocaleNames[data.parserLang];
         if (config === 'lb3') {
           const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
-          return {
-            [severity]: output.mechThenMech!({
-              mech1: isNotRanged ? spread : output.baitCrystal!({
-                crystal: fire,
-                inout: output.out!(),
-              }),
-              mech2: Util.isRangedDpsJob(data.job)
-                ? output.baitJump!()
-                : output.beNearExdeath!({ name: exdeathName }),
-            }),
-          };
+
+          const mech1 = isNotRanged
+            ? spread
+            : output.baitCrystal!({
+              crystal: fire,
+              inout: output.out!(),
+            });
+
+          const mech2 = Util.isRangedDpsJob(data.job)
+            ? output.baitJump!()
+            : output.beNearExdeath!({ name: exdeathName });
+
+          return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
         }
 
         if (config === 'sg3k') {
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
             ? 'unknown'
-            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
-          return {
-            [severity]: output.mechThenMech!({
-              mech1: myElement === 'fire'
-                ? output.baitCrystal!({
-                  crystal: fire,
-                  inout: data.role === 'dps' ? output.in!() : output.out!(),
-                })
-                : myElement === 'water'
-                ? output.getHitByDonut!()
-                : output.beNearWind!({ dir: wind }),
-              mech2: myElement === 'fire'
-                ? output.beNearExdeath!({ name: exdeathName })
-                : myElement === 'water'
-                ? output.knockbackToDir!({
-                  facing: output[myWind ?? 'unknown']!({
-                    name: output[fireDir]!(),
-                  }),
-                  dir: output[exDeathDir]!(),
-                })
-                : output.stackPartner!(),
-            }),
-          };
+            : Directions.outputFromIntercardNum((windDirNum + 2) % 4);
+
+          const mech1 = myElement === 'fire'
+            ? output.baitCrystal!({
+              crystal: fire,
+              inout: data.role === 'dps' ? output.in!() : output.out!(),
+            })
+            : myElement === 'water'
+            ? output.getHitByDonut!()
+            : output.beNearWind!({ dir: wind });
+
+          const mech2 = myElement === 'fire'
+            ? output.beNearExdeath!({ name: exdeathName })
+            : myElement === 'water'
+            ? output.knockbackToDir!({
+              facing: output[myWind ?? 'unknown']!({
+                name: output[fireDir]!(),
+              }),
+              dir: output[exDeathDir]!(),
+            })
+            : output.stackPartner!();
+
+          return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
         }
         return {
           [severity]: output.fireOnPlayersCrystalDirNum!({
@@ -4760,13 +4781,13 @@ const triggerSet: TriggerSet<Data> = {
         const windDirNum = data.windCrystalDirNum;
         const fireDir = fireDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[fireDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(fireDirNum);
         const waterDir = waterDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[waterDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(waterDirNum);
         const windDir = windDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(windDirNum);
         const fShort = data.isFireShort;
         const myElement = data.myElement;
         const myWind = data.myWind;
@@ -4776,11 +4797,11 @@ const triggerSet: TriggerSet<Data> = {
         const wind = output.wind!({ dir: output[windDir]!() });
 
         const isRangedDPS = Util.isRangedDpsJob(data.job) || Util.isCasterDpsJob(data.job);
-        const severity = config === 'lb3' && isRangedDPS
-          ? 'alertText'
-          : myElement === 'water'
-          ? 'alertText'
-          : 'infoText';
+        let severity = 'infoText';
+        if (config === 'lb3' && isRangedDPS)
+          severity = 'alertText';
+        else if (myElement === 'water')
+          severity = 'alertText';
 
         const players = data.waterElementPlayers.map(
           (player) => {
@@ -4795,20 +4816,22 @@ const triggerSet: TriggerSet<Data> = {
         if (!fShort) {
           if (config === 'lb3') {
             const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
-            return {
-              [severity]: output.mechThenMech!({
-                mech1: isNotRanged ? donut : output.baitCrystal!({
-                  crystal: water,
-                  inout: output.out!(),
-                }),
-                mech2: isNotRanged
-                  ? output.roleStacks!()
-                  : output.baitCrystal!({
-                    crystal: fire,
-                    inout: output.out!(),
-                  }),
-              }),
-            };
+
+            const mech1 = isNotRanged
+              ? donut
+              : output.baitCrystal!({
+                crystal: water,
+                inout: output.out!(),
+              });
+
+            const mech2 = isNotRanged
+              ? output.roleStacks!()
+              : output.baitCrystal!({
+                crystal: fire,
+                inout: output.out!(),
+              });
+
+            return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
           }
 
           if (config === 'sg3k') {
@@ -4818,53 +4841,45 @@ const triggerSet: TriggerSet<Data> = {
             );
             const player = data.party.member(players[0]);
 
-            return {
-              [severity]: output.mechThenMech!({
-                mech1: myElement === 'fire'
-                  ? output.getMiddleNearPlayer!({
-                    player: player,
-                  })
-                  : myElement === 'water'
-                  ? output.baitCrystal!({
-                    crystal: water,
-                    inout: data.role === 'dps' ? output.in!() : output.out!(),
-                  })
-                  : output.beNearWind!({ dir: wind }),
-                mech2: myElement === 'fire'
-                  ? output.knockbackToDir!({
-                    facing: output[myWind ?? 'unknown']!({ name: output[waterDir]!() }),
-                    dir: output[fireDir]!(),
-                  })
-                  : myElement === 'water'
-                  ? output.getHitByDonut!()
-                  : output.stackPartner!(),
-              }),
-            };
+            const mech1 = myElement === 'fire'
+              ? output.getMiddleNearPlayer!({
+                player: player,
+              })
+              : myElement === 'water'
+              ? output.baitCrystal!({
+                crystal: water,
+                inout: data.role === 'dps' ? output.in!() : output.out!(),
+              })
+              : output.beNearWind!({ dir: wind });
+
+            const mech2 = myElement === 'fire'
+              ? output.knockbackToDir!({
+                facing: output[myWind ?? 'unknown']!({ name: output[waterDir]!() }),
+                dir: output[fireDir]!(),
+              })
+              : myElement === 'water'
+              ? output.getHitByDonut!()
+              : output.stackPartner!();
+
+            return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
           }
         }
-        const exdeathLocaleNames: LocaleText = {
-          en: 'Exdeath',
-          de: 'Exdeath',
-          fr: 'Exdeath',
-          ja: 'エクスデス',
-          cn: '艾克斯迪司',
-          ko: '엑스데스',
-          tc: '艾克斯迪司',
-        };
         const exdeathName = exdeathLocaleNames[data.parserLang];
         if (config === 'lb3') {
           const isNotRanged = data.role !== 'dps' || Util.isMeleeDpsJob(data.job);
-          return {
-            [severity]: output.mechThenMech!({
-              mech1: isNotRanged ? donut : output.baitCrystal!({
-                crystal: water,
-                inout: output.out!(),
-              }),
-              mech2: Util.isRangedDpsJob(data.job)
-                ? output.baitJump!()
-                : output.beNearExdeath!({ name: exdeathName }),
-            }),
-          };
+
+          const mech1 = isNotRanged
+            ? donut
+            : output.baitCrystal!({
+              crystal: water,
+              inout: output.out!(),
+            });
+
+          const mech2 = Util.isRangedDpsJob(data.job)
+            ? output.baitJump!()
+            : output.beNearExdeath!({ name: exdeathName });
+
+          return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
         }
 
         if (config === 'sg3k') {
@@ -4876,31 +4891,31 @@ const triggerSet: TriggerSet<Data> = {
           // Players will need to get to opposite side of Wind Crystal
           const exDeathDir = windDirNum === undefined
             ? 'unknown'
-            : Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown';
-          return {
-            [severity]: output.mechThenMech!({
-              mech1: myElement === 'fire'
-                ? output.getMiddleNearPlayer!({
-                  player: player,
-                })
-                : myElement === 'water'
-                ? output.baitCrystal!({
-                  crystal: water,
-                  inout: data.role === 'dps' ? output.in!() : output.out!(),
-                })
-                : output.beNearWind!({ dir: wind }),
-              mech2: myElement === 'fire'
-                ? output.beNearExdeath!({ name: exdeathName })
-                : myElement === 'water'
-                ? output.knockbackToDir!({
-                  facing: output[myWind ?? 'unknown']!({
-                    name: output[waterDir]!(),
-                  }),
-                  dir: output[exDeathDir]!(),
-                })
-                : output.stackPartner!(),
-            }),
-          };
+            : Directions.outputFromIntercardNum((windDirNum + 2) % 4);
+
+          const mech1 = myElement === 'fire'
+            ? output.getMiddleNearPlayer!({
+              player: player,
+            })
+            : myElement === 'water'
+            ? output.baitCrystal!({
+              crystal: water,
+              inout: data.role === 'dps' ? output.in!() : output.out!(),
+            })
+            : output.beNearWind!({ dir: wind });
+
+          const mech2 = myElement === 'fire'
+            ? output.beNearExdeath!({ name: exdeathName })
+            : myElement === 'water'
+            ? output.knockbackToDir!({
+              facing: output[myWind ?? 'unknown']!({
+                name: output[waterDir]!(),
+              }),
+              dir: output[exDeathDir]!(),
+            })
+            : output.stackPartner!();
+
+          return { [severity]: output.mechThenMech!({ mech1: mech1, mech2: mech2 }) };
         }
 
         return {
@@ -4937,10 +4952,10 @@ const triggerSet: TriggerSet<Data> = {
 
         const longDir = longCrystalDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[longCrystalDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(longCrystalDirNum);
         const windDir = windDirNum === undefined
           ? 'unknown'
-          : Directions.outputIntercardDir[windDirNum] ?? 'unknown';
+          : Directions.outputFromIntercardNum(windDirNum);
 
         return output.crystals!({
           long: fShort
@@ -4980,6 +4995,8 @@ const triggerSet: TriggerSet<Data> = {
       // One of these spells will trigger:
       // BAF3 Stray Flames
       // BAF6 Stray Spray
+      // For LB3 Config, defaulting to four 2-player stacks
+      // One 8-player stack is more popular and requires more mit
       type: 'Ability',
       netRegex: { id: ['BAF3', 'BAF6'], source: 'Chaos', capture: false },
       condition: (data) => data.windCrystalNext,
@@ -4987,15 +5004,18 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const windDirNum = data.windCrystalDirNum;
         const config = data.triggerSetConfig.boa;
-        const windDir = windDirNum === undefined
-          ? 'unknown'
-          : config !== 'lb3'
-          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
-          : data.role === 'healer'
-          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
-          : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
-          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
-          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
+        let windDir = 'unknown';
+        if (windDirNum !== undefined) {
+          if (config !== 'lb3') {
+            // Players form 4 2-person stacks around wind crystal
+            windDir = Directions.outputFromIntercardNum(windDirNum);
+          } else if (data.role === 'healer')
+            windDir = Directions.outputFromIntercardNum((windDirNum + 3) % 4); // Wrap-around
+          else if ((Util.isMeleeDpsJob(data.job) || data.role === 'tank'))
+            windDir = Directions.outputFromIntercardNum((windDirNum + 2) % 4); // Opposite of Wind Crystal
+          else
+            windDir = Directions.outputFromIntercardNum((windDirNum + 1) % 4); // Ranged DPS
+        }
 
         return config !== 'lb3'
           ? output.wind!({ dir: output[windDir]!() })
@@ -5125,89 +5145,47 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Ultima Blaster Collect',
       // Starts from random cardinal/intercardinal then rotates either CW or CCW
       // These are raidwide AOEs, but also include telegraphed lines and explosions
-      // Ability lines can have erroneous values
+      // Ability lines can have erroneous values, AbilityExtra has correct heading
       // Entity that does these has BNpcID 4BFB, added shortly before
       // 271 ActorSetPos and 261 CombatantMemory Change lines are updated just prior to the ability
-      type: 'Ability',
-      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
+      type: 'AbilityExtra',
+      netRegex: { id: 'BAE3', capture: true },
       condition: (data) => data.blasterRotation === undefined,
-      delaySeconds: 0.1, // Need to delay sometimes for actor data to update
       suppressSeconds: 1,
       run: (data, matches) => {
-        const actor = data.actorPositions[matches.sourceId];
-        if (actor === undefined)
-          return;
-
-        const x2 = actor.x;
-        const y2 = actor.y;
+        const hdg2 = parseFloat(matches.heading);
         // Get rotation of first and second Kefka blasters
-        const x1 = data.firstBlaster[0];
-        const y1 = data.firstBlaster[1];
-        if (x1 === undefined || y1 === undefined) {
-          data.firstBlaster = [x2, y2];
-          data.firstBlasterDirNum = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
+        const hdg1 = data.firstBlasterHdg;
+        if (hdg1 === undefined) {
+          data.firstBlasterHdg = hdg2;
+          data.firstBlasterDirNum = Directions.hdgTo8DirNum(hdg2);
           // Return to get the next blaster
           return;
         }
 
-        // Translate coords relative to center
-        const ax = x1 - centerX;
-        const ay = y1 - centerY;
-        const bx = x2 - centerX;
-        const by = y2 - centerY;
-
-        // Calculate Determinant to determine if second blaster is clockwise or counterclock
-        data.blasterRotation = ax * by - ay * bx;
+        // Get rotation where > 0 is counterclockwise and < 0 is clockwise
+        data.blasterRotation = Math.atan2(Math.sin(hdg2 - hdg1), Math.cos(hdg2 - hdg1));
       },
     },
     {
       id: 'DMU P3 Ultima Blaster Rotation',
-      // This needs to be its own collector/output in order to allow users to disable it and
-      // maintain collection for later trigger, else this would fire 2 seconds late
-      type: 'Ability',
-      netRegex: { id: 'BAE3', source: 'Kefka', capture: true },
-      condition: (data) => data.blasterRotationTriggered === undefined,
-      delaySeconds: 0.1, // Need to delay sometimes for actor data to update
+      type: 'AbilityExtra',
+      netRegex: { id: 'BAE3', capture: false },
+      condition: (data) => data.blasterRotation !== undefined,
       durationSeconds: 10,
-      suppressSeconds: 1,
-      infoText: (data, matches, output) => {
-        const actor = data.actorPositions[matches.sourceId];
-        if (actor === undefined)
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const rotation = data.blasterRotation;
+        const dirNum = data.firstBlasterDirNum;
+        if (rotation === undefined || dirNum === undefined)
           return;
-
-        const x2 = actor.x;
-        const y2 = actor.y;
-        // Get rotation of first and second Kefka blasters
-        const x1 = data.firstBlaster2[0];
-        const y1 = data.firstBlaster2[1];
-        if (x1 === undefined || y1 === undefined) {
-          data.firstBlaster2 = [x2, y2];
-          data.firstBlasterDirNum2 = (Directions.xyTo8DirNum(x2, y2, centerX, centerY) + 4) % 8; // Need opposite side
-          // Return to get the next blaster
-          return;
-        }
-
-        // Translate coords relative to center
-        const ax = x1 - centerX;
-        const ay = y1 - centerY;
-        const bx = x2 - centerX;
-        const by = y2 - centerY;
-
-        // Calculate Determinant to determine if second blaster is clockwise or counterclock
-        const rotation = ax * by - ay * bx;
-        const dirNum = data.firstBlasterDirNum2;
-        if (dirNum === undefined)
-          return;
-
-        // Prevent re-firing of the trigger
-        data.blasterRotationTriggered = true;
 
         // Will need 16Dir for positions later
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom8DirNum(dirNum);
 
-        if (rotation < 0)
-          return output.clockwise!({ card: output[dir]!() });
         if (rotation > 0)
+          return output.clockwise!({ card: output[dir]!() });
+        if (rotation < 0)
           return output.counterclockwise!({ card: output[dir]!() });
       },
       outputStrings: {
@@ -5251,6 +5229,7 @@ const triggerSet: TriggerSet<Data> = {
       // Tailwind look away from Exdeath
       //
       // Party can Tank LB3 to survive stacking the winds
+      //
       // castTime is 7.7s, but the kockback occurs slightly after
       // Debuffs come off about 0.8s later
       type: 'StartsUsing',
@@ -5261,12 +5240,12 @@ const triggerSet: TriggerSet<Data> = {
         const windDir = windDirNum === undefined
           ? 'unknown'
           : data.triggerSetConfig.boa !== 'lb3'
-          ? Directions.outputIntercardDir[windDirNum] ?? 'unknown'
+          ? Directions.outputFromIntercardNum(windDirNum)
           : data.role === 'healer'
-          ? Directions.outputIntercardDir[(windDirNum + 3) % 4] ?? 'unknown' // Wrap-around
+          ? Directions.outputFromIntercardNum((windDirNum + 3) % 4) // Wrap-around
           : Util.isMeleeDpsJob(data.job) || data.role === 'tank'
-          ? Directions.outputIntercardDir[(windDirNum + 2) % 4] ?? 'unknown' // Opposite of Wind Crystal
-          : Directions.outputIntercardDir[(windDirNum + 1) % 4] ?? 'unknown'; // Ranged DPS
+          ? Directions.outputFromIntercardNum((windDirNum + 2) % 4) // Opposite of Wind Crystal
+          : Directions.outputFromIntercardNum((windDirNum + 1) % 4); // Ranged DPS
         const exdeath = matches.source;
 
         if (data.myWind === undefined) {
@@ -5345,14 +5324,14 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: {
         id: [
-          headMarkerData['1'],
-          headMarkerData['2'],
-          headMarkerData['3'],
-          headMarkerData['4'],
-          headMarkerData['5'],
-          headMarkerData['6'],
-          headMarkerData['7'],
-          headMarkerData['8'],
+          headMarkerData['limitCutBlue1'],
+          headMarkerData['limitCutRed2'],
+          headMarkerData['limitCutBlue3'],
+          headMarkerData['limitCutRed4'],
+          headMarkerData['limitCutBlue5'],
+          headMarkerData['limitCutRed6'],
+          headMarkerData['limitCutBlue7'],
+          headMarkerData['limitCutRed8'],
         ],
         capture: true,
       },
@@ -5420,6 +5399,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P3 In Line Debuff Collector',
+      // BBC First in Line
+      // BBD Second in line
+      // BBE Third in Line
       type: 'GainsEffect',
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'] },
       run: (data, matches) => {
@@ -5464,7 +5446,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 In Line Debuff + Accretion 1',
       type: 'GainsEffect',
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
-      delaySeconds: 0.2,
+      delaySeconds: (data) => {
+        if (data.triggerSetConfig.accretion === 'line')
+         return 0.2; // Delay for in Line Collect and Accretion Collect
+       return 0.1; // Delay just for Accretion collect
+      },
       durationSeconds: 5,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
@@ -5591,7 +5577,7 @@ const triggerSet: TriggerSet<Data> = {
       // For BAEC/BAED Look upon Me and Despair, boss also teleports
       // This could be necessary to call which black holes to grab later
       type: 'ActorControlExtra',
-      netRegex: { param1: '1E44', capture: true },
+      netRegex: { category: '0197', param1: '1E44', capture: true },
       condition: (data, matches) => matches.id === data.kefkaId,
       delaySeconds: 0.1,
       run: (data) => {
@@ -5610,7 +5596,7 @@ const triggerSet: TriggerSet<Data> = {
       // About 0.4s prior to a 273 line, the boss teleports and this data is available from 271/261 lines
       // 2.2s later boss starts casting Slap Happy/Look upon Me and Despair
       type: 'ActorControlExtra',
-      netRegex: { param1: '1E44', capture: true },
+      netRegex: { category: '0197', param1: '1E44', capture: true },
       condition: (data, matches) => matches.id === data.kefkaId && data.nothingnessTracker !== 9,
       delaySeconds: 0.1,
       infoText: (data, _matches, output) => {
@@ -5621,7 +5607,7 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
         const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom8DirNum(dirNum);
 
         return output.text!({ dir: output[dir]!() });
       },
@@ -5817,7 +5803,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = data.blackHoleIdDirNums[matches.id];
         const dir = dirNum === undefined
           ? 'unknown'
-          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
+          : Directions.outputFromCardinalNum(dirNum);
 
         if (config !== 'none') {
           const role = config === 'sda' || config === 'modified'
@@ -5868,10 +5854,10 @@ const triggerSet: TriggerSet<Data> = {
               : -1;
             const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
             const dir1 = sorted[0] !== undefined
-              ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+              ? Directions.outputFromCardinalNum(sorted[0])
               : 'unknown';
             const dir2 = sorted[1] !== undefined
-              ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+              ? Directions.outputFromCardinalNum(sorted[1])
               : 'unknown';
 
             if (config === 'modified') {
@@ -5936,10 +5922,10 @@ const triggerSet: TriggerSet<Data> = {
           : -1;
         const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
         const dir1 = sorted[0] !== undefined
-          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[0])
           : 'unknown';
         const dir2 = sorted[1] !== undefined
-          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[1])
           : 'unknown';
 
         if (config === 'dsa' || config === 'sda') {
@@ -6009,6 +5995,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3  Black Hole 3, Nothingness 3',
       // Three Black Holes spawn, each cause three Nothingness
+      // Needs a boolean to prevent extra firing when delay is added
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 3,
@@ -6035,13 +6022,13 @@ const triggerSet: TriggerSet<Data> = {
           : -1;
         const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
         const dir1 = sorted[0] !== undefined
-          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[0])
           : 'unknown';
         const dir2 = sorted[1] !== undefined
-          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[1])
           : 'unknown';
         const dir3 = sorted[2] !== undefined
-          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[2])
           : 'unknown';
 
         if (config !== 'none') {
@@ -6082,7 +6069,7 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
               const dir = sortedDir !== undefined
-                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                ? Directions.outputFromCardinalNum(sortedDir)
                 : 'unknown';
               const relDir = relConfig === 'true'
                 ? dir
@@ -6152,7 +6139,7 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
               const dir = sortedDir !== undefined
-                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                ? Directions.outputFromCardinalNum(sortedDir)
                 : 'unknown';
               const relDir = relConfig === 'true'
                 ? dir
@@ -6172,7 +6159,7 @@ const triggerSet: TriggerSet<Data> = {
             // Tether to grab will change depending on role
             const sortedDir2 = dsaOrModified ? sorted[1] : sorted[0];
             const dir2 = sortedDir2 !== undefined
-              ? Directions.outputCardinalDir[sortedDir2] ?? 'unknown'
+              ? Directions.outputFromCardinalNum(sortedDir2)
               : 'unknown';
             const relDir = relConfig === 'true'
               ? dir2
@@ -6232,7 +6219,7 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[1] : sorted[0];
               const dir = sortedDir !== undefined
-                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                ? Directions.outputFromCardinalNum(sortedDir)
                 : 'unknown';
               const relDir = relConfig === 'true'
                 ? dir
@@ -6277,6 +6264,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3  Black Hole 4, Nothingness 6',
       // Three Black Holes spawn, each cause three Nothingness
+      // Needs a boolean to prevent extra firing when delay is added
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 6,
@@ -6303,13 +6291,13 @@ const triggerSet: TriggerSet<Data> = {
           : -1;
         const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
         const dir1 = sorted[0] !== undefined
-          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[0])
           : 'unknown';
         const dir2 = sorted[1] !== undefined
-          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[1])
           : 'unknown';
         const dir3 = sorted[2] !== undefined
-          ? Directions.outputCardinalDir[sorted[2]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[2])
           : 'unknown';
 
         if (config !== 'none') {
@@ -6356,7 +6344,7 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
               const dir = sortedDir !== undefined
-                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                ? Directions.outputFromCardinalNum(sortedDir)
                 : 'unknown';
               const relDir = relConfig === 'true'
                 ? dir
@@ -6425,7 +6413,7 @@ const triggerSet: TriggerSet<Data> = {
               // Tether to grab will change depending on role
               const sortedDir = dsaOrModified ? sorted[0] : sorted[1];
               const dir = sortedDir !== undefined
-                ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+                ? Directions.outputFromCardinalNum(sortedDir)
                 : 'unknown';
               const relDir = relConfig === 'true'
                 ? dir
@@ -6445,7 +6433,7 @@ const triggerSet: TriggerSet<Data> = {
             // Tether to grab will change depending on role
             const sortedDir2 = dsaOrModified ? sorted[1] : sorted[0];
             const dir2 = sortedDir2 !== undefined
-              ? Directions.outputCardinalDir[sortedDir2] ?? 'unknown'
+              ? Directions.outputFromCardinalNum(sortedDir2)
               : 'unknown';
             const relDir = relConfig === 'true'
               ? dir2
@@ -6508,7 +6496,7 @@ const triggerSet: TriggerSet<Data> = {
             // Tether to grab will change depending on role
             const sortedDir = dsaOrModified ? sorted[1] : sorted[0];
             const dir = sortedDir !== undefined
-              ? Directions.outputCardinalDir[sortedDir] ?? 'unknown'
+              ? Directions.outputFromCardinalNum(sortedDir)
               : 'unknown';
             const relDir = relConfig === 'true'
               ? dir
@@ -6531,6 +6519,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 5, Nothingness 9',
       // Two Black Holes spawn, each cause a single Nothingness
+      // Needs a boolean to prevent extra firing when delay is added
       type: 'SpawnNpcExtra',
       netRegex: { tetherId: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => data.nothingnessTracker === 9,
@@ -6555,10 +6544,10 @@ const triggerSet: TriggerSet<Data> = {
           : -1;
         const sorted = startDir !== -1 ? getCWOrderFromN(startDir, dirNums) : [];
         const dir1 = sorted[0] !== undefined
-          ? Directions.outputCardinalDir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[0])
           : 'unknown';
         const dir2 = sorted[1] !== undefined
-          ? Directions.outputCardinalDir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFromCardinalNum(sorted[1])
           : 'unknown';
 
         if ((config === 'dsa' || config === 'sda') && data.inLine[data.me] === 3) {
@@ -6617,7 +6606,7 @@ const triggerSet: TriggerSet<Data> = {
       // Which would be roughly 9.6s before the cast, however this conflicts
       // with Kefka's teleport, so the two calls have been merged
       type: 'ActorControlExtra',
-      netRegex: { param1: '1E44', capture: true },
+      netRegex: { category: '0197', param1: '1E44', capture: true },
       condition: (data, matches) => matches.id === data.kefkaId && data.nothingnessTracker === 9,
       delaySeconds: 0.1, // Delayed for actor collect
       durationSeconds: 9.1, // Time until end of BD66 White Hole cast
@@ -6630,7 +6619,7 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
         const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom8DirNum(dirNum);
 
         return output.text!({
           heal: output.fullHeal!(),
@@ -6674,7 +6663,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = data.blackHoleIdDirNums[matches.sourceId];
         const dir = dirNum === undefined
           ? 'unknown'
-          : Directions.outputCardinalDir[dirNum] ?? 'unknown';
+          : Directions.outputFromCardinalNum(dirNum);
 
         if (config !== 'none') {
           const role = config === 'sda' || config === 'modified'
@@ -6736,7 +6725,7 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
         const dirNum = (Directions.hdgTo8DirNum(actor.heading) + 4) % 8;
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom8DirNum(dirNum);
 
         return output.text!({ dir: output[dir]!() });
       },
