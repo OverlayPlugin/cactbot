@@ -377,6 +377,10 @@ const hdgTo4DirNum = (heading: number): number => {
   return (Math.round(2 - heading * 2 / Math.PI) % 4 + 4) % 4;
 };
 
+const outputFrom16DirNum = (dirNum: number): DirectionOutput16 => {
+  return output16Dir[dirNum] ?? 'unknown';
+};
+
 const outputFrom8DirNum = (dirNum: number): DirectionOutput8 => {
   return output8Dir[dirNum] ?? 'unknown';
 };
