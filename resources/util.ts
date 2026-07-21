@@ -489,6 +489,7 @@ export const Directions = {
   hdgTo16DirNum: hdgTo16DirNum,
   hdgTo8DirNum: hdgTo8DirNum,
   hdgTo4DirNum: hdgTo4DirNum,
+  outputFrom16DirNum: outputFrom16DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
   outputFromCardinalNum: outputFromCardinalNum,
   combatantStatePosTo8Dir: (
@@ -540,6 +541,10 @@ export const Directions = {
     const heading = parseFloat(combatant.heading);
     const dirNum = hdgTo8DirNum(heading);
     return outputFrom8DirNum(dirNum);
+  },
+  xyTo16DirOutput: (x: number, y: number, centerX: number, centerY: number): DirectionOutput16 => {
+    const dirNum = xyTo16DirNum(x, y, centerX, centerY);
+    return outputFrom16DirNum(dirNum);
   },
   xyTo8DirOutput: (x: number, y: number, centerX: number, centerY: number): DirectionOutput8 => {
     const dirNum = xyTo8DirNum(x, y, centerX, centerY);
