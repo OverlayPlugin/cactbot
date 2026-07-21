@@ -87,9 +87,6 @@ export interface Data extends RaidbossData {
   firstBlasterHdg?: number;
   firstBlasterDirNum?: number;
   blasterRotation?: number;
-  firstBlaster2: number[];
-  firstBlasterDirNum2?: number;
-  blasterRotationTriggered?: boolean;
   kefkaId?: string;
   inLine: { [name: string]: number };
   firstAccretion?: string;
@@ -632,8 +629,14 @@ const boaOutputStrings: OutputStrings = {
   ...Directions.outputStringsIntercardDir,
   in: Outputs.in,
   out: Outputs.out,
-  moveExdeathAndChaosThenMech: {
-    en: 'Move ${exdeath} Middle / ${chaos} to ${dir} => ${mech}',
+  moveBossThenMech: {
+    en: 'Move ${boss} => ${mech}',
+  },
+  exdeathMiddle: {
+    en: '${exdeath} Middle',
+  },
+  chaosDir: {
+    en: '${chaos} to ${dir}',
   },
   moveExdeathThenMech: {
     en: 'Move ${exdeath} to ${long} => ${mech}',
@@ -5448,8 +5451,8 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
       delaySeconds: (data) => {
         if (data.triggerSetConfig.accretion === 'line')
-         return 0.2; // Delay for in Line Collect and Accretion Collect
-       return 0.1; // Delay just for Accretion collect
+          return 0.2; // Delay for in Line Collect and Accretion Collect
+        return 0.1; // Delay just for Accretion collect
       },
       durationSeconds: 5,
       suppressSeconds: 1,
