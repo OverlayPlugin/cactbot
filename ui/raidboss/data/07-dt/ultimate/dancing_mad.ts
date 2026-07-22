@@ -75,9 +75,6 @@ export interface Data extends RaidbossData {
   middleTrineFacing?: 'east' | 'west';
   // Phase 5
   repeaterCount: number;
-  firstFlood: number[];
-  firstFloodDirNum?: number;
-  floodRotation?: number;
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
@@ -714,7 +711,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU ActorSetPos Tracker',
-      // Only in use for P1 Graven Image tethers
+      // P1 Graven Image tethers
+      // P5 Flood
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       run: (data, matches) =>
@@ -4112,69 +4110,66 @@ const triggerSet: TriggerSet<Data> = {
       // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
       // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
       // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // Counterclockwise Example:
+      // (110.61, 89.39) NE Outer, (96.46, 103.53) SE Inner, Facing SE (0.785)
+      // (89.39, 89.39) NW Outer, (103.39, 101.78) SE Inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      //
+      // With the heading, we can know the clock/counterclock
+      // With the x,y we can know the starting and ending positions
       type: 'StartsUsing',
       netRegex: { id: 'C183', capture: true },
-      condition: (data) => data.floodRotation === undefined,
       delaySeconds: 0.1, // Delay for late set position updates
-      durationSeconds: 7.9, // Last C269 Flood
+      durationSeconds: 8.9, // Last C269 Flood
+      suppressSeconds: 99999,
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
           return;
 
-        const x2 = actor.x;
-        const y2 = actor.y;
+        const x = actor.x;
+        const y = actor.y;
 
-        // Ignore the outer ones
-        if (x2 < 96 || x2 > 104)
-          return;
+        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
+        const isClockwise = actor.heading < 0 ? true : false;
+        const isOuter = x < 96 || x > 104;
+        const startDirNum = isOuter ? dirNum : (dirNum + 5) % 4;
 
-        // Get rotation of first and second Flood
-        const x1 = data.firstFlood[0];
-        const y1 = data.firstFlood[1];
-        if (x1 === undefined || y1 === undefined) {
-          data.firstFlood = [x2, y2];
-          data.firstFloodDirNum = Directions.xyTo4DirIntercardNum(x2, y2, centerX, centerY);
-          // Return to get the next flood
-          return;
-        }
-
-        // Translate coords relative to center
-        const ax = x1 - centerX;
-        const ay = y1 - centerY;
-        const bx = x2 - centerX;
-        const by = y2 - centerY;
-
-        // Calculate Determinant to determine if second flood is clockwise or counterclock
-        data.floodRotation = ax * by - ay * bx;
-
-        const firstDirNum = data.firstFloodDirNum;
-        if (firstDirNum === undefined)
-          return;
-        const isClockwise = data.floodRotation > 0;
-        const startDirNum = isClockwise
-          ? ((firstDirNum + 1) % 4)
-          : ((firstDirNum + 5) % 4);
         const startDir = Directions.outputFromIntercardNum(startDirNum);
 
         return output.mechPlusMech!({
-          mech1: output.floodDirClock!({
+          mech1: output.stack!(),
+          mech2: output.floodDirClock!({
             dir: output[startDir]!(),
-            clock: isClockwise ? output.clockwise!() : output.counterclock!(),
+            clock: isClockwise ? output.leftClockwise!() : output.rightCounterclockwise!(),
           }),
-          mech2: output.stack4!(),
         });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
-        clockwise: Outputs.clockwise,
-        counterclock: Outputs.counterclockwise,
+        leftClockwise: {
+          en: 'Left (CW)',
+          de: 'Links (im Uhrzeigersinn)',
+          fr: 'Gauche (horaire)',
+          ja: '時計回り',
+          cn: '左左左 (顺时针)',
+          ko: '왼쪽 (시계방향)',
+          tc: '左左左 (順時針)',
+        },
+        rightCounterclockwise: {
+          en: 'Right (CCW)',
+          de: 'Rechts (gegen Uhrzeigersinn)',
+          fr: 'Droite (Anti-horaire)',
+          ja: '反時計回り',
+          cn: '右右右 (逆时针)',
+          ko: '오른쪽 (반시계방향)',
+          tc: '右右右 (逆時針)',
+        },
         floodDirClock: {
-          en: 'Start ${dir} => ${clock}',
+          en: '${dir} => ${clock}',
         },
-        stack4: {
-          en: 'Stack x4',
-        },
+        stack: Outputs.stackMarker,
         mechPlusMech: {
           en: '${mech1} + ${mech2}',
         },
