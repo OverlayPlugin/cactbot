@@ -4415,7 +4415,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['C24E', 'C24F'], source: 'Kefka', capture: true },
       suppressSeconds: 99999,
       alertText: (data, matches, output) => {
-        const inOut = matches.id === 'C24E' ? 'in' : 'out';
+        const inOut = matches.id === 'C24E' ? 'out' : 'in';
         const res = data.myResistances[0];
         return output.inOutTower!({
           inout: output[inOut]!(),
@@ -4517,7 +4517,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['C24E', 'C24F'], source: 'Kefka', capture: true },
       condition: (data) => data.isCelestriadTower3,
       alertText: (data, matches, output) => {
-        const inOut = matches.id === 'C24E' ? 'in' : 'out';
+        const inOut = matches.id === 'C24E' ? 'out' : 'in';
         const res1 = data.myResistances[0];
         const res2 = data.myResistances[1];
 
