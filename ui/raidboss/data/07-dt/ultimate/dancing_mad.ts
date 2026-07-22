@@ -5898,7 +5898,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 2, Nothingness 2',
       // Two Black Holes spawn, each cause a single Nothingness
-      // No SpawnNpcExtra seen on this one
+      // Black Hole actors are reused from previous Nothingness tethers
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: false },
       condition: (data) => {
@@ -6647,6 +6647,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P3 Black Hole 6, Nothingness 10',
       // One Black Hole spawns, causes a single Nothingness
+      // Black Hole actors are reused from previous Nothingness tethers
       type: 'Tether',
       netRegex: { id: headMarkerData['blackHoleTether'], capture: true },
       condition: (data) => data.nothingnessTracker === 10,
