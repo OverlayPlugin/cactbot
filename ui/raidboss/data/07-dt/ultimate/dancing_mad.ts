@@ -4131,10 +4131,11 @@ const triggerSet: TriggerSet<Data> = {
         const x = actor.x;
         const y = actor.y;
 
+        // NE = 0, SE = 1, SW = 2, NW = 3
         const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
         const isClockwise = actor.heading < 0 ? true : false;
         const isOuter = x < 96 || x > 104;
-        const startDirNum = isOuter ? dirNum : (dirNum + 5) % 4;
+        const startDirNum = isOuter ? dirNum : (dirNum + 2) % 4;
 
         const startDir = Directions.outputFromIntercardNum(startDirNum);
 
