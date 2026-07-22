@@ -5371,7 +5371,7 @@ const triggerSet: TriggerSet<Data> = {
           : ((adjBlaster - 1 - adjNum) + 16) % 16; // Counterclock
 
         // Find inter-inter cardinal
-        const safeDir = Directions.output16Dir[adjustedDirNum] ?? 'unknown';
+        const safeDir = Directions.outputFrom16DirNum(adjustedDirNum);
         return output.text!({
           num: output.num!({ num: myNum }),
           dir: output[safeDir]!(),
