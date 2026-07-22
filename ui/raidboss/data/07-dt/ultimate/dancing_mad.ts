@@ -5449,7 +5449,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 In Line Debuff + Accretion 1',
       type: 'GainsEffect',
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
-      delaySeconds: 0.2; // Delay for in Line Collect and Accretion Collect
+      delaySeconds: 0.2, // Delay for in Line Collect and Accretion Collect
       durationSeconds: 5,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
