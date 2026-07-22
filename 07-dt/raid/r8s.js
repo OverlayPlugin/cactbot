@@ -528,7 +528,7 @@ Options.Triggers.push({
         }
       },
       infoText: (data, matches, output) => {
-        const dir = output[Directions.output16Dir[data.reignDir ?? -1] ?? 'unknown']();
+        const dir = output[Directions.outputFrom16DirNum(data.reignDir ?? -1)]();
         switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
@@ -1488,7 +1488,7 @@ Options.Triggers.push({
       },
       infoText: (data, _matches, output) => {
         const inout = output[data.herosBlowInOut ?? 'unknown']();
-        const dir = output[Directions.output16Dir[data.herosBlowSafeDir ?? -1] ?? 'unknown']();
+        const dir = output[Directions.outputFrom16DirNum(data.herosBlowSafeDir ?? -1)]();
         return output.text({ inout: inout, dir: dir });
       },
       run: (data) => {

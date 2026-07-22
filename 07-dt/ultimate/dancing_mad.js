@@ -3542,13 +3542,13 @@ Options.Triggers.push({
         const dirNums = data.trineDirNums;
         const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
         const trine1 = sorted[0] !== undefined
-          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[0])
           : 'unknown';
         const trine2 = sorted[1] !== undefined
-          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[1])
           : 'unknown';
         const trine3 = sorted[2] !== undefined
-          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[2])
           : 'unknown';
         return output.safeSpots({
           dir1: output[trine1](),
@@ -3592,13 +3592,13 @@ Options.Triggers.push({
         const dirNums = data.trineDirNums;
         const sorted = dirNums.sort((a, b) => a - b); // Sorts clockwise
         const trine1 = sorted[0] !== undefined
-          ? Directions.output16Dir[sorted[0]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[0])
           : 'unknown';
         const trine2 = sorted[1] !== undefined
-          ? Directions.output16Dir[sorted[1]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[1])
           : 'unknown';
         const trine3 = sorted[2] !== undefined
-          ? Directions.output16Dir[sorted[2]] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(sorted[2])
           : 'unknown';
         return output.dirWings({
           dirs: output.safeSpots({

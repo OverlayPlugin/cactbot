@@ -124,9 +124,7 @@ Options.Triggers.push({
           endAngle += Math.PI * 2;
         else if (endAngle > Math.PI)
           endAngle -= Math.PI * 2;
-        data.bats[dLen].push(
-          Directions.output16Dir[Directions.hdgTo16DirNum(endAngle)] ?? 'unknown',
-        );
+        data.bats[dLen].push(Directions.outputFrom16DirNum(Directions.hdgTo16DirNum(endAngle)));
       },
     },
     {
