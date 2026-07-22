@@ -5366,7 +5366,7 @@ const triggerSet: TriggerSet<Data> = {
         const adjBlaster = blasterDirNum * 2; // Convert blasterDirNum to 16Dir format
 
         // Boss is at an intercard, so +1 or -1 to get inter-inter safe spot
-        const adjustedDirNum = rotation < 0
+        const adjustedDirNum = rotation > 0
           ? (adjNum + adjBlaster + 1) % 16 // Clockwise
           : ((adjBlaster - 1 - adjNum) + 16) % 16; // Counterclock
 
