@@ -2967,7 +2967,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.getBehind!();
 
         const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
-        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(dirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
@@ -3164,7 +3164,7 @@ const triggerSet: TriggerSet<Data> = {
         // Adding 16 incase of negative values
         const newDirNum = (getNewDirNum(dirNum, matches.id) + 16 + 8) % 16;
 
-        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(newDirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
@@ -4264,7 +4264,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.getBehind!();
 
         const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
-        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(dirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
