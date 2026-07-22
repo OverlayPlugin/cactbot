@@ -5450,9 +5450,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: ['BBC', 'BBD', 'BBE'], capture: false },
       delaySeconds: (data) => {
-        if (data.triggerSetConfig.accretion === 'line')
-          return 0.2; // Delay for in Line Collect and Accretion Collect
-        return 0.1; // Delay just for Accretion collect
+        return 0.2; // Delay for in Line Collect and Accretion Collect
       },
       durationSeconds: 5,
       suppressSeconds: 1,
