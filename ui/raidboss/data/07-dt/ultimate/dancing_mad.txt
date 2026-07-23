@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB1E BB1F BB15 C5DE BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB1E BB1F BB15 C5DE BB46 BB47 BB48 BB38
 # -p C403:15.6 C24C:320.1 C3F7:600.0 C2DC:1100.0 BB40:1400.0
 # -it Kefka Chaos Exdeath
 
@@ -433,29 +433,29 @@ hideall "--sync--"
 1421.0 "Flood 3" #Ability { id: "C269", source: "Kefka" }
 1422.0 "Flood 4" #Ability { id: "C269", source: "Kefka" }
 
-1431.1 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
-1432.0 "Holy" Ability { id: "BB54", source: "Kefka" }
-1432.0 "Flare" #Ability { id: "BB52", source: "Kefka" }
-1434.2 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
-1435.1 "Holy" Ability { id: "BB54", source: "Kefka" }
-1435.1 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
-# TODO: Update rest with network log
-1438.3 "Chaotic Holy" Ability { id: "BB56", source: "Kefka" }
-1438.3 "Flare Diffusion" #Ability { id: "BB55", source: "Kefka" }
-1442.2 "--sync--" Ability { id: "C652", source: "Kefka" }
-1443.1 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
-1445.4 "--sync--" Ability { id: "C652", source: "Kefka" }
-1446.3 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1431.0 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
+1431.9 "Holy" Ability { id: "BB54", source: "Kefka" }
+1431.9 "Flare" #Ability { id: "BB52", source: "Kefka" }
+1434.1 "Maddening Orchestra" Ability { id: "BB51", source: "Kefka" }
+1435.0 "Holy" Ability { id: "BB54", source: "Kefka" }
+1435.0 "Chaotic Flare" #Ability { id: "BB53", source: "Kefka" }
+1438.6 "Chaotic Holy" Ability { id: "BB56", source: "Kefka" }
+1438.6 "Flare Diffusion" #Ability { id: "BB55", source: "Kefka" }
+1442.4 "--sync--" Ability { id: "C652", source: "Kefka" }
+1443.3 "Fell Forces 1" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
+1445.6 "--sync--" Ability { id: "C652", source: "Kefka" }
+1446.5 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1452.9 "Celestriad" Ability { id: "BB42", source: "Kefka" }
 1461.3 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
-1462.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
+1462.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1462.1 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
-1468.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
+1468.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1473.4 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
-1474.0 "Fire III/Blizzard III/Thunder III?" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
+1474.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1474.2 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
 
+# TODO: Update rest with network log
 1482.2 "Ultima Repeater (castbar)" Ability { id: "BB40", source: "Kefka" }
 1483.3 "Ultima Repeater 1" #Ability { id: "BB41", source: "Kefka" }
 1484.1 "Ultima Repeater 2" #Ability { id: "BB41", source: "Kefka" }
@@ -547,7 +547,7 @@ hideall "--sync--"
 # BAAF Gravity III: Soaking the Gravitas puddles at the correct time
 
 # P2 IGNORED ABILITIES
-# BABF The River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
+# BABF the River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
 # BAD6 Future's End: Damage (On 1 player)
 # BAD7 Past's End: Damage (On 1 player)
 # BAD8 Future's End: Damage (On 3 players)
@@ -573,6 +573,9 @@ hideall "--sync--"
 # C5DE Thrumming Thunder III: VFX/Castbar used in P4
 
 # P5 IGNORED ABILITIES
+# BB46 Stardust Fire III: Failing to soak a fire tower during Celestriad, applies a 3-minute damage down
+# BB47 Stardust Blizzard III: Failing to soak a blizzard tower during Celestriad, applies a 3-minute damage down
+# BB48 Stardust Thunder III: Failing to soak a thunder tower during Celestriad, applies a 3-minute damage down
 # BB38 Forsaken: VFX
 
 # ALL ENCOUNTER ABILITIES
@@ -609,8 +612,8 @@ hideall "--sync--"
 # BABB Light of Judgment: P1 Enrage and P4 Enrage
 # BABC Forsaken
 # BABD Light of Judgment: P2 version
-# BABE The Path of Light
-# BABF The River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
+# BABE the Path of Light
+# BABF the River of Light: Failing to soak a tower in P2, applies a 3-minute damage down
 # BAC0 Spelldriver
 # BAC1 Spellscatter
 # BAC2 Spellwave
@@ -708,6 +711,9 @@ hideall "--sync--"
 # BB43 Fire III
 # BB44 Blizzard III
 # BB45 Thunder III
+# BB46 Stardust Fire III: Failing to soak a fire tower during Celestriad, applies a 3-minute damage down
+# BB47 Stardust Blizzard III: Failing to soak a blizzard tower during Celestriad, applies a 3-minute damage down
+# BB48 Stardust Thunder III: Failing to soak a thunder tower during Celestriad, applies a 3-minute damage down
 # BB4A Quake
 # BB4B Tornado
 # BB4F Chaotic Flood
@@ -735,8 +741,8 @@ hideall "--sync--"
 # C269 Flood
 # C2D6 Trance
 # C2DC Kefka Says
-# C2E2 The Decisive Battle: Cast by Chaos, shares health pool with Exdeath
-# C2E3 The Decisive Battle: Cast by Exdeath, shares health pool with Chaos
+# C2E2 the Decisive Battle: Cast by Chaos, shares health pool with Exdeath
+# C2E3 the Decisive Battle: Cast by Exdeath, shares health pool with Chaos
 # C2E4 Aetherlink: Cast by Chaos
 # C2E5 Aetherlink: Cast by Exdeath
 # C392 Flood of Naught: True Cast, C394 White Antilight (Purple) is on boss' right, C395 Black Antilight (Blue) on boss' left
