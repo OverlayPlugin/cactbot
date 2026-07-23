@@ -7338,7 +7338,6 @@ const triggerSet: TriggerSet<Data> = {
         else
           data.celestriadDirNumToTower[dirNum] = 'fire';
       },
-      response: Responses.aoe(),
     },
     {
       id: 'DMU P5 Celestriad Debuff Collect',
