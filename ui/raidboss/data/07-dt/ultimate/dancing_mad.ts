@@ -100,7 +100,8 @@ export interface Data extends RaidbossData {
   isSecondPuddle: boolean;
   knockDownTarget?: string;
   isKnockDown2: boolean;
-  blizzardStarted: boolean;  // Phase 4
+  blizzardStarted: boolean;
+  // Phase 4
   grandCrossCount: number;
   shortShriekPlayers: string[];
   longShriekPlayers: string[];
