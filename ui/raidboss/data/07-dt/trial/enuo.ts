@@ -110,7 +110,7 @@ const triggerSet: TriggerSet<Data> = {
         // Convert to 16, add 1
         const safeDir16Num = ((safeDir8Num * 2) + 1) % 16;
         return output.goDir!({
-          dir: output[Directions.output16Dir[safeDir16Num] ?? 'unknown']!(),
+          dir: output[Directions.outputFrom16DirNum(safeDir16Num)]!(),
         });
       },
       outputStrings: {
