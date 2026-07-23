@@ -1,7 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, { Directions } from '../../../../../resources/util';
+import Util, { Directions, DirectionOutput16 } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
