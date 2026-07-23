@@ -300,6 +300,9 @@ const triggerSet: TriggerSet<Data> = {
         ko:
           `Y가 북쪽, 딜러 동-남서쪽, 탱힐 서-북동쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
           방향 알림은 실제 북쪽입니다. (즉, "동쪽"은 실제 동쪽을 의미하며, "Y" 모양의 동쪽이 아닙니다.)`,
+        tc:
+          `Y 北, DPS 東-西南, T奶 西-東北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
+          方向輸出為真北 (即 “東”表示實際的東, 而不是相對於 “Y” 北的東)。`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
@@ -344,6 +347,8 @@ const triggerSet: TriggerSet<Data> = {
           `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko:
           `딜러 북동->남, 탱힐 남서->북: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        tc:
+          `DPS 東北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P3 Apocalypse',
