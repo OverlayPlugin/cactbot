@@ -1,7 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, { Directions, DirectionOutput16 } from '../../../../../resources/util';
+import Util, { DirectionOutput16, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
@@ -40,7 +40,7 @@ export interface Data extends RaidbossData {
     accretion: 'line' | 'role';
     blackHole: 'dsa' | 'sda' | 'modified' | 'none';
     blackHoleTether: 'true' | 'clock';
-    celestriad: 'clockwise' | 'counterclockwise' ;
+    celestriad: 'clockwise' | 'counterclockwise';
   };
   // General
   phase: Phase | 'unknown';
@@ -7420,7 +7420,10 @@ const triggerSet: TriggerSet<Data> = {
         if (towerType === undefined)
           return;
 
-        if ((data.celestriadLightningTower.length + data.celestriadIceTower.length + data.celestriadFireTower.length) === 4) {
+        if (
+          (data.celestriadLightningTower.length + data.celestriadIceTower.length +
+            data.celestriadFireTower.length) === 4
+        ) {
           // Reset for this run
           data.celestriadLightningTower = [];
           data.celestriadIceTower = [];
