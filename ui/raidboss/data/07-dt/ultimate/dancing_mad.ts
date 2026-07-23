@@ -110,6 +110,7 @@ export interface Data extends RaidbossData {
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
+  hitByFlare: boolean;
   myInitialResistance?: 'fire' | 'ice' | 'lightning';
   celestriadDebuffCollect: boolean;
   celestriadTowerSet: number;
@@ -1047,6 +1048,7 @@ const triggerSet: TriggerSet<Data> = {
       orchestraCount: 0,
       firstFlood: [],
       hitByHoly: false,
+      hitByFlare: false,
       celestriadDebuffCollect: true,
       celestriadTowerSet: 0,
       celestriadDirNumToTower: {},
@@ -7164,6 +7166,74 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P5 Maddening Orchestra Count',
+      type: 'Ability',
+      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
+      run: (data) => {
+        data.orchestraCount = data.orchestraCount + 1;
+
+        // These will need to be reset prior to 2nd orchestra
+        if (data.orchestraCount === 2) {
+          data.hitByHoly = false;
+          data.hitByFlare = false;
+          delete data.mySurprise;
+        }
+      },
+    },
+    {
+      id: 'DMU P5 Holy/Flare Collect',
+      // BB54 Holy First set is random, rest are on nearest players to boss
+      // BB52 Flare should only go on tanks (two highest aggro)
+      // Capture BB52 Flare targets to filter later Holy call
+      type: 'Ability',
+      netRegex: { id: ['BB54', 'BB52'], source: 'Kefka', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        if (matches.id === 'BB54')
+          data.hitByHoly = true;
+        else
+          data.hitByFlare = true;
+      },
+    },
+    {
+      id: 'DMU P5 Holy',
+      // First set is random, rest are on nearest players to boss
+      type: 'Ability',
+      netRegex: { id: 'BB54', source: 'Kefka', capture: false },
+      delaySeconds: 0.1, // Delay for first BB54 Holy/BB52 Flare hits
+      suppressSeconds: 6, // Don't output for the second Holy in orchestra
+      alertText: (data, _matches, output) => {
+        // Players hit by Flare will be either dead or get 14E6 Suprise Flare/14E7 Surprise Holy
+        if (data.hitByFlare)
+          return;
+        const nearFar = data.hitByHoly ? output.beFar!() : output.beNear!();
+        if (data.role !== 'dps')
+          return output.mechPlusMech!({
+            mech1: nearFar,
+            mech2: output.sharedTankbuster!(),
+          });
+        return nearFar;
+      },
+      outputStrings: {
+        beFar: {
+          en: 'Be Far',
+          de: 'Sei Fern',
+          cn: '站远',
+          ko: '멀리 있기',
+        },
+        beNear: {
+          en: 'Be Near',
+          de: 'Sei Nahe',
+          cn: '站近',
+          ko: '가까이 있기',
+        },
+        sharedTankbuster: Outputs.sharedTankbuster,
+        mechPlusMech: {
+          en: '${mech1} + ${mech2}',
+        },
+      },
+    },
+    {
       id: 'DMU P5 Suprise Flare/Holy Collect',
       // 14E6 Suprise Flare
       // 14E7 Surpise Holy
@@ -7200,64 +7270,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         mechThenMech: {
           en: '${mech1} => ${mech2}',
-        },
-      },
-    },
-    {
-      id: 'DMU P5 Maddening Orchestra Count',
-      type: 'Ability',
-      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
-      run: (data) => {
-        data.orchestraCount = data.orchestraCount + 1;
-
-        // These will need to be reset prior to 2nd orchestra
-        if (data.orchestraCount === 2) {
-          data.hitByHoly = false;
-          delete data.mySurprise;
-        }
-      },
-    },
-    {
-      id: 'DMU P5 Holy Collect',
-      // First set is random, rest are on nearest players to boss
-      type: 'Ability',
-      netRegex: { id: 'BB54', source: 'Kefka', capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data) => data.hitByHoly = true,
-    },
-    {
-      id: 'DMU P5 Holy',
-      // First set is random, rest are on nearest players to boss
-      type: 'Ability',
-      netRegex: { id: 'BB54', source: 'Kefka', capture: false },
-      condition: (data) => data.mySurprise === undefined,
-      delaySeconds: 0.1,
-      suppressSeconds: 6, // Don't output for the second Holy in orchestra
-      alertText: (data, _matches, output) => {
-        const nearFar = data.hitByHoly ? output.beFar!() : output.beNear!();
-        if (data.role !== 'dps')
-          return output.mechPlusMech!({
-            mech1: nearFar,
-            mech2: output.sharedTankbuster!(),
-          });
-        return nearFar;
-      },
-      outputStrings: {
-        beFar: {
-          en: 'Be Far',
-          de: 'Sei Fern',
-          cn: '站远',
-          ko: '멀리 있기',
-        },
-        beNear: {
-          en: 'Be Near',
-          de: 'Sei Nahe',
-          cn: '站近',
-          ko: '가까이 있기',
-        },
-        sharedTankbuster: Outputs.sharedTankbuster,
-        mechPlusMech: {
-          en: '${mech1} + ${mech2}',
         },
       },
     },
