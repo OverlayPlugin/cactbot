@@ -7268,6 +7268,7 @@ const triggerSet: TriggerSet<Data> = {
       // BB56 Chaotic Holy: Small tank buster AOE on the 14E7 Surprise Holy player
       type: 'Ability',
       netRegex: { id: 'BB53', source: 'Kefka', capture: false },
+      suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
