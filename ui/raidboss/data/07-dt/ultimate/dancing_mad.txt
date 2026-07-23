@@ -447,9 +447,12 @@ hideall "--sync--"
 1446.5 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1452.9 "Celestriad" Ability { id: "BB42", source: "Kefka" }
+1455.9 "--1 towers--" ActorControlExtra { category: "019D", param1: "10", param2: "20" }
 1461.3 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
+1461.9 "--2 towers--" ActorControlExtra { category: "019D", param1: "10", param2: "20" }
 1462.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1462.1 "Quake/Tornado" Ability { id: ["BB4A", "BB4B"], source: "Kefka" }
+1467.9 "--3 towers--" ActorControlExtra { category: "019D", param1: "10", param2: "20" }
 1468.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
 1473.4 "Catastrophic Choice" Ability { id: ["C24E", "C24F"], source: "Kefka" }
 1474.0 "Fire III/Blizzard III/Thunder III" Ability { id: ["BB43", "BB44", "BB45"], source: "Kefka" }
