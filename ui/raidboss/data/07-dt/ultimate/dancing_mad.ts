@@ -110,6 +110,7 @@ export interface Data extends RaidbossData {
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
+  myInitialResistance?: 'fire' | 'ice' | 'lightning';
   celestriadDebuffCollect: boolean;
   celestriadTowerSet: number;
   celestriadDirNumToTower: { [dirNum: number]: 'lightning' | 'ice' | 'fire' };
