@@ -122,7 +122,7 @@ export interface Data extends RaidbossData {
   deathOrField?: 'death' | 'field';
   wound?: 'white' | 'black';
   isThunderChargedTrue?: boolean;
-  isBlizzardChargedTrue?: boolean;main
+  isBlizzardChargedTrue?: boolean;
 }
 
 const headMarkerData = {
