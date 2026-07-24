@@ -175,6 +175,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Shadow of the Ancients': 'Schatten der Alten',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Shadow of the Ancients': 'spectre d\'Ascien',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Shadow of the Ancients': '古代人の影',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Shadow of the Ancients': '古代人之影',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Shadow of the Ancients': '고대인의 그림자',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Shadow of the Ancients': '古代人之影',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
