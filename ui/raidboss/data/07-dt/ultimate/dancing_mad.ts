@@ -8072,7 +8072,7 @@ const triggerSet: TriggerSet<Data> = {
       // This will need to be done while stacking donuts if Dynamic Fluid is true
       // 6.7s castTime, but there is additional ~0.382 delay until tells
       type: 'StartsUsing',
-      netRegex: { id: 'BAA5', source: 'Kefka', capture: false },
+      netRegex: { id: 'BAA5', source: 'Kefka', capture: true },
       condition: (data) => {
         return data.isIceTrue !== undefined && data.isThunderTrue !== undefined;
       },
