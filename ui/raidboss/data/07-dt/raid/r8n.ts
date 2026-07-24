@@ -116,7 +116,7 @@ const triggerSet: TriggerSet<Data> = {
         data.reignDir = (Directions.hdgTo16DirNum(actor.Heading) + 8) % 16;
       },
       infoText: (data, _matches, output) => {
-        const dir = output[Directions.output16Dir[data.reignDir ?? -1] ?? 'unknown']!();
+        const dir = output[Directions.outputFrom16DirNum(data.reignDir ?? -1)]!();
         return output.inDir!({ dir: dir });
       },
       run: (data) => {
