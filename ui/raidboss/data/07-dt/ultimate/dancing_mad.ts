@@ -8188,6 +8188,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 99999,
       response: Responses.moveAway('alert'),
     },
+    },
       id: 'DMU P5 Ultima Repeater',
       // 3.7s castTime, followed by 1.1s until first Hit
       // Hits are 0.7s apart
