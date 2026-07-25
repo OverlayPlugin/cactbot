@@ -808,8 +808,6 @@ Options.Triggers.push({
       windCrystalNext: false,
       fireElementPlayers: [],
       waterElementPlayers: [],
-      firstBlaster: [],
-      firstBlaster2: [],
       inLine: {},
       hadAccretion: false,
       blackHoleIdDirNums: {},
@@ -967,7 +965,7 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'DMU P1 Mystery Magic Collect',
+      id: 'DMU P1 and P4 Mystery Magic Collect',
       type: 'HeadMarker',
       netRegex: {
         id: [
