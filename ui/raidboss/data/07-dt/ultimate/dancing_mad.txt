@@ -78,9 +78,9 @@ hideall "--sync--"
 189.4 "--sync--" ActorControl { command: "80000027", data0: "0C" }
 
 197.3 "--untargetable--"
-# Enrage Line
+# Enrage Line, commented out as enrage sync is handled by the `StartsUsing` of `BABB`
 # en: 'I'm afraid that's all I have time for today. Bye-bye now!'
-197.4 "--sync--" #ActorControl { command: "80000027", data0: "08" }
+# 197.4 "--sync--" ActorControl { command: "80000027", data0: "08" }
 
 197.5 "--sync--" StartsUsing { id: "BABB", source: "Kefka" } jump "p1-and-p4-enrage"
 202.4 "Light of Judgment (Enrage)?" #Ability { id: "BABB", source: "Kefka" } # Kefka >15% HP
@@ -90,7 +90,6 @@ hideall "--sync--"
 248.5 "The Path of Light 1?" #Ability { id: "BABE", source: "Kefka" }
 
 ### Phase 2 - God Kefka
-# NOTE: Only the fake path can be early sync'd
 # Fake Duty Complete Path:
 # en: 'Yes... I am filled with glorious purpose!'
 297.4 "--sync--" ActorControl { command: "80000027", data0: "05" } window 300,5 # Only if Kefka <15% HP
@@ -153,11 +152,10 @@ hideall "--sync--"
 476.7 "Ultimate Embrace" Ability { id: "C24C", source: "Kefka" }
 480.1 "--untargetable?--"
 480.1 "--sync--" StartsUsing { id: "BAE1", source: "Kefka" } jump "p2-enrage"
-483.2 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 320,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
+483.2 "--sync--" StartsUsing { id: "C3F7", source: "Kefka" } window 485,5 jump "p2-success" # Kefka will skip mechanics at 0% HP
 485.0 "Light of Judgment (Enrage)?" #Ability { id: "BAE1", source: "Kefka" } # Kefka > 0% HP
 486.2 "Aero III Assault?" Ability { id: "C3F7", source: "Kefka" } forcejump "p2-success"
 
-# TODO: Earlier sync on jump middle
 597.0 label "p2-success"
 600.0 "Aero III Assault" Ability { id: "C3F7", source: "Kefka" } window 600,20
 600.8 "Down for the Count" GainsEffect { effectId: '306' } duration 32.5
@@ -482,7 +480,7 @@ hideall "--sync--"
 1506.0 "Stray Apocalypse 5 x6" #Ability { id: "BB3D", source: "Kefka" } duration 2.4
 1507.3 "--sync--" Ability { id: "BB3C", source: "Kefka" }
 1508.0 "Stray Apocalypse 6 x6" #Ability { id: "BB3D", source: "Kefka" } duration 2.4
-1512.0 "Stray Entropy" Ability { id: "BB3E", source: "Kefka" }
+1512.0 "Stray Entropy (castbar)" Ability { id: "BB3E", source: "Kefka" }
 1512.9 "Stray Entropy" Ability { id: "BB3F", source: "Kefka" }
 
 1521.1 "Maddening Orchestra" Ability { id: "BB50", source: "Kefka" }
