@@ -990,8 +990,6 @@ const triggerSet: TriggerSet<Data> = {
       windCrystalNext: false,
       fireElementPlayers: [],
       waterElementPlayers: [],
-      firstBlaster: [],
-      firstBlaster2: [],
       inLine: {},
       hadAccretion: false,
       blackHoleIdDirNums: {},
@@ -1177,7 +1175,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P1 Mystery Magic Collect',
+      id: 'DMU P1 and P4 Mystery Magic Collect',
       type: 'HeadMarker',
       netRegex: {
         id: [
