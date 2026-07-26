@@ -1047,7 +1047,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bigAoe: Outputs.bigAoe,
         bigAoeNum: {
-          en: '${num}: ${aoe}'
+          en: '${num}: ${aoe}',
         },
       },
     },
@@ -8876,7 +8876,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bigAoe: Outputs.bigAoe,
         bigAoeNum: {
-          en: '${num}: ${aoe}'
+          en: '${num}: ${aoe}',
         },
       },
     },
