@@ -2,7 +2,7 @@
 # ZoneId: 1363
 
 # NOTE: Abilities are sorted by order of appearance
-# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB1E BB1F BB15 C5DE BB46 BB47 BB48 BB38
+# -ii C252 BA9E BAA0 BAAB BA95 BAAF BAAD BABF BAD6 BAD8 BAD7 BAD9 BAC3 BACF C250 BAF7 BAF9 C572 BAFA BCCD BB02 BAF1 BB06 BB1E BB1F BB15 C5DE BB46 BB47 BB48 BB38 C61A
 # -p C403:15.6 C24C:320.1 C3F7:600.0 C2DC:1100.0 BB40:1400.0
 # -it Kefka Chaos Exdeath
 
@@ -579,6 +579,7 @@ hideall "--sync--"
 # BB47 Stardust Blizzard III: Failing to soak a blizzard tower during Celestriad, applies a 3-minute damage down
 # BB48 Stardust Thunder III: Failing to soak a thunder tower during Celestriad, applies a 3-minute damage down
 # BB38 Forsaken: VFX
+# C61A unknown_c61a: Standing in a Forsaken Puddle, applies 1418 Forsaken debuff
 
 # ALL ENCOUNTER ABILITIES
 # BA94 Mystery Magic
@@ -766,6 +767,7 @@ hideall "--sync--"
 # C571 Earthquake
 # C572 Earthquake: VFX
 # C5DE Thrumming Thunder III: VFX/Castbar used in P4
+# C61A unknown_c61a: Standing in a Forsaken Puddle, applies 1418 Forsaken debuff
 # C61E Meteor: Exdeath enrage when you kill Chaos first
 # C61F Bowels of Agony: Chaos Enrage when you kill Exdeath first
 # C622 Light of Judgment: P1 version
