@@ -468,7 +468,8 @@ hideall "--sync--"
 1491.7 "Fell Forces 2" Ability { id: ["C654", "C653", "C654"], source: "Kefka" }
 
 1497.1 "Stray Apocalypse (castbar)" Ability { id: "BB3B", source: "Kefka" }
-1497.1 "--sync--" #Ability { id: "BB3C", source: "Kefka" }
+# Syncs same time as BB3B
+#1497.1 "--sync--" Ability { id: "BB3C", source: "Kefka" }
 1497.8 "Stray Apocalypse 1 x6" #Ability { id: "BB3D", source: "Kefka" } duration 2.4
 1499.3 "--sync--" Ability { id: "BB3C", source: "Kefka" }
 1500.0 "Stray Apocalypse 2 x6" #Ability { id: "BB3D", source: "Kefka" } duration 2.4
