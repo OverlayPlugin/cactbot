@@ -8137,6 +8137,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
         'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
         'Fire III/Blizzard III/Thunder III': 'Fire/Blizzard/Thunder III',
+        'Forsaken Ground/Forsaken Bonds': 'Forsaken Ground/Bonds',
       },
     },
     {
