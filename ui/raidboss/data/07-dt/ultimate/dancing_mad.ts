@@ -1034,7 +1034,12 @@ const triggerSet: TriggerSet<Data> = {
       regex: /Forsaken [2-3]/,
       beforeSeconds: 4.7,
       durationSeconds: 4.7,
-      alertText: (data, _matches, output) => output.bigAoeNum!({ num: data.forsakenCount }),
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.bigAoe!(),
+        });
+      },
       outputStrings: {
         num: {
           en: '${num}',
@@ -1046,8 +1051,8 @@ const triggerSet: TriggerSet<Data> = {
           tc: '${num}',
         },
         bigAoe: Outputs.bigAoe,
-        bigAoeNum: {
-          en: '${num}: ${aoe}',
+        mechNum: {
+          en: '${num}: ${mech}',
         },
       },
     },
@@ -8863,7 +8868,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BB35', source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
       durationSeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
-      alertText: (data, _matches, output) => output.bigAoeNum!({ num: data.forsakenCount }),
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.bigAoe!(),
+        });
+      },
       outputStrings: {
         num: {
           en: '${num}',
@@ -8875,8 +8885,8 @@ const triggerSet: TriggerSet<Data> = {
           tc: '${num}',
         },
         bigAoe: Outputs.bigAoe,
-        bigAoeNum: {
-          en: '${num}: ${aoe}',
+        mechNum: {
+          en: '${num}: ${mech}',
         },
       },
     },
