@@ -9,9 +9,9 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
-// TODO: Celestriad triggers
-// TODO: Stray Apocalypse exa location triggers
-// TODO: Forsaken triggers and stack headmarker
+// TODO: P5 Stray Apocalypse exa location triggers
+// TODO: P5 Forsaken stack headmarker
+// TODO: P5 Forsaken tell if a hole was placed in the path?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -119,6 +119,7 @@ export interface Data extends RaidbossData {
   celestriadLightningTower: number[];
   celestriadIceTower: number[];
   celestriadFireTower: number[];
+  forsakenCount: number;
 }
 
 const headMarkerData = {
@@ -1056,15 +1057,32 @@ const triggerSet: TriggerSet<Data> = {
       celestriadLightningTower: [],
       celestriadIceTower: [],
       celestriadFireTower: [],
+      forsakenCount: 0,
     };
   },
   timelineTriggers: [
     {
       id: 'DMU P5 Forsaken (Untelegraphed)',
+      // Last Forsaken doesn't do damage
       regex: /Forsaken [2-3]/,
       beforeSeconds: 4.7,
       durationSeconds: 4.7,
-      response: Responses.bigAoe('alert'),
+      alertText: (data, _matches, output) => output.bigAoeNum!({ num: data.forsakenCount }),
+      outputStrings: {
+        num: {
+          en: '${num}',
+          de: '${num}',
+          fr: '${num}',
+          ja: '${num}',
+          cn: '${num}',
+          ko: '${num}',
+          tc: '${num}',
+        },
+        bigAoe: Outputs.bigAoe,
+        bigAoeNum: {
+          en: '${num}: ${aoe}'
+        },
+      },
     },
   ],
   triggers: [
@@ -7628,6 +7646,17 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread('alert'),
     },
     {
+      id: 'DMU P5 Forsaken Counter',
+      // BB35 Forsaken (Initial Cast)
+      // BB37 Forsaken Ground (Puddles), Using this instead of BB39 Forsaken Bonds
+      //   as it requires no players
+      // BB38 Forsaken (Subsequent VFX casts)
+      type: 'StartsUsing',
+      netRegex: { id: ['BB35', 'BB37', 'BB38'], source: 'Kefka', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.forsakenCount = data.forsakenCount + 1,
+    },
+    {
       id: 'DMU P5 Forsaken',
       // 9.7s castTime
       // This is followed by three untelegraphed BB36 roughly every 8.1s
@@ -7635,8 +7664,24 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BB35', source: 'Kefka', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
       durationSeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
-      response: Responses.bigAoe('alert'),
+      alertText: (data, _matches, output) => output.bigAoeNum!({ num: data.forsakenCount }),
+      outputStrings: {
+        num: {
+          en: '${num}',
+          de: '${num}',
+          fr: '${num}',
+          ja: '${num}',
+          cn: '${num}',
+          ko: '${num}',
+          tc: '${num}',
+        },
+        bigAoe: Outputs.bigAoe,
+        bigAoeNum: {
+          en: '${num}: ${aoe}'
+        },
+      },
     },
+  ],
   ],
   timelineReplace: [
     {
