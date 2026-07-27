@@ -776,6 +776,21 @@ const blackHoleOutputStrings: OutputStrings = {
   },
 };
 
+const forsakenP5OutputStrings: OutputStrings = {
+  num: {
+    en: '${num}',
+    de: '${num}',
+    fr: '${num}',
+    ja: '${num}',
+    cn: '${num}',
+    ko: '${num}',
+    tc: '${num}',
+  },
+  numMech: {
+    en: '${num}: ${mech}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -1041,19 +1056,8 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        num: {
-          en: '${num}',
-          de: '${num}',
-          fr: '${num}',
-          ja: '${num}',
-          cn: '${num}',
-          ko: '${num}',
-          tc: '${num}',
-        },
+        ...forsakenP5OutputStrings,
         bigAoe: Outputs.bigAoe,
-        numMech: {
-          en: '${num}: ${mech}',
-        },
       },
     },
   ],
@@ -8875,19 +8879,24 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        num: {
-          en: '${num}',
-          de: '${num}',
-          fr: '${num}',
-          ja: '${num}',
-          cn: '${num}',
-          ko: '${num}',
-          tc: '${num}',
-        },
+        ...forsakenP5OutputStrings,
         bigAoe: Outputs.bigAoe,
-        mechNum: {
-          en: '${num}: ${mech}',
-        },
+      },
+    },
+    {
+      id: 'DMU P5 Forsaken Bonds',
+      // TODO: Replace this with headmarker
+      type: 'StartsUsing',
+      netRegex: { id: 'BB39', source: 'Kefka', capture: true },
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.stack!(),
+        });
+      },
+      outputStrings: {
+        ...forsakenP5OutputStrings,
+        stack: Outputs.stackMarker,
       },
     },
   ],
