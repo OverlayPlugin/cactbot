@@ -987,7 +987,7 @@ const triggerSet: TriggerSet<Data> = {
       // Ultimate Kefka
       // Track jumps to middle for earlier P5 and Ultima Upsurge
       // Rather than using BB40 Ultima Repeater
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { id: 'C3FD', source: 'Kefka', capture: false },
       run: (data) => {
         data.middleCount = data.middleCount + 1;
