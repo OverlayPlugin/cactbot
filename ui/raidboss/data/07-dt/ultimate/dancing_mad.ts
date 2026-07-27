@@ -130,6 +130,8 @@ export interface Data extends RaidbossData {
   isBlizzardChargedTrue?: boolean;
   // Phase 5
   repeaterCount: number;
+  firstFlood: number[];
+  floodRotation?: number;
   orchestraCount: number;
   mySurprise?: 'flare' | 'holy';
   hitByHoly: boolean;
@@ -8296,34 +8298,59 @@ const triggerSet: TriggerSet<Data> = {
       // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
       // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
       // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // Clockwise Example 2:
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SE Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
       // Counterclockwise Example:
-      // (110.61, 89.39) NE Outer, (96.46, 103.53) SE Inner, Facing SE (0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SE Inner, Facing SE (0.785)
       // (89.39, 89.39) NW Outer, (103.39, 101.78) SE Inner, Facing SW (-0.785)
       // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
       // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
-      //
-      // With the heading, we can know the clock/counterclock
+      // Counterclockwise Example 2:
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW Inner, Facing SW (-0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
       // With the x,y we can know the starting and ending positions
+      // Need to know first and second outer or inner to be able to get CW/CCW
       type: 'StartsUsing',
       netRegex: { id: 'C183', capture: true },
+      condition: (data) => data.floodRotation === undefined,
       delaySeconds: 0.1, // Delay for late set position updates
-      durationSeconds: 8.9, // Last C269 Flood
-      suppressSeconds: 99999,
+      durationSeconds: 7.9, // Last C269 Flood
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
           return;
 
-        const x = actor.x;
-        const y = actor.y;
+        const x2 = actor.x;
+        const y2 = actor.y;
+        const isOuter = x2 < 96 || x2 > 104;
+        if (!isOuter)
+          return; // Skip inner ones
 
-        // NE = 0, SE = 1, SW = 2, NW = 3
-        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
-        const isClockwise = actor.heading < 0 ? true : false;
-        const isOuter = x < 96 || x > 104;
-        const startDirNum = isOuter ? dirNum : (dirNum + 2) % 4;
+        // Get rotation of first and second Flood
+        const x1 = data.firstFlood[0];
+        const y1 = data.firstFlood[1];
+        if (x1 === undefined || y1 === undefined) {
+          data.firstFlood = [x2, y2];
+          return;
+        }
 
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
+
+        // Calculate Determinant to determine if second flood is clockwise or counterclock
+        data.floodRotation = ax * by - ay * bx;
+
+        const startDirNum = Directions.xyTo4DirIntercardNum(x1, y1, centerX, centerY);
         const startDir = Directions.outputFromIntercardNum(startDirNum);
+        const isClockwise = data.floodRotation > 0;
 
         return output.mechPlusMech!({
           mech1: output.stack!(),
