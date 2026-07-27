@@ -8288,6 +8288,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P5 Flood Start (Early)',
+      // Data for rotation not yet known, but we can quickly call starting direction
+      type: 'StartsUsing',
+      netRegex: { id: 'C183', capture: true },
+      delaySeconds: 0.1, // Delay for late set position updates
+      durationSeconds: 1,      
+      suppressSeconds: 99999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const x = actor.x;
+        const y = actor.y;
+        const isOuter = x < 96 || x > 104;
+        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
+        const startDirNum = isOuter ? dirNum : (dirNum + 2) % 4;
+        const startDir = Directions.outputFromIntercardNum(startDirNum);
+
+        return output[startDir]!();
+      },
+      outputStrings: Directions.outputStringsIntercardDir,
+    },
+    {
       id: 'DMU P5 Flood',
       // Source and data on this can be inaccurate
       // Invisible actors spawn at the center of the line and their heading
