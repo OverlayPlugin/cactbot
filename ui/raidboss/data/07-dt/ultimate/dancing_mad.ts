@@ -10,7 +10,6 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 // TODO: P5 Stray Apocalypse exa location triggers
-// TODO: P5 Forsaken stack headmarker
 // TODO: P5 Forsaken tell if a hole was placed in the path?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
