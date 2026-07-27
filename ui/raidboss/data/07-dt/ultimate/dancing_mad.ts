@@ -8960,7 +8960,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...forsakenP5OutputStrings,
         stackOnYou: Outputs.stackOnYou,
-        stackOnTarget: Outputs.stackOnPlayer
+        stackOnTarget: Outputs.stackOnPlayer,
       },
     },
   ],
