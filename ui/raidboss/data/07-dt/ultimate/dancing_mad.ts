@@ -178,7 +178,7 @@ const headMarkerData = {
   'limitCutRed6': '01B6',
   'limitCutBlue7': '01B7',
   'limitCutRed8': '01B8',
-  'stompStack': '00A1',
+  'stompStack': '00A1', // This is also used by P5's BB39 Forsaken Bonds
 } as const;
 
 const mysteryMagicIceOutputStrings: OutputStrings = {
@@ -6869,17 +6869,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Knock Down Collect',
-      // Need to collect this and output later due to puddles
-      // Will also need this to determine the role that is stacking last
+      id: 'DMU P3 Knock Down Collect and P5 Forsaken Counter',
+      // For P3 Knock Down:
+      //   Need to collect this and output later due to puddles
+      //   Will also need this to determine the role that is stacking last
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
-      run: (data, matches) => data.knockDownTarget = matches.target,
+      run: (data, matches) => {
+        if (data.phase === 'p3')
+          data.knockDownTarget = matches.target;
+        else
+          data.forsakenCount = data.forsakenCount + 1;
+      },
     },
     {
       id: 'DMU P3 Knock Down 1 (Early)',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
+      condition: (data) => data.phase === 'p3',
       durationSeconds: 2.6,
       suppressSeconds: 99999,
       infoText: (data, matches, output) => {
@@ -6983,7 +6990,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P3 Knock Down 2',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
-      condition: (data) => data.isKnockDown2,
+      condition: (data) => data.isKnockDown2 && data.phase === 'p3',
       alertText: (data, matches, output) => {
         const isDPSStack = data.party.isDPS(matches.target);
         const amDPS = data.role === 'dps';
@@ -8293,7 +8300,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'C183', capture: true },
       delaySeconds: 0.1, // Delay for late set position updates
-      durationSeconds: 1,      
+      durationSeconds: 1,
       suppressSeconds: 99999,
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
@@ -8905,13 +8912,12 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread('alert'),
     },
     {
-      id: 'DMU P5 Forsaken Counter',
+      id: 'DMU P5 Forsaken Cast Counter',
       // BB35 Forsaken (Initial Cast)
-      // BB37 Forsaken Ground (Puddles), Using this instead of BB39 Forsaken Bonds
-      //   as it requires no players
       // BB38 Forsaken (Subsequent VFX casts)
+      // The Forsaken Bonds stack is counted via DMU P3 Knock Down Collect and P5 Forsaken Counter
       type: 'StartsUsing',
-      netRegex: { id: ['BB35', 'BB37', 'BB38'], source: 'Kefka', capture: false },
+      netRegex: { id: ['BB35', 'BB38'], source: 'Kefka', capture: false },
       suppressSeconds: 1,
       run: (data) => data.forsakenCount = data.forsakenCount + 1,
     },
@@ -8936,18 +8942,25 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P5 Forsaken Bonds',
-      // TODO: Replace this with headmarker
-      type: 'StartsUsing',
-      netRegex: { id: 'BB39', source: 'Kefka', capture: false },
-      alertText: (data, _matches, output) => {
+      // BB39 Forsaken Bonds
+      // This same headmarker is used for P3's Knock Down
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: true },
+      condition: (data) => data.phase === 'p5',
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+        const stack = target === data.me
+          ? output.stackOnYou!()
+          : output.stackOnTarget!({ player: data.party.member(target) });
         return output.numMech!({
           num: data.forsakenCount,
-          mech: output.stack!(),
+          mech: stack,
         });
       },
       outputStrings: {
         ...forsakenP5OutputStrings,
-        stack: Outputs.stackMarker,
+        stackOnYou: Outputs.stackOnYou,
+        stackOnTarget: Outputs.stackOnPlayer
       },
     },
   ],
