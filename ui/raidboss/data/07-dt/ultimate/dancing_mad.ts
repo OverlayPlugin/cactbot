@@ -8967,6 +8967,82 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'DMU P5 Stray Apocalypse Location',
+      // 2 Exaflares come from NW first or NE first and alternate every 3s
+      // There are 6 total
+      // They have 3 patterns they can spawn in:
+      // Looking NE/NW: Left safe, middle safe, right safe
+      // 2 safe rows in left/right pattern, 3 rows for middle; one row is large
+      // (85, 80) Northwest + (70, 95) West => NW Right pattern
+      // (115, 80) Northeast + (130, 95) East => NE Left pattern
+      // (90, 75) NNW + (75, 90) WNW => NW Middle pattern
+      // (110, 75) NNE + (125, 90) ENE => NE Middle pattern
+      // (95, 70) N + (80, 85) NW => NW Left pattern
+      // (105, 70) N + (120, 85) NE => NE Right pattern
+      // Only need 1 Exa to know the pattern
+      // StartsUsing lines can have bad data
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'BB3C', capture: true },
+      durationSeconds: 3.1,
+      suppressSeconds: 1,
+      infoText: (_data, matches, output) => {
+        const x = parseFloat(matches.x);
+
+        if (
+          (x < 71) || // West
+          (x > 84 && x < 86) // Northwest
+        )
+          return output.rightSafeNW!();
+        if (
+          (x > 129) || // East
+          (x > 114 && x < 116) // Northeast
+        )
+          return output.leftSafeNE!();
+
+        if (
+          (x > 89 && x < 91) || // NNW
+          (x > 74 && x < 76) // WNW
+        )
+          return output.middleSafeNW!();
+        if (
+          (x > 109 && x < 111) || // NNE
+          (x > 124 && x < 125) // ENE
+        )
+          return output.middleSafeNE!();
+
+        if (
+          (x > 94 && x < 96) || // N
+          (x > 79 && x < 81) // NW
+        )
+          return output.leftSafeNW!();
+        if (
+          (x > 104 && x < 106) || // N
+          (x > 119 && x < 121) // NE
+        )
+          return output.rightSafeNE!();
+      },
+      outputStrings: {
+        rightSafeNW: {
+          en: 'NW: Right Out/Left In',
+        },
+        leftSafeNW: {
+          en: 'NW: Left Out/Right In',
+        },
+        middleSafeNW: {
+          en: 'NW: Middle/Out',
+        },
+        rightSafeNE: {
+          en: 'NE: Right Out/Left In',
+        },
+        leftSafeNE: {
+          en: 'NE: Left Out/Right In',
+        },
+        middleSafeNE: {
+          en: 'NE: Middle/Out',
+        },
+      },
+    },
+    {
       id: 'DMU P5 Stray Entropy Spread',
       // This occurs during last set of exaflares
       type: 'StartsUsing',
