@@ -588,78 +588,102 @@ const boaOutputStrings: OutputStrings = {
   out: Outputs.out,
   moveBossThenMech: {
     en: 'Move ${boss} => ${mech}',
+    ko: '${boss} 이동 => ${mech}',
   },
   exdeathMiddle: {
     en: '${exdeath} Middle',
+    ko: '${exdeath} 중앙',
   },
   chaosDir: {
     en: '${chaos} to ${dir}',
+    ko: '${chaos} ${dir}으로',
   },
   moveExdeathThenMech: {
     en: 'Move ${exdeath} to ${long} => ${mech}',
+    ko: '${exdeath} ${long}쪽 이동 => ${mech}',
   },
   crystals: {
     en: '${short} => ${long} => ${wind} (later)',
+    ko: '${short} => ${long} => ${wind} (나중)',
   },
   shortLongCrystals: {
     en: '${short} => ${long}',
+    ko: '${short} => ${long}',
   },
   crystalsMech: {
     en: '${crystals}; ${mech}',
+    ko: '${crystals}; ${mech}',
   },
   fire: {
     en: 'Fire ${dir}',
+    ko: '불 ${dir}',
   },
   water: {
     en: 'Water ${dir}',
+    ko: '물 ${dir}',
   },
   wind: {
     en: 'Wind ${dir}',
+    ko: '바람 ${dir}',
   },
   tail: {
     en: 'Face ${name}',
+    ko: '${name} 바라보기',
   },
   head: Outputs.lookAwayFromTarget,
   you: {
     en: 'YOU',
+    ko: '나',
   },
   baitFireDonut: {
     en: 'Bait Fire Donut',
+    ko: '불 도넛 유도',
   },
   baitWaterAoe: {
     en: 'Bait Water AOE',
+    ko: '물 장판 유도',
   },
   baitCrystal: {
     en: 'Bait ${crystal} ${inout}',
+    ko: '${crystal} ${inout} 유도',
   },
   fireOnPlayersCrystalDirNum: {
     en: '${spread}/${dir} => ${bait}',
+    ko: '${spread}/${dir} => ${bait}',
   },
   fireOnPlayers: {
     en: 'Spread on ${players}',
+    ko: '${players}에게 산개징',
   },
   waterOnPlayersCrystalDirNum: {
     en: '${donut}/${dir} => ${bait}',
+    ko: '${donut}/${dir} => ${bait}',
   },
   waterOnPlayers: {
     en: 'Donut on ${players}',
+    ko: '${players}에게 도넛징',
   },
   mechThenMech: {
     en: '${mech1} => ${mech2}',
+    ko: '${mech1} => ${mech2}',
   },
   getMiddleNearPlayer: {
     en: 'Get Middle Near ${player}',
+    ko: '${player} 근처 중앙으로',
   },
   getHitByDonut: Outputs.goIntoMiddle,
   knockbackToDir: {
     en: 'Knockback to ${dir} ${facing}',
+    ko: '${dir}으로 넉백 ${facing}',
   },
   beNearWind: {
     en: 'Be Near ${dir}',
+    ko: '${dir} 근처로',
   },
   stackPartner: Outputs.stackPartner,
   donutLater: {
     en: 'Donut (later)',
+    ko: '도넛 (나중)',
   },
   roleStacks: {
     en: 'Role Stacks',
@@ -671,9 +695,11 @@ const boaOutputStrings: OutputStrings = {
   },
   beNearExdeath: {
     en: 'Be Near ${name}',
+    ko: '${name} 근처로',
   },
   baitJump: {
     en: 'Bait Jump',
+    ko: '점프 유도',
   },
 };
 
@@ -715,45 +741,59 @@ const blackHoleOutputStrings: OutputStrings = {
   },
   getDirTether: {
     en: '${num}Get ${dir} Tether',
+    ko: '${num}${dir} 선 가져오기',
   },
   getDirTethers: {
     en: '${num}Get ${dir1}/${dir2} Tethers',
+    ko: '${num}${dir1}/${dir2} 선 가져오기',
   },
   getBothTethers: { // Instead of Clockwise 1/Clockwise 2
     en: '${num}Get Both Tethers',
+    ko: '${num}선 둘 다 가져오기',
   },
   keepTether: {
     en: '${num}Keep Tether',
+    ko: '${num}선 유지',
   },
   passTether: {
     en: '${num}Pass Tether',
+    ko: '${num}선 넘기기',
   },
   clockwiseOne: {
     en: 'Clockwise 1',
+    ko: '시계방향 1',
   },
   clockwiseTwo: {
     en: 'Clockwise 2',
+    ko: '시계방향 2',
   },
   clockwiseThree: { // Player could change this to CCW 1
     en: 'Clockwise 3',
+    ko: '시계방향 3',
   },
   middleThenGetDirTether: {
     en: '${num}Middle => Get ${dir} Tether',
+    ko: '${num}중앙 => ${dir} 선 가져오기',
   },
   middleThenGetDirTethers: {
     en: '${num}Middle => Get ${dir1}/${dir2} Tethers',
+    ko: '${num}중앙 => ${dir1}/${dir2} 선 가져오기',
   },
   middleThenGetBothTethers: {
     en: '${num}Middle => Get Both Tethers',
+    ko: '${num}중앙 => 선 둘 다 가져오기',
   },
   oneBlackHole: {
     en: '${num}${dir}',
+    ko: '${num}${dir}',
   },
   twoBlackHoles: {
     en: '${num}${dir1}/${dir2}',
+    ko: '${num}${dir1}/${dir2}',
   },
   threeBlackHoles: {
     en: '${num}${dir1}/${dir2}/${dir3}',
+    ko: '${num}${dir1}/${dir2}/${dir3}',
   },
 };
 
@@ -852,11 +892,16 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
-        Entropy/Dynamic Fluid Bait (Default): Follows <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: Entropy/Fluid bait their crystals and get hit by crystal's aoe<br \>
+        Entropy/Dynamic Fluid Bait (Default): Follows <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: Entropy/Fluid bait their crystals and get hit by crystal's aoe<br />
         None: Only calls debuffs and locations`,
+        ko:
+          `탱커 3단 리밋: 원거리 직업이 짧은 수정 => 긴 수정을 유도하고, 본대는 바람 수정에서 디버프를 처리합니다. 진공파 이후 바람 유도는 역할별 쉐어로 처리합니다.<br />
+        불/물 유도 (기본값): <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K 레이드플랜</a>을 따릅니다. 불/물 대상자가 각 수정을 유도하고 수정 장판에 맞습니다.<br />
+        없음: 디버프와 위치만 알립니다.`,
       },
       name: {
         en: 'P3 Bowels of Agony Strategy',
+        ko: '3페이즈 고통의 심핵 전략',
       },
       type: 'select',
       options: {
@@ -865,6 +910,11 @@ const triggerSet: TriggerSet<Data> = {
           'Entropy/Dynamic Fluid Bait': 'sg3k',
           'Generic Calls': 'none',
         },
+        ko: {
+          '탱커 3단 리밋': 'lb3',
+          '불/물 유도': 'sg3k',
+          '기본 알림': 'none',
+        },
       },
       default: 'sg3k',
     },
@@ -872,15 +922,21 @@ const triggerSet: TriggerSet<Data> = {
       id: 'accretion',
       comment: {
         en: `Order in which players will be told to heal for resolving Accretion debuffs`,
+        ko: `혼돈의 진흙 디버프를 처리하기 위해 회복할 플레이어 순서입니다.`,
       },
       name: {
         en: 'P3 Accretion Heal Order',
+        ko: '3페이즈 혼돈의 진흙 회복 순서',
       },
       type: 'select',
       options: {
         en: {
           'First In Line => Second In Line': 'line',
           'Healer => DPS': 'role',
+        },
+        ko: {
+          '첫 번째 줄 => 두 번째 줄': 'line',
+          '힐러 => 딜러': 'role',
         },
       },
       default: 'role',
@@ -894,9 +950,15 @@ const triggerSet: TriggerSet<Data> = {
         S>D>A: #1 Support, #1 DPS, #1 Accretion, #2 Support, #2 DPS, #2 Accretion, #3 Support, #2 DPS<br />
         D>S>A Double Tether: BH1 & BH 4 only 1 person grab tethers. BH1 #1 Support, #1 DPS; BH4 #3 Support, #3 DPS<br />
         Generic: Calls the Nothingness set number and tether directions in CW order from Kefka`,
+        ko: `케프카 기준 선 우선순위: 딜러는 시계 방향 첫 번째, 탱힐은 두 번째, 혼돈의 진흙 대상자는 세 번째<br />
+        딜러>탱힐>진흙: 1번 딜러, 1번 탱힐, 1번 진흙, 2번 딜러, 2번 탱힐, 2번 진흙, 3번 딜러, 3번 탱힐<br />
+        탱힐>딜러>진흙: 1번 탱힐, 1번 딜러, 1번 진흙, 2번 탱힐, 2번 딜러, 2번 진흙, 3번 탱힐, 3번 딜러<br />
+        딜러>탱힐>진흙 선 2개: 1번과 4번 블랙홀만 한 명이 선을 가져갑니다. 1번 블랙홀은 1번 탱힐과 1번 딜러, 4번 블랙홀은 3번 탱힐과 3번 딜러<br />
+        기본값: 무의 파동 세트 번호와 케프카 기준 시계 방향 선 위치를 알립니다.`,
       },
       name: {
         en: 'P3 Black Hole Order',
+        ko: '3페이즈 블랙홀 순서',
       },
       type: 'select',
       options: {
@@ -906,6 +968,12 @@ const triggerSet: TriggerSet<Data> = {
           'D>S>A Double Tether': 'modified',
           'Generic calls': 'none',
         },
+        ko: {
+          '딜러>탱힐>진흙': 'dsa',
+          '탱힐>딜러>진흙': 'sda',
+          '딜러>탱힐>진흙 선 2개': 'modified',
+          '기본값': 'none',
+        },
       },
       default: 'none',
     },
@@ -913,15 +981,21 @@ const triggerSet: TriggerSet<Data> = {
       id: 'blackHoleTether',
       comment: {
         en: `Whether to call true north or clockwise number from Kefka`,
+        ko: `절대 방위와 케프카 기준 시계 방향 번호 중 사용할 알림을 선택합니다.`,
       },
       name: {
         en: 'P3 Black Hole Tether True North or Clockwise Number',
+        ko: '3페이즈 블랙홀 선 절대 방위 또는 시계 방향 번호',
       },
       type: 'select',
       options: {
         en: {
           'True North': 'true',
           'Clockwise Number': 'clock',
+        },
+        ko: {
+          '절대 방위': 'true',
+          '시계 방향 번호': 'clock',
         },
       },
       default: 'true',
@@ -4393,27 +4467,35 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         shortFire: {
           en: 'Short Fire',
+          ko: '짧은 불',
         },
         shortWater: {
           en: 'Short Water',
+          ko: '짧은 물',
         },
         fire: {
           en: 'Fire',
+          ko: '불',
         },
         water: {
           en: 'Water',
+          ko: '물',
         },
         headwind: {
           en: 'Headwind on YOU',
+          ko: '혼돈의 바람 대상자',
         },
         tailwind: {
           en: 'Tailwind on YOU',
+          ko: '혼돈의 역풍 대상자',
         },
         withElement: {
           en: '${short}: ${element} + ${wind}',
+          ko: '${short}: ${element} + ${wind}',
         },
         withoutElement: {
           en: '${short}: ${wind}',
+          ko: '${short}: ${wind}',
         },
       },
     },
@@ -5014,15 +5096,19 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         fire: {
           en: 'Fire ${dir}',
+          ko: '불 ${dir}',
         },
         water: {
           en: 'Water ${dir}',
+          ko: '물 ${dir}',
         },
         wind: {
           en: 'Wind ${dir}',
+          ko: '바람 ${dir}',
         },
         crystals: {
           en: '${long} => ${wind} (later)',
+          ko: '${long} => ${wind} (나중)',
         },
       },
     },
@@ -5071,9 +5157,11 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         wind: {
           en: 'Knockback to Wind ${dir} (later)',
+          ko: '바람 ${dir}으로 넉백 (나중)',
         },
         knockbackToDir: {
           en: 'Knockback to ${dir} (later)',
+          ko: '${dir}으로 넉백 (나중)',
         },
       },
     },
@@ -5101,6 +5189,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         awayFromBoss: {
           en: 'Away from ${boss}',
+          ko: '${boss}에게서 멀리',
         },
       },
     },
@@ -5114,12 +5203,15 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           avoid: {
             en: '${boss}${cleaves}',
+            ko: '${boss}: ${cleaves}',
           },
           tankCleaveNearThenSwap: {
             en: 'Near ${boss}${cleave} => ${swap}',
+            ko: '${boss} 근처: ${cleave} => ${swap}',
           },
           boss: {
             en: '${boss}: ',
+            ko: '${boss}',
           },
           tankCleave: Outputs.tankCleave,
           avoidTankCleaves: Outputs.avoidTankCleaves,
@@ -5163,9 +5255,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         beNearBoss: {
           en: 'Be Near ${boss} (swap)',
+          ko: '${boss} 근처로 (교대)',
         },
         awayFromBoss: {
           en: 'Away from ${boss} (swap)',
+          ko: '${boss}에게서 멀리 (교대)',
         },
       },
     },
@@ -5238,9 +5332,11 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         clockwise: {
           en: '<== ${card} Clockwise (Later)',
+          ko: '<== ${card} 시계 방향 (나중)',
         },
         counterclockwise: {
           en: '${card} Counterclockwise (Later) ==>',
+          ko: '${card} 반시계 방향 (나중) ==>',
         },
       },
     },
@@ -5323,6 +5419,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         tail: {
           en: 'Face ${name}',
+          ko: '${name} 바라보기',
         },
         head: Outputs.lookAwayFromTarget,
         knockbackFromExdeath: {
@@ -5332,12 +5429,15 @@ const triggerSet: TriggerSet<Data> = {
         },
         knockbackFromFacingExdeath: {
           en: 'Knockback from + ${facing}',
+          ko: '넉백 + ${facing}',
         },
         knockbackToDir: {
           en: '${knockback} to ${dir}',
+          ko: '${knockback}, ${dir}으로',
         },
         knockbackToCrystal: {
           en: '${knockback} to Crystal',
+          ko: '${knockback}, 수정으로',
         },
       },
     },
@@ -5433,6 +5533,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         text: {
           en: '${num}: ${dir}',
+          ko: '${num}: ${dir}',
         },
       },
     },
@@ -5531,6 +5632,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         you: {
           en: 'YOU',
+          ko: '나',
         },
         text: {
           en: '${num} (with ${players})',
@@ -5543,6 +5645,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         accretionHealer: {
           en: '${num}: Accretion on ${player1} => ${player2}',
+          ko: '${num}: 혼돈의 진흙 ${player1} => ${player2}',
         },
       },
     },
@@ -5657,6 +5760,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         text: {
           en: '${dir} Kefka',
+          ko: '${dir} 케프카',
         },
       },
     },
@@ -5709,6 +5813,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         slapDirMechThenOut: {
           en: '${dir} => ${mech} + ${out}',
+          ko: '${dir} => ${mech} + ${out}',
         },
       },
     },
@@ -6681,9 +6786,11 @@ const triggerSet: TriggerSet<Data> = {
         },
         dirKefka: {
           en: '${dir} Kefka',
+          ko: '${dir} 케프카',
         },
         text: {
           en: '${heal} + ${dir}',
+          ko: '${heal} + ${dir}',
         },
       },
     },
@@ -6776,6 +6883,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         text: {
           en: '${dir} Kefka: Bait Puddles x2',
+          ko: '${dir} 케프카: 장판 유도 x2',
         },
       },
     },
@@ -6809,6 +6917,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         puddle: {
           en: 'Puddle',
+          ko: '장판',
         },
         stack: Outputs.stackMarker,
         towers: {
@@ -6817,11 +6926,12 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tours',
           ja: '塔を踏む',
           cn: '踩塔',
-          ko: '장판 들어가기',
+          ko: '탑',
           tc: '踩塔',
         },
         mechThenMech: {
           en: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
       },
     },
@@ -6881,12 +6991,13 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tours',
           ja: '塔を踏む',
           cn: '踩塔',
-          ko: '장판 들어가기',
+          ko: '탑',
           tc: '踩塔',
         },
         stack: Outputs.stackMarker,
         mechThenMech: {
           en: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
       },
     },
@@ -7023,15 +7134,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         puddlesFirst: {
           en: 'Puddles First',
+          ko: '첫 번째 장판',
         },
         puddlesSecond: {
           en: 'Puddles Second',
+          ko: '두 번째 장판',
         },
         donutsFirst: {
           en: 'Donuts First',
+          ko: '첫 번째 도넛',
         },
         donutsSecond: {
           en: 'Donuts Second',
+          ko: '두 번째 도넛',
         },
       },
     },
@@ -7237,47 +7352,61 @@ const triggerSet: TriggerSet<Data> = {
         aoe: Outputs.aoe,
         aoeDebuff: {
           en: '${aoe} + ${debuff}',
+          ko: '${aoe} + ${debuff}',
         },
         firstGazeAndBomb: {
           en: '${gaze} + ${bomb} on YOU First',
+          ko: '첫 번째 ${gaze} + ${bomb} 대상자',
         },
         gaze: {
           en: 'Look Away',
+          ko: '시선 피하기',
         },
         fakeGaze: {
           en: 'Look At',
+          ko: '바라보기',
         },
         spreadFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         stackFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         stackFirstNoDebuff: {
           en: 'No Debuff, ${mech} First',
+          ko: '디버프 없음, 첫 번째 ${mech}',
         },
         bombFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         stackSecondNoDebuff: {
           en: 'No Debuff, ${mech} Second',
+          ko: '디버프 없음, 두 번째 ${mech}',
         },
         stackSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech} 대상자',
         },
         spreadSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech} 대상자',
         },
         bombSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech} 대상자',
         },
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
           en: 'Stillness',
+          ko: '정지',
         },
         fakeBomb: {
           en: 'Motion',
+          ko: '움직이기',
         },
       },
     },
@@ -7387,47 +7516,61 @@ const triggerSet: TriggerSet<Data> = {
         aoe: Outputs.aoe,
         aoeDebuff: {
           en: '${aoe} + ${debuff}',
+          ko: '${aoe} + ${debuff}',
         },
         secondGazeAndBomb: {
           en: '${gaze} + ${bomb} on YOU Second',
+          ko: '두 번째 ${gaze} + ${bomb} 대상자',
         },
         gaze: {
           en: 'Look Away',
+          ko: '시선 피하기',
         },
         fakeGaze: {
           en: 'Look At',
+          ko: '바라보기',
         },
         spreadFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         stackFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         bombFirst: {
           en: '${mech} on YOU First',
+          ko: '첫 번째 ${mech} 대상자',
         },
         stackFirstNoDebuff: {
           en: 'No Debuff, ${mech} First',
+          ko: '디버프 없음, 첫 번째 ${mech}',
         },
         stackSecondNoDebuff: {
           en: 'No Debuff, ${mech} Second',
+          ko: '디버프 없음, 두 번째 ${mech}',
         },
         spreadSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech} 대상자',
         },
         stackSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech}',
         },
         bombSecond: {
           en: '${mech} on YOU Second',
+          ko: '두 번째 ${mech} 대상자',
         },
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
           en: 'Stillness',
+          ko: '정지',
         },
         fakeBomb: {
           en: 'Motion',
+          ko: '움직이기',
         },
       },
     },
@@ -7460,18 +7603,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         death: {
           en: 'Death',
+          ko: '죽음 초월',
         },
         field: {
           en: 'Field',
+          ko: '알라그 필드',
         },
         white: {
           en: 'Purple Debuff',
+          ko: '보라색 디버프',
         },
         black: {
           en: 'Blue Debuff',
+          ko: '파란색 디버프',
         },
         debuffsOnYou: {
           en: '${wound} + ${deathOrField} on YOU',
+          ko: '${wound} + ${deathOrField} 대상자',
         },
       },
     },
@@ -7560,44 +7708,56 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         death: {
           en: 'Stand in ${color} (${dir})',
+          ko: '${color}에 서기 (${dir})',
         },
         field: {
           en: 'Stand in ${color} (${dir})',
+          ko: '${color}에 서기 (${dir})',
         },
         white: {
           en: 'Purple',
+          ko: '보라색',
         },
         black: {
           en: 'Blue',
+          ko: '파란색',
         },
         left: Outputs.left,
         right: Outputs.right,
         laserThenSpread: {
           en: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         laserThenStack: {
           en: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         laserThenBomb: {
           en: '${mech1} => ${mech2} + ${mech3}',
+          ko: '${mech1} => ${mech2} + ${mech3}',
         },
         laserThenForkBomb: {
           en: '${mech1} => ${mech2} + ${mech3}',
+          ko: '${mech1} => ${mech2} + ${mech3}',
         },
         laserThenCompressedBomb: {
           en: '${mech1} => ${mech2} + ${mech3}',
+          ko: '${mech1} => ${mech2} + ${mech3}',
         },
         laserThenNoDebuff: {
           en: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
           en: 'Stillness',
+          ko: '정지',
         },
         fakeBomb: {
           en: 'Motion',
+          ko: '움직이기',
         },
       },
     },
@@ -7651,24 +7811,30 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         you: {
           en: 'YOU',
+          ko: '나',
         },
         bombStack: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         forkBomb: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         compressedBomb: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
           en: 'Stillness',
+          ko: '정지',
         },
         fakeBomb: {
           en: 'Motion',
+          ko: '움직이기',
         },
       },
     },
@@ -7696,7 +7862,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Continuez à bouger',
           ja: '最後は動く',
           cn: '后行动',
-          ko: '마지막엔 움직이기',
+          ko: '계속 움직이기',
           tc: '後行動',
         },
         stopEverything: {
@@ -7705,7 +7871,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Arrêtez tout',
           ja: '最後は止まる',
           cn: '后静止',
-          ko: '마지막엔 멈추기',
+          ko: '완전히 멈추기',
           tc: '後靜止',
         },
       },
@@ -7749,18 +7915,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         you: {
           en: 'YOU',
+          ko: '나',
         },
         fakeGazeOnPlayers: {
           en: 'Face ${players} (later)',
+          ko: '${players} 바라보기 (나중)',
         },
         gazeOnPlayers: {
           en: 'Look Away from ${players} (later)',
+          ko: '${players}에게서 뒤돌기 (나중)',
         },
         fakeGazeOnYou: {
           en: 'Face ${players} (later)',
+          ko: '${players} 바라보기 (나중)',
         },
         gazeOnYou: {
           en: 'Look Away from ${players} (later)',
+          ko: '${players}에게서 뒤돌기 (나중)',
         },
       },
     },
@@ -7824,18 +7995,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         you: {
           en: 'YOU',
+          ko: '나',
         },
         fakeGazeOnPlayers: {
           en: 'Face ${players}',
+          ko: '${players} 바라보기',
         },
         gazeOnPlayers: {
           en: 'Look Away from ${players}',
+          ko: '${players}에게서 뒤돌기',
         },
         fakeGazeOnPlayersYou: {
           en: 'Face ${players}',
+          ko: '${players} 바라보기',
         },
         gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
+          ko: '${players}에게서 뒤돌기',
         },
       },
     },
@@ -7900,24 +8076,30 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           you: {
             en: 'YOU',
+            ko: '나',
           },
           bombStack: {
             en: '${mech1} + ${mech2}',
+            ko: '${mech1} + ${mech2}',
           },
           forkBomb: {
             en: '${mech1} + ${mech2}',
+            ko: '${mech1} + ${mech2}',
           },
           compressedBomb: {
             en: '${mech1} + ${mech2}',
+            ko: '${mech1} + ${mech2}',
           },
           noDebuff: Outputs.stackMarker,
           stack: Outputs.stackMarker,
           spread: Outputs.spread,
           bomb: {
             en: 'Stillness',
+            ko: '정지',
           },
           fakeBomb: {
             en: 'Motion',
+            ko: '움직이기',
           },
         };
 
@@ -8018,18 +8200,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         you: {
           en: 'YOU',
+          ko: '나',
         },
         fakeGazeOnPlayers: {
           en: 'Face ${players}',
+          ko: '${players} 바라보기',
         },
         gazeOnPlayers: {
           en: 'Look Away from ${players}',
+          ko: '${players}에게서 뒤돌기',
         },
         fakeGazeOnPlayersYou: {
           en: 'Face ${players}',
+          ko: '${players} 바라보기',
         },
         gazeOnPlayersYou: {
           en: 'Look Away from ${players}',
+          ko: '${players}에게서 뒤돌기',
         },
       },
     },
@@ -8109,9 +8296,11 @@ const triggerSet: TriggerSet<Data> = {
         ...mysteryMagicIceThunderOutputStrings,
         inDonut: {
           en: 'In Donut',
+          ko: '도넛 안으로',
         },
         tellsDonut: {
           en: '${tells} + ${donut}',
+          ko: '${tells} + ${donut}',
         },
       },
     },
