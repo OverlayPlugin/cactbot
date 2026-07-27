@@ -8,7 +8,6 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
-// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
