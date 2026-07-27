@@ -7963,7 +7963,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Motion',
         },
         aoeThenMech: {
-          en: '${aoe} => ${mech} (later)',
+          en: '${aoe} => ${mech}',
         },
       },
     },
