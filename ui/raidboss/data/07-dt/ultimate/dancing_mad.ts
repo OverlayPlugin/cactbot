@@ -992,7 +992,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         data.middleCount = data.middleCount + 1;
         if (data.middleCount === 5)
-          data.phase === 'p5';
+          data.phase = 'p5';
       },
     },
     {
