@@ -1051,7 +1051,7 @@ const triggerSet: TriggerSet<Data> = {
           tc: '${num}',
         },
         bigAoe: Outputs.bigAoe,
-        mechNum: {
+        numMech: {
           en: '${num}: ${mech}',
         },
       },
