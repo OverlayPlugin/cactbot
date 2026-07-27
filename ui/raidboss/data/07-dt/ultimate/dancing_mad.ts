@@ -8595,48 +8595,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P5 Celestriad Tower Collect',
-      // Towers have the following BNpcIDs:
-      // Fire Tower => 1EC03E
-      // Ice Tower => 1EC03F
-      // Lightning Tower => 1EC040
-      //
-      // Towers spawn in a circular order element1 => element2 => element3
-      // Element 1: NNE (103.42, 90.60), ENE (108.66, 95), E (109.85, 101.74)
-      // Element 2: SE (106.43, 107.66), S (100, 110), SW (93.57, 107.66)
-      // Element 3: W (90.15, 101.74), WNW (91.34, 95), NNW (96.58, 90.60)
-      //
-      // Towers spawn ~0.186s before debuffs applied
-      //
-      // 273 ActorControlExtra lines with |019D|10|20| show which four are activated
-      // 273 ActorControlExtra lines with |019D|1|40| show which four are deactivated
-      // At activation, 261 and 271 lines show 4 other actors change to their positions
-      // These 4 other actors will cast BB43 Fire III/BB44 Blizzard III/BB45 Thunder III
-      type: 'CombatantMemory',
-      netRegex: {
-        change: 'Add',
-        pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
-        capture: true,
-      },
-      run: (data, matches) => {
-        const x = parseFloat(matches.pairPosX ?? '0');
-        const y = parseFloat(matches.pairPosY ?? '0');
-        const bnpcid = matches.pairBNpcID;
-
-        // Store dirNum of tower for lookup later
-        const dirNum = Directions.xyTo16DirNum(x, y, centerX, centerY);
-        data.celestriadTowerToDirNum[matches.id] = dirNum;
-
-        // Store type of tower for lookup later
-        if (bnpcid === '1EC03E')
-          data.celestriadDirNumToTower[dirNum] = 'fire';
-        else if (bnpcid === '1EC03F')
-          data.celestriadDirNumToTower[dirNum] = 'ice';
-        else
-          data.celestriadDirNumToTower[dirNum] = 'lightning';
-      },
-    },
-    {
       id: 'DMU P5 Celestriad Debuff Collect',
       // Celestriad will give 6 players random 20s debuffs
       // These tell us which towers players will need to take
@@ -8698,6 +8656,111 @@ const triggerSet: TriggerSet<Data> = {
         },
         twoTowerElement: {
           en: 'No Debuff', // Two Element Tower (later)
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Tower Collect',
+      // Towers have the following BNpcIDs:
+      // Fire Tower => 1EC03E
+      // Ice Tower => 1EC03F
+      // Lightning Tower => 1EC040
+      //
+      // Towers spawn in a circular order element1 => element2 => element3
+      // Element 1: NNE (103.42, 90.60), ENE (108.66, 95), E (109.85, 101.74)
+      // Element 2: SE (106.43, 107.66), S (100, 110), SW (93.57, 107.66)
+      // Element 3: W (90.15, 101.74), WNW (91.34, 95), NNW (96.58, 90.60)
+      //
+      // Towers spawn ~0.186s before debuffs applied
+      //
+      // 273 ActorControlExtra lines with |019D|10|20| show which four are activated
+      // 273 ActorControlExtra lines with |019D|1|40| show which four are deactivated
+      // At activation, 261 and 271 lines show 4 other actors change to their positions
+      // These 4 other actors will cast BB43 Fire III/BB44 Blizzard III/BB45 Thunder III
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const bnpcid = matches.pairBNpcID;
+
+        // Store dirNum of tower for lookup later
+        const dirNum = Directions.xyTo16DirNum(x, y, centerX, centerY);
+        data.celestriadTowerToDirNum[matches.id] = dirNum;
+
+        // Store type of tower for lookup later
+        if (bnpcid === '1EC03E')
+          data.celestriadDirNumToTower[dirNum] = 'fire';
+        else if (bnpcid === '1EC03F')
+          data.celestriadDirNumToTower[dirNum] = 'ice';
+        else
+          data.celestriadDirNumToTower[dirNum] = 'lightning';
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Tower (Early)',
+      // For players that have a debuff, we can call their starting area
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
+        capture: false,
+      },
+      delaySeconds: 0.1, // Delay for collect
+      suppressSeconds: 99999,
+      infoText: (data, _matches, output) => {
+        const res = data.myInitialResistance;
+        if (res === undefined)
+          return; // Could return pattern, but it's long and will know exact dir in ~2s
+        const isClockwise = data.triggerSetConfig.celestriad === 'clockwise';
+
+        // Players with vulnerability need to first determine where the tower
+        // matching their vulnerability is
+        const towers = data.celestriadDirNumToTower;
+        const elementOrder = [
+          towers[1], // Element 1 starts at NNE, the middle tower is ENE
+          towers[6], // Element 2 starts at SE, the middle tower is S
+          towers[12], // Element 3 starts at W, the middle tower is WNW
+        ];
+
+        // Get index of element matching player's resistance down
+        // As towers remain static we can resolve in circular order
+        // Next element is based on config: clockwise, or counterclockwise (wrap-around)
+        const idx = elementOrder.indexOf(res);
+        const configIdx = isClockwise ? 1 : 2;
+        const nextIdx = (idx + configIdx) % 3;
+        const tower = elementOrder[nextIdx];
+
+        // Central point of the three towers
+        const dir = nextIdx === 0
+          ? 'dirENE'
+          : nextIdx === 1
+          ? 'dirS'
+          : 'dirWNW';
+
+        if (tower === 'fire')
+          return output.fireTowerDir!({ dir: output[dir]!() });
+        if (tower === 'ice')
+          return output.iceTowerDir!({ dir: output[dir]!() });
+        if (tower === 'lightning')
+          return output.lightningTowerDir!({ dir: output[dir]!() });
+      },
+      outputStrings: {
+        dirENE: Outputs.dirENE,
+        dirS: Outputs.dirS,
+        dirWNW: Outputs.dirWNW,
+        fireTowerDir: {
+          en: 'Fires are ${dir}',
+        },
+        iceTowerDir: {
+          en: 'Ices are ${dir}',
+        },
+        lightningTowerDir: {
+          en: 'Thunders are ${dir}',
         },
       },
     },
