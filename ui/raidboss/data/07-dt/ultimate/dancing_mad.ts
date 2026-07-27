@@ -8597,9 +8597,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'DMU P5 Celestriad Tower Collect',
       // Towers have the following BNpcIDs:
-      // Lightning Tower => 1EC03E
+      // Fire Tower => 1EC03E
       // Ice Tower => 1EC03F
-      // Fire Tower => 1EC040
+      // Lightning Tower => 1EC040
       //
       // Towers spawn in a circular order element1 => element2 => element3
       // Element 1: NNE (103.42, 90.60), ENE (108.66, 95), E (109.85, 101.74)
@@ -8629,11 +8629,11 @@ const triggerSet: TriggerSet<Data> = {
 
         // Store type of tower for lookup later
         if (bnpcid === '1EC03E')
-          data.celestriadDirNumToTower[dirNum] = 'lightning';
+          data.celestriadDirNumToTower[dirNum] = 'fire';
         else if (bnpcid === '1EC03F')
           data.celestriadDirNumToTower[dirNum] = 'ice';
         else
-          data.celestriadDirNumToTower[dirNum] = 'fire';
+          data.celestriadDirNumToTower[dirNum] = 'lightning';
       },
     },
     {
@@ -8716,30 +8716,30 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         if (
-          (data.celestriadLightningTower.length + data.celestriadIceTower.length +
-            data.celestriadFireTower.length) === 4
+          (data.celestriadFireTower.length + data.celestriadIceTower.length +
+            data.celestriadLightningTower.length) === 4
         ) {
           // Reset for this run
-          data.celestriadLightningTower = [];
-          data.celestriadIceTower = [];
           data.celestriadFireTower = [];
+          data.celestriadIceTower = [];
+          data.celestriadLightningTower = [];
           data.celestriadTowerSet = data.celestriadTowerSet + 1;
         }
 
         // Will be able to check length later for the double tower element
-        if (towerType === 'lightning')
-          data.celestriadLightningTower.push(towerDirNum);
+        if (towerType === 'fire')
+          data.celestriadFireTower.push(towerDirNum);
         else if (towerType === 'ice')
           data.celestriadIceTower.push(towerDirNum);
         else
-          data.celestriadFireTower.push(towerDirNum);
+          data.celestriadLightningTower.push(towerDirNum);
       },
       durationSeconds: 6, // Next towers activate ~0.1s before abilities, so use 6s
       infoText: (data, _matches, output) => {
-        const lightningTowers = data.celestriadLightningTower;
-        const iceTowers = data.celestriadIceTower;
         const fireTowers = data.celestriadFireTower;
-        if ((lightningTowers.length + iceTowers.length + fireTowers.length) !== 4)
+        const iceTowers = data.celestriadIceTower;
+        const lightningTowers = data.celestriadLightningTower;
+        if ((fireTowers.length + iceTowers.length + lightningTowers.length) !== 4)
           return;
 
         const res = data.myInitialResistance;
@@ -8763,11 +8763,11 @@ const triggerSet: TriggerSet<Data> = {
         // No debuff player
         if (res === undefined) {
           // Check which towers have two
-          if (lightningTowers.length === 2) {
-            const dir = getDir16Towers(lightningTowers, isClockwise)[1];
+          if (fireTowers.length === 2) {
+            const dir = getDir16Towers(fireTowers, isClockwise)[1];
             if (dir === 'unknown' || dir === undefined)
-              return output.lightningTower2!();
-            return output.lightningTower2Dir!({ dir: output[dir]!() });
+              return output.fireTower2!();
+            return output.fireTower2Dir!({ dir: output[dir]!() });
           }
           if (iceTowers.length === 2) {
             const dir = getDir16Towers(iceTowers, isClockwise)[1];
@@ -8775,11 +8775,11 @@ const triggerSet: TriggerSet<Data> = {
               return output.iceTower2!();
             return output.iceTower2Dir!({ dir: output[dir]!() });
           }
-          if (fireTowers.length === 2) {
-            const dir = getDir16Towers(fireTowers, isClockwise)[1];
+          if (lightningTowers.length === 2) {
+            const dir = getDir16Towers(lightningTowers, isClockwise)[1];
             if (dir === 'unknown' || dir === undefined)
-              return output.fireTower2!();
-            return output.fireTower2Dir!({ dir: output[dir]!() });
+              return output.lightningTower2!();
+            return output.lightningTower2Dir!({ dir: output[dir]!() });
           }
           return output.twoTowerElement!();
         }
@@ -8802,11 +8802,11 @@ const triggerSet: TriggerSet<Data> = {
         const nextIdx = (idx + configIdx + towerSet) % 3;
         const tower = elementOrder[nextIdx];
 
-        if (tower === 'lightning') {
-          const dir = getDir16Towers(lightningTowers, isClockwise)[0];
+        if (tower === 'fire') {
+          const dir = getDir16Towers(fireTowers, isClockwise)[0];
           if (dir === 'unknown' || dir === undefined)
-            return output.lightning!();
-          return output.lightningTowerDir!({ dir: output[dir]!() });
+            return output.fire!();
+          return output.fireTowerDir!({ dir: output[dir]!() });
         }
         if (tower === 'ice') {
           const dir = getDir16Towers(iceTowers, isClockwise)[0];
@@ -8814,11 +8814,11 @@ const triggerSet: TriggerSet<Data> = {
             return output.ice!();
           return output.iceTowerDir!({ dir: output[dir]!() });
         }
-        if (tower === 'fire') {
-          const dir = getDir16Towers(fireTowers, isClockwise)[0];
+        if (tower === 'lightning') {
+          const dir = getDir16Towers(lightningTowers, isClockwise)[0];
           if (dir === 'unknown' || dir === undefined)
-            return output.fire!();
-          return output.fireTowerDir!({ dir: output[dir]!() });
+            return output.lightning!();
+          return output.lightningTowerDir!({ dir: output[dir]!() });
         }
 
         // Unknown tower order, use generic output
