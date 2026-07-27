@@ -6449,6 +6449,7 @@ Options.Triggers.push({
       id: 'DMU P3 Knock Down 1 (Early)',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
+      condition: (data) => data.phase === 'p3',
       durationSeconds: 2.6,
       suppressSeconds: 99999,
       infoText: (data, matches, output) => {
@@ -6553,7 +6554,7 @@ Options.Triggers.push({
       id: 'DMU P3 Knock Down 2',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
-      condition: (data) => data.isKnockDown2,
+      condition: (data) => data.isKnockDown2 && data.phase === 'p3',
       alertText: (data, matches, output) => {
         const isDPSStack = data.party.isDPS(matches.target);
         const amDPS = data.role === 'dps';
