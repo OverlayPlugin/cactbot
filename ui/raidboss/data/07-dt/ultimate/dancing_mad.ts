@@ -8887,7 +8887,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P5 Forsaken Bonds',
       // TODO: Replace this with headmarker
       type: 'StartsUsing',
-      netRegex: { id: 'BB39', source: 'Kefka', capture: true },
+      netRegex: { id: 'BB39', source: 'Kefka', capture: false },
       alertText: (data, _matches, output) => {
         return output.numMech!({
           num: data.forsakenCount,
