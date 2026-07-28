@@ -934,8 +934,7 @@ const triggerSet: TriggerSet<Data> = {
           `Tank LB3: Ranged players bait Short => Long Crystal, party resolves debuffs at Wind Crystal. Role stack the wind baits after Vacuum Wave<br />
         Entropy/Dynamic Fluid Bait (Default): Follows <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: Entropy/Fluid bait their crystals and get hit by crystal's aoe<br />
         None: Only calls debuffs and locations`,
-        cn:
-          `坦克 LB3: 远程玩家诱导短 => 长水晶，小队在风水晶处理debuff。真空波动画后按职能分摊风诱导。<br />
+        cn: `坦克 LB3: 远程玩家诱导短 => 长水晶，小队在风水晶处理debuff。真空波动画后按职能分摊风诱导。<br />
         混沌涡旋/混沌之水诱导(默认): 遵循 <a href="https://raidplan.io/plan/9assfrb4fcvwat9e" target="_blank">SG3K Raidplan</a>: 混沌涡旋/混沌之水各自水晶诱导并吃水晶AOE<br />
         无: 仅播报debuff和位置。`,
         ko:
