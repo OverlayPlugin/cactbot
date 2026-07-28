@@ -504,9 +504,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Dancing Green': 'ダンシング・グリーン',
+        'Dancing Green': '熱舞綠光',
       },
       'replaceText': {
         '\\(opposite\\)': '(對面)',
