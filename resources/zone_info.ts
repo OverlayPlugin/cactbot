@@ -11087,6 +11087,7 @@ const data: ZoneInfoType = {
       'fr': 'Poids lourds-légers CCA - match 1 (sadique)',
       'ja': '至天の座アルカディア零式：クルーザー級1',
       'ko': '아르카디아 선수권: 크루저급(영웅) 1',
+      'tc': '阿卡狄亞零式登天鬥技場 次重量級1',
     },
     'offsetX': -100,
     'offsetY': -100,
