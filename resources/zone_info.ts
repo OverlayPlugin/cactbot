@@ -11104,6 +11104,7 @@ const data: ZoneInfoType = {
       'fr': 'Poids lourds-légers CCA - match 2',
       'ja': '至天の座アルカディア：クルーザー級2',
       'ko': '아르카디아 선수권: 크루저급 2',
+      'tc': '阿卡狄亞登天鬥技場 次重量級2',
     },
     'offsetX': -100,
     'offsetY': -100,
