@@ -11256,6 +11256,7 @@ const data: ZoneInfoType = {
       'fr': 'Le Sanctuaire du Serment (extrême)',
       'ja': '極ゼレニア討滅戦',
       'ko': '극 젤레니아 토벌전',
+      'tc': '極 澤蓮尼亞殲滅戰',
     },
     'offsetX': -100,
     'offsetY': -100,
