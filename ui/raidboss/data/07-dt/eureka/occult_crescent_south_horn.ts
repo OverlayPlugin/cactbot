@@ -461,7 +461,7 @@ const phantomJobData = {
   'mysticKnight': '12C3',
   'gladiator': '12C4',
   'dancer': '12C5',
-  'ninja' : '14D0',
+  'ninja': '14D0',
   'whiteMage': '14D1',
   'blackMage': '14D2',
   'dragoon': '14D3',

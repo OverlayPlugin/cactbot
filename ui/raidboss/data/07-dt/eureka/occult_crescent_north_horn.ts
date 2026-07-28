@@ -18,8 +18,7 @@ export interface Data extends RaidbossData {
 // teleport in.  This avoids having to translate all of these names and also
 // guarantees that the player is actually in the CE for the purpose of
 // filtering triggers.
-const ceIds: { [ce: string]: string } = {
-};
+const ceIds: { [ce: string]: string } = {};
 
 /*
 const headMarkerData = {
@@ -73,7 +72,7 @@ const phantomJobData = {
   'mysticKnight': '12C3',
   'gladiator': '12C4',
   'dancer': '12C5',
-  'ninja' : '14D0',
+  'ninja': '14D0',
   'whiteMage': '14D1',
   'blackMage': '14D2',
   'dragoon': '14D3',
@@ -356,14 +355,15 @@ const triggerSet: TriggerSet<Data> = {
         data.phantomJobLevel = parseInt(jobData.slice(2), 16);
       },
     },
-/*    {
+    /*
+    {
       id: 'Occult Crescent Forked Tower: Magic Clear Data',
       type: 'SystemLogMessage',
       // "is no longer sealed"
       netRegex: { id: '7DE', capture: false },
       run: (data) => ,
     },
-*/
+    */
     // ---------------------- CEs --------------------------
     // ------------------- FATEs -----------------------
     // ------------------- Forked Tower: Magic -----------------------
