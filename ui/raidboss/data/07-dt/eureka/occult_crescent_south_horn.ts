@@ -512,7 +512,7 @@ const phantomCanCleanse = (
 // Return if the player has a phantom job that can freeze time
 // Phantom Bard Lv 2: Romeo's Ballad (aoe)
 // Phantom Dancer Lv 1 may be able to use Dance with Tempting Tango proc (single-target)
-// Phantom Necromancer Lv2 Deep Freeze (enemies in a line)
+// Phantom Necromancer Lv2: Deep Freeze (enemies in a line)
 const phantomCanFreeze = (
   phantomJob: string,
   phantomJobLevel: number,
