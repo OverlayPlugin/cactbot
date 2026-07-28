@@ -4839,16 +4839,12 @@ Options.Triggers.push({
         // cactbot-builtin-response
         output.responseOutputStrings = {
           avoid: {
-            en: '${boss}${cleaves}',
+            en: '${boss}: ${cleaves}',
             ko: '${boss}: ${cleaves}',
           },
           tankCleaveNearThenSwap: {
-            en: 'Near ${boss}${cleave} => ${swap}',
+            en: 'Near ${boss}: ${cleave} => ${swap}',
             ko: '${boss} 근처: ${cleave} => ${swap}',
-          },
-          boss: {
-            en: '${boss}: ',
-            ko: '${boss}',
           },
           tankCleave: Outputs.tankCleave,
           avoidTankCleaves: Outputs.avoidTankCleaves,
@@ -4857,7 +4853,7 @@ Options.Triggers.push({
         const severity = data.role === 'tank' || data.role === 'healer'
           ? 'alertText'
           : 'infoText';
-        const boss = output.boss({ boss: matches.source });
+        const boss = matches.source;
         if (data.role === 'tank')
           return {
             [severity]: output.tankCleaveNearThenSwap({
