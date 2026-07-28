@@ -847,7 +847,8 @@ const triggerSet: TriggerSet<Data> = {
         '\\(boss\\)': '(BOSS)',
         '\\(dancers\\)': '(分身)',
         '\\(enrage\\)': '(狂暴)',
-        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle': '二/三/四連指向＆定格＆播放',
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle':
+          '二/三/四連指向、定格＆播放',
         'Arcady Night Encore': '返場夜狂熱',
         'Arcady Night Fever': '阿卡狄亞夜狂熱',
         'Back-up Dance': '伴舞波動',
