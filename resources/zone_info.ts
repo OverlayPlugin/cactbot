@@ -11188,6 +11188,7 @@ const data: ZoneInfoType = {
       'fr': 'Poids lourds-légers CCA - match 4 (sadique)',
       'ja': '至天の座アルカディア零式：クルーザー級4',
       'ko': '아르카디아 선수권: 크루저급(영웅) 4',
+      'tc': '阿卡狄亞零式登天鬥技場 次重量級4',
     },
     'offsetX': -100,
     'offsetY': -100,
