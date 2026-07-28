@@ -8096,16 +8096,16 @@ const triggerSet: TriggerSet<Data> = {
             mech1: output.spread!(),
             mech2: isBombTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (hasStack && hasBomb)
+        else if (hasStack && hasBomb)
           mechs = output.compressedBomb!({
             mech1: output.stack!(),
             mech2: isBombTrue ? output.bomb!() : output.fakeBomb!(),
           });
-        if (hasSpread)
+        else if (hasSpread)
           mechs = output.spread!();
-        if (hasStack)
+        else if (hasStack)
           mechs = output.stack!();
-        if (hasBomb)
+        else if (hasBomb)
           mechs = output.bombStack!({
             mech1: isBombTrue ? output.bomb!() : output.fakeBomb!(),
             mech2: output.stack!(),
