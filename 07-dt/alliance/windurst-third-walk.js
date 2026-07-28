@@ -1026,7 +1026,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidBeleaguer: {
           en: 'Dodge 2-1',
-          cn: '躲避 2-1',
+          cn: '二穿一躲避',
           ko: '2-1 피하기',
         },
       },
