@@ -11238,6 +11238,7 @@ const data: ZoneInfoType = {
       'fr': 'Le Sanctuaire du Serment',
       'ja': 'ゼレニア討滅戦',
       'ko': '젤레니아 토벌전',
+      'tc': '澤蓮尼亞殲滅戰',
     },
     'offsetX': -100,
     'offsetY': -100,
