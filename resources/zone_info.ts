@@ -11205,6 +11205,7 @@ const data: ZoneInfoType = {
       'fr': 'La Gardienne de l\'Immémorial',
       'ja': '王城旧跡 アンダーキープ',
       'ko': '언더킵',
+      'tc': '王城遺跡永護塔底',
     },
     'offsetX': 122,
     'offsetY': -273,
