@@ -11171,6 +11171,7 @@ const data: ZoneInfoType = {
       'fr': 'Poids lourds-légers CCA - match 4',
       'ja': '至天の座アルカディア：クルーザー級4',
       'ko': '아르카디아 선수권: 크루저급 4',
+      'tc': '阿卡狄亞登天鬥技場 次重量級4',
     },
     'offsetX': -100,
     'offsetY': -100,
