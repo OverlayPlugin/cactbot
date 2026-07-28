@@ -11070,6 +11070,7 @@ const data: ZoneInfoType = {
       'fr': 'Poids lourds-légers CCA - match 1',
       'ja': '至天の座アルカディア：クルーザー級1',
       'ko': '아르카디아 선수권: 크루저급 1',
+      'tc': '阿卡狄亞登天鬥技場 次重量級1',
     },
     'offsetX': -100,
     'offsetY': -100,
