@@ -59,10 +59,7 @@ const phantomJobData = {
 // Return if the player has a phantom job that can dispel
 // Phantom Time Mage Lv 4: Dispel
 // Phantom Necromance Lv 5: Doomsday (enemies in a line)
-const canDispel = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canDispel = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 4)
     return true;
   if (phantomJob === phantomJobData.necromancer && phantomJobLevel >= 5)
@@ -72,10 +69,7 @@ const canDispel = (
 
 // Return if the player has a phantom job that can slow
 // Phantom Time Mage Lv 1: Slowga
-const canSlow = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canSlow = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 1)
     return true;
   return false;
@@ -83,10 +77,7 @@ const canSlow = (
 
 // Return if the player has a phantom job that can cleanse
 // Phantom Oracle Lv 2: Recuperation
-const canCleanse = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canCleanse = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 2)
     return true;
   return false;
@@ -96,10 +87,7 @@ const canCleanse = (
 // Phantom Bard Lv 2: Romeo's Ballad (aoe)
 // Phantom Dancer Lv 1 may be able to use Dance with Tempting Tango proc (single-target)
 // Phantom Necromancer Lv2: Deep Freeze (enemies in a line)
-const canFreeze = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canFreeze = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.bard && phantomJobLevel >= 2)
     return true;
   if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 1)
@@ -111,10 +99,7 @@ const canFreeze = (
 
 // Return if the player has a phantom job that can suspend
 // Phantom Geomancer Lv 4: Suspend
-const canSuspend = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canSuspend = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.geomancer && phantomJobLevel >= 4)
     return true;
   return false;
@@ -135,10 +120,7 @@ const canSuspend = (
 // Phantom Dragoon Lv 1: Occult Jump (60%), requires target, self only, 2s
 // Phantom Dragoon Lv 4: Enhanced Occult Jump (90%)
 // Phantom Necromance Lv 1: Drain Touch, requires target, self only, 6s, HP can't be reduced < 1
-const caresAboutTankbuster = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const caresAboutTankbuster = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.knight && phantomJobLevel >= 4)
     return true;
   if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
@@ -159,10 +141,7 @@ const caresAboutTankbuster = (
 // Phantom Oracle Lv 6: Invulnerability
 // Phantom Ninja Lv 5: Image
 // Phantom Necromance Lv 1: Drain Touch, requires target, self only, 6s, HP can't be reduced < 1
-const canBlockPhysical = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canBlockPhysical = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.samurai && phantomJobLevel >= 2)
     return true;
   if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
@@ -178,10 +157,7 @@ const canBlockPhysical = (
 // Phantom Oracle Lv 6: Invulnerability
 // Phantom White Mage Lv 3: Occult Blink
 // Phantom Necromance Lv 1: Drain Touch, requires target, self only, 6s, HP can't be reduced < 1
-const canBlockMagical = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const canBlockMagical = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
     return true;
   if (phantomJob === phantomJobData.whiteMage && phantomJobLevel >= 3)
@@ -204,10 +180,7 @@ const canBlockMagical = (
 //   Blue Mage requires learning from a Crescent Bibliotaph, assumes they have it
 // Phantom Blue Mage Lv 3: Occult White Wind from Occult Learning III: Self-Benediction and then
 //   heals party for current HP. Blue Mage requires learning from a Crescent Flame
-const caresAboutAOE = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
+const caresAboutAOE = (phantomJob: string, phantomJobLevel: number): boolean => {
   if (phantomJob === phantomJobData.bard && phantomJobLevel >= 3)
     return true;
   if (phantomJob === phantomJobData.ranger && phantomJobLevel >= 6)
