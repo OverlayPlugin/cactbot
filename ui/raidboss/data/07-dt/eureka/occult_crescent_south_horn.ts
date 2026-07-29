@@ -701,7 +701,7 @@ const triggerSet: TriggerSet<Data> = {
   triggers: [
     // ---------------------- Setup --------------------------
     {
-      id: 'Occult Crescent Critical Encounter',
+      id: 'Occult Crescent South Horn Critical Encounter',
       type: 'ActorControl',
       netRegex: { command: '80000014' },
       run: (data, matches) => {
@@ -732,7 +732,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Phantom Job Tracker',
+      id: 'Occult Crescent South Horn Phantom Job Tracker',
       // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
       // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
       // First digit (South Horn jobs) and first two (North Horn jobs) are the job:

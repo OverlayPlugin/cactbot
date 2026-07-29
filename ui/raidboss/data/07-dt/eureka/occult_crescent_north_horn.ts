@@ -19,8 +19,7 @@ export interface Data extends RaidbossData {
 // teleport in.  This avoids having to translate all of these names and also
 // guarantees that the player is actually in the CE for the purpose of
 // filtering triggers.
-const ceIds: { [ce: string]: string } = {
-};
+const ceIds: { [ce: string]: string } = {};
 
 /*
 const headMarkerData = {
@@ -40,7 +39,7 @@ const triggerSet: TriggerSet<Data> = {
   triggers: [
     // ---------------------- Setup --------------------------
     {
-      id: 'Occult Crescent Critical Encounter',
+      id: 'Occult Crescent North Horn Critical Encounter',
       type: 'ActorControl',
       netRegex: { command: '80000014' },
       run: (data, matches) => {
@@ -71,7 +70,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Phantom Job Tracker',
+      id: 'Occult Crescent North Horn Phantom Job Tracker',
       // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
       // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
       // First digit (South Horn jobs) and first two (North Horn jobs) are the job:
@@ -116,14 +115,15 @@ const triggerSet: TriggerSet<Data> = {
         data.phantomJobLevel = parseInt(jobData.slice(2), 16);
       },
     },
-/*    {
+    /*
+    {
       id: 'Occult Crescent Forked Tower: Magic Clear Data',
       type: 'SystemLogMessage',
       // "is no longer sealed"
       netRegex: { id: '7DE', capture: false },
       run: (data) => ,
     },
-*/
+    */
     // ---------------------- CEs --------------------------
     // ------------------- FATEs -----------------------
     // ------------------- Forked Tower: Magic -----------------------

@@ -109,7 +109,6 @@ const canFreeze = (
   return false;
 };
 
-
 // Return if the player has a phantom job that can suspend
 // Phantom Geomancer Lv 4: Suspend
 const canSuspend = (
