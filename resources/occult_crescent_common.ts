@@ -224,16 +224,16 @@ const caresAboutAOE = (
 };
 
 const PhantomJobUtils = {
-  effectIds,
-  canDispel,
-  canSlow,
-  canCleanse,
-  canFreeze,
-  canSuspend,
-  caresAboutTankbuster,
-  canBlockPhysical,
-  canBlockMagical,
-  caresAboutAOE,
+  effectIds: effectIds,
+  canDispel: canDispel,
+  canSlow: canSlow,
+  canCleanse: canCleanse,
+  canFreeze: canFreeze,
+  canSuspend: canSuspend,
+  caresAboutTankbuster: caresAboutTankbuster,
+  canBlockPhysical: canBlockPhysical,
+  canBlockMagical: canBlockMagical,
+  caresAboutAOE: caresAboutAOE,
 } as const;
 
 export default PhantomJobUtils;
