@@ -860,7 +860,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!& )Drop the Needle': '播放',
         'Eighth Beats': '8拍節奏',
         'Ensemble Assemble': '伴舞團',
-        'Fire': '',
+        'Fire': '火焰',
         'Flip to A-side': '放入A面',
         'Flip to B-side': '放入B面',
         'Freak Out': '音頻爆炸',

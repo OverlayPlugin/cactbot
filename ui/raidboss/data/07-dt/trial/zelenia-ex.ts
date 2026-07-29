@@ -315,6 +315,12 @@ const triggerSet: TriggerSet<Data> = {
           '탱힐 먼저': 'supportFirst',
           '딜러 먼저': 'dpsFirst',
         },
+        tc: {
+          '無': 'none',
+          '輸出在內': 'dpsIn',
+          'T 奶先': 'supportFirst',
+          'DPS 先': 'dpsFirst',
+        },
       },
       default: 'none',
     },
