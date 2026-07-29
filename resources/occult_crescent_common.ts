@@ -234,6 +234,6 @@ const PhantomJobUtils = {
   canBlockPhysical,
   canBlockMagical,
   caresAboutAOE,
-};
+} as const;
 
 export default PhantomJobUtils;
