@@ -416,6 +416,34 @@ const magitaurOutputStrings = {
   },
 };
 
+// Used to filter the GainsEffect for Phantom Job Tracker
+const phantomJobEffectIds = [
+  '1092', // Freelancer
+  '1106', // Knight
+  '1107', // Berserker
+  '1108', // Monk
+  '1109', // Ranger
+  '1110', // Oracle
+  '1111', // Thief
+  '110A', // Samurai
+  '110B', // Bard
+  '110C', // Geomancer
+  '110D', // Time Mage
+  '110E', // Cannonneer
+  '110F', // Chemist
+  '12C3', // Mystic Knight
+  '12C4', // Gladiator
+  '12C5', // Dancer
+  '14D0', // Ninja
+  '14D1', // White Mage
+  '14D2', // Black Mage
+  '14D3', // Dragoon
+  '14D4', // Summoner
+  '14D5', // Blue Mage
+  '14D6', // Red Mage
+  '14D7', // Necromancer
+];
+
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
   zoneId: ZoneId.TheOccultCrescentSouthHorn,
@@ -764,7 +792,7 @@ const triggerSet: TriggerSet<Data> = {
       // Freelancer = null
       // Freelancer level is accumulation of maxed jobs +1, can also be inferred from stacks of Phantom Mastery (1082)
       type: 'GainsEffect',
-      netRegex: { effectId: [...PhantomJobUtils.effectIds], capture: true },
+      netRegex: { effectId: [...phantomJobEffectIds], capture: true },
       condition: Conditions.targetIsYou(),
       run: (data, matches) => {
         data.phantomJob = matches.effectId;
