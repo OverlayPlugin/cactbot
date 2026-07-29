@@ -9212,22 +9212,22 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         rightSafeNW: {
-          en: 'NW: Right Out/Left In',
+          en: 'NW: Right', // Right Out (NNE to ENE) + Left In (WNW to SSE)
         },
         leftSafeNW: {
-          en: 'NW: Left Out/Right In',
+          en: 'NW: Left', // Left Out (WSW to SSW) + Right In (NNW to ESE)
         },
         middleSafeNW: {
-          en: 'NW: Middle/Out',
+          en: 'NW: Middle', // Middle (NW to SE) + Out (NE/SW)
         },
         rightSafeNE: {
-          en: 'NE: Right Out/Left In',
+          en: 'NE: Right', // Right Out (ESE to SSE) + Left In (NNE to WSW)
         },
         leftSafeNE: {
-          en: 'NE: Left Out/Right In',
+          en: 'NE: Left', // Left Out (NNW to WNW) + Right In (ENE to SSW)
         },
         middleSafeNE: {
-          en: 'NE: Middle/Out',
+          en: 'NE: Middle', // Middle (NE to SW) + Out (NW/SE)
         },
       },
     },
