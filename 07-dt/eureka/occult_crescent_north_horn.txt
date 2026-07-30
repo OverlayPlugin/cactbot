@@ -1,0 +1,15 @@
+### Occult Crescent: North Horn
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# Use zone-unseal and 0x21 Reset lines
+# Trigger set contains 'resetWhenOutOfCombat: false'
+
+0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 0,100000 jump 0
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+# Unlike with Bozja, you do not teleport into critical encounters from afar.
+# Instead players must run to the encounter spot. This makes the "entry"
+# into the critical encounter happen much later.
