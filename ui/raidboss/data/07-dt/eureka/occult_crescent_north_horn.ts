@@ -59,6 +59,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheOccultCrescentNorthHorn,
   comments: {
     en: 'Occult Crescent North Horn critical encounter triggers/timeline.',
+    cn: '蜃景幻界新月岛 北征之章 紧急遭遇战 触发器/时间轴。',
   },
   timelineFile: 'occult_crescent_north_horn.txt',
   initData: () => ({}),
