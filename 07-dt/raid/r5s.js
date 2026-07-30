@@ -776,50 +776,50 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Dancing Green': 'ダンシング・グリーン',
-        'Frogtourage': 'フロッグダンサー',
+        'Dancing Green': '熱舞綠光',
+        'Frogtourage': '青蛙舞者',
       },
       'replaceText': {
-        // '\\(Cleave\\)': '', // FIXME '(半场)'
-        // '\\(Echo\\)': '', // FIXME '(重复)'
-        // '\\(In\\+Protean\\+Echo\\)': '', // FIXME '(内+八方+重复)'
-        // '\\(Out\\+Protean\\+Echo\\)': '', // FIXME '(外+八方+重复)'
-        // '\\(Out\\+Protean\\)': '', // FIXME '(外+八方)'
-        // '\\(all\\)': '', // FIXME '(全体)'
-        // '\\(boss\\)': '', // FIXME '(BOSS)'
-        // '\\(dancers\\)': '', // FIXME '(分身)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle': '', // FIXME '二/三/四连指向、定格＆播放' (RSV ID: 42208)
-        // 'Arcady Night Encore': '', // FIXME '返场夜狂热' (RSV ID: 41840)
-        'Arcady Night Fever': '在這停頓！',
-        // 'Back-up Dance': '', // FIXME '伴舞波动' (RSV ID: 42872)
-        'Celebrate Good Times': '歡慶美妙時光',
-        'Deep Cut': '心曲刻錄',
-        // 'Debuffs': '', // FIXME '毒'
+        '\\(Cleave\\)': '(半場)',
+        '\\(Echo\\)': '(重複)',
+        '\\(In\\+Protean\\+Echo\\)': '(內+八方+重複)',
+        '\\(Out\\+Protean\\+Echo\\)': '(外+八方+重複)',
+        '\\(Out\\+Protean\\)': '(外+八方)',
+        '\\(all\\)': '(全體)',
+        '\\(boss\\)': '(BOSS)',
+        '\\(dancers\\)': '(分身)',
+        '\\(enrage\\)': '(狂暴)',
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle':
+          '二/三/四連指向、定格＆播放',
+        'Arcady Night Encore': '返場夜狂熱',
+        'Arcady Night Fever': '阿卡狄亞夜狂熱',
+        'Back-up Dance': '伴舞波動',
+        'Celebrate Good Times': '歡慶時刻',
+        'Deep Cut': '經典銘心',
+        'Debuffs': '毒',
         'Disco Infernal': '激熱夜舞廳',
-        'Do the Hustle': '跳起哈娑舞',
-        // '(?<!& )Drop the Needle': '', // FIXME '播放'
+        'Do the Hustle': '搖擺哈娑',
+        '(?<!& )Drop the Needle': '播放',
         'Eighth Beats': '8拍節奏',
         'Ensemble Assemble': '伴舞團',
-        // 'Fire': '', // FIXME
-        // 'Flip to A-side': '', // FIXME '放入A面'
-        // 'Flip to B-side': '', // FIXME '放入B面'
-        // 'Freak Out': '', // FIXME '音频爆炸'
-        // 'Frogtourage Finale': '', // FIXME '舞团终演' (RSV ID: 42209)
-        'Frogtourage(?! )': '青蛙舞者登場！',
+        'Fire': '火焰',
+        'Flip to A-side': '放入A面',
+        'Flip to B-side': '放入B面',
+        'Freak Out': '音頻爆炸',
+        'Frogtourage Finale': '舞團終演',
+        'Frogtourage(?! )': '來吧！青蛙舞者！',
         'Funky Floor': '熱舞場地',
-        // 'Get Down!': '', // FIXME '尽情舞蹈！'
-        // 'Hi-NRG Fever': '', // FIXME '高能夜狂热'
-        // 'Inside Out': '', // FIXME '内翻外转'
+        'Get Down!': '盡情舞蹈！',
+        'Hi-NRG Fever': '高能夜狂熱',
+        'Inside Out': '內翻外轉',
         'Let\'s Dance!(?! )': '放縱勁舞！',
-        // 'Let\'s Dance! Remix': '', // FIXME '彻夜狂欢，放纵劲舞！'
+        'Let\'s Dance! Remix': '徹夜狂歡, 放縱勁舞！',
         'Let\'s Pose!': '定格時刻！',
-        'Moonburn': '月灼',
-        // 'Outside In': '', // FIXME '外翻内转'
-        // 'Play A-side': '', // FIXME '播放A面'
-        // 'Play B-side': '', // FIXME '播放B面'
+        'Moonburn': '太空熱步',
+        'Outside In': '外翻內轉',
+        'Play A-side': '播放A面',
+        'Play B-side': '播放B面',
         'Quarter Beats': '4拍節奏',
         'Ride the Waves': '舞浪全開',
       },

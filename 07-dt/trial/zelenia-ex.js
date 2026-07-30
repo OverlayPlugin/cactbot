@@ -176,6 +176,7 @@ Options.Triggers.push({
         de: 'Aufsteigendes Kreuz Strategy',
         cn: '凌空错策略',
         ko: '클라임 크로스 전략',
+        tc: '淩空錯策略',
       },
       comment: {
         en: `Strategy for resolving Escelons' Fall 1 and 3.
@@ -203,6 +204,11 @@ Options.Triggers.push({
             딜러 안 - 딜러는 항상 안쪽에서 시작, 탱힐은 항상 바깥쪽에서 시작.
             탱힐 먼저 - 탱힐이 첫 번째 공격을 유도.
             딜러 먼저 - 딜러가 첫 번째 공격을 유도.`,
+        tc: `淩空錯1和3處理策略.
+            無 - 僅播報第一次引導.
+            輸出在內 - DPS 始終圈內開始, T 奶始終圈外開始.
+            T 奶先 - T 奶引導第一次攻擊.
+            DPS 先 - DPS 引導第一次攻擊.`,
       },
       type: 'select',
       options: {
@@ -235,6 +241,12 @@ Options.Triggers.push({
           '딜러 안': 'dpsIn',
           '탱힐 먼저': 'supportFirst',
           '딜러 먼저': 'dpsFirst',
+        },
+        tc: {
+          '無': 'none',
+          '輸出在內': 'dpsIn',
+          'T 奶先': 'supportFirst',
+          'DPS 先': 'dpsFirst',
         },
       },
       default: 'none',
@@ -348,6 +360,7 @@ Options.Triggers.push({
           fr: 'Proche déposent en premier',
           cn: '先靠近引导',
           ko: '가까이 유도 먼저',
+          tc: '先靠近引導',
         },
         far: {
           en: 'Far bait first',
@@ -355,6 +368,7 @@ Options.Triggers.push({
           fr: 'Loin déposent en premier',
           cn: '先远离引导',
           ko: '멀리 유도 먼저',
+          tc: '先遠離引導',
         },
         out: {
           en: 'Start out',
@@ -362,6 +376,7 @@ Options.Triggers.push({
           fr: 'Commencez à l\'extérieur',
           cn: '圈外开始',
           ko: '바깥 시작',
+          tc: '圈外開始',
         },
         in: {
           en: 'Start in',
@@ -369,6 +384,7 @@ Options.Triggers.push({
           fr: 'Commencez à l\'intérieur',
           cn: '圈内开始',
           ko: '안 시작',
+          tc: '圈內開始',
         },
         swapAfterFirst: {
           en: '${first}, Swap after first+third',
@@ -376,6 +392,7 @@ Options.Triggers.push({
           fr: '${first}, swap après le premier et troisième',
           cn: '${first}, 第1次和第3次后交换',
           ko: '${first}, 1번째와 3번째 후 교대',
+          tc: '${first}, 第1次和第3次後交換',
         },
         swapAfterSecond: {
           en: '${first}, Swap after second',
@@ -383,6 +400,7 @@ Options.Triggers.push({
           fr: '${first}, swap après le second',
           cn: '${first}, 第2次后交换',
           ko: '${first}, 2번째 후 교대',
+          tc: '${first}, 第2次後交換',
         },
       },
     },
@@ -1105,26 +1123,25 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Briar Thorn': 'クライムハザード',
-        'Zelenia(?!\')': 'ゼレニア',
-        'Zelenia\'s Shade': 'ゼレニアの幻影',
+        'Briar Thorn': '淩空破',
+        'Zelenia(?!\')': '澤蓮尼亞',
+        'Zelenia\'s Shade': '澤蓮尼亞的幻影',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(chakrams\\)': '', // FIXME '(预兆)'
-        // '\\(enrage\\?\\)': '', // FIXME '(狂暴?)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(markers\\)': '', // FIXME '(标记)'
-        // '\\(resolves\\)': '', // FIXME '(判定)'
-        // '\\(snapshot\\)': '', // FIXME '(快照)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(chakrams\\)': '(預兆)',
+        '\\(enrage\\?\\)': '(狂暴?)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(markers\\)': '(標記)',
+        '\\(resolves\\)': '(判定)',
+        '\\(snapshot\\)': '(快照)',
         'Alexandrian Banish II(?!I)': '王國中放逐',
         'Alexandrian Banish III': '王國強放逐',
         'Alexandrian Holy': '王國神聖',
-        'Alexandrian Thunder II(?!I)': '王國・中雷電',
-        'Alexandrian Thunder III': '王國・大雷電',
-        'Alexandrian Thunder IV': '王國・超雷電',
+        'Alexandrian Thunder II(?!I)': '王國中雷電',
+        'Alexandrian Thunder III': '王國大雷電',
+        'Alexandrian Thunder IV': '王國超雷電',
         'Blessed Barricade': '聖護壁',
         'Bud of Valor': '幻影生成',
         'Emblazon': '活性紋',
@@ -1143,7 +1160,7 @@ Options.Triggers.push({
         'Roseblood: 4th Bloom': '魔法陣展開·四式',
         'Roseblood: 5th Bloom': '魔法陣展開·五式',
         'Roseblood: 6th Bloom': '魔法陣展開·六式',
-        'Shock': '震驚',
+        'Shock': '落雷擊',
         'Spearpoint Push': '突擊',
         'Specter of the Lost': '破靈之劍',
         'Stock Break': '破防之劍',

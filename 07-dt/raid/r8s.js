@@ -2446,66 +2446,65 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Gleaming Fang': '光の牙',
-        'Howling Blade': 'ハウリングブレード',
-        'Moonlit Shadow': 'ハウリングブレードの幻影',
-        'Wolf Of Stone': '土の狼頭',
-        'Wolf of Stone': '土の狼頭',
-        'Wolf of Wind': '風の狼頭',
+        'Gleaming Fang': '光牙',
+        'Howling Blade': '呼嘯之劍',
+        'Moonlit Shadow': '呼嘯之劍的幻影',
+        'Wolf Of Stone': '土狼首',
+        'Wolf of Stone': '土狼首',
+        'Wolf of Wind': '風狼首',
       },
       'replaceText': {
-        // '--adds-targetable--': '', // FIXME '--小怪可选中--'
-        // '--shadow ': '', // FIXME '--幻影 '
-        // '--tank/line aoes--': '', // FIXME '--坦克/直线 AOE--'
-        // '\\(circles\\)': '', // FIXME '(圆形)'
-        // '\\(cones\\)': '', // FIXME '(扇形)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(Platform\\)': '', // FIXME '(平台)'
-        // '\\(Towers\\)': '', // FIXME '(塔)'
+        '--adds-targetable--': '--小怪可選中--',
+        '--shadow ': '--幻影 ',
+        '--tank/line aoes--': '--坦克/直線 AOE--',
+        '\\(circles\\)': '(圓形)',
+        '\\(cones\\)': '(扇形)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(Platform\\)': '(平台)',
+        '\\(Towers\\)': '(塔)',
         'Aero III': '大勁風',
-        // 'Aerotemporal Blast': '', // FIXME '定时风击' (RSV ID: 42088)
-        // 'Alpha Stone': '', // FIXME '光狼之土'
-        // 'Alpha Wind': '', // FIXME '光狼之风'
+        'Aerotemporal Blast': '定時風擊',
+        'Alpha Stone': '光狼之土',
+        'Alpha Wind': '光狼之風',
         'Bare Fangs': '光牙召喚',
         'Beckon Moonlight': '幻狼召喚',
-        // 'Breath of Decay': '', // FIXME '千年风啸'
-        // 'Champion\'s Circuit': '', // FIXME '回天动地'
-        // 'Elemental Purge': '', // FIXME '风震魔印' (RSV ID: 42087)
-        // 'Eminent Reign': '', // FIXME '扫击群狼剑'
-        // 'Extraplanar Feast': '', // FIXME '空间灭斩'
+        'Breath of Decay': '千年風嘯',
+        'Champion\'s Circuit': '回天動地',
+        'Elemental Purge': '風震魔印',
+        'Eminent Reign': '掃擊群狼劍',
+        'Extraplanar Feast': '空間滅斬',
         'Extraplanar Pursuit': '空間斬',
         'Fanged Charge': '突進光牙',
-        // 'Forlorn Stone': '', // FIXME '土之狼吼'
-        // 'Forlorn Wind': '', // FIXME '风之狼吼'
-        // 'Geotemporal Blast': '', // FIXME '定时震击' (RSV ID: 42089)
-        // 'Gleaming Barrage': '', // FIXME '连击闪光炮' (RSV ID: 42102)
-        // 'Gleaming Beam': '', // FIXME '闪光炮' (RSV ID: 42078)
+        'Forlorn Stone': '土之狼吼',
+        'Forlorn Wind': '風之狼吼',
+        'Geotemporal Blast': '定時震擊',
+        'Gleaming Barrage': '連擊閃光炮',
+        'Gleaming Beam': '閃光炮',
         'Great Divide': '一刀兩斷',
         'Gust': '狂風',
         'Heavensearth': '大震擊',
-        // 'Hero\'s Blow': '', // FIXME '铠袖一触'
-        // 'Howling Eight': '', // FIXME '八连光弹' (RSV ID: 42132)
-        // 'Howling Havoc': '', // FIXME '风尘咆哮' (RSV ID: 41948)
-        // 'Hunter\'s Harvest': '', // FIXME '贪狼之剑'
-        // 'Lone Wolf\'s Lament': '', // FIXME '独狼的诅咒'
-        // 'Millennial Decay': '', // FIXME '千年风化' (RSV ID: 41906)
+        'Hero\'s Blow': '鎧袖一觸',
+        'Howling Eight': '八連光彈',
+        'Howling Havoc': '風塵咆哮',
+        'Hunter\'s Harvest': '貪狼之劍',
+        'Lone Wolf\'s Lament': '獨狼的詛咒',
+        'Millennial Decay': '千年風化',
         'Moonbeam\'s Bite': '幻狼劍',
-        // 'Mooncleaver': '', // FIXME '刚刃一闪' (RSV ID: 42085)
-        // 'Pack Predation': '', // FIXME '光狼阵' (RSV ID: 41932)
-        // 'Prowling Gale': '', // FIXME '风狼阵' (RSV ID: 42117)
-        'Quake III': '魔光',
+        'Mooncleaver': '剛刃一閃',
+        'Pack Predation': '光狼陣',
+        'Prowling Gale': '風狼陣',
+        'Quake III': '大地槌',
         'Ravenous Saber': '風塵光狼斬',
-        // 'Revolutionary Reign': '', // FIXME '旋击群狼剑'
-        // 'Rise of the Howling Wind': '', // FIXME '魔狼战形·飓风之相' (RSV ID: 43050)
-        // 'Rise of the Hunter\'s Blade': '', // FIXME '魔狼战形·咒刃之相'
+        'Revolutionary Reign': '旋擊群狼劍',
+        'Rise of the Howling Wind': '魔狼戰形·颶風之相',
+        'Rise of the Hunter\'s Blade': '魔狼戰形·咒刃之相',
         'Roaring Wind': '風狼豪波',
         'Shadowchase': '殘影劍',
-        // 'Stalking Stone': '', // FIXME '光狼地烈波'
-        // 'Stalking Wind': '', // FIXME '光狼风烈波'
-        // 'Starcleaver': '', // FIXME '刚刃一闪・终' (RSV ID: 42141)
-        // 'Stonefang': '', // FIXME '土之魔技'
+        'Stalking Stone': '光狼地烈波',
+        'Stalking Wind': '光狼風烈波',
+        'Starcleaver': '剛刃一閃・終',
+        'Stonefang': '土之魔技',
         'Suspended Stone': '大岩石',
         'Tactical Pack': '光狼召喚',
         'Terrestrial Rage': '大地之怒',
@@ -2513,13 +2512,13 @@ Options.Triggers.push({
         'Titanic Pursuit': '斬空劍',
         'Towerfall': '崩塌',
         'Tracking Tremors': '連震擊',
-        // 'Twinbite': '', // FIXME '双牙击' (RSV ID: 42189)
-        // 'Twofold Tempest': '', // FIXME '双牙暴风击' (RSV ID: 42100)
-        // 'Ultraviolent Ray': '', // FIXME '魔光'
+        'Twinbite': '雙牙擊',
+        'Twofold Tempest': '雙牙暴風擊',
+        'Ultraviolent Ray': '魔光',
         'Weal of Stone': '地烈波',
         'Wind Surge': '風爆',
-        // 'Windfang': '', // FIXME '风之魔技'
-        // 'Winds of Decay': '', // FIXME '千年狂风' (RSV ID: 41909)
+        'Windfang': '風之魔技',
+        'Winds of Decay': '千年狂風',
         'Wolves\' Reign': '群狼劍',
       },
     },
