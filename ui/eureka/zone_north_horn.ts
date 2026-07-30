@@ -55,14 +55,14 @@ export const zoneInfoNorthHorn: EurekaZoneInfo = {
     {
       id: 3,
       name: {
-        en: 'Bleicher Magia',
-        de: 'Pallmagia',
+        en: 'Pallmagia',
+        de: 'Bleicher Magia',
         fr: 'Palimagia',
         ja: 'ペイルマギア',
       },
       shortName: {
-        en: 'Magia',
-        de: 'Pallmagia',
+        en: 'Pallmagia',
+        de: 'Magia',
         fr: 'Palimagia',
         ja: 'マギア',
       },
