@@ -45,7 +45,10 @@ export default class RaidEmulator extends EventBus {
 
     this.currentEncounter = new AnalyzedEncounter(this.options, enc, this, watchCombatantsOverride);
     void this.dispatch('preCurrentEncounterChanged', this.currentEncounter);
+    const start = performance.now();
     void this.currentEncounter.analyze().then(() => {
+      const duration = performance.now() - start;
+      console.log(`Analyzing encounter took ${duration.toFixed(2)}ms`);
       void this.dispatch('currentEncounterChanged', this.currentEncounter);
     });
   }
