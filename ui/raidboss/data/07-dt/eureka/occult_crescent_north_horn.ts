@@ -19,7 +19,39 @@ export interface Data extends RaidbossData {
 // teleport in.  This avoids having to translate all of these names and also
 // guarantees that the player is actually in the CE for the purpose of
 // filtering triggers.
-const ceIds: { [ce: string]: string } = {};
+const ceIds: { [ce: string]: string } = {
+  manyMouthsToFeed: '39B',
+  doubledTrouble: '398',
+  quarriedAway: '397',
+  forbiddenFolios: '39A',
+  cursedResurgence: '3B9',
+  imbalancedDiet: '3BF',
+  webOfTerror: '3CA',
+  aBeastUnleashed: '3C0',
+  darkArtistry: '3A8',
+  familiarTactics: '390',
+  appallingBehavior: '3BA',
+  tinyTerror: '3CC',
+  lostOnTheWind: '3A9',
+  aheadOfTheCompetition: '3BC',
+  acceptNoImitators: '3CB',
+  // Forked Tower: Magic
+  twoHeadedAevis: '389',
+  lowerVestibule: '38D',
+  swordDancer: '38A',
+  centralMezzanine: '38E',
+  necrophobia: '38B',
+  upperVeil: '38F',
+  theIndex: '38C',
+  // Forked Tower: Magic (Extreme)
+  // twoHeadedAevisEx: '000',
+  // lowerVestibuleEx: '000',
+  // swordDancerEx: '000',
+  // centralMezzanineEx: '000',
+  // necrophobiaEx: '000',
+  // upperVeilEx: '000',
+  // theIndexEx: '000',
+};
 
 /*
 const headMarkerData = {

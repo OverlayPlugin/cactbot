@@ -9,7 +9,7 @@ import { OutputFileAttributes, XivApi } from './xivapi';
 
 // Generate data relating to the Critical Engagements of the Bozjan Southern
 // Front and Zadnor, and the Critical Encounters of the Occult Crescent:
-// South Horn. The API calls these "Dynamic Events", but most players will
+// South Horn & North Horn. The API calls these "Dynamic Events", but most players will
 // refer to these simply as CEs, and I opted to use the CE shorthand.
 
 const _BOZJA_ENCOUNTERS: OutputFileAttributes = {
@@ -59,6 +59,23 @@ const _SOUTH_HORN_MAP: OutputFileAttributes = {
   type: 'CEMap<typeof SouthHornCEs>',
   header: `import { CEMap } from '../types/ce';
 import SouthHornCEs from './south_horn_encounters';
+`,
+  asConst: true,
+};
+
+const _NORTH_HORN_ENCOUNTERS: OutputFileAttributes = {
+  outputFile: 'resources/north_horn_encounters.ts',
+  type: 'CeInfoType',
+  header: `import { CeInfoType } from '../types/ce';
+`,
+  asConst: true,
+};
+
+const _NORTH_HORN_MAP: OutputFileAttributes = {
+  outputFile: 'resources/north_horn_ce_map.ts',
+  type: 'CEMap<typeof NorthHornCEs>',
+  header: `import { CEMap } from '../types/ce';
+import NorthHornCEs from './north_horn_encounters';
 `,
   asConst: true,
 };
@@ -124,9 +141,11 @@ type OutputContainer = {
   bozjaCEs: CeInfoOutput;
   zadnorCEs: CeInfoOutput;
   southHornCEs: CeInfoOutput;
+  northHornCEs: CeInfoOutput;
   bozjaMap: CeDirectorMap;
   zadnorMap: CeDirectorMap;
   southHornMap: CeDirectorMap;
+  northHornMap: CeDirectorMap;
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
@@ -310,22 +329,31 @@ const assembleData = async (
   const bozjaSetData = deSetData[1] ?? {};
   const zadnorSetData = deSetData[2] ?? {};
   const southHornSetData = deSetData[3] ?? {};
+  const northHornSetData = deSetData[4] ?? {};
+  // Occult Crescent: North Horn has duplicated entries for
+  // instances with Forked Tower: Magic and Forked Tower: Magic (Extreme).
+  // All other FATEs/CEs are the same.
+  // const northHornEXSetData = deSetData[5] ?? {};
 
   const bozjaCEData = generateCEList(bozjaSetData, 'Bozja');
   const zadnorCEData = generateCEList(zadnorSetData, 'Zadnor');
   const southHornCEData = generateCEList(southHornSetData, 'South Horn');
+  const northHornCEData = generateCEList(northHornSetData, 'North Horn');
 
   const bozjaCEMap = generateCEMap(bozjaCEData, 'Bozja');
   const zadnorCEMap = generateCEMap(zadnorCEData, 'Zadnor');
   const southHornCEMap = generateCEMap(southHornCEData, 'South Horn');
+  const northHornCEMap = generateCEMap(northHornCEData, 'North Horn');
 
   const formattedData: OutputContainer = {
     bozjaCEs: bozjaCEData,
     zadnorCEs: zadnorCEData,
     southHornCEs: southHornCEData,
+    northHornCEs: northHornCEData,
     bozjaMap: bozjaCEMap,
     zadnorMap: zadnorCEMap,
     southHornMap: southHornCEMap,
+    northHornMap: northHornCEMap,
   };
 
   log.debug('Data assembly/formatting complete.');
@@ -365,6 +393,12 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
 
   await api.writeFile(
     path.basename(import.meta.url),
+    _NORTH_HORN_ENCOUNTERS,
+    outputData.northHornCEs,
+  );
+
+  await api.writeFile(
+    path.basename(import.meta.url),
     _BOZJA_MAP,
     outputData.bozjaMap,
   );
@@ -379,6 +413,12 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
     path.basename(import.meta.url),
     _SOUTH_HORN_MAP,
     outputData.southHornMap,
+  );
+
+  await api.writeFile(
+    path.basename(import.meta.url),
+    _NORTH_HORN_MAP,
+    outputData.northHornMap,
   );
 
   log.successDone(`Completed processing for ${_SCRIPT_NAME}`);
