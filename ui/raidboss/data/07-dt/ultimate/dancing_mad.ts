@@ -9086,55 +9086,55 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStrings16Dir,
         fireTowerDir: {
-          en: '${dir}: Fire Tower',
+          en: 'Get ${dir} Fire',
         },
         iceTowerDir: {
-          en: '${dir}: Ice Tower',
+          en: 'Get ${dir} Ice',
         },
         lightningTowerDir: {
-          en: '${dir}: Thunder Tower',
+          en: 'Get ${dir} Thunder',
         },
         fireTower2Dir: {
-          en: '${dir}: Fire Tower #2',
+          en: 'Get ${dir} Fire #2',
         },
         iceTower2Dir: {
-          en: '${dir}: Ice Tower #2',
+          en: 'Get ${dir} Ice #2',
         },
         lightningTower2Dir: {
-          en: '${dir}: Thunder Tower #2',
+          en: 'Get ${dir} Thunder #2',
         },
         fire: {
-          en: 'Fire Tower',
+          en: 'Get Fire Tower',
         },
         ice: {
-          en: 'Ice Tower',
+          en: 'Get Ice Tower',
         },
         lightning: {
-          en: 'Thunder Tower',
+          en: 'Get Thunder Tower',
         },
         fireTower2: {
-          en: 'Fire Tower #2',
+          en: 'Get Fire Tower #2',
         },
         iceTower2: {
-          en: 'Ice Tower #2',
+          en: 'Get Ice Tower #2',
         },
         lightningTower2: {
-          en: 'Thunder Tower #2',
+          en: 'Get Thunder Tower #2',
         },
         twoTowerElement: {
-          en: 'Two Element Tower',
+          en: 'Get Two Element Tower',
         },
         vulnTowerCW: {
-          en: 'Tower CW of ${tower}',
+          en: 'Get Tower CW of ${tower}',
         },
         vulnTowerCCW: {
-          en: 'Tower CCW of ${tower}',
+          en: 'Get Tower CCW of ${tower}',
         },
         nextElementCW: {
-          en: 'Next Element CW',
+          en: 'Get Next Element CW',
         },
         nextElementCCW: {
-          en: 'Next Element CCW',
+          en: 'Get Next Element CCW',
         },
       },
     },
@@ -9157,7 +9157,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P5 Stray Apocalypse Location',
-      // 2 Exaflares come from NW first or NE first and alternate every 3s
+      // 2 Exaflares start NW, and alternate NE every 3s
       // There are 6 total
       // They have 3 patterns they can spawn in:
       // Looking NE/NW: Left safe, middle safe, right safe
