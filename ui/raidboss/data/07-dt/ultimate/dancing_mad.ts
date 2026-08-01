@@ -8820,35 +8820,6 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.celestriadDebuffCollect = false,
     },
     {
-      id: 'DMU P5 Celestriad Debuffs',
-      // One strategy involves looking for tower your vuln matches, then soaking tower CW
-      type: 'GainsEffect',
-      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: false },
-      condition: (data) => data.phase === 'p5',
-      delaySeconds: 0.1, // Delay for collect
-      suppressSeconds: 99999,
-      infoText: (data, _matches, output) => {
-        const res = data.myInitialResistance;
-        if (res === undefined)
-          return output.twoTowerElement!();
-        return output[res]!();
-      },
-      outputStrings: {
-        fire: {
-          en: 'Fire On YOU', // Ice/Thunder Tower (later)
-        },
-        ice: {
-          en: 'Ice On YOU', // Fire/Thunder Tower (later)
-        },
-        lightning: {
-          en: 'Thunder on YOU', // Fire/Ice Tower (later)
-        },
-        twoTowerElement: {
-          en: 'No Debuff', // Two Element Tower (later)
-        },
-      },
-    },
-    {
       id: 'DMU P5 Celestriad Tower Collect',
       // Towers have the following BNpcIDs:
       // Fire Tower => 1EC03E
@@ -8891,20 +8862,21 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P5 Celestriad Tower (Early)',
+      id: 'DMU P5 Celestriad Tower + Debuffs',
       // For players that have a debuff, we can call their starting area
+      // Additional wrapper outputString used in case player wants output based on debuff
       type: 'CombatantMemory',
       netRegex: {
         change: 'Add',
         pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
         capture: false,
       },
-      delaySeconds: 0.1, // Delay for collect
-      suppressSeconds: 99999,
+      condition: (data) => Object.keys(data.celestriadTowerToDirNum).length === 9,
+      delaySeconds: 0.1, // Delay for debuff collect
       infoText: (data, _matches, output) => {
         const res = data.myInitialResistance;
         if (res === undefined)
-          return; // Could return pattern, but it's long and will know exact dir in ~2s
+          return output.twoTowerElement!();
         const isClockwise = data.triggerSetConfig.celestriad === 'clockwise';
 
         // Players with vulnerability need to first determine where the tower
@@ -8932,11 +8904,17 @@ const triggerSet: TriggerSet<Data> = {
           : 'dirWNW';
 
         if (tower === 'fire')
-          return output.fireTowerDir!({ dir: output[dir]!() });
+          return output[res]!({
+            towers: output.fireTowerDir!({ dir: output[dir]!() }),
+          });
         if (tower === 'ice')
-          return output.iceTowerDir!({ dir: output[dir]!() });
+          return output[res]!({
+            towers: output.iceTowerDir!({ dir: output[dir]!() }),
+          });
         if (tower === 'lightning')
-          return output.lightningTowerDir!({ dir: output[dir]!() });
+          return output[res]!({
+            towers: output.lightningTowerDir!({ dir: output[dir]!() }),
+          });
       },
       outputStrings: {
         dirENE: Outputs.dirENE,
@@ -8950,6 +8928,18 @@ const triggerSet: TriggerSet<Data> = {
         },
         lightningTowerDir: {
           en: 'Thunders are ${dir}',
+        },
+        fir: {
+          en: '${towers}',
+        },
+        ice: {
+          en: '${towers}',
+        },
+        lightning: {
+          en: '${towers}',
+        },
+        twoTowerElement: {
+          en: 'No Debuff', // Two Element Tower (later)
         },
       },
     },
