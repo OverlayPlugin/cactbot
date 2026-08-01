@@ -8929,7 +8929,7 @@ const triggerSet: TriggerSet<Data> = {
         lightningTowerDir: {
           en: 'Thunders are ${dir}',
         },
-        fir: {
+        fire: {
           en: '${towers}',
         },
         ice: {
