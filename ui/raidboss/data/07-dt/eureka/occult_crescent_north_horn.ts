@@ -35,7 +35,7 @@ const ceIds: { [ce: string]: string } = {
   lostOnTheWind: '3A9',
   aheadOfTheCompetition: '3BC',
   acceptNoImitators: '3CB',
-  // Forked Tower: Magic
+  // Forked Tower: Magic and Forked Tower: Magic (Extreme) share CE IDs.
   twoHeadedAevis: '389',
   lowerVestibule: '38D',
   swordDancer: '38A',
@@ -43,14 +43,6 @@ const ceIds: { [ce: string]: string } = {
   necrophobia: '38B',
   upperVeil: '38F',
   theIndex: '38C',
-  // Forked Tower: Magic (Extreme)
-  // twoHeadedAevisEx: '000',
-  // lowerVestibuleEx: '000',
-  // swordDancerEx: '000',
-  // centralMezzanineEx: '000',
-  // necrophobiaEx: '000',
-  // upperVeilEx: '000',
-  // theIndexEx: '000',
 };
 
 /*

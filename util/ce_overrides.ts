@@ -109,7 +109,6 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
   'AheadOfTheCompetition': '3BC',
   'AcceptNoImitators': '3CB',
   'TheForkedTowerMagic': '389',
-  // 'TheForkedTowerMagicExtreme': '000',
 };
 
 // Forked Tower CE DirectorUpdates do not get listed in the XIV API.
@@ -138,7 +137,7 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
 // 33D => Bridges cleared
 // 341 => Marble Dragon cleared
 // 33E => Magitaur room unlocked
-
+//
 // Forked Tower: Magic
 // -------------------
 // 389 => Two Headed Aevis (boss)
@@ -148,35 +147,11 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
 // 38B => Necrophobia (boss)
 // 38F => Upper Vestibule
 // 38C => The Index (boss)
-
-// Forked Tower: Magic (Extreme)
-// -----------------------------
-// 000 => Two Headed Aevis (boss)
-// 000 => Lower Vestibule
-// 000 => Sword Dancer (boss)
-// 000 => Central Mezzanine
-// 000 => Necrophobia (boss)
-// 000 => Upper Vestibule
-// 000 => The Index (boss)
+//
+// Forked Tower: Magic and Forked Tower: Magic (Extreme) share DirectorUpdate IDs.
 const _SYNTHETIC_CE_INFO: ZoneNameToCeInfo = {
   'South Horn': {},
-  'North Horn': {
-    // The Forked Tower: Magic and Forked Tower: Magic (Extreme)
-    // occur in the same zone, and share all other FATEs/CEs.
-    // Rather than duplicate the CE list, Forked Tower: Magic (Extreme)
-    // is added to the North Horn CE list here.
-    // 'TheForkedTowerMagicExtreme': {
-    //   'directorId': '000',
-    //   'name': {
-    //     'cn': '两歧塔 超魔之塔',
-    //     'de': 'Der Turm der Magie (extrem)',
-    //     'en': 'The Forked Tower: Magic (Extreme)',
-    //     'fr': 'Tour fourchue de la Magie (extrême)',
-    //     'ja': '極フォークタワー：魔の塔',
-    //     'ko': '극 포크 타워: 마의 탑',
-    //   },
-    // },
-  },
+  'North Horn': {},
 };
 
 const _EXCLUDED_CE_BY_ZONE_NAME: ZoneNameToExcludedCEs = {
