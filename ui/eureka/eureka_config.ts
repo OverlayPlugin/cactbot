@@ -71,6 +71,14 @@ UserConfig.registerOptions('eureka', {
       default: false,
     },
     {
+      id: 'HideWeather',
+      name: {
+        en: 'Hide weather information',
+      },
+      type: 'checkbox',
+      default: false,
+    },
+    {
       id: 'PopNoiseForNM',
       name: {
         en: 'Play pop sound for NMs',

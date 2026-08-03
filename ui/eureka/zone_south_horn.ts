@@ -450,7 +450,8 @@ export const zoneInfoSouthHorn: EurekaZoneInfo = {
       y: 17.1,
       bunny: true,
       fateId: 1976,
-      respawnMinutes: 60,
+      partnerFateId: 1977,
+      respawnMinutes: 30,
     },
     pleadingpots: {
       label: {
@@ -476,7 +477,8 @@ export const zoneInfoSouthHorn: EurekaZoneInfo = {
       y: 32,
       bunny: true,
       fateId: 1977,
-      respawnMinutes: 60,
+      partnerFateId: 1976,
+      respawnMinutes: 30,
     },
     /* theforkedtowerblood: {
       label: {

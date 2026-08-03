@@ -5,8 +5,6 @@ import northHornMap from './northhorn.png';
 // https://v2.xivapi.com/api/search?sheets=Fate&limit=9999&fields=Name@en,Name@de,Name@fr,Name@ja&query=EurekaFate=3 - Fates
 // https://v2.xivapi.com/api/search?sheets=MKDLore&limit=9999&fields=Name@en,Name@de,Name@fr,Name@ja&query=Unknown5=4 - Occult Records
 
-/* TODO: Write code for alternating cooldowns (e.g., for the "Pots" fates) */
-
 export const zoneInfoNorthHorn: EurekaZoneInfo = {
   mapImage: northHornMap,
   mapWidth: 2048,
@@ -495,7 +493,8 @@ export const zoneInfoNorthHorn: EurekaZoneInfo = {
       y: 25.8,
       bunny: true,
       fateId: 2073,
-      respawnMinutes: 60,
+      partnerFateId: 2072,
+      partnerFateRespawnMinutes: 30,
     },
     daylightpottery: {
       label: {
@@ -519,7 +518,8 @@ export const zoneInfoNorthHorn: EurekaZoneInfo = {
       y: 11.6,
       bunny: true,
       fateId: 2072,
-      respawnMinutes: 60,
+      partnerFateId: 2073,
+      partnerFateRespawnMinutes: 30,
     },
     /* theforkedtowermagic: {
       label: {
