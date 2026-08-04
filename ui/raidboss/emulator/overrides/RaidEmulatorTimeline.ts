@@ -59,6 +59,16 @@ export default class RaidEmulatorTimeline extends Timeline {
     super._OnUpdateTimer(currentTime);
   }
 
+  public override JumpTo(label: string, currentTime: number): void {
+    // Override JumpTo to use the emulated timestamp, same logic as _OnUpdateTimer
+    const lastLogTimestamp = this.emulator?.currentEncounter?.encounter
+      .logLines.slice(-1)[0]?.timestamp;
+    if (lastLogTimestamp && currentTime > lastLogTimestamp)
+      currentTime = this.emulator?.currentLogTime ?? currentTime;
+
+    super.JumpTo(label, currentTime);
+  }
+
   override _ScheduleUpdate(_fightNow: number): void {
     // Override
   }

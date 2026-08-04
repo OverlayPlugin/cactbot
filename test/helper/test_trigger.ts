@@ -40,6 +40,9 @@ const emptyPartyTracker = new PartyTracker(raidbossOptions);
 const getFakeRaidbossData = (triggerSet?: LooseTriggerSet): RaidbossData => {
   return {
     me: '',
+    meId: '10001234',
+    zoneName: '',
+    zoneId: -1,
     job: 'NONE',
     role: 'none',
     party: emptyPartyTracker,
@@ -50,6 +53,10 @@ const getFakeRaidbossData = (triggerSet?: LooseTriggerSet): RaidbossData => {
     options: raidbossOptions,
     inCombat: true,
     triggerSetConfig: {},
+    timeline: {
+      currentTime: () => 0,
+      jumpTo: (_label) => 0,
+    },
     ShortName: (x: string | undefined) => x ?? '',
     StopCombat: (): void => {/* noop */},
     ParseLocaleFloat: () => 0,

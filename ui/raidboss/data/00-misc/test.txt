@@ -42,6 +42,7 @@ hideall "--sync--"
 103 "Three"
 104 "Four"
 106 "Six"
+107 label "timeline-jump"
 110 "Ten" #duration 100
 115 "Fifteen"
 118 "Force Jump Three" GameLog { code: "0038", line: "test sync3.*?" } window 10,10 forcejump "three"
