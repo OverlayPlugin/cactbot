@@ -65,7 +65,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O1N Charybdis',
       type: 'StartsUsing',
       netRegex: { id: '23DB', source: 'Alte Roite', capture: false },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       // Alert rather than info, as any further raid damage is lethal if unhealed.
       response: Responses.hpTo1Aoe('alert'),
     },

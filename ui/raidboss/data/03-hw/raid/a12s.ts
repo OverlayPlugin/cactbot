@@ -77,7 +77,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.scourge.length > 2)
           return false;
 
-        return data.role === 'healer' || data.job === 'BLU';
+        return data.role === 'healer' || data.party.isLimitedJob(data.me);
       },
       delaySeconds: 0.5,
       suppressSeconds: 1,

@@ -156,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: '3D31', source: 'Titania', capture: false },
       infoText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.groupAddsEastOnMustardseed!();
 
         return output.killMustardseedEast!();

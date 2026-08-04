@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: '7A0', source: 'Rafflesia' },
       condition: (data, matches) =>
-        data.me === matches.target || data.role === 'healer' || data.job === 'BLU',
+        data.me === matches.target || data.role === 'healer' || data.party.isLimitedJob(data.me),
       alertText: (data, matches, output) => {
         if (matches.target === data.me)
           return output.swarmOnYou!();

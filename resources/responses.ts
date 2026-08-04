@@ -266,7 +266,7 @@ export const Responses = {
         const target = getTarget(matches);
         if (target === data.me)
           return output.cleaveOnYou?.();
-        if (data.role === 'tank' || data.job === 'BLU') {
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me)) {
           // targetless tank cleave
           // BLU players should always get this generic cleave message.
           // We have no robust way to determine whether they have tank Mimicry on,

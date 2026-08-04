@@ -42,7 +42,7 @@ const triggerSet: TriggerSet<Data> = {
       regex: /Kanabo/,
       beforeSeconds: 7,
       alertText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.grabTether!();
         return output.avoidTether!();
       },

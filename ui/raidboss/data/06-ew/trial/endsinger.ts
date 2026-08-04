@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '6B59', source: 'The Endsinger', capture: false },
       alarmText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.text!();
       },
       outputStrings: {

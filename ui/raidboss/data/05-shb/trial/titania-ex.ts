@@ -248,7 +248,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'TitaniaEx Pummel',
       type: 'StartsUsing',
       netRegex: { id: '3D37', source: 'Puck', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       preRun: (data) => {
         data.pummelCount ??= 0;
         data.pummelCount++;

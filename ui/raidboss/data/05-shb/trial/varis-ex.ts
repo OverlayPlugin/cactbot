@@ -144,7 +144,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.me === target)
           return output.tankBusterOnYou!();
 
-        if (data.role === 'dps' && data.job !== 'BLU')
+        if (data.role === 'dps' && !data.party.isLimitedJob(data.me))
           return output.avoidTankCleave!();
 
         return output.tankBusterOn!({ player: data.party.member(target) });

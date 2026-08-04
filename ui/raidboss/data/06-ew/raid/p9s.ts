@@ -157,7 +157,7 @@ const triggerSet: TriggerSet<Data> = {
         };
 
         if (data.dualityBuster.includes(data.me)) {
-          if (data.role !== 'tank' && data.job !== 'BLU')
+          if (data.role !== 'tank' && !data.party.isLimitedJob(data.me))
             return { alarmText: output.tankBusterOnYou!() };
           return { alertText: output.tankSwap!() };
         }

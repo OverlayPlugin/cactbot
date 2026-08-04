@@ -28,7 +28,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'HadesEx Comet',
       regex: /Comet 1/,
       beforeSeconds: 5,
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -252,7 +252,7 @@ const triggerSet: TriggerSet<Data> = {
         target: ['Igeyorhm\'s Shade', 'Lahabrea\'s Shade'],
         capture: false,
       },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       suppressSeconds: 10,
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -271,7 +271,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'HadesEx Spheres',
       type: 'StartsUsing',
       netRegex: { id: '47BD', source: 'Igeyorhm\'s Shade', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (data, _matches, output) => {
         if (!data.sphereCount)
           return;
@@ -368,7 +368,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'HadesEx Doom',
       type: 'GainsEffect',
       netRegex: { effectId: '6E9', capture: false },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       suppressSeconds: 5,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -681,10 +681,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'HadesEx Quadrastrike 2',
       type: 'StartsUsing',
       netRegex: { id: '47F6', source: 'Hades', capture: false },
-      condition: (data) => data.role === 'tank' || data.role === 'healer' || data.job === 'BLU',
+      condition: (data) =>
+        data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me),
       suppressSeconds: 2,
       alarmText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.getTowers!();
       },
       infoText: (data, _matches, output) => {

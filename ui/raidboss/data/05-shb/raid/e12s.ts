@@ -333,7 +333,7 @@ const triggerSet: TriggerSet<Data> = {
             ko: '탱버 + 교대',
             tc: '死刑 + 換坦',
           },
-          formlessBusterBLU: {
+          formlessBusterLimitedJob: {
             en: 'Buster on YOU (w/${player})',
             de: 'Tankbuster auf DIR (mit ${player})',
             fr: 'Tankbuster sur VOUS (avec ${player})',
@@ -364,11 +364,11 @@ const triggerSet: TriggerSet<Data> = {
         if (data.role === 'tank')
           return { alertText: output.formlessBusterAndSwap!() };
 
-        // BLU tends to avail here, so call out your friend.
-        if (data.job === 'BLU') {
+        // LimitedJob tends to avail here, so call out your friend.
+        if (data.party.isLimitedJob(data.me)) {
           const [otherPlayer] = data.formlessTargets.filter((x) => x !== data.me);
           return {
-            alertText: output.formlessBusterBLU!({ player: data.party.member(otherPlayer) }),
+            alertText: output.formlessBusterLimitedJob!({ player: data.party.member(otherPlayer) }),
           };
         }
 

@@ -118,7 +118,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Temple Touch Of Slaughter',
       type: 'StartsUsing',
       netRegex: { id: '1FE6', source: 'Ivon Coeurlfist' },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       infoText: (data, matches, output) =>
         output.text!({ player: data.party.member(matches.target) }),
       outputStrings: {

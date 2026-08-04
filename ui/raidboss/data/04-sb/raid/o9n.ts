@@ -25,7 +25,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O9N Orbs Fiend',
       type: 'StartsUsing',
       netRegex: { id: '315C', source: 'Chaos', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
