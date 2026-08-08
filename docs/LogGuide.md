@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 7.16
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.2.3
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.43
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 7.55
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 3.0.2.7
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.104
 
 ## TOC
 
@@ -162,87 +162,91 @@ This guide was last updated for:
     - [Structure](#structure-27)
     - [Regexes](#regexes-27)
     - [Examples](#examples-27)
+  - [Line 43 (0x2B): StatusEffectListForay3](#line-43-0x2b-statuseffectlistforay3)
+    - [Structure](#structure-28)
+    - [Regexes](#regexes-28)
+    - [Examples](#examples-28)
   - [Line 251 (0xFB): Debug](#line-251-0xfb-debug)
   - [Line 252 (0xFC): PacketDump](#line-252-0xfc-packetdump)
   - [Line 253 (0xFD): Version](#line-253-0xfd-version)
   - [Line 254 (0xFE): Error](#line-254-0xfe-error)
 - [OverlayPlugin Log Lines](#overlayplugin-log-lines)
   - [Line 256 (0x100): LineRegistration](#line-256-0x100-lineregistration)
-    - [Structure](#structure-28)
-    - [Regexes](#regexes-28)
-    - [Examples](#examples-28)
-  - [Line 257 (0x101): MapEffect](#line-257-0x101-mapeffect)
     - [Structure](#structure-29)
     - [Regexes](#regexes-29)
     - [Examples](#examples-29)
-  - [Line 258 (0x102): FateDirector](#line-258-0x102-fatedirector)
+  - [Line 257 (0x101): MapEffect](#line-257-0x101-mapeffect)
     - [Structure](#structure-30)
     - [Regexes](#regexes-30)
     - [Examples](#examples-30)
-  - [Line 259 (0x103): CEDirector](#line-259-0x103-cedirector)
+  - [Line 258 (0x102): FateDirector](#line-258-0x102-fatedirector)
     - [Structure](#structure-31)
     - [Regexes](#regexes-31)
     - [Examples](#examples-31)
-  - [Line 260 (0x104): InCombat](#line-260-0x104-incombat)
+  - [Line 259 (0x103): CEDirector](#line-259-0x103-cedirector)
     - [Structure](#structure-32)
     - [Regexes](#regexes-32)
     - [Examples](#examples-32)
-  - [Line 261 (0x105): CombatantMemory](#line-261-0x105-combatantmemory)
+  - [Line 260 (0x104): InCombat](#line-260-0x104-incombat)
     - [Structure](#structure-33)
     - [Regexes](#regexes-33)
     - [Examples](#examples-33)
-  - [Line 262 (0x106): RSVData](#line-262-0x106-rsvdata)
+  - [Line 261 (0x105): CombatantMemory](#line-261-0x105-combatantmemory)
     - [Structure](#structure-34)
     - [Regexes](#regexes-34)
     - [Examples](#examples-34)
-  - [Line 263 (0x107): StartsUsingExtra](#line-263-0x107-startsusingextra)
+  - [Line 262 (0x106): RSVData](#line-262-0x106-rsvdata)
     - [Structure](#structure-35)
     - [Regexes](#regexes-35)
     - [Examples](#examples-35)
-  - [Line 264 (0x108): AbilityExtra](#line-264-0x108-abilityextra)
+  - [Line 263 (0x107): StartsUsingExtra](#line-263-0x107-startsusingextra)
     - [Structure](#structure-36)
     - [Regexes](#regexes-36)
     - [Examples](#examples-36)
-  - [Line 265 (0x109): ContentFinderSettings](#line-265-0x109-contentfindersettings)
+  - [Line 264 (0x108): AbilityExtra](#line-264-0x108-abilityextra)
     - [Structure](#structure-37)
     - [Regexes](#regexes-37)
     - [Examples](#examples-37)
-  - [Line 266 (0x10A): NpcYell](#line-266-0x10a-npcyell)
+  - [Line 265 (0x109): ContentFinderSettings](#line-265-0x109-contentfindersettings)
     - [Structure](#structure-38)
     - [Regexes](#regexes-38)
     - [Examples](#examples-38)
-  - [Line 267 (0x10B): BattleTalk2](#line-267-0x10b-battletalk2)
+  - [Line 266 (0x10A): NpcYell](#line-266-0x10a-npcyell)
     - [Structure](#structure-39)
     - [Regexes](#regexes-39)
     - [Examples](#examples-39)
-  - [Line 268 (0x10C): Countdown](#line-268-0x10c-countdown)
+  - [Line 267 (0x10B): BattleTalk2](#line-267-0x10b-battletalk2)
     - [Structure](#structure-40)
     - [Regexes](#regexes-40)
     - [Examples](#examples-40)
-  - [Line 269 (0x10D): CountdownCancel](#line-269-0x10d-countdowncancel)
+  - [Line 268 (0x10C): Countdown](#line-268-0x10c-countdown)
     - [Structure](#structure-41)
     - [Regexes](#regexes-41)
     - [Examples](#examples-41)
-  - [Line 270 (0x10E): ActorMove](#line-270-0x10e-actormove)
+  - [Line 269 (0x10D): CountdownCancel](#line-269-0x10d-countdowncancel)
     - [Structure](#structure-42)
     - [Regexes](#regexes-42)
     - [Examples](#examples-42)
-  - [Line 271 (0x10F): ActorSetPos](#line-271-0x10f-actorsetpos)
+  - [Line 270 (0x10E): ActorMove](#line-270-0x10e-actormove)
     - [Structure](#structure-43)
     - [Regexes](#regexes-43)
     - [Examples](#examples-43)
-  - [Line 272 (0x110): SpawnNpcExtra](#line-272-0x110-spawnnpcextra)
+  - [Line 271 (0x10F): ActorSetPos](#line-271-0x10f-actorsetpos)
     - [Structure](#structure-44)
     - [Regexes](#regexes-44)
     - [Examples](#examples-44)
-  - [Line 273 (0x111): ActorControlExtra](#line-273-0x111-actorcontrolextra)
+  - [Line 272 (0x110): SpawnNpcExtra](#line-272-0x110-spawnnpcextra)
     - [Structure](#structure-45)
     - [Regexes](#regexes-45)
     - [Examples](#examples-45)
-  - [Line 274 (0x112): ActorControlSelfExtra](#line-274-0x112-actorcontrolselfextra)
+  - [Line 273 (0x111): ActorControlExtra](#line-273-0x111-actorcontrolextra)
     - [Structure](#structure-46)
     - [Regexes](#regexes-46)
     - [Examples](#examples-46)
+  - [Line 274 (0x112): ActorControlSelfExtra](#line-274-0x112-actorcontrolselfextra)
+    - [Structure](#structure-47)
+    - [Regexes](#regexes-47)
+    - [Examples](#examples-47)
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Data Flow
@@ -2520,10 +2524,10 @@ corresponds to row `702` on the `ItemFood` sheet
 
 ```log
 Network Log Line Structure:
-42|[timestamp]|[id]|[name]
+42|[timestamp]|[id]|[name]|[data0]|[data1]|[data2]
 
 Parsed Log Line Structure:
-[timestamp] StatusList3 2A:[id]:[name]
+[timestamp] StatusList3 2A:[id]:[name]:[data0]:[data1]:[data2]
 ```
 
 #### Regexes
@@ -2551,6 +2555,53 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=StatusList3&lang=en-US) -->
+
+<a name="line43"></a>
+
+### Line 43 (0x2B): StatusEffectListForay3
+
+This line corresponds to `FFXIV_ACT_Plugin`'s `StatusEffectListForay3` opcode/packet.
+This line has information on the status effects used in some field operations content.
+
+See: [NetworkStatusEffects](#data-fields) for a discussion of the data fields.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=StatusEffectListForay3&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+43|[timestamp]|[id]|[name]|[jobLevelData]|[currentHp]|[maxHp]|[currentMp]|[maxMp]|[currentShield]|[?]|[x]|[y]|[z]|[heading]|[data0]|[data1]|[data2]
+
+Parsed Log Line Structure:
+[timestamp] StatusEffectListForay3 2B:[id]:[name]:[jobLevelData]:[currentHp]:[maxHp]:[currentMp]:[maxMp]:[currentShield]:[?]:[x]:[y]:[z]:[heading]:[data0]:[data1]:[data2]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>43)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<name>[^|]*)\|(?<jobLevelData>[^|]*)\|(?<currentHp>[^|]*)\|(?<maxHp>[^|]*)\|(?<currentMp>[^|]*)\|(?<maxMp>[^|]*)\|(?<currentShield>[^|]*)\|(?:[^|]*\|)(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) StatusEffectListForay3 (?<type>2B):(?<id>[^:]*):(?<name>[^:]*):(?<jobLevelData>[^:]*):(?<currentHp>[^:]*):(?<maxHp>[^:]*):(?<currentMp>[^:]*):(?<maxMp>[^:]*):(?<currentShield>[^:]*):[^:]*:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+43|2026-07-31T19:22:41.7850000-05:00|10FF0001|Tini Poutini|00646428|107111|107111|10000|10000|0||906.17|906.98|259.99|-2.36|131082|0|E0000000|1083|0|E0000000|130214D3|0|10FF0001|13bdbd2997ee0fe0
+43|2026-07-31T14:30:55.5440000-05:00|10FF0002|Potato Chippy|0064641F|98122|130018|10000|10000|0||-142.73|628.25|60.65|2.79|0A0168|41F00000|E0000000|1E016C|41F00000|E0000000|121082|0|E0000000|131092|0|10FF0002|29CE0030|43F8D4A6|10FF0002|1083|0|E0000000|dc9177ad05abdc0b
+43|2026-07-31T14:37:23.5810000-05:00|10FF0002|Potato Chippy|00646425|170075|170075|10000|10000|36||508.17|-20.48|15.22|3.12|101082|0|E0000000|130314D3|0|10FF0002|1089|44C64D24|E0000000|0A108F|44C64D24|E0000000|1094|44C64D24|E0000000|12BF|44C64D24|E0000000|0F2E|41EEED91|10FF0002|0729|0|10FF0002|0727|419EED91|10FF0002|14C7|42700000|10FF0002|0c88c6434570bed2
+
+Parsed Log Line Examples:
+[19:22:41.785] StatusEffectListForay3 2B:10FF0001:Tini Poutini:00646428:107111:107111:10000:10000:0::906.17:906.98:259.99:-2.36:131082:0:E0000000:1083:0:E0000000:130214D3:0:10FF0001
+[14:30:55.544] StatusEffectListForay3 2B:10FF0002:Potato Chippy:0064641F:98122:130018:10000:10000:0::-142.73:628.25:60.65:2.79:0A0168:41F00000:E0000000:1E016C:41F00000:E0000000:121082:0:E0000000:131092:0:10FF0002:29CE0030:43F8D4A6:10FF0002:1083:0:E0000000
+[14:37:23.581] StatusEffectListForay3 2B:10FF0002:Potato Chippy:00646425:170075:170075:10000:10000:36::508.17:-20.48:15.22:3.12:101082:0:E0000000:130314D3:0:10FF0002:1089:44C64D24:E0000000:0A108F:44C64D24:E0000000:1094:44C64D24:E0000000:12BF:44C64D24:E0000000:0F2E:41EEED91:10FF0002:0729:0:10FF0002:0727:419EED91:10FF0002:14C7:42700000:10FF0002
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=StatusEffectListForay3&lang=en-US) -->
 
 <a name="line251"></a>
 
@@ -3387,20 +3438,20 @@ Currently, these log lines are emitted only for non-player actors (id >= 0x40000
 
 ```log
 Network Log Line Structure:
-270|[timestamp]|[id]|[heading]|[?]|[?]|[x]|[y]|[z]
+270|[timestamp]|[id]|[heading]|[?]|[moveType]|[x]|[y]|[z]
 
 Parsed Log Line Structure:
-[timestamp] 270 10E:[id]:[heading]:[?]:[?]:[x]:[y]:[z]
+[timestamp] 270 10E:[id]:[heading]:[?]:[moveType]:[x]:[y]:[z]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>270)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<heading>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|
+^(?<type>270)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<heading>[^|]*)\|(?:[^|]*\|)(?<moveType>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 270 (?<type>10E):(?<id>[^:]*):(?<heading>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 270 (?<type>10E):(?<id>[^:]*):(?<heading>[^:]*):[^:]*:(?<moveType>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*)(?:$|:)
 ```
 
 #### Examples
