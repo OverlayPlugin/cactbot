@@ -4,6 +4,11 @@
 hideall "--Reset--"
 hideall "--sync--"
 
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,1000000 jump 0
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,1000000 jump 0
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Prishe Of The Distant Chains #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#

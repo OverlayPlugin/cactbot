@@ -235,6 +235,7 @@ const contentTypeToLabel: {
       fr: 'Raid Alliance Chaotique',
       cn: '诛灭战',
       ko: '멸 연합 레이드',
+      tc: '激鬥戰',
     },
     short: {
       en: 'Chaotic',
@@ -242,6 +243,7 @@ const contentTypeToLabel: {
       fr: 'Chaotique',
       cn: '灭',
       ko: '멸',
+      tc: '滅',
     },
   },
   [ContentType.TheMaskedCarnivale]: {

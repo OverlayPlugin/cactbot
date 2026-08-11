@@ -208,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス背面のサークル上に',
           cn: '站在目标圈上 (远离坦克死刑)',
           ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
-          tc: '站在目標圈上 (遠離坦剋死刑)',
+          tc: '站在目標圈上 (遠離坦克死刑)',
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
@@ -217,7 +217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンク攻撃 (${dir} => 赤に当たる)',
           cn: '坦克死刑 (${dir} => 吃红色)',
           ko: '광역 탱버 대상자 (${dir} => 빨간색 맞기)',
-          tc: '坦剋死刑 (${dir} => 吃紅色)',
+          tc: '坦克死刑 (${dir} => 吃紅色)',
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
@@ -226,7 +226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンク攻撃 (${dir} => 青に当たる)',
           cn: '坦克死刑 (${dir} => 吃蓝色)',
           ko: '광역 탱버 대상자 (${dir} => 파란색 맞기)',
-          tc: '坦剋死刑 (${dir} => 吃藍色)',
+          tc: '坦克死刑 (${dir} => 吃藍色)',
         },
         tankCleave: Outputs.tankCleaveOnYou,
         in: Outputs.in,
@@ -418,7 +418,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '爆弾を流砂に捨てる',
           cn: '流沙里放置炸弹',
           ko: '늪에 폭탄 놓기',
-          tc: '流沙裡放置炸彈',
+          tc: '流沙里放置炸彈',
         },
         wingedBomb: {
           en: 'Aim bomb towards quicksand',
@@ -1053,28 +1053,27 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Mouthwatering Morbol': 'シュガーズモルボル',
-        'Sugar Riot': 'シュガーライオット',
-        'Sweet Shot': 'シュガーズアロー',
+        'Mouthwatering Morbol': '糖糖毛爾波爾',
+        'Sugar Riot': '糖彩狂潮',
+        'Sweet Shot': '糖糖箭',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(snapshot\\)': '', // FIXME '(快照)'
-        // '--2x Feather Ray targetable--': '', // FIXME '--2x 羽环鳐 可选中--'
-        // '--2x Mu targetable--': '', // FIXME '--2x 亩鼠 可选中--'
-        // '--Gimme Cat targetable--': '', // FIXME '--索取猫 可选中--'
-        // '--Jabberwock targetable--': '', // FIXME '--炸脖龙 可选中--'
-        // '--Yan targetable--': '', // FIXME '--羊 可选中--'
-        // '--jump\\?--': '', // FIXME '--跳?--'
+        '\\(cast\\)': '(詠唱)',
+        '\\(snapshot\\)': '(快照)',
+        '--2x Feather Ray targetable--': '--2x 羽環鰩 可選中--',
+        '--2x Mu targetable--': '--2x 畝鼠 可選中--',
+        '--Gimme Cat targetable--': '--索取貓 可選中--',
+        '--Jabberwock targetable--': '--賈巴沃克 可選中--',
+        '--Yan targetable--': '--羊 可選中--',
+        '--jump\\?--': '--跳?--',
         'Artistic Anarchy': '藝術大亂鬥',
         'Bad Breath': '臭氣',
         'Brûlée': '熱耗散',
         'Burst': '爆炸',
         'Color Clash': '色彩衝擊',
         'Color Riot': '色彩暴亂',
-        // 'Cool Bomb': '', // FIXME '冷色爆弹怪'
+        'Cool Bomb': '冷色炸彈',
         'Crowd Brûlée': '重熱擴散',
         'Dark Mist': '暗黑霧',
         'Double Style': '雙手塗鴉',
@@ -1084,21 +1083,21 @@ const triggerSet: TriggerSet<Data> = {
         'Lightning Bolt': '落雷',
         'Lightning Storm': '百雷',
         'Live Painting': '即興繪畫',
-        'Moussacre': '慕斯怪大進軍',
+        'Moussacre': '慕斯慕斯衝',
         'Mousse Drip': '啪嘰慕斯怪',
-        'Mousse Mural': '慕斯怪之雨',
+        'Mousse Mural': '慕斯怪大雨',
         'Pudding Graf': '咣噹布丁',
-        'Pudding Party': '布丁聚會',
+        'Pudding Party': '布丁派對',
         'Ready Ore Not': '送你原石',
         'Rush': '突進',
         'Single Style': '單手塗鴉',
-        'Soul Sugar': '糖果之魂',
+        'Soul Sugar': '糖糖之魂',
         'Spray Pain': '飛針',
         'Sticky Mousse': '黏黏慕斯怪',
-        'Sugarscape': '沙地繪景',
-        'Taste of Fire': '糖果火焰',
-        'Taste of Thunder': '糖果雷電',
-        // 'Warm Bomb': '', // FIXME '暖色爆弹怪'
+        'Sugarscape': '糖心繪景',
+        'Taste of Fire': '雙手塗鴉',
+        'Taste of Thunder': '糖糖雷電',
+        'Warm Bomb': '暖色炸彈',
         'Wingmark': '翅膀標記',
       },
     },

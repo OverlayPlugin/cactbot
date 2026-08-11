@@ -92,12 +92,29 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
   'EternalWatch': '329',
   'FlameOfDusk': '32A',
   'TheForkedTowerBlood': '33B',
+  // Occult Crescent: North Horn
+  'ManyMouthsToFeed': '39B',
+  'DoubledTrouble': '398',
+  'QuarriedAway': '397',
+  'ForbiddenFolios': '39A',
+  'CursedResurgence': '3B9',
+  'ImbalancedDiet': '3BF',
+  'WebOfTerror': '3CA',
+  'ABeastUnleashed': '3C0',
+  'DarkArtistry': '3A8',
+  'FamiliarTactics': '390',
+  'AppallingBehavior': '3BA',
+  'TinyTerror': '3CC',
+  'LostOnTheWind': '3A9',
+  'AheadOfTheCompetition': '3BC',
+  'AcceptNoImitators': '3CB',
+  'TheForkedTowerMagic': '389',
 };
 
 // Forked Tower CE DirectorUpdates do not get listed in the XIV API.
 //
 // After each boss or area is completed, there is an associated
-// DirectorUpdate with a unique ID. However, the 4 main encounters come with
+// DirectorUpdate with a unique ID. However, the main encounters come with
 // seal/unseal lines which are used to separate the encounters instead of
 // using these IDs. There are two "trash" encounters, the central passages
 // and the lockwards which we could theoretically track by using the
@@ -111,6 +128,8 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
 // Tower are included here by comment, but are not added as Synthetic CEs
 // due to issues that causes with tracking the normal encounters.
 //
+// Forked Tower: Blood
+// -------------------
 // 33B => Demon Tablet
 // 33F => demon tablet defeated
 // 33C => passage to Dead Stars is opened
@@ -118,12 +137,26 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
 // 33D => Bridges cleared
 // 341 => Marble Dragon cleared
 // 33E => Magitaur room unlocked
+//
+// Forked Tower: Magic
+// -------------------
+// 389 => Two Headed Aevis (boss)
+// 38D => Lower Vestibule
+// 38A => Sword Dancer (boss)
+// 38E => Central Mezzanine
+// 38B => Necrophobia (boss)
+// 38F => Upper Vestibule
+// 38C => The Index (boss)
+//
+// Forked Tower: Magic and Forked Tower: Magic (Extreme) share DirectorUpdate IDs.
 const _SYNTHETIC_CE_INFO: ZoneNameToCeInfo = {
   'South Horn': {},
+  'North Horn': {},
 };
 
 const _EXCLUDED_CE_BY_ZONE_NAME: ZoneNameToExcludedCEs = {
   'South Horn': [],
+  'North Horn': [],
 };
 
 const Overrides: OverrideContainer = {

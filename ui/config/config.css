@@ -73,6 +73,10 @@ html {
   grid-template-columns: repeat(1, auto 1fr);
   justify-items: left;
   align-items: center;
+
+  /* sticky top-level headers */
+  position: sticky;
+  top: 0;
 }
 
 .overlay-header::before {

@@ -1,0 +1,613 @@
+### WINDURST: THE THIRD WALK
+# ZoneId: 1368
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~~~~~~~#
+# Shantotto The Demon #
+#~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii C41D C423 C424 C751
+
+# IGNORED ABILITIES
+# C41D Dainty Step
+# C423 Final Exam
+# C424 Final Exam
+# C751 Superior Stone II
+
+# The Dais Of Ascension will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1594" } window 1000,1
+1013.1 "Flare Play" Ability { id: "C427", source: "Shantotto the Demon" }
+1022.3 "--sync--" Ability { id: "C425", source: "Shantotto the Demon" } # Vidohunir
+1023.2 "Vidohunir" Ability { id: "C426", source: "Shantotto the Demon" }
+1030.2 "--sync--" Ability { id: "C41E", source: "Shantotto the Demon" } # Empirical Research
+1031.1 "Empirical Research" Ability { id: "C420", source: "Shantotto the Demon" }
+1040.0 "--sync--" Ability { id: "C411", source: "Shantotto the Demon" } # Superior Stone II
+1040.8 "Superior Stone II" Ability { id: "C412", source: "Shantotto the Demon" }
+1052.1 "--sync--" Ability { id: "C413", source: "Shantotto the Demon" } # Groundbreaking Quake
+1053.1 "Groundbreaking Quake" Ability { id: "C414", source: "Shantotto the Demon" }
+1053.5 "Painful Pressure" Ability { id: "C415", source: "Shantotto the Demon" }
+1059.4 "--sync--" Ability { id: "C41E", source: "Shantotto the Demon" } # Empirical Research
+1060.2 "Empirical Research" Ability { id: "C420", source: "Shantotto the Demon" }
+1063.6 "--middle--" Ability { id: "C410", source: "Shantotto the Demon" }
+1067.7 "Diagrammatic Doorway" Ability { id: "C418", source: "Shantotto the Demon" }
+1082.7 "Circumscribed Fire 1" Ability { id: "C419", source: "Shantotto the Demon" }
+1085.8 "Circumscribed Fire 2" Ability { id: "C41A", source: "Shantotto the Demon" }
+1088.9 "Circumscribed Fire 3" Ability { id: "C41A", source: "Shantotto the Demon" }
+1092.0 "Circumscribed Fire 4" Ability { id: "C41A", source: "Shantotto the Demon" }
+1095.3 "Localized Blizzard" Ability { id: "C41B", source: "Shantotto the Demon" }
+1099.6 "Thunder and Error" #Ability { id: "C41C", source: "Shantotto the Demon" }
+1103.6 "--middle--" # slow walk, no accompanying ability
+1107.8 "Meteoric Rhyme" Ability { id: "C406", source: "Shantotto the Demon" }
+1114.9 "Small Specimen x12" duration 22.6 #Ability { id: "C408", source: "Shantotto the Demon" }
+1121.9 "Large Specimen" #Ability { id: "C40A", source: "" }
+1136.7 "Stardust Specimen" Ability { id: "C409", source: "Shantotto the Demon" }
+1144.8 "--east/west--" Ability { id: "C407", source: "Shantotto the Demon" }
+1150.4 "--untargetable--"
+1150.5 "--sync--" Ability { id: "C5D8", source: "Shantotto the Demon" }
+1159.2 "Shockwave" Ability { id: "C40B", source: "Shantotto the Demon" } window 30,30
+1161.4 "--targetable--"
+1167.1 "Falling Rubble" duration 6 #Ability { id: "C40F", source: "Shantotto the Demon" }
+1178.7 "--middle--" # slow walk, no accompanying ability
+1183.3 "--sync--" Ability { id: "C411", source: "Shantotto the Demon" } # Superior Stone II
+
+1184.1 label "shantotto-loop"
+1184.1 "Superior Stone II" Ability { id: "C412", source: "Shantotto the Demon" }
+1188.4 "Aero Dynamics" Ability { id: "C416", source: "Shantotto the Demon" }
+1198.5 "--middle--" Ability { id: "C410", source: "Shantotto the Demon" }
+1199.4 "Aero Dynamics" Ability { id: "C417", source: "Shantotto the Demon" }
+1207.8 "--sync--" Ability { id: "C413", source: "Shantotto the Demon" } # Groundbreaking Quake
+1208.8 "Groundbreaking Quake" Ability { id: "C414", source: "Shantotto the Demon" }
+1209.2 "Painful Pressure" Ability { id: "C415", source: "Shantotto the Demon" }
+1214.2 "--sync--" Ability { id: "C41E", source: "Shantotto the Demon" } # Empirical Research
+1215.0 "Empirical Research" Ability { id: "C420", source: "Shantotto the Demon" }
+1219.4 "--middle--" Ability { id: "C410", source: "Shantotto the Demon" }
+1223.4 "Diagrammatic Doorway" Ability { id: "C418", source: "Shantotto the Demon" }
+1240.3 "Circumscribed Fire 1" Ability { id: "C419", source: "Shantotto the Demon" }
+1243.4 "Circumscribed Fire 2" Ability { id: "C41A", source: "Shantotto the Demon" }
+1246.5 "Circumscribed Fire 3" Ability { id: "C41A", source: "Shantotto the Demon" }
+1249.6 "Circumscribed Fire 4" Ability { id: "C41A", source: "Shantotto the Demon" }
+1252.7 "Circumscribed Fire 5" Ability { id: "C41A", source: "Shantotto the Demon" }
+1255.8 "Circumscribed Fire 6" Ability { id: "C41A", source: "Shantotto the Demon" }
+1259.1 "Localized Blizzard" Ability { id: "C41B", source: "Shantotto the Demon" }
+1263.0 "Thunder and Error" #Ability { id: "C41C", source: "Shantotto the Demon" }
+1277.3 "Flare Play" Ability { id: "C427", source: "Shantotto the Demon" }
+1286.9 "Final Exam x3" Ability { id: "C422", source: "Shantotto the Demon" } duration 3
+1295.2 "--sync--" Ability { id: "C41E", source: "Shantotto the Demon" } # Empirical Research
+1296.0 "Empirical Research" Ability { id: "C420", source: "Shantotto the Demon" }
+1306.6 "--sync--" Ability { id: "C425", source: "Shantotto the Demon" } # Vidohunir
+1307.5 "Vidohunir" Ability { id: "C426", source: "Shantotto the Demon" }
+
+1319.5 "--sync--" Ability { id: "C411", source: "Shantotto the Demon" } # Superior Stone II
+1320.4 "Superior Stone II" Ability { id: "C412", source: "Shantotto the Demon" } forcejump "shantotto-loop"
+
+
+
+# ALL ENCOUNTER ABILITIES
+# C406 Meteoric Rhyme: Summon puddles
+# C407 --sync--: Move east/west for ultimate attack
+# C408 Small Specimen: Meteor puddles
+# C409 Stardust Specimen: Stack marker
+# C40A Large Specimen: Proximity AoE
+# C40B Shockwave: Ultimate raidwide
+# C40C Falling Rubble: Circle AoE
+# C40D Falling Rubble: Circle AoE
+# C40E Falling Rubble: Line AoE
+# C40F Falling Rubble: Line AoE
+# C410 --sync--: reposition
+# C411 Superior Stone II: Walls + raidwide castbar
+# C412 Superior Stone II: Raidwide
+# C413 Groundbreaking Quake: Wall collapse castbar
+# C414 Groundbreaking Quake: Wall collapse
+# C415 Painful Pressure: Wall removal
+# C416 Aero Dynamics: Inflict wind movement debuff
+# C417 Aero Dynamics: Wind movement debuff resolve
+# C418 Diagrammatic Doorway: Summon ley lines
+# C419 Circumscribed Fire: First fire dynamo
+# C41A Circumscribed Fire: Moving fire dynamo
+# C41B Localized Blizzard: Ice chariot
+# C41C Thunder and Error: Lightning spread circles
+# C41D Dainty Step: Move between ley lines
+# C41E Empirical Research: Frontal line AoE castbar
+# C420 Empirical Research: Frontal line AoE
+# C422 Final Exam: Stack marker castbar
+# C423 Final Exam: Stack marker initial hit
+# C424 Final Exam: Stack marker follow-up hits
+# C425 Vidohunir: Tank buster castbar
+# C426 Vidohunir: Tank buster
+# C427 Flare Play: Raidwide
+# C4CE --sync--: Unknown, something to do with Aero Dynamics
+# C751 Superior Stone II: Walls appear
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~#
+# Alexander Resurrected #
+#~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii C3CE C3CF C3D0 C3D1 C3EF C3F5 C3F6 C404 C52E C6A1
+
+# IGNORED ABILITIES
+# C3CE Divine Arrow: Jump animation. Uncertain what differentiates it from C3CF
+# C3CF Divine Arrow: Jump animation. Uncertain what differentiates it from C3CE
+# C3D0 Divine Arrow: Jump animation?
+# C3D1 Divine Arrow: Jump animation?
+# C3EF Mega Holy: Stack marker second + third hits
+# C3F5 Holy II: Baited puddles during Banishga IV
+# C3F6 Repay: Karmic Shielding retaliation
+# C404 --sync--: Auto-attack
+# C52E Divine Arrow: Spinning cleave active
+# C6A1 Divine Bolt: Solo laser tank buster
+
+# The Ruin Of Light Divine will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1597" } window 2000,1
+2013.1 "Banishga IV (raidwide)" Ability { id: "C3F1", source: "Alexander Resurrected" }
+2021.9 "--middle--" Ability { id: "C3CB", source: "Alexander Resurrected" }
+2035.1 "Divine Arrow (castbar)" Ability { id: ["C3CC", "C3CD"], source: "Alexander Resurrected" }
+2038.3 "Divine Arrow (cone)" Ability { id: "C3D2", source: "Alexander Resurrected" } duration 12
+2045.8 "Divine Arrow 1 (in/out ring)" Ability { id: ["C3D3", "C3D8"], source: "Alexander Resurrected" }
+2047.8 "Divine Arrow 2 (mid ring)" Ability { id: ["C3D4", "C3D7"], source: "Alexander Resurrected" }
+2049.8 "Divine Arrow 3 (out/in ring)" Ability { id: ["C3D5", "C3D6"], source: "Alexander Resurrected" }
+2055.1 "Banishga IV (spreads)" Ability { id: "C3F3", source: "Alexander Resurrected" }
+2068.8 "Impartial Ruling (castbar)" Ability { id: ["C3E0", "C3E1"], source: "Alexander Resurrected" }
+2069.6 "Impartial Ruling (left/right)" Ability { id: "C3E2", source: "Alexander Resurrected" }
+2072.6 "Impartial Ruling (right/left)" Ability { id: "C3E3", source: "Alexander Resurrected" }
+2079.1 "Canonize Coordinates" Ability { id: "C3DB", source: "Alexander Resurrected" }
+2087.2 "Radiant Sacrament (castbar)" Ability { id: "C3DC", source: "Alexander Resurrected" }
+2100.2 "Radiant Sacrament (explosions)" duration 3 #Ability { id: "C3DD", source: "Alexander Resurrected" }
+2109.4 "Divine Spear (castbar)" Ability { id: "C3DE", source: "Alexander Resurrected" }
+2119.5 "Divine Spear (explosion)" Ability { id: "C3DF", source: "Alexander Resurrected" }
+2124.0 "Mega Holy (castbar)" Ability { id: "C3ED", source: "Alexander Resurrected" }
+2124.5 "Mega Holy x3" Ability { id: "C3EE", source: "Alexander Resurrected" } duration 3.3
+2133.2 "--middle--" Ability { id: "C3CB", source: "Alexander Resurrected" }
+2139.4 "Sacred Assembly" Ability { id: "C3E4", source: "Alexander Resurrected" }
+2141.4 "Activate" Ability { id: "C42B", source: "Alexander Resurrected" }
+2142.6 "--sync--" StartsUsing { id: "C3E5", source: "Alexander Resurrected" } window 142.6,10
+
+# Intermission
+2148.5 "Perfect Defense" Ability { id: "C3E5", source: "Alexander Resurrected" }
+2158.6 "Karmic Shielding" Ability { id: "C5FE", source: "Gordius System" }
+2162.6 "Holy Flame" #Ability { id: "C3E6", source: "Alexander Resurrected" }
+2168.6 "--sync--" Ability { id: "C3F9", source: "Gordius System" } # Circuit Shock
+2168.6 "Shock" Ability { id: "C3E8", source: "Gordius System" }
+2174.6 "Karmic Shielding" Ability { id: "C5FE", source: "Gordius System" }
+2178.6 "Holy Flame" #Ability { id: "C3E6", source: "Alexander Resurrected" }
+2184.6 "Shock" Ability { id: "C3E8", source: "Gordius System" }
+2184.6 "--sync--" Ability { id: "C3F9", source: "Gordius System" } # Circuit Shock
+
+# This is the latest Divine Judgment can be cast
+2190.3 "--sync--" StartsUsing { id: "C3E9", source: "Alexander Resurrected" } window 70,20
+2200.3 "Divine Judgment" Ability { id: "C3E9", source: "Alexander Resurrected" }
+2213.5 "--middle--" Ability { id: "C3CB", source: "Alexander Resurrected" }
+2226.8 "Divine Arrow (castbar)" Ability { id: "C3CD", source: "Alexander Resurrected" }
+2230.0 "Divine Arrow (cone)" Ability { id: "C3D2", source: "Alexander Resurrected" } duration 12
+2231.6 "Divine Arrow 1 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2233.6 "Divine Arrow 2 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2237.6 "Divine Arrow 3 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2239.6 "Divine Arrow 4 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2244.8 "Banishga IV (spreads)" Ability { id: "C3F3", source: "Alexander Resurrected" }
+2252.3 "Sacred Assembly" Ability { id: "C3E4", source: "Alexander Resurrected" }
+2254.3 "Activate" #Ability { id: "C42B", source: "Alexander Resurrected" }
+2258.4 "Reinforcements" Ability { id: "C3EA", source: "Alexander Resurrected" }
+2268.5 "Electrify 1" #Ability { id: "C3EC", source: "Gordius System" }
+2271.5 "Electrify 2" #Ability { id: "C3EC", source: "Gordius System" }
+
+
+2281.5 label "alexander-loop"
+2281.6 "Banishga IV (spread)" Ability { id: "C3F3", source: "Alexander Resurrected" }
+2281.7 "Divine Bolt" Ability { id: "C3F0", source: "Alexander Resurrected" }
+2287.9 "Canonize Coordinates" Ability { id: "C3DB", source: "Alexander Resurrected" }
+2296.0 "Radiant Sacrament (castbar)" Ability { id: "C3DC", source: "Alexander Resurrected" }
+2304.2 "--middle--" Ability { id: "C3CB", source: "Alexander Resurrected" }
+2306.2 "Radiant Sacrament (explosions)" duration 3 #Ability { id: "C3DD", source: "Alexander Resurrected" }
+2313.8 "Impartial Ruling (castbar)" Ability { id: ["C3E0", "C3E1"], source: "Alexander Resurrected" }
+2314.5 "Impartial Ruling (left/right)" Ability { id: "C3E2", source: "Alexander Resurrected" }
+2317.5 "Impartial Ruling (right/left)" Ability { id: "C3E3", source: "Alexander Resurrected" }
+2317.5 "Banishga IV" Ability { id: "C3F3", source: "Alexander Resurrected" }
+2326.1 "Sacred Assembly" Ability { id: "C3E4", source: "Alexander Resurrected" }
+2328.1 "Activate" Ability { id: "C42B", source: "Alexander Resurrected" }
+2332.2 "Reinforcements" Ability { id: "C3EA", source: "Alexander Resurrected" }
+2342.3 "Electrify 1" #Ability { id: "C3EC", source: "Gordius System" }
+2345.3 "Electrify 2" #Ability { id: "C3EC", source: "Gordius System" }
+2348.9 "Impartial Ruling (castbar)" Ability { id: ["C3E0", "C3E1"], source: "Alexander Resurrected" }
+2349.8 "Impartial Ruling (left/right)" Ability { id: "C3E2", source: "Alexander Resurrected" }
+2352.8 "Impartial Ruling (right/left)" Ability { id: "C3E3", source: "Alexander Resurrected" }
+2362.2 "Banishga IV" Ability { id: "C3F1", source: "Alexander Resurrected" }
+2371.3 "Divine Spear (castbar)" Ability { id: "C3DE", source: "Alexander Resurrected" }
+2381.4 "Divine Spear (explosion)" Ability { id: "C3DF", source: "Alexander Resurrected" }
+2385.4 "Mega Holy (castbar)" Ability { id: "C3ED", source: "Alexander Resurrected" }
+2385.8 "Mega Holy x3" Ability { id: "C3EE", source: "Alexander Resurrected" }
+2395.7 "--middle--" Ability { id: "C3CB", source: "Alexander Resurrected" }
+2409.0 "Divine Arrow (castbar)" Ability { id: ["C3CC", "C3CD"], source: "Alexander Resurrected" }
+2412.2 "Divine Arrow (cone)" Ability { id: "C3D2", source: "Alexander Resurrected" } duration 12
+2413.6 "Divine Arrow 1 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2415.6 "Divine Arrow 2 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2419.6 "Divine Arrow 3 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2421.6 "Divine Arrow 4 (grid)" #Ability { id: ["C3D9", "C3DA"], source: "Alexander Resurrected" }
+2426.8 "Banishga IV (spread)" Ability { id: "C3F3", source: "Alexander Resurrected" } forcejump "alexander-loop"
+
+
+# ALL ENCOUNTER ABILITIES
+# C3CB --middle--
+# C3CC Divine Arrow: Castbar. Uncertain what differentiates it from C3CD
+# C3CD Divine Arrow: Castbar. Uncertain what differentiates it from C3CC
+# C3CE Divine Arrow: Jump animation. Uncertain what differentiates it from C3CF
+# C3CF Divine Arrow: Jump animation. Uncertain what differentiates it from C3CE
+# C3D0 Divine Arrow: Jump animation?
+# C3D1 Divine Arrow: Jump animation?
+# C3D2 Divine Arrow: Initial cleave, counterclockwise
+# C3D3 Divine Arrow: Chariot AoE, in-to-out pattern
+# C3D4 Divine Arrow: Middle ring AoE, in-to-out pattern
+# C3D5 Divine Arrow: Outer ring AoE, in-to-out pattern
+# C3D6 Divine Arrow: Chariot AoE, out-to-in pattern
+# C3D7 Divine Arrow: Middle ring AoE, out-to-in pattern
+# C3D8 Divine Arrow: Outer ring AoE, out-to-in pattern
+# C3D9 Divine Arrow: 3 vertical + 2 horizontal crosshatch lines
+# C3DA Divine Arrow: 2 vertical + 3 horizontal crosshatch lines
+# C3DB Canonize Coordinates: Display Sacrament grid lines
+# C3DC Radiant Sacrament: Castbar; displays grid explosion pattern
+# C3DD Radiant Sacrament: Grid explosions
+# C3DE Divine Spear: Pinwheel lines castbar
+# C3DF Divine Spear: Pinwheel lines
+# C3E0 Impartial Ruling: Left-then-right half arena castbar
+# C3E1 Impartial Ruling: Right-then-left half arena castbar
+# C3E2 Impartial Ruling: Half arena cleave 1
+# C3E3 Impartial Ruling: Half arena cleave 2
+# C3E4 Sacred Assembly: Summon targetable Gordius System adds
+# C3E5 Perfect Defense: Alexander untargetable for intermission
+# C3E6 Holy Flame: Baited puddles
+# C3E8 Shock: Chariot AoE, Gordius System
+# C3E9 Divine Judgment: Intermission ultimate
+# C3EA Reinforcements: Summon untargetable Gordius System adds
+# C3EC Electrify: Large circle AoEs, Gordius System
+# C3ED Mega Holy: Stack marker castbar
+# C3EE Mega Holy: Stack marker first hit
+# C3EF Mega Holy: Stack marker second + third hits
+# C3F0 Divine Bolt: Tank buster castbar
+# C3F1 Banishga IV: Raidwide
+# C3F3 Banishga IV: Spread circles
+# C3F5 Holy II: Baited puddles during Banishga IV
+# C3F6 Repay: Karmic Shielding retaliation
+# C3F9 Circuit Shock: Dynamo AoE, Gordius System
+# C404 --sync--: Auto-attack
+# C42B Activate: Gordius System activation
+# C52E Divine Arrow: Spinning cleave active
+# C5FE Karmic Shielding: Activates Repay retaliation, Gordius System
+# C6A1 Divine Bolt: Solo laser tank buster
+
+
+#~~~~~~~~~~~#
+# Promathia #
+#~~~~~~~~~~~#
+
+# -ii C498 C499 C49A C49C C4A1 C4A5 C4A8 C4AA C4B1 C4B2 C51C
+
+# IGNORED ABILITIES
+# C498 Malevolent Blessing: Radial cone AoEs
+# C499 Malevolent Blessing: Half-arena cleave
+# C49A Pestilent Penance: Frontal half-arena cleave castbar
+# C49C Pestilent Penance: Line AoE, Link of Promathia
+# C4A1 Comet: Splash buster castbar
+# C4A5 Meteor: Splash buster
+# C4A8 False Genesis: Raidwide before intermission
+# C4B1 Winds of Promyvion: Spinny laser, initial, intermission
+# C4B2 Winds of Promyvion: Spinny laser follow-ups, intermission
+# C51C Winds of Promyvion: Spinny laser follow-ups, intermission
+
+# The Empyreal Paradox will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1591" } window 3000,1
+3007.2 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3013.5 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3020.2 "Fleeting Eternity" Ability { id: "C48E", source: "Promathia" }
+3029.0 "Explosion" Ability { id: "C490", source: "Promathia" }
+3031.3 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3036.0 "Fleeting Eternity" Ability { id: "C48E", source: "Promathia" }
+3041.8 "Explosion" Ability { id: "C490", source: "Promathia" }
+3044.2 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3047.4 "Wheel of Impregnability (castbar)" Ability { id: "C491", source: "Promathia" }
+3058.1 "Wheel of Impregnability (explosion)" Ability { id: "C493", source: "Promathia" }
+3061.0 "Bastion of Twilight (castbar)" Ability { id: "C492", source: "Promathia" }
+3063.1 "--jump--" Ability { id: "C4A6", source: "Promathia" }
+3071.6 "Bastion of Twilight (explosion)" Ability { id: "C494", source: "Promathia" }
+3071.7 "Pestilent Penance" Ability { id: "C49B", source: "Promathia" }
+3078.7 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3085.0 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3091.7 "Fleeting Eternity" Ability { id: "C48E", source: "Promathia" }
+3097.5 "Explosion 1" Ability { id: "C490", source: "Promathia" }
+3097.8 "Fleeting Eternity" Ability { id: "C48F", source: "Promathia" }
+3100.6 "Explosion 2" Ability { id: "C490", source: "Promathia" }
+3103.6 "Explosion 3" Ability { id: "C490", source: "Promathia" }
+3107.1 "Comet" Ability { id: "C4A2", source: "Promathia" }
+3112.1 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3112.1 "--untargetable--"
+
+# Intermission
+3115.2 "--sync--" Ability { id: "C4A9", source: "Promathia" } window 115,10
+3123.8 "False Genesis" Ability { id: "C4A7", source: "Promathia" }
+
+3136.0 "Winds of Promyvion" Ability { id: "C4B0", source: "Empty Thinker" } duration 5
+3138.1 "Empty Beleaguer 1" Ability { id: "C4AF", source: "Empty Wanderer" }
+3139.2 "Auroral Drape" Ability { id: "C4B3", source: "Empty Weeper" }
+3141.2 "Empty Beleaguer 2" Ability { id: "C4AF", source: "Empty Wanderer" }
+3151.2 "Empty Seed" Ability { id: "C4AD", source: "Memory Receptacle" }
+
+3155.2 "Winds of Promyvion" Ability { id: "C4B0", source: "Empty Thinker" } duration 5
+3157.3 "Empty Beleaguer 1" Ability { id: "C4AF", source: "Empty Wanderer" }
+3158.4 "Auroral Drape" Ability { id: "C4B3", source: "Empty Weeper" }
+3160.4 "Empty Beleaguer 2" Ability { id: "C4AF", source: "Empty Wanderer" }
+3172.4 "Empty Seed" Ability { id: "C4AD", source: "Memory Receptacle" }
+
+# Don't sync on round 3 in case enemies are dead.
+3176.4 "Winds of Promyvion" #Ability { id: "C4B0", source: "Empty Thinker" }
+3178.7 "Empty Beleaguer 1" #Ability { id: "C4AF", source: "Empty Wanderer" }
+3179.6 "Auroral Drape" #Ability { id: "C4B3", source: "Empty Weeper" }
+3181.8 "Empty Beleaguer 2" #Ability { id: "C4AF", source: "Empty Wanderer" }
+3192.4 "Empty Seed" Ability { id: "C4AD", source: "Memory Receptacle" }
+3203.3 "Deadly Rebirth Enrage" Ability { id: "C4AC", source: "Promathia" }
+
+
+# Alxaal's voice line
+# InstanceContentTextData AEB1/44721
+# "So long as I hold faith in my comrades, and they in me, darkness shall find no purchase in my heart."
+3293.6 "--sync--" ActorControl { command: '80000027', data0: '73' } window 250,10
+
+3299.6 "--targetable--"
+3310.4 "--sync--" Ability { id: "C606", source: "Promathia" } # Deadly Rebirth
+3312.4 "Deadly Rebirth" Ability { id: "C4AB", source: "Promathia" }
+
+3320.6 label "promathia-loop"
+3320.6 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3326.9 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3332.0 "Earthbound Heaven" Ability { id: "C49D", source: "Promathia" }
+3340.9 "Explosion" Ability { id: "C490", source: "Promathia" }
+3341.0 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3347.9 "Malevolent Blessing" Ability { id: ["C496", "C497"], source: "Promathia" }
+3357.1 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3362.2 "Earthbound Heaven" Ability { id: "C49D", source: "Promathia" }
+3366.3 "Bastion of Twilight" Ability { id: "C492", source: "Promathia" }
+3368.4 "--jump--" Ability { id: "C4A6", source: "Promathia" }
+3371.0 "Explosion" Ability { id: "C490", source: "Promathia" }
+3376.8 "Bastion of Twilight" Ability { id: "C494", source: "Promathia" }
+3376.9 "Pestilent Penance" Ability { id: "C49B", source: "Promathia" }
+3384.9 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3391.1 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3399.8 "--sync--" Ability { id: "C49E", source: "Promathia" } # Infernal Deliverance castbar
+3401.4 "Infernal Deliverance (towers)" #Ability { id: "C49F", source: "Promathia" }
+3406.0 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3406.6 "Infernal Deliverance (puddles)" Ability { id: "C585", source: "Promathia" }
+3410.6 "Fleeting Eternity" Ability { id: "C48E", source: "Promathia" }
+3416.4 "Explosion 1" Ability { id: "C490", source: "Promathia" }
+3416.7 "Fleeting Eternity" Ability { id: "C48F", source: "Promathia" }
+3419.5 "Explosion 2" Ability { id: "C490", source: "Promathia" }
+3422.5 "Explosion 3" Ability { id: "C490", source: "Promathia" }
+3426.4 "--sync--" Ability { id: "C4A3", source: "Promathia" } # Meteor castbar
+3427.0 "Meteor" Ability { id: "C4A4", source: "Promathia" }
+3438.0 "--middle--" Ability { id: "C4A6", source: "Promathia" }
+3444.2 "Empty Salvation" Ability { id: "C48D", source: "Promathia" }
+3449.3 "Earthbound Heaven" Ability { id: "C49D", source: "Promathia" }
+3453.4 "Wheel of Impregnability" Ability { id: "C491", source: "Promathia" }
+3458.2 "Explosion" Ability { id: "C490", source: "Promathia" }
+3463.2 "Malevolent Blessing" Ability { id: ["C496", "C497"], source: "Promathia" }
+3464.2 "Wheel of Impregnability" Ability { id: "C493", source: "Promathia" }
+
+3469.3 "--middle--" Ability { id: "C4A6", source: "Promathia" } forcejump "promathia-loop"
+
+# ALL ENCOUNTER ABILITIES
+# B0FC attack
+# C48D Empty Salvation: Raidwide
+# C48E Fleeting Eternity: Spawn line orbs, fan pattern
+# C48F Fleeting Eternity: Spawn second line orbs, if applicable
+# C490 Explosion: Fleeting Eternity orb explosions
+# C491 Wheel of Impregnability: Chariot AoE castbar
+# C492 Bastion of Twilight: Dynamo AoE castbar
+# C493 Wheel of Impregnability: Chariot AoE
+# C494 Bastion of Twilight: Dynamo AoE
+# C496 Malevolent Blessing: Half-arena cleave castbar, right
+# C497 Malevolent Blessing: Half-arena cleave castbar, left
+# C498 Malevolent Blessing: Radial cone AoEs
+# C499 Malevolent Blessing: Half-arena cleave
+# C49A Pestilent Penance: Frontal half-arena cleave castbar
+# C49B Pestilent Penance: Frontal half-arena cleave
+# C49C Pestilent Penance: Line AoE, Link of Promathia
+# C49D Earthbound Heaven: Spawn line orbs, hex pattern
+# C49E Infernal Deliverance: Tower castbar
+# C49F Infernal Deliverance: Tower resolution
+# C4A0: Unmitigated Explosion: Tower failure
+# C4A1 Comet: Splash buster castbar
+# C4A2 Comet: Splash buster
+# C4A3 Meteor: Spread circles + splash buster castbar
+# C4A4 Meteor: Spread circles
+# C4A5 Meteor: Splash buster
+# C4A6 --sync--: reposition
+# C4A7 False Genesis: Raidwide before intermission, castbar
+# C4A8 False Genesis: Raidwide before intermission
+# C4A9 --sync--: Tether to Alxaal before intermission (unnamed, but it is alongside False Genesis)
+# C4AB Deadly Rebirth: Raidwide after intermission
+# C4AD Empty Seed: Radial knockback, intermission
+# C4AF Empty Beleaguer: 2-1 dodge circles, intermission
+# C4B0 Winds of Promyvion: Spinny laser castbar, intermission
+# C4B1 Winds of Promyvion: Spinny laser, initial, intermission
+# C4B2 Winds of Promyvion: Spinny laser follow-ups, intermission
+# C4B3 Auroral Drape: 1/4 safespots, intermission
+# C51C Winds of Promyvion: Spinny laser follow-ups, intermission
+# C585 Infernal Deliverance: Tower puddle follow-up
+# C606 Deadly Rebirth: Raidwide after intermission, castbar
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Shinryu Paradox/Hollow King #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii BFD2 BFD3 BFD5 BFD6 BFD8 BFDA BFDB BFDC BFE2 BFE3 BFE5 BFE9 BFEA BFEB BFEC BFEF BFF1 BFF2 BFF5 BFF8 C001 C002 C003 C004 C007 C008 C00A C00B C01C C01D C01F
+
+# IGNORED ABILITIES
+# BFD2 Cosmic Breath: Upper platform denial, lower castbar
+# BFD3 Cosmic Breath: Upper platform denial
+# BFD5 Cosmic Tail: Lower platform denial, lower castbar
+# BFD6 Cosmic Tail: Lower platform denial
+# BFD8 Cloak of Twilight: Lower platform aspect
+# BFDA Twilight Nebula: Lower platform debuff cast
+# BFDB Twilight Radiance: Light aspect floor explosion
+# BFDC Twilight Shadow: Dark aspect floor explosion
+# BFE2 Cataclysmic Vortex: Lower platform Simon Says cast
+# BFE3 Cataclysmic Vortex: Simon Says failure?
+# BFE5 Starflare: Lower platform grid line AoE castbar
+# BFE9 Atomic Tail: Lower platform lower platform destruction castbar
+# BFEA Atomic Tail: Lower platform destruction
+# BFEB Gyre Charge: Upper platform intermission cast
+# BFEC Gyre Charge: Lower platform intermission cast
+# BFEF Dark Nova: Lower platform tank cleave castbar
+# BFF1 --sync--: auto-attack self-cast
+# BFF2 --sync--: auto-attack
+# BFF5 Celestial Trail: Tower animation?
+# BFF8 Celestial Trail: Tower animation?
+# C001 Right Swordscross: Right-side cleave, orthogonal
+# C002 Left Swordscross: Left-side cleave, orthogonal
+# C003 Right Swordscross: Right-side cleave, diagonal
+# C004 Left Swordscross: Left-side cleave, diagonal
+# C007 Twin Blaze: Cone AoE
+# C008 Twin Blaze: Dynamo AoE
+# C00A Cataclysmic Blade: Blue cone AoEs
+# C00B Cataclysmic Blade: Debuff failure?
+# C01C --sync--: auto-attack self-cast
+# C01D --sync--: auto-attack
+# C01F Super Nova: Stack marker hits
+
+4000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1592" } window 4000,1
+4013.2 "Cosmic Breath/Cosmic Tail" Ability { id: ["BFD1", "BFD4"], source: "Shinryu Paradox" } window 4013,10
+4028.9 "Cosmic Breath/Cosmic Tail" Ability { id: ["BFD1", "BFD4"], source: "Shinryu Paradox" }
+4036.6 "Cloak of Twilight" Ability { id: "BFD7", source: "Shinryu Paradox" }
+4050.3 "Twilight Nebula" Ability { id: "BFD9", source: "Shinryu Paradox" }
+4057.9 "Starflare (castbar)" Ability { id: "BFE4", source: "Shinryu Paradox" }
+4062.9 "Starflare 1 (lines)" Ability { id: "BFE6", source: "Shinryu Paradox" }
+4064.9 "Starflare 2 (lines)" Ability { id: "BFE7", source: "Shinryu Paradox" }
+4068.5 "Cosmic Breath/Cosmic Tail" Ability { id: ["BFD1", "BFD4"], source: "Shinryu Paradox" }
+4082.2 "Cataclysmic Vortex" Ability { id: "BFE1", source: "Shinryu Paradox" }
+4090.8 "Cloak of Twilight" Ability { id: "BFD7", source: "Shinryu Paradox" }
+4100.6 "Cosmic Breath/Cosmic Tail" Ability { id: ["BFD1", "BFD4"], source: "Shinryu Paradox" }
+4110.2 "Twilight Nebula" Ability { id: "BFD9", source: "Shinryu Paradox" }
+4116.8 "Starflare (castbar)" Ability { id: "BFE4", source: "Shinryu Paradox" }
+4121.8 "Starflare 1 (lines)" Ability { id: "BFE6", source: "Shinryu Paradox" }
+4123.8 "Starflare 2 (lines)" Ability { id: "BFE7", source: "Shinryu Paradox" }
+4127.4 "Cataclysmic Vortex" Ability { id: "BFE1", source: "Shinryu Paradox" }
+4136.0 "Dark Nova (castbar)" Ability { id: "BFEE", source: "Shinryu Paradox" }
+4137.1 "Dark Nova (buster)" Ability { id: "BFF0", source: "Shinryu Paradox" }
+4149.7 "Atomic Tail" Ability { id: "BFE8", source: "Shinryu Paradox" }
+4156.1 "Gyre Charge" Ability { id: "BFED", source: "Shinryu Paradox" }
+4156.2 "--untargetable--"
+
+4209.0 "--targetable--"
+4211.2 "Celestial Trail" Ability { id: "BFF3", source: "Hollow King" } window 200,10
+4237.9 "Celestial Trail 1 (towers)" #Ability { id: "BFF4", source: "Hollow King" }
+4240.7 "Celestial Trail 1 (damage)" #Ability { id: "BFF6", source: "Hollow King" }
+4245.1 "Celestial Trail 1 (knockback)" #Ability { id: "BFF7", source: "Hollow King" }
+4257.1 "Celestial Trail 2 (towers)" #Ability { id: "BFF4", source: "Hollow King" }
+4259.9 "Celestial Trail 2 (damage)" #Ability { id: "BFF6", source: "Hollow King" }
+4264.3 "Celestial Trail 2 (knockback)" #Ability { id: "BFF7", source: "Hollow King" }
+4293.9 "Empty Proclamation" Ability { id: "C01B", source: "Hollow King" } window 300,30
+4305.0 "Left Swordscross/Right Swordscross" Ability { id: ["C000", "BFFF"], source: "Hollow King" }
+4316.7 "Twin Blaze" Ability { id: ["C005", "C006"], source: "Hollow King" }
+4330.9 "Cataclysmic Blade" Ability { id: "C009", source: "Hollow King" }
+
+4341.9 label "king-loop"
+4342.0 "Burst (castbar)" Ability { id: "C012", source: "Hollow King" }
+4347.0 "Burst 1 (small)" Ability { id: "C013", source: "Hollow King" }
+4349.0 "Burst 2 (medium)" Ability { id: "C014", source: "Hollow King" }
+4351.0 "Burst 3 (large)" Ability { id: "C015", source: "Hollow King" }
+4354.1 "Twin Blaze" Ability { id: ["C005", "C006"], source: "Hollow King" }
+4363.3 "Cosmic Flame" Ability { id: "C00E", source: "Hollow King" } duration 15
+4373.5 "Atomic Ray (castbar)" Ability { id: "C00C", source: "Hollow King" }
+4386.3 "Atomic Ray (lines)" Ability { id: "C00D", source: "Arcane Sphere" }
+4392.6 "Cataclysmic Blade" Ability { id: "C009", source: "Hollow King" }
+4404.7 "Super Nova x3" Ability { id: "C01E", source: "Hollow King" } duration 5
+4411.8 "Empty Proclamation" Ability { id: "C01B", source: "Hollow King" }
+4426.0 "Cosmic Flame" Ability { id: "C00E", source: "Hollow King" } duration 15
+4441.2 "Left Swordscross/Right Swordscross" Ability { id: ["C000", "BFFF"], source: "Hollow King" }
+4449.9 "Starflare (castbar)" Ability { id: "C016", source: "Hollow King" }
+4454.9 "Starflare 1 (lines)" Ability { id: "C017", source: "Hollow King" }
+4456.9 "Starflare 2 (lines)" Ability { id: "C018", source: "Hollow King" }
+4464.0 "Left Swordscross/Right Swordscross" Ability { id: ["C000", "BFFF"], source: "Hollow King" }
+4474.7 "Super Nova x3" Ability { id: "C01E", source: "Hollow King" } duration 5
+4484.8 "Dark Nova (castbar)" Ability { id: "C019", source: "Hollow King" }
+4485.9 "Dark Nova (buster)" Ability { id: "C01A", source: "Hollow King" }
+
+4498.9 "Burst (castbar)" Ability { id: "C012", source: "Hollow King" } forcejump "king-loop"
+
+# ALL ENCOUNTER ABILITIES
+
+# Shinryu
+# BFD1 Cosmic Breath: Upper platform denial, upper castbar
+# BFD2 Cosmic Breath: Upper platform denial, lower castbar
+# BFD3 Cosmic Breath: Upper platform denial
+# BFD4 Cosmic Tail: Lower platform denial, upper castbar
+# BFD5 Cosmic Tail: Lower platform denial, lower castbar
+# BFD6 Cosmic Tail: Lower platform denial
+# BFD7 Cloak of Twilight: Upper platform aspect
+# BFD8 Cloak of Twilight: Lower platform aspect
+# BFD9 Twilight Nebula: Upper platform debuff cast
+# BFDA Twilight Nebula: Lower platform debuff cast
+# BFDB Twilight Radiance: Light aspect floor explosion
+# BFDC Twilight Shadow: Dark aspect floor explosion
+# BFE1 Cataclysmic Vortex: Upper platform Simon Says cast
+# BFE2 Cataclysmic Vortex: Lower platform Simon Says cast
+# BFE3 Cataclysmic Vortex: Simon Says failure?
+# BFE4 Starflare: Upper platform grid line AoE castbar
+# BFE5 Starflare: Lower platform grid line AoE castbar
+# BFE6 Starflare: Grid line AoEs, first set
+# BFE7 Starflare: Grid line AoEs, second set
+# BFE8 Atomic Tail: Upper platform lower platform destruction castbar
+# BFE9 Atomic Tail: Lower platform lower platform destruction castbar
+# BFEA Atomic Tail: Lower platform destruction
+# BFEB Gyre Charge: Upper platform intermission cast
+# BFEC Gyre Charge: Lower platform intermission cast
+# BFED Gyre Charge: Intermission cast (inflicts Down For The Count))
+# BFEE Dark Nova: Upper platform tank cleave castbar
+# BFEF Dark Nova: Lower platform tank cleave castbar
+# BFF0 Dark Nova: Tank cleave
+# BFF1 --sync--: auto-attack self-cast
+# BFF2 --sync--: auto-attack
+
+# Hollow King
+# BFF3 Celestial Trail: Summon towers
+# BFF4 Celestial Trail: Towers resolve
+# BFF5 Celestial Trail: Tower animation?
+# BFF6 Celestial Trail: Tower damage
+# BFF7 Celestial Trail: Tower knockback
+# BFF8 Celestial Trail: Tower animation?
+# BFF9 Celestial Trail: Tower animation?
+# BFFF Right Swordscross: Right-side cleave castbar
+# C000 Left Swordscross: Left-side cleave castbar
+# C001 Right Swordscross: Right-side cleave, orthogonal
+# C002 Left Swordscross: Left-side cleave, orthogonal
+# C003 Right Swordscross: Right-side cleave, diagonal
+# C004 Left Swordscross: Left-side cleave, diagonal
+# C005 Twin Blaze: Cone + dynamo castbar, left safe
+# C006 Twin Blaze: Cone + dynamo castbar, right safe
+# C007 Twin Blaze: Cone AoE
+# C008 Twin Blaze: Dynamo AoE
+# C009 Cataclysmic Blade: Cones + debuffs castbars
+# C00A Cataclysmic Blade: Blue cone AoEs
+# C00B Cataclysmic Blade: Debuff failure?
+# C00C Atomic Ray: Timer line AoEs castbar
+# C00D Atomic Ray: Timer line AoEs
+# C00E Cosmic Flame: Exaflare castbar
+# C00F Cosmic Flame: Unknown, maybe alternate pattern castbar?
+# C010 Cosmic Flame: Exaflare
+# C011 Cosmic Flame: Exaflare
+# C012 Burst: Concentric circle AoEs castbar
+# C013 Burst: First concentric circle
+# C014 Burst: Second concentric circle
+# C015 Burst: Third concentric circle
+# C016 Starflare: Grid line AoE castbar
+# C017 Starflare: Grid line AoEs, first set
+# C018 Starflare: Grid line AoEs, second set
+# C019 Dark Nova: Tank cleave castbar
+# C01A Dark Nova: Tank cleave
+# C01B Empty Proclamation: Raidwide
+# C01C --sync--: auto-attack self-cast
+# C01D --sync--: auto-attack
+# C01E Super Nova: Stack marker castbar
+# C01F Super Nova: Stack marker hits
+

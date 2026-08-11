@@ -5,7 +5,10 @@ runs:
   steps:
     - uses: actions/setup-node@v6
       with:
-        node-version: '24'
+        # 24.17 has a bug that breaks our workflows
+        # 26 introduces changes that break our workflows
+        # @TODO: remove upper restriction once dependencies no longer fail on 26
+        node-version: '>=24.18.0 <25'
         cache: 'npm'
         cache-dependency-path: 'package-lock.json'
 

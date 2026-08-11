@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: main
 
@@ -29,14 +29,17 @@ jobs:
 
       - name: Render PR Template
         id: template
-        uses: chuhlomin/render-template@v1.9
+        # Note: This action has a literal `@v1` tag and release which is actively being updated.
+        # If that status changes, we will have to specify an exact version to avoid getting the
+        # outdated build.
+        uses: chuhlomin/render-template@v1
         with:
           template: .github/logdef_update_pr_template.md
           vars: |
             changelist: "${{ steps.script.outputs.changelist }}"
 
       - name: Create PR
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: 'update netlog_defs filters'
           title: 'resources: Update netlog_defs filters (auto-generated)'

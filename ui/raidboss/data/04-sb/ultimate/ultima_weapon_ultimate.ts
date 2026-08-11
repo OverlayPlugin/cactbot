@@ -770,7 +770,7 @@ const triggerSet: TriggerSet<Data> = {
           // The two close nails are 45 degrees apart.
           if (next8Dir - this8Dir === 1 || this8Dir - next8Dir === 7) {
             const between16Dir = this8Dir * 2 + 1;
-            const outputKey = Directions.output16Dir[between16Dir] ?? 'unknown';
+            const outputKey = Directions.outputFrom16DirNum(between16Dir);
             return output.text!({ dir: output[outputKey]!() });
           }
         }

@@ -1810,7 +1810,7 @@ const triggerSet: TriggerSet<Data> = {
         const towerDir = towersMap[(wantedIdx + naelIdx) % 8];
 
         const myTowerDir = towerDir !== undefined
-          ? Directions.output16Dir[towerDir] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(towerDir)
           : 'unknown';
 
         return output.tower!({

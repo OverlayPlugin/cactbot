@@ -1515,7 +1515,7 @@ const triggerSet: TriggerSet<Data> = {
         innerBlobTower: {
           en: 'Blob Tower ${num} Inner ${dir} (later)',
           de: 'Blob Turm ${num} Innen ${dir} (später)',
-          cn: '踩场内${dir}玩家${num}塔 (稍后)',
+          cn: '踩场内${dir}场地${num}塔 (稍后)',
           ko: '살점 탑 ${num} 안쪽 ${dir} (나중에)',
         },
         outerBlobTower: {
@@ -2967,7 +2967,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.getBehind!();
 
         const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
-        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(dirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
@@ -3164,7 +3164,7 @@ const triggerSet: TriggerSet<Data> = {
         // Adding 16 incase of negative values
         const newDirNum = (getNewDirNum(dirNum, matches.id) + 16 + 8) % 16;
 
-        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(newDirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
@@ -4264,7 +4264,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.getBehind!();
 
         const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
-        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        const dir = Directions.outputFrom16DirNum(dirNum);
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
@@ -7028,9 +7028,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         const pattern = data.cosmicKissPattern;
@@ -7096,9 +7096,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         const pattern = data.cosmicKissPattern;
@@ -7217,9 +7217,9 @@ const triggerSet: TriggerSet<Data> = {
 
         const x = me.PosX;
         if (x < center.x)
-          data.myPlatform = 'east';
-        else
           data.myPlatform = 'west';
+        else
+          data.myPlatform = 'east';
       },
       infoText: (data, _matches, output) => {
         if (data.doomPlayers[0] === undefined) {

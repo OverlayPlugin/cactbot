@@ -374,7 +374,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const dirNum = Directions.hdgTo16DirNum(addCleaveDir);
         data.addTrainDir = dirNum !== undefined
-          ? Directions.output16Dir[dirNum] ?? 'unknown'
+          ? Directions.outputFrom16DirNum(dirNum)
           : 'unknown';
 
         return output.text!({ dir: output[data.addTrainDir]!() });
