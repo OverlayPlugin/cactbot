@@ -1301,20 +1301,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'San dOriea Second Walk Eald\'narche Cronos Sling Out + Right',
+      id: 'San dOriea Second Walk Eald\'narche Cronos Sling Out + Left',
       type: 'StartsUsing',
       netRegex: { id: 'AD49', source: 'Eald\'narche', capture: false },
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Out => Right',
-        },
-      },
-    },
-    {
-      id: 'San dOria Second Walk Eald\'narche Cronos Sling Out + Left',
-      type: 'StartsUsing',
-      netRegex: { id: 'AD4A', source: 'Eald\'narche', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -1323,24 +1312,35 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'San dOria Second Walk Eald\'narche Cronos Sling In + Right',
+      id: 'San dOria Second Walk Eald\'narche Cronos Sling Out + Right',
       type: 'StartsUsing',
-      netRegex: { id: 'AD4B', source: 'Eald\'narche', capture: false },
+      netRegex: { id: 'AD4A', source: 'Eald\'narche', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'In => Right',
+          en: 'Out => Right',
         },
       },
     },
     {
       id: 'San dOria Second Walk Eald\'narche Cronos Sling In + Left',
       type: 'StartsUsing',
-      netRegex: { id: 'AD4C', source: 'Eald\'narche', capture: false },
+      netRegex: { id: 'AD4B', source: 'Eald\'narche', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'In => Left',
+        },
+      },
+    },
+    {
+      id: 'San dOria Second Walk Eald\'narche Cronos Sling In + Right',
+      type: 'StartsUsing',
+      netRegex: { id: 'AD4C', source: 'Eald\'narche', capture: false },
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'In => Right',
         },
       },
     },
