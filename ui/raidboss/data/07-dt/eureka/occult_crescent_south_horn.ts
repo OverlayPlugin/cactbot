@@ -1,4 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
+import PhantomJobUtils from '../../../../../resources/occult_crescent_common';
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
@@ -415,7 +416,7 @@ const magitaurOutputStrings = {
   },
 };
 
-// Used to filter the GainsEffect
+// Used to filter the GainsEffect for Phantom Job Tracker
 const phantomJobEffectIds = [
   '1092', // Freelancer
   '1106', // Knight
@@ -433,152 +434,15 @@ const phantomJobEffectIds = [
   '12C3', // Mystic Knight
   '12C4', // Gladiator
   '12C5', // Dancer
+  '14D0', // Ninja
+  '14D1', // White Mage
+  '14D2', // Black Mage
+  '14D3', // Dragoon
+  '14D4', // Summoner
+  '14D5', // Blue Mage
+  '14D6', // Red Mage
+  '14D7', // Necromancer
 ];
-
-// Useful for matching on job name in condition trigger
-const phantomJobData = {
-  'freelancer': '1092',
-  'knight': '1106',
-  'berserker': '1107',
-  'monk': '1108',
-  'ranger': '1109',
-  'oracle': '1110',
-  'thief': '1111',
-  'samurai': '110A',
-  'bard': '110B',
-  'geomancer': '110C',
-  'timeMage': '110D',
-  'cannoneer': '110E',
-  'chemist': '110F',
-  'mysticKnight': '12C3',
-  'gladiator': '12C4',
-  'dancer': '12C5',
-} as const;
-
-// Return if the player has a phantom job that can dispel
-// Phantom Time Mage Lv 4: Dispel
-const phantomCanDispel = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 4)
-    return true;
-  return false;
-};
-
-// Return if the player has a phantom job that can slow
-// Phantom Time Mage Lv 1: Slowga
-/*
-const phantomCanSlow = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 1)
-    return true;
-  return false;
-};
-*/
-
-// Return if the player has a phantom job that can cleanse
-// Phantom Oracle Lv 2: Recuperation
-const phantomCanCleanse = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 2)
-    return true;
-  return false;
-};
-
-// Return if the player has a phantom job that can freeze time
-// Phantom Bard Lv 2: Romeo's Ballad (aoe)
-// Phantom Dancer Lv 1 may be able to use Dance with Tempting Tango proc (single-target)
-const phantomCanFreeze = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.bard && phantomJobLevel >= 2)
-    return true;
-  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 1)
-    return true;
-  return false;
-};
-
-// Return if the player has a phantom job that can suspend
-// Phantom Geomancer Lv 4: Suspend
-/*
-const phantomCanSuspend = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.geomancer && phantomJobLevel >= 4)
-    return true;
-  return false;
-};
-*/
-
-// Return if the player has a phantom job that can reduce tankbuster
-// Phantom Knight Lv 4: Phantom Guard + Enhanced Phantom Guard (90%)
-// Phantom Knight Lv 6: Pledge
-// Phantom Oracle Lv 6: Invulnerability
-// Phantom Dancer Lv 3: Steadfast Dance (10% MaxHP Barrier)
-// Phantom Dancer Lv 4: Mesmerize (40%)
-// Phantom Mystic Knight Lv 2: Magic Shell (20% MaxHP Barrier of caster)
-// Phantom Gladiator Lv 2: Defend (50%)
-/*
-const phantomCaresAboutTankbuster = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.knight && phantomJobLevel >= 4)
-    return true;
-  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
-    return true;
-  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 3)
-    return true;
-  if (phantomJob === phantomJobData.mysticKnight && phantomJobLevel >= 2)
-    return true;
-  if (phantomJob === phantomJobData.gladiator && phantomJobLevel >= 2)
-    return true;
-  return false;
-};
-*/
-
-// Return if the player has a phantom job that can block physical damage
-// Phantom Samurai Lv 2: Shirahadori
-// Phantom Oracle Lv 6: Invulnerability
-/*
-const phantomCanBlockPhysical = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.samurai && phantomJobLevel >= 2)
-    return true;
-  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
-    return true;
-  return false;
-};
-*/
-
-// Return if the player has a phantom job that helps with enemy aoes
-// Phantom Bard Lv 3: Mighty March (+20% MaxHP)
-// Phantom Ranger Lv 6: Occult Unicorn (40k AoE Shield)
-// Phantom Dancer Lv 4: Mesmerize (Require's target, 4s 40% damage reduction then 100s 10% damage reduction)
-// Phantom Geomance Lv 2 may be able to use Weather with Blessed Rain, Misty Mirage, Sunbath, or Cloudy Caress effects
-/*
-const phantomCaresAboutAOE = (
-  phantomJob: string,
-  phantomJobLevel: number,
-): boolean => {
-  if (phantomJob === phantomJobData.bard && phantomJobLevel >= 3)
-    return true;
-  if (phantomJob === phantomJobData.ranger && phantomJobLevel >= 6)
-    return true;
-  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 4)
-    return true;
-  return false;
-};
-*/
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
@@ -865,7 +729,7 @@ const triggerSet: TriggerSet<Data> = {
   triggers: [
     // ---------------------- Setup --------------------------
     {
-      id: 'Occult Crescent Critical Encounter',
+      id: 'Occult Crescent South Horn Critical Encounter',
       type: 'ActorControl',
       netRegex: { command: '80000014' },
       run: (data, matches) => {
@@ -896,10 +760,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Phantom Job Tracker',
+      id: 'Occult Crescent South Horn Phantom Job Tracker',
       // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
       // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
-      // First digit is the job:
+      // First digit (South Horn jobs) and first two (North Horn jobs) are the job:
+      // Introduced in North Horn:
+      // Necromancer = 17
+      // Red Mage = 16
+      // Blue Mage = 15
+      // Summoner = 14
+      // Dragoon = 13
+      // Black Mage = 12
+      // White Mage = 11
+      // Ninja = 10
+      // Introduced in South Horn:
       // Dancer = F
       // Gladiator = E
       // Mystic Knight = D
@@ -1009,7 +883,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         if (data.phantomJob === undefined || data.phantomJobLevel === undefined)
           return false;
-        return phantomCanDispel(data.phantomJob, data.phantomJobLevel);
+        return PhantomJobUtils.canDispel(data.phantomJob, data.phantomJobLevel);
       },
       infoText: (_data, matches, output) => output.dispel!({ name: matches.target }),
       outputStrings: {
@@ -1080,7 +954,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         if (data.phantomJob === undefined || data.phantomJobLevel === undefined)
           return false;
-        return phantomCanDispel(data.phantomJob, data.phantomJobLevel);
+        return PhantomJobUtils.canDispel(data.phantomJob, data.phantomJobLevel);
       },
       infoText: (_data, matches, output) => output.dispel!({ name: matches.target }),
       outputStrings: {
@@ -3641,7 +3515,7 @@ const triggerSet: TriggerSet<Data> = {
         if (
           data.phantomJob === undefined ||
           data.phantomJobLevel === undefined ||
-          phantomCanFreeze(data.phantomJob, data.phantomJobLevel)
+          PhantomJobUtils.canFreeze(data.phantomJob, data.phantomJobLevel)
         )
           return true;
         return false;
@@ -5229,7 +5103,7 @@ const triggerSet: TriggerSet<Data> = {
           (data.me === matches.target) &&
           (data.phantomJob === undefined ||
             data.phantomJobLevel === undefined ||
-            phantomCanCleanse(data.phantomJob, data.phantomJobLevel))
+            PhantomJobUtils.canCleanse(data.phantomJob, data.phantomJobLevel))
         )
           return true;
         return false;

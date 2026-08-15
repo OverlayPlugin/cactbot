@@ -1,7 +1,8 @@
 import { EurekaZoneInfo } from './eureka';
 import southHornMap from './southhorn.png';
 
-// https://xivapi.com/search?indexes=Fate&filters=ID%3E=1717,ID%3C=1742&columns=Description,Name,Url
+// https://v2.xivapi.com/api/search?sheets=DynamicEvent&limit=9999&fields=Name@en,Name@de,Name@fr,Name@ja&query=LGBMapRange=0
+// https://v2.xivapi.com/api/search?sheets=Fate&limit=9999&fields=Name@en,Name@de,Name@fr,Name@ja&query=EurekaFate=3
 
 export const zoneInfoSouthHorn: EurekaZoneInfo = {
   mapImage: southHornMap,
@@ -449,6 +450,7 @@ export const zoneInfoSouthHorn: EurekaZoneInfo = {
       y: 17.1,
       bunny: true,
       fateId: 1976,
+      respawnMinutes: 60,
     },
     pleadingpots: {
       label: {
@@ -474,6 +476,7 @@ export const zoneInfoSouthHorn: EurekaZoneInfo = {
       y: 32,
       bunny: true,
       fateId: 1977,
+      respawnMinutes: 60,
     },
     /* theforkedtowerblood: {
       label: {

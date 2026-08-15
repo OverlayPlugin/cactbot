@@ -3,6 +3,8 @@ import BozjaCEs from '../../resources/bozja_encounters';
 import ContentType from '../../resources/content_type';
 import DTFuncs from '../../resources/datetime';
 import NetRegexes, { commonNetRegex } from '../../resources/netregexes';
+import NorthHornDirectorIds from '../../resources/north_horn_ce_map';
+import NorthHornCEs from '../../resources/north_horn_encounters';
 import { UnreachableCode } from '../../resources/not_reached';
 import PetData from '../../resources/pet_names';
 import SouthHornDirectorIds from '../../resources/south_horn_ce_map';
@@ -412,6 +414,9 @@ export class EncounterFinder {
     } else if (this.currentZone.zoneId === ZoneId.TheOccultCrescentSouthHorn) {
       validDirectorIds = SouthHornDirectorIds;
       validCEs = SouthHornCEs;
+    } else if (this.currentZone.zoneId === ZoneId.TheOccultCrescentNorthHorn) {
+      validDirectorIds = NorthHornDirectorIds;
+      validCEs = NorthHornCEs;
     } else {
       return;
     }

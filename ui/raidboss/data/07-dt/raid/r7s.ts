@@ -192,7 +192,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${stoneringer} => パーティ ${inOut}, タンク頭割りを避ける',
           cn: '${stoneringer} => 小队 ${inOut}, 远离坦克死刑',
           ko: '${stoneringer} => 본대 ${inOut}, 탱버 피하기',
-          tc: '${stoneringer} => 小隊 ${inOut}, 遠離坦剋死刑',
+          tc: '${stoneringer} => 小隊 ${inOut}, 遠離坦克死刑',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -944,25 +944,24 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Blooming Abomination': 'アボミネータースプラウト',
-        'Brute Abombinator': 'ブルートアボミネーター',
+        'Blooming Abomination': '憎惡花芽',
+        'Brute Abombinator': '野蠻憎惡',
       },
       'replaceText': {
-        // '--middile--': '', // FIXME '--中间--'
-        // '\\(adds': '', // FIXME '(小怪'
-        // 'cast\\)': '', // FIXME '咏唱)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(puddles': '', // FIXME '(圈'
-        // '\\(seeds drop\\)': '', // FIXME '(种子落下)'
+        '--middile--': '--中間--',
+        '\\(adds': '(小怪',
+        'cast\\)': '詠唱)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(puddles': '(圈',
+        '\\(seeds drop\\)': '(種子落下)',
         'Abominable Blink': '野蠻電火花',
         'Brutal Impact': '野蠻碎擊',
         'Brutal Smash': '野蠻揮打',
         'Brutish Swing': '野蠻橫掃',
         'Crossing Crosswinds': '交叉突風',
-        'Debris Deathmatch': '荊棘生死戰·牆面',
-        'Demolition Deathmatch': '荊棘生死戰·樓體',
+        'Debris Deathmatch': '荊棘生死戰：牆面',
+        'Demolition Deathmatch': '荊棘生死戰：樓體',
         'Electrogenetic Force': '雷擊',
         'Explosion': '爆炸',
         'Glower Power': '野蠻怒視',
@@ -970,7 +969,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hurricane Force': '颶風',
         '(?<! )Impact': '衝擊',
         'Killer Seeds': '種彈重擊',
-        'Lashing Lariat': '藤蔓碎頸臂',
+        'Lashing Lariat': '藤蔓金臂鉤',
         'Neo Bombarian Special': '新生超豪華野蠻大亂擊',
         'Pollen': '花粉',
         'Powerslam': '強震衝',
@@ -980,8 +979,8 @@ const triggerSet: TriggerSet<Data> = {
         'Roots of Evil': '荊棘蔓延',
         'Sinister Seeds': '種彈播撒',
         'Slaminator': '野蠻衝',
-        // 'Smash Here': '', // FIXME '近侧挥打'
-        // 'Smash There': '', // FIXME '远侧挥打'
+        'Smash Here': '近側揮打',
+        'Smash There': '遠側揮打',
         'Special Bombarian Special': '究極超豪華野蠻大亂擊',
         'Spore Sac': '孢囊',
         'Sporesplosion': '孢子雲',

@@ -24,6 +24,7 @@ import { timeStrings } from './eureka_translations';
 import { zoneInfoAnemos } from './zone_anemos';
 import { zoneInfoBozjaSouthern } from './zone_bozja_southern';
 import { zoneInfoHydatos } from './zone_hydatos';
+import { zoneInfoNorthHorn } from './zone_north_horn';
 import { zoneInfoPagos } from './zone_pagos';
 import { zoneInfoPyros } from './zone_pyros';
 import { zoneInfoSouthHorn } from './zone_south_horn';
@@ -44,6 +45,7 @@ const areaNames = [
   'Bozjan Southern Front',
   'Zadnor',
   'South Horn',
+  'North Horn',
 ].join('|');
 
 const numWeatherElem = 5;
@@ -205,6 +207,7 @@ const defaultOptions: EurekaOptions = {
     [ZoneId.TheBozjanSouthernFront]: zoneInfoBozjaSouthern,
     [ZoneId.Zadnor]: zoneInfoZadnor,
     [ZoneId.TheOccultCrescentSouthHorn]: zoneInfoSouthHorn,
+    [ZoneId.TheOccultCrescentNorthHorn]: zoneInfoNorthHorn,
   },
 };
 

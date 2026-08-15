@@ -19,7 +19,7 @@ export class LineEvent0x17 extends LineEvent implements LineEventSource, LineEve
     super(repo, line, parts);
 
     this.id = parts[fields.sourceId]?.toUpperCase() ?? '';
-    this.name = parts[fields.name] ?? '';
+    this.name = parts[fields.source] ?? '';
     this.abilityId = parseInt(parts[fields.id]?.toUpperCase() ?? '', 16);
     this.abilityName = parts[fields.name] ?? '';
     this.reason = parts[fields.reason] ?? '';

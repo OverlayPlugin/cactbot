@@ -503,35 +503,34 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Heaven Bomb': '', // FIXME '翅膀爆弹怪'
-        // 'Paint Bomb': '', // FIXME '涂鸦爆弹怪'
-        'Sugar Riot': 'シュガーライオット',
-        'Sweet Shot': 'シュガーズアロー',
-        'Tempest Piece': '積乱雲',
+        'Heaven Bomb': '翅膀炸彈',
+        'Paint Bomb': '塗鴉炸彈',
+        'Sugar Riot': '糖彩狂潮',
+        'Sweet Shot': '糖糖箭',
+        'Tempest Piece': '雷暴雲',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(snapshot\\)': '', // FIXME '(快照)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(snapshot\\)': '(快照)',
+        '\\(spread\\)': '(分散)',
         'Burst': '爆炸',
         'Color Riot': '色彩暴亂',
-        // 'Cool Bomb': '', // FIXME '冷色爆弹怪'
+        'Cool Bomb': '冷色炸彈',
         'Double Style': '雙手塗鴉',
         'Highlightning': '界雷',
         'Layer': '添筆',
         'Lightning Bolt': '落雷',
-        'Mousse Mural': '慕斯怪之雨',
+        'Mousse Mural': '慕斯怪大雨',
         'Mousse Touch-up': '慕斯怪小雨',
-        'Pudding Party': '布丁聚會',
+        'Pudding Party': '布丁派對',
         'Rush': '突進',
         'Single Style': '單手塗鴉',
         'Spray Pain': '飛針',
-        'Sugarscape': '沙地繪景',
-        'Taste of Fire': '糖果火焰',
-        'Taste of Thunder': '糖果雷電',
-        // 'Warm Bomb': '', // FIXME '暖色爆弹怪'
+        'Sugarscape': '糖心繪景',
+        'Taste of Fire': '糖糖火焰',
+        'Taste of Thunder': '糖糖雷電',
+        'Warm Bomb': '暖色炸彈',
       },
     },
     {
