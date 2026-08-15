@@ -531,19 +531,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        'Gleaming Fang': '光の牙',
-        'Howling Blade': 'ハウリングブレード',
-        'Moonlit Shadow': 'ハウリングブレードの幻影',
-        'Wolf of Stone': '土の狼頭',
-        'Wolf of Wind': '風の狼頭',
+        'Gleaming Fang': '光牙',
+        'Howling Blade': '呼嘯之劍',
+        'Moonlit Shadow': '呼嘯之劍的幻影',
+        'Wolf of Stone': '土狼首',
+        'Wolf of Wind': '風狼首',
       },
       'replaceText': {
-        // '\\(castbar\\)': '', // FIXME '(咏唱栏)'
-        // '\\(circles\\)': '', // FIXME '(圆形)'
-        // '\\(cone\\)': '', // FIXME '(扇形)'
-        // '\\(line\\)': '', // FIXME '(直线)'
+        '\\(castbar\\)': '(詠唱欄)',
+        '\\(circles\\)': '(圓形)',
+        '\\(cone\\)': '(扇形)',
+        '\\(line\\)': '(直線)',
         'Bare Fangs': '光牙召喚',
         'Beckon Moonlight': '幻狼召喚',
         'Extraplanar Pursuit': '空間斬',
