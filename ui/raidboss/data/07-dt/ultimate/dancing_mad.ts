@@ -8856,6 +8856,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Black Hole': '黑洞',
         'Chaos': '卡奥斯',
