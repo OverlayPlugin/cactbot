@@ -569,6 +569,25 @@ const lineTests: LineTests = {
       name: 'Tini Poutini',
     },
   },
+  StatusEffectListForay3: {
+    lineToTest: exampleLogLines['StatusEffectListForay3'].examples.en[0],
+    expectedValues: {
+      type: '43',
+      id: '10FF0001',
+      name: 'Tini Poutini',
+      jobLevelData: '00646428',
+      currentHp: '107111',
+      maxHp: '107111',
+      currentMp: '10000',
+      maxMp: '10000',
+      currentShield: '0',
+      x: '906.17',
+      y: '906.98',
+      z: '259.99',
+      heading: '-2.36',
+      // subsquent fields are optional per netlog_defs
+    },
+  },
   LineRegistration: {
     lineToTest: exampleLogLines['LineRegistration'].examples.en[0],
     expectedValues: {

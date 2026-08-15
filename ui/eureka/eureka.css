@@ -62,6 +62,13 @@
   padding-bottom: 100%;
 }
 
+.aspect-ratio-northhorn {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding-bottom: 100%;
+}
+
 .inner-container {
   position: absolute;
   top: 0;
@@ -230,13 +237,15 @@
 /* non-critical bozja fates are less important, so make smaller */
 .bozjasouthern > .nm,
 .zadnor > .nm,
-.southhorn > .nm {
+.southhorn > .nm,
+.northhorn > .nm {
   font-size: 10px;
 }
 
 .bozjasouthern > .nm-pop .nm-name,
 .zadnor > .nm-pop .nm-name,
-.southhorn > .nm-pop .nm-name {
+.southhorn > .nm-pop .nm-name,
+.northhorn > .nm-pop .nm-name {
   font-size: 12px;
 }
 
@@ -245,7 +254,9 @@
 .zadnor > .nm-down .nm-name,
 .zadnor > .nm-down .nm-time,
 .southhorn > .nm-down .nm-name,
-.southhorn > .nm-down .nm-time {
+.southhorn > .nm-down .nm-time,
+.northhorn > .nm-down .nm-name,
+.northhorn > .nm-down .nm-time {
   font-size: 8px;
 }
 
@@ -305,6 +316,10 @@
 }
 
 .aspect-ratio-southhorn #label-container {
+  bottom: 0;
+}
+
+.aspect-ratio-northhorn #label-container {
   bottom: 0;
 }
 

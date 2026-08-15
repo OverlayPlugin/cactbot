@@ -995,10 +995,10 @@ const latestLogDefinitions = {
       data0: 15,
       data1: 16,
       data2: 17,
+      // triplets of fields from here (effectId + otherInfo, duration, sourceId)
       data3: 18,
       data4: 19,
       data5: 20,
-      // Variable number of triplets here, but at least one.
     },
     playerIds: {
       2: 3,
@@ -1084,7 +1084,10 @@ const latestLogDefinitions = {
       timestamp: 1,
       id: 2,
       name: 3,
-      // triplets of fields from here (effectId, data, playerId)?
+      // triplets of fields from here (effectId + otherInfo, duration, sourceId)
+      data0: 4,
+      data1: 5,
+      data2: 6,
     },
     playerIds: {
       2: 3,
@@ -1092,6 +1095,39 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: 4,
     firstUnknownField: 4,
+  },
+  StatusEffectListForay3: {
+    type: '43',
+    name: 'StatusEffectListForay3',
+    source: 'FFXIV_ACT_Plugin',
+    messageType: 'StatusEffectListForay3',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      id: 2,
+      name: 3,
+      jobLevelData: 4,
+      currentHp: 5,
+      maxHp: 6,
+      currentMp: 7,
+      maxMp: 8,
+      currentShield: 9,
+      // Field index 10 is always `0`
+      x: 11,
+      y: 12,
+      z: 13,
+      heading: 14,
+      // triplets of fields from here (effectId + otherInfo, duration, sourceId)
+      data0: 15,
+      data1: 16,
+      data2: 17,
+    },
+    playerIds: {
+      2: 3,
+    },
+    canAnonymize: true,
+    firstOptionalField: 15,
+    firstUnknownField: 15,
   },
   ParserInfo: {
     type: '249',

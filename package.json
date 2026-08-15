@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.37.4",
-  "releaseSummary": "Windhurst, more UMAD, i18n",
+  "version": "0.37.5",
+  "releaseSummary": "more UMAD, TC 7.2 support, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
