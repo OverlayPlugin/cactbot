@@ -16,8 +16,8 @@ hideall "--sync--"
 
 ### A Beast Unleashed
 # -ii
-# -p C6A3:1016.0
-# -it "Elm Gigas"
+# -p
+# -it ""
 # IGNORED ABILITIES
 #
 #
