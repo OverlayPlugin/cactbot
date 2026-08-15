@@ -182,6 +182,7 @@ hideall "--sync--"
 # Quadrant Discs + Ancient Aero
 8323.4 label "oc-familiar-tactics-loop"
 8327.7 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+8327.7 "--quadrant discs--"
 8331.9 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 12.9
 8334.1 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
 8342.1 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
@@ -198,6 +199,7 @@ hideall "--sync--"
 
 # Random Discs + Ancient Aero
 8403.2 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+8403.2 "--random discs--"
 8406.3 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 13.5
 8408.6 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
 8420.2 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5

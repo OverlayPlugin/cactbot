@@ -189,31 +189,37 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'tc',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
