@@ -9,7 +9,6 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
 // TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
-// TODO: P5 Stray Apocalypse exa location triggers
 // TODO: P5 Forsaken tell if a hole was placed in the path?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -1117,25 +1116,7 @@ const triggerSet: TriggerSet<Data> = {
       forsakenCount: 0,
     };
   },
-  timelineTriggers: [
-    {
-      id: 'DMU P5 Forsaken (Untelegraphed)',
-      // Last Forsaken doesn't do damage
-      regex: /Forsaken [2-3]/,
-      beforeSeconds: 4.7,
-      durationSeconds: 4.7,
-      alertText: (data, _matches, output) => {
-        return output.numMech!({
-          num: data.forsakenCount,
-          mech: output.bigAoe!(),
-        });
-      },
-      outputStrings: {
-        ...forsakenP5OutputStrings,
-        bigAoe: Outputs.bigAoe,
-      },
-    },
-  ],
+  timelineTriggers: [],
   triggers: [
     {
       id: 'DMU Phase Tracker',
@@ -9278,6 +9259,25 @@ const triggerSet: TriggerSet<Data> = {
         ...forsakenP5OutputStrings,
         stackOnYou: Outputs.stackOnYou,
         stackOnTarget: Outputs.stackOnPlayer,
+      },
+    },
+    {
+      id: 'DMU P5 Forsaken (Untelegraphed)',
+      // Last Forsaken doesn't do damage
+      // Using headmarker rather than timelinetrigger
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: false },
+      condition: (data) => data.phase === 'p5' && data.forsakenCount < 8,
+      delaySeconds: 3.1, // ~8.1s after headmarker is the AOE
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.bigAoe!(),
+        });
+      },
+      outputStrings: {
+        ...forsakenP5OutputStrings,
+        bigAoe: Outputs.bigAoe,
       },
     },
   ],
