@@ -1102,8 +1102,8 @@ const triggerSet: TriggerSet<Data> = {
       secondLongBombPlayers: [],
       // Phase 5
       repeaterCount: 0,
-      orchestraCount: 0,
       firstFlood: [],
+      orchestraCount: 0,
       hitByHoly: false,
       hitByFlare: false,
       celestriadDebuffCollect: true,
