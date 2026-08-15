@@ -13,3 +13,282 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### A Beast Unleashed
+# -ii
+# -p C6A3:1016.0
+# -it "Elm Gigas"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+1000.0 "--sync--" ActorControl { command: "80000014", data0: "3C0" } window 100000,0
+1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Accept No Imitators
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+2000.0 "--sync--" ActorControl { command: "80000014", data0: "3CB" } window 100000,0
+2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Ahead of the Competition
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+3000.0 "--sync--" ActorControl { command: "80000014", data0: "3BC" } window 100000,0
+3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Appalling Behavior
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+4000.0 "--sync--" ActorControl { command: "80000014", data0: "3BA" } window 100000,0
+4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Cursed Resurgence
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+5000.0 "--sync--" ActorControl { command: "80000014", data0: "3B9" } window 100000,0
+5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Dark Artistry
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+6000.0 "--sync--" ActorControl { command: "80000014", data0: "3A8" } window 100000,0
+6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Double Trouble
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+7000.0 "--sync--" ActorControl { command: "80000014", data0: "398" } window 100000,0
+7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Familiar Tactics
+# -ii C6A3 BBA9 B9AB B9AF B9B1 B9B2 B9AE
+# -p B9B8:8119.7
+# -it "Elm Gigas"
+# IGNORED ABILITIES
+# C6A3 --sync--: Boss Autos
+# BBA9 Ancient Aero III: damage
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
+# B9AF Inspirited Crosswinds: damage
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
+# B9AE Inspirited Cyclone: damage
+#
+# ALL ENCOUNTER ABILITIES
+# B9AA Unbowed Spirit
+# B9AB Unbowed Spirit
+# B9AC Inspirited Cyclone
+# B9AD Inspirited Crosswinds
+# B9AE Inspirited Cyclone
+# B9AF Inspirited Crosswinds
+# B9B0 Inspirited Hurricane: Boss will go to middle, turn and face south
+# B9B1 Inspirited Hurricane
+# B9B2 Inspirited Hurricane
+# B9B4 Ancient Aero: Line AOEs, each set is 10 casts, 0.5s apart
+# B9B5 Spinning Sweep: Boss will go to middle, turn and face random player
+# B9B6 Inspirited Impact: Boss will go to middle, turn and face south
+# B9B7 Inspirited Impact
+# B9B8 Ancient Aero III
+# BBA9 Ancient Aero III
+# C6A3 --sync--
+8000.0 "--sync--" ActorControl { command: "80000014", data0: "390" } window 100000,0
+8011.0 "--targetable--"
+8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+8116.2 "--sync--" StartsUsing { id: "B9B8", source: "Elm Gigas" } window 120,5
+8119.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Tutorial - Random Discs
+8127.4 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+8127.4 "--random discs--"
+8130.5 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 10.9
+8140.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+8146.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8154.7 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+8162.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+8168.7 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+8171.7 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+8183.7 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+8186.1 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+8188.5 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+8190.8 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Quadrant Discs + Ancient Aero
+8194.5 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5
+8198.8 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+8198.8 "--quadrant discs--"
+8203.0 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 13.1
+8205.2 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8213.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8217.3 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8223.0 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8233.2 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+8241.2 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+8249.5 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+8252.5 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+8264.5 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+8266.9 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+8269.2 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+8271.6 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+8275.8 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+8275.8 "--random discs--"
+8278.9 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 11.7
+8281.2 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8292.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+8293.2 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8298.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8306.6 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+8314.6 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop Begins
+# Quadrant Discs + Ancient Aero
+8323.4 label "oc-familiar-tactics-loop"
+8327.7 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+8331.9 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 12.9
+8334.1 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8342.1 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8346.1 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8351.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8361.8 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+8369.8 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+8376.8 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+8379.8 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+8391.8 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+8394.2 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+8396.6 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+8399.0 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+8403.2 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+8406.3 "Unbowed Spirit" #Ability { id: "B9AB", source: "Elm Gigas" } duration 13.5
+8408.6 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8420.2 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+8420.6 "Ancient Aero x10" #Ability { id: "B9B4", source: "Elm Gigas" } duration 9
+8426.2 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+8434.3 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+8442.3 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop
+8451.7 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5 forcejump "oc-familiar-tactics-loop"
+
+### Forbidden Folios
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+9000.0 "--sync--" ActorControl { command: "80000014", data0: "39A" } window 100000,0
+9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Imbalanced Diet
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "3BF" } window 100000,0
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Lost on the Wind
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+11000.0 "--sync--" ActorControl { command: "80000014", data0: "3A9" } window 100000,0
+11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Many Mouths to Feed
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "39B" } window 100000,0
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Quarried Away
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+13000.0 "--sync--" ActorControl { command: "80000014", data0: "397" } window 100000,0
+13100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Tiny Terror
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+14000.0 "--sync--" ActorControl { command: "80000014", data0: "3CC" } window 100000,0
+14100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Web of Terror
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+15000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
+15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
