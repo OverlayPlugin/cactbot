@@ -13,3 +13,298 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### A Beast Unleashed
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+1000.0 "--sync--" ActorControl { command: "80000014", data0: "3C0" } window 100000,0
+1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Accept No Imitators
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+2000.0 "--sync--" ActorControl { command: "80000014", data0: "3CB" } window 100000,0
+2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Ahead of the Competition
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+3000.0 "--sync--" ActorControl { command: "80000014", data0: "3BC" } window 100000,0
+3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Appalling Behavior
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+4000.0 "--sync--" ActorControl { command: "80000014", data0: "3BA" } window 100000,0
+4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Cursed Resurgence
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+5000.0 "--sync--" ActorControl { command: "80000014", data0: "3B9" } window 100000,0
+5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Dark Artistry
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+6000.0 "--sync--" ActorControl { command: "80000014", data0: "3A8" } window 100000,0
+6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Double Trouble
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+7000.0 "--sync--" ActorControl { command: "80000014", data0: "398" } window 100000,0
+7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Familiar Tactics
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+8000.0 "--sync--" ActorControl { command: "80000014", data0: "390" } window 100000,0
+8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Forbidden Folios
+# -ii BFA0 B8C1 B8DB B8CC B8CD B8CE B8D0 B8D1 B8D2 B8DB B8DD B8DF C2D7 C57A C57B C57C C57D C57E C57F C580 C581
+# -p B8C0:9120.9
+# -it "Arbatel"
+# IGNORED ABILITIES
+# BFA0 attack
+# B8C1 Knowledge Level Correction: damage
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8DB Big Burst: missing a tower soak
+# B8DD Fire II: damage
+# B8DF Marginalia: damage
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+#
+# ALL ENCOUNTER ABILITIES
+# B8C0 Knowledge Level Correction
+# B8C1 Knowledge Level Correction
+# B8C4 Blot
+# B8C5 Blot
+# B8C6 Cover to Cover: boss jumps to middle faces east, cleaves east half
+# B8C7 Cover to Cover: after B8C6, boss turns 180 degrees to west cleaves west half
+# B8C8 Arcane Rule: castbar
+# B8C9 Quad Rule: initial plus-shaped exaflare
+# B8CA Horizontal Rule: square exaflares
+# B8CB Summon: small circle aoes where books will appear
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8D3 Knowledge Level 5 Death: castbar by Page 64
+# B8D4 Knowledge Level 3 Flare: castbar by Page 16
+# B8D5 Knowledge Level 4 Holy: castbar by Page 8
+# B8D6 Prime Knowledge Level Death: castbar by Page 512
+# B8D7 Book Drop: castbar
+# B8DB Big Burst
+# B8DA Book Drop
+# B8DB Big Burst
+# B8DC Thunder II
+# B8DD Fire II: damage
+# B8DE Fire II: castbar
+# B8DF Marginalia: castbar
+# B8E0 Marginalia
+# BC76 --sync--
+# BF9F Summon
+# BFA0 attack
+# C154 Unbound Ink: circle aoe under boss
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+9000.0 "--sync--" ActorControl { command: "80000014", data0: "39A" } window 100000,0
+9011.0 "--targetable--"
+9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Tutorial - Knowledge Level Correction with 2 Summons
+9115.9 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } window 120,5
+9120.9 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+9129.2 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+9132.2 "Summon x2" Ability { id: "B8CB", source: "Arbatel" }
+9147.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+9154.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop Begins
+# Knowledge Level Correction with 3 Summons + Book Drop
+9159.8 label "oc-forbidden-folios-loop"
+9164.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+9172.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+9175.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+9189.4 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+9190.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+9191.0 "--middle--" StartsUsing { id: "B8C6", source: "Arbatel" }
+9195.0 "Cover to Cover 1" Ability { id: "B8C6", source: "Arbatel" }
+9199.1 "Cover to Cover 2" Ability { id: "B8C7", source: "Arbatel" }
+9205.4 "Unbound Ink" Ability { id: "C154", source: "Arbatel" }
+9214.7 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+9220.1 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+9224.2 "Book Drop (castbar)" Ability { id: "B8D7", source: "Arbatel" }
+9233.0 "Book Drop 1" Ability { id: "B8DA", source: "" }
+9233.6 "Thunder II 1" #Ability { id: "B8DC", source: "Arbatel" }
+9235.6 "Thunder II 2" #Ability { id: "B8DC", source: "Arbatel" }
+9242.0 "Book Drop 2" Ability { id: "B8DA", source: "" }
+9245.1 "Fire II" Ability { id: "B8DE", source: "Arbatel" }
+9254.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Knowledge Level Correction with 3 Summons + Square Exaflares
+9264.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+9272.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+9275.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+9290.2 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+9292.2 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+9299.2 "Arcane Rule" Ability { id: "B8C8", source: "Arbatel" }
+9299.2 "Quad Rule" #Ability { id: "B8C9", source: "Arbatel" }
+9301.2 "Horizontal Rule 1" #Ability { id: "B8CA", source: "Arbatel" }
+9303.2 "Horizontal Rule 2" #Ability { id: "B8CA", source: "Arbatel" }
+9305.2 "Horizontal Rule 3" #Ability { id: "B8CA", source: "Arbatel" }
+9307.2 "Horizontal Rule 4" #Ability { id: "B8CA", source: "Arbatel" }
+9313.2 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+9321.6 "Blot (castbar)" Ability { id: "B8C4", source: "Arbatel" }
+9326.6 "Blot 1" #Ability { id: "B8C5", source: "Arbatel" }
+9328.6 "Blot 2" #Ability { id: "B8C5", source: "Arbatel" }
+9330.6 "Blot 3" #Ability { id: "B8C5", source: "Arbatel" }
+9340.9 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop
+9348.3 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } forcejump "oc-forbidden-folios-loop"
+
+### Imbalanced Diet
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "3BF" } window 100000,0
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Lost on the Wind
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+11000.0 "--sync--" ActorControl { command: "80000014", data0: "3A9" } window 100000,0
+11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Many Mouths to Feed
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "39B" } window 100000,0
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Quarried Away
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+13000.0 "--sync--" ActorControl { command: "80000014", data0: "397" } window 100000,0
+13100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Tiny Terror
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+14000.0 "--sync--" ActorControl { command: "80000014", data0: "3CC" } window 100000,0
+14100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Web of Terror
+# -ii
+# -p
+# -it ""
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+15000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
+15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
