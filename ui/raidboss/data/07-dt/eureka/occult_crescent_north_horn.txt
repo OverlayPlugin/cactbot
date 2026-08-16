@@ -97,7 +97,7 @@ hideall "--sync--"
 2154.7 "Shapeshifting Supercell 4 (out)?" #Ability { id: "BCE8", source: "Metamorph" }
 2155.6 "Hellward Bound 3?" #Ability { id: "BCD8", source: "Metamorph" }
 2156.5 "Hellfire Fetch 3?" #Ability { id: "BCD9", source: "Metamorph" }
-2157.3 "Shapeshifting Supercell 5 (in/far)" #Ability { id: "BCE9", source: "Metamorph" }
+2157.3 "Shapeshifting Supercell 5 (in/far)?" #Ability { id: "BCE9", source: "Metamorph" }
 2157.9 "Hellward Bound 4?" #Ability { id: "BCD8", source: "Metamorph" }
 2158.6 "Hellfire Fetch 4?" #Ability { id: "BCD9", source: "Metamorph" }
 
