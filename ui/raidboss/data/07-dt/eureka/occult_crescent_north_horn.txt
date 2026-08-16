@@ -156,7 +156,7 @@ hideall "--sync--"
 8203.0 "Unbowed Spirit" duration 13.1 #Ability { id: "B9AB", source: "Elm Gigas" }
 8205.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
 8213.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
-8217.3 "Ancient Aero x10"  duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+8217.3 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
 8223.0 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
 8233.2 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
 8241.2 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
@@ -170,7 +170,7 @@ hideall "--sync--"
 # Random Discs + Ancient Aero
 8275.8 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
 8275.8 "--random discs--"
-8278.9 "Unbowed Spirit"  duration 11.7 #Ability { id: "B9AB", source: "Elm Gigas" }
+8278.9 "Unbowed Spirit" duration 11.7 #Ability { id: "B9AB", source: "Elm Gigas" }
 8281.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
 8292.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
 8293.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
