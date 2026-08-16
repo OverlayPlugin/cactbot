@@ -186,7 +186,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death': 'Knowledge Level Check',
+        'Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death':
+          'Knowledge Level Check',
       },
     },
     {
