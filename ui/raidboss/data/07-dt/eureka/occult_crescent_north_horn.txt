@@ -13,3 +13,194 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### Imbalanced Diet
+# -ii BBE6 BBE7 BBE8 BBE9 BBF2 BBF5 BBF6 BC79 BF4B C4F7 C4FB C5D4 C6FE
+# -p BBE4:10126.4
+# -it "Algol"
+# IGNORED ABILITIES
+# BBE6 Inhale: instant self-cast, this cast ~1.1s after BBE5
+# BBE7 Inhale: 0.4s cast after BBE5, targets a Crescent Onion or Crescent Tomato and sucks it in
+# BBE8 Inhale: 3.2s cast, damage, will suck players towards boss if caught in the cone and apply 3s stun and vulnerability up
+# BBE9 Devour: self-cast during Spinning Inhale, probably related to boss animation of crouching down before C4F6 and C523
+# BBF2 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BBF5 Malady: VFX animation
+# BBF6 --sync--: Uncertain what this is, happens every 0.9s, starts before targetable
+# BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BF4B Cursed Screech: damage
+# C4F7 Digested Juice: boss turns 120 degrees after BBF4
+# C4FB Shrill Peal: damage
+# C5D4 --sync--: Boss autos
+# C6FE Spinning Inhale: Sucks in a Crescent Onion or Crescent Tomato
+#
+# ALL ENCOUNTER ABILITIES
+# BBE4 Cursed Screech: damage, cast starts samne time as BF4B, but is 5s instead of 6s cast, boss moves to north wall or middle prior to StartsUsing
+# BBE5 Inhale: castbar
+# BBE6 Inhale: instant self-cast, this cast ~1.1s after BBE5
+# BBE7 Inhale: 0.4s cast after BBE5, targets a Crescent Onion or Crescent Tomato and sucks it in
+# BBE8 Inhale: 3.2s cast, damage, will suck players towards boss if caught in the cone and apply 3s stun and vulnerability up
+# BBE9 Devour: self-cast during Spinning Inhale, probably related to boss animation of crouching down before C4F6 and C523
+# BBEA Regurgitomato
+# BBEB Regurgitonion
+# BBED Rotten Tomato: 3.7s initial cast for plus-shaped exaflares from the center of the room
+# BBEE Rotten Onion: 3.7s initial cast for conal aoes from the center of the room that rotate clockwise
+# BBEF Rotten Tomato: 1.7s subsequent casts for expanding exaflares
+# BBF0 Rotten Onion: 1.7s subsequent casts for BBEE
+# BBF1 Spinning Inhale: castbar, applies 9F8 to Algol with count 424 at end of cast, clockwise spin, unsure if it can go ccw
+# BBF2 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BBF3 --sync--
+# BBF4 Digested Juice: boss turns 120 degrees and casts a half-room cleave
+# BBF5 Malady: VFX animation
+# BBF6 --sync--: Uncertain what this is, happens every 0.9s, starts before targetable
+# BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BF4B Cursed Screech: damage
+# C4F6 Devour: initial 2.7s cast after Spinning Inhale
+# C4F7 Digested Juice: boss turns 120 degrees after BBF4
+# C4F8 Digested Juice: follwup half-room cleave after C4F7
+# C4F9 Malady: aoe circle under boss
+# C4FA Shrill Peal: damage, starts same time as C4FB but 3s cast instead of 4s
+# C4FB Shrill Peal: damage
+# C523 Devour: subsequent 2.7s casts after Spinning Inhale where boss will turn 120 degrees clockwise, does damage to player, does not apply a vulnerability up
+# C525 Devour: 6.5s cast, small frontal cleave after Inhale, does not apply a vulnerability up
+# C5D4 --sync--: Boss autos
+# C6FE Spinning Inhale: Sucks in a Crescent Onion or Crescent Tomato
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "3BF" } window 100000,0
+10011.0 "--targetable--"
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+10121.4 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 122,5
+10126.4 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+10132.5 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10138.5 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10143.4 "Devour" Ability { id: "C525", source: "Algol" }
+
+# Inhale one Crescent Onion (Regurgitonion BBEB) or one Crescent Tomato (Regurgitomato BBEA)
+10145.0 "--sync--" StartsUsing { id: "BBED", source: "Algol" } jump "oc-imbalanced-diet-tomato"
+10145.0 "--sync--" StartsUsing { id: "BBEE", source: "Algol" } jump "oc-imbalanced-diet-onion"
+10147.0 "Regurgitomato/Regurgitonion?" #Ability { id: ["BBEA", "BBEB"], source: "Algol" }
+10149.0 "Rotten Tomato/Rotten Onion 1?" #Ability { id: ["BBED", "BBEE"], source: "Algol" }
+10151.0 "Rotten Tomato/Rotten Onion 2?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10153.0 "Rotten Tomato/Rotten Onion 3?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10155.0 "Rotten Tomato/Rotten Onion 4?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10156.7 "Shrill Peal" #Ability { id: "C4FA", source: "Algol" }
+10162.7 "Inhale" #Ability { id: "BBE5", source: "Algol" }
+10167.6 "Devour" #Ability { id: "C525", source: "Algol" }
+10171.2 "Regurgitonion/Regurgitomato?" #Ability { id: ["BBEB", "BBEA"], source: "Algol" }
+
+# Tutorial - Regurgitomato => Regurgitonion
+10245.0 label "oc-imbalanced-diet-tomato"
+10247.0 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+10249.0 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+10251.0 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+10253.0 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+10255.0 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+10256.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10262.7 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10267.6 "Devour" Ability { id: "C525", source: "Algol" }
+10271.2 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+10273.2 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+10275.2 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+10277.2 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+10279.2 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+10283.6 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-spin"
+
+# Tutorial - Regurgitonion => Regurgitomato
+10345.0 label "oc-imbalanced-diet-onion"
+10347.0 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+10349.0 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+10351.0 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+10353.0 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+10355.0 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+10356.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10362.7 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10367.6 "Devour" Ability { id: "C525", source: "Algol" }
+10371.2 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+10373.2 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+10375.2 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+10377.2 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+10379.2 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+10383.4 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5
+
+# Tutorial - Spinning Inhale
+10383.5 label "oc-imbalanced-diet-spin"
+10388.4 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+10394.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10402.8 "Spinning Inhale" Ability { id: "BBF1", source: "Algol" } duration 3.6
+10407.6 "--sync--" Ability { id: "BBF3", source: "Algol" }
+10411.6 "Devour 1" Ability { id: "C4F6", source: "Algol" }
+10415.6 "Devour 2" Ability { id: "C523", source: "Algol" }
+10419.6 "Devour 3" Ability { id: "C523", source: "Algol" }
+10426.9 "Digested Juice 1" Ability { id: "BBF4", source: "Algol" }
+10431.9 "Digested Juice 2" Ability { id: "C4F8", source: "Algol" }
+10435.0 "Malady" Ability { id: "C4F9", source: "Algol" }
+10442.6 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
+
+# Loop Begins
+# NOTE: There is an 8s break between loops
+10542.6 label "oc-imbalanced-diet-loop"
+10547.6 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+10553.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10559.8 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10564.7 "Devour" Ability { id: "C525", source: "Algol" }
+
+# Inhale now sucks up two Crescent Onions or two Crescent Tomatoes
+10566.3 "--sync--" StartsUsing { id: "BBED", source: "Algol" } jump "oc-imbalanced-diet-tomato2"
+10566.3 "--sync--" StartsUsing { id: "BBEE", source: "Algol" } jump "oc-imbalanced-diet-onion2"
+10568.3 "Regurgitomato/Regurgitonion?" #Ability { id: ["BBEA", "BBEB"], source: "Algol" }
+10570.3 "Rotten Tomato/Rotten Onion 1?" #Ability { id: ["BBED", "BBEE"], source: "Algol" }
+10572.3 "Rotten Tomato/Rotten Onion 2?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10574.3 "Rotten Tomato/Rotten Onion 3?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10576.3 "Rotten Tomato/Rotten Onion 4?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+10578.0 "Shrill Peal" #Ability { id: "C4FA", source: "Algol" }
+10584.1 "Inhale" #Ability { id: "BBE5", source: "Algol" }
+10589.0 "Devour" #Ability { id: "C525", source: "Algol" }
+10592.6 "Regurgitonion/Regurgitomato?" #Ability { id: ["BBEB", "BBEA"], source: "Algol" }
+
+# Regurgitomato => Regurgitonion 2
+10666.3 label "oc-imbalanced-diet-tomato2"
+10668.3 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+10670.3 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+10672.3 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+10674.3 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+10676.3 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+10678.0 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10684.1 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10689.0 "Devour" Ability { id: "C525", source: "Algol" }
+10692.6 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+10694.6 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+10696.6 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+10698.6 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+10700.6 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+10703.0 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-spin2"
+
+# Regurgitonion => Regurgitomato 2
+10766.3 label "oc-imbalanced-diet-onion2"
+10768.3 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+10770.3 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+10772.3 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+10774.3 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+10776.3 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+10778.0 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10784.1 "Inhale" Ability { id: "BBE5", source: "Algol" }
+10789.0 "Devour" Ability { id: "C525", source: "Algol" }
+10792.6 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+10794.6 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+10796.6 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+10798.6 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+10800.6 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+10802.8 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5
+
+# Spinning Inhale 2
+10802.9 label "oc-imbalanced-diet-spin2"
+10807.8 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+10813.9 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+10822.0 "Spinning Inhale" Ability { id: "BBF1", source: "Algol" } duration 3.6
+10826.8 "--sync--" Ability { id: "BBF3", source: "Algol" }
+10830.8 "Devour 1" Ability { id: "C4F6", source: "Algol" }
+10834.8 "Devour 2" Ability { id: "C523", source: "Algol" }
+10838.8 "Devour 3" Ability { id: "C523", source: "Algol" }
+10846.1 "Digested Juice 1" Ability { id: "BBF4", source: "Algol" }
+10851.1 "Digested Juice 2" Ability { id: "C4F8", source: "Algol" }
+10854.2 "Malady" Ability { id: "C4F9", source: "Algol" }
+
+# Loop
+10869.8 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
