@@ -83,7 +83,7 @@ hideall "--sync--"
 # Boss can metamorph to Fan or Cerberus first, but it moves slowly to the middle prior to StartsUsing
 2128.9 "--sync--" StartsUsing { id: "BCD2", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-cerberus"
 2128.9 "--middle--" StartsUsing { id: "BCD3", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-fan"
-2132.9 "Change (Fan/Cerberus?)" #Ability { id: "BCD3", source: "Metamorph" }
+2132.9 "Change (Fan/Cerberus)?" #Ability { id: "BCD3", source: "Metamorph" }
 2139.0 "Cyclonic Ring/Tongue of Flame?" #Ability { id: ["BCE2", "BCD5"], source: "Metamorph" }
 2142.1 "Hellfire Fetch?" #Ability { id: "BCD6", source: "Metamorph" }
 2146.7 "Shapeshifting Supercell Clockwise/Counterclock?" #Ability { id: ["BCE3", "BCE4"], source: "Metamorph" }
