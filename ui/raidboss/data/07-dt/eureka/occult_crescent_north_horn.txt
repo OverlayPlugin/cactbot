@@ -25,7 +25,7 @@ hideall "--sync--"
 # BBE9 Devour: self-cast during Spinning Inhale, probably related to boss animation of crouching down before C4F6 and C523
 # BBF2 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
 # BBF5 Malady: VFX animation
-# BBF6 --sync--: Uncertain what this is, happens every 0.9s, starts before targetable
+# BBF6 --sync--: Wall damage, cast every 0.9s
 # BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
 # BF4B Cursed Screech: damage
 # C4F7 Digested Juice: boss turns 120 degrees after BBF4
@@ -51,7 +51,7 @@ hideall "--sync--"
 # BBF3 --sync--
 # BBF4 Digested Juice: boss turns 120 degrees and casts a half-room cleave
 # BBF5 Malady: VFX animation
-# BBF6 --sync--: Uncertain what this is, happens every 0.9s, starts before targetable
+# BBF6 --sync--: Wall damage, cast every 0.9s
 # BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
 # BF4B Cursed Screech: damage
 # C4F6 Devour: initial 2.7s cast after Spinning Inhale
@@ -210,7 +210,7 @@ hideall "--sync--"
 # -p B87F:12124.2
 # -it "Pelekys"
 # IGNORED ABILITIES
-# B86E --sync--: casts evey 1s, seems to be related to the wall, player takes damage if they run into it
+# B86E --sync--: Wall damage, casts evey 1s
 # B871 Venom: green puddles that expand in size, damages every ~1s, 8 casts each
 # B872 Central Gardening: boss moves to center, faces random player, 4.7s castbar
 # B873 Side Gardening: boss moves to cetner, faces random player, 4.7s castbar
@@ -219,7 +219,7 @@ hideall "--sync--"
 # C6A2 --sync--: Boss autos
 #
 # ALL ENCOUNTER ABILITIES
-# B86E --sync--: casts evey 1s, seems to be related to the wall, player takes damage if they run into it
+# B86E --sync--: Wall damage, casts evey 1s
 # B86F Noxious Nectar: VFX animation for sides Venom
 # B870 Venom: small puddle aoes, 4.5s cast starting 0.1s C242 Noxious Nectar starts casting and then again 6.5s later
 # B871 Venom: green puddles that expand in size ~2.4s after B870, damages every ~1s, 8 casts each
