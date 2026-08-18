@@ -414,7 +414,7 @@ hideall "--sync--"
 13286.2 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
 
 13293.4 label "oc-many-mouths-noxious2-end"
-12298.4 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+13298.4 "--sync--" Ability { id: "B87F", source: "Pelekys" }
 13299.5 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
 
 # Loop Begins, 20.3s pause between loops
