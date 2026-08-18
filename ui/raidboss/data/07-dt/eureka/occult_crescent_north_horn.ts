@@ -186,6 +186,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
+        'Central Gardening/Side Gardening': 'Central/Side Gardening',
+        'Side Gardening/Central Gardening': 'Side/Central Gardening',
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
         'Regurgitonion/Regurgitomato': 'Regurgitonion/tomato',
         'Rotten Tomato/Rotten Onion': 'Rotten Tomato/Onion',
