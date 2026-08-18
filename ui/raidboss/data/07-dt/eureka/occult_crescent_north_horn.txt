@@ -103,7 +103,7 @@ hideall "--sync--"
 # -p B9B8:8119.7
 # -it "Elm Gigas"
 # IGNORED ABILITIES
-# C6A3 --sync--: Boss Autos
+# C6A3 --sync--: Boss autos
 # BBA9 Ancient Aero III: damage
 # B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
 # B9AF Inspirited Crosswinds: damage
@@ -113,21 +113,21 @@ hideall "--sync--"
 #
 # ALL ENCOUNTER ABILITIES
 # B9AA Unbowed Spirit
-# B9AB Unbowed Spirit
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
 # B9AC Inspirited Cyclone
 # B9AD Inspirited Crosswinds
-# B9AE Inspirited Cyclone
-# B9AF Inspirited Crosswinds
+# B9AE Inspirited Cyclone: damage
+# B9AF Inspirited Crosswinds: damage
 # B9B0 Inspirited Hurricane: Boss will go to middle, turn and face south
-# B9B1 Inspirited Hurricane
-# B9B2 Inspirited Hurricane
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
 # B9B4 Ancient Aero: Line AOEs, each set is 10 casts, 0.5s apart
 # B9B5 Spinning Sweep: Boss will go to middle, turn and face random player
 # B9B6 Inspirited Impact: Boss will go to middle, turn and face south
 # B9B7 Inspirited Impact
 # B9B8 Ancient Aero III
-# BBA9 Ancient Aero III
-# C6A3 --sync--
+# BBA9 Ancient Aero III: damage
+# C6A3 --sync--: Boss autos
 8000.0 "--sync--" ActorControl { command: "80000014", data0: "390" } window 100000,0
 8011.0 "--targetable--"
 8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
