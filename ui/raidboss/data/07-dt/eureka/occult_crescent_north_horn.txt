@@ -204,3 +204,308 @@ hideall "--sync--"
 
 # Loop
 10869.8 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
+
+### Many Mouths to Feed
+# -ii B86E B871 B872 B873 C241 C242 C6A2
+# -p B87F:12124.2
+# -it "Pelekys"
+# IGNORED ABILITIES
+# B86E --sync--: casts evey 1s, seems to be related to the wall, player takes damage if they run into it
+# B871 Venom: green puddles that expand in size, damages every ~1s, 8 casts each
+# B872 Central Gardening: boss moves to center, faces random player, 4.7s castbar
+# B873 Side Gardening: boss moves to cetner, faces random player, 4.7s castbar
+# C241 Side Gardening: Boss cleaves its left side, 5.7s damage cast, same time as B875
+# C242 Noxious Nectar: boss turns, faces south, will always be middle, 2.7s castbar, will do C2DD or C86F 0.2s after, then the other sides 6.8s after
+# C6A2 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B86E --sync--: casts evey 1s, seems to be related to the wall, player takes damage if they run into it
+# B86F Noxious Nectar: VFX animation for sides Venom
+# B870 Venom: small puddle aoes, 4.5s cast starting 0.1s C242 Noxious Nectar starts casting and then again 6.5s later
+# B871 Venom: green puddles that expand in size ~2.4s after B870, damages every ~1s, 8 casts each
+# B872 Central Gardening: boss moves to center, faces random player, 4.7s castbar
+# B873 Side Gardening: boss moves to cetner, faces random player, 4.7s castbar
+# B874 Central Gardening: 5.7s damage cast
+# B875 Side Gardening: Boss cleaves its right side, 5.7s damage cast, same time as C241
+# B876 Pollen Lure: boss turns and faces south, untargetable moths spawn on outer ring
+# B877 Devour: circle aoe under boss
+# B878 Venom Mist: 4.7s castbar, will cleave right, left, and front (back safe)
+# B879 Venom Mist: 4.7s castbar, will cleave right, left, and back (front safe)
+# B87A Venom Mist: 4.7s castbar, will cleave front, back, and left (right safe)
+# B87B Venom Mist: 4.7s castbar, will cleave front, back, and right (left safe)
+# B87C Venom Mist: front head cleave, 5.7s damage cast 1s after B878, B87A, or B87B
+# B87D Poison Heart: castbar
+# B87E Poison Heart: a 2.7s damaging casts starting ~2.2s after B87D, repeats 4 times every 2s
+# B87F Acrid Rain: 4.7s castbar
+# B880 Acrid Rain: damage 1.1s after B87F cast, applies 15s cleansable 111B Toxicosis DoT
+# C241 Side Gardening: Boss cleaves its left side, 5.7s damage cast, same time as B875
+# C242 Noxious Nectar: boss turns, faces south, will always be middle, 2.7s castbar, will do C2DD or C86F 0.2s after, then the other sides 6.8s after
+# C2DD Noxious Nectar: VFX animation for front/back Venom
+# C573 Venom Mist: right head cleave, 5.7s damage cast 1s after B878, B879, or B87B
+# C574 Venom Mist: rear head cleave, 5.7s damage cast 1s after B879, B87A or B87B
+# C575 Venom Mist: left head cleave, 5.7s damage cast 1s after B878, B879, or B87A
+# C6A2 --sync--: Boss autos
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "39B" } window 100000,0
+12011.0 "--targetable--"
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+12119.2 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } window 120,5
+12124.2 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+12125.4 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+12132.0 "--middle--" StartsUsing { id: "B874", source: "Pelekys" } window 5,5
+12138.0 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+12146.3 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+# Tutorial - Noxiuos Nectar Branch 1
+12157.1 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious-sides"
+12157.1 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious-frontback"
+12158.8 "Venom" Ability { id: "B870", source: "Pelekys" }
+12161.2 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+12163.8 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+12165.4 "Venom" Ability { id: "B870", source: "Pelekys" }
+12167.8 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+12180.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12192.0 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+12204.1 "Devour" #Ability { id: "B877", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back
+12257.3 label "oc-many-mouths-noxious-frontback"
+12259.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+12261.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+12264.0 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+12265.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+12268.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 1
+12274.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central"
+12274.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side"
+12280.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12292.2 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+12304.3 "Devour" #Ability { id: "B877", source: "Pelekys" }
+12312.4 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+12317.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+12319.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+12321.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+12322.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12323.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides
+12357.3 label "oc-many-mouths-noxious-sides"
+12359.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+12361.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+12364.0 "Noxious Nectar (Sides)" Ability { id: "C2DD", source: "Pelekys" }
+12365.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+12368.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 1
+12374.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central"
+12374.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side"
+12380.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12392.2 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+12404.3 "Devour" #Ability { id: "B877", source: "Pelekys" }
+12412.4 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+12417.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+12419.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+12421.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+12422.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12423.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+
+12474.6 label "oc-many-mouths-central"
+12480.6 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+12482.3 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-noxious-end"
+
+12574.6 label "oc-many-mouths-side"
+12580.6 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+# Tutorial - Pollen Lure
+12588.2 label "oc-many-mouths-noxious-end"
+12592.2 "Pollen Lure" Ability { id: "B876", source: "Pelekys" }
+12604.3 "Devour" Ability { id: "B877", source: "Pelekys" }
+12612.4 "Poison Heart (castbar)" Ability { id: "B87D", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 2
+12616.5 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central2"
+12616.5 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side2"
+12617.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+12619.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+12621.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+12622.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12623.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+12630.8 "Side Gardening/Central Gardening?" #Ability { id: ["B875", "B874"], source: "Pelekys" }
+12639.9 "Venom Mist (castbar)" #Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+12640.9 "Venom Mist" #Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+12653.2 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+12716.5 label "oc-many-mouths-central2"
+12717.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+12719.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+12721.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+12722.5 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+12723.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+12730.8 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+12735.1 "--sync--" StartsUsing { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" } forcejump "oc-many-mouths-mist"
+
+12816.5 label "oc-many-mouths-side2"
+12817.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+12819.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+12821.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+12822.5 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+12823.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+12830.8 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+
+# Tutorial - Venom Mist
+# NOTE: This could be branched out for a 1-line that notes safe location
+12834.9 label "oc-many-mouths-mist"
+12839.9 "Venom Mist (castbar)" Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+12840.9 "Venom Mist" Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+12852.1 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+12853.2 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nector Branch 2
+12862.9 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious2-sides"
+12862.9 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious2-frontback"
+12864.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+12867.0 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+12869.6 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+12871.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+12873.6 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+12886.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12899.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+12909.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back
+12962.9 label "oc-many-mouths-noxious2-sides"
+12964.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+12967.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+12969.6 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+12971.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+12973.6 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 3
+12980.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central3"
+12980.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side3"
+12986.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+12999.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+13009.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+13022.0 "Devour" #Ability { id: "B877", source: "Pelekys" }
+13030.0 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides
+13062.9 label "oc-many-mouths-noxious2-frontback"
+13064.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13067.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13069.6 "Noxious Nectar (Sides)" Ability { id: "B86F", source: "Pelekys" }
+13071.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+13073.6 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 3
+13080.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central3"
+13080.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side3"
+13086.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13099.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+13109.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+13122.0 "Devour" #Ability { id: "B877", source: "Pelekys" }
+13130.0 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+
+13180.2 label "oc-many-mouths-central3"
+13186.2 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13193.5 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } forcejump "oc-many-mouths-noxious2-end"
+
+13280.2 label "oc-many-mouths-side3"
+13286.2 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+13293.4 label "oc-many-mouths-noxious2-end"
+12298.4 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+13299.5 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Loop Begins, 20.3s pause between loops
+13304.9 label "oc-many-mouths-loop"
+13309.9 "Pollen Lure" Ability { id: "B876", source: "Pelekys" }
+13322.0 "Devour" Ability { id: "B877", source: "Pelekys" }
+13330.0 "Poison Heart (castbar)" Ability { id: "B87D", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 4 (Loop Block)
+13334.3 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central4"
+13334.3 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side4"
+13335.2 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13337.2 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13339.2 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13340.3 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13341.2 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13348.5 "Side Gardening/Central Gardening?" #Ability { id: ["B875", "B874"], source: "Pelekys" }
+13357.6 "Venom Mist (castbar)" #Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+13358.6 "Venom Mist" #Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+13368.4 "Noxious Nectar (Sides/Front/Back)?" #Ability { id: ["B86F", "C2DD"], source: "Pelekys" }
+
+13434.2 label "oc-many-mouths-central4"
+13435.1 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13437.1 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13439.1 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13440.2 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13441.1 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13448.4 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+13452.6 "--sync--" StartsUsing { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" } forcejump "oc-many-mouths-mist2"
+
+13534.2 label "oc-many-mouths-side4"
+13535.1 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13537.1 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13539.1 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13540.2 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+13541.1 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13548.4 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+
+13552.5 label "oc-many-mouths-mist2"
+13557.5 "Venom Mist (castbar)" Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+13558.5 "Venom Mist" Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+
+# Noxious Nector Branch 3 (Loop Block)
+13568.1 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious3-sides"
+13568.1 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious3-frontback"
+13569.8 "Venom" Ability { id: "B870", source: "Pelekys" }
+13572.2 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13574.8 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+13576.4 "Venom" Ability { id: "B870", source: "Pelekys" }
+13577.8 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13591.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13604.7 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back (Loop Block)
+13668.3 label "oc-many-mouths-noxious3-sides"
+13670.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+13672.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13675.0 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+13676.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13678.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 5 (Loop Block)
+13685.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central5"
+13685.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side5"
+13691.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13704.9 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides (Loop Block)
+13768.3 label "oc-many-mouths-noxious3-frontback"
+13770.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+13772.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13775.0 "Noxious Nectar (Sides)" Ability { id: "B86F", source: "Pelekys" }
+13776.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13778.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 5 (Loop Block)
+13785.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central5"
+13785.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side5"
+13791.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13804.7 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+13885.6 label "oc-many-mouths-central5"
+13891.6 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13898.9 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } forcejump "oc-many-mouths-noxious3-end"
+
+13985.6 label "oc-many-mouths-side5"
+13991.6 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+13998.9 label "oc-many-mouths-noxious3-end"
+14003.8 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+14004.9 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Loop
+14020.2 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-loop"
