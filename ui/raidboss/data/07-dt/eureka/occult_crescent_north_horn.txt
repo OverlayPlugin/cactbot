@@ -509,3 +509,97 @@ hideall "--sync--"
 
 # Loop
 14020.2 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-loop"
+
+### Web of Terror
+# -ii C4BD C4BF C4C4 C5CB C6A5
+# -p C4BE:17123.0
+# -it "Crescent Arachne" "Arachne Daughter"
+# IGNORED ABILITIES
+# C4BD --sync--: Wall damage, cast every 1.1s
+# C4BF Implosion: aoe damage ~0.8s after C4BE
+# C4C4 Arachnid Funnel: VFX self-cast, 0.9s after C4C3 cast
+# C5CB --sync--: Arachne Daughter autos
+# C6A5 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# C4BD --sync--: Wall damage, cast every 1.1s
+# C4BE Implosion: 4.7s castbar
+# C4BF Implosion: aoe damage ~0.8s after C4BE
+# C4C0 Summon: Boss moves to center, faces north, 2.7s cast, summons Arachne Daughters, 4 in first two casts, then 6 for remaining Arachnid Webs
+# C4C1 Arachnid Web: 2.6s cast targetting an Arachne Daughter
+# C4C2 Arachnid Web: Arachne Daughter from C4C1 targets another Arachne Daughter, and so on until all are linked
+# C4C3 Arachnid Funnel: initial 4.7s damage cast, boss targets the Arachne Daughter webbed to by C4C1 and dashes to it
+# C4C4 Arachnid Funnel: VFX self-cast, 0.9s after C4C3 cast, boss turns to dash to next in Arachne Daughter in line
+# C4C8 Conformity: Conal damage from Crescent Arachne, targets random player
+# C4C9 Conformity: Conal damage from Arachne Daughter
+# C4CA Bedrock Uplift: 4.4s castbar
+# C4CB Bedrock Uplift: 4.7s damage cast
+# C4CC Bedrock Uplift: 6.7s damage cast
+# C4CD Bedrock Uplift: 8.7s damage cast
+# C4C7 Venom Eruption: 11.7s cast by Arachne Daughter when not killed in time, half the adds cast then the other half cast 2s after
+# C5CB --sync--: Arachne Daughter autos
+# C5D7 Queen's Orders: two Crescent Arachne are marked with '!' headmarkers will perform a conal cleave, all 4 move to intercard edges of arena
+# C5F8 Arachnid Funnel: subsequent damage casts every 1.56s boss dashes to an Arachne Daughter
+# C6A5 --sync--: Boss autos
+17000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
+17011.0 "--targetable--"
+17100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+17118.0 "--sync--" StartsUsing { id: "C4BE", source: "Crescent Arachne" } window 120,5
+17123.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+
+# Tutorial - Arachnid Web
+17131.8 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+17134.8 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+17141.0 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+17141.7 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17142.3 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17142.7 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17150.0 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+17152.2 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17153.8 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17155.4 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17156.7 "--adds targetable--"
+17176.9 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+17178.9 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+# Loop Begins
+17184.0 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+17184.0 label "oc-web-of-terror-loop"
+17187.0 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+17193.4 "Conformity (boss)" Ability { id: "C4C8", source: "Crescent Arachne" }
+17199.0 "Queen's Orders" Ability { id: "C5D7", source: "Crescent Arachne" }
+17211.4 "Conformity (adds)" Ability { id: "C4C9", source: "Arachne Daughter" }
+17214.2 "--adds targetable--"
+17234.3 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+17236.3 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+17244.9 "Bedrock Uplift" Ability { id: "C4CA", source: "Crescent Arachne" }
+17245.2 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+17247.2 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+17249.2 "Bedrock Uplift" #Ability { id: "C4CD", source: "Crescent Arachne" }
+17254.9 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+17256.8 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+17258.8 "Bedrock Uplift" Ability { id: "C4CD", source: "Crescent Arachne" }
+17265.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+
+17279.3 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+17282.3 "Summon (6)" Ability { id: "C4C0", source: "Crescent Arachne" }
+17288.5 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+17289.3 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17289.9 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17290.3 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17290.9 "Arachnid Web 5" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17291.3 "Arachnid Web 6" #Ability { id: "C4C2", source: "Arachne Daughter" }
+17298.5 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+17300.7 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17302.3 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17303.9 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17305.5 "Arachnid Funnel 5" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17307.1 "Arachnid Funnel 6" #Ability { id: "C5F8", source: "Crescent Arachne" }
+17308.4 "--adds targetable--"
+17329.4 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+17331.4 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+# Loop
+# NOTE: Seen this be +-0.6s, movement timings from Conformity, Arachnid Funnel and Summon cause wide variations
+17334.7 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5 forcejump "oc-web-of-terror-loop"
