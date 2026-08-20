@@ -14,6 +14,231 @@ hideall "--sync--"
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
 
+### Double Trouble
+# -ii B7E1 B7D0 B7D1 B7D4 B7D5 B7D6 B7D7 B7D8 B7D9 B7DB B7DC B7E4 B7E5 C3CA
+# -p B7E7:7121.0
+# -it "Conjured Calofisteri" "Entanglement"
+# IGNORED ABILITIES
+# B7D0 Coif Change: Cast after B7CF, right tentacle grows a claw
+# B7D1 Coif Change: Cast after B7CE, left tentacle grows a claw
+# B7D4 Dual Cut: VFX cast ~2.1s after B7D3, boss moves right tentacle forward
+# B7D5 Dual Cut: VFX cast ~2.1s after B7D2, boss moves left tentacle forward
+# B7D6 Resetting Spray: VFX at end of B7CE dual cuts for right tentacle resetting to hair
+# B7D7 Resetting Spray: VFX at end of B7CF dual cuts for left tentacle resetting to hair
+# B7D8 Resetting Spray: VFX at ~2.05s after B7D7 for right tentacle resetting to hair
+# B7D9 Resetting Spray: VFX at ~2.05s after B7D6 for left tentacle resetting to hair
+# B7DB Dashing Cut: 5.7s castbar, 3 blue marks appear, red marker indicates order of dashes, boss will dash to first marker at end of cast
+# B7DC Dashing Cut: 0.2s cast, boss turns and dashes to next marker
+# B7E1 Garrote: 9.7s cast by Entanglement, 10mil damage hit to the trapped player stuck in the Entrapment
+# B7E4 Hair Shears: 4.7s cast star line aoes
+# B7E5 Hair Shears: 4.7s cast lines from star aoes, causes 3s 1116 Stun to players hit, ~0.9s later B9EF occurs, seems possible to dodge B9EF by snapshotting
+# C3CA attack: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B7CE Asymmetric Coif Change: Boss moves middle and faces south, then starts a 2.7s cast, right tentacle grows a claw
+# B7CF Asymmetric Coif Change: Boss moves middle and faces south, then starts a 2.7s cast, left tentacle grows a claw
+# B7D0 Coif Change: Cast after B7CF, right tentacle grows a claw
+# B7D1 Coif Change: Cast after B7CE, left tentacle grows a claw
+# B7D2 Dual Cut: 1.7s castbar for right half-room cleave, then left half-room cleave
+# B7D3 Dual Cut: 1.7s castbar for left half-room cleave, then right half-room cleave
+# B7D4 Dual Cut: VFX cast ~2.1s after B7D3, boss moves right tentacle forward
+# B7D5 Dual Cut: VFX cast ~2.1s after B7D2, boss moves left tentacle forward
+# B7D6 Resetting Spray: VFX at end of B7CE dual cuts for right tentacle resetting to hair
+# B7D7 Resetting Spray: VFX at end of B7CF dual cuts for left tentacle resetting to hair
+# B7D8 Resetting Spray: VFX at ~2.05s after B7D7 for right tentacle resetting to hair
+# B7D9 Resetting Spray: VFX at ~2.05s after B7D6 for left tentacle resetting to hair
+# B7DB Dashing Cut: 5.7s castbar, 3 blue marks appear, red marker indicates order of dashes, boss will dash to first marker at end of cast
+# B7DC Dashing Cut: 0.2s cast, boss turns and dashes to next marker
+# B7DD Extension: 2.7s castbar, 7 Lithe Lock entities start casting B7DE Graft ~1.8s after
+# B7DE Graft: 2.7s cast, circle aoes that then go hidden
+# B7DF Baleful Blowout: 4.7s castbar prior to B7E0 Malicious Weave
+# B7E0 Malicious Weave: 5.2s circle aoes cast by Entanglement at locations where Grafts were. Players hit receive 14E5 Fetters debuff and become entangled.
+# B7E1 Garrote: 9.7s cast by Entanglement, 10mil damage hit to the trapped player stuck in the Entrapment
+# B7E2 Garrote: VFX cast when no one is trapped by Entanglement, this means that B7E2 could be missed as B7E1 StartsUsing replaces it and B7E1 could be canceled
+# B7E3 Hair Shears: 4.7s castbar from boss
+# B7E4 Hair Shears: 4.7s cast star line aoes
+# B7E5 Hair Shears: 4.7s cast lines from star aoes, causes 3s 1116 Stun to players hit, ~0.9s later B9EF occurs, seems possible to dodge B9EF by snapshotting
+# B7E6 Malicious Weave: 0.7s circle aoe cast by Entanglement at location of star aoes. Players hit receive 14E5 Fetters debuff and become entangled.
+# B7E7 Aura Burst: 4.7s castbar
+# B7E8 Aura Burst: aoe damage ~0.9s after B7E7
+# B9EF Hair Shears: VFX for hair lines coming from B7E4, players can be targeted so probably related to pull-in effect
+# BF9C Dashing Cut: 6.2s cast, only for first dash, does minor damage to player if in the dash and does not apply a vulnerability
+# BF9D Dashing Cut: 0.7s cast, subsequent dashes, does minor damage to player if in the dash and does not apply a vulnerability
+# C3CA attack: Boss autos
+# C603 Dual Cut: 2.5s damage cast for first cleave damage
+# C604 Dual Cut: 4.5s damage cast for second cleave damage
+7000.0 "--sync--" ActorControl { command: "80000014", data0: "398" } window 100000,0
+7011.0 "--targetable--"
+7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+7116.0 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } window 120,5
+7121.0 "Aura Burst (castbar)" Ability { id: "B7E7", source: "Conjured Calofisteri" }
+7121.9 "Aura Burst" Ability { id: "B7E8", source: "Conjured Calofisteri" }
+
+# Tutorial - Dual Cut Right => Left or Left => Right
+7125.9 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right"
+7125.9 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left"
+7125.9 "--middle--"
+7128.9 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+7140.0 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7140.9 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7142.9 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7151.6 "Extension" #Ability { id: "B7DD", source: "Conjured Calofisteri" }
+7156.5 "Graft" #Ability { id: "B7DE", source: "Lithe Lock" }
+7163.8 "Baleful Blowout" #Ability { id: "B7DF", source: "Conjured Calofisteri" }
+7164.2 "Malicious Weave" #Ability { id: "B7E0", source: "Entanglement" }
+7167.2 "--adds targetable?--"
+7167.2 "Garrote?" #Ability { id: "B7E2", source: "Entanglement" } duration 9.9 Time until B7E1 Garrote if someone is caught
+
+# Dual Cut Right => Left
+7225.9 label "oc-double-trouble-right"
+7228.9 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+7240.0 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7240.9 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7242.9 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7248.7 "--sync--" StartsUsing { id: "B7DD", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-dual-end"
+
+# Dual Cut Left => Right
+7325.9 label "oc-double-trouble-left"
+7328.9 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+7340.0 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+7340.9 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7342.9 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+7348.6 label "oc-double-trouble-dual-end"
+7351.6 "Extension" Ability { id: "B7DD", source: "Conjured Calofisteri" }
+7356.5 "Graft" Ability { id: "B7DE", source: "Lithe Lock" }
+7363.8 "Baleful Blowout" Ability { id: "B7DF", source: "Conjured Calofisteri" }
+7364.2 "Malicious Weave" Ability { id: "B7E0", source: "Entanglement" }
+7367.2 "--adds targetable?--"
+7367.2 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Tutorial - Dashing Cut with Dual Cut Right => Left or Left => Right
+7379.0 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right2"
+7379.0 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left2"
+7379.0 "--middle--"
+7382.0 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+7397.7 "Dashing Cut 1" #Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7400.7 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7401.5 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7403.5 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7404.8 "Dashing Cut 2" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7407.7 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7408.6 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7410.6 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7411.9 "Dashing Cut 3" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7414.9 "Right/Left Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7415.8 "Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7417.8 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+
+# Dashing Cut with Dual Cut Right => Left
+7479.0 label "oc-double-trouble-right2"
+7482.0 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+7497.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7500.7 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7501.5 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7503.5 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7504.8 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7507.7 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7508.6 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7510.6 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7511.9 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7514.9 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7515.8 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7517.8 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7523.9 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-loop"
+
+# Dashing Cut with Dual Cut Left => Right
+7579.0 label "oc-double-trouble-left2"
+7582.0 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+7597.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7600.7 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+7601.5 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7603.5 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7604.8 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7607.7 "Dual Cut (castbar)" Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7608.6 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7610.6 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7611.9 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7614.9 "Dual Cut (castbar)" Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7615.8 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7617.8 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+# Loop Begins, 22.8s pause between each cycle
+7623.8 label "oc-double-trouble-loop"
+7628.8 "Aura Burst (castbar)" Ability { id: "B7E7", source: "Conjured Calofisteri" }
+7629.7 "Aura Burst" Ability { id: "B7E8", source: "Conjured Calofisteri" }
+7637.9 "Hair Shears" Ability { id: "B7E3", source: "Conjured Calofisteri" }
+7638.9 "Hair Shears (pull-in)" Ability { id: "B9EF", source: "Conjured Calofisteri" }
+7640.9 "Malicious Weave" Ability { id: "B7E6", source: "Entanglement" }
+7643.9 "--adds targetable?--"
+7643.9 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+7657.9 "Extension" Ability { id: "B7DD", source: "Conjured Calofisteri" }
+7662.8 "Graft" Ability { id: "B7DE", source: "Lithe Lock" }
+
+# Dashing Cut with Dual Cut Right => Left or Left => Right (Loop version)
+7664.7 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right3"
+7664.7 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left3"
+7664.7 "--middle--"
+7667.7 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+7683.5 "Dashing Cut 1" #Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7686.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7687.2 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7689.2 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7690.5 "Dashing Cut 2" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7693.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7694.2 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7696.2 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7697.5 "Dashing Cut 3" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7700.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+7701.3 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+7703.3 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+7710.1 "Baleful Blowout" #Ability { id: "B7DF", source: "Conjured Calofisteri" }
+7710.5 "Malicious Weave" #Ability { id: "B7E0", source: "Entanglement" }
+7713.5 "--adds targetable?--"
+7713.5 "Garrote?" #Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Dashing Cut with Dual Cut Right => Left (Loop version)
+7764.9 label "oc-double-trouble-right3"
+7767.9 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+7783.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7786.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7787.4 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7789.4 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7790.7 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7793.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7794.4 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7796.4 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7797.7 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7800.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+7801.5 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7803.5 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7805.4 "--sync--" StartsUsing { id: "B7DF", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-dashing-end"
+
+# Dashing Cut with Dual Cut Left => Right (Loop version)
+7864.9 label "oc-double-trouble-left3"
+7867.9 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+7883.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+7886.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+7887.4 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7889.4 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7890.7 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7893.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+7894.4 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7896.4 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+7897.7 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+7900.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+7901.5 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+7903.5 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+7905.3 label "oc-double-trouble-dashing-end"
+7910.3 "Baleful Blowout" Ability { id: "B7DF", source: "Conjured Calofisteri" }
+7910.7 "Malicious Weave" Ability { id: "B7E0", source: "Entanglement" }
+7913.7 "--adds targetable?--"
+7913.7 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Loop
+7931.5 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-loop"
+
 ### Imbalanced Diet
 # -ii BBE6 BBE7 BBE8 BBE9 BBF2 BBF5 BBF6 BC79 BF4B C4F7 C4FB C5D4 C6FE
 # -p BBE4:10126.4
