@@ -146,6 +146,67 @@ hideall "--sync--"
 # Loop
 1699.0 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
 
+### Dark Artistry
+# -ii B845 B84F C649
+# -p B84D:6122.3
+# -it "Phantom Necromancer"
+# IGNORED ABILITIES
+# B845 --sync--: Wall damage every ~1.1s
+# B84F Dark Flare: aoe damage 0.8s after B84E
+# C649 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B845 --sync--: Wall damage every ~1.1s
+# B846 Rise of the Fallen: 2.7s castbar with VFX, mechanic has B847 Explosion x7 (6 in tutorial), then B848 Explosion x3
+# B847 Explosion: 1.7s casted circle aoes under Long-dead Explorer coming out of square tiles, 6 at a time (4 in tutorial), ~3s apart
+# B848 Explosion: 3.7s casted line aoes in + shape where Long-dead Pirate come out of square tiles, 4 at a time, total of 3 times, ~11.5s apart
+# B84B Arcane Revelation: 2.7s castbar, spawns giant circles that cast B84C Necrosurge
+# B84C Necrosurge: three 6.7s casted line aoes from giant circles creating a Ж shape, ≥≤ shape, or ≡ shape
+# B84D Dark II: Boss targets random player and starts a 4.7s casted 180 degree cleave
+# B84E Dark Flare: 4.7s castbar
+# B84F Dark Flare: aoe damage 0.8s after B84E
+# C649 --sync--: Boss autos
+6000.0 "--sync--" ActorControl { command: "80000014", data0: "3A8" } window 100000,0
+6011.0 "--targetable--"
+6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+6117.3 "--sync--" StartsUsing { id: "B84D", source: "Phantom Necromancer" } window 120,5
+6122.3 "Dark II" Ability { id: "B84D", source: "Phantom Necromancer" }
+
+# Tutorial - Rise of the Fallen
+6131.4 "Rise of the Fallen" Ability { id: "B846", source: "Phantom Necromancer" }
+6142.6 "Explosion 1" Ability { id: "B847", source: "Long-dead Explorer" }
+6145.6 "Explosion 2" Ability { id: "B847", source: "Long-dead Explorer" }
+6148.6 "Explosion 3" Ability { id: "B847", source: "Long-dead Explorer" }
+6151.6 "Explosion 4" Ability { id: "B847", source: "Long-dead Explorer" }
+6154.6 "Explosion 5" Ability { id: "B847", source: "Long-dead Explorer" }
+6157.6 "Explosion 6" Ability { id: "B847", source: "Long-dead Explorer" }
+6168.2 "Explosion 1 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6179.6 "Explosion 2 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6191.0 "Explosion 3 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6197.4 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+# Loop Begins
+6203.5 label "oc-dark-artistry-loop"
+6206.5 "Arcane Revelation" Ability { id: "B84B", source: "Phantom Necromancer" }
+6218.6 "Necrosurge" Ability { id: "B84C", source: "Phantom Necromancer" }
+6223.0 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+6232.1 "Rise of the Fallen" Ability { id: "B846", source: "Phantom Necromancer" }
+6243.3 "Explosion 1" Ability { id: "B847", source: "Long-dead Explorer" }
+6246.3 "Explosion 2" Ability { id: "B847", source: "Long-dead Explorer" }
+6249.3 "Explosion 3" Ability { id: "B847", source: "Long-dead Explorer" }
+6252.3 "Explosion 4" Ability { id: "B847", source: "Long-dead Explorer" }
+6255.3 "Explosion 5" Ability { id: "B847", source: "Long-dead Explorer" }
+6258.3 "Explosion 6" Ability { id: "B847", source: "Long-dead Explorer" }
+6261.3 "Explosion 7" Ability { id: "B847", source: "Long-dead Explorer" }
+6273.7 "Explosion 1 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6285.3 "Explosion 2 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6296.7 "Explosion 3 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+6305.0 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+# Loop
+6315.3 "--sync--" StartsUsing { id: "B84B", source: "Phantom Necromancer" } forcejump "oc-dark-artistry-loop"
+
 ### Double Trouble
 # -ii B7E1 B7D0 B7D1 B7D4 B7D5 B7D6 B7D7 B7D8 B7D9 B7DB B7DC B7E4 B7E5 C3CA
 # -p B7E7:7121.0
