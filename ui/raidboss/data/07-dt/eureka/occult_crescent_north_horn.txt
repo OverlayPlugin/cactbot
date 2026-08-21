@@ -14,6 +14,134 @@ hideall "--sync--"
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
 
+### A Beast Unleashed
+# -ii BC99 BCA8 BCA9 BFD0 C161 C162 C163 C51D C5CD C6A4
+# -p BCAA:1123.2
+# -it "Atlas Carbuncle"
+# IGNORED ABILITIES
+# BC99 Topaz Ray: 2.7s VFX casts for crystals against walls, 2 in tutorial, then 3
+# BFD0 --sync--: Wall damage every 1s
+# C161 Sonic Howl: aoe damage cast ~0.8s after BCAA, two casts that split target with remaining players
+# C162 Spinebreaking Stampede: point knockback from center of cardinal wall ~3.1s after BCA3, two casts that split target with remaining players
+# C163 Spinebreaking Stampede: damage and knockback ~0.7s after BCA3, two casts that split target with remaining players
+# C5CD Ruby Glow: minor aoe damage cast ~0.8s after BC9C, two casts that split target with remaining players
+# C6A4 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# BC98 Topaz Stones: 2.7s castbar, spawns 10 yellow crystals
+# BC99 Topaz Ray: 2.7s VFX casts for crystals against walls, 2 in tutorial, then 3
+# BC9A Topaz Ray: 2.7s cast, circle aoe under yellow crystal
+# BC9C Ruby Glow: 2.7s castbar and minor aoe to some players, splits damage targets with C5CD, also spawns 4 red crystals that move to draw lines shortly after
+# BC9D Ruby Reflection: damage cast for square patterns at end of BC99, only during tutorial
+# BC9E Ruby Reflection: damage cast E/W L-shaped patterns at end of BC99
+# BC9F Ruby Reflection: damage cast N/S Г-shaped (Reversed/Flipped L) patterns at end of BC99
+# BCA0 --sync--: 2.2s cast for VFX animation showing point knockback from center of cardinal wall, perpendicular to BCA1 line knockback
+# BCA1 --sync--: 2.2s cast for VFX animation showing perpendicular knockback from center line
+# BCA3 Spinebreaking Stampede: 7.7s castbar, boss dashes across arena from a cardinal, splits damage targets and perpendicular knockback with C163
+# BCA4 Spinebreaking Stampede: boss jumps to the center of cardinal wall, splits damage targets and knockback with C162
+# BCA6 Claw to Tail: 5.7s castbar + half-room cleave in front of boss
+# BCA7 Tail to Claw: 5.7s castbar + half-room cleave behind boss
+# BCA8 Claw to Tail: follow-up half-room cleave behind boss cast ~3.1s after BCA6; NOTE: p5s ignored this ability
+# BCA9 Tail to Claw: follow-up half-room cleave in front of boss cast ~3.1s after BCA7; NOTE: p5s ignored this ability
+# BCAA Sonic Howl: 4.7s castbar and aoe to some players, splits damage targets with C161
+# BCAB --sync--: Boss dashes to a location
+# BFD0 --sync--: Wall damage every 1s
+# C161 Sonic Howl: aoe damage cast ~0.8s after BCAA, two casts that split damage between remaining players
+# C162 Spinebreaking Stampede: point knockback from center of cardinal wall ~3.1s after BCA3, two casts that split target with remaining players
+# C163 Spinebreaking Stampede: damage and knockback ~0.7s after BCA3, two casts that split target with remaining players
+# C4F2 Reflective Coat: 2.7s castbar, red walls become reflective
+# C51D --sync--: VFX self-cast 0.2s after BC9A, boss recoils after the BCA4 jump then starts autos again
+# C5CD Ruby Glow: minor aoe damage cast ~0.8s after BC9C, two casts that split target with remaining players
+# C6A4 --sync--: Boss autos
+1000.0 "--sync--" ActorControl { command: "80000014", data0: "3C0" } window 100000,0
+1011.0 "--targetable--"
+1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+1118.2 "--sync--" StartsUsing { id: "BCAA", source: "Atlas Carbuncle" } window 120,5
+1123.2 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+
+# Tutorial - Topaz Stones
+1131.4 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1138.3 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+
+# Tutorial - Topaz Stones + Ruby Glow
+1141.6 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1147.7 "Ruby Glow" Ability { id: "BC9C", source: "Atlas Carbuncle" }
+1159.8 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+1163.4 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1163.4 "Ruby Reflection" Ability { id: "BC9D", source: "Atlas Carbuncle" }
+1164.0 "--middle--" Ability { id: "BCAB", source: "Atlas Carbuncle" }
+
+# Tail to Claw or Claw to Tail Branch 1
+1166.1 "--sync--" StartsUsing { id: "BCA6", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-claw"
+1166.1 "--sync--" StartsUsing { id: "BCA7", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-tail"
+1172.1 "Claw to Tail/Tail to Claw?" #Ability { id: ["BCA6", "BCA7"], source: "Atlas Carbuncle" }
+1175.2 "Claw to Tail/Tail to Claw (Tail/Claw)?" #Ability { id: ["BCA8", "BCA9"], source: "Atlas Carbuncle" }
+1183.3 "Topaz Stones" #Ability { id: "BC98", source: "Atlas Carbuncle" }
+1187.4 "--cardinal--" #Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1194.1 "--tell 1--" #Ability { id: "BCA1", source: "Atlas Carbuncle" }
+1196.7 "--tell 2--" #Ability { id: "BCA0", source: "Atlas Carbuncle" }
+1198.6 "Spinebreaking Stampede 1" #Ability { id: "BCA3", source: "Atlas Carbuncle" }
+1198.6 "--knockback--"
+1201.7 "Spinebreaking Stampede 2" #Ability { id: "BCA4", source: "Atlas Carbuncle" }
+1201.7 "--knockback--"
+1205.1 "Topaz Ray" #Ability { id: "BC9A", source: "Topaz Stone" }
+
+1266.1 label "oc-a-beast-unleashed-claw"
+1272.1 "Claw to Tail" Ability { id: "BCA6", source: "Atlas Carbuncle" }
+1275.2 "Claw to Tail (Tail)" Ability { id: "BCA8", source: "Atlas Carbuncle" }
+1280.4 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
+
+1366.1 label "oc-a-beast-unleashed-tail"
+1372.1 "Tail to Claw" Ability { id: "BCA7", source: "Atlas Carbuncle" }
+1375.2 "Tail to Claw (Claw)" Ability { id: "BCA9", source: "Atlas Carbuncle" }
+
+# Loop Begins, ~17.2s pause between
+1380.3 label "oc-a-beast-unleashed-loop"
+1383.3 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1387.4 "--cardinal--" Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1394.1 "--tell 1--" Ability { id: "BCA1", source: "Atlas Carbuncle" }
+1396.7 "--tell 2--" Ability { id: "BCA0", source: "Atlas Carbuncle" }
+1398.6 "Spinebreaking Stampede 1" Ability { id: "BCA3", source: "Atlas Carbuncle" }
+1398.6 "--knockback--"
+1401.7 "Spinebreaking Stampede 2" Ability { id: "BCA4", source: "Atlas Carbuncle" }
+1401.7 "--knockback--"
+1405.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1415.4 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+1421.5 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1427.6 "Ruby Glow" Ability { id: "BC9C", source: "Atlas Carbuncle" }
+1442.7 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+1446.3 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1446.3 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
+1449.3 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1464.4 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+1468.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1468.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"],, source: "Atlas Carbuncle" }
+
+# Tail to Claw or Claw to Tail Branch 2 (Loop Version)
+1467.5 "--sync--" StartsUsing { id: "BCA6", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-claw2"
+1467.5 "--sync--" StartsUsing { id: "BCA7", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-tail2"
+1473.5 "Claw to Tail/Tail to Claw?" #Ability { id: ["BCA6", "BCA7"], source: "Atlas Carbuncle" }
+1476.6 "Claw to Tail/Tail to Claw (Tail/Claw)?" #Ability { id: ["BCA8", "BCA9"], source: "Atlas Carbuncle" }
+1484.7 "Sonic Howl" #Ability { id: "BCAA", source: "Atlas Carbuncle" }
+1501.8 "Topaz Stones" #Ability { id: "BC98", source: "Atlas Carbuncle" }
+1505.9 "--cardinal--" #Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1512.6 "--tell 1--" #Ability { id: "BCA1", source: "Atlas Carbuncle" }
+
+1567.5 label "oc-a-beast-unleashed-claw2"
+1573.5 "Claw to Tail" Ability { id: "BCA6", source: "Atlas Carbuncle" }
+1576.6 "Claw to Tail (Tail)" Ability { id: "BCA8", source: "Atlas Carbuncle" }
+1579.8 "--sync--" StartsUsing { id: "BCAA", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-sonic"
+
+1667.5 label "oc-a-beast-unleashed-tail2"
+1673.5 "Tail to Claw" Ability { id: "BCA7", source: "Atlas Carbuncle" }
+1676.6 "Tail to Claw (Claw)" Ability { id: "BCA9", source: "Atlas Carbuncle" }
+
+1679.7 label "oc-a-beast-unleashed-sonic"
+1684.7 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+
+# Loop
+1699.0 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
+
 ### Double Trouble
 # -ii B7E1 B7D0 B7D1 B7D4 B7D5 B7D6 B7D7 B7D8 B7D9 B7DB B7DC B7E4 B7E5 C3CA
 # -p B7E7:7121.0

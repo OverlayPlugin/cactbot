@@ -186,6 +186,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
+        'Claw to Tail/Tail to Claw \(Tail/Claw\)': 'Tail/Claw',
+        'Claw to Tail \(Tail\)': 'Tail',
+        'Tail to Claw \(Claw\)': 'Claw',
         'Central Gardening/Side Gardening': 'Central/Side Gardening',
         'Side Gardening/Central Gardening': 'Side/Central Gardening',
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
