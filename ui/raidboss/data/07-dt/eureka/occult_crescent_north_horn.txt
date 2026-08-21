@@ -114,12 +114,12 @@ hideall "--sync--"
 1446.3 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
 1449.3 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
 1464.4 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
-1468.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
-1468.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"],, source: "Atlas Carbuncle" }
 
 # Tail to Claw or Claw to Tail Branch 2 (Loop Version)
 1467.5 "--sync--" StartsUsing { id: "BCA6", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-claw2"
 1467.5 "--sync--" StartsUsing { id: "BCA7", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-tail2"
+1468.1 "Topaz Ray" #Ability { id: "BC9A", source: "Topaz Stone" }
+1468.1 "Ruby Reflection" #Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
 1473.5 "Claw to Tail/Tail to Claw?" #Ability { id: ["BCA6", "BCA7"], source: "Atlas Carbuncle" }
 1476.6 "Claw to Tail/Tail to Claw (Tail/Claw)?" #Ability { id: ["BCA8", "BCA9"], source: "Atlas Carbuncle" }
 1484.7 "Sonic Howl" #Ability { id: "BCAA", source: "Atlas Carbuncle" }
@@ -128,11 +128,15 @@ hideall "--sync--"
 1512.6 "--tell 1--" #Ability { id: "BCA1", source: "Atlas Carbuncle" }
 
 1567.5 label "oc-a-beast-unleashed-claw2"
+1568.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1568.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
 1573.5 "Claw to Tail" Ability { id: "BCA6", source: "Atlas Carbuncle" }
 1576.6 "Claw to Tail (Tail)" Ability { id: "BCA8", source: "Atlas Carbuncle" }
 1579.8 "--sync--" StartsUsing { id: "BCAA", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-sonic"
 
 1667.5 label "oc-a-beast-unleashed-tail2"
+1668.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1668.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
 1673.5 "Tail to Claw" Ability { id: "BCA7", source: "Atlas Carbuncle" }
 1676.6 "Tail to Claw (Claw)" Ability { id: "BCA9", source: "Atlas Carbuncle" }
 
