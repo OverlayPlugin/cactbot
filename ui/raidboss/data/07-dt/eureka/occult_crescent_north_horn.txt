@@ -1031,9 +1031,429 @@ hideall "--sync--"
 # Loop
 14020.2 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-loop"
 
+### Tiny Terror
+# TODO: Get log of Meteor, Comete 1 and 3, Meteor timing probably related to 3s cast BCC8 Meteor, followed by 0.8s cast BFA4 Meteor
+# -ii BCB1 BCB9 BCBA BCC2 BCCA BFA1 BFA2 BFA5 C562 C5CE
+# -p BCCB:16117.0
+# -it "Tiny Mage" "Arcane Sphere"
+# IGNORED ABILITIES
+# BCB1 --sync--: Boss autos
+# BCB9 Tiny Flare: VFX for Flare Sphere exploding
+# BCBA Tiny Holy: VFX for Holy Sphere exploding
+# BCC2 Tiny Quake III: 3.2s castbar, used for an earlier jump back into the main timeline during Small for One 2 and Small for One 5
+# BCCA Tiny Thunder III: aoe damage ~0.5s after BCC9
+# BFA1 --sync--: Wall damage cast every 1s
+# BFA2 Tiny Holy: aoe damage + knockback ~0.2s after BCB8
+# C562 --sync--: cast by Tiny Apprentices during Small For Ones where the Flare Sphere moves
+# C5CE --sync--: Tiny Apprentice falls down and fades away
+#
+# ALL ENCOUNTER ABILITIES
+# BCB1 --sync--: Boss autos
+# BCB2 Small for One: 2.7s cast, summons Tiny Apprentices, 4 in tutorial
+# BCB3 Arcane Aggregation: 2.7s cast, 4 Tiny Apprecentices appear and pass a Flare Sphere amongst three of them
+# BCB4 Arcane Aggregation: 2.7s cast, 4 Tiny Apprecentices appear and pass a Holy Sphere amongst three of them
+# BCB5 Recharge: 1.2s cast, Tiny Apprentice charges a Flare Sphere
+# BCB6 Recharge: 1.2s cast, Tiny Apprentice charges a Holy Sphere
+# BCB7 Tiny Flare: 1.7s damage cast, giant circle aoe
+# BCB8 Tiny Holy: 1.7s cast, this cast shares time slot with BCB7 and so is used over BFA2
+# BCB9 Tiny Flare: VFX for Flare Sphere exploding
+# BCBA Tiny Holy: VFX for Holy Sphere exploding
+# BCBD Diminutive Dualcast: 5.2s castbar, boss will do Tiny Blizzard III => Tiny Fire III => Tiny Blizzard III
+# BCBE Tiny Fire III: 5.7s cast, big circle aoe under boss
+# BCBF Tiny Blizzard III: 5.7s cast, three 60 degree conal aoes from boss
+# BCC0 Tiny Meteor: 4.7s castbar, six sets of five BCC1 Tiny Meteor circle aoes, first is 0.1s after cast, then every 2s
+# BCC1 Tiny Meteor: 3.7s cast, circle aoe
+# BCC2 Tiny Quake III: 3.2s castbar, used for an earlier jump back into the main timeline during Small for One 2 and Small for One 5
+# BCC3 Tiny Quake III: 3.7s cast, ~0.5s after BCC2, first quake (circle aoe under boss)
+# BCC4 Tiny Quake III: 3.7s cast, ~2s after BCC3, second quake (donut)
+# BCC5 Tiny Quake III: 3.7s cast, ~2s after BCC4, last quake (outer donut)
+# BCC6 Meteor: castbar, 130s enrage cast for intermission
+# BCC7 Comet: castbar, Three total, DB says 60s cast, but more mages on a comet the shorter the cast, 1st is ~20.4s, 2nd is 30.4s, 3rd is ~60.4s
+# BCC9 Tiny Thunder III: 4.7s castbar
+# BCCA Tiny Thunder III: aoe damage ~0.5s after BCC9
+# BCCB Tiny Warp: Boss teleports to a location
+# BFA1 --sync--: Wall damage cast every 1s
+# BFA2 Tiny Holy: aoe damage + knockback ~0.2s after BCB8
+# BFA3 Recharge: Tiny Apprentice tethers to Tiny Flare and charges it, also used for charging Comets and Meteor
+# BFA5 Comet: damage ~1.06s after BCC7 Comet, applies a vulnerability up, does about 90k
+# C236 Arcane Aggregation: 5.2s cast, Tiny Apprentice generates a Flare Sphere
+# C237 Arcane Aggregation: 5.2s cast, Tiny Apprentice generates a Holy Sphere
+# C562 --sync--: cast by Tiny Apprentices during Small For Ones where the Flare Sphere moves
+# C5CE --sync--: Tiny Apprentice falls down and fades away
+# C64A All for One
+16000.0 "--sync--" ActorControl { command: "80000014", data0: "3CC" } window 100000,0
+16011.0 "--targetable--"
+16100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Tutorial - Small For One 1: Flare Sphere
+16117.0 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" } window 120,5
+16122.2 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+16130.9 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+16136.1 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+16141.0 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+16144.3 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+16152.3 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+16156.4 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Small for One 2: Four Spheres 1
+# Patterns:
+# Flare => Flare => Holy  => Flare => Quake
+# Flare => Holy  => Flare => Flare => Quake
+# Flare => Holy  => Flare => Holy  => Quake
+# Holy  => Flare => Flare => Flare => Quake
+# Holy  => Flare => Flare => Holy  => Quake
+16161.7 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+16172.8 "Arcane Aggregation" Ability { id: ["C236", "C237"], source: "Tiny Apprentice" }
+
+16176.0 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare"
+16176.0 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy"
+16178.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16181.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16184.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16185.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+16186.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16191.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+16193.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+16195.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+16202.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+16204.4 "--untargetable--"
+16204.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+16209.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+# Tiny Flare First
+16276.0 label "oc-tiny-terror-small2-flare"
+16278.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+16279.0 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-flare"
+16279.0 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-holy"
+16281.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16284.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16285.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+16286.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16291.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+16293.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+16295.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+16302.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+16304.4 "--untargetable--"
+16304.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+16309.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+# Tiny Holy First; Next two are Flares
+16476.0 label "oc-tiny-terror-small2-holy"
+16478.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+16481.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+16484.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+16484.9 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-end"
+16484.9 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy-end"
+16485.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+16486.9 "Tiny Flare/Tiny Holy?" #Ability { id: "BCB7", source: "Tiny Mage" }
+16491.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+16493.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+16495.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+16502.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+16504.4 "--untargetable--"
+16504.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+16509.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+16530.1 "Comet 1 (4-mage)?" #Ability { id: "BCC7", source: "Arcane Sphere" }
+
+# Flare => Flare; Must by Holy then Flare next
+16679.0 label "oc-tiny-terror-small2-flare-flare"
+16681.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+16684.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+16685.1 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } forcejump "oc-tiny-terror-small2-flare-end"
+
+# Flare => Holy; Next must be Flare
+16779.0 label "oc-tiny-terror-small2-flare-holy"
+16781.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+16784.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+16784.9 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-end"
+16784.9 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy-end"
+16785.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+16786.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+16791.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+16793.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+16795.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+16802.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+16804.4 "--untargetable--"
+16804.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+16809.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+16830.1 "Comet 1 (4-mage)?" #Ability { id: "BCC7", source: "Arcane Sphere" }
+
+# Ending with Flare
+16884.9 label "oc-tiny-terror-small2-flare-end"
+16885.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+16886.9 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+16887.7 "--sync--" StartsUsing { id: "BCC2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small2-end"
+
+# Ending with Holy
+16984.9 label "oc-tiny-terror-small2-holy-end"
+16985.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+16986.9 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+16987.6 label "oc-tiny-terror-small2-end"
+16991.7 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+16993.7 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+16995.7 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+
+# Intermission - Comets
+# NOTE: BFA3 Recharges occur when Comets are destroyed, players could kill them at various times or out of order, the lines have been removed
+17002.4 "All for One" Ability { id: "C64A", source: "Tiny Mage" }
+17004.4 "--untargetable--"
+17004.4 "Tiny Warp (north)" Ability { id: "BCCB", source: "Tiny Mage" }
+17009.7 "Recharge" Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+17030.1 "Comet 1 (4-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 20.4s after start, 4-mage comet
+17040.1 "Comet 2 (3-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 30.4s after start, 3-mage comet
+17060.1 "Comet 3 (2-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 50.4s? after start, 2-mage comet
+17070.1 "Meteor (enrage)?"
+
+# Post Meteor
+# Use NpcYell to detect the start of next phase
+# Tiny Mage: "WaAaH! hOw CoUlD yOu!?"
+17158.4 "--sync--" NpcYell { npcNameId: "39CB", npcYellId: "4C4F" } window 359,0
+
+# Small for One 3: Diminutive Dualcast + Flare Sphere or Holy Sphere 1
+17167.4 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+17174.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+
+17173.1 "--sync--" StartsUsing { id: "BCB3", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-flare"
+17173.1 "--sync--" StartsUsing { id: "BCB4", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-holy"
+17176.1 "Arcane Aggregation" #Ability { id: ["BCB3", "BCB4"], source: "Tiny Apprentice" }
+17181.3 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+17182.2 "Diminutive Dualcast" #Ability { id: "BCBD", source: "Tiny Mage" }
+17182.8 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+17184.8 "Tiny Fire III" #Ability { id: "BCBE", source: "Tiny Mage" }
+17186.4 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+17186.8 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+17189.8 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17197.6 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+17207.8 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+17207.8 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+17209.8 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+17211.8 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+17214.8 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17215.8 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+17217.8 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+17220.8 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17222.8 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+17273.1 label "oc-tiny-terror-small3-flare"
+17276.1 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+17281.3 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17282.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+17282.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17284.8 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+17286.4 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17286.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17289.8 "Tiny Flare" Ability { id: "BFB7", source: "Tiny Mage" }
+17295.7 "--sync--" StartsUsing { id: "BCC9", source: "Tiny Mage" } forcejump "oc-tiny-terror-small3-end"
+
+17373.1 label "oc-tiny-terror-small3-holy"
+17376.1 "Arcane Aggregation" Ability { id: "BCB4", source: "Tiny Apprentice" }
+17381.3 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+17382.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+17382.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17384.8 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+17386.4 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+17386.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17389.5 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+17392.6 label "oc-tiny-terror-small3-end"
+17397.6 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+
+# Loop Begins, 12.2s pause between
+17402.8 label "oc-tiny-terror-loop"
+# Tiny Meteors
+17407.8 "Tiny Meteor (castbar)" Ability { id: "BCC0", source: "Tiny Mage" }
+17407.8 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+17409.8 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+17411.8 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+17413.8 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+17414.8 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+17415.8 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+17417.8 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+17420.8 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+17422.8 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+17424.8 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+
+# Small for One 4: Diminutive Dualcast + Flare Sphere or Holy Sphere 2 (Loop version)
+17434.5 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+
+17440.2 "--sync--" StartsUsing { id: "BCB3", source: "Tiny Apprentice" } jump "oc-tiny-terror-small4-flare"
+17440.2 "--sync--" StartsUsing { id: "BCB4", source: "Tiny Apprentice" } jump "oc-tiny-terror-small4-holy"
+17441.6 "Tiny Warp (middle)" #Ability { id: "BCCB", source: "Tiny Mage" }
+17443.2 "Arcane Aggregation" #Ability { id: ["BCB3", "BCB4"], source: "Tiny Apprentice" }
+17448.4 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+17449.3 "Diminutive Dualcast" #Ability { id: "BCBD", source: "Tiny Mage" }
+17449.9 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+17451.9 "Tiny Fire III" #Ability { id: "BCBE", source: "Tiny Mage" }
+17453.5 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+17453.9 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+17456.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17459.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17465.0 "Small for One" #Ability { id: "BCB2", source: "Tiny Mage" }
+17476.1 "Arcane Aggregation" #Ability { id: ["C237", "C236"], source: "Tiny Apprentice" }
+17481.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17484.5 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17487.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+
+17540.2 label "oc-tiny-terror-small4-flare"
+17541.6 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+17543.2 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+17548.4 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17549.3 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+17549.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17551.9 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+17553.5 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17553.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17556.9 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17559.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+17562.2 "--sync--" StartsUsing { id: "BCB2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small4-end"
+
+17640.2 label "oc-tiny-terror-small4-holy"
+17641.6 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+17643.2 "Arcane Aggregation" Ability { id: "BCB4", source: "Tiny Apprentice" }
+17648.4 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+17649.3 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+17649.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17651.9 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+17653.5 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+17653.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+17656.8 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17659.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Small for One 5: Four Spheres 2 (Loop version)
+# Patterns:
+# Flare => Flare => Holy  => Flare => Quake
+# Flare => Holy  => Flare => Flare => Quake
+# Flare => Holy  => Flare => Holy  => Quake
+# Holy  => Flare => Flare => Flare => Quake
+# Holy  => Flare => Flare => Holy  => Quake
+17662.0 label "oc-tiny-terror-small4-end"
+17665.0 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+17676.1 "Arcane Aggregation" Ability { id: ["C237", "C236"], source: "Tiny Apprentice" }
+
+17679.4 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare"
+17679.4 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy"
+17681.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17684.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17687.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17689.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17690.6 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17695.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17697.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17699.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17705.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+17722.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+17722.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+17724.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+17726.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+17728.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+17729.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Tiny Flare First (Loop version)
+17779.4 label "oc-tiny-terror-small5-flare"
+17781.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+17782.4 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-flare"
+17782.4 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-holy"
+17784.4 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17787.4 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17789.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+17790.6 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17795.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17797.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17799.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17805.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+17822.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+17822.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+17824.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+17826.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+17828.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+17829.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17830.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+17832.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+
+# Tiny Holy First; Next two are Flares (Loop version)
+17879.4 label "oc-tiny-terror-small5-holy"
+17881.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17884.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17887.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+17888.6 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-end"
+17888.6 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy-end"
+17889.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17890.6 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17895.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17897.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17899.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17905.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+17922.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+17922.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+17924.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+17926.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+17928.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+17929.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17930.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+17932.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+17935.1 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17937.1 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+# Flare => Flare; Must by Holy then Flare next (Loop version)
+17982.4 label "oc-tiny-terror-small5-flare-flare"
+17984.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17987.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17988.7 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } forcejump "oc-tiny-terror-small5-flare-end"
+
+# Flare => Holy; Next must be Flare (Loop version)
+18082.4 label "oc-tiny-terror-small5-flare-holy"
+18084.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+18087.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+18088.6 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-end"
+18088.6 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy-end"
+18089.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18090.6 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18095.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18097.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+18099.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+18105.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+18122.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+18122.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18124.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18126.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18128.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+18129.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18130.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+18132.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+18135.1 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18137.1 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+# Ending with Flare (Loop version)
+18188.6 label "oc-tiny-terror-small5-flare-end"
+18189.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+18190.6 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+18191.5 "--sync--" StartsUsing { id: "BCC2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small5-end"
+
+# Ending with Holy (Loop version)
+18288.6 label "oc-tiny-terror-small5-holy-end"
+18289.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+18290.6 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+18291.4 label "oc-tiny-terror-small5-end"
+18295.3 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+18297.3 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+18299.3 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+18305.0 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+
+# Loop
+18317.2 "--sync--" StartsUsing { id: "BCC0", source: "Tiny Mage" } forcejump "oc-tiny-terror-loop"
+
 ### Web of Terror
 # -ii C4BD C4BF C4C4 C5CB C6A5
-# -p C4BE:17123.0
+# -p C4BE:19123.0
 # -it "Crescent Arachne" "Arachne Daughter"
 # IGNORED ABILITIES
 # C4BD --sync--: Wall damage, cast every 1.1s
@@ -1062,65 +1482,65 @@ hideall "--sync--"
 # C5D7 Queen's Orders: two Crescent Arachne are marked with '!' headmarkers will perform a conal cleave, all 4 move to intercard edges of arena
 # C5F8 Arachnid Funnel: subsequent damage casts every 1.56s boss dashes to an Arachne Daughter
 # C6A5 --sync--: Boss autos
-17000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
-17011.0 "--targetable--"
-17100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
-17118.0 "--sync--" StartsUsing { id: "C4BE", source: "Crescent Arachne" } window 120,5
-17123.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+19000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
+19011.0 "--targetable--"
+19100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+19118.0 "--sync--" StartsUsing { id: "C4BE", source: "Crescent Arachne" } window 120,5
+19123.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
 
 # Tutorial - Arachnid Web
-17131.8 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
-17134.8 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
-17141.0 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
-17141.7 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17142.3 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17142.7 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17150.0 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
-17152.2 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17153.8 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17155.4 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17156.7 "--adds targetable--"
-17176.9 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
-17178.9 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19131.8 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+19134.8 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+19141.0 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+19141.7 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19142.3 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19142.7 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19150.0 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+19152.2 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19153.8 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19155.4 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19156.7 "--adds targetable--"
+19176.9 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19178.9 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
 
 # Loop Begins
-17184.0 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
-17184.0 label "oc-web-of-terror-loop"
-17187.0 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
-17193.4 "Conformity (boss)" Ability { id: "C4C8", source: "Crescent Arachne" }
-17199.0 "Queen's Orders" Ability { id: "C5D7", source: "Crescent Arachne" }
-17211.4 "Conformity (adds)" Ability { id: "C4C9", source: "Arachne Daughter" }
-17214.2 "--adds targetable--"
-17234.3 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
-17236.3 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19184.0 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+19184.0 label "oc-web-of-terror-loop"
+19187.0 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+19193.4 "Conformity (boss)" Ability { id: "C4C8", source: "Crescent Arachne" }
+19199.0 "Queen's Orders" Ability { id: "C5D7", source: "Crescent Arachne" }
+19211.4 "Conformity (adds)" Ability { id: "C4C9", source: "Arachne Daughter" }
+19214.2 "--adds targetable--"
+19234.3 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19236.3 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
 
-17244.9 "Bedrock Uplift" Ability { id: "C4CA", source: "Crescent Arachne" }
-17245.2 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
-17247.2 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
-17249.2 "Bedrock Uplift" #Ability { id: "C4CD", source: "Crescent Arachne" }
-17254.9 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
-17256.8 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
-17258.8 "Bedrock Uplift" Ability { id: "C4CD", source: "Crescent Arachne" }
-17265.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+19244.9 "Bedrock Uplift" Ability { id: "C4CA", source: "Crescent Arachne" }
+19245.2 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+19247.2 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+19249.2 "Bedrock Uplift" #Ability { id: "C4CD", source: "Crescent Arachne" }
+19254.9 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+19256.8 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+19258.8 "Bedrock Uplift" Ability { id: "C4CD", source: "Crescent Arachne" }
+19265.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
 
-17279.3 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
-17282.3 "Summon (6)" Ability { id: "C4C0", source: "Crescent Arachne" }
-17288.5 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
-17289.3 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17289.9 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17290.3 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17290.9 "Arachnid Web 5" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17291.3 "Arachnid Web 6" #Ability { id: "C4C2", source: "Arachne Daughter" }
-17298.5 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
-17300.7 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17302.3 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17303.9 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17305.5 "Arachnid Funnel 5" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17307.1 "Arachnid Funnel 6" #Ability { id: "C5F8", source: "Crescent Arachne" }
-17308.4 "--adds targetable--"
-17329.4 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
-17331.4 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19279.3 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+19282.3 "Summon (6)" Ability { id: "C4C0", source: "Crescent Arachne" }
+19288.5 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+19289.3 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19289.9 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19290.3 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19290.9 "Arachnid Web 5" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19291.3 "Arachnid Web 6" #Ability { id: "C4C2", source: "Arachne Daughter" }
+19298.5 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+19300.7 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19302.3 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19303.9 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19305.5 "Arachnid Funnel 5" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19307.1 "Arachnid Funnel 6" #Ability { id: "C5F8", source: "Crescent Arachne" }
+19308.4 "--adds targetable--"
+19329.4 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+19331.4 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
 
 # Loop
 # NOTE: Seen this be +-0.6s, movement timings from Conformity, Arachnid Funnel and Summon cause wide variations
-17334.7 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5 forcejump "oc-web-of-terror-loop"
+19334.7 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5 forcejump "oc-web-of-terror-loop"

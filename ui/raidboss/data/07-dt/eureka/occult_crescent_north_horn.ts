@@ -194,6 +194,8 @@ const triggerSet: TriggerSet<Data> = {
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
         'Regurgitonion/Regurgitomato': 'Regurgitonion/tomato',
         'Rotten Tomato/Rotten Onion': 'Rotten Tomato/Onion',
+        'Tiny Flare/Tiny Holy': 'Tiny Flare/Holy',
+        'Tiny Meteor (castbar)': '--sync--',
       },
     },
     {
