@@ -1216,10 +1216,10 @@ hideall "--sync--"
 
 # Small for One 3: Diminutive Dualcast + Flare Sphere or Holy Sphere 1
 17167.4 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
-17174.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
 
 17173.1 "--sync--" StartsUsing { id: "BCB3", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-flare"
 17173.1 "--sync--" StartsUsing { id: "BCB4", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-holy"
+17174.5 "Tiny Warp (middle)" #Ability { id: "BCCB", source: "Tiny Mage" }
 17176.1 "Arcane Aggregation" #Ability { id: ["BCB3", "BCB4"], source: "Tiny Apprentice" }
 17181.3 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
 17182.2 "Diminutive Dualcast" #Ability { id: "BCBD", source: "Tiny Mage" }
@@ -1240,6 +1240,7 @@ hideall "--sync--"
 17222.8 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
 
 17273.1 label "oc-tiny-terror-small3-flare"
+17274.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
 17276.1 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
 17281.3 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
 17282.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
@@ -1251,6 +1252,7 @@ hideall "--sync--"
 17295.7 "--sync--" StartsUsing { id: "BCC9", source: "Tiny Mage" } forcejump "oc-tiny-terror-small3-end"
 
 17373.1 label "oc-tiny-terror-small3-holy"
+17374.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
 17376.1 "Arcane Aggregation" Ability { id: "BCB4", source: "Tiny Apprentice" }
 17381.3 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
 17382.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
