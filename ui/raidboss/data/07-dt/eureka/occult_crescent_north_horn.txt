@@ -525,6 +525,182 @@ hideall "--sync--"
 4409.2 "--middle--"
 4411.5 "--sync--" StartsUsing { id: "B86C", source: "Phantom Hydra" } forcejump "oc-ahead-of-the-competition-loop"
 
+### Appalling Behavior
+# -ii C26B C270 C272 C27C C27D C27F C287 C53A C53C C53E
+# -p C53B:5124.9
+# -it "Pallmagia"
+# IGNORED ABILITIES
+# C26B --sync--: Wall damage cast every 1s
+# C270 Bad Breath: VFX from Pallkeeper
+# C272 Plaincracker: VFX from Pallkeeper
+# C27C Roulette: 10mil damage to player standing on center purple scythe tile
+# C27D Roulette: 10mil damage to player standing on outer/middle purple scythe tiles
+# C27F Lilliputian Lyric: VFX, 4s cast
+# C287 --sync--: some sort of VFX for C512 Great Whirlwind?, 4.7s cast
+# C53A Bad Breath: VFX, 4s cast, appears to be the green Malboro icon
+# C53C Plaincracker: VFX, 4s cast, appears to be the yellow golem icon
+# C53E --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# C26B --sync--: Wall damage cast every 1s
+# C26C Summon: boss goes to middle, faces north, and starts 2.7s castbar, spawns 4 cursed constructs (Pallkeepers) on cardinal edges of arena
+# C26D Esoteric Instruction: 12.7s cast, boss starts tethering Pallkeepers, telling order of mechanics and which construct will do which mechanic
+# C26E Esoteric Instruction
+# C26F Reverse Polarity: 4.7s cast, 2 Pallkeepers are tethered and the other 2 Pallkeepers are tethered, they swap locations at end of cast
+# C270 Bad Breath: VFX from Pallkeeper
+# C271 Bad Breath: 2.7s cast at Pallkeeper on edge of arena, 90 degree cleave, will apply 30s F Blind, 30s 11 Paralysis, 10s 7 Silence, 19.96s 954 Nausea, 20s 9 Slow, and 19.96s E Heavy
+# C272 Plaincracker: VFX from Pallkeeper
+# C273 Plaincracker: 2.7s cast at Pallkeeper on edge of arena, circle aoe the size of the arena
+# C278 --sync--: All four Pallkeeper teleport to their opposite side of the arena, counterclockwise resolution
+# C279 --sync--: Two Pallkeepers teleport to clockwise cardinal, clockwise resolution
+# C27A --sync--: Two Pallkeepers teleport to counterclock cardinal, clockwise resolution
+# C27B Roulette: boss goes to middle, faces north, and starts 3.7s cast
+# C27C Roulette: 10mil damage to player standing on center purple scythe tile
+# C27D Roulette: 10mil damage to player standing on outer/middle purple scythe tiles
+# C27E Roulette: VFX for Roulette having stopped
+# C27F Lilliputian Lyric: VFX, 4s cast
+# C280 Lilliputian Lyric: boss faces random player starts a 4.7s castbar, the turn can be slow leading to late syncs, 180 degree cleave, apples a 15s 1B6 Minimum debuff to player
+# C281 Magic Hammer: 2.7s castbar, C282 Magic Hammer circle aoes appear 0.1s after
+# C282 Magic Hammer: 5.2s cast, 3 sets, 4 circle aoes each in columns
+# C283 Occult Missile: 3s castbar, 3 sets of 4 C285 Occult Missiles, each set is 2s apart
+# C285 Occult Missile: 3.7s casted circle aoe
+# C286 Great Whirlwind: 4s castbar
+# C287 --sync--: some sort of VFX for C512 Great Whirlwind?, 4.7s cast
+# C512 Great Whirlwind: 4.7s casted aoe ~0.8s after C286
+# C53A Bad Breath: VFX, 4s cast, appears to be the green Malboro icon
+# C53B Bad Breath: boss goes to center of room and starts 4.7s castbar, 90 degree cleave targetting random player, will apply 30s F Blind, 30s 11 Paralysis, 10s 7 Silence, 19.96s 954 Nausea, 20s 9 Slow, and 19.96s E Heavy
+# C53C Plaincracker: VFX, 4s cast, appears to be the yellow golem icon
+# C53D Plaincracker: 4.7s castbar by boss, large circle aoe under boss
+# C53E --sync--: Boss autos
+5000.0 "--sync--" ActorControl { command: "80000014", data0: "3BA" } window 100000,0
+5011.0 "--targetable--"
+5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+5119.9 "--middle--" StartsUsing { id: "C53B", source: "Pallmagia" } window 120,5
+5124.9 "Bad Breath" Ability { id: "C53B", source: "Pallmagia" }
+5134.3 "Plaincracker" Ability { id: "C53D", source: "Pallmagia" }
+
+# Tutorial - Summon
+5139.9 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5
+5142.9 "Summon" Ability { id: "C26C", source: "Pallmagia" }
+
+# Bad Breath or Painbreaker First
+5146.6 "--sync--" ActorControlExtra { category: "019D", param1: "1", param2: "2" } jump "oc-appalling-behavior-bad1"
+5146.6 "--sync--" ActorControlExtra { category: "019D", param1: "10", param2: "20" } jump "oc-appalling-behavior-pain1"
+5146.6 "Mark 1" #ActorControlExtra { category: "019D", param1: ["1", "10"] } # Bad Breath
+5149.6 "Mark 2 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5152.6 "Mark 3 (Bad Breath/Paincracker)?" #ActorControlExtra { category: "019D", param1: ["1", "10"] }
+5155.6 "Mark 4 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5158.9 "Esoteric Instruction" #Ability { id: "C26D", source: "Pallmagia" }
+5165.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5169.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5174.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5178.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5188.4 "Great Whirlwind (castbar)" #Ability { id: "C286", source: "Pallmagia" }
+5189.2 "Great Whirlwind" #Ability { id: "C512", source: "Pallmagia" }
+
+5246.6 label "oc-appalling-behavior-bad1"
+5249.6 "Mark 2 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5252.6 "Mark 3 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5255.6 "Mark 4 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5258.9 "Esoteric Instruction" Ability { id: "C26D", source: "Pallmagia" }
+5265.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5269.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5274.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5278.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5284.2 "--sync--" StartsUsing { id: "C286", source: "Pallmagia" } forcejump "oc-appalling-behavior-summon1-end"
+
+5346.6 label "oc-appalling-behavior-pain1"
+5349.6 "Mark 2 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5352.6 "Mark 3 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5355.6 "Mark 4 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5358.9 "Esoteric Instruction" Ability { id: "C26D", source: "Pallmagia" }
+5365.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5369.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5374.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5378.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+
+# Tutorial - Occult Missile
+5384.1 label "oc-appalling-behavior-summon1-end"
+5388.4 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5389.2 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+5399.0 "Occult Missile (castbar)" Ability { id: "C283", source: "Pallmagia" }
+5399.8 "Occult Missile 1" #Ability { id: "C285", source: "Pallmagia" }
+5401.8 "Occult Missile 2" #Ability { id: "C285", source: "Pallmagia" }
+5403.8 "Occult Missile 3" #Ability { id: "C285", source: "Pallmagia" }
+5411.2 "Lilliputian Lyric" Ability { id: "C280", source: "Pallmagia" }
+
+# Tutorial - Roulette
+5419.8 "--middle--" StartsUsing { id: "C27B", source: "Pallmagia" } window 5,5
+5423.8 "Roulette" Ability { id: "C27B", source: "Pallmagia" }
+5438.1 "Roulette (stopped)" Ability { id: "C27E", source: "Pallmagia" }
+
+# Loop Begins?
+5442.2 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5
+5442.3 label "oc-appalling-behavior-loop"
+5445.2 "Summon" Ability { id: "C26C", source: "Pallmagia" }
+
+# Bad Breath or Painbreaker First
+5448.9 "--sync--" ActorControlExtra { category: "019D", param1: "1", param2: "2" } jump "oc-appalling-behavior-bad2"
+5448.9 "--sync--" ActorControlExtra { category: "019D", param1: "10", param2: "20" } jump "oc-appalling-behavior-pain2"
+5448.9 "Mark 1" #ActorControlExtra { category: "019D", param1: ["1", "10"] } # Bad Breath
+5451.9 "Mark 2 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5454.9 "Mark 3 (Bad Breath/Paincracker)?" #ActorControlExtra { category: "019D", param1: ["1", "10"] }
+5457.9 "Mark 4 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5461.2 "Esoteric Instruction" #Ability { id: "C26D", source: "Pallmagia" }
+5469.3 "Reverse Polarity" #Ability { id: "C26F", source: "Pallmagia" }
+5470.2 "--adds swap--" #Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5474.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5478.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5483.2 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5487.8 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+
+5548.9 label "oc-appalling-behavior-bad2"
+5551.9 "Mark 2 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5554.9 "Mark 3 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5557.9 "Mark 4 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5561.2 "Esoteric Instruction" Ability { id: "C26E", source: "Pallmagia" }
+5569.3 "Reverse Polarity" Ability { id: "C26F", source: "Pallmagia" }
+5570.2 "--adds swap--" Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5574.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5578.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5583.2 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5587.8 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5594.9 "--sync--" StartsUsing { id: "C286", source: "Pallmagia" } forcejump "oc-appalling-behavior-summon2-end"
+
+5648.9 label "oc-appalling-behavior-pain2"
+5651.9 "Mark 2 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5654.9 "Mark 3 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5657.9 "Mark 4 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5661.2 "Esoteric Instruction" Ability { id: "C26E", source: "Pallmagia" }
+5669.3 "Reverse Polarity" Ability { id: "C26F", source: "Pallmagia" }
+5670.2 "--adds swap--" Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5674.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5678.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5683.2 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5687.8 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+
+5694.7 label "oc-appalling-behavior-summon2-end"
+5699.0 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5699.8 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+
+5709.2 "--middle--" StartsUsing { id: "C27B", source: "Pallmagia" } window 5,5
+5713.2 "Roulette" Ability { id: "C27B", source: "Pallmagia" }
+5727.6 "Roulette (stopped)" Ability { id: "C27E", source: "Pallmagia" }
+5733.4 "Lilliputian Lyric" Ability { id: "C280", source: "Pallmagia" }
+5742.7 "Magic Hammer (castbar)" Ability { id: "C281", source: "Pallmagia" }
+5748.4 "Magic Hammer 1" #Ability { id: "C282", source: "Pallmagia" }
+5749.4 "Magic Hammer 2" #Ability { id: "C282", source: "Pallmagia" }
+5750.4 "Magic Hammer 3" #Ability { id: "C282", source: "Pallmagia" }
+5754.2 "Occult Missile (castbar)" Ability { id: "C283", source: "Pallmagia" }
+5755.1 "Occult Missile 1" #Ability { id: "C285", source: "Pallmagia" }
+5757.1 "Occult Missile 2" #Ability { id: "C285", source: "Pallmagia" }
+5759.1 "Occult Missile 3" #Ability { id: "C285", source: "Pallmagia" }
+5765.8 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5766.6 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+
+# Loop
+5775.2 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5 forcejump "oc-appalling-behavior-loop"
+
 ### Cursed Resurgence
 # NOTE: Necrohazes cause 13C3 Gradual Zombification (60s) and 1412 Zombie-proof (5s) effects if player stands in one. If they stand in one again after Zombie-proof expires, they become a zombie (901 Zombification, lasts 15s). Zombification causes player to be uncontrollable and attack allies. 1412 Zombie-proof blocks Necrohaze damage. Zombies can gain Zombie-proof, but while zombified the Necrohazes don't do damage.
 # TODO: Compare with Aetherial Ward enrage log
