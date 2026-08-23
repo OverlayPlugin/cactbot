@@ -1281,6 +1281,170 @@ hideall "--sync--"
 # Loop
 11869.8 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
 
+### Lost on the Wind
+# -ii B94A B94B B94D B94E B956 B957
+# -p B951:12122.6
+# -it "Abductor"
+# IGNORED ABILITIES
+# B94A --sync--: Boss autos
+# B94B --sync--: Wall damage every cast 1s
+# B94D Strong Wind: Biting Wind tornado that moves around arena, casts every ~0.75s, getting hit does minor damage and a small knockback, no vulnerabilty up
+# B94E Tendon Ripper: VFX 0.7s cast
+# B956 Skydive: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Skydive
+# B957 Cyclonic Ring: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Cyclonic Ring
+#
+# ALL ENCOUNTER ABILITIES
+# B949 --sync--: Boss dashes somewhere
+# B94A --sync--: Boss autos
+# B94B --sync--: Wall damage every cast 1s
+# B94C Hurricane: 4.7s castbar, spawns two tornadoes (one inner rotates clockwise, one outer rotates counterclockwise)
+# B94D Strong Wind: tornado that moves around arena, casts every ~0.75s
+# B94E Tendon Ripper: VFX 0.7s cast at same time as 894F Tendon Ripper
+# B94F Tendon Ripper: 0.7s casted 8-point line aoe from Biting Wind tornado
+# B950 Buffet: damage + knockback ~0.65s after BC7A Buffet
+# B951 Wind Blade: boss turns and faces random player to start a 4.7s casted 180 degree cleave, after tutorial boss will have dashed to random cardinal, then turn and do the 180 degree cleave
+# B952 Plumefall Trap: 2.7s castbar, boss spawns 4 Abductor's Plumes
+# B953 Splinter: 4.2s cast circle aoe under Abductor's Plume
+# B954 Aerosnare: 3.2s castbar, ~0.5s after cast, B955 Aerosnares go off, at the same time there are B953 Splinters from B952 Plumefall Trap to avoid
+# B955 Aerosnare: 3.7s cast, two sets of three 60 degree conal aoes from boss that go off 2s apart
+# B956 Skydive: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Skydive
+# B957 Cyclonic Ring: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Cyclonic Ring
+# B958 Skydive: 5.2s casted big circle aoe, boss hovers with glowing orange feet over targetted area
+# B959 Cyclonic Ring: 5.2s casted donut around boss, boss hovers with glowing green wings over targetted area
+# BBF8 Hurricane: aoe damage ~0.88s after B94C Hurricane
+# BC7A Buffet: VFX, 3.7s cast, at start 'A faint wind stirs...' Wind/Knockback comes from a random cardinal.
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "3A9" } window 100000,0
+12011.0 "--targetable--"
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+12117.6 "--sync--" StartsUsing { id: "B951", source: "Abductor" } window 120,5
+12122.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+
+# Tutorial - Skydive => Cyclonic Ring or Cyclonic Ring => Skydive
+12126.8 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive"
+12126.8 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring"
+12132.3 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12138.0 "Plumefall Trap" #Ability { id: "B952", source: "Abductor" }
+12146.3 "Splinter" #Ability { id: "B953", source: "Abductor's Plume" }
+12156.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12160.9 "Buffet" #Ability { id: "B950", source: "Abductor" }
+12160.9 "--knockback--"
+12167.8 "Cyclonic Ring/Skydive?" #Ability { id: ["B959", "B958"], source: "Abductor" }
+12170.5 "--middle--" #Ability { id: "B949", source: "Abductor" } window 5,5
+12177.7 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12178.6 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+
+12226.8 label "oc-lost-on-the-wind-skydive"
+12232.3 "Skydive" Ability { id: "B958", source: "Abductor" }
+12238.0 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12246.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12256.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12260.9 "Buffet" Ability { id: "B950", source: "Abductor" }
+12260.9 "--knockback--"
+12267.8 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12270.4 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12272.9 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-hurricane"
+
+12326.8 label "oc-lost-on-the-wind-ring"
+12332.3 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12338.0 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12346.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12356.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12360.9 "Buffet" Ability { id: "B950", source: "Abductor" }
+12360.9 "--knockback--"
+12367.8 "Skydive" Ability { id: "B958", source: "Abductor" }
+12370.5 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Tutorial - Hurricane
+12372.8 label "oc-lost-on-the-wind-hurricane"
+12377.7 "Hurricane (castbar)" Ability { id: "B94C", source: "Abductor" }
+12378.6 "Hurricane" Ability { id: "BBF8", source: "Abductor" }
+12381.6 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 52.3
+12389.8 "Tendon Ripper 1" Ability { id: "B94F", source: "Biting Wind" }
+12398.8 "Tendon Ripper 2" Ability { id: "B94F", source: "Biting Wind" }
+12406.8 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12411.5 "Buffet" Ability { id: "B950", source: "Abductor" }
+12411.5 "--knockback--"
+12414.8 "Tendon Ripper 3" Ability { id: "B94F", source: "Biting Wind" }
+12423.8 "Tendon Ripper 4" Ability { id: "B94F", source: "Biting Wind" }
+12424.8 "--cardinal--" Ability { id: "B949", source: "Abductor" }
+12432.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+
+12442.7 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12444.8 "--middle--" Ability { id: "B949", source: "Abductor" }
+12450.6 "Aerosnare (castbar)" Ability { id: "B954", source: "Abductor" }
+12451.0 "Aerosnare 1" #Ability { id: "B955", source: "Abductor" }
+12451.0 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12453.0 "Aerosnare 2" #Ability { id: "B955", source: "Abductor" }
+
+# Skydive or Cyclonic Ring 2
+12454.6 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive2"
+12454.6 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring2"
+12460.1 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12463.8 "--middle--" #Ability { id: "B949", source: "Abductor" }
+12470.9 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12471.8 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+12474.8 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12483.0 "Tendon Ripper 1" #Ability { id: "B94F", source: "Biting Wind" }
+12492.0 "Tendon Ripper 2" #Ability { id: "B94F", source: "Biting Wind" }
+12501.0 "Tendon Ripper 3" #Ability { id: "B94F", source: "Biting Wind" }
+
+12554.5 label "oc-lost-on-the-wind-skydive2"
+12560.0 "Skydive" Ability { id: "B958", source: "Abductor" }
+12563.7 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12566.0 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
+12654.5 label "oc-lost-on-the-wind-ring2"
+12660.0 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12663.7 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Loop Begins
+12666.0 label "oc-lost-on-the-wind-loop"
+12670.9 "Hurricane (castbar)" Ability { id: "B94C", source: "Abductor" }
+12671.7 "Hurricane" Ability { id: "BBF8", source: "Abductor" }
+12674.7 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12682.9 "Tendon Ripper 1" Ability { id: "B94F", source: "Biting Wind" }
+12691.9 "Tendon Ripper 2" Ability { id: "B94F", source: "Biting Wind" }
+12700.9 "Tendon Ripper 3" Ability { id: "B94F", source: "Biting Wind" }
+12707.9 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12712.6 "Buffet" Ability { id: "B950", source: "Abductor" }
+12712.6 "--knockback--"
+12715.9 "Tendon Ripper 4" Ability { id: "B94F", source: "Biting Wind" }
+12724.9 "Tendon Ripper 5" Ability { id: "B94F", source: "Biting Wind" }
+12733.9 "--cardinal--" Ability { id: "B949", source: "Abductor" }
+12733.9 "Tendon Ripper 6" #Ability { id: "B94F", source: "Biting Wind" }
+12741.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+12750.8 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12752.9 "--sync--" Ability { id: "B949", source: "Abductor" }
+12758.7 "Aerosnare" Ability { id: "B954", source: "Abductor" }
+12759.3 "Aerosnare 1" #Ability { id: "B955", source: "Abductor" }
+12759.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12761.3 "Aerosnare 2" #Ability { id: "B955", source: "Abductor" }
+
+# Skydive or Cyclonic Ring 2 (Loop version)
+12762.8 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive3"
+12762.8 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring3"
+12768.3 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12777.0 "--middle--" #Ability { id: "B949", source: "Abductor" }
+12784.1 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12785.0 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+12788.0 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12796.2 "Tendon Ripper 1" #Ability { id: "B94F", source: "Biting Wind" }
+12805.2 "Tendon Ripper 2" #Ability { id: "B94F", source: "Biting Wind" }
+12814.2 "Tendon Ripper 3" #Ability { id: "B94F", source: "Biting Wind" }
+
+12862.8 label "oc-lost-on-the-wind-skydive3"
+12868.3 "Skydive" Ability { id: "B958", source: "Abductor" }
+12877.0 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12879.3 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
+12962.8 label "oc-lost-on-the-wind-ring3"
+12968.3 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12977.0 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Loop
+# NOTE: Ends at B949, but that is an instant cast so using next cast
+12979.5 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
 ### Many Mouths to Feed
 # -ii B86E B871 B872 B873 C241 C242 C6A2
 # -p B87F:13124.2
