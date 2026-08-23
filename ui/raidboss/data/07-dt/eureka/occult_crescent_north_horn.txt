@@ -1749,6 +1749,131 @@ hideall "--sync--"
 # Loop
 15020.2 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-loop"
 
+### Quarried Away
+# -ii C648
+# -p B843:16121.2
+# -it "Alabaster Blade" "Light Aether"
+# IGNORED ABILITIES
+# C648 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B832 Summon: boss moves to middle, faces north, and starts 2.7s castbar, spawns Alabaster Golems at end of cast, 2 during tutorial and 4 after
+# B833 Fourfold Attack Order: 9.7s castbar, Alabaster Golems will cleave four times, may rotate between each cleave depending on number of arrows
+# B834 Attack Order: VFX, boss raises arm and Alabaster Golems turn if they haven't completed all turns, then Golems start casting B836 Acclaim
+# B835 Acclaim: 11.7s initial cast from Alabaster Golem, 90-degree cleaves
+# B836 Acclaim: 2.7s subsequent casts from Alabaster Golem, 90-degree cleaves
+# B837 Light Prayer: 2.7s castbar, boss summons Light Aether adds
+# B839 False Spellblade Holy: aoe damage ~0.88s after BA8D False Spellblade Holy
+# B83B Occult Aero: 4.7s cast, two sets of line aoes forming a checkerboard pattern ~3s apart
+# B83C Occult Stone II: 4.7s cast, two sets of three 60-degree conal aoes from boss ~3s apart
+# B83D Occult Tornado: 4.7s cast, a total of 5 random players will have puddle aoes spawn under them
+# B83E Right-Left Combination: 4.7s castbar, boss raises right arm, cleaves right half of arena, then left half
+# B83F Left-Right Combination: 4.7s castbar, boss raises left arm, cleave left half of arena, then right half
+# B840 Clearout: followup cast to B83F, boss cleaves right
+# B841 Clearout: followup cast to B83E, boss cleaves left
+# B842 Occult Aero III: 4.7s cast, 5 of these at a time, line aoes going E/W during B83E/B83F
+# B843 Embrittling Blade: 4.7s castbar
+# B844 Embrittling Blade: aoe damage ~1.5s after B843
+# BA8D False Spellblade Holy: 31.7s castbar after B837 Light Prayer
+# C648 --sync--: Boss autos
+16000.0 "--sync--" ActorControl { command: "80000014", data0: "397" } window 100000,0
+16011.0 "--targetable--"
+16100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+16116.2 "--sync--" StartsUsing { id: "B843", source: "Alabaster Blade" } window 120,5
+16121.2 "Embrittling Blade (castbar)" Ability { id: "B843", source: "Alabaster Blade" }
+16122.6 "Embrittling Blade" Ability { id: "B844", source: "Alabaster Blade" }
+
+# Tutorial - Fourfold Attack Order
+16126.9 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16129.9 "Summon (2)" Ability { id: "B832", source: "Alabaster Blade" }
+16142.0 "Fourfold Attack Order" Ability { id: "B833", source: "Alabaster Blade" }
+16144.0 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16147.1 "Attack Order 1" Ability { id: "B834", source: "Alabaster Blade" }
+16152.3 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16154.4 "Attack Order 2" Ability { id: "B834", source: "Alabaster Blade" }
+16159.6 "Acclaim 3" #Ability { id: "B836", source: "Alabaster Golem" }
+16161.7 "Attack Order 3" Ability { id: "B834", source: "Alabaster Blade" }
+16166.9 "Acclaim 4" #Ability { id: "B836", source: "Alabaster Golem" }
+
+# Right-Left Combination or Left-Right Combination 1
+16171.7 "--sync--" StartsUsing { id: "B83E", source: "Alabaster Blade" } jump "oc-quarried-away-right"
+16171.7 "--sync--" StartsUsing { id: "B83F", source: "Alabaster Blade" } jump "oc-quarried-away-left"
+16176.7 "Right-Left Combination/Left-Right Combination?" #Ability { id: ["B83E", "B83F"], source: "Alabaster Blade" }
+16176.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16178.8 "Clearout" #Ability { id: ["B841", "B840"], source: "Alabaster Blade" }
+16188.2 "Light Prayer" #Ability { id: "B837", source: "Alabaster Blade" }
+16188.9 "--adds--" #AddedCombatant { name: "Light Aether" }
+16198.4 "Occult Aero 1" #Ability { id: "B83B", source: "Alabaster Blade" }
+16201.5 "Occult Aero 2" #Ability { id: "B83B", source: "Alabaster Blade" }
+16205.5 "Occult Tornado 1" #Ability { id: "B83D", source: "Alabaster Blade" }
+16213.5 "Occult Stone II 1" #Ability { id: "B83C", source: "Alabaster Blade" }
+16216.5 "Occult Stone II 2" #Ability { id: "B83C", source: "Alabaster Blade" }
+16219.5 "Occult Tornado 2" #Ability { id: "B83D", source: "Alabaster Blade" }
+
+16271.7 label "oc-quarried-away-right"
+16276.7 "Right-Left Combination" Ability { id: "B83E", source: "Alabaster Blade" }
+16276.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16278.8 "Clearout" Ability { id: "B841", source: "Alabaster Blade" }
+16285.4 "--sync--" StartsUsing { id: "B837", source: "Alabaster Blade" } forcejump "oc-quarried-away-prayer"
+
+16371.7 label "oc-quarried-away-left"
+16376.7 "Left-Right Combination" Ability { id: "B83F", source: "Alabaster Blade" }
+16376.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16378.8 "Clearout" Ability { id: "B840", source: "Alabaster Blade" }
+
+# Light Prayer Adds
+# NOTE: Five Light Aether initially spawn, another 5 spawn after first set is killed which means these can't be properly synced
+16385.3 label "oc-quarried-away-prayer"
+16388.2 "Light Prayer" Ability { id: "B837", source: "Alabaster Blade" }
+16388.9 "--adds--" #AddedCombatant { name: "Light Aether" }
+16398.4 "Occult Aero 1" Ability { id: "B83B", source: "Alabaster Blade" }
+16401.4 "Occult Aero 2" Ability { id: "B83B", source: "Alabaster Blade" }
+16405.5 "Occult Tornado 1" Ability { id: "B83D", source: "Alabaster Blade" }
+16413.5 "Occult Stone II 1" Ability { id: "B83C", source: "Alabaster Blade" }
+16416.5 "Occult Stone II 2" Ability { id: "B83C", source: "Alabaster Blade" }
+16419.5 "Occult Tornado 2" Ability { id: "B83D", source: "Alabaster Blade" }
+16422.5 "False Spellblade Holy (castbar)" Ability { id: "BA8D", source: "Alabaster Blade" }
+16423.4 "False Spellblade Holy" Ability { id: "B839", source: "Alabaster Blade" }
+
+# Loop Begins
+16428.8 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16428.9 label "oc-quarried-away-loop"
+16431.8 "Summon (4)" Ability { id: "B832", source: "Alabaster Blade" }
+16443.9 "Fourfold Attack Order" Ability { id: "B833", source: "Alabaster Blade" }
+16445.9 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16449.0 "Attack Order 1" Ability { id: "B834", source: "Alabaster Blade" }
+16454.2 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16456.3 "Attack Order 2" Ability { id: "B834", source: "Alabaster Blade" }
+16461.5 "Acclaim 3" #Ability { id: "B836", source: "Alabaster Golem" }
+16463.6 "Attack Order 3" Ability { id: "B834", source: "Alabaster Blade" }
+16468.8 "Acclaim 4" #Ability { id: "B836", source: "Alabaster Golem" }
+
+# Right-Left Combination or Left-Right Combination 2 (Loop version)
+16473.9 "--sync--" StartsUsing { id: "B83E", source: "Alabaster Blade" } jump "oc-quarried-away-right2"
+16473.9 "--sync--" StartsUsing { id: "B83F", source: "Alabaster Blade" } jump "oc-quarried-away-left2"
+16478.9 "Right-Left Combination/Left-Right Combination?" #Ability { id: ["B83E", "B83F"], source: "Alabaster Blade" }
+16478.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16481.0 "Clearout" #Ability { id: ["B841", "B840"], source: "Alabaster Blade" }
+16491.5 "--middle--" #StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16494.3 "Summon (4)" #Ability { id: "B832", source: "Alabaster Blade" }
+16506.4 "Fourfold Attack Order" #Ability { id: "B833", source: "Alabaster Blade" }
+16508.4 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16511.5 "Attack Order 1" #Ability { id: "B834", source: "Alabaster Blade" }
+16516.7 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16518.8 "Attack Order 2" #Ability { id: "B834", source: "Alabaster Blade" }
+
+16573.9 label "oc-quarried-away-right2"
+16578.9 "Right-Left Combination" Ability { id: "B83E", source: "Alabaster Blade" }
+16578.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16581.0 "Clearout" Ability { id: "B841", source: "Alabaster Blade" }
+16591.5 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } forcejump "oc-quarried-away-loop"
+
+16673.9 label "oc-quarried-away-left2"
+16678.9 "Left-Right Combination" Ability { id: "B83F", source: "Alabaster Blade" }
+16678.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16681.0 "Clearout" Ability { id: "B840", source: "Alabaster Blade" }
+16691.5 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } forcejump "oc-quarried-away-loop"
+
 ### Tiny Terror
 # TODO: Get log of Meteor, Comete 1 and 3, Meteor timing probably related to 3s cast BCC8 Meteor, followed by 0.8s cast BFA4 Meteor
 # -ii BCB1 BCB9 BCBA BCC2 BCCA BFA1 BFA2 BFA5 C562 C5CE
