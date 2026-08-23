@@ -1090,6 +1090,246 @@ hideall "--sync--"
 # Loop
 8931.5 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-loop"
 
+### Familiar Tactics
+# -ii C6A3 BBA9 B9AB B9AF B9B1 B9B2 B9AE
+# -p B9B8:9119.7
+# -it "Elm Gigas"
+# IGNORED ABILITIES
+# C6A3 --sync--: Boss autos
+# BBA9 Ancient Aero III: damage
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
+# B9AF Inspirited Crosswinds: damage
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
+# B9AE Inspirited Cyclone: damage
+#
+# ALL ENCOUNTER ABILITIES
+# B9AA Unbowed Spirit
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
+# B9AC Inspirited Cyclone
+# B9AD Inspirited Crosswinds
+# B9AE Inspirited Cyclone: damage
+# B9AF Inspirited Crosswinds: damage
+# B9B0 Inspirited Hurricane: Boss will go to middle, turn and face south
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
+# B9B4 Ancient Aero: Line AOEs, each set is 10 casts, 0.5s apart
+# B9B5 Spinning Sweep: Boss will go to middle, turn and face random player
+# B9B6 Inspirited Impact: Boss will go to middle, turn and face south
+# B9B7 Inspirited Impact
+# B9B8 Ancient Aero III
+# BBA9 Ancient Aero III: damage
+# C6A3 --sync--: Boss autos
+9000.0 "--sync--" ActorControl { command: "80000014", data0: "390" } window 100000,0
+9011.0 "--targetable--"
+9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+9116.2 "--sync--" StartsUsing { id: "B9B8", source: "Elm Gigas" } window 120,5
+9119.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Tutorial - Random Discs
+9127.4 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9127.4 "--random discs--"
+9130.5 "Unbowed Spirit" duration 10.9 #Ability { id: "B9AB", source: "Elm Gigas" }
+9140.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9146.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9154.7 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9162.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9168.7 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9171.7 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9183.7 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9186.1 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9188.5 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9190.8 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Quadrant Discs + Ancient Aero
+9194.5 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5
+9198.8 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+9198.8 "--quadrant discs--"
+9203.0 "Unbowed Spirit" duration 13.1 #Ability { id: "B9AB", source: "Elm Gigas" }
+9205.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9213.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9217.3 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9223.0 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9233.2 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+9241.2 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9249.5 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9252.5 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9264.5 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9266.9 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9269.2 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9271.6 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+9275.8 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9275.8 "--random discs--"
+9278.9 "Unbowed Spirit" duration 11.7 #Ability { id: "B9AB", source: "Elm Gigas" }
+9281.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9292.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9293.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9298.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9306.6 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9314.6 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop Begins
+# Quadrant Discs + Ancient Aero
+9323.4 label "oc-familiar-tactics-loop"
+9327.7 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+9327.7 "--quadrant discs--"
+9331.9 "Unbowed Spirit" duration 12.9 #Ability { id: "B9AB", source: "Elm Gigas" }
+9334.1 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9342.1 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9346.1 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9351.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9361.8 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+9369.8 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9376.8 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9379.8 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9391.8 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9394.2 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9396.6 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9399.0 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+9403.2 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9403.2 "--random discs--"
+9406.3 "Unbowed Spirit" duration 13.5 #Ability { id: "B9AB", source: "Elm Gigas" }
+9408.6 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9420.2 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9420.6 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9426.2 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9434.3 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9442.3 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop
+9451.7 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5 forcejump "oc-familiar-tactics-loop"
+
+### Forbidden Folios
+# -ii BFA0 B8C1 B8DB B8CC B8CD B8CE B8D0 B8D1 B8D2 B8DB B8DD B8DF C2D7 C57A C57B C57C C57D C57E C57F C580 C581
+# -p B8C0:10120.9
+# -it "Arbatel"
+# IGNORED ABILITIES
+# BFA0 attack
+# B8C1 Knowledge Level Correction: damage
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8DB Big Burst: missing a tower soak
+# B8DD Fire II: damage
+# B8DF Marginalia: damage
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+#
+# ALL ENCOUNTER ABILITIES
+# B8C0 Knowledge Level Correction
+# B8C1 Knowledge Level Correction
+# B8C4 Blot
+# B8C5 Blot
+# B8C6 Cover to Cover: boss jumps to middle faces east, cleaves east half
+# B8C7 Cover to Cover: after B8C6, boss turns 180 degrees to west cleaves west half
+# B8C8 Arcane Rule: castbar
+# B8C9 Quad Rule: initial plus-shaped exaflare
+# B8CA Horizontal Rule: square exaflares
+# B8CB Summon: small circle aoes where books will appear
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8D3 Knowledge Level 5 Death: castbar by Page 64
+# B8D4 Knowledge Level 3 Flare: castbar by Page 16
+# B8D5 Knowledge Level 4 Holy: castbar by Page 8
+# B8D6 Prime Knowledge Level Death: castbar by Page 512
+# B8D7 Book Drop: castbar
+# B8DB Big Burst
+# B8DA Book Drop
+# B8DB Big Burst
+# B8DC Thunder II
+# B8DD Fire II: damage
+# B8DE Fire II: castbar
+# B8DF Marginalia: castbar
+# B8E0 Marginalia
+# BC76 --sync--
+# BF9F Summon
+# BFA0 attack
+# C154 Unbound Ink: circle aoe under boss
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "39A" } window 100000,0
+10011.0 "--targetable--"
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Tutorial - Knowledge Level Correction with 2 Summons
+10115.9 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } window 120,5
+10120.9 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10129.2 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10132.2 "Summon x2" Ability { id: "B8CB", source: "Arbatel" }
+10147.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10154.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop Begins
+# Knowledge Level Correction with 3 Summons + Book Drop
+10159.8 label "oc-forbidden-folios-loop"
+10164.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10172.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10175.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+10189.4 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10190.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10191.0 "--middle--" StartsUsing { id: "B8C6", source: "Arbatel" }
+10195.0 "Cover to Cover 1" Ability { id: "B8C6", source: "Arbatel" }
+10199.1 "Cover to Cover 2" Ability { id: "B8C7", source: "Arbatel" }
+10205.4 "Unbound Ink" Ability { id: "C154", source: "Arbatel" }
+10214.7 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+10220.1 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10224.2 "Book Drop (castbar)" Ability { id: "B8D7", source: "Arbatel" }
+10233.0 "Book Drop 1" Ability { id: "B8DA", source: "" }
+10233.6 "Thunder II 1" #Ability { id: "B8DC", source: "Arbatel" }
+10235.6 "Thunder II 2" #Ability { id: "B8DC", source: "Arbatel" }
+10242.0 "Book Drop 2" Ability { id: "B8DA", source: "" }
+10245.1 "Fire II" Ability { id: "B8DE", source: "Arbatel" }
+10254.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Knowledge Level Correction with 3 Summons + Square Exaflares
+10264.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10272.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10275.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+10290.2 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10292.2 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10299.2 "Arcane Rule" Ability { id: "B8C8", source: "Arbatel" }
+10299.2 "Quad Rule" #Ability { id: "B8C9", source: "Arbatel" }
+10301.2 "Horizontal Rule 1" #Ability { id: "B8CA", source: "Arbatel" }
+10303.2 "Horizontal Rule 2" #Ability { id: "B8CA", source: "Arbatel" }
+10305.2 "Horizontal Rule 3" #Ability { id: "B8CA", source: "Arbatel" }
+10307.2 "Horizontal Rule 4" #Ability { id: "B8CA", source: "Arbatel" }
+10313.2 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+10321.6 "Blot (castbar)" Ability { id: "B8C4", source: "Arbatel" }
+10326.6 "Blot 1" #Ability { id: "B8C5", source: "Arbatel" }
+10328.6 "Blot 2" #Ability { id: "B8C5", source: "Arbatel" }
+10330.6 "Blot 3" #Ability { id: "B8C5", source: "Arbatel" }
+10340.9 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop
+10348.3 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } forcejump "oc-forbidden-folios-loop"
+
 ### Imbalanced Diet
 # -ii BBE6 BBE7 BBE8 BBE9 BBF2 BBF5 BBF6 BC79 BF4B C4F7 C4FB C5D4 C6FE
 # -p BBE4:11126.4

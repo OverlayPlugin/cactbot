@@ -191,6 +191,8 @@ const triggerSet: TriggerSet<Data> = {
         'Tail to Claw \(Claw\)': 'Claw',
         'Nigh-drawn Eruption/Far-flung Eruption': 'Nigh-drawn/Far-flung Eruption',
         'Far-flung Eruption/Nigh-drawn Eruption': 'Far-flung/Nigh-drawn Eruption',
+        'Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death':
+          'Knowledge Level Check',
         'Central Gardening/Side Gardening': 'Central/Side Gardening',
         'Side Gardening/Central Gardening': 'Side/Central Gardening',
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
