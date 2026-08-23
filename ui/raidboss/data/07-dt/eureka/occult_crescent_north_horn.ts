@@ -189,6 +189,8 @@ const triggerSet: TriggerSet<Data> = {
         'Claw to Tail/Tail to Claw \(Tail/Claw\)': 'Tail/Claw',
         'Claw to Tail \(Tail\)': 'Tail',
         'Tail to Claw \(Claw\)': 'Claw',
+        'Nigh-drawn Eruption/Far-flung Eruption': 'Nigh-drawn/Far-flung Eruption',
+        'Far-flung Eruption/Nigh-drawn Eruption': 'Far-flung/Nigh-drawn Eruption',
         'Central Gardening/Side Gardening': 'Central/Side Gardening',
         'Side Gardening/Central Gardening': 'Side/Central Gardening',
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
