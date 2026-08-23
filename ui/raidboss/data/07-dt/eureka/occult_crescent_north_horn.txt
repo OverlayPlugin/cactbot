@@ -1430,7 +1430,6 @@ hideall "--sync--"
 12788.0 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
 12796.2 "Tendon Ripper 1" #Ability { id: "B94F", source: "Biting Wind" }
 12805.2 "Tendon Ripper 2" #Ability { id: "B94F", source: "Biting Wind" }
-12814.2 "Tendon Ripper 3" #Ability { id: "B94F", source: "Biting Wind" }
 
 12862.8 label "oc-lost-on-the-wind-skydive3"
 12868.3 "Skydive" Ability { id: "B958", source: "Abductor" }
