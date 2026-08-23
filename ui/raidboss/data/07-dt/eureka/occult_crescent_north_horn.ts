@@ -198,6 +198,7 @@ const triggerSet: TriggerSet<Data> = {
         'Regurgitomato/Regurgitonion': 'Regurgitomato/onion',
         'Regurgitonion/Regurgitomato': 'Regurgitonion/tomato',
         'Rotten Tomato/Rotten Onion': 'Rotten Tomato/Onion',
+        'Shapeshifting Supercell': 'Supercell',
         'Right-Left Combination/Left-Right Combination': 'Right-Left/Left-Right Combination',
         'Tiny Flare/Tiny Holy': 'Tiny Flare/Holy',
         'Tiny Meteor (castbar)': '--sync--',

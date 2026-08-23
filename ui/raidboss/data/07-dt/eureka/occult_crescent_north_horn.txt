@@ -146,6 +146,160 @@ hideall "--sync--"
 # Loop
 1699.0 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
 
+### Accept No Imitators
+# -ii BCCE BCD0 BCE6 BCE7 BCEC BCEE BCEF BCF0 BCF1 BE16 BE17 C5F5
+# -p BCCF:2122.2
+# -it "Metamorph"
+# IGNORED ABILITIES
+# BCCE --sync--: Boss Autos (not transformed)
+# BCD0 Blackened Rain: damage cast 1s after BCCF
+# BCE6 Shapeshifting Supercell: self-cast
+# BCE7 Shapeshifting Supercell: cone aoes, ignored to avoid needing a window due to proximity of other BCE7
+# BCEC Made Magic: growing green sphere
+# BCEE Cyclone Crossing: damage 1s after BCED
+# BCEF --sync--: Wall damage, casts every 0.9s
+# BCF0 --sync--: Boss autos as Cerberos
+# BCF1 --sync--: Boss autos as Fan
+# BE16 Hellish Breath: damage .8s after BCDE
+# BE17 Hellish Breath: damage .8s after BCDF
+# C5F5 Hellish Breath: damage .8s after BCE0
+#
+# ALL ENCOUNTER ABILITIES
+# BCCE --sync--: Boss Autos (not transformed)
+# BCCF Blackened Rain: castbar
+# BCD0 Blackened Rain: damage cast 1s after BCCF
+# BCD1 Dark Dealing
+# BCD2 Change: Moves to middle and then transforms into a Cerberus
+# BCD3 Change: Moves to middle and then transforms into a fan
+# BCD4 Revert
+# BCD5 Tongue of Flame
+# BCD6 Hellfire Fetch
+# BCD7 Hellward Bound
+# BCD8 Hellward Bound
+# BCD9 Hellfire Fetch
+# BCDA Hellish Breath: castbar
+# BCDB --sync--: tell for first Hellish Breath (direction is in heading)
+# BCDC --sync--: tell for second Hellish Breath (direction is in heading)
+# BCDD --sync--: tell for third Hellish Breath (direction is in heading)
+# BCDE Hellish Breath: self-cast for south cone used with BE16
+# BCDF Hellish Breath: self-cast for southwest cone used with BE17
+# BCE0 Hellish Breath: self-cast for southeast cone used with C5F5
+# BCE1 --sync--
+# BCE2 Cyclonic Ring
+# BCE3 Shapeshifting Supercell: Clockwise
+# BCE4 Shapeshifting Supercell: Counterclockwise
+# BCE5 Shapeshifting Supercell: first cone aoes
+# BCE6 Shapeshifting Supercell: self-cast
+# BCE7 Shapeshifting Supercell: cone aoes, ignored to avoid needing a window due to proximity of other BCE7
+# BCE8 Shapeshifting Supercell: circle aoe in center
+# BCE9 Shapeshifting Supercell: middle donut
+# BCEA Shapeshifting Supercell: outer donut
+# BCEB Made Magic
+# BCEC Made Magic: growing green sphere
+# BCED Cyclone Crossing
+# BCEE Cyclone Crossing: damage 1s after BCED
+# BCEF --sync--: Wall damage, casts every 0.9s
+# BCF0 --sync--: Boss autos as Cerberos
+# BCF1 --sync--: Boss autos as Fan
+# BE16 Hellish Breath: damage .8s after BCDE
+# BE17 Hellish Breath: damage .8s after BCDF
+# C5F5 Hellish Breath: damage .8s after BCE0
+# C620 --sync--: boss dashes to north wall
+# C64F Shapeshifting Supercel: first circle aoe in center
+2000.0 "--sync--" ActorControl { command: "80000014", data0: "3CB" } window 100000,0
+2011.0 "--targetable--"
+2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+2118.2 "--sync--" StartsUsing { id: "BCCF", source: "Metamorph" } window 120,5
+2122.2 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Boss can metamorph to Fan or Cerberus first, but it moves slowly to the middle prior to StartsUsing
+2128.9 "--sync--" StartsUsing { id: "BCD2", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-cerberus"
+2128.9 "--middle--" StartsUsing { id: "BCD3", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-fan"
+2132.9 "Change (Fan/Cerberus)?" #Ability { id: "BCD3", source: "Metamorph" }
+2139.0 "Cyclonic Ring/Tongue of Flame?" #Ability { id: ["BCE2", "BCD5"], source: "Metamorph" }
+2142.1 "Hellfire Fetch?" #Ability { id: "BCD6", source: "Metamorph" }
+2146.7 "Shapeshifting Supercell Clockwise/Counterclock?" #Ability { id: ["BCE3", "BCE4"], source: "Metamorph" }
+2147.1 "Shapeshifting Supercell 1 (out)?" #Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2149.5 "Shapeshifting Supercell 2 (in/far)?" #Ability { id: "BCE9", source: "Metamorph" }
+2151.2 "Hellward Bound 1?" #Ability { id: "BCD7", source: "Metamorph" }
+2152.1 "Shapeshifting Supercell 3 (in)?" #Ability { id: "BCEA", source: "Metamorph" }
+2152.2 "Hellfire Fetch 1?" #Ability { id: "BCD9", source: "Metamorph" }
+2153.4 "Hellward Bound 2?" #Ability { id: "BCD8", source: "Metamorph" }
+2154.3 "Hellfire Fetch 2?" #Ability { id: "BCD9", source: "Metamorph" }
+2154.7 "Shapeshifting Supercell 4 (out)?" #Ability { id: "BCE8", source: "Metamorph" }
+2155.6 "Hellward Bound 3?" #Ability { id: "BCD8", source: "Metamorph" }
+2156.5 "Hellfire Fetch 3?" #Ability { id: "BCD9", source: "Metamorph" }
+2157.3 "Shapeshifting Supercell 5 (in/far)?" #Ability { id: "BCE9", source: "Metamorph" }
+2157.9 "Hellward Bound 4?" #Ability { id: "BCD8", source: "Metamorph" }
+2158.6 "Hellfire Fetch 4?" #Ability { id: "BCD9", source: "Metamorph" }
+
+# Metamorphosis: Fan
+2228.9 label "oc-accept-no-imitators-fan"
+2232.9 "Change (Fan)" Ability { id: "BCD3", source: "Metamorph" }
+2239.0 "Cyclonic Ring" Ability { id: "BCE2", source: "Metamorph" }
+2241.2 "--sync--" StartsUsing { id: "BCE3", source: "Metamorph" } jump "oc-accept-no-imitators-cw"
+2241.2 "--sync--" StartsUsing { id: "BCE4", source: "Metamorph" } jump "oc-accept-no-imitators-ccw"
+2246.7 "Shapeshifting Supercell Clockwise/Counterclock?" #Ability { id: ["BCE3", "BCE4"], source: "Metamorph" }
+2247.1 "Shapeshifting Supercell 1 (out)" #Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2249.5 "Shapeshifting Supercell 2 (in/far)" #Ability { id: "BCE9", source: "Metamorph" }
+2252.1 "Shapeshifting Supercell 3 (in)" #Ability { id: "BCEA", source: "Metamorph" }
+2254.7 "Shapeshifting Supercell 4 (out)" #Ability { id: "BCE8", source: "Metamorph" }
+2257.3 "Shapeshifting Supercell 5 (in/far)" #Ability { id: "BCE9", source: "Metamorph" }
+2259.9 "Shapeshifting Supercell 6 (in)" #Ability { id: "BCEA", source: "Metamorph" }
+2266.8 "Made Magic (castbar)" #Ability { id: "BCEB", source: "Metamorph" }
+2273.7 "Made Magic" #Ability { id: "BCEC", source: "Metamorph" } duration 7.7
+2279.5 "Cyclone Crossing" #Ability { id: "BCED", source: "Metamorph" }
+2285.6 "Revert" #Ability { id: "BCD4", source: "Metamorph" }
+
+2341.2 label "oc-accept-no-imitators-cw"
+2346.7 "Shapeshifting Supercell Clockwise" Ability { id: "BCE3", source: "Metamorph" } forcejump "oc-accept-no-imitators-supercell"
+
+2441.2 label "oc-accept-no-imitators-ccw"
+2446.7 "Shapeshifting Supercell Counterclock" Ability { id: "BCE4", source: "Metamorph" }
+2446.8 label "oc-accept-no-imitators-supercell"
+2447.1 "Shapeshifting Supercell 1 (out)" Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2449.5 "Shapeshifting Supercell 2 (in/far)" Ability { id: "BCE9", source: "Metamorph" }
+2452.1 "Shapeshifting Supercell 3 (in)" Ability { id: "BCEA", source: "Metamorph" }
+2454.7 "Shapeshifting Supercell 4 (out)" Ability { id: "BCE8", source: "Metamorph" }
+2457.3 "Shapeshifting Supercell 5 (in/far)" Ability { id: "BCE9", source: "Metamorph" }
+2459.9 "Shapeshifting Supercell 6 (in)" Ability { id: "BCEA", source: "Metamorph" }
+2466.8 "Made Magic (castbar)" Ability { id: "BCEB", source: "Metamorph" }
+2473.7 "Made Magic" duration 7.7 #Ability { id: "BCEC", source: "Metamorph" }
+2479.5 "Cyclone Crossing" Ability { id: "BCED", source: "Metamorph" }
+2485.6 "Revert" Ability { id: "BCD4", source: "Metamorph" }
+2500.8 "Dark Dealing" Ability { id: "BCD1", source: "Metamorph" }
+2506.8 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Metamorphosis: Cerberus
+2517.9 "--middle--" StartsUsing { id: "BCD2", source: "Metamorph" } window 5,5
+2518.0 label "oc-accept-no-imitators-cerberus"
+2521.9 "Change (Cerberus)" Ability { id: "BCD2", source: "Metamorph" }
+2528.0 "Tongue of Flame" Ability { id: "BCD5", source: "Metamorph" }
+2531.1 "Hellfire Fetch 1" Ability { id: "BCD6", source: "Metamorph" }
+2540.2 "Hellward Bound 1" Ability { id: "BCD7", source: "Metamorph" }
+2541.2 "Hellfire Fetch 2" #Ability { id: "BCD9", source: "Metamorph" }
+2542.4 "Hellward Bound 2" #Ability { id: "BCD8", source: "Metamorph" }
+2543.4 "Hellfire Fetch 3" #Ability { id: "BCD9", source: "Metamorph" }
+2544.6 "Hellward Bound 3" #Ability { id: "BCD8", source: "Metamorph" }
+2545.5 "Hellfire Fetch 4" #Ability { id: "BCD9", source: "Metamorph" }
+2546.9 "Hellward Bound 4" #Ability { id: "BCD8", source: "Metamorph" }
+2547.6 "Hellfire Fetch 5" #Ability { id: "BCD9", source: "Metamorph" }
+2554.2 "--north--" Ability { id: "C620", source: "Metamorph" }
+2558.6 "--tell 1--" Ability { id: "BCDB", source: "Metamorph" }
+2560.6 "--tell 2--" Ability { id: "BCDC", source: "Metamorph" }
+2562.6 "Hellish Breath (castbar)" Ability { id: "BCDA", source: "Metamorph" }
+2562.6 "--tell 3--" #Ability { id: "BCDD", source: "Metamorph" }
+2563.7 "Hellish Breath 1" Ability { id: ["BCDE", "BCDF", "BCE0"], source: "Metamorph" } window 2,2
+2565.7 "Hellish Breath 2" Ability { id: ["BCDF", "BCE0", "BCDE"], source: "Metamorph" } window 2,2
+2567.7 "Hellish Breath 3" Ability { id: ["BCE0", "BCDE", "BCDF"], source: "Metamorph" } window 2,2
+2569.8 "--sync--" Ability { id: "BCE1", source: "Metamorph" }
+2575.9 "Revert" Ability { id: "BCD4", source: "Metamorph" }
+2591.2 "Dark Dealing" Ability { id: "BCD1", source: "Metamorph" }
+2597.2 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Loop back on Change to Fan
+2609.3 "--middle--" StartsUsing { id: "BCD3", source: "Metamorph" } window 5,5 forcejump "oc-accept-no-imitators-fan"
+
 ### Ahead of the Competition
 # NOTE: The first cast can be either B85D or B85E
 # -ii B865 B866 B867 B859 C647
