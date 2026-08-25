@@ -8785,7 +8785,7 @@ const triggerSet: TriggerSet<Data> = {
       // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
       // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
       // Clockwise Example 2:
-      // (110.61, 89.39) NE Outer, (96.46, 103.54) SE Inner, Facing SE (0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
       // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
       // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
       // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
