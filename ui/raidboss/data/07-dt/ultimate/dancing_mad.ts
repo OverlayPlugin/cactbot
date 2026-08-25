@@ -8839,7 +8839,7 @@ const triggerSet: TriggerSet<Data> = {
         // Update to more accurate start position nearest second Flood
         const startDirNum = Directions.xyTo8DirNum(x1, y1, centerX, centerY);
         const startCardDirNum = isClockwise ? (startDirNum + 1) % 8 : (startDirNum + 7) % 8;
-        const startDir = Directions.outputFromCardinalNum(startCardDirNum/2);
+        const startDir = Directions.outputFromCardinalNum(startCardDirNum / 2);
 
         return output.mechPlusMech!({
           mech1: output.stack!(),
