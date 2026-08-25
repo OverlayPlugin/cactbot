@@ -8751,7 +8751,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P5 Flood Start (Early)',
-      // Data for rotation not yet known, but we can quickly call starting direction
+      // Data for rotation not yet known, but we can quickly call a starting location
+      // Calls the intercard, next trigger calls nearest cardinal to go to based on rotation
       type: 'StartsUsing',
       netRegex: { id: 'C183', capture: true },
       delaySeconds: 0.1, // Delay for late set position updates
@@ -8833,10 +8834,12 @@ const triggerSet: TriggerSet<Data> = {
 
         // Calculate Determinant to determine if second flood is clockwise or counterclock
         data.floodRotation = ax * by - ay * bx;
-
-        const startDirNum = Directions.xyTo4DirIntercardNum(x1, y1, centerX, centerY);
-        const startDir = Directions.outputFromIntercardNum(startDirNum);
         const isClockwise = data.floodRotation > 0;
+
+        // Update to more accurate start position nearest second Flood
+        const startDirNum = Directions.xyTo8DirNum(x1, y1, centerX, centerY);
+        const startCardDirNum = isClockwise ? (startDirNum + 1) % 8 : (startDirNum + 7) % 8;
+        const startDir = Directions.outputFromCardinalNum(startCardDirNum/2);
 
         return output.mechPlusMech!({
           mech1: output.stack!(),
@@ -8847,7 +8850,7 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        ...Directions.outputStringsIntercardDir,
+        ...Directions.outputStringsCardinalDir,
         leftClockwise: {
           en: 'Left (CW)',
           de: 'Links (im Uhrzeigersinn)',
