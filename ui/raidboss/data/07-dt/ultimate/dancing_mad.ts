@@ -8623,13 +8623,13 @@ const triggerSet: TriggerSet<Data> = {
         const repeaterCount = data.repeaterCount;
         const orchestraCount = data.orchestraCount;
         if (orchestraCount === 0) {
-            return 8.3;
+          return 8.3;
         }
         if (orchestraCount === 1 && repeaterCount === 4) {
-            return 7.1;
+          return 7.1;
         }
         if (orchestraCount === 1 && repeaterCount === 4) {
-            return 5.2;
+          return 5.2;
         }
         return 10.2;
       },
@@ -8675,7 +8675,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'DMU P5 Flood',
-      // Source and data on this can be inaccurate
+      // Source and data on this can be inaccurate for StartsUsing and StartsUsingExtra
       // Invisible actors spawn at the center of the line and their heading
       // is the direction that the flood is
       // There are two at a time, one on outter and one inner
@@ -8885,8 +8885,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU P5 Suprise Flare/Holy',
       // 14E6 Suprise Flare
       // 14E7 Surpise Holy
-      // MT will get 1x Suprise Flare, OT will get 1x Suprise Holy
-      // This should only go on tanks and is applied by BB52 Flare
+      // Primary threat will get 1x Suprise Flare, Secondary threat will get 1x Suprise Holy
+      // These are applied by BB52 Flare
       // Next BB53 Chaotic Flare sharedTankbuster occurs on the Surprise Flare target
       type: 'GainsEffect',
       netRegex: { effectId: ['14E6', '14E7'], capture: true },
