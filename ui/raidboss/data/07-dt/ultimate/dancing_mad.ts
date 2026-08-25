@@ -8622,13 +8622,16 @@ const triggerSet: TriggerSet<Data> = {
         // Time from last BB41 Ultima Repeater/BB56 Chaotic Holy to C652 Fell Forces
         const repeaterCount = data.repeaterCount;
         const orchestraCount = data.orchestraCount;
-        return orchestraCount === 0
-          ? 8.3
-          : orchestraCount === 1 && repeaterCount === 4
-          ? 7.1
-          : orchestraCount === 2 && repeaterCount === 8
-          ? 5.2
-          : 10.2;
+        if (orchestraCount === 0) {
+            return 8.3;
+        }
+        if (orchestraCount === 1 && repeaterCount === 4) {
+            return 7.1;
+        }
+        if (orchestraCount === 1 && repeaterCount === 4) {
+            return 5.2;
+        }
+        return 10.2;
       },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
