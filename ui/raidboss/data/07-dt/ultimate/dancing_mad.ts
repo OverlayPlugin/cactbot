@@ -8674,7 +8674,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'p5',
       response: Responses.bigAoe(),
     },
-    {    
+    {
       id: 'DMU P5 Ultima Repeater',
       // 3.7s castTime, followed by 1.1s until first Hit
       // Hits are 0.7s apart
