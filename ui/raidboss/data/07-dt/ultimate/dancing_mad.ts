@@ -8,7 +8,6 @@ import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trig
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
-// TODO: Earlier phase tracking for P5 (counting the jumps to middle?)
 // TODO: P5 Forsaken tell if a hole was placed in the path?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
@@ -16,7 +15,6 @@ const phases: { [id: string]: Phase } = {
   'C24C': 'p2', // Ultimate Embrace, God Kefka
   'C3F7': 'p3', // Aero III Assault (from Kefka), Chaos and Exdeath
   'C2DC': 'p4', // Kefka Says, Kefka with Chaos and Neo Exdeath
-  'BB40': 'p5', // Ultima Repeater, Ultima Kefka
 };
 
 const centerX = 100;
@@ -42,6 +40,7 @@ export interface Data extends RaidbossData {
   };
   // General
   phase: Phase | 'unknown';
+  middleCount: number;
   // Phase 1
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   gravenImageCount: number;
@@ -1131,6 +1130,7 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       phase: 'p1',
+      middleCount: 0,
       // Phase 1
       actorPositions: {},
       gravenImageCount: 0,
@@ -1192,10 +1192,23 @@ const triggerSet: TriggerSet<Data> = {
   timelineTriggers: [],
   triggers: [
     {
-      id: 'DMU Phase Tracker',
+      id: 'DMU Phase 1-4 Tracker',
       type: 'StartsUsing',
       netRegex: { id: Object.keys(phases) },
       run: (data, matches) => data.phase = phases[matches.id] ?? 'unknown',
+    },
+    {
+      id: 'DMU Phase 5 Tracker',
+      // Ultimate Kefka
+      // Track jumps to middle for earlier P5 and Ultima Upsurge
+      // Rather than using BB40 Ultima Repeater
+      type: 'Ability',
+      netRegex: { id: 'C3FD', source: 'Kefka', capture: false },
+      run: (data) => {
+        data.middleCount = data.middleCount + 1;
+        if (data.middleCount === 5)
+          data.phase = 'p5';
+      },
     },
     {
       id: 'DMU ActorSetPos Tracker',
@@ -8291,10 +8304,90 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P4/P5 Ultima Upsurge',
+      id: 'DMU P4 Ultima Upsurge',
       type: 'StartsUsing',
       netRegex: { id: 'C24A', source: 'Kefka', capture: false },
-      response: Responses.bigAoe(),
+      condition: (data) => data.phase === 'p4',
+      durationSeconds: (data) => {
+        return (data.isEntropyTrue || data.isEntropyTrue === undefined)
+          ? 5
+          : 7; // Time until Donuts
+      },
+      infoText: (data, _matches, output) => {
+        const bigAoe = output.bigAoe!();
+        if (data.isEntropyTrue || data.isEntropyTrue === undefined)
+          return bigAoe; // Player needs to move within 2.6s, TTS would be too long
+        const is1stTrue = data.areFirstDebuffsTrue;
+        const is2ndTrue = data.areThirdDebuffsTrue;
+        const isFirstShort = data.isFirstDebuffShort;
+        if (is1stTrue === undefined || is2ndTrue === undefined || isFirstShort === undefined)
+          return bigAoe;
+        const isLongTrue = isFirstShort ? is2ndTrue : is1stTrue;
+
+        const hasFork = data.longForkedPlayers.includes(data.me);
+        const hasCompressed = data.longCompressedPlayers.includes(data.me);
+        const hasFirstBomb = data.firstLongBombPlayers.includes(data.me);
+        const hasSecondBomb = data.secondLongBombPlayers.includes(data.me);
+        const isBombTrue = hasFirstBomb ? is1stTrue : is2ndTrue;
+
+        const hasSpread = (hasFork && isLongTrue) || (hasCompressed && !isLongTrue);
+        const hasStack = (hasFork && !isLongTrue) || (hasCompressed && isLongTrue);
+        const hasBomb = hasFirstBomb || hasSecondBomb;
+
+        // Handle 2 Mechs
+        let mechs = output.noDebuff!(); // Has nothing
+        if (hasSpread && hasBomb)
+          mechs = output.forkBomb!({
+            mech1: output.spread!(),
+            mech2: isBombTrue ? output.bomb!() : output.fakeBomb!(),
+          });
+        else if (hasStack && hasBomb)
+          mechs = output.compressedBomb!({
+            mech1: output.stack!(),
+            mech2: isBombTrue ? output.bomb!() : output.fakeBomb!(),
+          });
+        else if (hasSpread)
+          mechs = output.spread!();
+        else if (hasStack)
+          mechs = output.stack!();
+        else if (hasBomb)
+          mechs = output.bombStack!({
+            mech1: isBombTrue ? output.bomb!() : output.fakeBomb!(),
+            mech2: output.stack!(),
+          });
+
+        return output.aoeThenMech!({
+          aoe: bigAoe,
+          mech: mechs,
+        });
+      },
+      outputStrings: {
+        bigAoe: Outputs.bigAoe,
+        you: {
+          en: 'YOU',
+        },
+        bombStack: {
+          en: '${mech1} + ${mech2}',
+        },
+        forkBomb: {
+          en: '${mech1} + ${mech2}',
+        },
+        compressedBomb: {
+          en: '${mech1} + ${mech2}',
+        },
+        noDebuff: Outputs.stackMarker,
+        stack: Outputs.stackMarker,
+        spread: Outputs.spread,
+        bomb: {
+          en: 'Stillness',
+        },
+        fakeBomb: {
+          en: 'Motion',
+        },
+        aoeThenMech: {
+          en: '${aoe} => ${mech}',
+        },
+      },
     },
     {
       id: 'DMU P4 Stray Flames and Long Debuffs',
@@ -8575,6 +8668,13 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.moveAway('alert'),
     },
     {
+      id: 'DMU P5 Ultima Upsurge',
+      type: 'StartsUsing',
+      netRegex: { id: 'C24A', source: 'Kefka', capture: false },
+      condition: (data) => data.phase === 'p5',
+      response: Responses.bigAoe(),
+    },
+    {    
       id: 'DMU P5 Ultima Repeater',
       // 3.7s castTime, followed by 1.1s until first Hit
       // Hits are 0.7s apart
@@ -9474,6 +9574,8 @@ const triggerSet: TriggerSet<Data> = {
         'Future\'s End/Past\'s End': 'Future/Past\'s End',
         'Spelldriver/Spellscatter/Spellwave': 'Spelldriver/scatter/wave',
         'Longitudinal Implosion/Latitudinal Implosion': 'Long/Lat Implosion',
+        'Fire III/Blizzard III/Thunder III': 'Fire/Blizzard/Thunder III',
+        'Forsaken Ground/Forsaken Bonds': 'Forsaken Ground/Bonds',
       },
     },
     {
@@ -9821,6 +9923,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Black Hole': '黑洞',
         'Chaos': '卡奥斯',
