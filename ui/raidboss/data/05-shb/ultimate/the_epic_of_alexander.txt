@@ -169,7 +169,7 @@ hideall "--sync--"
 706.8 "--adds targetable--"
 731.7 "Eternal Darkness Enrage" Ability { id: "4875", source: "Cruise Chaser" }
 771.9 "Divine Judgment Enrage" Ability { id: "4879", source: "Alexander Prime" } window 67,5
-787.3 "Divine Judgment" Ability { id: "487A", source: "Alexander" }
+787.3 "Divine Judgment" Ability { id: "487A", source: "Alexander" } window 80,10
 787.4 "Down for the Count" duration 57
 
 ### Phase 4: Perfect Alexander Part 1 - Fate Projection α
