@@ -8290,27 +8290,34 @@ const triggerSet: TriggerSet<Data> = {
         bigAoe: Outputs.bigAoe,
         you: {
           en: 'YOU',
+          ko: '나',
         },
         bombStack: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         forkBomb: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         compressedBomb: {
           en: '${mech1} + ${mech2}',
+          ko: '${mech1} + ${mech2}',
         },
         noDebuff: Outputs.stackMarker,
         stack: Outputs.stackMarker,
         spread: Outputs.spread,
         bomb: {
           en: 'Stillness',
+          ko: '정지',
         },
         fakeBomb: {
           en: 'Motion',
+          ko: '움직이기',
         },
         aoeThenMech: {
           en: '${aoe} => ${mech}',
+          ko: '${aoe} => ${mech}',
         },
       },
     },
@@ -9115,7 +9122,6 @@ const triggerSet: TriggerSet<Data> = {
         'Black Antilight': '죽은 자의 암흑광',
         'Black Hole': '블랙홀',
         'Black Spark': '검은 불꽃',
-        'Blackblood': '흑혈',
         'Blizzard III(?! Blowout)': '블리자가',
         'Blizzard III Blowout': '널리널리 블리자가',
         'Bowels of Agony': '고통의 심핵',
