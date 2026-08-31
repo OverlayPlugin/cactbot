@@ -407,7 +407,7 @@ hideall "--sync--"
 3448.5 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
 3449.5 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
 3451.5 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
-3452.6 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3452.6 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 3454.3 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
 3456.3 "Stunning Sheen" Ability { id: "B857", source: "Holy Sphere" }
 3457.3 "Levin Ring 1" #Ability { id: "B85B", source: "Ball of Levin" }
@@ -442,7 +442,7 @@ hideall "--sync--"
 3545.5 label "oc-ahead-of-the-competition-cascade1-fire"
 3548.5 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
 3549.5 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
-3550.6 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3550.6 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 3551.5 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
 3553.3 "Scarlet Thread" #Ability { id: "B856", source: "Ball of Fire" }
 3553.4 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
@@ -537,7 +537,7 @@ hideall "--sync--"
 3943.4 label "oc-ahead-of-the-competition-cascade2-ice"
 3946.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
 3948.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
-3949.5 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3949.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 3950.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
 3951.3 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
 3951.5 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
@@ -583,7 +583,7 @@ hideall "--sync--"
 4050.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
 4051.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
 4052.2 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
-4052.5 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+4052.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 4054.2 "Stunning Sheen" Ability { id: "B857", source: "Holy Sphere" }
 4055.2 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
 4056.2 "Shock" #Ability { id: "B85A", source: "Ball of Levin" }
@@ -594,7 +594,7 @@ hideall "--sync--"
 4062.2 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
 4063.4 "Elemental Cascade (poison)" #Ability { id: "B851", source: "Phantom Hydra" }
 4063.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
-4064.5 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+4064.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 4065.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
 4069.2 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
 4070.2 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
@@ -624,7 +624,7 @@ hideall "--sync--"
 4146.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
 4146.4 "Elemental Cascade (poison)" #Ability { id: "B851", source: "Phantom Hydra" }
 4147.4 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
-4147.5 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+4147.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 4150.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
 4151.3 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
 4154.3 "Stunning Sheen" #Ability { id: "B857", source: "Holy Sphere" }
@@ -634,7 +634,7 @@ hideall "--sync--"
 4159.3 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
 4160.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
 4161.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
-4162.5 "Dissipate" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+4162.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
 4164.3 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
 4165.1 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
 4165.4 "Ice Burst" #Ability { id: "B858", source: "Swirling Orb" }
