@@ -8992,6 +8992,7 @@ const triggerSet: TriggerSet<Data> = {
         '--Exdeath untargetable\\?--': '--艾克斯迪司不可选中?--',
         '--first debuffs--': '--第一轮 Debuff--',
         '--Flood Tell ': '--洪水预兆',
+        '--jump baited--': '--诱导跳跃--',
         '--long debuffs--': '--长 Debuff--',
         '--middle\\?--': '--中间?--',
         '--numbers--': '--麻将--',
