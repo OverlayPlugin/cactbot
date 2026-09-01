@@ -70,6 +70,7 @@ Options.Triggers.push({
   comments: {
     en: 'Occult Crescent North Horn critical encounter triggers/timeline.',
     cn: '蜃景幻界新月岛 北征之章 紧急遭遇战 触发器/时间轴。',
+    ko: '초승달 섬: 북부편 비상 조우 트리거/타임라인',
   },
   timelineFile: 'occult_crescent_north_horn.txt',
   initData: () => ({}),
