@@ -508,6 +508,35 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Test Trigger Timeline Jump',
+      type: 'GameLog',
+      netRegex: {
+        line: 'cactbot test timeline jump.*?',
+        code: Util.gameLogCodes.echo,
+        capture: false,
+      },
+      run: (data) => {
+        data.timeline.jumpTo('timeline-jump');
+      },
+    },
+    {
+      id: 'Test Timeline Get Current Time',
+      type: 'GameLog',
+      netRegex: {
+        line: 'cactbot test current time.*?',
+        code: Util.gameLogCodes.echo,
+        capture: false,
+      },
+      infoText: (data, _matches, output) => {
+        return output.text!({ time: data.timeline.currentTime() });
+      },
+      outputStrings: {
+        text: {
+          en: 'Current Timeline Time: ${time}',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
@@ -638,6 +667,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'cn',
+      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*向木人告别',
         'You bow courteously to the striking dummy': '.*恭敬地对木人行礼',
@@ -678,6 +708,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'tc',
+      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*向木人告别',
         'You bow courteously to the striking dummy': '.*恭敬地對木人行禮',
@@ -718,6 +749,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'ko',
+      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*나무인형에게 작별 인사를 합니다',
         'You bow courteously to the striking dummy': '.*나무인형에게 공손하게 인사합니다',

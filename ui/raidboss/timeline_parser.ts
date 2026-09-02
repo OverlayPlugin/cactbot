@@ -133,6 +133,7 @@ export type Sync = {
   lineNumber: number;
   event: Event;
   jump?: number;
+  label?: string;
   // TODO: could consider "maybe" jumps here to say "Ability?".
   // TODO: also it'd be nice to be able to `forcejump` with out a `sync //`
   jumpType?: 'force' | 'normal';
@@ -205,7 +206,7 @@ export class TimelineParser {
   // Sorted by line.
   public errors: Error[] = [];
   // Map of encountered label names to their time.
-  private labelToTime: { [name: string]: number } = {};
+  public labelToTime: { [name: string]: number } = {};
   // Map of encountered syncs to the label they are jumping to.
   private labelToSync: { [name: string]: Sync[] } = {};
 
