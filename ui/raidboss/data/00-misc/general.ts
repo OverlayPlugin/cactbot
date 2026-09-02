@@ -6,7 +6,7 @@ import { TriggerSet } from '../../../../types/trigger';
 export type Data = RaidbossData;
 
 const caresAboutTankStuff = (data: RaidbossData) => {
-  return data.role === 'tank' || data.role === 'healer' || data.job === 'BLU';
+  return data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me);
 };
 
 // Triggers for all occasions and zones.

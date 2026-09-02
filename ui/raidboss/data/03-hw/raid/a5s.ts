@@ -146,7 +146,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         if (data.me !== matches.target)
           return false;
-        return data.role !== 'tank' && data.job === 'BLU';
+        return data.role !== 'tank' && data.party.isLimitedJob(data.me);
       },
       response: Responses.tankBusterSwap('info'),
     },

@@ -22,14 +22,16 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A6N Brute Force',
       regex: /Brute Force/,
       beforeSeconds: 4,
-      condition: (data) => data.role === 'tank' || data.role === 'healer' || data.job === 'BLU',
+      condition: (data) =>
+        data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me),
       response: Responses.miniBuster(),
     },
     {
       id: 'A6N Magicked Mark',
       regex: /Magicked Mark/,
       beforeSeconds: 4,
-      condition: (data) => data.role === 'tank' || data.role === 'healer' || data.job === 'BLU',
+      condition: (data) =>
+        data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me),
       response: Responses.miniBuster(),
     },
   ],

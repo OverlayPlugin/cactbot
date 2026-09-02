@@ -216,7 +216,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'O12S Shield Blades Setup',
       type: 'Ability',
       netRegex: { id: ['3350', '3351'], source: ['Omega', 'Omega-M'], capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       run: (data) => delete data.weaponPhase,
@@ -496,7 +496,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '3364', source: 'Omega', capture: false },
       infoText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.monitorsLeft!();
 
         return output.dodgeLeft!();
@@ -527,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '3365', source: 'Omega', capture: false },
       infoText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.monitorsRight!();
 
         return output.dodgeRight!();
@@ -564,7 +564,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         if (data.me === matches.target)
           return;
-        if (data.role !== 'tank' && data.job !== 'BLU')
+        if (data.role !== 'tank' && !data.party.isLimitedJob(data.me))
           return;
         return output.vulnOn!({ player: data.party.member(matches.target) });
       },
@@ -713,7 +713,7 @@ const triggerSet: TriggerSet<Data> = {
           // It can be useful to know who has the short stack because they
           // might need an extra shield.  However, common blu strats have
           // folks diamondback this, so it's just noise.
-          if (data.job !== 'BLU')
+          if (!data.party.isLimitedJob(data.me))
             return output.shortStackOn!({ player: data.party.member(matches.target) });
         }
         return;

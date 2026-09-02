@@ -121,7 +121,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { name: 'Sunbird', capture: false },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.tank!();
         return output.text!();
       },

@@ -2030,7 +2030,7 @@ const triggerSet: TriggerSet<Data> = {
           return { alertText: output.cleaveOnYou!() };
         if (data.role === 'tank')
           return { alertText: output.cleaveSwap!() };
-        if (data.role === 'healer' || data.job === 'BLU')
+        if (data.role === 'healer' || data.party.isLimitedJob(data.me))
           return { alertText: output.tankBusterCleaves!() };
         return { infoText: output.avoidTankCleaves!() };
       },
@@ -2051,7 +2051,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'P12S Glaukopis Second Cleave Swap',
       type: 'Ability',
       netRegex: { id: '82FD', source: 'Athena', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       delaySeconds: 0.1,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
@@ -4310,7 +4310,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (data.palladionGrapsTarget === data.me)
           return { alertText: output.tankBusterCleavesOnYou!() };
-        if (data.role === 'tank' || data.role === 'healer' || data.job === 'BLU')
+        if (data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me))
           return { alertText: output.tankBusterCleaves!() };
         return { infoText: output.avoidTankCleaves!() };
       },
