@@ -264,11 +264,11 @@ hideall "--sync--"
 22790.1 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 22790.9 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
 22791.7 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
-22794.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
 # Storm's Breath or Poison Breath Branch 2
 22793.9 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-storm"
 22793.9 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-poison"
+22794.3 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 22802.0 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
 22802.0 "--knockback?--"
 22810.2 "Summon" #Ability { id: "BA58", source: "Green Head" }
@@ -283,12 +283,14 @@ hideall "--sync--"
 22843.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 
 22893.9 label "oc-two-headed-aevis-breath2-storm"
+22894.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 22901.1 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
 22902.0 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
 22902.0 "--knockback--"
 22907.3 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-loop"
 
 22993.9 label "oc-two-headed-aevis-breath2-poison"
+22994.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 23001.1 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
 23002.0 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
 
@@ -309,12 +311,12 @@ hideall "--sync--"
 23045.7 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
 
 23056.1 "Arcane Revelation" Ability { id: "C234", source: "Green Head" }
-23066.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
-23069.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
 
 # Storm's Breath or Poison Breath Branch 3 (Loop version)
 23065.8 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-storm"
 23065.8 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-poison"
+23066.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+23069.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
 23073.9 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
 23073.9 "--knockback?--" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
 23088.1 "Blazeloop (castbar)" #Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
@@ -326,12 +328,16 @@ hideall "--sync--"
 23105.6 "Two Terrors" #Ability { id: "C5DF", source: "Green Head" }
 
 23165.8 label "oc-two-headed-aevis-breath3-storm"
+23166.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+23169.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
 23173.0 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
 23173.9 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
 23173.9 "--knockback--"
 23182.2 "--sync--" StartsUsing { id: "BA2D", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-breath3-end"
 
 23265.8 label "oc-two-headed-aevis-breath3-poison"
+23266.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+23269.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
 23273.0 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
 23273.9 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
 
@@ -358,7 +364,7 @@ hideall "--sync--"
 23405.6 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
 23412.9 "--sync--" StartsUsing { id: "BA81", source: "Green Head" } forcejump "oc-two-headed-aevis-terror2-end"
 
-23599.6 label "oc-two-headed-aevis-terror2-middle"
+23499.6 label "oc-two-headed-aevis-terror2-middle"
 23504.6 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
 23505.6 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
 
