@@ -170,3 +170,20 @@ export const GetShareMistakeText = (
     tc: `${localeText['tc'] ?? localeText['en']} (分擔: ${numTargets}次)`,
   };
 };
+
+export const GetMissedMistakeText = (ability: string | LocaleText): LocaleText => {
+  const localeText: LocaleText = typeof ability === 'string' ? { en: ability } : ability;
+  return {
+    en: `missed ${localeText['en']}`,
+  };
+};
+
+export const GetMultipleMistakeText = (
+  ability: string | LocaleText,
+  numHits: number,
+): LocaleText => {
+  const localeText: LocaleText = typeof ability === 'string' ? { en: ability } : ability;
+  return {
+    en: `${localeText['en']} (hit x${numHits})`,
+  };
+};
