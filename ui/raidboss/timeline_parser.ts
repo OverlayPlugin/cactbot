@@ -157,6 +157,8 @@ export type ParsedText = ParsedPopupText | ParsedTriggerText;
 export type Text = ParsedText & { time: number };
 
 export const regexes = {
+  blockbegin: /^blockbegin\s+"(?<name>[^"]*)"\s*$/,
+  blockend: /^blockend\s*$/,
   comment: /^\s*#/,
   commentLine: /#.*$/,
   durationCommand: /(?:[^#]*?\s)?(?<text>duration\s+(?<seconds>[0-9]+(?:\.[0-9]+)?))(\s.*)?$/,
@@ -209,6 +211,15 @@ export class TimelineParser {
   // Map of encountered syncs to the label they are jumping to.
   private labelToSync: { [name: string]: Sync[] } = {};
 
+  // Map of encountered block names to their time.
+  private blockToTime: { [name: string]: number } = {};
+  // The current block, if any
+  private currentBlock: string | null = null;
+  // The current block offset
+  private blockOffset: number = 0;
+  // The largest time encountered so far, used to determine block offset
+  private largestEncounteredTime: number = 0;
+
   constructor(
     text: string,
     replacements: TimelineReplacement[],
@@ -245,6 +256,30 @@ export class TimelineParser {
     // responsibility for callilng parse() should be moved up to the instantiating code.
     if (!waitForParse)
       this.parse(text, triggers, styles ?? [], uniqueId);
+  }
+
+  private labelToDestination(label: string): number | undefined {
+    // Labels with ':' are already scoped.
+    if (label.includes(':')) {
+      return this.labelToTime[label];
+    }
+
+    // First, try for a label within the current block
+    if (this.currentBlock !== undefined) {
+      const destWithScope = this.labelToTime[`${this.currentBlock}:${label}`];
+      if (destWithScope !== undefined) {
+        return destWithScope;
+      }
+    }
+
+    // Second, try for a label outside of any block
+    const globalDest = this.labelToTime[label];
+    if (globalDest !== undefined) {
+      return globalDest;
+    }
+
+    // Finally, try for an implicit block label
+    return this.blockToTime[label];
   }
 
   protected parse(
@@ -326,13 +361,66 @@ export class TimelineParser {
         continue;
       }
 
+      match = regexes.blockbegin.exec(line);
+      if (match && match['groups']) {
+        const parsedLine = match['groups'];
+        if (parsedLine.name === undefined)
+          throw new UnreachableCode();
+        const name = parsedLine.name;
+        const prevTime = this.blockToTime[name];
+        if (prevTime !== undefined) {
+          const text = `Duplicate block ${name} already used`;
+          this.errors.push({
+            error: text,
+            lineNumber: lineNumber,
+          });
+        }
+        const prevLabel = this.labelToTime[name];
+        if (prevLabel !== undefined) {
+          const text = `Duplicate label ${name} already used`;
+          this.errors.push({
+            error: text,
+            lineNumber: lineNumber,
+          });
+        }
+
+        // Determine a block offset by using the largest previously
+        // encountered time, and rounding it up. Add a buffer of 500
+        // seconds, then round up to the next thousands multiple.
+        const buffer = this.largestEncounteredTime + 500;
+        const seconds = Math.ceil(buffer / 1000) * 1000;
+
+        this.blockToTime[name] = seconds;
+        this.currentBlock = name;
+        this.blockOffset = seconds;
+        // Also update largest time in case of an empty block
+        this.largestEncounteredTime = seconds;
+
+        continue;
+      }
+
+      match = regexes.blockend.exec(line);
+      if (match) {
+        if (this.currentBlock === null) {
+          this.errors.push({
+            lineNumber: lineNumber,
+            error: 'blockend found without paired blockbegin',
+          });
+        }
+        this.blockOffset = 0;
+        this.currentBlock = null;
+        continue;
+      }
+
       match = regexes.label.exec(line);
       if (match && match['groups']) {
         const parsedLine = match['groups'];
         if (parsedLine.time === undefined || parsedLine.label === undefined)
           throw new UnreachableCode();
-        const seconds = parseFloat(parsedLine.time);
-        const label = parsedLine.label;
+        const seconds = parseFloat(parsedLine.time) + this.blockOffset;
+        const label = this.currentBlock === null
+          ? parsedLine.label
+          : `${this.currentBlock}:${parsedLine.label}`;
 
         const prevTime = this.labelToTime[label];
         if (prevTime !== undefined) {
@@ -342,7 +430,16 @@ export class TimelineParser {
             lineNumber: lineNumber,
           });
         }
+        const prevBlock = this.blockToTime[label];
+        if (prevBlock !== undefined) {
+          const text = `Duplicate block ${label} already used`;
+          this.errors.push({
+            error: text,
+            lineNumber: lineNumber,
+          });
+        }
         this.labelToTime[label] = seconds;
+        this.largestEncounteredTime = Math.max(this.largestEncounteredTime, seconds);
         continue;
       }
 
@@ -366,7 +463,7 @@ export class TimelineParser {
       // There can be # in the ability name, but probably not in the regex.
       line = line.replace(regexes.commentLine, '').trim();
 
-      const seconds = parseFloat(parsedLine.time);
+      const seconds = parseFloat(parsedLine.time) + this.blockOffset;
       const e: Event = {
         id: `${++uniqueid}`,
         time: seconds,
@@ -395,6 +492,14 @@ export class TimelineParser {
       } else {
         this.events.push(e);
       }
+
+      this.largestEncounteredTime = Math.max(this.largestEncounteredTime, seconds);
+    }
+
+    // Validate that the last block was closed
+    if (this.currentBlock !== null) {
+      const text = `Block named ${this.currentBlock} was not terminated with blockend`;
+      this.errors.push({ error: text });
     }
 
     // Validate that all timeline triggers match something.
@@ -418,7 +523,7 @@ export class TimelineParser {
 
     // Validate that all the jumps go to labels that exist.
     for (const [label, syncs] of Object.entries(this.labelToSync)) {
-      const destination = this.labelToTime[label];
+      const destination = this.labelToDestination(label);
       if (destination === undefined) {
         const text = `No label named ${label} found to jump to`;
         for (const sync of syncs) {
