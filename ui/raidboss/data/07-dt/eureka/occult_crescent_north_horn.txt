@@ -13,3 +13,2773 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### A Beast Unleashed
+# -ii BC99 BCA8 BCA9 BFD0 C161 C162 C163 C51D C5CD C6A4
+# -p BCAA:1123.2
+# -it "Atlas Carbuncle"
+# IGNORED ABILITIES
+# BC99 Topaz Ray: 2.7s VFX casts for crystals against walls, 2 in tutorial, then 3
+# BFD0 --sync--: Wall damage every 1s
+# C161 Sonic Howl: aoe damage cast ~0.8s after BCAA, two casts that split target with remaining players
+# C162 Spinebreaking Stampede: point knockback from center of cardinal wall ~3.1s after BCA3, two casts that split target with remaining players
+# C163 Spinebreaking Stampede: damage and knockback ~0.7s after BCA3, two casts that split target with remaining players
+# C5CD Ruby Glow: minor aoe damage cast ~0.8s after BC9C, two casts that split target with remaining players
+# C6A4 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# BC98 Topaz Stones: 2.7s castbar, spawns 10 yellow crystals
+# BC99 Topaz Ray: 2.7s VFX casts for crystals against walls, 2 in tutorial, then 3
+# BC9A Topaz Ray: 2.7s cast, circle aoe under yellow crystal
+# BC9C Ruby Glow: 2.7s castbar and minor aoe to some players, splits damage targets with C5CD, also spawns 4 red crystals that move to draw lines shortly after
+# BC9D Ruby Reflection: damage cast for square patterns at end of BC99, only during tutorial
+# BC9E Ruby Reflection: damage cast E/W L-shaped patterns at end of BC99
+# BC9F Ruby Reflection: damage cast N/S Г-shaped (Reversed/Flipped L) patterns at end of BC99
+# BCA0 --sync--: 2.2s cast for VFX animation showing point knockback from center of cardinal wall, perpendicular to BCA1 line knockback
+# BCA1 --sync--: 2.2s cast for VFX animation showing perpendicular knockback from center line
+# BCA3 Spinebreaking Stampede: 7.7s castbar, boss dashes across arena from a cardinal, splits damage targets and perpendicular knockback with C163
+# BCA4 Spinebreaking Stampede: boss jumps to the center of cardinal wall, splits damage targets and knockback with C162
+# BCA6 Claw to Tail: 5.7s castbar + half-room cleave in front of boss
+# BCA7 Tail to Claw: 5.7s castbar + half-room cleave behind boss
+# BCA8 Claw to Tail: follow-up half-room cleave behind boss cast ~3.1s after BCA6; NOTE: p5s ignored this ability
+# BCA9 Tail to Claw: follow-up half-room cleave in front of boss cast ~3.1s after BCA7; NOTE: p5s ignored this ability
+# BCAA Sonic Howl: 4.7s castbar and aoe to some players, splits damage targets with C161
+# BCAB --sync--: Boss dashes to a location
+# BFD0 --sync--: Wall damage every 1s
+# C161 Sonic Howl: aoe damage cast ~0.8s after BCAA, two casts that split damage between remaining players
+# C162 Spinebreaking Stampede: point knockback from center of cardinal wall ~3.1s after BCA3, two casts that split target with remaining players
+# C163 Spinebreaking Stampede: damage and knockback ~0.7s after BCA3, two casts that split target with remaining players
+# C4F2 Reflective Coat: 2.7s castbar, red walls become reflective
+# C51D --sync--: VFX self-cast 0.2s after BC9A, boss recoils after the BCA4 jump then starts autos again
+# C5CD Ruby Glow: minor aoe damage cast ~0.8s after BC9C, two casts that split target with remaining players
+# C6A4 --sync--: Boss autos
+1000.0 "--sync--" ActorControl { command: "80000014", data0: "3C0" } window 100000,0
+1011.0 "--targetable--"
+1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+1118.2 "--sync--" StartsUsing { id: "BCAA", source: "Atlas Carbuncle" } window 120,5
+1123.2 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+
+# Tutorial - Topaz Stones
+1131.4 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1138.3 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+
+# Tutorial - Topaz Stones + Ruby Glow
+1141.6 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1147.7 "Ruby Glow" Ability { id: "BC9C", source: "Atlas Carbuncle" }
+1159.8 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+1163.4 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1163.4 "Ruby Reflection" Ability { id: "BC9D", source: "Atlas Carbuncle" }
+1164.0 "--middle--" Ability { id: "BCAB", source: "Atlas Carbuncle" }
+
+# Tail to Claw or Claw to Tail Branch 1
+1166.1 "--sync--" StartsUsing { id: "BCA6", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-claw"
+1166.1 "--sync--" StartsUsing { id: "BCA7", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-tail"
+1172.1 "Claw to Tail/Tail to Claw?" #Ability { id: ["BCA6", "BCA7"], source: "Atlas Carbuncle" }
+1175.2 "Claw to Tail/Tail to Claw (Tail/Claw)?" #Ability { id: ["BCA8", "BCA9"], source: "Atlas Carbuncle" }
+1183.3 "Topaz Stones" #Ability { id: "BC98", source: "Atlas Carbuncle" }
+1187.4 "--cardinal--" #Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1194.1 "--tell 1--" #Ability { id: "BCA1", source: "Atlas Carbuncle" }
+1196.7 "--tell 2--" #Ability { id: "BCA0", source: "Atlas Carbuncle" }
+1198.6 "Spinebreaking Stampede 1" #Ability { id: "BCA3", source: "Atlas Carbuncle" }
+1198.6 "--knockback--"
+1201.7 "Spinebreaking Stampede 2" #Ability { id: "BCA4", source: "Atlas Carbuncle" }
+1201.7 "--knockback--"
+1205.1 "Topaz Ray" #Ability { id: "BC9A", source: "Topaz Stone" }
+
+1266.1 label "oc-a-beast-unleashed-claw"
+1272.1 "Claw to Tail" Ability { id: "BCA6", source: "Atlas Carbuncle" }
+1275.2 "Claw to Tail (Tail)" Ability { id: "BCA8", source: "Atlas Carbuncle" }
+1280.4 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
+
+1366.1 label "oc-a-beast-unleashed-tail"
+1372.1 "Tail to Claw" Ability { id: "BCA7", source: "Atlas Carbuncle" }
+1375.2 "Tail to Claw (Claw)" Ability { id: "BCA9", source: "Atlas Carbuncle" }
+
+# Loop Begins, ~17.2s pause between
+1380.3 label "oc-a-beast-unleashed-loop"
+1383.3 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1387.4 "--cardinal--" Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1394.1 "--tell 1--" Ability { id: "BCA1", source: "Atlas Carbuncle" }
+1396.7 "--tell 2--" Ability { id: "BCA0", source: "Atlas Carbuncle" }
+1398.6 "Spinebreaking Stampede 1" Ability { id: "BCA3", source: "Atlas Carbuncle" }
+1398.6 "--knockback--"
+1401.7 "Spinebreaking Stampede 2" Ability { id: "BCA4", source: "Atlas Carbuncle" }
+1401.7 "--knockback--"
+1405.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1415.4 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+1421.5 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1427.6 "Ruby Glow" Ability { id: "BC9C", source: "Atlas Carbuncle" }
+1442.7 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+1446.3 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1446.3 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
+1449.3 "Topaz Stones" Ability { id: "BC98", source: "Atlas Carbuncle" }
+1464.4 "Reflective Coat" Ability { id: "C4F2", source: "Atlas Carbuncle" }
+
+# Tail to Claw or Claw to Tail Branch 2 (Loop Version)
+1467.5 "--sync--" StartsUsing { id: "BCA6", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-claw2"
+1467.5 "--sync--" StartsUsing { id: "BCA7", source: "Atlas Carbuncle" } jump "oc-a-beast-unleashed-tail2"
+1468.1 "Topaz Ray" #Ability { id: "BC9A", source: "Topaz Stone" }
+1468.1 "Ruby Reflection" #Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
+1473.5 "Claw to Tail/Tail to Claw?" #Ability { id: ["BCA6", "BCA7"], source: "Atlas Carbuncle" }
+1476.6 "Claw to Tail/Tail to Claw (Tail/Claw)?" #Ability { id: ["BCA8", "BCA9"], source: "Atlas Carbuncle" }
+1484.7 "Sonic Howl" #Ability { id: "BCAA", source: "Atlas Carbuncle" }
+1501.8 "Topaz Stones" #Ability { id: "BC98", source: "Atlas Carbuncle" }
+1505.9 "--cardinal--" #Ability { id: "BCAB", source: "Atlas Carbuncle" }
+1512.6 "--tell 1--" #Ability { id: "BCA1", source: "Atlas Carbuncle" }
+
+1567.5 label "oc-a-beast-unleashed-claw2"
+1568.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1568.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
+1573.5 "Claw to Tail" Ability { id: "BCA6", source: "Atlas Carbuncle" }
+1576.6 "Claw to Tail (Tail)" Ability { id: "BCA8", source: "Atlas Carbuncle" }
+1579.8 "--sync--" StartsUsing { id: "BCAA", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-sonic"
+
+1667.5 label "oc-a-beast-unleashed-tail2"
+1668.1 "Topaz Ray" Ability { id: "BC9A", source: "Topaz Stone" }
+1668.1 "Ruby Reflection" Ability { id: ["BC9E", "BC9F"], source: "Atlas Carbuncle" }
+1673.5 "Tail to Claw" Ability { id: "BCA7", source: "Atlas Carbuncle" }
+1676.6 "Tail to Claw (Claw)" Ability { id: "BCA9", source: "Atlas Carbuncle" }
+
+1679.7 label "oc-a-beast-unleashed-sonic"
+1684.7 "Sonic Howl" Ability { id: "BCAA", source: "Atlas Carbuncle" }
+
+# Loop
+1699.0 "--sync--" StartsUsing { id: "BC98", source: "Atlas Carbuncle" } forcejump "oc-a-beast-unleashed-loop"
+
+### Accept No Imitators
+# -ii BCCE BCD0 BCE6 BCE7 BCEC BCEE BCEF BCF0 BCF1 BE16 BE17 C5F5
+# -p BCCF:2122.2
+# -it "Metamorph"
+# IGNORED ABILITIES
+# BCCE --sync--: Boss Autos (not transformed)
+# BCD0 Blackened Rain: damage cast 1s after BCCF
+# BCE6 Shapeshifting Supercell: self-cast
+# BCE7 Shapeshifting Supercell: cone aoes, ignored to avoid needing a window due to proximity of other BCE7
+# BCEC Made Magic: growing green sphere
+# BCEE Cyclone Crossing: damage 1s after BCED
+# BCEF --sync--: Wall damage, casts every 0.9s
+# BCF0 --sync--: Boss autos as Cerberos
+# BCF1 --sync--: Boss autos as Fan
+# BE16 Hellish Breath: damage .8s after BCDE
+# BE17 Hellish Breath: damage .8s after BCDF
+# C5F5 Hellish Breath: damage .8s after BCE0
+#
+# ALL ENCOUNTER ABILITIES
+# BCCE --sync--: Boss Autos (not transformed)
+# BCCF Blackened Rain: castbar
+# BCD0 Blackened Rain: damage cast 1s after BCCF
+# BCD1 Dark Dealing
+# BCD2 Change: Moves to middle and then transforms into a Cerberus
+# BCD3 Change: Moves to middle and then transforms into a fan
+# BCD4 Revert
+# BCD5 Tongue of Flame
+# BCD6 Hellfire Fetch
+# BCD7 Hellward Bound
+# BCD8 Hellward Bound
+# BCD9 Hellfire Fetch
+# BCDA Hellish Breath: castbar
+# BCDB --sync--: tell for first Hellish Breath (direction is in heading)
+# BCDC --sync--: tell for second Hellish Breath (direction is in heading)
+# BCDD --sync--: tell for third Hellish Breath (direction is in heading)
+# BCDE Hellish Breath: self-cast for south cone used with BE16
+# BCDF Hellish Breath: self-cast for southwest cone used with BE17
+# BCE0 Hellish Breath: self-cast for southeast cone used with C5F5
+# BCE1 --sync--
+# BCE2 Cyclonic Ring
+# BCE3 Shapeshifting Supercell: Clockwise
+# BCE4 Shapeshifting Supercell: Counterclockwise
+# BCE5 Shapeshifting Supercell: first cone aoes
+# BCE6 Shapeshifting Supercell: self-cast
+# BCE7 Shapeshifting Supercell: cone aoes, ignored to avoid needing a window due to proximity of other BCE7
+# BCE8 Shapeshifting Supercell: circle aoe in center
+# BCE9 Shapeshifting Supercell: middle donut
+# BCEA Shapeshifting Supercell: outer donut
+# BCEB Made Magic
+# BCEC Made Magic: growing green sphere
+# BCED Cyclone Crossing
+# BCEE Cyclone Crossing: damage 1s after BCED
+# BCEF --sync--: Wall damage, casts every 0.9s
+# BCF0 --sync--: Boss autos as Cerberos
+# BCF1 --sync--: Boss autos as Fan
+# BE16 Hellish Breath: damage .8s after BCDE
+# BE17 Hellish Breath: damage .8s after BCDF
+# C5F5 Hellish Breath: damage .8s after BCE0
+# C620 --sync--: boss dashes to north wall
+# C64F Shapeshifting Supercel: first circle aoe in center
+2000.0 "--sync--" ActorControl { command: "80000014", data0: "3CB" } window 100000,0
+2011.0 "--targetable--"
+2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+2118.2 "--sync--" StartsUsing { id: "BCCF", source: "Metamorph" } window 120,5
+2122.2 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Boss can metamorph to Fan or Cerberus first, but it moves slowly to the middle prior to StartsUsing
+2128.9 "--sync--" StartsUsing { id: "BCD2", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-cerberus"
+2128.9 "--middle--" StartsUsing { id: "BCD3", source: "Metamorph" } window 5,5 jump "oc-accept-no-imitators-fan"
+2132.9 "Change (Fan/Cerberus)?" #Ability { id: "BCD3", source: "Metamorph" }
+2139.0 "Cyclonic Ring/Tongue of Flame?" #Ability { id: ["BCE2", "BCD5"], source: "Metamorph" }
+2142.1 "Hellfire Fetch?" #Ability { id: "BCD6", source: "Metamorph" }
+2146.7 "Shapeshifting Supercell Clockwise/Counterclock?" #Ability { id: ["BCE3", "BCE4"], source: "Metamorph" }
+2147.1 "Shapeshifting Supercell 1 (out)?" #Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2149.5 "Shapeshifting Supercell 2 (in/far)?" #Ability { id: "BCE9", source: "Metamorph" }
+2151.2 "Hellward Bound 1?" #Ability { id: "BCD7", source: "Metamorph" }
+2152.1 "Shapeshifting Supercell 3 (in)?" #Ability { id: "BCEA", source: "Metamorph" }
+2152.2 "Hellfire Fetch 1?" #Ability { id: "BCD9", source: "Metamorph" }
+2153.4 "Hellward Bound 2?" #Ability { id: "BCD8", source: "Metamorph" }
+2154.3 "Hellfire Fetch 2?" #Ability { id: "BCD9", source: "Metamorph" }
+2154.7 "Shapeshifting Supercell 4 (out)?" #Ability { id: "BCE8", source: "Metamorph" }
+2155.6 "Hellward Bound 3?" #Ability { id: "BCD8", source: "Metamorph" }
+2156.5 "Hellfire Fetch 3?" #Ability { id: "BCD9", source: "Metamorph" }
+2157.3 "Shapeshifting Supercell 5 (in/far)?" #Ability { id: "BCE9", source: "Metamorph" }
+2157.9 "Hellward Bound 4?" #Ability { id: "BCD8", source: "Metamorph" }
+2158.6 "Hellfire Fetch 4?" #Ability { id: "BCD9", source: "Metamorph" }
+
+# Metamorphosis: Fan
+2228.9 label "oc-accept-no-imitators-fan"
+2232.9 "Change (Fan)" Ability { id: "BCD3", source: "Metamorph" }
+2239.0 "Cyclonic Ring" Ability { id: "BCE2", source: "Metamorph" }
+2241.2 "--sync--" StartsUsing { id: "BCE3", source: "Metamorph" } jump "oc-accept-no-imitators-cw"
+2241.2 "--sync--" StartsUsing { id: "BCE4", source: "Metamorph" } jump "oc-accept-no-imitators-ccw"
+2246.7 "Shapeshifting Supercell Clockwise/Counterclock?" #Ability { id: ["BCE3", "BCE4"], source: "Metamorph" }
+2247.1 "Shapeshifting Supercell 1 (out)" #Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2249.5 "Shapeshifting Supercell 2 (in/far)" #Ability { id: "BCE9", source: "Metamorph" }
+2252.1 "Shapeshifting Supercell 3 (in)" #Ability { id: "BCEA", source: "Metamorph" }
+2254.7 "Shapeshifting Supercell 4 (out)" #Ability { id: "BCE8", source: "Metamorph" }
+2257.3 "Shapeshifting Supercell 5 (in/far)" #Ability { id: "BCE9", source: "Metamorph" }
+2259.9 "Shapeshifting Supercell 6 (in)" #Ability { id: "BCEA", source: "Metamorph" }
+2266.8 "Made Magic (castbar)" #Ability { id: "BCEB", source: "Metamorph" }
+2273.7 "Made Magic" #Ability { id: "BCEC", source: "Metamorph" } duration 7.7
+2279.5 "Cyclone Crossing" #Ability { id: "BCED", source: "Metamorph" }
+2285.6 "Revert" #Ability { id: "BCD4", source: "Metamorph" }
+
+2341.2 label "oc-accept-no-imitators-cw"
+2346.7 "Shapeshifting Supercell Clockwise" Ability { id: "BCE3", source: "Metamorph" } forcejump "oc-accept-no-imitators-supercell"
+
+2441.2 label "oc-accept-no-imitators-ccw"
+2446.7 "Shapeshifting Supercell Counterclock" Ability { id: "BCE4", source: "Metamorph" }
+2446.8 label "oc-accept-no-imitators-supercell"
+2447.1 "Shapeshifting Supercell 1 (out)" Ability { id: ["C64F", "BCE5"], source: "Metamorph" }
+2449.5 "Shapeshifting Supercell 2 (in/far)" Ability { id: "BCE9", source: "Metamorph" }
+2452.1 "Shapeshifting Supercell 3 (in)" Ability { id: "BCEA", source: "Metamorph" }
+2454.7 "Shapeshifting Supercell 4 (out)" Ability { id: "BCE8", source: "Metamorph" }
+2457.3 "Shapeshifting Supercell 5 (in/far)" Ability { id: "BCE9", source: "Metamorph" }
+2459.9 "Shapeshifting Supercell 6 (in)" Ability { id: "BCEA", source: "Metamorph" }
+2466.8 "Made Magic (castbar)" Ability { id: "BCEB", source: "Metamorph" }
+2473.7 "Made Magic" duration 7.7 #Ability { id: "BCEC", source: "Metamorph" }
+2479.5 "Cyclone Crossing" Ability { id: "BCED", source: "Metamorph" }
+2485.6 "Revert" Ability { id: "BCD4", source: "Metamorph" }
+2500.8 "Dark Dealing" Ability { id: "BCD1", source: "Metamorph" }
+2506.8 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Metamorphosis: Cerberus
+2517.9 "--middle--" StartsUsing { id: "BCD2", source: "Metamorph" } window 5,5
+2518.0 label "oc-accept-no-imitators-cerberus"
+2521.9 "Change (Cerberus)" Ability { id: "BCD2", source: "Metamorph" }
+2528.0 "Tongue of Flame" Ability { id: "BCD5", source: "Metamorph" }
+2531.1 "Hellfire Fetch 1" Ability { id: "BCD6", source: "Metamorph" }
+2540.2 "Hellward Bound 1" Ability { id: "BCD7", source: "Metamorph" }
+2541.2 "Hellfire Fetch 2" #Ability { id: "BCD9", source: "Metamorph" }
+2542.4 "Hellward Bound 2" #Ability { id: "BCD8", source: "Metamorph" }
+2543.4 "Hellfire Fetch 3" #Ability { id: "BCD9", source: "Metamorph" }
+2544.6 "Hellward Bound 3" #Ability { id: "BCD8", source: "Metamorph" }
+2545.5 "Hellfire Fetch 4" #Ability { id: "BCD9", source: "Metamorph" }
+2546.9 "Hellward Bound 4" #Ability { id: "BCD8", source: "Metamorph" }
+2547.6 "Hellfire Fetch 5" #Ability { id: "BCD9", source: "Metamorph" }
+2554.2 "--north--" Ability { id: "C620", source: "Metamorph" }
+2558.6 "--tell 1--" Ability { id: "BCDB", source: "Metamorph" }
+2560.6 "--tell 2--" Ability { id: "BCDC", source: "Metamorph" }
+2562.6 "Hellish Breath (castbar)" Ability { id: "BCDA", source: "Metamorph" }
+2562.6 "--tell 3--" #Ability { id: "BCDD", source: "Metamorph" }
+2563.7 "Hellish Breath 1" Ability { id: ["BCDE", "BCDF", "BCE0"], source: "Metamorph" } window 2,2
+2565.7 "Hellish Breath 2" Ability { id: ["BCDF", "BCE0", "BCDE"], source: "Metamorph" } window 2,2
+2567.7 "Hellish Breath 3" Ability { id: ["BCE0", "BCDE", "BCDF"], source: "Metamorph" } window 2,2
+2569.8 "--sync--" Ability { id: "BCE1", source: "Metamorph" }
+2575.9 "Revert" Ability { id: "BCD4", source: "Metamorph" }
+2591.2 "Dark Dealing" Ability { id: "BCD1", source: "Metamorph" }
+2597.2 "Blackened Rain" Ability { id: "BCCF", source: "Metamorph" }
+
+# Loop back on Change to Fan
+2609.3 "--middle--" StartsUsing { id: "BCD3", source: "Metamorph" } window 5,5 forcejump "oc-accept-no-imitators-fan"
+
+### Ahead of the Competition
+# NOTE: The first cast can be either B85D or B85E
+# -ii B865 B866 B867 B859 C647
+# -p B85E:3121.7
+# -it "Phantom Hydra"
+# IGNORED ABILITIES
+# B859 Dissipate: 10 casts, once every ~.98s for 8.8s, applies 15s 155D Poison to players hit, no vulnerability up
+# B865 Many-headed Breath: VFX cast at C5F1 cast start
+# B866 Many-headed Breath: VFX cast at C5F2 cast start
+# B867 Many-headed Breath: VFX cast at C5F3 cast start
+# C647 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B850 Elemental Cascade: boss goes to middle and faces north then starts 2.7s castbar
+# B851 Elemental Cascade: 2.7s casted circle aoe, spawns poison puddles, two of these across from each other
+# B852 Elemental Cascade: 2.7s casted circle aoe, will spawn a Swirling Orb in its place
+# B853 Elemental Cascade: 2.7s casted circle aoe, will spawn a Ball of Levin in its place, a Holy Sphere will be after and across from it
+# B854 Elemental Cascade: 2.7s casted circle aoe, will spawn a Ball of Fire in its place
+# B855 Elemental Cascade: 2.7s casted circle aoe, will spawn a Holy Sphere in its place, always after and across from a Ball of Levin
+# B856 Scarlet Thread: starting 1.8s after B854, 2.7s casted line aoe from Ball of Fire that target random players
+# B857 Stunning Sheen: starting 1.8s after B855, 4.7s cast by Holy Sphere, applies a 2.64s D89 Stun to players that look at at it, no vulnerability up
+# B858 Ice Burst: starting 1.8s after B852, 2.7s cast by Swirling Orb, 8 small conal aoes from the orb
+# B859 Dissipate: starting 1.1s after B851, 10 casts, once every ~.98s for 8.8s, applies 15s 155D Poison to players hit, no vulnerability up
+# B85A Shock: starting 1.8s after B853, 3.7s cast by Ball of Levin, circle aoe (quake) around the ball with B85B followup
+# B85B Levin Ring: starting 1.8s after B853, 6.7s cast by Ball of Levin, donut around (quake) the ball with B85C followup
+# B85C Levin Ring: starting 1.8s after B853, 9.7s cast by Ball of Levin, larger donut (quake) around the ball
+# B85D Nigh-drawn Eruption: boss will go to middle then start 4.7s castbar, 5 Elemental Cascade circle aoes will appear around the boss: N is holy, NE is fire, SE is levin, SW is poison, NW is ice
+# B85E Far-flung Eruption: boss will go to middle then start 4.7s castbar, 8 Elemental Cascade circle aoes will appear around edge of arena: N is holy, NE and E are fire, S and SE are levin, SW is poison, W and NW are ice
+# B85F Elemental Cascade: 6.7s casted circle aoe, ~0.5s after B85D or B85E, ice, no vulnerability up
+# B860 Elemental Cascade: 6.7s casted circle aoe, ~0.5s after B85D or B85E, holy, no vulnerability up
+# B861 Elemental Cascade: 6.7s casted circle aoe, ~0.5s after B85D or B85E, poison, no vulnerability up
+# B862 Elemental Cascade: 6.7s casted circle aoe, ~0.5s after B85D or B85E, levin, no vulnerability up
+# B863 Elemental Cascade: 6.7s casted circle aoe, ~0.5s after B85D or B85E, fire, no vulnerability up
+# B865 Many-headed Breath: VFX cast at C5F1 cast start
+# B866 Many-headed Breath: VFX cast at C5F2 cast start
+# B867 Many-headed Breath: VFX cast at C5F3 cast start
+# B868 Radiant Breath: boss moves middle, faces north, VFX cast ~2.09s before B86D Many-headed Breath
+# B869 Discordance: 4.7s castbar
+# B86A Discordance: aoe damage ~0.97s after B869
+# B86C Many-headed Breath: 0.7s cast, tells for direction of 120 degree conal aoe
+# B86D Many-headed Breath: 7.7s cast, boss will cleave 3 different directions, 2 times in each, a Holy Sphere needs will also spawn during this mechanic
+# C5F1 Many-headed Breath: 0.5s cast, front 120 degree conal aoe
+# C5F2 Many-headed Breath: 0.5s cast, back-right 120 degree conal aoe
+# C5F3 Many-headed Breath: 0.5s cast, back-left 120 degree conal aoe
+# C647 --sync--: Boss autos
+3000.0 "--sync--" ActorControl { command: "80000014", data0: "3BC" } window 100000,0
+3011.0 "--targetable--"
+3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Nigh-drawn Eruption or Far-flung Eruption Branch 1
+3116.7 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 120,5 jump "oc-ahead-of-the-competition-nigh"
+3116.7 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 120,5 jump "oc-ahead-of-the-competition-far"
+3116.7 "--middle--"
+3121.7 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+3123.7 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3129.8 "Far-flung Eruption/Nigh-drawn Eruption?" #Ability { id: ["B85E", "B85D"], source: "Phantom Hydra" }
+3131.8 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3137.4 "--middle--" #StartsUsing { id: "B850", source: "Phantom Hydra" }
+3140.4 "Elemental Cascade (castbar)" #Ability { id: "B850", source: "Phantom Hydra" }
+3148.5 "Elemental Cascade (levin/fire)?" #Ability { id: ["B853" "B854"], source: "Phantom Hydra" }
+3149.5 "Elemental Cascade (holy/poison)?" #Ability { id: ["B855", "B851"], source: "Phantom Hydra" }
+3150.6 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3151.5 "Elemental Cascade (poison/levin)?" #Ability { id: ["B851", "B853"], source: "Phantom Hydra" }
+3152.6 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3153.3 "Scarlet Thread?" #Ability { id: "B856", source: "Ball of Fire" }
+3153.4 "Elemental Cascade (holy)?" #Ability { id: "B855", source: "Phantom Hydra" }
+
+3216.7 label "oc-ahead-of-the-competition-far"
+3221.7 "Far-flung Eruption" Ability { id: "B85E", source: "Phantom Hydra" }
+3223.7 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3229.7 "Nigh-drawn Eruption" Ability { id: "B85D", source: "Phantom Hydra" }
+3231.7 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+# NOTE: This is a particularly bad sync when tanks run out to avoid near and do not gap close or go back middle
+3238.1 "--middle--" StartsUsing { id: "B850", source: "Phantom Hydra" } window 5,5 forcejump "oc-ahead-of-the-competition-cascade1"
+
+3316.7 label "oc-ahead-of-the-competition-nigh"
+3321.7 "Nigh-drawn Eruption" Ability { id: "B85D", source: "Phantom Hydra" }
+3323.7 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3329.8 "Far-flung Eruption" Ability { id: "B85E", source: "Phantom Hydra" }
+3331.7 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 1
+# Patterns:
+# Levin => Holy => 2 Poison => Ice => 5 Fire => Ice
+# 5 Fire => 2 Poison => Levin => Holy => Ice => 5 Fire
+3337.2 "--middle--" StartsUsing { id: "B850", source: "Phantom Hydra" } window 5,5
+3337.3 label "oc-ahead-of-the-competition-cascade1"
+3340.2 "Elemental Cascade (castbar)" Ability { id: "B850", source: "Phantom Hydra" }
+
+3345.4 "--sync--" StartsUsing { id: "B853", source: "Phantom Hydra" } jump "oc-ahead-of-the-competition-cascade1-levin"
+3345.4 "--sync--" StartsUsing { id: "B854", source: "Phantom Hydra" } jump "oc-ahead-of-the-competition-cascade1-fire"
+3348.4 "Elemental Cascade (levin/fire)?" #Ability { id: ["B853" "B854"], source: "Phantom Hydra" }
+3349.4 "Elemental Cascade (holy/poison)?" #Ability { id: ["B855", "B851"], source: "Phantom Hydra" }
+3350.5 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3351.4 "Elemental Cascade (poison/levin)?" #Ability { id: ["B851", "B853"], source: "Phantom Hydra" }
+3352.5 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3353.2 "Scarlet Thread?" #Ability { id: "B856", source: "Ball of Fire" }
+3353.3 "Elemental Cascade (holy)?" #Ability { id: "B855", source: "Phantom Hydra" }
+3354.2 "Shock?" #Ability { id: "B85A", source: "Ball of Levin" }
+3356.2 "Stunning Sheen?" #Ability { id: "B857", source: "Holy Sphere" }
+3357.1 "Shock?" #Ability { id: "B85A", source: "Ball of Levin" }
+
+# Elemental Cascade Branch 1 - Levin first
+3445.5 label "oc-ahead-of-the-competition-cascade1-levin"
+3448.5 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+3449.5 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3451.5 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
+3452.6 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+3454.3 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+3456.3 "Stunning Sheen" Ability { id: "B857", source: "Holy Sphere" }
+3457.3 "Levin Ring 1" #Ability { id: "B85B", source: "Ball of Levin" }
+3457.5 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3459.5 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+3460.3 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+3462.3 "Ice Burst" #Ability { id: "B858", source: "Swirling Orb" }
+3462.5 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3464.3 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+3467.3 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+
+# Elemental Cascade Branch 1 => Nigh-drawn Eruption or Far-flung Eruption Branch 2
+3474.0 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-nigh2"
+3474.0 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-far2"
+3474.0 "--middle--"
+3479.0 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+3481.0 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3491.1 "Discordance (castbar)" #Ability { id: "B869", source: "Phantom Hydra" }
+3492.1 "Discordance" #Ability { id: "B86A", source: "Phantom Hydra" }
+3499.7 "Radiant Breath" #Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+3502.8 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3504.0 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3505.2 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3506.4 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3507.6 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3507.8 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3508.8 "--tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3509.6 "Many-headed Breath (castbar)" #Ability { id: "B86D", source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 1 - Fire first
+# NOTE: This ends 0.8s later than Levin
+3545.5 label "oc-ahead-of-the-competition-cascade1-fire"
+3548.5 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+3549.5 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
+3550.6 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+3551.5 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+3553.3 "Scarlet Thread" #Ability { id: "B856", source: "Ball of Fire" }
+3553.4 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3557.2 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+3558.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3560.2 "Stunning Sheen" #Ability { id: "B857", source: "Holy Sphere" }
+3560.2 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+3561.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+3563.2 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+3563.2 "Ice Burst" #Ability { id: "B858", source: "Swirling Orb" }
+3566.2 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+
+# Elemental Cascade Branch 1 => Nigh-drawn Eruption or Far-flung Eruption Branch 2
+3574.2 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-nigh2"
+3574.2 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-far2"
+3574.2 "--middle--"
+3579.2 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+3581.2 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3591.3 "Discordance (castbar)" #Ability { id: "B869", source: "Phantom Hydra" }
+3592.3 "Discordance" #Ability { id: "B86A", source: "Phantom Hydra" }
+3599.9 "Radiant Breath" #Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+3603.0 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3604.2 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3605.4 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3606.6 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3607.8 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3608.0 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3609.0 "--tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3609.8 "Many-headed Breath (castbar)" #Ability { id: "B86D", source: "Phantom Hydra" }
+
+3674.0 label "oc-ahead-of-the-competition-nigh2"
+3679.0 "Nigh-drawn Eruption" Ability { id: "B85D", source: "Phantom Hydra" }
+3681.0 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3686.2 "--sync--" StartsUsing { id: "B869", source: "Phantom Hydra" } forcejump "oc-ahead-of-the-competition-discord"
+
+3774.0 label "oc-ahead-of-the-competition-far2"
+3779.0 "Far-flung Eruption" Ability { id: "B85E", source: "Phantom Hydra" }
+3781.0 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+
+3786.1 label "oc-ahead-of-the-competition-discord"
+3791.1 "Discordance (castbar)" Ability { id: "B869", source: "Phantom Hydra" }
+3792.1 "Discordance" Ability { id: "B86A", source: "Phantom Hydra" }
+
+# Loop Begins, 11.6s pause between
+# NOTE: Using B86C instead for start as B868 has no cast time
+3799.7 "Radiant Breath" Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+3799.7 "--middle--"
+3801.9 label "oc-ahead-of-the-competition-loop"
+3802.9 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3804.1 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3805.3 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3806.5 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3807.7 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3807.9 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3808.9 "--tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+3809.8 "Many-headed Breath (castbar)" Ability { id: "B86D", source: "Phantom Hydra" }
+3810.7 "Many-headed Breath 1" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3812.7 "Many-headed Breath 2" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3814.7 "Stunning Sheen" Ability { id: "B857", source: "Holy Sphere" }
+3814.7 "Many-headed Breath 3" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3816.7 "Many-headed Breath 4" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3818.7 "Many-headed Breath 5" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3820.7 "Many-headed Breath 6" #Ability { id: ["C5F1", "C5F2", "C5F3"], source: "Phantom Hydra" }
+3827.3 "Discordance (castbar)" Ability { id: "B869", source: "Phantom Hydra" }
+3828.3 "Discordance" Ability { id: "B86A", source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 2 (Loop version)
+# Patterns:
+# Levin             => Holy     => Levin => 2 Poison => Ice   => Poison + Levin => 2 Poison => 5 Fire
+# Ice               => 2 Poison => Levin => 5 Fire   => Ice   => Levin + Ice    => 5 Fire + Holy
+# 5 Fire + 2 Poison => Holy     => Ice   => 5 Fire   => Levin => Ice            => 2 Poison => 5 Fire
+3835.6 "--middle--" StartsUsing { id: "B850", source: "Phantom Hydra" } window 5,5
+3838.6 "Elemental Cascade" Ability { id: "B850", source: "Phantom Hydra" }
+
+3843.7 "--sync--" StartsUsing { id: "B852", source: "Phantom Hydra" } jump "oc-ahead-of-the-competition-cascade2-ice"
+3843.7 "--sync--" StartsUsing { id: "B853", source: "Phantom Hydra" } jump "oc-ahead-of-the-competition-cascade2-levin"
+3843.7 "--sync--" StartsUsing { id: "B854", source: "Phantom Hydra" } jump "oc-ahead-of-the-competition-cascade2-fire"
+3846.8 "Elemental Cascade (ice/levin/fire)?" #Ability { id: ["B852", "B853" "B854"], source: "Phantom Hydra" }
+3846.8 "Elemental Cascade (poison)?" #Ability { id: "B851", source: "Phantom Hydra" }
+3847.8 "Elemental Cascade (holy)?" #Ability { id: "B855", source: "Phantom Hydra" }
+3847.8 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3848.7 "Elemental Cascade (poison)?" #Ability { id: "B851", source: "Phantom Hydra" }
+3849.8 "Dissipate?" #Ability { id: "B859", source: "Phantom Hydra" } duration 8.9
+3850.7 "Elemental Cascade (levin)?" #Ability { id: "B853", source: "Phantom Hydra" }
+3851.6 "Ice Burst/Scarlet Thread?" #Ability { id: ["B856", "B858"], source: "Swirling Orb" }
+3851.7 "Elemental Cascade (poison)?" #Ability { id: "B851", source: "Phantom Hydra" }
+3851.8 "Elemental Cascade (fire)?" #Ability { id: "B854", source: "Phantom Hydra" }
+3852.5 "Shock?" #Ability { id: "B85A", source: "Ball of Levin" }
+3852.8 "Elemental Cascade (ice)/Dissipate?" #Ability { id: ["B852", "B859"], source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 2 - Ice first; Ends 1.8s earlier than Levin
+3943.4 label "oc-ahead-of-the-competition-cascade2-ice"
+3946.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3948.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
+3949.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+3950.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+3951.3 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+3951.5 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+3952.5 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3956.3 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+3956.3 "Scarlet Thread" #Ability { id: "B856", source: "Ball of Fire" }
+3957.3 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+3959.3 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+3961.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+3961.4 "Elemental Cascade (levin)" #Ability { id: "B853", source: "Phantom Hydra" }
+3962.3 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+3963.5 "Elemental Cascade (fire)" #Ability { id: "B854", source: "Phantom Hydra" }
+3963.5 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+3966.4 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+3967.4 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+3968.4 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+3970.4 "Stunning Sheen" #Ability { id: "B857", source: "Holy Sphere" }
+3970.4 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+3973.4 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+
+3978.6 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-nigh3"
+3978.6 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-far3"
+3978.6 "--middle--"
+3983.6 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+3985.6 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+3995.6 "Discordance (castbar)" #Ability { id: "B869", source: "Phantom Hydra" }
+3997.6 "Discordance" #Ability { id: "B86A", source: "Phantom Hydra" }
+4008.0 "Radiant Breath" #Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+4008.0 "--middle--"
+4011.1 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4012.3 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4013.5 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4014.7 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4015.8 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4016.0 "Elemental Cascade (holy)" #Ability { id: "B855", source: "Phantom Hydra" }
+4017.1 "--tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4017.9 "Many-headed Breath (castbar)" #Ability { id: "B86D", source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 2: Levin first
+4043.4 label "oc-ahead-of-the-competition-cascade2-levin"
+4046.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+4047.4 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+4050.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+4051.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
+4052.2 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+4052.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+4054.2 "Stunning Sheen" Ability { id: "B857", source: "Holy Sphere" }
+4055.2 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+4056.2 "Shock" #Ability { id: "B85A", source: "Ball of Levin" }
+4056.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+4058.2 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+4059.2 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+4061.2 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+4062.2 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+4063.4 "Elemental Cascade (poison)" #Ability { id: "B851", source: "Phantom Hydra" }
+4063.4 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+4064.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+4065.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+4069.2 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+4070.2 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+4072.2 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+4075.2 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+
+4079.8 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-nigh3"
+4079.8 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-far3"
+4079.8 "--middle--"
+4084.8 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+4086.8 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+4096.9 "Discordance (castbar)" #Ability { id: "B869", source: "Phantom Hydra" }
+4097.9 "Discordance" #Ability { id: "B86A", source: "Phantom Hydra" }
+4109.5 "Radiant Breath" #Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+4109.5 "--middle--"
+4112.6 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4113.8 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4114.9 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4116.1 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4117.3 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4117.5 "Elemental Cascade (holy)" #Ability { id: "B855", source: "Phantom Hydra" }
+4118.5 "-tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4119.4 "Many-headed Breath (castbar)" #Ability { id: "B86D", source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 2: Fire first; Ends 4.8s earlier than Levin
+4143.4 label "oc-ahead-of-the-competition-cascade2-fire"
+4146.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+4146.4 "Elemental Cascade (poison)" #Ability { id: "B851", source: "Phantom Hydra" }
+4147.4 "Elemental Cascade (holy)" Ability { id: "B855", source: "Phantom Hydra" }
+4147.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+4150.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+4151.3 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+4154.3 "Stunning Sheen" #Ability { id: "B857", source: "Holy Sphere" }
+4154.4 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+4155.3 "Ice Burst" Ability { id: "B858", source: "Swirling Orb" }
+4158.5 "Elemental Cascade (levin)" Ability { id: "B853", source: "Phantom Hydra" }
+4159.3 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+4160.4 "Elemental Cascade (ice)" Ability { id: "B852", source: "Phantom Hydra" }
+4161.4 "Elemental Cascade (poison)" Ability { id: "B851", source: "Phantom Hydra" }
+4162.5 "Dissipate" duration 8.9 #Ability { id: "B859", source: "Phantom Hydra" }
+4164.3 "Shock" Ability { id: "B85A", source: "Ball of Levin" }
+4165.1 "Elemental Cascade (fire)" Ability { id: "B854", source: "Phantom Hydra" }
+4165.4 "Ice Burst" #Ability { id: "B858", source: "Swirling Orb" }
+4167.4 "Levin Ring 1" Ability { id: "B85B", source: "Ball of Levin" }
+4170.0 "Scarlet Thread" Ability { id: "B856", source: "Ball of Fire" }
+4170.4 "Levin Ring 2" Ability { id: "B85C", source: "Ball of Levin" }
+
+4176.3 "--sync--" StartsUsing { id: "B85D", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-nigh3"
+4176.3 "--sync--" StartsUsing { id: "B85E", source: "Phantom Hydra" } window 5,5 jump "oc-ahead-of-the-competition-far3"
+4176.3 "--middle--"
+4179.0 "Nigh-drawn Eruption/Far-flung Eruption?" #Ability { id: ["B85D", "B85E"], source: "Phantom Hydra" }
+4181.3 "Elemental Cascade" #Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+4191.5 "Discordance (castbar)" #Ability { id: "B869", source: "Phantom Hydra" }
+4192.5 "Discordance" #Ability { id: "B86A", source: "Phantom Hydra" }
+4203.9 "Radiant Breath" #Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+4203.9 "--middle--"
+4207.0 "--tell 1--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4208.2 "--tell 2--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4210.2 "--tell 3--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4210.6 "--tell 4--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4211.8 "--tell 5--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4212.0 "Elemental Cascade (holy)" #Ability { id: "B855", source: "Phantom Hydra" }
+4213.0 "-tell 6--" #Ability { id: "B86C", source: "Phantom Hydra" }
+4213.8 "Many-headed Breath (castbar)" #Ability { id: "B86D", source: "Phantom Hydra" }
+
+# Elemental Cascade Branch 2 => Nigh-drawn Eruption or Far-flung Eruption Branch 3 (Loop version)
+4279.5 label "oc-ahead-of-the-competition-nigh3"
+4284.5 "Nigh-drawn Eruption" Ability { id: "B85D", source: "Phantom Hydra" }
+4286.5 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+4291.7 "--sync--" StartsUsing { id: "B869", source: "Phantom Hydra" } forcejump "oc-ahead-of-the-competition-discord2"
+
+4379.5 label "oc-ahead-of-the-competition-far3"
+4384.5 "Far-flung Eruption" Ability { id: "B85E", source: "Phantom Hydra" }
+4386.5 "Elemental Cascade" Ability { id: ["B85F", "B860", "B861", "B862", "B863"], source: "Phantom Hydra" }
+
+4391.6 label "oc-ahead-of-the-competition-discord2"
+4396.6 "Discordance (castbar)" Ability { id: "B869", source: "Phantom Hydra" }
+4397.6 "Discordance" Ability { id: "B86A", source: "Phantom Hydra" }
+
+# Loop
+4409.2 "Radiant Breath" Ability { id: "B868", source: "Phantom Hydra" } window 5,5
+4409.2 "--middle--"
+4411.5 "--sync--" StartsUsing { id: "B86C", source: "Phantom Hydra" } forcejump "oc-ahead-of-the-competition-loop"
+
+### Appalling Behavior
+# -ii C26B C270 C272 C27C C27D C27F C287 C53A C53C C53E
+# -p C53B:5124.9
+# -it "Pallmagia"
+# IGNORED ABILITIES
+# C26B --sync--: Wall damage cast every 1s
+# C270 Bad Breath: VFX from Pallkeeper
+# C272 Plaincracker: VFX from Pallkeeper
+# C27C Roulette: 10mil damage to player standing on center purple scythe tile
+# C27D Roulette: 10mil damage to player standing on outer/middle purple scythe tiles
+# C27F Lilliputian Lyric: VFX, 4s cast
+# C287 --sync--: some sort of VFX for C512 Great Whirlwind?, 4.7s cast
+# C53A Bad Breath: VFX, 4s cast, appears to be the green Malboro icon
+# C53C Plaincracker: VFX, 4s cast, appears to be the yellow golem icon
+# C53E --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# C26B --sync--: Wall damage cast every 1s
+# C26C Summon: boss goes to middle, faces north, and starts 2.7s castbar, spawns 4 cursed constructs (Pallkeepers) on cardinal edges of arena
+# C26D Esoteric Instruction: 12.7s cast, boss starts tethering Pallkeepers, telling order of mechanics and which construct will do which mechanic
+# C26E Esoteric Instruction
+# C26F Reverse Polarity: 4.7s cast, 2 Pallkeepers are tethered and the other 2 Pallkeepers are tethered, they swap locations at end of cast
+# C270 Bad Breath: VFX from Pallkeeper
+# C271 Bad Breath: 2.7s cast at Pallkeeper on edge of arena, 90 degree cleave, will apply 30s F Blind, 30s 11 Paralysis, 10s 7 Silence, 19.96s 954 Nausea, 20s 9 Slow, and 19.96s E Heavy
+# C272 Plaincracker: VFX from Pallkeeper
+# C273 Plaincracker: 2.7s cast at Pallkeeper on edge of arena, circle aoe the size of the arena
+# C278 --sync--: All four Pallkeeper teleport to their opposite side of the arena, counterclockwise resolution
+# C279 --sync--: Two Pallkeepers teleport to clockwise cardinal, clockwise resolution
+# C27A --sync--: Two Pallkeepers teleport to counterclock cardinal, clockwise resolution
+# C27B Roulette: boss goes to middle, faces north, and starts 3.7s cast
+# C27C Roulette: 10mil damage to player standing on center purple scythe tile
+# C27D Roulette: 10mil damage to player standing on outer/middle purple scythe tiles
+# C27E Roulette: VFX for Roulette having stopped
+# C27F Lilliputian Lyric: VFX, 4s cast
+# C280 Lilliputian Lyric: boss faces random player starts a 4.7s castbar, the turn can be slow leading to late syncs, 180 degree cleave, apples a 15s 1B6 Minimum debuff to player
+# C281 Magic Hammer: 2.7s castbar, C282 Magic Hammer circle aoes appear 0.1s after
+# C282 Magic Hammer: 5.2s cast, 3 sets, 4 circle aoes each in columns
+# C283 Occult Missile: 3s castbar, 3 sets of 4 C285 Occult Missiles, each set is 2s apart
+# C285 Occult Missile: 3.7s casted circle aoe
+# C286 Great Whirlwind: 4s castbar
+# C287 --sync--: some sort of VFX for C512 Great Whirlwind?, 4.7s cast
+# C512 Great Whirlwind: 4.7s casted aoe ~0.8s after C286
+# C53A Bad Breath: VFX, 4s cast, appears to be the green Malboro icon
+# C53B Bad Breath: boss goes to center of room and starts 4.7s castbar, 90 degree cleave targetting random player, will apply 30s F Blind, 30s 11 Paralysis, 10s 7 Silence, 19.96s 954 Nausea, 20s 9 Slow, and 19.96s E Heavy
+# C53C Plaincracker: VFX, 4s cast, appears to be the yellow golem icon
+# C53D Plaincracker: 4.7s castbar by boss, large circle aoe under boss
+# C53E --sync--: Boss autos
+5000.0 "--sync--" ActorControl { command: "80000014", data0: "3BA" } window 100000,0
+5011.0 "--targetable--"
+5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+5119.9 "--middle--" StartsUsing { id: "C53B", source: "Pallmagia" } window 120,5
+5124.9 "Bad Breath" Ability { id: "C53B", source: "Pallmagia" }
+5134.3 "Plaincracker" Ability { id: "C53D", source: "Pallmagia" }
+
+# Tutorial - Summon
+5139.9 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5
+5142.9 "Summon" Ability { id: "C26C", source: "Pallmagia" }
+
+# Bad Breath or Painbreaker First
+5146.6 "--sync--" ActorControlExtra { category: "019D", param1: "1", param2: "2" } jump "oc-appalling-behavior-bad1"
+5146.6 "--sync--" ActorControlExtra { category: "019D", param1: "10", param2: "20" } jump "oc-appalling-behavior-pain1"
+5146.6 "Mark 1" #ActorControlExtra { category: "019D", param1: ["1", "10"] } # Bad Breath
+5149.6 "Mark 2 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5152.6 "Mark 3 (Bad Breath/Paincracker)?" #ActorControlExtra { category: "019D", param1: ["1", "10"] }
+5155.6 "Mark 4 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5158.9 "Esoteric Instruction" #Ability { id: "C26D", source: "Pallmagia" }
+5165.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5169.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5174.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5178.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5188.4 "Great Whirlwind (castbar)" #Ability { id: "C286", source: "Pallmagia" }
+5189.2 "Great Whirlwind" #Ability { id: "C512", source: "Pallmagia" }
+
+5246.6 label "oc-appalling-behavior-bad1"
+5249.6 "Mark 2 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5252.6 "Mark 3 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5255.6 "Mark 4 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5258.9 "Esoteric Instruction" Ability { id: "C26D", source: "Pallmagia" }
+5265.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5269.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5274.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5278.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5284.2 "--sync--" StartsUsing { id: "C286", source: "Pallmagia" } forcejump "oc-appalling-behavior-summon1-end"
+
+5346.6 label "oc-appalling-behavior-pain1"
+5349.6 "Mark 2 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5352.6 "Mark 3 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5355.6 "Mark 4 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5358.9 "Esoteric Instruction" Ability { id: "C26D", source: "Pallmagia" }
+5365.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5369.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5374.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5378.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+
+# Tutorial - Occult Missile
+5384.1 label "oc-appalling-behavior-summon1-end"
+5388.4 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5389.2 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+5399.0 "Occult Missile (castbar)" Ability { id: "C283", source: "Pallmagia" }
+5399.8 "Occult Missile 1" #Ability { id: "C285", source: "Pallmagia" }
+5401.8 "Occult Missile 2" #Ability { id: "C285", source: "Pallmagia" }
+5403.8 "Occult Missile 3" #Ability { id: "C285", source: "Pallmagia" }
+5411.2 "Lilliputian Lyric" Ability { id: "C280", source: "Pallmagia" }
+
+# Tutorial - Roulette
+5419.8 "--middle--" StartsUsing { id: "C27B", source: "Pallmagia" } window 5,5
+5423.8 "Roulette" Ability { id: "C27B", source: "Pallmagia" }
+5438.1 "Roulette (stopped)" Ability { id: "C27E", source: "Pallmagia" }
+
+# Loop Begins?
+5442.2 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5
+5442.3 label "oc-appalling-behavior-loop"
+5445.2 "Summon" Ability { id: "C26C", source: "Pallmagia" }
+
+# Bad Breath or Painbreaker First
+5448.9 "--sync--" ActorControlExtra { category: "019D", param1: "1", param2: "2" } jump "oc-appalling-behavior-bad2"
+5448.9 "--sync--" ActorControlExtra { category: "019D", param1: "10", param2: "20" } jump "oc-appalling-behavior-pain2"
+5448.9 "Mark 1" #ActorControlExtra { category: "019D", param1: ["1", "10"] } # Bad Breath
+5451.9 "Mark 2 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5454.9 "Mark 3 (Bad Breath/Paincracker)?" #ActorControlExtra { category: "019D", param1: ["1", "10"] }
+5457.9 "Mark 4 (Paincracker/Bad Breath)?" #ActorControlExtra { category: "019D", param1: ["10", "1"] }
+5461.2 "Esoteric Instruction" #Ability { id: "C26D", source: "Pallmagia" }
+5469.3 "Reverse Polarity" #Ability { id: "C26F", source: "Pallmagia" }
+5470.2 "--adds swap--" #Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5474.0 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5478.6 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+5483.2 "Bad Breath/Plaincracker?" #Ability { id: ["C271", "C273"], source: "Pallmagia" }
+5487.8 "Plaincracker/Bad Breath?" #Ability { id: ["C273", "C271"], source: "Pallmagia" }
+
+5548.9 label "oc-appalling-behavior-bad2"
+5551.9 "Mark 2 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5554.9 "Mark 3 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5557.9 "Mark 4 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5561.2 "Esoteric Instruction" Ability { id: "C26E", source: "Pallmagia" }
+5569.3 "Reverse Polarity" Ability { id: "C26F", source: "Pallmagia" }
+5570.2 "--adds swap--" Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5574.0 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5578.6 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5583.2 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5587.8 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5594.9 "--sync--" StartsUsing { id: "C286", source: "Pallmagia" } forcejump "oc-appalling-behavior-summon2-end"
+
+5648.9 label "oc-appalling-behavior-pain2"
+5651.9 "Mark 2 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5654.9 "Mark 3 (Paincracker)" ActorControlExtra { category: "019D", param1: "10", param2: "20" } # Paincracker
+5657.9 "Mark 4 (Bad Breath)" ActorControlExtra { category: "019D", param1: "1", param2: "2" } # Bad Breath
+5661.2 "Esoteric Instruction" Ability { id: "C26E", source: "Pallmagia" }
+5669.3 "Reverse Polarity" Ability { id: "C26F", source: "Pallmagia" }
+5670.2 "--adds swap--" Ability { id: ["C278", "C279", "C27A"], source: "Pallkeeper" }
+5674.0 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5678.6 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+5683.2 "Plaincracker" Ability { id: "C273", source: "Pallmagia" }
+5687.8 "Bad Breath" Ability { id: "C271", source: "Pallmagia" }
+
+5694.7 label "oc-appalling-behavior-summon2-end"
+5699.0 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5699.8 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+
+5709.2 "--middle--" StartsUsing { id: "C27B", source: "Pallmagia" } window 5,5
+5713.2 "Roulette" Ability { id: "C27B", source: "Pallmagia" }
+5727.6 "Roulette (stopped)" Ability { id: "C27E", source: "Pallmagia" }
+5733.4 "Lilliputian Lyric" Ability { id: "C280", source: "Pallmagia" }
+5742.7 "Magic Hammer (castbar)" Ability { id: "C281", source: "Pallmagia" }
+5748.4 "Magic Hammer 1" #Ability { id: "C282", source: "Pallmagia" }
+5749.4 "Magic Hammer 2" #Ability { id: "C282", source: "Pallmagia" }
+5750.4 "Magic Hammer 3" #Ability { id: "C282", source: "Pallmagia" }
+5754.2 "Occult Missile (castbar)" Ability { id: "C283", source: "Pallmagia" }
+5755.1 "Occult Missile 1" #Ability { id: "C285", source: "Pallmagia" }
+5757.1 "Occult Missile 2" #Ability { id: "C285", source: "Pallmagia" }
+5759.1 "Occult Missile 3" #Ability { id: "C285", source: "Pallmagia" }
+5765.8 "Great Whirlwind (castbar)" Ability { id: "C286", source: "Pallmagia" }
+5766.6 "Great Whirlwind" Ability { id: "C512", source: "Pallmagia" }
+
+# Loop
+5775.2 "--middle--" StartsUsing { id: "C26C", source: "Pallmagia" } window 5,5 forcejump "oc-appalling-behavior-loop"
+
+### Cursed Resurgence
+# NOTE: Necrohazes cause 13C3 Gradual Zombification (60s) and 1412 Zombie-proof (5s) effects if player stands in one. If they stand in one again after Zombie-proof expires, they become a zombie (901 Zombification, lasts 15s). Zombification causes player to be uncontrollable and attack allies. 1412 Zombie-proof blocks Necrohaze damage. Zombies can gain Zombie-proof, but while zombified the Necrohazes don't do damage.
+# TODO: Compare with Aetherial Ward enrage log
+# -ii BC83 BC85 BC87 BC89 BC8C BC8D BC96 BC97
+# -p BC95:6123.0
+# -it "Claret Dragon" "Aetherial Ward"
+# IGNORED ABILITIES
+# BC83 --sync--: Boss autos
+# BC85 Grave Mold: 4.7s castbar
+# BC87 Necrohaze: green puddles from BC86, casts every ~0.6s, causes sync issues
+# BC89 Cauterize: VFX with 6.7s cast time, boss flies away at end of BC88 Cauterize
+# BC8C Necrohaze: Necrohazes start rotating clockwise or counterclockwise around the arena, still casts every ~0.6s, causes sync issues
+# BC8D Necrohaze: green puddle under boss from C534, casts every ~0.6s, causes sync issues
+# BC96 Howling Darkness: aoe damage 0.8s after BC95
+# BC97 --sync--: Wall damage casted every 1s
+#
+# ALL ENCOUNTER ABILITIES
+# BC78 Breath in Threes: subsequent 2.2s castbar, boss targets a random player for 120 degree cleave
+# BC83 --sync--: Boss autos
+# BC84 Snaking Necrobreath: Boss targets random player for a 270 degree cleave, 5.7s cast time
+# BC85 Grave Mold: 4.7s castbar
+# BC86 Grave Mold: 5.7s casts, 6 in tutorial and 10 after, circle aoes that spawn Necrohazes (green puddles with green sphere in center)
+# BC87 Necrohaze: green puddles from BC86, casts every ~0.6s, causes sync issues
+# BC88 Cauterize: 5.7s castbar,  and does a line aoe, overlapping BC87 Necrohaze create perpendicular BC8B Catching, boss goes untargetable at end of cast
+# BC89 Cauterize: VFX with 6.7s cast time, boss flies away at end of BC88 Cauterize
+# BC8A --sync--: self-cast, boss reappears in center of room ~3.1s after BC89 Cauterize
+# BC8B Catching: line aoes from Necrohazes overlapping with BC88 Cauterize. Will apply Vulnerability Up and 60s 13C3 Gradual Zombification to player. 3 in in tutorial, 5 after
+# BC8C Necrohaze: Necrohazes start rotating clockwise or counterclockwise around the arena, still casts every ~0.6s, causes sync issues
+# BC8D Necrohaze: green puddle under boss from C534, casts every ~0.6s, causes sync issues
+# BC8E Breath in Threes: initial 4.7s castbar, boss targets a random player for 120 degree cleave
+# BC8F Aetherial Ward: 3.7s castbar, at 5s into the ward being targetable the Aetherial Ward will gain 465 Directional Invincibility for 10s, lose it for 5s, then regain it, meaning every 15s a different cardinal is vulnerable
+# BC93 --sync--: self-cast, grants boss the 808 buff with certain count (356), boss becomes untargetable as Aetherial Ward becomes targetable
+# BC94 --sync--: self-cast, occurs when the Aetherial Ward has been killed
+# BC95 Howling Darkness: 4.7s castbar
+# BC96 Howling Darkness: aoe damage 0.8s after BC95
+# BC97 --sync--: Wall damage casted every 1s
+# BCAE --sync--: self-cast, boss reappears somewhere along the edge of arena ~1.1s before BC88 Cauterize cast starts, also becomes targetable
+# C534 Necrohaze: circle aoe underneath boss at start of BC8F Aetherial Ward
+# C538 Soar: 3.7s castbar, boss will flup upwards into the sky, becomes untargetable
+6000.0 "--sync--" ActorControl { command: "80000014", data0: "3B9" } window 100000,0
+6011.0 "--targetable--"
+6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+6118.0 "--sync--" StartsUsing { id: "BC95", source: "Claret Dragon" } window 120,5
+6123.0 "Howling Darkness" Ability { id: "BC95", source: "Claret Dragon" }
+
+# Tutorial - Grave Mold
+6134.6 "Snaking Necrobreath" Ability { id: "BC84", source: "Claret Dragon" }
+6145.7 "Grave Mold" Ability { id: "BC86", source: "Claret Dragon" }
+6148.4 "Necrohaze" duration 26.4 #Ability { id: "BC87", source: "Necrohaze" } # Ends ~0.6s before BC8B
+6154.5 "Snaking Necrobreath" Ability { id: "BC84", source: "Claret Dragon" }
+
+# Tutorial - Soar
+6162.6 "Soar" Ability { id: "C538", source: "Claret Dragon" }
+6162.6 "--untargetable--"
+6166.6 "--wall--" Ability { id: "BCAE", source: "Claret Dragon" }
+6166.6 "--targetable--"
+6173.6 "Cauterize" Ability { id: "BC88", source: "Claret Dragon" }
+6173.6 "--untargetable--"
+6175.4 "Catching" Ability { id: "BC8B", source: "Necrohaze" }
+
+6177.8 "--middle--" Ability { id: "BC8A", source: "Claret Dragon" }
+6178.5 "--targetable--"
+6189.1 "Grave Mold" Ability { id: "BC86", source: "Claret Dragon" }
+6191.8 "Necrohaze" duration 6.9 #Ability { id: "BC87", source: "Necrohaze" } # Transitions into BC8C
+
+# Aetherial Ward Intermission
+6194.7 "Aetherial Ward" Ability { id: "BC8F", source: "Claret Dragon" }
+6194.7 "Necrohaze (middle)" Ability { id: "C534", source: "Claret Dragon" }
+6195.6 "--untargetable--"
+6196.8 "--ward targetable--" Ability { id: "BC93", source: "Claret Dragon" }
+6196.8 "Necrohaze (middle)" duration 68.2 #Ability { id: "BC8D", source: "Claret Dragon" } # Ends at BC94
+6198.8 "Necrohaze (rotating)" duration 66.2 #Ability { id: "BC8C", source: "Claret Dragon" } # Ends at BC94
+6201.7 "--3 shields up--" GainsEffect { effectId: '465' } duration 10
+6216.7 "--3 shields up--" GainsEffect { effectId: '465' } duration 10
+6231.7 "--3 shields up--" GainsEffect { effectId: '465' } duration 10
+6246.7 "--3 shields up--" GainsEffect { effectId: '465' } duration 10
+6261.7 "--enrage?--"
+
+# Post Aetherial Ward
+6265.0 "--boss targetable?--" Ability { id: "BC94", source: "Claret Dragon" } window 265,10
+
+# Loop Begins, 23.1s pause between loops
+6274.2 label "oc-cursed-resurgence-loop"
+6280.2 "Grave Mold" Ability { id: "BC86", source: "Claret Dragon" }
+6282.9 "Necrohaze" duration 35.6 #Ability { id: "BC87", source: "Necrohaze" } # Ends ~0.6s before BC8B
+6286.6 "Breath in Threes 1" Ability { id: "BC8E", source: "Claret Dragon" }
+6291.8 "Breath in Threes 2" Ability { id: "BC78", source: "Claret Dragon" }
+6297.0 "Breath in Threes 3" Ability { id: "BC78", source: "Claret Dragon" }
+6306.2 "Soar" Ability { id: "C538", source: "Claret Dragon" }
+6306.2 "--untargetable--"
+6310.2 "--wall--" Ability { id: "BCAE", source: "Claret Dragon" }
+6310.2 "--targetable--"
+6317.2 "--untargetable--"
+6317.2 "Cauterize" Ability { id: "BC88", source: "Claret Dragon" }
+6319.1 "Catching" Ability { id: "BC8B", source: "Necrohaze" }
+6321.3 "--middle--" Ability { id: "BC8A", source: "Claret Dragon" }
+6322.0 "--targetable--"
+6329.7 "Snaking Necrobreath" Ability { id: "BC84", source: "Claret Dragon" }
+6340.0 "Howling Darkness 1" Ability { id: "BC95", source: "Claret Dragon" }
+6347.2 "Howling Darkness 2" Ability { id: "BC95", source: "Claret Dragon" }
+
+6364.5 "--sync--" StartsUsing { id: "BC86", source: "Claret Dragon" } forcejump "oc-cursed-resurgence-loop"
+
+### Dark Artistry
+# -ii B845 B84F C649
+# -p B84D:7122.3
+# -it "Phantom Necromancer"
+# IGNORED ABILITIES
+# B845 --sync--: Wall damage every ~1.1s
+# B84F Dark Flare: aoe damage 0.8s after B84E
+# C649 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B845 --sync--: Wall damage every ~1.1s
+# B846 Rise of the Fallen: 2.7s castbar with VFX, mechanic has B847 Explosion x7 (6 in tutorial), then B848 Explosion x3
+# B847 Explosion: 1.7s casted circle aoes under Long-dead Explorer coming out of square tiles, 6 at a time (4 in tutorial), ~3s apart
+# B848 Explosion: 3.7s casted line aoes in + shape where Long-dead Pirate come out of square tiles, 4 at a time, total of 3 times, ~11.5s apart
+# B84B Arcane Revelation: 2.7s castbar, spawns giant circles that cast B84C Necrosurge
+# B84C Necrosurge: three 6.7s casted line aoes from giant circles creating a Ж shape, ≥≤ shape, or ≡ shape
+# B84D Dark II: Boss targets random player and starts a 4.7s casted 180 degree cleave
+# B84E Dark Flare: 4.7s castbar
+# B84F Dark Flare: aoe damage 0.8s after B84E
+# C649 --sync--: Boss autos
+7000.0 "--sync--" ActorControl { command: "80000014", data0: "3A8" } window 100000,0
+7011.0 "--targetable--"
+7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+7117.3 "--sync--" StartsUsing { id: "B84D", source: "Phantom Necromancer" } window 120,5
+7122.3 "Dark II" Ability { id: "B84D", source: "Phantom Necromancer" }
+
+# Tutorial - Rise of the Fallen
+7131.4 "Rise of the Fallen" Ability { id: "B846", source: "Phantom Necromancer" }
+7142.6 "Explosion 1" Ability { id: "B847", source: "Long-dead Explorer" }
+7145.6 "Explosion 2" Ability { id: "B847", source: "Long-dead Explorer" }
+7148.6 "Explosion 3" Ability { id: "B847", source: "Long-dead Explorer" }
+7151.6 "Explosion 4" Ability { id: "B847", source: "Long-dead Explorer" }
+7154.6 "Explosion 5" Ability { id: "B847", source: "Long-dead Explorer" }
+7157.6 "Explosion 6" Ability { id: "B847", source: "Long-dead Explorer" }
+7168.2 "Explosion 1 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7179.6 "Explosion 2 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7191.0 "Explosion 3 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7197.4 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+# Loop Begins
+7203.5 label "oc-dark-artistry-loop"
+7206.5 "Arcane Revelation" Ability { id: "B84B", source: "Phantom Necromancer" }
+7218.6 "Necrosurge" Ability { id: "B84C", source: "Phantom Necromancer" }
+7223.0 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+7232.1 "Rise of the Fallen" Ability { id: "B846", source: "Phantom Necromancer" }
+7243.3 "Explosion 1" Ability { id: "B847", source: "Long-dead Explorer" }
+7246.3 "Explosion 2" Ability { id: "B847", source: "Long-dead Explorer" }
+7249.3 "Explosion 3" Ability { id: "B847", source: "Long-dead Explorer" }
+7252.3 "Explosion 4" Ability { id: "B847", source: "Long-dead Explorer" }
+7255.3 "Explosion 5" Ability { id: "B847", source: "Long-dead Explorer" }
+7258.3 "Explosion 6" Ability { id: "B847", source: "Long-dead Explorer" }
+7261.3 "Explosion 7" Ability { id: "B847", source: "Long-dead Explorer" }
+7273.7 "Explosion 1 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7285.3 "Explosion 2 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7296.7 "Explosion 3 (lines)" Ability { id: "B848", source: "Long-dead Pirate" }
+7305.0 "Dark Flare" Ability { id: "B84E", source: "Phantom Necromancer" }
+
+# Loop
+7315.3 "--sync--" StartsUsing { id: "B84B", source: "Phantom Necromancer" } forcejump "oc-dark-artistry-loop"
+
+### Double Trouble
+# -ii B7E1 B7D0 B7D1 B7D4 B7D5 B7D6 B7D7 B7D8 B7D9 B7DB B7DC B7E4 B7E5 C3CA
+# -p B7E7:8121.0
+# -it "Conjured Calofisteri" "Entanglement"
+# IGNORED ABILITIES
+# B7D0 Coif Change: Cast after B7CF, right tentacle grows a claw
+# B7D1 Coif Change: Cast after B7CE, left tentacle grows a claw
+# B7D4 Dual Cut: VFX cast ~2.1s after B7D3, boss moves right tentacle forward
+# B7D5 Dual Cut: VFX cast ~2.1s after B7D2, boss moves left tentacle forward
+# B7D6 Resetting Spray: VFX at end of B7CE dual cuts for right tentacle resetting to hair
+# B7D7 Resetting Spray: VFX at end of B7CF dual cuts for left tentacle resetting to hair
+# B7D8 Resetting Spray: VFX at ~2.05s after B7D7 for right tentacle resetting to hair
+# B7D9 Resetting Spray: VFX at ~2.05s after B7D6 for left tentacle resetting to hair
+# B7DB Dashing Cut: 5.7s castbar, 3 blue marks appear, red marker indicates order of dashes, boss will dash to first marker at end of cast
+# B7DC Dashing Cut: 0.2s cast, boss turns and dashes to next marker
+# B7E1 Garrote: 9.7s cast by Entanglement, 10mil damage hit to the trapped player stuck in the Entrapment
+# B7E4 Hair Shears: 4.7s cast star line aoes
+# B7E5 Hair Shears: 4.7s cast lines from star aoes, causes 3s 1116 Stun to players hit, ~0.9s later B9EF occurs, seems possible to dodge B9EF by snapshotting
+# C3CA attack: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B7CE Asymmetric Coif Change: Boss moves middle and faces south, then starts a 2.7s cast, right tentacle grows a claw
+# B7CF Asymmetric Coif Change: Boss moves middle and faces south, then starts a 2.7s cast, left tentacle grows a claw
+# B7D0 Coif Change: Cast after B7CF, right tentacle grows a claw
+# B7D1 Coif Change: Cast after B7CE, left tentacle grows a claw
+# B7D2 Dual Cut: 1.7s castbar for right half-room cleave, then left half-room cleave
+# B7D3 Dual Cut: 1.7s castbar for left half-room cleave, then right half-room cleave
+# B7D4 Dual Cut: VFX cast ~2.1s after B7D3, boss moves right tentacle forward
+# B7D5 Dual Cut: VFX cast ~2.1s after B7D2, boss moves left tentacle forward
+# B7D6 Resetting Spray: VFX at end of B7CE dual cuts for right tentacle resetting to hair
+# B7D7 Resetting Spray: VFX at end of B7CF dual cuts for left tentacle resetting to hair
+# B7D8 Resetting Spray: VFX at ~2.05s after B7D7 for right tentacle resetting to hair
+# B7D9 Resetting Spray: VFX at ~2.05s after B7D6 for left tentacle resetting to hair
+# B7DB Dashing Cut: 5.7s castbar, 3 blue marks appear, red marker indicates order of dashes, boss will dash to first marker at end of cast
+# B7DC Dashing Cut: 0.2s cast, boss turns and dashes to next marker
+# B7DD Extension: 2.7s castbar, 7 Lithe Lock entities start casting B7DE Graft ~1.8s after
+# B7DE Graft: 2.7s cast, circle aoes that then go hidden
+# B7DF Baleful Blowout: 4.7s castbar prior to B7E0 Malicious Weave
+# B7E0 Malicious Weave: 5.2s circle aoes cast by Entanglement at locations where Grafts were. Players hit receive 14E5 Fetters debuff and become entangled.
+# B7E1 Garrote: 9.7s cast by Entanglement, 10mil damage hit to the trapped player stuck in the Entrapment
+# B7E2 Garrote: VFX cast when no one is trapped by Entanglement, this means that B7E2 could be missed as B7E1 StartsUsing replaces it and B7E1 could be canceled
+# B7E3 Hair Shears: 4.7s castbar from boss
+# B7E4 Hair Shears: 4.7s cast star line aoes
+# B7E5 Hair Shears: 4.7s cast lines from star aoes, causes 3s 1116 Stun to players hit, ~0.9s later B9EF occurs, seems possible to dodge B9EF by snapshotting
+# B7E6 Malicious Weave: 0.7s circle aoe cast by Entanglement at location of star aoes. Players hit receive 14E5 Fetters debuff and become entangled.
+# B7E7 Aura Burst: 4.7s castbar
+# B7E8 Aura Burst: aoe damage ~0.9s after B7E7
+# B9EF Hair Shears: VFX for hair lines coming from B7E4, players can be targeted so probably related to pull-in effect
+# BF9C Dashing Cut: 6.2s cast, only for first dash, does minor damage to player if in the dash and does not apply a vulnerability
+# BF9D Dashing Cut: 0.7s cast, subsequent dashes, does minor damage to player if in the dash and does not apply a vulnerability
+# C3CA attack: Boss autos
+# C603 Dual Cut: 2.5s damage cast for first cleave damage
+# C604 Dual Cut: 4.5s damage cast for second cleave damage
+8000.0 "--sync--" ActorControl { command: "80000014", data0: "398" } window 100000,0
+8011.0 "--targetable--"
+8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+8116.0 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } window 120,5
+8121.0 "Aura Burst (castbar)" Ability { id: "B7E7", source: "Conjured Calofisteri" }
+8121.9 "Aura Burst" Ability { id: "B7E8", source: "Conjured Calofisteri" }
+
+# Tutorial - Dual Cut Right => Left or Left => Right
+8125.9 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right"
+8125.9 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left"
+8125.9 "--middle--"
+8128.9 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+8140.0 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8140.9 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8142.9 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8151.6 "Extension" #Ability { id: "B7DD", source: "Conjured Calofisteri" }
+8156.5 "Graft" #Ability { id: "B7DE", source: "Lithe Lock" }
+8163.8 "Baleful Blowout" #Ability { id: "B7DF", source: "Conjured Calofisteri" }
+8164.2 "Malicious Weave" #Ability { id: "B7E0", source: "Entanglement" }
+8167.2 "--adds targetable?--"
+8167.2 "Garrote?" #Ability { id: "B7E2", source: "Entanglement" } duration 9.9 Time until B7E1 Garrote if someone is caught
+
+# Dual Cut Right => Left
+8225.9 label "oc-double-trouble-right"
+8228.9 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+8240.0 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8240.9 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8242.9 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8248.7 "--sync--" StartsUsing { id: "B7DD", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-dual-end"
+
+# Dual Cut Left => Right
+8325.9 label "oc-double-trouble-left"
+8328.9 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+8340.0 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+8340.9 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8342.9 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+8348.6 label "oc-double-trouble-dual-end"
+8351.6 "Extension" Ability { id: "B7DD", source: "Conjured Calofisteri" }
+8356.5 "Graft" Ability { id: "B7DE", source: "Lithe Lock" }
+8363.8 "Baleful Blowout" Ability { id: "B7DF", source: "Conjured Calofisteri" }
+8364.2 "Malicious Weave" Ability { id: "B7E0", source: "Entanglement" }
+8367.2 "--adds targetable?--"
+8367.2 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Tutorial - Dashing Cut with Dual Cut Right => Left or Left => Right
+8379.0 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right2"
+8379.0 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left2"
+8379.0 "--middle--"
+8382.0 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+8397.7 "Dashing Cut 1" #Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8400.7 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8401.5 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8403.5 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8404.8 "Dashing Cut 2" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8407.7 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8408.6 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8410.6 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8411.9 "Dashing Cut 3" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8414.9 "Right/Left Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8415.8 "Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8417.8 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+
+# Dashing Cut with Dual Cut Right => Left
+8479.0 label "oc-double-trouble-right2"
+8482.0 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+8497.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8500.7 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8501.5 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8503.5 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8504.8 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8507.7 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8508.6 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8510.6 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8511.9 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8514.9 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8515.8 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8517.8 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8523.9 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-loop"
+
+# Dashing Cut with Dual Cut Left => Right
+8579.0 label "oc-double-trouble-left2"
+8582.0 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+8597.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8600.7 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+8601.5 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8603.5 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8604.8 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8607.7 "Dual Cut (castbar)" Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8608.6 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8610.6 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8611.9 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8614.9 "Dual Cut (castbar)" Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8615.8 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8617.8 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+# Loop Begins, 22.8s pause between each cycle
+8623.8 label "oc-double-trouble-loop"
+8628.8 "Aura Burst (castbar)" Ability { id: "B7E7", source: "Conjured Calofisteri" }
+8629.7 "Aura Burst" Ability { id: "B7E8", source: "Conjured Calofisteri" }
+8637.9 "Hair Shears" Ability { id: "B7E3", source: "Conjured Calofisteri" }
+8638.9 "Hair Shears (pull-in)" Ability { id: "B9EF", source: "Conjured Calofisteri" }
+8640.9 "Malicious Weave" Ability { id: "B7E6", source: "Entanglement" }
+8643.9 "--adds targetable?--"
+8643.9 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+8657.9 "Extension" Ability { id: "B7DD", source: "Conjured Calofisteri" }
+8662.8 "Graft" Ability { id: "B7DE", source: "Lithe Lock" }
+
+# Dashing Cut with Dual Cut Right => Left or Left => Right (Loop version)
+8664.7 "--sync--" StartsUsing { id: "B7CE", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-right3"
+8664.7 "--sync--" StartsUsing { id: "B7CF", source: "Conjured Calofisteri" } window 5,5 jump "oc-double-trouble-left3"
+8664.7 "--middle--"
+8667.7 "Asymmetric Coif Change" #Ability { id: ["B7CE", "B7CF"], source: "Conjured Calofisteri" }
+8683.5 "Dashing Cut 1" #Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8686.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8687.2 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8689.2 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8690.5 "Dashing Cut 2" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8693.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8694.2 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8696.2 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8697.5 "Dashing Cut 3" #Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8700.4 "Dual Cut (castbar)" #Ability { id: ["B7D2", "B7D3"], source: "Conjured Calofisteri" }
+8701.3 "Right/Left Dual Cut" #Ability { id: "C603", source: "Conjured Calofisteri" }
+8703.3 "Left/Right Dual Cut" #Ability { id: "C604", source: "Conjured Calofisteri" }
+8710.1 "Baleful Blowout" #Ability { id: "B7DF", source: "Conjured Calofisteri" }
+8710.5 "Malicious Weave" #Ability { id: "B7E0", source: "Entanglement" }
+8713.5 "--adds targetable?--"
+8713.5 "Garrote?" #Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Dashing Cut with Dual Cut Right => Left (Loop version)
+8764.9 label "oc-double-trouble-right3"
+8767.9 "Asymmetric Coif Change" Ability { id: "B7CE", source: "Conjured Calofisteri" }
+8783.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8786.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8787.4 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8789.4 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8790.7 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8793.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8794.4 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8796.4 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8797.7 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8800.6 "Dual Cut (castbar)" Ability { id: "B7D2", source: "Conjured Calofisteri" }
+8801.5 "Right Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8803.5 "Left Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8805.4 "--sync--" StartsUsing { id: "B7DF", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-dashing-end"
+
+# Dashing Cut with Dual Cut Left => Right (Loop version)
+8864.9 label "oc-double-trouble-left3"
+8867.9 "Asymmetric Coif Change" Ability { id: "B7CF", source: "Conjured Calofisteri" }
+8883.7 "Dashing Cut 1" Ability { id: "BF9C", source: "Conjured Calofisteri" }
+8886.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+8887.4 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8889.4 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8890.7 "Dashing Cut 2" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8893.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+8894.4 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8896.4 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+8897.7 "Dashing Cut 3" Ability { id: "BF9D", source: "Conjured Calofisteri" }
+8900.6 "Dual Cut (castbar)" Ability { id: "B7D3", source: "Conjured Calofisteri" }
+8901.5 "Left Dual Cut" Ability { id: "C603", source: "Conjured Calofisteri" }
+8903.5 "Right Dual Cut" Ability { id: "C604", source: "Conjured Calofisteri" }
+
+8905.3 label "oc-double-trouble-dashing-end"
+8910.3 "Baleful Blowout" Ability { id: "B7DF", source: "Conjured Calofisteri" }
+8910.7 "Malicious Weave" Ability { id: "B7E0", source: "Entanglement" }
+8913.7 "--adds targetable?--"
+8913.7 "Garrote?" Ability { id: "B7E2", source: "Entanglement" } duration 9.9
+
+# Loop
+8931.5 "--sync--" StartsUsing { id: "B7E7", source: "Conjured Calofisteri" } forcejump "oc-double-trouble-loop"
+
+### Familiar Tactics
+# -ii C6A3 BBA9 B9AB B9AF B9B1 B9B2 B9AE
+# -p B9B8:9119.7
+# -it "Elm Gigas"
+# IGNORED ABILITIES
+# C6A3 --sync--: Boss autos
+# BBA9 Ancient Aero III: damage
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
+# B9AF Inspirited Crosswinds: damage
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
+# B9AE Inspirited Cyclone: damage
+#
+# ALL ENCOUNTER ABILITIES
+# B9AA Unbowed Spirit
+# B9AB Unbowed Spirit: spinning disk casts, this causes timing issues if tracked
+# B9AC Inspirited Cyclone
+# B9AD Inspirited Crosswinds
+# B9AE Inspirited Cyclone: damage
+# B9AF Inspirited Crosswinds: damage
+# B9B0 Inspirited Hurricane: Boss will go to middle, turn and face south
+# B9B1 Inspirited Hurricane: damage
+# B9B2 Inspirited Hurricane: damage
+# B9B4 Ancient Aero: Line AOEs, each set is 10 casts, 0.5s apart
+# B9B5 Spinning Sweep: Boss will go to middle, turn and face random player
+# B9B6 Inspirited Impact: Boss will go to middle, turn and face south
+# B9B7 Inspirited Impact
+# B9B8 Ancient Aero III
+# BBA9 Ancient Aero III: damage
+# C6A3 --sync--: Boss autos
+9000.0 "--sync--" ActorControl { command: "80000014", data0: "390" } window 100000,0
+9011.0 "--targetable--"
+9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+9116.2 "--sync--" StartsUsing { id: "B9B8", source: "Elm Gigas" } window 120,5
+9119.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Tutorial - Random Discs
+9127.4 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9127.4 "--random discs--"
+9130.5 "Unbowed Spirit" duration 18.2 #Ability { id: "B9AB", source: "Elm Gigas" }
+9140.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9146.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9154.7 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9162.7 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9168.7 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9171.7 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9183.7 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9186.1 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9188.5 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9190.8 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Quadrant Discs + Ancient Aero
+9194.5 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5
+9198.8 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+9198.8 "--quadrant discs--"
+9203.0 "Unbowed Spirit" duration 25.2 #Ability { id: "B9AB", source: "Elm Gigas" }
+9205.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9213.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9217.3 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9223.0 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9233.2 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+9241.2 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9249.5 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9252.5 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9264.5 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9266.9 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9269.2 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9271.6 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+9275.8 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9275.8 "--random discs--"
+9278.9 "Unbowed Spirit" duration 21.7 #Ability { id: "B9AB", source: "Elm Gigas" }
+9281.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9292.5 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9293.2 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9298.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9306.6 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9314.6 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop Begins
+# Quadrant Discs + Ancient Aero
+9323.4 label "oc-familiar-tactics-loop"
+9327.7 "Inspirited Hurricane" Ability { id: "B9B0", source: "Elm Gigas" }
+9327.7 "--quadrant discs--"
+9331.9 "Unbowed Spirit" duration 24.9 #Ability { id: "B9AB", source: "Elm Gigas" }
+9334.1 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9342.1 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9346.1 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9351.5 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9361.8 "Inspirited Cyclone" Ability { id: "B9AC", source: "Elm Gigas" }
+9369.8 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+9376.8 "--middle--" StartsUsing { id: "B9B6", source: "Elm Gigas" } window 5,5
+9379.8 "Inspirited Impact (castbar)" Ability { id: "B9B6", source: "Elm Gigas" }
+9391.8 "Inspirited Impact 1" #Ability { id: "B9B7", source: "Elm Gigas" }
+9394.2 "Inspirited Impact 2" #Ability { id: "B9B7", source: "Elm Gigas" }
+9396.6 "Inspirited Impact 3" #Ability { id: "B9B7", source: "Elm Gigas" }
+9399.0 "Inspirited Impact 4" #Ability { id: "B9B7", source: "Elm Gigas" }
+
+# Random Discs + Ancient Aero
+9403.2 "Unbowed Spirit (castbar)" Ability { id: "B9AA", source: "Elm Gigas" }
+9403.2 "--random discs--"
+9406.3 "Unbowed Spirit" duration 22 #Ability { id: "B9AB", source: "Elm Gigas" }
+9408.6 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9420.2 "--middle--" StartsUsing { id: "B9B5", source: "Elm Gigas" } window 5,5
+9420.6 "Ancient Aero x10" duration 9 #Ability { id: "B9B4", source: "Elm Gigas" }
+9426.2 "Spinning Sweep" Ability { id: "B9B5", source: "Elm Gigas" }
+9434.3 "Inspirited Crosswinds" Ability { id: "B9AD", source: "Elm Gigas" }
+9442.3 "Ancient Aero III" Ability { id: "B9B8", source: "Elm Gigas" }
+
+# Loop
+9451.7 "--middle--" StartsUsing { id: "B9B0", source: "Elm Gigas" } window 5,5 forcejump "oc-familiar-tactics-loop"
+
+### Forbidden Folios
+# -ii BFA0 B8C1 B8DB B8CC B8CD B8CE B8D0 B8D1 B8D2 B8DB B8DD B8DF C2D7 C57A C57B C57C C57D C57E C57F C580 C581
+# -p B8C0:10120.9
+# -it "Arbatel"
+# IGNORED ABILITIES
+# BFA0 attack
+# B8C1 Knowledge Level Correction: damage
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8DB Big Burst: missing a tower soak
+# B8DD Fire II: damage
+# B8DF Marginalia: damage
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+#
+# ALL ENCOUNTER ABILITIES
+# B8C0 Knowledge Level Correction
+# B8C1 Knowledge Level Correction
+# B8C4 Blot
+# B8C5 Blot
+# B8C6 Cover to Cover: boss jumps to middle faces east, cleaves east half
+# B8C7 Cover to Cover: after B8C6, boss turns 180 degrees to west cleaves west half
+# B8C8 Arcane Rule: castbar
+# B8C9 Quad Rule: initial plus-shaped exaflare
+# B8CA Horizontal Rule: square exaflares
+# B8CB Summon: small circle aoes where books will appear
+# B8CC Knowledge Level 5 Death: Half-room cleave
+# B8CD Knowledge Level 3 Flare: Half-room cleave
+# B8CE Knowledge Level 4 Holy: damage (cast with C57C), Half-room cleave
+# B8CF Knowledge Level 5 Death: damage (cast with C57D)
+# B8D0 Knowledge Level 3 Flare: damage (cast with C57E)
+# B8D1 Knowledge Level 4 Holy: damage (cast with C57F)
+# B8D2 Prime Knowledge Level Death: damage (cast with C580)
+# B8D3 Knowledge Level 5 Death: castbar by Page 64
+# B8D4 Knowledge Level 3 Flare: castbar by Page 16
+# B8D5 Knowledge Level 4 Holy: castbar by Page 8
+# B8D6 Prime Knowledge Level Death: castbar by Page 512
+# B8D7 Book Drop: castbar
+# B8DB Big Burst
+# B8DA Book Drop
+# B8DB Big Burst
+# B8DC Thunder II
+# B8DD Fire II: damage
+# B8DE Fire II: castbar
+# B8DF Marginalia: castbar
+# B8E0 Marginalia
+# BC76 --sync--
+# BF9F Summon
+# BFA0 attack
+# C154 Unbound Ink: circle aoe under boss
+# C2D7 Prime Knowledge Level Death: damage(cast with C581), Half-room cleave
+# C57A Knowledge Level 5 Death: Half-room celave (cast with B8CC)
+# C57B Knowledge Level 3 Flare: Half-room cleave (cast with B8CD)
+# C57C Knowledge Level 4 Holy: damage (cast with B8CE), Half-room cleave
+# C57D Knowledge Level 5 Death: damage (cast with B8CF)
+# C57E Knowledge Level 3 Flare: damage (cast with B8D0)
+# C57F Knowledge Level 4 Holy: damage (cast with B8D1)
+# C580 Prime Knowledge Level Death: damage (cast with C580)
+# C581 Prime Knowledge Level Death: damage (cast with C2D7), Half-room cleave
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "39A" } window 100000,0
+10011.0 "--targetable--"
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Tutorial - Knowledge Level Correction with 2 Summons
+10115.9 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } window 120,5
+10120.9 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10129.2 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10132.2 "Summon x2" Ability { id: "B8CB", source: "Arbatel" }
+10147.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10154.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop Begins
+# Knowledge Level Correction with 3 Summons + Book Drop
+10159.8 label "oc-forbidden-folios-loop"
+10164.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10172.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10175.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+10189.4 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10190.3 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10191.0 "--middle--" StartsUsing { id: "B8C6", source: "Arbatel" }
+10195.0 "Cover to Cover 1" Ability { id: "B8C6", source: "Arbatel" }
+10199.1 "Cover to Cover 2" Ability { id: "B8C7", source: "Arbatel" }
+10205.4 "Unbound Ink" Ability { id: "C154", source: "Arbatel" }
+10214.7 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+10220.1 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10224.2 "Book Drop (castbar)" Ability { id: "B8D7", source: "Arbatel" }
+10233.0 "Book Drop 1" Ability { id: "B8DA", source: "" }
+10233.6 "Thunder II 1" #Ability { id: "B8DC", source: "Arbatel" }
+10235.6 "Thunder II 2" #Ability { id: "B8DC", source: "Arbatel" }
+10242.0 "Book Drop 2" Ability { id: "B8DA", source: "" }
+10245.1 "Fire II" Ability { id: "B8DE", source: "Arbatel" }
+10254.4 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Knowledge Level Correction with 3 Summons + Square Exaflares
+10264.8 "Knowledge Level Correction" Ability { id: "B8C0", source: "Arbatel" }
+10272.1 "Summon (castbar)" Ability { id: "BF9F", source: "Arbatel" }
+10275.1 "Summon x3" Ability { id: "B8CB", source: "Arbatel" }
+10290.2 "Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death" Ability { id: ["B8D5", "B8D4", "B8D5", "B8D6"], source: ["Page 8", "Page 16", "Page 64", "Page 512"] }
+10292.2 "--sync--" Ability { id: "BC76", source: "Arbatel" }
+10299.2 "Arcane Rule" Ability { id: "B8C8", source: "Arbatel" }
+10299.2 "Quad Rule" #Ability { id: "B8C9", source: "Arbatel" }
+10301.2 "Horizontal Rule 1" #Ability { id: "B8CA", source: "Arbatel" }
+10303.2 "Horizontal Rule 2" #Ability { id: "B8CA", source: "Arbatel" }
+10305.2 "Horizontal Rule 3" #Ability { id: "B8CA", source: "Arbatel" }
+10307.2 "Horizontal Rule 4" #Ability { id: "B8CA", source: "Arbatel" }
+10313.2 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+10321.6 "Blot (castbar)" Ability { id: "B8C4", source: "Arbatel" }
+10326.6 "Blot 1" #Ability { id: "B8C5", source: "Arbatel" }
+10328.6 "Blot 2" #Ability { id: "B8C5", source: "Arbatel" }
+10330.6 "Blot 3" #Ability { id: "B8C5", source: "Arbatel" }
+10340.9 "Marginalia" Ability { id: "B8E0", source: "Arbatel" }
+
+# Loop
+10348.3 "--sync--" StartsUsing { id: "B8C0", source: "Arbatel" } forcejump "oc-forbidden-folios-loop"
+
+### Imbalanced Diet
+# -ii BBE6 BBE7 BBE8 BBE9 BBF2 BBF5 BBF6 BC79 BF4B C4F7 C4FB C5D4 C6FE
+# -p BBE4:11126.4
+# -it "Algol"
+# IGNORED ABILITIES
+# BBE6 Inhale: instant self-cast, this cast ~1.1s after BBE5
+# BBE7 Inhale: 0.4s cast after BBE5, targets a Crescent Onion or Crescent Tomato and sucks it in
+# BBE8 Inhale: 3.2s cast, damage, will suck players towards boss if caught in the cone and apply 3s stun and vulnerability up
+# BBE9 Devour: self-cast during Spinning Inhale, probably related to boss animation of crouching down before C4F6 and C523
+# BBF2 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BBF5 Malady: VFX animation
+# BBF6 --sync--: Wall damage, cast every 0.9s
+# BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BF4B Cursed Screech: damage
+# C4F7 Digested Juice: boss turns 120 degrees after BBF4
+# C4FB Shrill Peal: damage
+# C5D4 --sync--: Boss autos
+# C6FE Spinning Inhale: Sucks in a Crescent Onion or Crescent Tomato
+#
+# ALL ENCOUNTER ABILITIES
+# BBE4 Cursed Screech: damage, cast starts samne time as BF4B, but is 5s instead of 6s cast, boss moves to north wall or middle prior to StartsUsing
+# BBE5 Inhale: castbar
+# BBE6 Inhale: instant self-cast, this cast ~1.1s after BBE5
+# BBE7 Inhale: 0.4s cast after BBE5, targets a Crescent Onion or Crescent Tomato and sucks it in
+# BBE8 Inhale: 3.2s cast, damage, will suck players towards boss if caught in the cone and apply 3s stun and vulnerability up
+# BBE9 Devour: self-cast during Spinning Inhale, probably related to boss animation of crouching down before C4F6 and C523
+# BBEA Regurgitomato
+# BBEB Regurgitonion
+# BBED Rotten Tomato: 3.7s initial cast for plus-shaped exaflares from the center of the room
+# BBEE Rotten Onion: 3.7s initial cast for conal aoes from the center of the room that rotate clockwise
+# BBEF Rotten Tomato: 1.7s subsequent casts for expanding exaflares
+# BBF0 Rotten Onion: 1.7s subsequent casts for BBEE
+# BBF1 Spinning Inhale: castbar, applies 9F8 to Algol with count 424 at end of cast, clockwise spin, unsure if it can go ccw
+# BBF2 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BBF3 --sync--
+# BBF4 Digested Juice: boss turns 120 degrees and casts a half-room cleave
+# BBF5 Malady: VFX animation
+# BBF6 --sync--: Wall damage, cast every 0.9s
+# BC79 Spinning Inhale: damage, applies 13.96s stun and vunlerability up
+# BF4B Cursed Screech: damage
+# C4F6 Devour: initial 2.7s cast after Spinning Inhale
+# C4F7 Digested Juice: boss turns 120 degrees after BBF4
+# C4F8 Digested Juice: follwup half-room cleave after C4F7
+# C4F9 Malady: aoe circle under boss
+# C4FA Shrill Peal: damage, starts same time as C4FB but 3s cast instead of 4s
+# C4FB Shrill Peal: damage
+# C523 Devour: subsequent 2.7s casts after Spinning Inhale where boss will turn 120 degrees clockwise, does damage to player, does not apply a vulnerability up
+# C525 Devour: 6.5s cast, small frontal cleave after Inhale, does not apply a vulnerability up
+# C5D4 --sync--: Boss autos
+# C6FE Spinning Inhale: Sucks in a Crescent Onion or Crescent Tomato
+11000.0 "--sync--" ActorControl { command: "80000014", data0: "3BF" } window 100000,0
+11011.0 "--targetable--"
+11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+11121.4 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 122,5
+11126.4 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+11132.5 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11138.5 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11143.4 "Devour" Ability { id: "C525", source: "Algol" }
+
+# Inhale one Crescent Onion (Regurgitonion BBEB) or one Crescent Tomato (Regurgitomato BBEA)
+11145.0 "--sync--" StartsUsing { id: "BBED", source: "Algol" } jump "oc-imbalanced-diet-tomato"
+11145.0 "--sync--" StartsUsing { id: "BBEE", source: "Algol" } jump "oc-imbalanced-diet-onion"
+11147.0 "Regurgitomato/Regurgitonion?" #Ability { id: ["BBEA", "BBEB"], source: "Algol" }
+11149.0 "Rotten Tomato/Rotten Onion 1?" #Ability { id: ["BBED", "BBEE"], source: "Algol" }
+11151.0 "Rotten Tomato/Rotten Onion 2?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11153.0 "Rotten Tomato/Rotten Onion 3?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11155.0 "Rotten Tomato/Rotten Onion 4?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11156.7 "Shrill Peal" #Ability { id: "C4FA", source: "Algol" }
+11162.7 "Inhale" #Ability { id: "BBE5", source: "Algol" }
+11167.6 "Devour" #Ability { id: "C525", source: "Algol" }
+11171.2 "Regurgitonion/Regurgitomato?" #Ability { id: ["BBEB", "BBEA"], source: "Algol" }
+
+# Tutorial - Regurgitomato => Regurgitonion
+11245.0 label "oc-imbalanced-diet-tomato"
+11247.0 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+11249.0 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+11251.0 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+11253.0 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+11255.0 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+11256.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11262.7 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11267.6 "Devour" Ability { id: "C525", source: "Algol" }
+11271.2 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+11273.2 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+11275.2 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+11277.2 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+11279.2 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+11283.6 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-spin"
+
+# Tutorial - Regurgitonion => Regurgitomato
+11345.0 label "oc-imbalanced-diet-onion"
+11347.0 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+11349.0 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+11351.0 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+11353.0 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+11355.0 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+11356.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11362.7 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11367.6 "Devour" Ability { id: "C525", source: "Algol" }
+11371.2 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+11373.2 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+11375.2 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+11377.2 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+11379.2 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+11383.4 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5
+
+# Tutorial - Spinning Inhale
+11383.5 label "oc-imbalanced-diet-spin"
+11388.4 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+11394.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11402.8 "Spinning Inhale" Ability { id: "BBF1", source: "Algol" } duration 3.6
+11407.6 "--sync--" Ability { id: "BBF3", source: "Algol" }
+11411.6 "Devour 1" Ability { id: "C4F6", source: "Algol" }
+11415.6 "Devour 2" Ability { id: "C523", source: "Algol" }
+11419.6 "Devour 3" Ability { id: "C523", source: "Algol" }
+11426.9 "Digested Juice 1" Ability { id: "BBF4", source: "Algol" }
+11431.9 "Digested Juice 2" Ability { id: "C4F8", source: "Algol" }
+11435.0 "Malady" Ability { id: "C4F9", source: "Algol" }
+11442.6 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
+
+# Loop Begins
+# NOTE: There is an 8s break between loops
+11542.6 label "oc-imbalanced-diet-loop"
+11547.6 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+11553.7 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11559.8 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11564.7 "Devour" Ability { id: "C525", source: "Algol" }
+
+# Inhale now sucks up two Crescent Onions or two Crescent Tomatoes
+11566.3 "--sync--" StartsUsing { id: "BBED", source: "Algol" } jump "oc-imbalanced-diet-tomato2"
+11566.3 "--sync--" StartsUsing { id: "BBEE", source: "Algol" } jump "oc-imbalanced-diet-onion2"
+11568.3 "Regurgitomato/Regurgitonion?" #Ability { id: ["BBEA", "BBEB"], source: "Algol" }
+11570.3 "Rotten Tomato/Rotten Onion 1?" #Ability { id: ["BBED", "BBEE"], source: "Algol" }
+11572.3 "Rotten Tomato/Rotten Onion 2?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11574.3 "Rotten Tomato/Rotten Onion 3?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11576.3 "Rotten Tomato/Rotten Onion 4?" #Ability { id: ["BBEF", "BBF0"], source: "Algol" }
+11578.0 "Shrill Peal" #Ability { id: "C4FA", source: "Algol" }
+11584.1 "Inhale" #Ability { id: "BBE5", source: "Algol" }
+11589.0 "Devour" #Ability { id: "C525", source: "Algol" }
+11592.6 "Regurgitonion/Regurgitomato?" #Ability { id: ["BBEB", "BBEA"], source: "Algol" }
+
+# Regurgitomato => Regurgitonion 2
+11666.3 label "oc-imbalanced-diet-tomato2"
+11668.3 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+11670.3 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+11672.3 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+11674.3 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+11676.3 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+11678.0 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11684.1 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11689.0 "Devour" Ability { id: "C525", source: "Algol" }
+11692.6 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+11694.6 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+11696.6 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+11698.6 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+11700.6 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+11703.0 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-spin2"
+
+# Regurgitonion => Regurgitomato 2
+11766.3 label "oc-imbalanced-diet-onion2"
+11768.3 "Regurgitonion" Ability { id: "BBEB", source: "Algol" }
+11770.3 "Rotten Onion 1" Ability { id: "BBEE", source: "Algol" }
+11772.3 "Rotten Onion 2" #Ability { id: "BBF0", source: "Algol" }
+11774.3 "Rotten Onion 3" #Ability { id: "BBF0", source: "Algol" }
+11776.3 "Rotten Onion 4" #Ability { id: "BBF0", source: "Algol" }
+11778.0 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11784.1 "Inhale" Ability { id: "BBE5", source: "Algol" }
+11789.0 "Devour" Ability { id: "C525", source: "Algol" }
+11792.6 "Regurgitomato" Ability { id: "BBEA", source: "Algol" }
+11794.6 "Rotten Tomato 1" Ability { id: "BBED", source: "Algol" }
+11796.6 "Rotten Tomato 2" #Ability { id: "BBEF", source: "Algol" }
+11798.6 "Rotten Tomato 3" #Ability { id: "BBEF", source: "Algol" }
+11800.6 "Rotten Tomato 4" #Ability { id: "BBEF", source: "Algol" }
+11802.8 "--middle--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5
+
+# Spinning Inhale 2
+11802.9 label "oc-imbalanced-diet-spin2"
+11807.8 "Cursed Screech" Ability { id: "BBE4", source: "Algol" }
+11813.9 "Shrill Peal" Ability { id: "C4FA", source: "Algol" }
+11822.0 "Spinning Inhale" Ability { id: "BBF1", source: "Algol" } duration 3.6
+11826.8 "--sync--" Ability { id: "BBF3", source: "Algol" }
+11830.8 "Devour 1" Ability { id: "C4F6", source: "Algol" }
+11834.8 "Devour 2" Ability { id: "C523", source: "Algol" }
+11838.8 "Devour 3" Ability { id: "C523", source: "Algol" }
+11846.1 "Digested Juice 1" Ability { id: "BBF4", source: "Algol" }
+11851.1 "Digested Juice 2" Ability { id: "C4F8", source: "Algol" }
+11854.2 "Malady" Ability { id: "C4F9", source: "Algol" }
+
+# Loop
+11869.8 "--north--" StartsUsing { id: "BBE4", source: "Algol" } window 5,5 forcejump "oc-imbalanced-diet-loop"
+
+### Lost on the Wind
+# -ii B94A B94B B94D B94E B956 B957
+# -p B951:12122.6
+# -it "Abductor"
+# IGNORED ABILITIES
+# B94A --sync--: Boss autos
+# B94B --sync--: Wall damage every cast 1s
+# B94D Strong Wind: Biting Wind tornado that moves around arena, casts every ~0.75s, getting hit does minor damage and a small knockback, no vulnerabilty up
+# B94E Tendon Ripper: VFX 0.7s cast
+# B956 Skydive: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Skydive
+# B957 Cyclonic Ring: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Cyclonic Ring
+#
+# ALL ENCOUNTER ABILITIES
+# B949 --sync--: Boss dashes somewhere
+# B94A --sync--: Boss autos
+# B94B --sync--: Wall damage every cast 1s
+# B94C Hurricane: 4.7s castbar, spawns two tornadoes (one inner rotates clockwise, one outer rotates counterclockwise)
+# B94D Strong Wind: tornado that moves around arena, casts every ~0.75s
+# B94E Tendon Ripper: VFX 0.7s cast at same time as 894F Tendon Ripper
+# B94F Tendon Ripper: 0.7s casted 8-point line aoe from Biting Wind tornado
+# B950 Buffet: damage + knockback ~0.65s after BC7A Buffet
+# B951 Wind Blade: boss turns and faces random player to start a 4.7s casted 180 degree cleave, after tutorial boss will have dashed to random cardinal, then turn and do the 180 degree cleave
+# B952 Plumefall Trap: 2.7s castbar, boss spawns 4 Abductor's Plumes
+# B953 Splinter: 4.2s cast circle aoe under Abductor's Plume
+# B954 Aerosnare: 3.2s castbar, ~0.5s after cast, B955 Aerosnares go off, at the same time there are B953 Splinters from B952 Plumefall Trap to avoid
+# B955 Aerosnare: 3.7s cast, two sets of three 60 degree conal aoes from boss that go off 2s apart
+# B956 Skydive: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Skydive
+# B957 Cyclonic Ring: VFX, boss dashes to a random player and starts a non-castbar cast of B958 Cyclonic Ring
+# B958 Skydive: 5.2s casted big circle aoe, boss hovers with glowing orange feet over targetted area
+# B959 Cyclonic Ring: 5.2s casted donut around boss, boss hovers with glowing green wings over targetted area
+# BBF8 Hurricane: aoe damage ~0.88s after B94C Hurricane
+# BC7A Buffet: VFX, 3.7s cast, at start 'A faint wind stirs...' Wind/Knockback comes from a random cardinal.
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "3A9" } window 100000,0
+12011.0 "--targetable--"
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+12117.6 "--sync--" StartsUsing { id: "B951", source: "Abductor" } window 120,5
+12122.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+
+# Tutorial - Skydive => Cyclonic Ring or Cyclonic Ring => Skydive
+12126.8 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive"
+12126.8 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring"
+12132.3 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12138.0 "Plumefall Trap" #Ability { id: "B952", source: "Abductor" }
+12146.3 "Splinter" #Ability { id: "B953", source: "Abductor's Plume" }
+12156.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12160.9 "Buffet" #Ability { id: "B950", source: "Abductor" }
+12160.9 "--knockback--"
+12167.8 "Cyclonic Ring/Skydive?" #Ability { id: ["B959", "B958"], source: "Abductor" }
+12170.5 "--middle--" #Ability { id: "B949", source: "Abductor" } window 5,5
+12177.7 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12178.6 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+
+12226.8 label "oc-lost-on-the-wind-skydive"
+12232.3 "Skydive" Ability { id: "B958", source: "Abductor" }
+12238.0 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12246.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12256.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12260.9 "Buffet" Ability { id: "B950", source: "Abductor" }
+12260.9 "--knockback--"
+12267.8 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12270.4 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12272.9 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-hurricane"
+
+12326.8 label "oc-lost-on-the-wind-ring"
+12332.3 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12338.0 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12346.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12356.2 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12360.9 "Buffet" Ability { id: "B950", source: "Abductor" }
+12360.9 "--knockback--"
+12367.8 "Skydive" Ability { id: "B958", source: "Abductor" }
+12370.5 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Tutorial - Hurricane
+12372.8 label "oc-lost-on-the-wind-hurricane"
+12377.7 "Hurricane (castbar)" Ability { id: "B94C", source: "Abductor" }
+12378.6 "Hurricane" Ability { id: "BBF8", source: "Abductor" }
+12381.6 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 52.3
+12389.8 "Tendon Ripper 1" Ability { id: "B94F", source: "Biting Wind" }
+12398.8 "Tendon Ripper 2" Ability { id: "B94F", source: "Biting Wind" }
+12406.8 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12411.5 "Buffet" Ability { id: "B950", source: "Abductor" }
+12411.5 "--knockback--"
+12414.8 "Tendon Ripper 3" Ability { id: "B94F", source: "Biting Wind" }
+12423.8 "Tendon Ripper 4" Ability { id: "B94F", source: "Biting Wind" }
+12424.8 "--cardinal--" Ability { id: "B949", source: "Abductor" }
+12432.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+
+12442.7 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12444.8 "--middle--" Ability { id: "B949", source: "Abductor" }
+12450.6 "Aerosnare (castbar)" Ability { id: "B954", source: "Abductor" }
+12451.0 "Aerosnare 1" #Ability { id: "B955", source: "Abductor" }
+12451.0 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12453.0 "Aerosnare 2" #Ability { id: "B955", source: "Abductor" }
+
+# Skydive or Cyclonic Ring 2
+12454.6 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive2"
+12454.6 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring2"
+12460.1 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12463.8 "--middle--" #Ability { id: "B949", source: "Abductor" }
+12470.9 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12471.8 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+12474.8 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12483.0 "Tendon Ripper 1" #Ability { id: "B94F", source: "Biting Wind" }
+12492.0 "Tendon Ripper 2" #Ability { id: "B94F", source: "Biting Wind" }
+12501.0 "Tendon Ripper 3" #Ability { id: "B94F", source: "Biting Wind" }
+
+12554.5 label "oc-lost-on-the-wind-skydive2"
+12560.0 "Skydive" Ability { id: "B958", source: "Abductor" }
+12563.7 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12566.0 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
+12654.5 label "oc-lost-on-the-wind-ring2"
+12660.0 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12663.7 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Loop Begins
+12666.0 label "oc-lost-on-the-wind-loop"
+12670.9 "Hurricane (castbar)" Ability { id: "B94C", source: "Abductor" }
+12671.7 "Hurricane" Ability { id: "BBF8", source: "Abductor" }
+12674.7 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12682.9 "Tendon Ripper 1" Ability { id: "B94F", source: "Biting Wind" }
+12691.9 "Tendon Ripper 2" Ability { id: "B94F", source: "Biting Wind" }
+12700.9 "Tendon Ripper 3" Ability { id: "B94F", source: "Biting Wind" }
+12707.9 "--cardinal wind--" StartsUsing { id: "BC7A", source: "Abductor" }
+12712.6 "Buffet" Ability { id: "B950", source: "Abductor" }
+12712.6 "--knockback--"
+12715.9 "Tendon Ripper 4" Ability { id: "B94F", source: "Biting Wind" }
+12724.9 "Tendon Ripper 5" Ability { id: "B94F", source: "Biting Wind" }
+12733.9 "--cardinal--" Ability { id: "B949", source: "Abductor" }
+12733.9 "Tendon Ripper 6" #Ability { id: "B94F", source: "Biting Wind" }
+12741.6 "Wind Blade" Ability { id: "B951", source: "Abductor" }
+12750.8 "Plumefall Trap" Ability { id: "B952", source: "Abductor" }
+12752.9 "--sync--" Ability { id: "B949", source: "Abductor" }
+12758.7 "Aerosnare" Ability { id: "B954", source: "Abductor" }
+12759.3 "Aerosnare 1" #Ability { id: "B955", source: "Abductor" }
+12759.3 "Splinter" Ability { id: "B953", source: "Abductor's Plume" }
+12761.3 "Aerosnare 2" #Ability { id: "B955", source: "Abductor" }
+
+# Skydive or Cyclonic Ring 2 (Loop version)
+12762.8 "--sync--" StartsUsing { id: "B958", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-skydive3"
+12762.8 "--sync--" StartsUsing { id: "B959", source: "Abductor" } window 5,5 jump "oc-lost-on-the-wind-ring3"
+12768.3 "Skydive/Cyclonic Ring?" #Ability { id: ["B958", "B959"], source: "Abductor" }
+12777.0 "--middle--" #Ability { id: "B949", source: "Abductor" }
+12784.1 "Hurricane (castbar)" #Ability { id: "B94C", source: "Abductor" }
+12785.0 "Hurricane" #Ability { id: "BBF8", source: "Abductor" }
+12788.0 "Strong Wind" #Ability { id: "B94D", source: "Abductor" } duration 68.1
+12796.2 "Tendon Ripper 1" #Ability { id: "B94F", source: "Biting Wind" }
+12805.2 "Tendon Ripper 2" #Ability { id: "B94F", source: "Biting Wind" }
+
+12862.8 label "oc-lost-on-the-wind-skydive3"
+12868.3 "Skydive" Ability { id: "B958", source: "Abductor" }
+12877.0 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+12879.3 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
+12962.8 label "oc-lost-on-the-wind-ring3"
+12968.3 "Cyclonic Ring" Ability { id: "B959", source: "Abductor" }
+12977.0 "--middle--" Ability { id: "B949", source: "Abductor" } window 5,5
+
+# Loop
+# NOTE: Ends at B949, but that is an instant cast so using next cast
+12979.5 "--sync--" StartsUsing { id: "B94C", source: "Abductor" } forcejump "oc-lost-on-the-wind-loop"
+
+### Many Mouths to Feed
+# -ii B86E B871 B872 B873 C241 C242 C6A2
+# -p B87F:13124.2
+# -it "Pelekys"
+# IGNORED ABILITIES
+# B86E --sync--: Wall damage, casts evey 1s
+# B871 Venom: green puddles that expand in size, damages every ~1s, 8 casts each
+# B872 Central Gardening: boss moves to center, faces random player, 4.7s castbar
+# B873 Side Gardening: boss moves to cetner, faces random player, 4.7s castbar
+# C241 Side Gardening: Boss cleaves its left side, 5.7s damage cast, same time as B875
+# C242 Noxious Nectar: boss turns, faces south, will always be middle, 2.7s castbar, will do C2DD or C86F 0.2s after, then the other sides 6.8s after
+# C6A2 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B86E --sync--: Wall damage, casts evey 1s
+# B86F Noxious Nectar: VFX animation for sides Venom
+# B870 Venom: small puddle aoes, 4.5s cast starting 0.1s C242 Noxious Nectar starts casting and then again 6.5s later
+# B871 Venom: green puddles that expand in size ~2.4s after B870, damages every ~1s, 8 casts each
+# B872 Central Gardening: boss moves to center, faces random player, 4.7s castbar
+# B873 Side Gardening: boss moves to cetner, faces random player, 4.7s castbar
+# B874 Central Gardening: 5.7s damage cast
+# B875 Side Gardening: Boss cleaves its right side, 5.7s damage cast, same time as C241
+# B876 Pollen Lure: boss turns and faces south, untargetable moths spawn on outer ring
+# B877 Devour: circle aoe under boss
+# B878 Venom Mist: 4.7s castbar, will cleave right, left, and front (back safe)
+# B879 Venom Mist: 4.7s castbar, will cleave right, left, and back (front safe)
+# B87A Venom Mist: 4.7s castbar, will cleave front, back, and left (right safe)
+# B87B Venom Mist: 4.7s castbar, will cleave front, back, and right (left safe)
+# B87C Venom Mist: front head cleave, 5.7s damage cast 1s after B878, B87A, or B87B
+# B87D Poison Heart: castbar
+# B87E Poison Heart: a 2.7s damaging casts starting ~2.2s after B87D, repeats 4 times every 2s
+# B87F Acrid Rain: 4.7s castbar
+# B880 Acrid Rain: damage 1.1s after B87F cast, applies 15s cleansable 111B Toxicosis DoT
+# C241 Side Gardening: Boss cleaves its left side, 5.7s damage cast, same time as B875
+# C242 Noxious Nectar: boss turns, faces south, will always be middle, 2.7s castbar, will do C2DD or C86F 0.2s after, then the other sides 6.8s after
+# C2DD Noxious Nectar: VFX animation for front/back Venom
+# C573 Venom Mist: right head cleave, 5.7s damage cast 1s after B878, B879, or B87B
+# C574 Venom Mist: rear head cleave, 5.7s damage cast 1s after B879, B87A or B87B
+# C575 Venom Mist: left head cleave, 5.7s damage cast 1s after B878, B879, or B87A
+# C6A2 --sync--: Boss autos
+13000.0 "--sync--" ActorControl { command: "80000014", data0: "39B" } window 100000,0
+13011.0 "--targetable--"
+13100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+13119.2 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } window 120,5
+13124.2 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+13125.4 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+13132.0 "--middle--" StartsUsing { id: "B874", source: "Pelekys" } window 5,5
+13138.0 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13146.3 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+# Tutorial - Noxiuos Nectar Branch 1
+13157.1 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious-sides"
+13157.1 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious-frontback"
+13158.8 "Venom" Ability { id: "B870", source: "Pelekys" }
+13161.2 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13163.8 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+13165.4 "Venom" Ability { id: "B870", source: "Pelekys" }
+13167.8 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13180.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13192.0 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+13204.1 "Devour" #Ability { id: "B877", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back
+13257.3 label "oc-many-mouths-noxious-frontback"
+13259.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+13261.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13264.0 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+13265.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13268.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 1
+13274.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central"
+13274.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side"
+13280.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13292.2 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+13304.3 "Devour" #Ability { id: "B877", source: "Pelekys" }
+13312.4 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+13317.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13319.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13321.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13322.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13323.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides
+13357.3 label "oc-many-mouths-noxious-sides"
+13359.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+13361.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13364.0 "Noxious Nectar (Sides)" Ability { id: "C2DD", source: "Pelekys" }
+13365.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13368.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 1
+13374.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central"
+13374.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side"
+13380.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13392.2 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+13404.3 "Devour" #Ability { id: "B877", source: "Pelekys" }
+13412.4 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+13417.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13419.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13421.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13422.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13423.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+
+13474.6 label "oc-many-mouths-central"
+13480.6 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13482.3 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-noxious-end"
+
+13574.6 label "oc-many-mouths-side"
+13580.6 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+# Tutorial - Pollen Lure
+13588.2 label "oc-many-mouths-noxious-end"
+13592.2 "Pollen Lure" Ability { id: "B876", source: "Pelekys" }
+13604.3 "Devour" Ability { id: "B877", source: "Pelekys" }
+13612.4 "Poison Heart (castbar)" Ability { id: "B87D", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 2
+13616.5 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central2"
+13616.5 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side2"
+13617.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13619.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13621.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13622.5 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13623.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13630.8 "Side Gardening/Central Gardening?" #Ability { id: ["B875", "B874"], source: "Pelekys" }
+13639.9 "Venom Mist (castbar)" #Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+13640.9 "Venom Mist" #Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+13653.2 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+13716.5 label "oc-many-mouths-central2"
+13717.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13719.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13721.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13722.5 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+13723.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13730.8 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+13735.1 "--sync--" StartsUsing { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" } forcejump "oc-many-mouths-mist"
+
+13816.5 label "oc-many-mouths-side2"
+13817.5 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+13819.5 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+13821.5 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+13822.5 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+13823.5 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+13830.8 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+
+# Tutorial - Venom Mist
+# NOTE: This could be branched out for a 1-line that notes safe location
+13834.9 label "oc-many-mouths-mist"
+13839.9 "Venom Mist (castbar)" Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+13840.9 "Venom Mist" Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+13852.1 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+13853.2 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nector Branch 2
+13862.9 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious2-sides"
+13862.9 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious2-frontback"
+13864.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13867.0 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13869.6 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+13871.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+13873.6 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+13886.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13899.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+13909.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back
+13962.9 label "oc-many-mouths-noxious2-sides"
+13964.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+13967.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+13969.6 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+13971.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+13973.6 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 3
+13980.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central3"
+13980.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side3"
+13986.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+13999.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+14009.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+14022.0 "Devour" #Ability { id: "B877", source: "Pelekys" }
+14030.0 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides
+14062.9 label "oc-many-mouths-noxious2-frontback"
+14064.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+14067.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+14069.6 "Noxious Nectar (Sides)" Ability { id: "B86F", source: "Pelekys" }
+14071.2 "Venom" Ability { id: "B870", source: "Pelekys" }
+14073.6 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 3
+14080.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central3"
+14080.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side3"
+14086.2 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+14099.5 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+14109.9 "Pollen Lure" #Ability { id: "B876", source: "Pelekys" }
+14122.0 "Devour" #Ability { id: "B877", source: "Pelekys" }
+14130.0 "Poison Heart (castbar)" #Ability { id: "B87D", source: "Pelekys" }
+
+14180.2 label "oc-many-mouths-central3"
+14186.2 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+14193.5 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } forcejump "oc-many-mouths-noxious2-end"
+
+14280.2 label "oc-many-mouths-side3"
+14286.2 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+14293.4 label "oc-many-mouths-noxious2-end"
+14298.4 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+14299.5 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Loop Begins, 20.3s pause between loops
+14304.9 label "oc-many-mouths-loop"
+14309.9 "Pollen Lure" Ability { id: "B876", source: "Pelekys" }
+14322.0 "Devour" Ability { id: "B877", source: "Pelekys" }
+14330.0 "Poison Heart (castbar)" Ability { id: "B87D", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 4 (Loop Block)
+14334.3 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central4"
+14334.3 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side4"
+14335.2 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+14337.2 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+14339.2 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+14340.3 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+14341.2 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+14348.5 "Side Gardening/Central Gardening?" #Ability { id: ["B875", "B874"], source: "Pelekys" }
+14357.6 "Venom Mist (castbar)" #Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+14358.6 "Venom Mist" #Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+14368.4 "Noxious Nectar (Sides/Front/Back)?" #Ability { id: ["B86F", "C2DD"], source: "Pelekys" }
+
+14434.2 label "oc-many-mouths-central4"
+14435.1 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+14437.1 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+14439.1 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+14440.2 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+14441.1 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+14448.4 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+14452.6 "--sync--" StartsUsing { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" } forcejump "oc-many-mouths-mist2"
+
+14534.2 label "oc-many-mouths-side4"
+14535.1 "Poison Heart 1" #Ability { id: "B87E", source: "Pelekys" }
+14537.1 "Poison Heart 2" #Ability { id: "B87E", source: "Pelekys" }
+14539.1 "Poison Heart 3" #Ability { id: "B87E", source: "Pelekys" }
+14540.2 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+14541.1 "Poison Heart 4" #Ability { id: "B87E", source: "Pelekys" }
+14548.4 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+
+14552.5 label "oc-many-mouths-mist2"
+14557.5 "Venom Mist (castbar)" Ability { id: ["B878", "B879", "B87A", "B87B"], source: "Pelekys" }
+14558.5 "Venom Mist" Ability { id: ["C573", "C574", "C575", "B87C"], source: "Pelekys" }
+
+# Noxious Nector Branch 3 (Loop Block)
+14568.1 "Noxious Nector (Sides/Front/Back)?" Ability { id: "B86F", source: "Pelekys" } jump "oc-many-mouths-noxious3-sides"
+14568.1 "--sync--" Ability { id: "C2DD", source: "Pelekys" } jump "oc-many-mouths-noxious3-frontback"
+14569.8 "Venom" Ability { id: "B870", source: "Pelekys" }
+14572.2 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+14574.8 "Noxious Nectar (Front/Back/Sides)?" #Ability { id: ["C2DD", "B86F"], source: "Pelekys" }
+14576.4 "Venom" Ability { id: "B870", source: "Pelekys" }
+14577.8 "Venom (expanding)" #Ability { id: "B871", source: "Pelekys" } duration 7.6
+14591.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+14604.7 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nectar Sides => Front/Back (Loop Block)
+14668.3 label "oc-many-mouths-noxious3-sides"
+14670.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+14672.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+14675.0 "Noxious Nectar (Front/Back)" Ability { id: "C2DD", source: "Pelekys" }
+14676.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+14678.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 5 (Loop Block)
+14685.6 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central5"
+14685.6 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side5"
+14691.6 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+14704.9 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+# Noxious Nectar Front/Back => Sides (Loop Block)
+14768.3 label "oc-many-mouths-noxious3-frontback"
+14770.0 "Venom" Ability { id: "B870", source: "Pelekys" }
+14772.4 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+14775.0 "Noxious Nectar (Sides)" Ability { id: "B86F", source: "Pelekys" }
+14776.6 "Venom" Ability { id: "B870", source: "Pelekys" }
+14778.0 "Venom (expanding)" duration 7.6 #Ability { id: "B871", source: "Pelekys" }
+
+# Central Gardening or Side Gardening Branch 5 (Loop Block)
+14785.2 "--sync--" StartsUsing { id: "B874", source: "Pelekys" } jump "oc-many-mouths-central5"
+14785.2 "--sync--" StartsUsing { id: "B875", source: "Pelekys" } jump "oc-many-mouths-side5"
+14791.4 "Central Gardening/Side Gardening?" #Ability { id: ["B874", "B875"], source: "Pelekys" }
+14804.7 "Acrid Rain" #Ability { id: "B880", source: "Pelekys" }
+
+14885.6 label "oc-many-mouths-central5"
+14891.6 "Central Gardening" Ability { id: "B874", source: "Pelekys" }
+14898.9 "--sync--" StartsUsing { id: "B87F", source: "Pelekys" } forcejump "oc-many-mouths-noxious3-end"
+
+14985.6 label "oc-many-mouths-side5"
+14991.6 "Side Gardening" Ability { id: "B875", source: "Pelekys" }
+
+14998.9 label "oc-many-mouths-noxious3-end"
+15003.8 "--sync--" Ability { id: "B87F", source: "Pelekys" }
+15004.9 "Acrid Rain" Ability { id: "B880", source: "Pelekys" }
+
+# Loop
+15020.2 "--sync--" StartsUsing { id: "B876", source: "Pelekys" } forcejump "oc-many-mouths-loop"
+
+### Quarried Away
+# -ii C648
+# -p B843:16121.2
+# -it "Alabaster Blade" "Light Aether"
+# IGNORED ABILITIES
+# C648 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# B832 Summon: boss moves to middle, faces north, and starts 2.7s castbar, spawns Alabaster Golems at end of cast, 2 during tutorial and 4 after
+# B833 Fourfold Attack Order: 9.7s castbar, Alabaster Golems will cleave four times, may rotate between each cleave depending on number of arrows
+# B834 Attack Order: VFX, boss raises arm and Alabaster Golems turn if they haven't completed all turns, then Golems start casting B836 Acclaim
+# B835 Acclaim: 11.7s initial cast from Alabaster Golem, 90-degree cleaves
+# B836 Acclaim: 2.7s subsequent casts from Alabaster Golem, 90-degree cleaves
+# B837 Light Prayer: 2.7s castbar, boss summons Light Aether adds
+# B839 False Spellblade Holy: aoe damage ~0.88s after BA8D False Spellblade Holy
+# B83B Occult Aero: 4.7s cast, two sets of line aoes forming a checkerboard pattern ~3s apart
+# B83C Occult Stone II: 4.7s cast, two sets of three 60-degree conal aoes from boss ~3s apart
+# B83D Occult Tornado: 4.7s cast, a total of 5 random players will have puddle aoes spawn under them
+# B83E Right-Left Combination: 4.7s castbar, boss raises right arm, cleaves right half of arena, then left half
+# B83F Left-Right Combination: 4.7s castbar, boss raises left arm, cleave left half of arena, then right half
+# B840 Clearout: followup cast to B83F, boss cleaves right
+# B841 Clearout: followup cast to B83E, boss cleaves left
+# B842 Occult Aero III: 4.7s cast, 5 of these at a time, line aoes going E/W during B83E/B83F
+# B843 Embrittling Blade: 4.7s castbar
+# B844 Embrittling Blade: aoe damage ~1.5s after B843
+# BA8D False Spellblade Holy: 31.7s castbar after B837 Light Prayer
+# C648 --sync--: Boss autos
+16000.0 "--sync--" ActorControl { command: "80000014", data0: "397" } window 100000,0
+16011.0 "--targetable--"
+16100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+16116.2 "--sync--" StartsUsing { id: "B843", source: "Alabaster Blade" } window 120,5
+16121.2 "Embrittling Blade (castbar)" Ability { id: "B843", source: "Alabaster Blade" }
+16122.6 "Embrittling Blade" Ability { id: "B844", source: "Alabaster Blade" }
+
+# Tutorial - Fourfold Attack Order
+16126.9 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16129.9 "Summon (2)" Ability { id: "B832", source: "Alabaster Blade" }
+16142.0 "Fourfold Attack Order" Ability { id: "B833", source: "Alabaster Blade" }
+16144.0 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16147.1 "Attack Order 1" Ability { id: "B834", source: "Alabaster Blade" }
+16152.3 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16154.4 "Attack Order 2" Ability { id: "B834", source: "Alabaster Blade" }
+16159.6 "Acclaim 3" #Ability { id: "B836", source: "Alabaster Golem" }
+16161.7 "Attack Order 3" Ability { id: "B834", source: "Alabaster Blade" }
+16166.9 "Acclaim 4" #Ability { id: "B836", source: "Alabaster Golem" }
+
+# Right-Left Combination or Left-Right Combination 1
+16171.7 "--sync--" StartsUsing { id: "B83E", source: "Alabaster Blade" } jump "oc-quarried-away-right"
+16171.7 "--sync--" StartsUsing { id: "B83F", source: "Alabaster Blade" } jump "oc-quarried-away-left"
+16176.7 "Right-Left Combination/Left-Right Combination?" #Ability { id: ["B83E", "B83F"], source: "Alabaster Blade" }
+16176.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16178.8 "Clearout" #Ability { id: ["B841", "B840"], source: "Alabaster Blade" }
+16188.2 "Light Prayer" #Ability { id: "B837", source: "Alabaster Blade" }
+16188.9 "--adds--" #AddedCombatant { name: "Light Aether" }
+16198.4 "Occult Aero 1" #Ability { id: "B83B", source: "Alabaster Blade" }
+16201.5 "Occult Aero 2" #Ability { id: "B83B", source: "Alabaster Blade" }
+16205.5 "Occult Tornado 1" #Ability { id: "B83D", source: "Alabaster Blade" }
+16213.5 "Occult Stone II 1" #Ability { id: "B83C", source: "Alabaster Blade" }
+16216.5 "Occult Stone II 2" #Ability { id: "B83C", source: "Alabaster Blade" }
+16219.5 "Occult Tornado 2" #Ability { id: "B83D", source: "Alabaster Blade" }
+
+16271.7 label "oc-quarried-away-right"
+16276.7 "Right-Left Combination" Ability { id: "B83E", source: "Alabaster Blade" }
+16276.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16278.8 "Clearout" Ability { id: "B841", source: "Alabaster Blade" }
+16285.4 "--sync--" StartsUsing { id: "B837", source: "Alabaster Blade" } forcejump "oc-quarried-away-prayer"
+
+16371.7 label "oc-quarried-away-left"
+16376.7 "Left-Right Combination" Ability { id: "B83F", source: "Alabaster Blade" }
+16376.7 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16378.8 "Clearout" Ability { id: "B840", source: "Alabaster Blade" }
+
+# Light Prayer Adds
+# NOTE: Five Light Aether initially spawn, another 5 spawn after first set is killed which means these can't be properly synced
+16385.3 label "oc-quarried-away-prayer"
+16388.2 "Light Prayer" Ability { id: "B837", source: "Alabaster Blade" }
+16388.9 "--adds--" #AddedCombatant { name: "Light Aether" }
+16398.4 "Occult Aero 1" Ability { id: "B83B", source: "Alabaster Blade" }
+16401.4 "Occult Aero 2" Ability { id: "B83B", source: "Alabaster Blade" }
+16405.5 "Occult Tornado 1" Ability { id: "B83D", source: "Alabaster Blade" }
+16413.5 "Occult Stone II 1" Ability { id: "B83C", source: "Alabaster Blade" }
+16416.5 "Occult Stone II 2" Ability { id: "B83C", source: "Alabaster Blade" }
+16419.5 "Occult Tornado 2" Ability { id: "B83D", source: "Alabaster Blade" }
+16422.5 "False Spellblade Holy (castbar)" Ability { id: "BA8D", source: "Alabaster Blade" }
+16423.4 "False Spellblade Holy" Ability { id: "B839", source: "Alabaster Blade" }
+
+# Loop Begins
+16428.8 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16428.9 label "oc-quarried-away-loop"
+16431.8 "Summon (4)" Ability { id: "B832", source: "Alabaster Blade" }
+16443.9 "Fourfold Attack Order" Ability { id: "B833", source: "Alabaster Blade" }
+16445.9 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16449.0 "Attack Order 1" Ability { id: "B834", source: "Alabaster Blade" }
+16454.2 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16456.3 "Attack Order 2" Ability { id: "B834", source: "Alabaster Blade" }
+16461.5 "Acclaim 3" #Ability { id: "B836", source: "Alabaster Golem" }
+16463.6 "Attack Order 3" Ability { id: "B834", source: "Alabaster Blade" }
+16468.8 "Acclaim 4" #Ability { id: "B836", source: "Alabaster Golem" }
+
+# Right-Left Combination or Left-Right Combination 2 (Loop version)
+16473.9 "--sync--" StartsUsing { id: "B83E", source: "Alabaster Blade" } jump "oc-quarried-away-right2"
+16473.9 "--sync--" StartsUsing { id: "B83F", source: "Alabaster Blade" } jump "oc-quarried-away-left2"
+16478.9 "Right-Left Combination/Left-Right Combination?" #Ability { id: ["B83E", "B83F"], source: "Alabaster Blade" }
+16478.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16481.0 "Clearout" #Ability { id: ["B841", "B840"], source: "Alabaster Blade" }
+16491.5 "--middle--" #StartsUsing { id: "B832", source: "Alabaster Blade" } window 5,5
+16494.3 "Summon (4)" #Ability { id: "B832", source: "Alabaster Blade" }
+16506.4 "Fourfold Attack Order" #Ability { id: "B833", source: "Alabaster Blade" }
+16508.4 "Acclaim 1" #Ability { id: "B835", source: "Alabaster Golem" }
+16511.5 "Attack Order 1" #Ability { id: "B834", source: "Alabaster Blade" }
+16516.7 "Acclaim 2" #Ability { id: "B836", source: "Alabaster Golem" }
+16518.8 "Attack Order 2" #Ability { id: "B834", source: "Alabaster Blade" }
+
+16573.9 label "oc-quarried-away-right2"
+16578.9 "Right-Left Combination" Ability { id: "B83E", source: "Alabaster Blade" }
+16578.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16581.0 "Clearout" Ability { id: "B841", source: "Alabaster Blade" }
+16591.5 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } forcejump "oc-quarried-away-loop"
+
+16673.9 label "oc-quarried-away-left2"
+16678.9 "Left-Right Combination" Ability { id: "B83F", source: "Alabaster Blade" }
+16678.9 "Occult Aero III" #Ability { id: "B842", source: "Alabaster Blade" }
+16681.0 "Clearout" Ability { id: "B840", source: "Alabaster Blade" }
+16691.5 "--middle--" StartsUsing { id: "B832", source: "Alabaster Blade" } forcejump "oc-quarried-away-loop"
+
+### Tiny Terror
+# TODO: Get log of Meteor, Comete 1 and 3, Meteor timing probably related to 3s cast BCC8 Meteor, followed by 0.8s cast BFA4 Meteor
+# -ii BCB1 BCB9 BCBA BCC2 BCCA BFA1 BFA2 BFA5 C562 C5CE
+# -p BCCB:17117.0
+# -it "Tiny Mage" "Arcane Sphere"
+# IGNORED ABILITIES
+# BCB1 --sync--: Boss autos
+# BCB9 Tiny Flare: VFX for Flare Sphere exploding
+# BCBA Tiny Holy: VFX for Holy Sphere exploding
+# BCC2 Tiny Quake III: 3.2s castbar, used for an earlier jump back into the main timeline during Small for One 2 and Small for One 5
+# BCCA Tiny Thunder III: aoe damage ~0.5s after BCC9
+# BFA1 --sync--: Wall damage cast every 1s
+# BFA2 Tiny Holy: aoe damage + knockback ~0.2s after BCB8
+# C562 --sync--: cast by Tiny Apprentices during Small For Ones where the Flare Sphere moves
+# C5CE --sync--: Tiny Apprentice falls down and fades away
+#
+# ALL ENCOUNTER ABILITIES
+# BCB1 --sync--: Boss autos
+# BCB2 Small for One: 2.7s cast, summons Tiny Apprentices, 4 in tutorial
+# BCB3 Arcane Aggregation: 2.7s cast, 4 Tiny Apprecentices appear and pass a Flare Sphere amongst three of them
+# BCB4 Arcane Aggregation: 2.7s cast, 4 Tiny Apprecentices appear and pass a Holy Sphere amongst three of them
+# BCB5 Recharge: 1.2s cast, Tiny Apprentice charges a Flare Sphere
+# BCB6 Recharge: 1.2s cast, Tiny Apprentice charges a Holy Sphere
+# BCB7 Tiny Flare: 1.7s damage cast, giant circle aoe
+# BCB8 Tiny Holy: 1.7s cast, this cast shares time slot with BCB7 and so is used over BFA2
+# BCB9 Tiny Flare: VFX for Flare Sphere exploding
+# BCBA Tiny Holy: VFX for Holy Sphere exploding
+# BCBD Diminutive Dualcast: 5.2s castbar, boss will do Tiny Blizzard III => Tiny Fire III => Tiny Blizzard III
+# BCBE Tiny Fire III: 5.7s cast, big circle aoe under boss
+# BCBF Tiny Blizzard III: 5.7s cast, three 60 degree conal aoes from boss
+# BCC0 Tiny Meteor: 4.7s castbar, six sets of five BCC1 Tiny Meteor circle aoes, first is 0.1s after cast, then every 2s
+# BCC1 Tiny Meteor: 3.7s cast, circle aoe
+# BCC2 Tiny Quake III: 3.2s castbar, used for an earlier jump back into the main timeline during Small for One 2 and Small for One 5
+# BCC3 Tiny Quake III: 3.7s cast, ~0.5s after BCC2, first quake (circle aoe under boss)
+# BCC4 Tiny Quake III: 3.7s cast, ~2s after BCC3, second quake (donut)
+# BCC5 Tiny Quake III: 3.7s cast, ~2s after BCC4, last quake (outer donut)
+# BCC6 Meteor: castbar, 130s enrage cast for intermission
+# BCC7 Comet: castbar, Three total, DB says 60s cast, but more mages on a comet the shorter the cast, 1st is ~20.4s, 2nd is 30.4s, 3rd is ~60.4s
+# BCC9 Tiny Thunder III: 4.7s castbar
+# BCCA Tiny Thunder III: aoe damage ~0.5s after BCC9
+# BCCB Tiny Warp: Boss teleports to a location
+# BFA1 --sync--: Wall damage cast every 1s
+# BFA2 Tiny Holy: aoe damage + knockback ~0.2s after BCB8
+# BFA3 Recharge: Tiny Apprentice tethers to Tiny Flare and charges it, also used for charging Comets and Meteor
+# BFA5 Comet: damage ~1.06s after BCC7 Comet, applies a vulnerability up, does about 90k
+# C236 Arcane Aggregation: 5.2s cast, Tiny Apprentice generates a Flare Sphere
+# C237 Arcane Aggregation: 5.2s cast, Tiny Apprentice generates a Holy Sphere
+# C562 --sync--: cast by Tiny Apprentices during Small For Ones where the Flare Sphere moves
+# C5CE --sync--: Tiny Apprentice falls down and fades away
+# C64A All for One
+17000.0 "--sync--" ActorControl { command: "80000014", data0: "3CC" } window 100000,0
+17011.0 "--targetable--"
+17100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Tutorial - Small For One 1: Flare Sphere
+17117.0 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" } window 120,5
+17122.2 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+17130.9 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+17136.1 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17141.0 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+17144.3 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17152.3 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+17156.4 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Small for One 2: Four Spheres 1
+# Patterns:
+# Flare => Flare => Holy  => Flare => Quake
+# Flare => Holy  => Flare => Flare => Quake
+# Flare => Holy  => Flare => Holy  => Quake
+# Holy  => Flare => Flare => Flare => Quake
+# Holy  => Flare => Flare => Holy  => Quake
+17161.7 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+17172.8 "Arcane Aggregation" Ability { id: ["C236", "C237"], source: "Tiny Apprentice" }
+
+17176.0 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare"
+17176.0 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy"
+17178.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17181.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17184.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17185.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17186.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17191.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17193.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17195.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17202.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+17204.4 "--untargetable--"
+17204.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+17209.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+# Tiny Flare First
+17276.0 label "oc-tiny-terror-small2-flare"
+17278.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+17279.0 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-flare"
+17279.0 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-holy"
+17281.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17284.0 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17285.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17286.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17291.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17293.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17295.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17302.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+17304.4 "--untargetable--"
+17304.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+17309.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+# Tiny Holy First; Next two are Flares
+17476.0 label "oc-tiny-terror-small2-holy"
+17478.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17481.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17484.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+17484.9 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-end"
+17484.9 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy-end"
+17485.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17486.9 "Tiny Flare/Tiny Holy?" #Ability { id: "BCB7", source: "Tiny Mage" }
+17491.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17493.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17495.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17502.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+17504.4 "--untargetable--"
+17504.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+17509.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+17530.1 "Comet 1 (4-mage)?" #Ability { id: "BCC7", source: "Arcane Sphere" }
+
+# Flare => Flare; Must by Holy then Flare next
+17679.0 label "oc-tiny-terror-small2-flare-flare"
+17681.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17684.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17685.1 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } forcejump "oc-tiny-terror-small2-flare-end"
+
+# Flare => Holy; Next must be Flare
+17779.0 label "oc-tiny-terror-small2-flare-holy"
+17781.0 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+17784.0 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+17784.9 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small2-flare-end"
+17784.9 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small2-holy-end"
+17785.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+17786.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+17791.7 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+17793.7 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+17795.7 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+17802.4 "All for One" #Ability { id: "C64A", source: "Tiny Mage" }
+17804.4 "--untargetable--"
+17804.4 "Tiny Warp (north)" #Ability { id: "BCCB", source: "Tiny Mage" }
+17809.7 "Recharge" #Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+17830.1 "Comet 1 (4-mage)?" #Ability { id: "BCC7", source: "Arcane Sphere" }
+
+# Ending with Flare
+17884.9 label "oc-tiny-terror-small2-flare-end"
+17885.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+17886.9 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+17887.7 "--sync--" StartsUsing { id: "BCC2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small2-end"
+
+# Ending with Holy
+17984.9 label "oc-tiny-terror-small2-holy-end"
+17985.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+17986.9 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+17987.6 label "oc-tiny-terror-small2-end"
+17991.7 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+17993.7 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+17995.7 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+
+# Intermission - Comets
+# NOTE: BFA3 Recharges occur when Comets are destroyed, players could kill them at various times or out of order, the lines have been removed
+18002.4 "All for One" Ability { id: "C64A", source: "Tiny Mage" }
+18004.4 "--untargetable--"
+18004.4 "Tiny Warp (north)" Ability { id: "BCCB", source: "Tiny Mage" }
+18009.7 "Recharge" Ability { id: "BFA3", source: ["Tiny Apprentice", "Tiny Mage"] }
+
+18030.1 "Comet 1 (4-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 20.4s after start, 4-mage comet
+18040.1 "Comet 2 (3-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 30.4s after start, 3-mage comet
+18060.1 "Comet 3 (2-mage)?" Ability { id: "BCC7", source: "Arcane Sphere" } # 50.4s? after start, 2-mage comet
+18070.1 "Meteor (enrage)?"
+
+# Post Meteor
+# Use NpcYell to detect the start of next phase
+# Tiny Mage: "WaAaH! hOw CoUlD yOu!?"
+18158.4 "--sync--" NpcYell { npcNameId: "39CB", npcYellId: "4C4F" } window 359,0
+
+# Small for One 3: Diminutive Dualcast + Flare Sphere or Holy Sphere 1
+18167.4 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+
+18173.1 "--sync--" StartsUsing { id: "BCB3", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-flare"
+18173.1 "--sync--" StartsUsing { id: "BCB4", source: "Tiny Apprentice" } jump "oc-tiny-terror-small3-holy"
+18174.5 "Tiny Warp (middle)" #Ability { id: "BCCB", source: "Tiny Mage" }
+18176.1 "Arcane Aggregation" #Ability { id: ["BCB3", "BCB4"], source: "Tiny Apprentice" }
+18181.3 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+18182.2 "Diminutive Dualcast" #Ability { id: "BCBD", source: "Tiny Mage" }
+18182.8 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+18184.8 "Tiny Fire III" #Ability { id: "BCBE", source: "Tiny Mage" }
+18186.4 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+18186.8 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+18189.8 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18197.6 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+18207.8 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+18207.8 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18209.8 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18211.8 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18214.8 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18215.8 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+18217.8 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+18220.8 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18222.8 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+18273.1 label "oc-tiny-terror-small3-flare"
+18274.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+18276.1 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+18281.3 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+18282.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+18282.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18284.8 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+18286.4 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+18286.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18289.8 "Tiny Flare" Ability { id: "BFB7", source: "Tiny Mage" }
+18295.7 "--sync--" StartsUsing { id: "BCC9", source: "Tiny Mage" } forcejump "oc-tiny-terror-small3-end"
+
+18373.1 label "oc-tiny-terror-small3-holy"
+18374.5 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+18376.1 "Arcane Aggregation" Ability { id: "BCB4", source: "Tiny Apprentice" }
+18381.3 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+18382.2 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+18382.8 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18384.8 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+18386.4 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+18386.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18389.5 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+18392.6 label "oc-tiny-terror-small3-end"
+18397.6 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+
+# Loop Begins, 12.2s pause between
+18402.8 label "oc-tiny-terror-loop"
+# Tiny Meteors
+18407.8 "Tiny Meteor (castbar)" Ability { id: "BCC0", source: "Tiny Mage" }
+18407.8 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18409.8 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18411.8 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18413.8 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+18414.8 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+18415.8 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+18417.8 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+18420.8 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+18422.8 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+18424.8 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+
+# Small for One 4: Diminutive Dualcast + Flare Sphere or Holy Sphere 2 (Loop version)
+18434.5 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+
+18440.2 "--sync--" StartsUsing { id: "BCB3", source: "Tiny Apprentice" } jump "oc-tiny-terror-small4-flare"
+18440.2 "--sync--" StartsUsing { id: "BCB4", source: "Tiny Apprentice" } jump "oc-tiny-terror-small4-holy"
+18441.6 "Tiny Warp (middle)" #Ability { id: "BCCB", source: "Tiny Mage" }
+18443.2 "Arcane Aggregation" #Ability { id: ["BCB3", "BCB4"], source: "Tiny Apprentice" }
+18448.4 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+18449.3 "Diminutive Dualcast" #Ability { id: "BCBD", source: "Tiny Mage" }
+18449.9 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+18451.9 "Tiny Fire III" #Ability { id: "BCBE", source: "Tiny Mage" }
+18453.5 "Recharge" #Ability { id: ["BCB5", "BCB6"], source: "Tiny Apprentice" }
+18453.9 "Tiny Blizzard III" #Ability { id: "BCBF", source: "Tiny Mage" }
+18456.9 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18459.7 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18465.0 "Small for One" #Ability { id: "BCB2", source: "Tiny Mage" }
+18476.1 "Arcane Aggregation" #Ability { id: ["C237", "C236"], source: "Tiny Apprentice" }
+18481.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18484.5 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18487.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+
+18540.2 label "oc-tiny-terror-small4-flare"
+18541.6 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+18543.2 "Arcane Aggregation" Ability { id: "BCB3", source: "Tiny Apprentice" }
+18548.4 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+18549.3 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+18549.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18551.9 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+18553.5 "Recharge" Ability { id: "BCB5", source: "Tiny Apprentice" }
+18553.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18556.9 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+18559.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+18562.2 "--sync--" StartsUsing { id: "BCB2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small4-end"
+
+18640.2 label "oc-tiny-terror-small4-holy"
+18641.6 "Tiny Warp (middle)" Ability { id: "BCCB", source: "Tiny Mage" }
+18643.2 "Arcane Aggregation" Ability { id: "BCB4", source: "Tiny Apprentice" }
+18648.4 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+18649.3 "Diminutive Dualcast" Ability { id: "BCBD", source: "Tiny Mage" }
+18649.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18651.9 "Tiny Fire III" Ability { id: "BCBE", source: "Tiny Mage" }
+18653.5 "Recharge" Ability { id: "BCB6", source: "Tiny Apprentice" }
+18653.9 "Tiny Blizzard III" Ability { id: "BCBF", source: "Tiny Mage" }
+18656.8 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+18659.7 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Small for One 5: Four Spheres 2 (Loop version)
+# Patterns:
+# Flare => Flare => Holy  => Flare => Quake
+# Flare => Holy  => Flare => Flare => Quake
+# Flare => Holy  => Flare => Holy  => Quake
+# Holy  => Flare => Flare => Flare => Quake
+# Holy  => Flare => Flare => Holy  => Quake
+18662.0 label "oc-tiny-terror-small4-end"
+18665.0 "Small for One" Ability { id: "BCB2", source: "Tiny Mage" }
+18676.1 "Arcane Aggregation" Ability { id: ["C237", "C236"], source: "Tiny Apprentice" }
+
+18679.4 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare"
+18679.4 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy"
+18681.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18684.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18687.4 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18689.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18690.6 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18695.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18697.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+18699.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+18705.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+18722.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+18722.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18724.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18726.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18728.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+18729.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+
+# Tiny Flare First (Loop version)
+18779.4 label "oc-tiny-terror-small5-flare"
+18781.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+18782.4 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-flare"
+18782.4 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-holy"
+18784.4 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18787.4 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18789.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+18790.6 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18795.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18797.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+18799.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+18805.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+18822.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+18822.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18824.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18826.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18828.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+18829.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18830.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+18832.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+
+# Tiny Holy First; Next two are Flares (Loop version)
+18879.4 label "oc-tiny-terror-small5-holy"
+18881.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+18884.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+18887.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+18888.6 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-end"
+18888.6 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy-end"
+18889.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18890.6 "Tiny Flare/Tiny Holy?" Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+18895.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18897.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+18899.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+18905.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+18922.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+18922.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+18924.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+18926.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+18928.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+18929.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+18930.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+18932.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+18935.1 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+18937.1 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+# Flare => Flare; Must by Holy then Flare next (Loop version)
+18982.4 label "oc-tiny-terror-small5-flare-flare"
+18984.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+18987.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+18988.7 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } forcejump "oc-tiny-terror-small5-flare-end"
+
+# Flare => Holy; Next must be Flare (Loop version)
+19082.4 label "oc-tiny-terror-small5-flare-holy"
+19084.4 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+19087.4 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+
+19088.6 "--sync--" StartsUsing { id: "BCB7", source: "Tiny Mage" } jump "oc-tiny-terror-small5-flare-end"
+19088.6 "--sync--" StartsUsing { id: "BCB8", source: "Tiny Mage" } jump "oc-tiny-terror-small5-holy-end"
+19089.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+19090.6 "Tiny Flare/Tiny Holy?" #Ability { id: ["BCB7", "BCB8"], source: "Tiny Mage" }
+19095.3 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+19097.3 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+19099.3 "Tiny Quake III 3" #Ability { id: "BCC5", source: "Tiny Mage" }
+19105.0 "Tiny Thunder III" #Ability { id: "BCC9", source: "Tiny Mage" }
+19122.1 "Tiny Meteor (castbar)" #Ability { id: "BCC0", source: "Tiny Mage" }
+19122.1 "Tiny Meteor 1" #Ability { id: "BCC1", source: "Tiny Mage" }
+19124.1 "Tiny Meteor 2" #Ability { id: "BCC1", source: "Tiny Mage" }
+19126.1 "Tiny Meteor 3" #Ability { id: "BCC1", source: "Tiny Mage" }
+19128.1 "Tiny Meteor 4" #Ability { id: "BCC1", source: "Tiny Mage" }
+19129.1 "Tiny Warp" #Ability { id: "BCCB", source: "Tiny Mage" }
+19130.1 "Tiny Meteor 5" #Ability { id: "BCC1", source: "Tiny Mage" }
+19132.1 "Tiny Meteor 6" #Ability { id: "BCC1", source: "Tiny Mage" }
+19135.1 "Tiny Quake III 1" #Ability { id: "BCC3", source: "Tiny Mage" }
+19137.1 "Tiny Quake III 2" #Ability { id: "BCC4", source: "Tiny Mage" }
+
+# Ending with Flare (Loop version)
+19188.6 label "oc-tiny-terror-small5-flare-end"
+19189.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+19190.6 "Tiny Flare" Ability { id: "BCB7", source: "Tiny Mage" }
+19191.5 "--sync--" StartsUsing { id: "BCC2", source: "Tiny Mage" } forcejump "oc-tiny-terror-small5-end"
+
+# Ending with Holy (Loop version)
+19288.6 label "oc-tiny-terror-small5-holy-end"
+19289.1 "Tiny Warp" Ability { id: "BCCB", source: "Tiny Mage" }
+19290.6 "Tiny Holy" Ability { id: "BCB8", source: "Tiny Mage" }
+
+19291.4 label "oc-tiny-terror-small5-end"
+19295.3 "Tiny Quake III 1" Ability { id: "BCC3", source: "Tiny Mage" }
+19297.3 "Tiny Quake III 2" Ability { id: "BCC4", source: "Tiny Mage" }
+19299.3 "Tiny Quake III 3" Ability { id: "BCC5", source: "Tiny Mage" }
+19305.0 "Tiny Thunder III" Ability { id: "BCC9", source: "Tiny Mage" }
+
+# Loop
+19317.2 "--sync--" StartsUsing { id: "BCC0", source: "Tiny Mage" } forcejump "oc-tiny-terror-loop"
+
+### Web of Terror
+# -ii C4BD C4BF C4C4 C5CB C6A5
+# -p C4BE:20123.0
+# -it "Crescent Arachne" "Arachne Daughter"
+# IGNORED ABILITIES
+# C4BD --sync--: Wall damage, cast every 1.1s
+# C4BF Implosion: aoe damage ~0.8s after C4BE
+# C4C4 Arachnid Funnel: VFX self-cast, 0.9s after C4C3 cast
+# C5CB --sync--: Arachne Daughter autos
+# C6A5 --sync--: Boss autos
+#
+# ALL ENCOUNTER ABILITIES
+# C4BD --sync--: Wall damage, cast every 1.1s
+# C4BE Implosion: 4.7s castbar
+# C4BF Implosion: aoe damage ~0.8s after C4BE
+# C4C0 Summon: Boss moves to center, faces north, 2.7s cast, summons Arachne Daughters, 4 in first two casts, then 6 for remaining Arachnid Webs
+# C4C1 Arachnid Web: 2.6s cast targetting an Arachne Daughter
+# C4C2 Arachnid Web: Arachne Daughter from C4C1 targets another Arachne Daughter, and so on until all are linked
+# C4C3 Arachnid Funnel: initial 4.7s damage cast, boss targets the Arachne Daughter webbed to by C4C1 and dashes to it
+# C4C4 Arachnid Funnel: VFX self-cast, 0.9s after C4C3 cast, boss turns to dash to next in Arachne Daughter in line
+# C4C8 Conformity: Conal damage from Crescent Arachne, targets random player
+# C4C9 Conformity: Conal damage from Arachne Daughter
+# C4CA Bedrock Uplift: 4.4s castbar
+# C4CB Bedrock Uplift: 4.7s damage cast
+# C4CC Bedrock Uplift: 6.7s damage cast
+# C4CD Bedrock Uplift: 8.7s damage cast
+# C4C7 Venom Eruption: 11.7s cast by Arachne Daughter when not killed in time, half the adds cast then the other half cast 2s after
+# C5CB --sync--: Arachne Daughter autos
+# C5D7 Queen's Orders: two Crescent Arachne are marked with '!' headmarkers will perform a conal cleave, all 4 move to intercard edges of arena
+# C5F8 Arachnid Funnel: subsequent damage casts every 1.56s boss dashes to an Arachne Daughter
+# C6A5 --sync--: Boss autos
+20000.0 "--sync--" ActorControl { command: "80000014", data0: "3CA" } window 100000,0
+20011.0 "--targetable--"
+20100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+20118.0 "--sync--" StartsUsing { id: "C4BE", source: "Crescent Arachne" } window 120,5
+20123.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+
+# Tutorial - Arachnid Web
+20131.8 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+20134.8 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+20141.0 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+20141.7 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20142.3 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20142.7 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20150.0 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+20152.2 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20153.8 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20155.4 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20156.7 "--adds targetable--"
+20176.9 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+20178.9 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+# Loop Begins
+20184.0 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+20184.0 label "oc-web-of-terror-loop"
+20187.0 "Summon (4)" Ability { id: "C4C0", source: "Crescent Arachne" }
+20193.4 "Conformity (boss)" Ability { id: "C4C8", source: "Crescent Arachne" }
+20199.0 "Queen's Orders" Ability { id: "C5D7", source: "Crescent Arachne" }
+20211.4 "Conformity (adds)" Ability { id: "C4C9", source: "Arachne Daughter" }
+20214.2 "--adds targetable--"
+20234.3 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+20236.3 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+20244.9 "Bedrock Uplift" Ability { id: "C4CA", source: "Crescent Arachne" }
+20245.2 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+20247.2 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+20249.2 "Bedrock Uplift" #Ability { id: "C4CD", source: "Crescent Arachne" }
+20254.9 "Bedrock Uplift" Ability { id: "C4CB", source: "Crescent Arachne" }
+20256.8 "Bedrock Uplift" Ability { id: "C4CC", source: "Crescent Arachne" }
+20258.8 "Bedrock Uplift" Ability { id: "C4CD", source: "Crescent Arachne" }
+20265.0 "Implosion" Ability { id: "C4BE", source: "Crescent Arachne" }
+
+20279.3 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5
+20282.3 "Summon (6)" Ability { id: "C4C0", source: "Crescent Arachne" }
+20288.5 "Arachnid Web 1" Ability { id: "C4C1", source: "Crescent Arachne" }
+20289.3 "Arachnid Web 2" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20289.9 "Arachnid Web 3" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20290.3 "Arachnid Web 4" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20290.9 "Arachnid Web 5" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20291.3 "Arachnid Web 6" #Ability { id: "C4C2", source: "Arachne Daughter" }
+20298.5 "Arachnid Funnel 1" Ability { id: "C4C3", source: "Crescent Arachne" }
+20300.7 "Arachnid Funnel 2" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20302.3 "Arachnid Funnel 3" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20303.9 "Arachnid Funnel 4" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20305.5 "Arachnid Funnel 5" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20307.1 "Arachnid Funnel 6" #Ability { id: "C5F8", source: "Crescent Arachne" }
+20308.4 "--adds targetable--"
+20329.4 "Venom Eruption 1?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+20331.4 "Venom Eruption 2?" #Ability { id: "C4C7", source: "Arachne Daughter" }
+
+# Loop
+# NOTE: Seen this be +-0.6s, movement timings from Conformity, Arachnid Funnel and Summon cause wide variations
+20334.7 "--middle--" StartsUsing { id: "C4C0", source: "Crescent Arachne" } window 5,5 forcejump "oc-web-of-terror-loop"
