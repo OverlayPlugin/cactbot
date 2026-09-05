@@ -619,15 +619,72 @@ export class CactbotConfigurator {
 
   // Top level UI builder, builds everything.
   buildUI(container: HTMLElement, contents: ConfigContents): void {
-    for (const group in contents) {
-      const content = contents[group];
-      if (!content || content.length === 0)
-        continue;
+    const groups = Object.entries(contents).filter(([, content]) => content.length > 0);
+    const firstGroup = groups[0]?.[0];
+    if (firstGroup === undefined || firstGroup === '')
+      return;
+
+    const formatGroupName = (group: string): string => {
+      const displayNames: { [group: string]: string } = {
+        general: 'General',
+        raidboss: 'Raidboss',
+        jobs: 'Jobs',
+        eureka: 'Eureka',
+        oopsyraidsy: 'Oopsyraidsy',
+        radar: 'Radar',
+      };
+      return displayNames[group] ?? group
+        .replace(/[-_]/g, ' ')
+        .replace(/(?:^|\s)\S/g, (c) => c.toUpperCase());
+    };
+
+    // A compact category selector keeps the configurator from rendering as one very long page.
+    const toolbar = document.createElement('div');
+    toolbar.classList.add('config-toolbar');
+    container.appendChild(toolbar);
+
+    const titleContainer = document.createElement('div');
+    titleContainer.classList.add('config-title-container');
+    toolbar.appendChild(titleContainer);
+
+    const title = document.createElement('div');
+    title.classList.add('config-title');
+    title.innerText = 'Cactbot Configuration';
+    titleContainer.appendChild(title);
+
+    const subtitle = document.createElement('div');
+    subtitle.classList.add('config-subtitle');
+    subtitle.innerText = 'Choose a category to edit its settings.';
+    titleContainer.appendChild(subtitle);
+
+    const selectorContainer = document.createElement('label');
+    selectorContainer.classList.add('category-selector-container');
+    toolbar.appendChild(selectorContainer);
+
+    const selector = document.createElement('select');
+    selector.classList.add('category-selector');
+    selectorContainer.appendChild(selector);
+
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('config-content');
+    container.appendChild(contentContainer);
+
+    const groupContainers = new Map<string, HTMLElement>();
+
+    for (const [group, content] of groups) {
+      const option = document.createElement('option');
+      option.value = group;
+      option.innerText = formatGroupName(group);
+      selector.appendChild(option);
 
       // For each overlay options template, build a section for it.
       // Then iterate through all of its options and build ui for those options.
       // Give each options template a chance to build special ui.
-      const groupDiv = this.buildOverlayGroup(container, group);
+      const groupDiv = this.buildOverlayGroup(contentContainer, group, formatGroupName(group));
+      const groupContainer = groupDiv.parentElement;
+      if (!(groupContainer instanceof HTMLElement))
+        throw new UnreachableCode();
+      groupContainers.set(group, groupContainer);
 
       // Track the values of and html elements associated with each config entry,
       // to be used for updating visibility/enablement of config entries.
@@ -664,34 +721,60 @@ export class CactbotConfigurator {
       // Once the group is fully created, process visibility settings immediately.
       this.updateVisibility(elements, values);
     }
+
+    const showGroup = (group: string): void => {
+      for (const [key, groupContainer] of groupContainers)
+        groupContainer.classList.toggle('category-hidden', key !== group);
+
+      // Let CSS theme the toolbar based on the currently selected category.
+      toolbar.dataset.category = group;
+
+      selector.value = group;
+      if (window.location.hash !== `#${group}`)
+        window.history.replaceState(undefined, '', `#${group}`);
+    };
+
+    selector.onchange = () => showGroup(selector.value);
+
+    // Preserve direct links such as config.html#raidboss when possible.
+    const hashGroup = window.location.hash.slice(1);
+    showGroup(groupContainers.has(hashGroup) ? hashGroup : firstGroup);
   }
 
   // Overlay builder for each overlay type (e.g. raidboss, jobs).
-  buildOverlayGroup(container: HTMLElement, group: string): HTMLElement {
-    const collapser = document.createElement('div');
-    collapser.classList.add('overlay-container');
-    container.appendChild(collapser);
+  buildOverlayGroup(container: HTMLElement, group: string, displayName = group): HTMLElement {
+    const section = document.createElement('section');
+    section.classList.add('overlay-container');
+    section.dataset.group = group;
+    container.appendChild(section);
 
-    const a = document.createElement('a');
-    // TODO: fix me
-    /* eslint-disable-next-line deprecation/deprecation */
-    a.name = group;
-    collapser.appendChild(a);
+    const anchor = document.createElement('a');
+    anchor.id = group;
+    anchor.classList.add('overlay-anchor');
+    section.appendChild(anchor);
 
     const header = document.createElement('div');
     header.classList.add('overlay-header');
-    header.innerText = group;
-    a.appendChild(header);
+    header.innerText = displayName;
+    section.appendChild(header);
+
+    const updateStickyState = () => {
+      const sectionRect = section.getBoundingClientRect();
+      const headerRect = header.getBoundingClientRect();
+
+      const isStuck = sectionRect.top < 0 &&
+        headerRect.top <= 0 &&
+        sectionRect.bottom > headerRect.height;
+
+      header.classList.toggle('is-stuck', isStuck);
+    };
+
+    window.addEventListener('scroll', updateStickyState, { passive: true });
+    updateStickyState();
 
     const groupDiv = document.createElement('div');
     groupDiv.classList.add('overlay-options');
-    collapser.appendChild(groupDiv);
-
-    a.onclick = () => {
-      const parent = a.parentNode;
-      if (parent instanceof HTMLElement)
-        parent.classList.toggle('collapsed');
-    };
+    section.appendChild(groupDiv);
 
     return groupDiv;
   }
