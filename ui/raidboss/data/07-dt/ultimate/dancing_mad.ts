@@ -1,13 +1,14 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import Util, { Directions } from '../../../../../resources/util';
+import Util, { DirectionOutput16, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: P2 Old AAAABBBB plan was found at https://raidplan.io/plan/kj2d734d36es2ugs, would like to find replacement
 // TODO: P3 Better Blackhole no-config support via debuff tracking?
+// TODO: P5 Forsaken tell if a hole was placed in the path?
 
 type Phase = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -35,6 +36,7 @@ export interface Data extends RaidbossData {
     accretion: 'line' | 'role';
     blackHole: 'dsa' | 'sda' | 'modified' | 'none';
     blackHoleTether: 'true' | 'clock';
+    celestriad: 'clockwise' | 'counterclockwise';
   };
   // General
   phase: Phase | 'unknown';
@@ -123,6 +125,23 @@ export interface Data extends RaidbossData {
   wound?: 'white' | 'black';
   isThunderChargedTrue?: boolean;
   isBlizzardChargedTrue?: boolean;
+  // Phase 5
+  repeaterCount: number;
+  firstFlood: number[];
+  floodRotation?: number;
+  orchestraCount: number;
+  mySurprise?: 'flare' | 'holy';
+  hitByHoly: boolean;
+  hitByFlare: boolean;
+  myInitialResistance?: 'fire' | 'ice' | 'lightning';
+  celestriadDebuffCollect: boolean;
+  celestriadTowerSet: number;
+  celestriadDirNumToTower: { [dirNum: number]: 'lightning' | 'ice' | 'fire' };
+  celestriadTowerToDirNum: { [id: string]: number };
+  celestriadLightningTower: number[];
+  celestriadIceTower: number[];
+  celestriadFireTower: number[];
+  forsakenCount: number;
 }
 
 const headMarkerData = {
@@ -156,7 +175,7 @@ const headMarkerData = {
   'limitCutRed6': '01B6',
   'limitCutBlue7': '01B7',
   'limitCutRed8': '01B8',
-  'stompStack': '00A1',
+  'stompStack': '00A1', // This is also used by P5's BB39 Forsaken Bonds
 } as const;
 
 const mysteryMagicIceOutputStrings: OutputStrings = {
@@ -836,6 +855,21 @@ const blackHoleOutputStrings: OutputStrings = {
   },
 };
 
+const forsakenP5OutputStrings: OutputStrings = {
+  num: {
+    en: '${num}',
+    de: '${num}',
+    fr: '${num}',
+    ja: '${num}',
+    cn: '${num}',
+    ko: '${num}',
+    tc: '${num}',
+  },
+  numMech: {
+    en: '${num}: ${mech}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'DancingMadUltimate',
   zoneId: ZoneId.DancingMadUltimate,
@@ -1072,6 +1106,25 @@ const triggerSet: TriggerSet<Data> = {
       },
       default: 'true',
     },
+    {
+      id: 'celestriad',
+      comment: {
+        en:
+          `Clockwise: Soak first element clockwise to your debuff. If no-debuff, first element counterclockwise that has two towers<br />
+          Counterclockwise: Soak first element counterclockwise to your debuff. If no-debuff, first element clockwise that has two towers`,
+      },
+      name: {
+        en: 'P5 Celestriad Tower Order',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Clockwise': 'clockwise',
+          'Counterclockwise': 'counterclockwise',
+        },
+      },
+      default: 'clockwise',
+    },
   ],
   timelineFile: 'dancing_mad.txt',
   initData: () => {
@@ -1120,8 +1173,23 @@ const triggerSet: TriggerSet<Data> = {
       firstLongBombPlayers: [],
       secondShortBombPlayers: [],
       secondLongBombPlayers: [],
+      // Phase 5
+      repeaterCount: 0,
+      firstFlood: [],
+      orchestraCount: 0,
+      hitByHoly: false,
+      hitByFlare: false,
+      celestriadDebuffCollect: true,
+      celestriadTowerSet: 0,
+      celestriadDirNumToTower: {},
+      celestriadTowerToDirNum: {},
+      celestriadLightningTower: [],
+      celestriadIceTower: [],
+      celestriadFireTower: [],
+      forsakenCount: 0,
     };
   },
+  timelineTriggers: [],
   triggers: [
     {
       id: 'DMU Phase 1-4 Tracker',
@@ -1146,6 +1214,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DMU ActorSetPos Tracker',
       // P1 Graven Image tethers
       // P3 Max actor location
+      // P5 Flood
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       run: (data, matches) =>
@@ -7003,12 +7072,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'DMU P3 Knock Down Collect',
-      // Need to collect this and output later due to puddles
-      // Will also need this to determine the role that is stacking last
+      id: 'DMU P3 Knock Down Collect and P5 Forsaken Counter',
+      // For P3 Knock Down:
+      //   Need to collect this and output later due to puddles
+      //   Will also need this to determine the role that is stacking last
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stompStack'], capture: true },
-      run: (data, matches) => data.knockDownTarget = matches.target,
+      run: (data, matches) => {
+        if (data.phase === 'p3')
+          data.knockDownTarget = matches.target;
+        else
+          data.forsakenCount = data.forsakenCount + 1;
+      },
     },
     {
       id: 'DMU P3 Knock Down 1 (Early)',
@@ -8612,6 +8687,901 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'C24A', source: 'Kefka', capture: false },
       condition: (data) => data.phase === 'p5',
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'DMU P5 Ultima Repeater',
+      // 3.7s castTime, followed by 1.1s until first Hit
+      // Hits are 0.7s apart
+      type: 'StartsUsing',
+      netRegex: { id: 'BB40', source: 'Kefka', capture: false },
+      durationSeconds: 7,
+      infoText: (data, _matches, output) => {
+        return output.mechThenMech!({
+          mech1: output.aoe4!(),
+          mech2: data.orchestraCount === 0
+            ? output.roleStacks3!()
+            : output.roleStacks2!(),
+        });
+      },
+      outputStrings: {
+        aoe4: {
+          en: 'AoE x4',
+        },
+        roleStacks2: {
+          en: 'Role Stacks x2',
+        },
+        roleStacks3: {
+          en: 'Role Stacks x3',
+        },
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Ultima Repeater Count',
+      type: 'Ability',
+      netRegex: { id: 'BB41', source: 'Kefka', capture: false },
+      suppressSeconds: 0.6,
+      run: (data) => data.repeaterCount = data.repeaterCount + 1,
+    },
+    {
+      id: 'DMU P5 Fell Forces',
+      // BB41 Ultima Repeater
+      // BB56 Chaotic Holy
+      type: 'Ability',
+      netRegex: { id: ['BB41', 'BB56'], source: 'Kefka', capture: false },
+      condition: (data) => data.repeaterCount === 4 || data.repeaterCount === 8,
+      durationSeconds: (data) => {
+        // Time from last BB41 Ultima Repeater/BB56 Chaotic Holy to C652 Fell Forces
+        const repeaterCount = data.repeaterCount;
+        const orchestraCount = data.orchestraCount;
+        if (orchestraCount === 0) {
+          return 8.3;
+        }
+        if (orchestraCount === 1 && repeaterCount === 4) {
+          return 7.1;
+        }
+        if (orchestraCount === 1 && repeaterCount === 4) {
+          return 5.2;
+        }
+        return 10.2;
+      },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        // 3 Hits => 2 Hits => 2 Hits => 3 Hits
+        return data.orchestraCount === 1
+          ? output.roleStacks2!()
+          : output.roleStacks3!();
+      },
+      outputStrings: {
+        roleStacks2: {
+          en: 'Role Stacks x2',
+        },
+        roleStacks3: {
+          en: 'Role Stacks x3',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Flood Start (Early)',
+      // Data for rotation not yet known, but we can quickly call a starting location
+      // Calls the intercard, next trigger calls nearest cardinal to go to based on rotation
+      type: 'StartsUsing',
+      netRegex: { id: 'C183', capture: true },
+      delaySeconds: 0.1, // Delay for late set position updates
+      durationSeconds: 1,
+      suppressSeconds: 99999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const x = actor.x;
+        const y = actor.y;
+        const isOuter = x < 96 || x > 104;
+        const dirNum = Directions.xyTo4DirIntercardNum(x, y, centerX, centerY);
+        const startDirNum = isOuter ? dirNum : (dirNum + 2) % 4;
+        const startDir = Directions.outputFromIntercardNum(startDirNum);
+
+        return output[startDir]!();
+      },
+      outputStrings: Directions.outputStringsIntercardDir,
+    },
+    {
+      id: 'DMU P5 Flood',
+      // Source and data on this can be inaccurate for StartsUsing and StartsUsingExtra
+      // Invisible actors spawn at the center of the line and their heading
+      // is the direction that the flood is
+      // There are two at a time, one on outter and one inner
+      // Clockwise Example:
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // Clockwise Example 2:
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // Counterclockwise Example:
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW inner, Facing SW (-0.785)
+      // Counterclockwise Example 2:
+      // (89.39, 89.39) NW Outer, (103.54, 103.54) SE Inner, Facing SW (-0.785)
+      // (89.39, 110.61) SW Outer, (103.54, 96.46) NE Inner, Facing SE (0.785)
+      // (110.61, 110.61) SE Outer, (96.46, 96.46) NW Inner, Facing SW (-0.785)
+      // (110.61, 89.39) NE Outer, (96.46, 103.54) SW Inner, Facing SE (0.785)
+      // With the x,y we can know the starting and ending positions
+      // Need to know first and second outer or inner to be able to get CW/CCW
+      type: 'StartsUsing',
+      netRegex: { id: 'C183', capture: true },
+      condition: (data) => data.floodRotation === undefined,
+      delaySeconds: 0.1, // Delay for late set position updates
+      durationSeconds: 7.9, // Last C269 Flood
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const x2 = actor.x;
+        const y2 = actor.y;
+        const isOuter = x2 < 96 || x2 > 104;
+        if (!isOuter)
+          return; // Skip inner ones
+
+        // Get rotation of first and second Flood
+        const x1 = data.firstFlood[0];
+        const y1 = data.firstFlood[1];
+        if (x1 === undefined || y1 === undefined) {
+          data.firstFlood = [x2, y2];
+          return;
+        }
+
+        // Translate coords relative to center
+        const ax = x1 - centerX;
+        const ay = y1 - centerY;
+        const bx = x2 - centerX;
+        const by = y2 - centerY;
+
+        // Calculate Determinant to determine if second flood is clockwise or counterclock
+        data.floodRotation = ax * by - ay * bx;
+        const isClockwise = data.floodRotation > 0;
+
+        // Update to more accurate start position nearest second Flood
+        const startDirNum = Directions.xyTo8DirNum(x1, y1, centerX, centerY);
+        const startCardDirNum = isClockwise ? (startDirNum + 1) % 8 : (startDirNum + 7) % 8;
+        const startDir = Directions.outputFromCardinalNum(startCardDirNum / 2);
+
+        return output.mechPlusMech!({
+          mech1: output.stack!(),
+          mech2: output.floodDirClock!({
+            dir: output[startDir]!(),
+            clock: isClockwise ? output.leftClockwise!() : output.rightCounterclockwise!(),
+          }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsCardinalDir,
+        leftClockwise: {
+          en: 'Left (CW)',
+          de: 'Links (im Uhrzeigersinn)',
+          fr: 'Gauche (horaire)',
+          ja: '時計回り',
+          cn: '左左左 (顺时针)',
+          ko: '왼쪽 (시계방향)',
+          tc: '左左左 (順時針)',
+        },
+        rightCounterclockwise: {
+          en: 'Right (CCW)',
+          de: 'Rechts (gegen Uhrzeigersinn)',
+          fr: 'Droite (Anti-horaire)',
+          ja: '反時計回り',
+          cn: '右右右 (逆时针)',
+          ko: '오른쪽 (반시계방향)',
+          tc: '右右右 (逆時針)',
+        },
+        floodDirClock: {
+          en: '${dir} => ${clock}',
+        },
+        stack: Outputs.stackMarker,
+        mechPlusMech: {
+          en: '${mech1} + ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Maddening Orchestra',
+      // This may want to be more based on where Fell Forces role stacks will be
+      // Tanks may also want to be near each other for the subsequent sharedTankbuster
+      type: 'StartsUsing',
+      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
+      infoText: (data, _matches, output) => {
+        if (data.role !== 'dps')
+          return output.mechThenMech!({
+            mech1: output.clockSpots!(),
+            mech2: output.sharedTankbuster!(),
+          });
+        return output.clockSpots!();
+      },
+      outputStrings: {
+        clockSpots: {
+          en: 'Clock spots',
+          de: 'Himmelsrichtungen',
+          ja: '八方向',
+          cn: '八方',
+          ko: '8방향',
+          tc: '八方',
+        },
+        sharedTankbuster: Outputs.sharedTankbuster,
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Maddening Orchestra Count',
+      type: 'Ability',
+      netRegex: { id: 'BB50', source: 'Kefka', capture: false },
+      run: (data) => {
+        data.orchestraCount = data.orchestraCount + 1;
+
+        // These will need to be reset prior to 2nd orchestra
+        if (data.orchestraCount === 2) {
+          data.hitByHoly = false;
+          data.hitByFlare = false;
+          delete data.mySurprise;
+        }
+      },
+    },
+    {
+      id: 'DMU P5 Holy/Flare Collect',
+      // BB54 Holy First set is random, rest are on nearest players to boss
+      // BB52 Flare should only go on tanks (two highest aggro)
+      // Capture BB52 Flare targets to filter later Holy call
+      type: 'Ability',
+      netRegex: { id: ['BB54', 'BB52'], source: 'Kefka', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        if (matches.id === 'BB54')
+          data.hitByHoly = true;
+        else
+          data.hitByFlare = true;
+      },
+    },
+    {
+      id: 'DMU P5 Holy',
+      // First set is random, rest are on nearest players to boss
+      type: 'Ability',
+      netRegex: { id: 'BB54', source: 'Kefka', capture: false },
+      delaySeconds: 0.1, // Delay for first BB54 Holy/BB52 Flare hits
+      suppressSeconds: 6, // Don't output for the second Holy in orchestra
+      alertText: (data, _matches, output) => {
+        // Players hit by Flare will be either dead or get 14E6 Suprise Flare/14E7 Surprise Holy
+        if (data.hitByFlare)
+          return;
+        const nearFar = data.hitByHoly ? output.beFar!() : output.beNear!();
+        if (data.role !== 'dps')
+          return output.mechPlusMech!({
+            mech1: nearFar,
+            mech2: output.sharedTankbuster!(),
+          });
+        return nearFar;
+      },
+      outputStrings: {
+        beFar: {
+          en: 'Be Far',
+          de: 'Sei Fern',
+          cn: '站远',
+          ko: '멀리 있기',
+        },
+        beNear: {
+          en: 'Be Near',
+          de: 'Sei Nahe',
+          cn: '站近',
+          ko: '가까이 있기',
+        },
+        sharedTankbuster: Outputs.sharedTankbuster,
+        mechPlusMech: {
+          en: '${mech1} + ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Suprise Flare/Holy Collect',
+      // 14E6 Suprise Flare
+      // 14E7 Surpise Holy
+      type: 'GainsEffect',
+      netRegex: { effectId: ['14E6', '14E7'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.mySurprise = matches.effectId === '14E6' ? 'flare' : 'holy',
+    },
+    {
+      id: 'DMU P5 Suprise Flare/Holy',
+      // 14E6 Suprise Flare
+      // 14E7 Surpise Holy
+      // Primary threat will get 1x Suprise Flare, Secondary threat will get 1x Suprise Holy
+      // These are applied by BB52 Flare
+      // Next BB53 Chaotic Flare sharedTankbuster occurs on the Surprise Flare target
+      type: 'GainsEffect',
+      netRegex: { effectId: ['14E6', '14E7'], capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, matches, output) => {
+        return output.mechThenMech!({
+          mech1: output.sharedTankbuster!(),
+          mech2: matches.effectId === '14E6'
+            ? output.flare!()
+            : output.holy!(),
+        });
+      },
+      outputStrings: {
+        sharedTankbuster: Outputs.sharedTankbuster,
+        flare: {
+          en: 'Big AOE on YOU',
+        },
+        holy: {
+          en: 'Small AOE on YOU',
+        },
+        mechThenMech: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Chaotic Holy/Flare Diffusion',
+      // Trigger on BB53 Chaotic Flare
+      // BB55 Flare Diffusion: Big tank buster AOE on the 14E6 Surprise Flare player
+      // BB56 Chaotic Holy: Small tank buster AOE on the 14E7 Surprise Holy player
+      type: 'Ability',
+      netRegex: { id: 'BB53', source: 'Kefka', capture: false },
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          flare: {
+            en: 'Big Tank Buster AOE on YOU',
+          },
+          holy: {
+            en: 'Small Tank Buster AOE on YOU',
+          },
+          tankBusters: {
+            en: 'Tank Busters',
+            de: 'Tank busters',
+            fr: 'Tank busters',
+            ja: 'タンク強攻撃',
+            cn: '坦克死刑',
+            ko: '탱버',
+            tc: '坦克死刑',
+          },
+        };
+        const surprise = data.mySurprise;
+        const severity = (surprise !== undefined || data.role === 'healer')
+          ? 'alertText'
+          : 'infoText';
+        if (surprise === 'flare')
+          return { [severity]: output.flare!() };
+        if (surprise === 'holy')
+          return { [severity]: output.holy!() };
+        return { [severity]: output.tankBusters!() };
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Debuff Collect',
+      // Celestriad will give 6 players random 20s debuffs
+      // These tell us which towers players will need to take
+      // Debuffed players cannot take towers for which they have resistance to
+      // Initial non-debuff players always take tower of element with 2x towers
+      // Towers require 2 people to soak
+      // B56 Fire Resistance Down II
+      // B57 Ice Resistance Down II
+      // BB6 Lightning Resistance Down II, NOTE: This is also given by Exdeath's Thunder III in P3
+      // We could tell who they are soaking tower with as well if requested
+      type: 'GainsEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: true },
+      condition: (data, matches) => {
+        return matches.target === data.me && data.phase === 'p5' && data.celestriadDebuffCollect;
+      },
+      run: (data, matches) => {
+        const id = matches.effectId;
+        const res = id === 'B56'
+          ? 'fire'
+          : id === 'B57'
+          ? 'ice'
+          : 'lightning';
+        data.myInitialResistance = res;
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad No Debuff Collect',
+      // Stop collecting debuffs as we only need the initial debuffs to resolve
+      type: 'GainsEffect',
+      netRegex: { effectId: ['B56', 'B57', 'BB6'], capture: false },
+      condition: (data) => data.phase === 'p5',
+      delaySeconds: 0.1, // Delay for Collect
+      suppressSeconds: 99999,
+      run: (data) => data.celestriadDebuffCollect = false,
+    },
+    {
+      id: 'DMU P5 Celestriad Tower Collect',
+      // Towers have the following BNpcIDs:
+      // Fire Tower => 1EC03E
+      // Ice Tower => 1EC03F
+      // Lightning Tower => 1EC040
+      //
+      // Towers spawn in a circular order element1 => element2 => element3
+      // Element 1: NNE (103.42, 90.60), ENE (108.66, 95), E (109.85, 101.74)
+      // Element 2: SE (106.43, 107.66), S (100, 110), SW (93.57, 107.66)
+      // Element 3: W (90.15, 101.74), WNW (91.34, 95), NNW (96.58, 90.60)
+      //
+      // Towers spawn ~0.186s before debuffs applied
+      //
+      // 273 ActorControlExtra lines with |019D|10|20| show which four are activated
+      // 273 ActorControlExtra lines with |019D|1|40| show which four are deactivated
+      // At activation, 261 and 271 lines show 4 other actors change to their positions
+      // These 4 other actors will cast BB43 Fire III/BB44 Blizzard III/BB45 Thunder III
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const bnpcid = matches.pairBNpcID;
+
+        // Store dirNum of tower for lookup later
+        const dirNum = Directions.xyTo16DirNum(x, y, centerX, centerY);
+        data.celestriadTowerToDirNum[matches.id] = dirNum;
+
+        // Store type of tower for lookup later
+        if (bnpcid === '1EC03E')
+          data.celestriadDirNumToTower[dirNum] = 'fire';
+        else if (bnpcid === '1EC03F')
+          data.celestriadDirNumToTower[dirNum] = 'ice';
+        else
+          data.celestriadDirNumToTower[dirNum] = 'lightning';
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Tower + Debuffs',
+      // For players that have a debuff, we can call their starting area
+      // Additional wrapper outputString used in case player wants output based on debuff
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EC03E', '1EC03F', '1EC040'] }],
+        capture: false,
+      },
+      condition: (data) => Object.keys(data.celestriadTowerToDirNum).length === 9,
+      delaySeconds: 0.1, // Delay for debuff collect
+      infoText: (data, _matches, output) => {
+        const res = data.myInitialResistance;
+        if (res === undefined)
+          return output.twoTowerElement!();
+        const isClockwise = data.triggerSetConfig.celestriad === 'clockwise';
+
+        // Players with vulnerability need to first determine where the tower
+        // matching their vulnerability is
+        const towers = data.celestriadDirNumToTower;
+        const elementOrder = [
+          towers[1], // Element 1 starts at NNE, the middle tower is ENE
+          towers[6], // Element 2 starts at SE, the middle tower is S
+          towers[12], // Element 3 starts at W, the middle tower is WNW
+        ];
+
+        // Get index of element matching player's resistance down
+        // As towers remain static we can resolve in circular order
+        // Next element is based on config: clockwise, or counterclockwise (wrap-around)
+        const idx = elementOrder.indexOf(res);
+        const configIdx = isClockwise ? 1 : 2;
+        const nextIdx = (idx + configIdx) % 3;
+        const tower = elementOrder[nextIdx];
+
+        // Central point of the three towers
+        const dir = nextIdx === 0
+          ? 'dirENE'
+          : nextIdx === 1
+          ? 'dirS'
+          : 'dirWNW';
+
+        if (tower === 'fire')
+          return output[res]!({
+            towers: output.fireTowerDir!({ dir: output[dir]!() }),
+          });
+        if (tower === 'ice')
+          return output[res]!({
+            towers: output.iceTowerDir!({ dir: output[dir]!() }),
+          });
+        if (tower === 'lightning')
+          return output[res]!({
+            towers: output.lightningTowerDir!({ dir: output[dir]!() }),
+          });
+      },
+      outputStrings: {
+        dirENE: Outputs.dirENE,
+        dirS: Outputs.dirS,
+        dirWNW: Outputs.dirWNW,
+        fireTowerDir: {
+          en: 'Fires are ${dir}',
+        },
+        iceTowerDir: {
+          en: 'Ices are ${dir}',
+        },
+        lightningTowerDir: {
+          en: 'Thunders are ${dir}',
+        },
+        fire: {
+          en: '${towers}',
+        },
+        ice: {
+          en: '${towers}',
+        },
+        lightning: {
+          en: '${towers}',
+        },
+        twoTowerElement: {
+          en: 'No Debuff', // Two Element Tower (later)
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Celestriad Towers',
+      // 273 ActorControlExtra lines with |019D|10|20| show which four are activated
+      // Occurs roughly 6.1s prior BB43 Fire III/BB44 Blizzard III/BB45 Thunder III tower Abilities
+      type: 'ActorControlExtra',
+      netRegex: { category: '019D', param1: '10', param2: '20', capture: true },
+      preRun: (data, matches) => {
+        const towerDirNum = data.celestriadTowerToDirNum[matches.id];
+        if (towerDirNum === undefined)
+          return;
+        const towerType = data.celestriadDirNumToTower[towerDirNum];
+        if (towerType === undefined)
+          return;
+
+        if (
+          (data.celestriadFireTower.length + data.celestriadIceTower.length +
+            data.celestriadLightningTower.length) === 4
+        ) {
+          // Reset for this run
+          data.celestriadFireTower = [];
+          data.celestriadIceTower = [];
+          data.celestriadLightningTower = [];
+          data.celestriadTowerSet = data.celestriadTowerSet + 1;
+        }
+
+        // Will be able to check length later for the double tower element
+        if (towerType === 'fire')
+          data.celestriadFireTower.push(towerDirNum);
+        else if (towerType === 'ice')
+          data.celestriadIceTower.push(towerDirNum);
+        else
+          data.celestriadLightningTower.push(towerDirNum);
+      },
+      durationSeconds: 6, // Next towers activate ~0.1s before abilities, so use 6s
+      infoText: (data, _matches, output) => {
+        const fireTowers = data.celestriadFireTower;
+        const iceTowers = data.celestriadIceTower;
+        const lightningTowers = data.celestriadLightningTower;
+        if ((fireTowers.length + iceTowers.length + lightningTowers.length) !== 4)
+          return;
+
+        const res = data.myInitialResistance;
+        const isClockwise = data.triggerSetConfig.celestriad === 'clockwise';
+
+        const getDir16Towers = (towers: number[], clock: boolean): DirectionOutput16[] => {
+          const dirNum1 = towers[0] ?? -1;
+          if (towers.length === 2) {
+            const dirNum2 = towers[1] ?? -1;
+            const dirNumCW = dirNum1 < dirNum2 ? dirNum1 : dirNum2;
+            const dirNumCCW = dirNum1 > dirNum2 ? dirNum1 : dirNum2;
+            const dirCW = Directions.outputFrom16DirNum(dirNumCW);
+            const dirCCW = Directions.outputFrom16DirNum(dirNumCCW);
+
+            // Return in requested order
+            return clock ? [dirCW, dirCCW] : [dirCCW, dirCW];
+          }
+          return [Directions.outputFrom16DirNum(dirNum1)];
+        };
+
+        // No debuff player
+        if (res === undefined) {
+          // Check which towers have two
+          if (fireTowers.length === 2) {
+            const dir = getDir16Towers(fireTowers, isClockwise)[1];
+            if (dir === 'unknown' || dir === undefined)
+              return output.fireTower2!();
+            return output.fireTower2Dir!({ dir: output[dir]!() });
+          }
+          if (iceTowers.length === 2) {
+            const dir = getDir16Towers(iceTowers, isClockwise)[1];
+            if (dir === 'unknown' || dir === undefined)
+              return output.iceTower2!();
+            return output.iceTower2Dir!({ dir: output[dir]!() });
+          }
+          if (lightningTowers.length === 2) {
+            const dir = getDir16Towers(lightningTowers, isClockwise)[1];
+            if (dir === 'unknown' || dir === undefined)
+              return output.lightningTower2!();
+            return output.lightningTower2Dir!({ dir: output[dir]!() });
+          }
+          return output.twoTowerElement!();
+        }
+
+        // Players with vulnerability need to first determine where the tower
+        // matching their vulnerability is
+        const towers = data.celestriadDirNumToTower;
+        const elementOrder = [
+          towers[1], // Element 1 starts at NNE
+          towers[6], // Element 2 starts at SE
+          towers[12], // Element 3 starts at W
+        ];
+
+        // Get index of element matching player's resistance down
+        // As towers remain static we can resolve in circular order
+        // Next element is based on config: clockwise, or counterclockwise (wrap-around)
+        const idx = elementOrder.indexOf(res);
+        const configIdx = isClockwise ? 1 : 2;
+        const towerSet = data.celestriadTowerSet;
+        const nextIdx = (idx + configIdx + towerSet) % 3;
+        const tower = elementOrder[nextIdx];
+
+        if (tower === 'fire') {
+          const dir = getDir16Towers(fireTowers, isClockwise)[0];
+          if (dir === 'unknown' || dir === undefined)
+            return output.fire!();
+          return output.fireTowerDir!({ dir: output[dir]!() });
+        }
+        if (tower === 'ice') {
+          const dir = getDir16Towers(iceTowers, isClockwise)[0];
+          if (dir === 'unknown' || dir === undefined)
+            return output.ice!();
+          return output.iceTowerDir!({ dir: output[dir]!() });
+        }
+        if (tower === 'lightning') {
+          const dir = getDir16Towers(lightningTowers, isClockwise)[0];
+          if (dir === 'unknown' || dir === undefined)
+            return output.lightning!();
+          return output.lightningTowerDir!({ dir: output[dir]!() });
+        }
+
+        // Unknown tower order, use generic output
+        const vuln = output[res]!();
+        if (towerSet === 0)
+          return isClockwise
+            ? output.vulnTowerCW!({ tower: vuln })
+            : output.vulnTowerCCW!({ tower: vuln });
+        return isClockwise
+          ? output.nextElementCW!()
+          : output.nextElementCCW!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        fireTowerDir: {
+          en: 'Get ${dir} Fire',
+        },
+        iceTowerDir: {
+          en: 'Get ${dir} Ice',
+        },
+        lightningTowerDir: {
+          en: 'Get ${dir} Thunder',
+        },
+        fireTower2Dir: {
+          en: 'Get ${dir} Fire #2',
+        },
+        iceTower2Dir: {
+          en: 'Get ${dir} Ice #2',
+        },
+        lightningTower2Dir: {
+          en: 'Get ${dir} Thunder #2',
+        },
+        fire: {
+          en: 'Get Fire Tower',
+        },
+        ice: {
+          en: 'Get Ice Tower',
+        },
+        lightning: {
+          en: 'Get Thunder Tower',
+        },
+        fireTower2: {
+          en: 'Get Fire Tower #2',
+        },
+        iceTower2: {
+          en: 'Get Ice Tower #2',
+        },
+        lightningTower2: {
+          en: 'Get Thunder Tower #2',
+        },
+        twoTowerElement: {
+          en: 'Get Two Element Tower',
+        },
+        vulnTowerCW: {
+          en: 'Get Tower CW of ${tower}',
+        },
+        vulnTowerCCW: {
+          en: 'Get Tower CCW of ${tower}',
+        },
+        nextElementCW: {
+          en: 'Get Next Element CW',
+        },
+        nextElementCCW: {
+          en: 'Get Next Element CCW',
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Catastrophic Choice',
+      // C24E follows up with BB4A Quake (Chariot)
+      // C24F follows up with BB4B Tornado (Dynamo)
+      // Occurs about 1s after towers appear
+      type: 'StartsUsing',
+      netRegex: { id: ['C24E', 'C24F'], source: 'Kefka', capture: true },
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'C24E')
+          return output.out!();
+        return output.in!();
+      },
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+      },
+    },
+    {
+      id: 'DMU P5 Stray Apocalypse Location',
+      // 2 Exaflares start NW, and alternate NE every 3s
+      // There are 6 total
+      // They have 3 patterns they can spawn in:
+      // Looking NE/NW: Left safe, middle safe, right safe
+      // 2 safe rows in left/right pattern, 3 rows for middle; one row is large
+      // (85, 80) Northwest + (70, 95) West => NW Right pattern
+      // (115, 80) Northeast + (130, 95) East => NE Left pattern
+      // (90, 75) NNW + (75, 90) WNW => NW Middle pattern
+      // (110, 75) NNE + (125, 90) ENE => NE Middle pattern
+      // (95, 70) N + (80, 85) NW => NW Left pattern
+      // (105, 70) N + (120, 85) NE => NE Right pattern
+      // Only need 1 Exa to know the pattern
+      // StartsUsing lines can have bad data
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'BB3C', capture: true },
+      durationSeconds: 3.1,
+      suppressSeconds: 1,
+      infoText: (_data, matches, output) => {
+        const x = parseFloat(matches.x);
+
+        if (
+          (x < 71) || // West
+          (x > 84 && x < 86) // Northwest
+        )
+          return output.rightSafeNW!();
+        if (
+          (x > 129) || // East
+          (x > 114 && x < 116) // Northeast
+        )
+          return output.leftSafeNE!();
+
+        if (
+          (x > 89 && x < 91) || // NNW
+          (x > 74 && x < 76) // WNW
+        )
+          return output.middleSafeNW!();
+        if (
+          (x > 109 && x < 111) || // NNE
+          (x > 124 && x < 125) // ENE
+        )
+          return output.middleSafeNE!();
+
+        if (
+          (x > 94 && x < 96) || // N
+          (x > 79 && x < 81) // NW
+        )
+          return output.leftSafeNW!();
+        if (
+          (x > 104 && x < 106) || // N
+          (x > 119 && x < 121) // NE
+        )
+          return output.rightSafeNE!();
+      },
+      outputStrings: {
+        rightSafeNW: {
+          en: 'NW: Right', // Right Out (NNE to ENE) + Left In (WNW to SSE)
+        },
+        leftSafeNW: {
+          en: 'NW: Left', // Left Out (WSW to SSW) + Right In (NNW to ESE)
+        },
+        middleSafeNW: {
+          en: 'NW: Middle', // Middle (NW to SE) + Out (NE/SW)
+        },
+        rightSafeNE: {
+          en: 'NE: Right', // Right Out (ESE to SSE) + Left In (NNE to WSW)
+        },
+        leftSafeNE: {
+          en: 'NE: Left', // Left Out (NNW to WNW) + Right In (ENE to SSW)
+        },
+        middleSafeNE: {
+          en: 'NE: Middle', // Middle (NE to SW) + Out (NW/SE)
+        },
+      },
+    },
+    {
+      id: 'DMU P5 Stray Entropy Spread',
+      // This occurs during last set of exaflares
+      type: 'StartsUsing',
+      netRegex: { id: 'BB3E', source: 'Kefka', capture: false },
+      response: Responses.spread('alert'),
+    },
+    {
+      id: 'DMU P5 Forsaken Cast Counter',
+      // BB35 Forsaken (Initial Cast)
+      // BB38 Forsaken (Subsequent VFX casts)
+      // The Forsaken Bonds stack is counted via DMU P3 Knock Down Collect and P5 Forsaken Counter
+      type: 'StartsUsing',
+      netRegex: { id: ['BB35', 'BB38'], source: 'Kefka', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.forsakenCount = data.forsakenCount + 1,
+    },
+    {
+      id: 'DMU P5 Forsaken',
+      // 9.7s castTime
+      // This is followed by three untelegraphed BB36 roughly every 8.1s
+      type: 'StartsUsing',
+      netRegex: { id: 'BB35', source: 'Kefka', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.bigAoe!(),
+        });
+      },
+      outputStrings: {
+        ...forsakenP5OutputStrings,
+        bigAoe: Outputs.bigAoe,
+      },
+    },
+    {
+      id: 'DMU P5 Forsaken Bonds',
+      // BB39 Forsaken Bonds
+      // This same headmarker is used for P3's Knock Down
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: true },
+      condition: (data) => data.phase === 'p5',
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+        const stack = target === data.me
+          ? output.stackOnYou!()
+          : output.stackOnTarget!({ player: data.party.member(target) });
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: stack,
+        });
+      },
+      outputStrings: {
+        ...forsakenP5OutputStrings,
+        stackOnYou: Outputs.stackOnYou,
+        stackOnTarget: Outputs.stackOnPlayer,
+      },
+    },
+    {
+      id: 'DMU P5 Forsaken (Untelegraphed)',
+      // Last Forsaken doesn't do damage
+      // Using headmarker rather than timelinetrigger
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['stompStack'], capture: false },
+      condition: (data) => data.phase === 'p5' && data.forsakenCount < 8,
+      delaySeconds: 3.1, // ~8.1s after headmarker is the AOE
+      alertText: (data, _matches, output) => {
+        return output.numMech!({
+          num: data.forsakenCount,
+          mech: output.bigAoe!(),
+        });
+      },
+      outputStrings: {
+        ...forsakenP5OutputStrings,
+        bigAoe: Outputs.bigAoe,
+      },
     },
   ],
   timelineReplace: [
