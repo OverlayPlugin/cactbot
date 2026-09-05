@@ -31,6 +31,7 @@ import {
   TriggerOutput,
 } from '../types/trigger';
 
+import type { Lang } from './languages';
 import Outputs from './outputs';
 
 type TargetedResponseOutput = ResponseOutput<Data, TargetedMatches>;
@@ -162,6 +163,28 @@ const staticResponse = (field: SevText, text: LocaleText): StaticResponseFunc =>
       [field]: (_data: unknown, _matches: unknown, output: Output) => output.text?.(),
     };
   };
+};
+
+export const combineLocaleText = (
+  first: LocaleText,
+  ...rest: [sep: string, text: LocaleText][]
+): LocaleText => {
+  const parts: [sep: string, text: LocaleText][] = [['', first], ...rest];
+  const langs = new Set<Lang>(['en']);
+
+  for (const [, text] of parts) {
+    for (const lang of Object.keys(text))
+      langs.add(lang as Lang);
+  }
+
+  const result: Record<string, string> = {};
+  for (const lang of langs) {
+    result[lang] = parts
+      .map(([sep, text]) => `${sep}${text[lang] ?? text.en}`)
+      .join('');
+  }
+
+  return result as LocaleText;
 };
 
 type SingleSevToResponseFunc = (sev?: Severity) => TargetedResponseFunc | StaticResponseFunc;
@@ -624,6 +647,21 @@ export const Responses = {
   wakeUp: (sev?: Severity) => staticResponse(defaultAlarmText(sev), Outputs.wakeUp),
   getTowers: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.getTowers),
 } as const;
+
+// Example usage:
+// {
+//   id: 'Some In => Out Mechanic',
+//   type: 'StartsUsing',
+//   netRegex: { id: '0000', source: 'Name' },
+//   response: compose(Outputs.in, [' => ', Outputs.out])(),
+// },
+export const compose = (
+  first: LocaleText,
+  ...rest: [sep: string, text: LocaleText][]
+): SingleSevToResponseFunc => {
+  return (sev?: Severity) =>
+    staticResponse(defaultInfoText(sev), combineLocaleText(first, ...rest));
+};
 
 // Don't give `Responses` a type in its declaration so that it can be treated as more strict
 // than `ResponsesMap`, but do assert that its type is correct.  This allows callers to know
