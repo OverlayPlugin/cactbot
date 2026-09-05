@@ -126,8 +126,8 @@ hideall "--sync--"
 22053.5 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 
 # Twin Terror Branch 1
-22058.8 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-sides"
-22058.8 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-middle"
+22058.8 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-middle"
+22058.8 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-sides"
 22064.8 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
 22076.9 "Two Terrors (Middle/Sides)?" #Ability { id: "C5DF", source: "Green Head" }
 22087.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
@@ -136,14 +136,14 @@ hideall "--sync--"
 22103.5 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
 22103.5 "--knockback?--"
 
-22158.8 label "oc-two-headed-aevis-terror1-sides"
+22158.8 label "oc-two-headed-aevis-terror1-middle"
 22163.8 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
 22164.8 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
 22175.9 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
 22176.9 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
 22184.2 "--sync--" StartsUsing { id: "C23A", source: "Green Head" } forcejump "oc-two-headed-aevis-terror1-end"
 
-22258.8 label "oc-two-headed-aevis-terror1-middle"
+22258.8 label "oc-two-headed-aevis-terror1-sides"
 22263.8 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
 22264.8 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
 22275.9 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
@@ -351,20 +351,20 @@ hideall "--sync--"
 23294.9 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
 # Twin Terror Branch 2 (Loop version)
-23299.6 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-sides"
-23299.6 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-middle"
+23299.6 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-middle"
+23299.6 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-sides"
 23305.6 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
 23325.0 "Summon" #Ability { id: "BA58", source: "Green Head" }
 23332.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
 23346.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
 23346.0 "--knockback--"
 
-23399.6 label "oc-two-headed-aevis-terror2-sides"
+23399.6 label "oc-two-headed-aevis-terror2-middle"
 23404.6 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
 23405.6 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
 23412.9 "--sync--" StartsUsing { id: "BA81", source: "Green Head" } forcejump "oc-two-headed-aevis-terror2-end"
 
-23499.6 label "oc-two-headed-aevis-terror2-middle"
+23499.6 label "oc-two-headed-aevis-terror2-sides"
 23504.6 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
 23505.6 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
 
