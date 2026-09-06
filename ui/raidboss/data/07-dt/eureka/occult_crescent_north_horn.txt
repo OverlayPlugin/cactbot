@@ -495,8 +495,8 @@ hideall "--sync--"
 31052.3 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
 31055.7 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
 31065.7 "The First Song (Top)?" Ability { id: "BED2", source: "Tower Slime" }
-31085.1 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
 31079.8 "--sync--" StartsUsing { id: "C650", source: "Tower Slime" }
+31085.1 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
 31088.5 "Rupture (Small + Bottom)?" #Ability { id: "C651", source: "Tower Slime" }
 31089.5 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
 31089.8 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
@@ -505,8 +505,8 @@ hideall "--sync--"
 31106.4 "Disillusioning Swing (Bottom)" Ability { id: "BED0", source: "Scale-smasher" }
 31114.7 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
 31123.1 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
-31128.1 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
 31124.7 "The First Song (Top)?" Ability { id: "BED2", source: "Tower Slime" }
+31128.1 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
 31143.2 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
 31146.5 "--sync--" StartsUsing { id: "C651", source: "Tower Slime" }
 31147.8 "--sync--" StartsUsing { id: "C650", source: "Tower Slime" }
