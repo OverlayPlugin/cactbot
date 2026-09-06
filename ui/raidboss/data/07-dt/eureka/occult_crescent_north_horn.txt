@@ -57,8 +57,8 @@ hideall "--sync--"
 
 22405.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-normal"
 22405.1 "--sync--" StartsUsing { id: "B97A", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-extreme"
-#224010.1 "Hail of Hellflares (castbar)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
-#224011.0 "Hail of Hellflares 1" Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
+#22410.1 "Hail of Hellflares (castbar)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
+#22411.0 "Hail of Hellflares 1" Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
 
 ### Index
 # The Epistemology Theater will be sealed off
