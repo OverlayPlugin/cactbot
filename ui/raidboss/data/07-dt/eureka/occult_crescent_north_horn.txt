@@ -531,7 +531,7 @@ hideall "--sync--"
 # Enrage Sequence
 # NOTE: Once the first Storm Generator is killed, the remaining Storm Generators start this cast
 31500.0 "--sync--" StartsUsing { id: "C42A", source: "Storm Generator" } window 500,500
-31520.0 "Calamitous Thunderclap" { id: "C42A", source: "Storm Generator" }
+31520.0 "Calamitous Thunderclap" Ability { id: "C42A", source: "Storm Generator" }
 
 # Enrage Loop
 # NOTE: Tower Slimes and Sacale-smasher mechanics continue on loop as well, but due to timing of enrage start tracking is lost
