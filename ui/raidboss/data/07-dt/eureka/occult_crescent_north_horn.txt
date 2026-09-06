@@ -24,7 +24,7 @@ hideall "--sync--"
 22000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1573" } window 100000,0
 22004.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" } # Normal
 22004.1 "--sync--" Ability { id: "C618", source: "Blue Head" } # Extreme
-23007.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" } # Normal
+22007.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" } # Normal
 22007.1 "--sync--" Ability { id: "C618", source: "Blue Head" } # Extreme
 22015.1 "Buffet" Ability { id: "C23E", source: "Green Head" }
 22015.9 "--single target--" #GainsEffect { effectId: ['1518', '1519'] } # Epic Villain (Green Head)/Fated Villain (Blue Head)
