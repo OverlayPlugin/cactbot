@@ -537,7 +537,7 @@ hideall "--sync--"
 31520.0 "Calamitous Thunderclap" Ability { id: "C42A", source: "Storm Generator" }
 
 # Enrage Loop
-# NOTE: Tower Slimes and Sacale-smasher mechanics continue on loop as well, but due to timing of enrage start tracking is lost
+# NOTE: Tower Slimes and Scale-smasher mechanics continue on loop as well, but due to timing of enrage start tracking is lost
 # We would need to support independent, simultaneous loops
 31521.7 "Calamitous Thunderclap (Enrage)" Ability { id: "C4F3", source: "Storm Generator" }
 31521.7 label "oc-storm-generator-enrage-loop"
