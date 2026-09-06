@@ -456,8 +456,8 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 29006.0 label "oc-sword-dancer-extreme"
-#27011.0 "Sword Storm (castbar)" Ability { id: "C20B", source: "Sword Dancer" }
-#27012.0 "Sword Storm" Ability { id: "C216", source: "Sword Dancer" }
+#29011.0 "Sword Storm (castbar)" Ability { id: "C20B", source: "Sword Dancer" }
+#29012.0 "Sword Storm" Ability { id: "C216", source: "Sword Dancer" }
 
 ### Storm Generators (Extreme)
 # TODO: Network log, addedcombatants for slimes, verify param1
@@ -543,7 +543,7 @@ hideall "--sync--"
 
 ### Necrophobia (Normal)
 # -ii
-# -p B95C:31010.1
+# -p B95C:32010.1
 # -it "Necrophobia"
 # IGNORED ABILITIES
 #
@@ -556,7 +556,7 @@ hideall "--sync--"
 
 ### Necrophobia (Extreme)
 # -ii
-# -p B97A:33010.1
+# -p B97A:34010.1
 # -it "Necrophobia"
 # IGNORED ABILITIES
 #
@@ -569,7 +569,7 @@ hideall "--sync--"
 
 ### Index (Normal)
 # -ii
-# -p BD1F:35011.0
+# -p BD1F:36011.0
 # -it "Index" "Summoned Bomb"
 # IGNORED ABILITIES
 #
@@ -582,7 +582,7 @@ hideall "--sync--"
 
 ### Index (Extreme)
 # -ii
-# -p BD17:37012.0
+# -p BD17:38012.0
 # -it "Index" "Summoned Bomb" "Summoned Bird"
 # IGNORED ABILITIES
 #
