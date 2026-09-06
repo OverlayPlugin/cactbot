@@ -511,6 +511,7 @@ hideall "--sync--"
 31157.8 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
 31160.3 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
 
+# Loop Begins?
 31172.5 label "oc-storm-generator-loop"
 31172.5 "Disillusioning Swing (Bottom)" Ability { id: "BED0", source: "Scale-smasher" }
 31180.4 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
@@ -526,6 +527,8 @@ hideall "--sync--"
 31226.4 "Thunderclap Concerto?" #Ability { id: "BECF", source: "Storm Generator" } # NOTE: This is estimated
 31229.0 "Rupture (Small + Bottom)?" #Ability { id: "C651", source: "Tower Slime" }
 31230.3 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
+
+# Loop
 31238.5 "--sync--" Ability { id: "BED0", source: "Scale-smasher" } forcejump "oc-storm-generator-loop"
 
 # Enrage Sequence
