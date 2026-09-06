@@ -41,7 +41,6 @@ hideall "--sync--"
 22043.4 "Storm's Breath (Normal)?" #Ability { id: "B9FD", source: "Green Head" }
 22043.5 "--knockback?--" # Normal
 22052.6 "Thunderfrost Tempest (castbar)?" #Ability { id: "BA77", source: "Green Head" } # Normal
-22115.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
 
 ### Sword Dancer
 # The Choreology Room will be sealed off
@@ -51,7 +50,6 @@ hideall "--sync--"
 22206.0 "--sync--" StartsUsing { id: "C20B", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-extreme"
 #22211.0 "Sword Storm (castbar)" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
 #22212.0 "Sword Storm" #Ability { id: ["C214", "C216"], source: "Sword Dancer" } # Normal/Extreme
-22315.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
 
 ### Necrophobia
 # The Thanatology Room will be sealed off
@@ -61,7 +59,6 @@ hideall "--sync--"
 22405.1 "--sync--" StartsUsing { id: "B97A", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-extreme"
 #224010.1 "Hail of Hellflares (castbar)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
 #224011.0 "Hail of Hellflares 1" Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
-22515.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
 
 ### Index
 # The Epistemology Theater will be sealed off
@@ -75,7 +72,6 @@ hideall "--sync--"
 #22612.0 "Dualcast (Extreme)?" #Ability { id: "BD17", source: "Index" }
 #22619.1 "Flare (castbar)?" #Ability { id: "BD1F", source: "Index" } # Extreme
 #22620.0 "Flare 1 (Extreme)?" #Ability { id: "BD48", source: "Index" }
-22715.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
 
 ### Two-headed Aevis (Normal)
 # NOTE: Some abilities come out as Two-headed Aevis, an invisible actor located between both heads
@@ -597,5 +593,3 @@ hideall "--sync--"
 #38012.0 "Dualcast" Ability { id: "BD17", source: "Index" }
 #38019.1 "Flare (castbar)" Ability { id: "BD1F", source: "Index" }
 #38020.0 "Flare 1" Ability { id: "BD48", source: "Index" }
-
-40000.0 label "oc-forked-tower-magic-end"
