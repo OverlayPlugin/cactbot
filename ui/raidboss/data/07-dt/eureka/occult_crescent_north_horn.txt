@@ -15,12 +15,72 @@ hideall "--sync--"
 # into the critical encounter happen much later.
 
 ### The Forked Tower: Magic
+# NOTE: Due to Extreme version also sharing data0 parameters and seal parameters, jumps to the
+# start of the timeline will need to be based on abilities
 #21000.0 "--sync--" ActorControl { command: "80000014", data0: "389" } window 100000,0
 
 ### Two-headed Aevis
+# The Herpetology Forum will be sealed off
+22000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1573" } window 100000,0
+22004.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" } # Normal
+22004.1 "--sync--" Ability { id: "C618", source: "Blue Head" } # Extreme
+23007.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" } # Normal
+22007.1 "--sync--" Ability { id: "C618", source: "Blue Head" } # Extreme
+22015.1 "Buffet" Ability { id: "C23E", source: "Green Head" }
+22015.9 "--single target--" #GainsEffect { effectId: ['1518', '1519'] } # Epic Villain (Green Head)/Fated Villain (Blue Head)
+
+22019.3 "--sync--" StartsUsing { id: "BA0F", source: "Green Head" } window 20,50 jump "oc-two-headed-aevis-extreme-breath1-storm"
+22019.3 "--sync--" StartsUsing { id: "C61D", source: "Blue Head" } window 20,50 jump "oc-two-headed-aevis-extreme-breath1-poison"
+22020.3 "--sync--" StartsUsing { id: "C61B", source: "Blue Head" } window 21,50 jump "oc-two-headed-aevis-normal"
+22028.3 "Poison Breath (Normal)?" #Ability { id: "C61B", source: "Blue Head" }
+22028.3 "Storm's Breath/Poison Breath (Extreme)?" #Ability { id: ["BA0F", "C61D"], source: ["Green Head, "Blue Head"] }
+22028.3 "--knockback?--" # Extreme
+22028.3 "Freezing Fugue/Fulgurous Fugue (Extreme)?" #Ability { id: ["BA11", "BA10"], source: ["Blue Head", "Green Head"] }
+22036.4 "Thunderfrost Tempest (castbar)?" #Ability { id: "BA7B", source: "Green Head" } # Extreme
+22037.3 "Thunderfrost Tempest (Extreme)?" #Ability { id: "BA7C", source: "Green Head" }
+22043.4 "Storm's Breath (Normal)?" #Ability { id: "B9FD", source: "Green Head" }
+22043.5 "--knockback?--" # Normal
+22052.6 "Thunderfrost Tempest (castbar)?" #Ability { id: "BA77", source: "Green Head" } # Normal
+22115.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
+
+### Sword Dancer
+# The Choreology Room will be sealed off
+22200.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1574" } window 100000,0
+
+22206.0 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-normal"
+22206.0 "--sync--" StartsUsing { id: "C20B", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-extreme"
+#22211.0 "Sword Storm (castbar)" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
+#22212.0 "Sword Storm" #Ability { id: ["C214", "C216"], source: "Sword Dancer" } # Normal/Extreme
+22315.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
+
+### Necrophobia
+# The Thanatology Room will be sealed off
+22400.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1575" } window 100000,0
+
+22405.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-normal"
+22405.1 "--sync--" StartsUsing { id: "B97A", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-extreme"
+#224010.1 "Hail of Hellflares (castbar)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
+#224011.0 "Hail of Hellflares 1" Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
+22515.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
+
+### Index
+# The Epistemology Theater will be sealed off
+22600.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1576" } window 100000,0
+22603.0 "--sync--" Ability { id: ["BD25", "BD49"], source: "Index" } # Normal/Extreme
+
+22606.0 "--sync--" StartsUsing { id: "BD1F", source: "Index" } window 10,50 jump "oc-index-normal" # Extreme will cast this as well, but at later point
+22609.0 "--sync--" StartsUsing { id: "BD17", source: "Index" } window 10,50 jump "oc-index-extreme"
+#22611.0 "Flare (castbar)?" #Ability { id: "BD1F", source: "Index" } # Normal
+#22611.9 "Flare (Normal)?" #Ability { id: "BD21", source: "Index" }
+#22612.0 "Dualcast (Extreme)?" #Ability { id: "BD17", source: "Index" }
+#22619.1 "Flare (castbar)?" #Ability { id: "BD1F", source: "Index" } # Extreme
+#22620.0 "Flare 1 (Extreme)?" #Ability { id: "BD48", source: "Index" }
+22715.1 forcejump "oc-forked-tower-magic-end" # Jump far ahead if sync missed
+
+### Two-headed Aevis (Normal)
 # NOTE: Some abilities come out as Two-headed Aevis, an invisible actor located between both heads
 # -ii BA00 BA01 BA1C BA1D BA29 BA2A BA59 BA78 BA7A BA82 BA83 BA84 BA89 BA8A BC73 BE02 C235 C23B C23F C5E2 C609 C60A C60F C610 C611 C615 C616
-# -p C23E:22015.1
+# -p C23E:23015.1
 # -it "Blue Head" "Green Head" "Two-headed Aevis"
 # IGNORED ABILITIES
 # BA00 Storm's Breath: 7.7s cast by Green Head, point knockback, same time as B9FD and BC73
@@ -110,266 +170,432 @@ hideall "--sync--"
 # C615 --sync--: Auto-attack from Green Head
 # C616 --sync--: Auto-attack from Blue Head
 # C61B Poison Breath: 7.7s cast by Blue Head at same time as BA01 Poison Breath
-# The Herpetology Forum will be sealed off
-22000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1573" } window 100000,0
-22004.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" }
-22007.0 "--sync--" Ability { id: "BA8A", source: "Blue Head" }
-22010.1 "--sync--" StartsUsing { id: "C23E", source: "Green Head" } window 100,50
-22015.1 "Buffet" Ability { id: "C23E", source: "Green Head" }
-22015.9 "--single target--" GainsEffect { effectId: ['1518', '1519'] } # Epic Villain (Green Head)/Fated Villain (Blue Head)
-22027.4 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
-22028.3 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
-22042.6 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
-22043.5 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
-22043.5 "--knockback--"
-22052.6 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
-22053.5 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+23020.3 label "oc-two-headed-aevis-normal"
+23027.4 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
+23028.3 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
+23042.6 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
+23043.5 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
+23043.5 "--knockback--"
+23052.6 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23053.5 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 
 # Twin Terror Branch 1
-22058.8 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-middle"
-22058.8 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-sides"
-22064.8 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
-22076.9 "Two Terrors (Middle/Sides)?" #Ability { id: "C5DF", source: "Green Head" }
-22087.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
-22101.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
-22101.0 "--knockback--"
-22103.5 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-22103.5 "--knockback?--"
+23058.8 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-middle"
+23058.8 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror1-sides"
+23064.8 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
+23076.9 "Two Terrors (Middle/Sides)?" #Ability { id: "C5DF", source: "Green Head" }
+23087.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
+23101.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
+23101.0 "--knockback--"
+23103.5 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
+23103.5 "--knockback?--"
 
-22158.8 label "oc-two-headed-aevis-terror1-middle"
-22163.8 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
-22164.8 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
-22175.9 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
-22176.9 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
-22184.2 "--sync--" StartsUsing { id: "C23A", source: "Green Head" } forcejump "oc-two-headed-aevis-terror1-end"
+23158.8 label "oc-two-headed-aevis-terror1-middle"
+23163.8 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
+23164.8 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
+23175.9 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
+23176.9 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
+23184.2 "--sync--" StartsUsing { id: "C23A", source: "Green Head" } forcejump "oc-two-headed-aevis-terror1-end"
 
-22258.8 label "oc-two-headed-aevis-terror1-sides"
-22263.8 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
-22264.8 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
-22275.9 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
-22276.9 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
+23258.8 label "oc-two-headed-aevis-terror1-sides"
+23263.8 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
+23264.8 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
+23275.9 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
+23276.9 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
 
-22284.1 label "oc-two-headed-aevis-terror1-end"
-22287.1 "Hissing Reprise" Ability { id: "C23A", source: "Green Head" }
+23284.1 label "oc-two-headed-aevis-terror1-end"
+23287.1 "Hissing Reprise" Ability { id: "C23A", source: "Green Head" }
 
 # Storm's Breath or Poison Breath Branch 1
-22295.4 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath1-storm"
-22295.4 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath1-poison"
-22301.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
-22301.0 "--knockback--"
-22303.5 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-22303.5 "--knockback?--"
-22313.8 "Summon" #Ability { id: "BA58", source: "Green Head" }
-22325.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
-22325.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22327.4 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-22332.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22333.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
-22335.1 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-22341.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
+23295.4 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath1-storm"
+23295.4 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath1-poison"
+23301.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
+23301.0 "--knockback--"
+23303.5 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
+23303.5 "--knockback?--"
+23313.8 "Summon" #Ability { id: "BA58", source: "Green Head" }
+23325.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
+23325.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23327.4 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
+23332.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23333.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
+23335.1 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
+23341.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
 
-22395.4 label "oc-two-headed-aevis-breath1-storm"
-22401.0 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
-22401.0 "--knockback--"
-22402.6 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
-22403.5 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
-22403.5 "--knockback--"
-22410.8 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-breath1-end"
+23395.4 label "oc-two-headed-aevis-breath1-storm"
+23401.0 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
+23401.0 "--knockback--"
+23402.6 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
+23403.5 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
+23403.5 "--knockback--"
+23410.8 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-breath1-end"
 
-22495.4 label "oc-two-headed-aevis-breath1-poison"
-22501.0 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
-22501.0 "--knockback--"
-22502.6 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
-22503.5 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
+23495.4 label "oc-two-headed-aevis-breath1-poison"
+23501.0 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
+23501.0 "--knockback--"
+23502.6 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
+23503.5 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
 
 # Boss summons 4 Swirling Orbs => 4 Ball Lightnings or 4 Ball Lightnings => 4 Swirling Orbs
-22510.8 label "oc-two-headed-aevis-breath1-end"
-22513.8 "Summon" Ability { id: "BA58", source: "Green Head" }
-22514.4 "--ice/lightning orbs?--"
-22514.4 "--sync--" AddedCombatant { name: "Swirling Orb" } jump "oc-two-headed-aevis-summon1-ice"
-22514.4 "--sync--" AddedCombatant { name: "Ball Lightning" } jump "oc-two-headed-aevis-summon1-lightning"
-22525.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
-22525.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22527.4 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
-22532.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22533.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
-22535.1 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
-22541.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
-22541.9 "--lighning/ice orbs?--" #AddedCombatant { name: ["Ball Lightning", "Swirling Orb"] }
-22552.6 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
-22552.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22555.0 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
-22559.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22560.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
-22562.7 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
+23510.8 label "oc-two-headed-aevis-breath1-end"
+23513.8 "Summon" Ability { id: "BA58", source: "Green Head" }
+23514.4 "--ice/lightning orbs?--"
+23514.4 "--sync--" AddedCombatant { name: "Swirling Orb" } jump "oc-two-headed-aevis-summon1-ice"
+23514.4 "--sync--" AddedCombatant { name: "Ball Lightning" } jump "oc-two-headed-aevis-summon1-lightning"
+23525.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
+23525.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23527.4 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
+23532.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23533.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
+23535.1 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
+23541.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
+23541.9 "--lighning/ice orbs?--" #AddedCombatant { name: ["Ball Lightning", "Swirling Orb"] }
+23552.6 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
+23552.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23555.0 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
+23559.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23560.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
+23562.7 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
 
 # Boss summons 4 Swirling Orbs => 4 Ball Lightnings
 # Bosses can target Left/Right or Right/Left
-22614.4 label "oc-two-headed-aevis-summon1-ice"
-22624.3 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
-22625.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
-22625.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22627.4 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
-22632.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22633.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
-22635.1 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
+23614.4 label "oc-two-headed-aevis-summon1-ice"
+23624.3 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
+23625.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
+23625.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23627.4 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
+23632.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23633.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+23635.1 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
 
 # Boss Summons 4 Ball Lightnings
 # Bosses can target Front/Back or Back/Front
-22641.4 "Summon" Ability { id: "BA58", source: "Green Head" }
-22642.1 "--lighning orbs--" #AddedCombatant { name: "Ball Lightning" }
-22652.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
-22652.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
-22652.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22655.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-22659.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
-22660.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
-22662.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-22667.2 "--sync--" StartsUsing { id: "BA26", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-summon1-end"
+23641.4 "Summon" Ability { id: "BA58", source: "Green Head" }
+23642.1 "--lighning orbs--" #AddedCombatant { name: "Ball Lightning" }
+23652.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
+23652.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
+23652.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23655.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+23659.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23660.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+23662.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+23667.2 "--sync--" StartsUsing { id: "BA26", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-summon1-end"
 
 # Boss summons 4 Ball Lightnings => 4 Swirling Orbs
 # Bosses can target Left/Right or Right/Left
-22714.4 label "oc-two-headed-aevis-summon1-lightning"
-22724.3 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
-22725.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
-22725.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22727.4 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-22732.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22733.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
-22735.1 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+23714.4 label "oc-two-headed-aevis-summon1-lightning"
+23724.3 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
+23725.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
+23725.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23727.4 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+23732.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23733.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+23735.1 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
 
 # Boss Summons 4 Swirling Orbs
 # Bosses can target Front/Back or Back/Front
-22741.4 "Summon" Ability { id: "BA58", source: "Green Head" }
-22742.1 "--ice orbs--" #AddedCombatant { name: "Swirling Orb" }
-22752.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
-22752.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
-22752.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22755.0 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
-22759.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
-22760.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
-22762.7 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
+23741.4 "Summon" Ability { id: "BA58", source: "Green Head" }
+23742.1 "--ice orbs--" #AddedCombatant { name: "Swirling Orb" }
+23752.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
+23752.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
+23752.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23755.0 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
+23759.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23760.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+23762.7 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
 
-22767.2 label "oc-two-headed-aevis-summon1-end"
+23767.2 label "oc-two-headed-aevis-summon1-end"
 
 # Blazeloop Tutorial
-22772.4 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
-22773.2 "Blazeloop (castbar)" Ability { id: "BA26", source: ["Blue Head", "Green Head"] }
-22773.2 "Blaze" #Ability { id: "BA2B", source: ["Blue Head", "Green Head"] }
-22775.8 "Blazeloop" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+23772.4 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
+23773.2 "Blazeloop (castbar)" Ability { id: "BA26", source: ["Blue Head", "Green Head"] }
+23773.2 "Blaze" #Ability { id: "BA2B", source: ["Blue Head", "Green Head"] }
+23775.8 "Blazeloop" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
-22786.7 "--sync--" Ability { id: ["BA28", "BA27"], source: "Two-headed Aevis" }
-22787.5 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
-22787.5 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
-22790.1 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-22790.9 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
-22791.7 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
+23786.7 "--sync--" Ability { id: ["BA28", "BA27"], source: "Two-headed Aevis" }
+23787.5 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+23787.5 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
+23790.1 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+23790.9 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+23791.7 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
 
 # Storm's Breath or Poison Breath Branch 2
-22793.9 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-storm"
-22793.9 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-poison"
-22794.3 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-22802.0 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-22802.0 "--knockback?--"
-22810.2 "Summon" #Ability { id: "BA58", source: "Green Head" }
-22817.3 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
-22831.2 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
-22831.2 "--knockback--"
-22835.6 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
-22835.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-22838.0 "Shock" #Ability { id: "BA5A", source: "Ball Lightning" }
-22838.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-22842.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
-22843.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
+23793.9 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-storm"
+23793.9 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath2-poison"
+23794.3 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+23802.0 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
+23802.0 "--knockback?--"
+23810.2 "Summon" #Ability { id: "BA58", source: "Green Head" }
+23817.3 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
+23831.2 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
+23831.2 "--knockback--"
+23835.6 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
+23835.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+23838.0 "Shock" #Ability { id: "BA5A", source: "Ball Lightning" }
+23838.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
+23842.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23843.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 
-22893.9 label "oc-two-headed-aevis-breath2-storm"
-22894.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-22901.1 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
-22902.0 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
-22902.0 "--knockback--"
-22907.3 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-loop"
+23893.9 label "oc-two-headed-aevis-breath2-storm"
+23894.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+23901.1 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
+23902.0 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
+23902.0 "--knockback--"
+23907.3 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-loop"
 
-22993.9 label "oc-two-headed-aevis-breath2-poison"
-22994.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-23001.1 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
-23002.0 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
+23993.9 label "oc-two-headed-aevis-breath2-poison"
+23994.3 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+24001.1 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
+24002.0 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
 
 # Loop Begins
-23007.2 label "oc-two-headed-aevis-loop"
-23010.2 "Summon" Ability { id: "BA58", source: "Green Head" }
-23017.3 "Hissing Reprise" Ability { id: "C23A", source: "Green Head" }
-23031.2 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
-23031.2 "--knockback--"
-23035.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
-23035.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
-23035.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
-23038.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-23038.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-23042.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
-23043.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
-23045.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-23045.7 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
+24007.2 label "oc-two-headed-aevis-loop"
+24010.2 "Summon" Ability { id: "BA58", source: "Green Head" }
+24017.3 "Hissing Reprise" Ability { id: "C23A", source: "Green Head" }
+24031.2 "Buffet" Ability { id: ["C23C", "C23D"], source: "Green Head" }
+24031.2 "--knockback--"
+24035.0 "--sync--" Ability { id: "BA1B", source: "Two-headed Aevis" }
+24035.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
+24035.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
+24038.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+24038.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
+24042.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+24043.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
+24045.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
+24045.7 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
 
-23056.1 "Arcane Revelation" Ability { id: "C234", source: "Green Head" }
+24056.1 "Arcane Revelation" Ability { id: "C234", source: "Green Head" }
 
 # Storm's Breath or Poison Breath Branch 3 (Loop version)
-23065.8 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-storm"
-23065.8 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-poison"
-23066.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
-23069.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
-23073.9 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-23073.9 "--knockback?--" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-23088.1 "Blazeloop (castbar)" #Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
-23088.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
-23090.7 "Blazeloop 1" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-23091.5 "Blazeloop (castbar)" #Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
-23092.3 "Blaze 2" #Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
-23094.9 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-23105.6 "Two Terrors" #Ability { id: "C5DF", source: "Green Head" }
+24065.8 "--sync--" StartsUsing { id: "B9FE", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-storm"
+24065.8 "--sync--" StartsUsing { id: "B9FF", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-breath3-poison"
+24066.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+24069.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
+24073.9 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
+24073.9 "--knockback?--" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
+24088.1 "Blazeloop (castbar)" #Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+24088.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
+24090.7 "Blazeloop 1" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+24091.5 "Blazeloop (castbar)" #Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+24092.3 "Blaze 2" #Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
+24094.9 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+24105.6 "Two Terrors" #Ability { id: "C5DF", source: "Green Head" }
 
-23165.8 label "oc-two-headed-aevis-breath3-storm"
-23166.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
-23169.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
-23173.0 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
-23173.9 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
-23173.9 "--knockback--"
-23182.2 "--sync--" StartsUsing { id: "BA2D", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-breath3-end"
+24165.8 label "oc-two-headed-aevis-breath3-storm"
+24166.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+24169.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
+24173.0 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
+24173.9 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
+24173.9 "--knockback--"
+24182.2 "--sync--" StartsUsing { id: "BA2D", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-breath3-end"
 
-23265.8 label "oc-two-headed-aevis-breath3-poison"
-23266.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
-23269.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
-23273.0 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
-23273.9 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
+24265.8 label "oc-two-headed-aevis-breath3-poison"
+24266.0 "Arcane Beacon 1" #Ability { id: "C238", source: "Arcane Font" }
+24269.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
+24273.0 "--sync--" Ability { id: "B9FF", source: "Two-headed Aevis" }
+24273.9 "Poison Breath" Ability { id: "C61B", source: "Blue Head" }
 
-23282.1 label "oc-two-headed-aevis-breath3-end"
-23287.3 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
-23288.1 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
-23288.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
-23290.7 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-23291.5 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
-23292.3 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
-23294.9 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+24282.1 label "oc-two-headed-aevis-breath3-end"
+24287.3 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
+24288.1 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+24288.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
+24290.7 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
+24291.5 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+24292.3 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
+24294.9 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
 # Twin Terror Branch 2 (Loop version)
-23299.6 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-middle"
-23299.6 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-sides"
-23305.6 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
-23325.0 "Summon" #Ability { id: "BA58", source: "Green Head" }
-23332.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
-23346.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
-23346.0 "--knockback--"
+24299.6 "--sync--" StartsUsing { id: "C5E0", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-middle"
+24299.6 "--sync--" StartsUsing { id: "C5E1", source: "Two-headed Aevis" } jump "oc-two-headed-aevis-terror2-sides"
+24305.6 "Two Terrors (Sides/Middle)?" #Ability { id: "C5DF", source: "Green Head" }
+24325.0 "Summon" #Ability { id: "BA58", source: "Green Head" }
+24332.1 "Hissing Reprise" #Ability { id: "C23A", source: "Green Head" }
+24346.0 "Buffet" #Ability { id: ["C23C", "C23D"], source: "Green Head" }
+24346.0 "--knockback--"
 
-23399.6 label "oc-two-headed-aevis-terror2-middle"
-23404.6 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
-23405.6 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
-23412.9 "--sync--" StartsUsing { id: "BA81", source: "Green Head" } forcejump "oc-two-headed-aevis-terror2-end"
+24399.6 label "oc-two-headed-aevis-terror2-middle"
+24404.6 "--sync--" Ability { id: "C5E0", source: "Two-headed Aevis" }
+24405.6 "Two Terrors (Sides)" Ability { id: "C5DF", source: "Green Head" }
+24412.9 "--sync--" StartsUsing { id: "BA81", source: "Green Head" } forcejump "oc-two-headed-aevis-terror2-end"
 
-23499.6 label "oc-two-headed-aevis-terror2-sides"
-23504.6 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
-23505.6 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
+24499.6 label "oc-two-headed-aevis-terror2-sides"
+24504.6 "--sync--" Ability { id: "C5E1", source: "Two-headed Aevis" }
+24505.6 "Two Terrors (Middle)" Ability { id: "C5DF", source: "Green Head" }
 
-23512.8 label "oc-two-headed-aevis-terror2-end"
-23517.8 "Archaeofury" Ability { id: "BA81", source: "Green Head" }
+24512.8 label "oc-two-headed-aevis-terror2-end"
+24517.8 "Archaeofury" Ability { id: "BA81", source: "Green Head" }
 
 # Loop
-23522.1 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-loop"
+24522.1 "--sync--" StartsUsing { id: "BA58", source: "Green Head" } forcejump "oc-two-headed-aevis-loop"
+
+### Two-headed Aevis (Extreme)
+# NOTE: Some abilities come out as Two-headed Aevis, an invisible actor located between both heads
+# -ii
+# -p C23E:25015.1
+# -it "Blue Head" "Green Head" "Two-headed Aevis"
+25019.3 label "oc-two-headed-aevis-extreme-breath1-poison"
+
+25119.3 label "oc-two-headed-aevis-extreme-breath1-storm"
+
+### Sword Dancer (Normal)
+# -ii
+# -p C1D1:27011.0
+# -it "Sword Dancer"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+27006.0 label "oc-sword-dancer-normal"
+#27011.0 "Sword Storm (castbar)" Ability { id: "C1D1", source: "Sword Dancer" }
+#27012.0 "Sword Storm" Ability { id: "C214", source: "Sword Dancer" }
+
+### Sword Dancer (Extreme)
+# -ii
+# -p C20B:29011.0
+# -it "Sword Dancer"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+29006.0 label "oc-sword-dancer-extreme"
+#27011.0 "Sword Storm (castbar)" Ability { id: "C20B", source: "Sword Dancer" }
+#27012.0 "Sword Storm" Ability { id: "C216", source: "Sword Dancer" }
+
+### Storm Generators (Extreme)
+# TODO: Network log, addedcombatants for slimes, verify param1
+# -ii 9E5E C255 C256
+# -p BED0:31041.5
+# -it "Storm Generator" "Tower Slime"
+# IGNORED ABILITIES
+# 9E5E --sync--: Auto-attack from Tower Slime
+# C255 The First Song: 10s cast by small black Tower Slime on top platform, starts shortly after BED2 starts casting, must be time frozen to interrupt, will do a 263k~590k unmitigated aoe
+# C256 The Last Song: 10s cast by small black Tower Slime, starts shortly after BED3 starts casting, ~19.2s after C255 The First Song
+#
+# ALL ENCOUNTER ABILITIES
+# 9E5E --sync--: Auto-attack from Tower Slime
+# BECF Thunderclap Concerto: 5s interruptible cast by Storm Generator, 516k~602k damage
+# BED0 Disillusioning Swing: 12s casted circle aoes by Scale-smashers, occurs on bottom two platforms, 568k~720k damage if hit, only top platform can see where the Scale-smashers are, can be E/W and/or N/S
+# BED2 The First Song: 10s cast by big black Tower Slime on top platform, must be time frozen to interrupt
+# BED3 The Last Song: 10s enrage cast by big black Tower Slime, ~19.4s after BED2 The First Song, ~25.8s if not interrupted
+# C42A Calamitous Thunderclap: 15s enrage cast by Storm Generator, 516k~602k damage, started once one Storm Generator dies
+# C4F3 Calamitous Thunderclap: enrage cast by Storm Generator, damage every 1.65s until killed, seeing it do ~500k to tanks unmitigated
+# C255 The First Song: 10s cast by small black Tower Slime on top platform, starts shortly after BED2 starts casting, must be time frozen to interrupt, will do a 263k~590k unmitigated aoe
+# C256 The Last Song: 10s cast by small black Tower Slime, starts shortly after BED3 starts casting, ~19.2s after C255 The First Song, ~25.9s if not interrupted
+# C650 Rupture: 10s enrage cast by big red Tower Slime (bottom slimes), ~29.9s from spawn
+# C651 Rupture: 10s enrage cast by small red Tower Slime (bottom slimes), ~28.6s from spawn
+# The Agniology Room will be sealed off
+31000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1577" } window 100000,0
+31005.3 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" } window 10,10
+31010.3 "Thunderclap Concerto?" #Ability { id: "BECF", source: "Storm Generator" }
+
+31041.5 "Disillusioning Swing (Bottom)" Ability { id: "BED0", source: "Scale-smasher" }
+31047.3 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
+31052.3 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
+31055.7 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
+31065.7 "The First Song (Top)?" Ability { id: "BED2", source: "Tower Slime" }
+31085.1 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
+31079.8 "--sync--" StartsUsing { id: "C650", source: "Tower Slime" }
+31088.5 "Rupture (Small + Bottom)?" #Ability { id: "C651", source: "Tower Slime" }
+31089.5 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
+31089.8 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
+31094.5 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
+
+31106.4 "Disillusioning Swing (Bottom)" Ability { id: "BED0", source: "Scale-smasher" }
+31114.7 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
+31123.1 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
+31128.1 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
+31124.7 "The First Song (Top)?" Ability { id: "BED2", source: "Tower Slime" }
+31143.2 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
+31146.5 "--sync--" StartsUsing { id: "C651", source: "Tower Slime" }
+31147.8 "--sync--" StartsUsing { id: "C650", source: "Tower Slime" }
+31155.3 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
+31156.5 "Rupture (Small + Bottom)?" #Ability { id: "C651", source: "Tower Slime" }
+31157.8 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
+31160.3 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
+
+31172.5 label "oc-storm-generator-loop"
+31172.5 "Disillusioning Swing (Bottom)" Ability { id: "BED0", source: "Scale-smasher" }
+31180.4 "--sync--" StartsUsing { id: "BED2", source: "Tower Slime" }
+31189.3 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" }
+31190.4 "The First Song?" Ability { id: "BED2", source: "Tower Slime" }
+31194.3 "Thunderclap Concerto?" Ability { id: "BECF", source: "Storm Generator" }
+31211.6 "The Last Song (Top)?" #Ability { id: "BED3", source: "Tower Slime" }
+31219.0 "--sync--" StartsUsing { id: "C651", source: "Tower Slime" }
+31220.3 "--sync--" StartsUsing { id: "C650", source: "Tower Slime" }
+
+# NOTE: The fight continues on, the Thunderclap Concerto here is assumed
+31221.4 "--sync--" StartsUsing { id: "BECF", source: "Storm Generator" } # NOTE: This is estimated
+31226.4 "Thunderclap Concerto?" #Ability { id: "BECF", source: "Storm Generator" } # NOTE: This is estimated
+31229.0 "Rupture (Small + Bottom)?" #Ability { id: "C651", source: "Tower Slime" }
+31230.3 "Rupture (Big + Bottom)?" #Ability { id: "C650", source: "Tower Slime" }
+31238.5 "--sync--" Ability { id: "BED0", source: "Scale-smasher" } forcejump "oc-storm-generator-loop"
+
+# Enrage Sequence
+# NOTE: Once the first Storm Generator is killed, the remaining Storm Generators start this cast
+31500.0 "--sync--" StartsUsing { id: "C42A", source: "Storm Generator" } window 500,500
+31520.0 "Calamitous Thunderclap" { id: "C42A", source: "Storm Generator" }
+
+# Enrage Loop
+# NOTE: Tower Slimes and Sacale-smasher mechanics continue on loop as well, but due to timing of enrage start tracking is lost
+# We would need to support independent, simultaneous loops
+31521.7 "Calamitous Thunderclap (Enrage)" Ability { id: "C4F3", source: "Storm Generator" }
+31521.7 label "oc-storm-generator-enrage-loop"
+31523.3 "Calamitous Thunderclap (Enrage)" Ability { id: "C4F3", source: "Storm Generator" } jump "oc-storm-generator-enrage-loop"
+31525.0 "Calamitous Thunderclap (Enrage)" Ability { id: "C4F3", source: "Storm Generator" }
+
+### Necrophobia (Normal)
+# -ii
+# -p B95C:31010.1
+# -it "Necrophobia"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+32005.1 label "oc-necrophobia-normal"
+#32010.1 "Hail of Hellflares (castbar)" Ability { id: "B95C", source: "Necrophobia" }
+#32011.0 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
+
+### Necrophobia (Extreme)
+# -ii
+# -p B97A:33010.1
+# -it "Necrophobia"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+34005.1 label "oc-necrophobia-extreme"
+#34010.1 "Hail of Hellflares (castbar)" Ability { id: "B97A", source: "Necrophobia" }
+#34011.0 "Hail of Hellflares 1" Ability { id: "B97B", source: "Necrophobia" }
+
+### Index (Normal)
+# -ii
+# -p BD1F:35011.0
+# -it "Index" "Summoned Bomb"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+36006.0 label "oc-index-normal"
+#36011.0 "Flare (castbar)" Ability { id: "BD1F", source: "Index" }
+#36011.9 "Flare" Ability { id: "BD21", source: "Index" }
+
+### Index (Extreme)
+# -ii
+# -p BD17:37012.0
+# -it "Index" "Summoned Bomb" "Summoned Bird"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+38009.0 label "oc-index-extreme"
+#38012.0 "Dualcast" Ability { id: "BD17", source: "Index" }
+#38019.1 "Flare (castbar)" Ability { id: "BD1F", source: "Index" }
+#38020.0 "Flare 1" Ability { id: "BD48", source: "Index" }
+
+40000.0 label "oc-forked-tower-magic-end"
