@@ -36,11 +36,11 @@ hideall "--sync--"
 22028.3 "Storm's Breath/Poison Breath (Extreme)?" #Ability { id: ["BA0F", "C61D"], source: ["Green Head, "Blue Head"] }
 22028.3 "--knockback?--" # Extreme
 22028.3 "Freezing Fugue/Fulgurous Fugue (Extreme)?" #Ability { id: ["BA11", "BA10"], source: ["Blue Head", "Green Head"] }
-22036.4 "Thunderfrost Tempest (castbar)?" #Ability { id: "BA7B", source: "Green Head" } # Extreme
+22036.4 "Thunderfrost Tempest (cast)?" #Ability { id: "BA7B", source: "Green Head" } # Extreme
 22037.3 "Thunderfrost Tempest (Extreme)?" #Ability { id: "BA7C", source: "Green Head" }
 22043.4 "Storm's Breath (Normal)?" #Ability { id: "B9FD", source: "Green Head" }
 22043.5 "--knockback?--" # Normal
-22052.6 "Thunderfrost Tempest (castbar)?" #Ability { id: "BA77", source: "Green Head" } # Normal
+22052.6 "Thunderfrost Tempest (cast)?" #Ability { id: "BA77", source: "Green Head" } # Normal
 
 ### Sword Dancer
 # The Choreology Room will be sealed off
@@ -48,8 +48,7 @@ hideall "--sync--"
 
 22206.0 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-normal"
 22206.0 "--sync--" StartsUsing { id: "C20B", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-extreme"
-#22211.0 "Sword Storm (castbar)" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
-#22212.0 "Sword Storm" #Ability { id: ["C214", "C216"], source: "Sword Dancer" } # Normal/Extreme
+#22211.0 "Sword Storm" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
 
 ### Necrophobia
 # The Thanatology Room will be sealed off
@@ -57,7 +56,7 @@ hideall "--sync--"
 
 22405.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-normal"
 22405.1 "--sync--" StartsUsing { id: "B97A", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-extreme"
-#22410.1 "Hail of Hellflares (castbar)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
+#22410.1 "Hail of Hellflares (cast)" Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
 #22411.0 "Hail of Hellflares 1" Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
 
 ### Index
@@ -67,10 +66,10 @@ hideall "--sync--"
 
 22606.0 "--sync--" StartsUsing { id: "BD1F", source: "Index" } window 10,50 jump "oc-index-normal" # Extreme will cast this as well, but at later point
 22609.0 "--sync--" StartsUsing { id: "BD17", source: "Index" } window 10,50 jump "oc-index-extreme"
-#22611.0 "Flare (castbar)?" #Ability { id: "BD1F", source: "Index" } # Normal
+#22611.0 "Flare (cast)?" #Ability { id: "BD1F", source: "Index" } # Normal
 #22611.9 "Flare (Normal)?" #Ability { id: "BD21", source: "Index" }
 #22612.0 "Dualcast (Extreme)?" #Ability { id: "BD17", source: "Index" }
-#22619.1 "Flare (castbar)?" #Ability { id: "BD1F", source: "Index" } # Extreme
+#22619.1 "Flare (cast)?" #Ability { id: "BD1F", source: "Index" } # Extreme
 #22620.0 "Flare 1 (Extreme)?" #Ability { id: "BD48", source: "Index" }
 
 ### Two-headed Aevis (Normal)
@@ -172,7 +171,7 @@ hideall "--sync--"
 23042.6 "--sync--" Ability { id: "B9FE", source: "Two-headed Aevis" }
 23043.5 "Storm's Breath" Ability { id: "B9FD", source: "Green Head" }
 23043.5 "--knockback--"
-23052.6 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23052.6 "Thunderfrost Tempest (cast)" Ability { id: "BA77", source: "Green Head" }
 23053.5 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 
 # Twin Terror Branch 1
@@ -213,7 +212,7 @@ hideall "--sync--"
 23325.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
 23325.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23327.4 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-23332.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23332.2 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23333.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 23335.1 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
 23341.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
@@ -241,7 +240,7 @@ hideall "--sync--"
 23525.0 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
 23525.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23527.4 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
-23532.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23532.2 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23533.1 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 23535.1 "Hypothermal Combustion/Shock?" #Ability { id: ["BA5B", "BA5A"], source: ["Swirling Orb", "Ball Lightning"] }
 23541.4 "Summon" #Ability { id: "BA58", source: "Green Head" }
@@ -249,7 +248,7 @@ hideall "--sync--"
 23552.6 "Lightning Cluster" #Ability { id: "BA1A", source: "Green Head" }
 23552.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23555.0 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
-23559.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23559.8 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23560.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 23562.7 "Shock/Hypothermal Combustion?" #Ability { id: ["BA5A", "BA5B"], source: ["Ball Lightning", "Swirling Orb"] }
 
@@ -260,7 +259,7 @@ hideall "--sync--"
 23625.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
 23625.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23627.4 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
-23632.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23632.2 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23633.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 23635.1 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
 
@@ -272,7 +271,7 @@ hideall "--sync--"
 23652.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
 23652.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23655.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-23659.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23659.8 "Thunderfrost Tempest (cast)" Ability { id: "BA77", source: "Green Head" }
 23660.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 23662.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
 23667.2 "--sync--" StartsUsing { id: "BA26", source: ["Blue Head", "Green Head"] } forcejump "oc-two-headed-aevis-summon1-end"
@@ -284,7 +283,7 @@ hideall "--sync--"
 23725.0 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
 23725.0 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23727.4 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
-23732.2 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23732.2 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23733.1 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 23735.1 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
 
@@ -296,7 +295,7 @@ hideall "--sync--"
 23752.6 "Lightning Cluster" Ability { id: "BA1A", source: "Green Head" }
 23752.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23755.0 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
-23759.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+23759.8 "Thunderfrost Tempest (cast)" Ability { id: "BA77", source: "Green Head" }
 23760.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 23762.7 "Hypothermal Combustion" Ability { id: "BA5B", source: "Swirling Orb" }
 
@@ -304,15 +303,15 @@ hideall "--sync--"
 
 # Blazeloop Tutorial
 23772.4 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
-23773.2 "Blazeloop (castbar)" Ability { id: "BA26", source: ["Blue Head", "Green Head"] }
+23773.2 "Blazeloop (cast)" Ability { id: "BA26", source: ["Blue Head", "Green Head"] }
 23773.2 "Blaze" #Ability { id: "BA2B", source: ["Blue Head", "Green Head"] }
 23775.8 "Blazeloop" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
 23786.7 "--sync--" Ability { id: ["BA28", "BA27"], source: "Two-headed Aevis" }
-23787.5 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+23787.5 "Blazeloop (cast)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
 23787.5 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
 23790.1 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-23790.9 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+23790.9 "Blazeloop (cast)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
 23791.7 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
 
 # Storm's Breath or Poison Breath Branch 2
@@ -329,7 +328,7 @@ hideall "--sync--"
 23835.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 23838.0 "Shock" #Ability { id: "BA5A", source: "Ball Lightning" }
 23838.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-23842.8 "Thunderfrost Tempest (castbar)" #Ability { id: "BA77", source: "Green Head" }
+23842.8 "Thunderfrost Tempest (cast)" #Ability { id: "BA77", source: "Green Head" }
 23843.7 "Thunderfrost Tempest" #Ability { id: "BA79", source: "Green Head" }
 
 23893.9 label "oc-two-headed-aevis-breath2-storm"
@@ -355,7 +354,7 @@ hideall "--sync--"
 24035.6 "Ice Cluster" #Ability { id: "BC5C", source: "Blue Head" }
 24038.0 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
 24038.0 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
-24042.8 "Thunderfrost Tempest (castbar)" Ability { id: "BA77", source: "Green Head" }
+24042.8 "Thunderfrost Tempest (cast)" Ability { id: "BA77", source: "Green Head" }
 24043.7 "Thunderfrost Tempest" Ability { id: "BA79", source: "Green Head" }
 24045.7 "Shock" Ability { id: "BA5A", source: "Ball Lightning" }
 24045.7 "Hypothermal Combustion" #Ability { id: "BA5B", source: "Swirling Orb" }
@@ -369,10 +368,10 @@ hideall "--sync--"
 24069.0 "Arcane Beacon 2" #Ability { id: "C238", source: "Arcane Font" }
 24073.9 "Storm's Breath/Poison Breath?" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
 24073.9 "--knockback?--" #Ability { id: ["B9FD", "C61B"], source: ["Green Head", "Blue Head"] }
-24088.1 "Blazeloop (castbar)" #Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+24088.1 "Blazeloop (cast)" #Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
 24088.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
 24090.7 "Blazeloop 1" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-24091.5 "Blazeloop (castbar)" #Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+24091.5 "Blazeloop (cast)" #Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
 24092.3 "Blaze 2" #Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
 24094.9 "Blazeloop 2" #Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 24105.6 "Two Terrors" #Ability { id: "C5DF", source: "Green Head" }
@@ -393,10 +392,10 @@ hideall "--sync--"
 
 24282.1 label "oc-two-headed-aevis-breath3-end"
 24287.3 "--sync--" Ability { id: ["BA27", "BA28"], source: "Two-headed Aevis" }
-24288.1 "Blazeloop (castbar)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
+24288.1 "Blazeloop (cast)" Ability { id: "BA2D", source: ["Blue Head", "Green Head"] }
 24288.1 "Blaze 1" #Ability { id: "BA2F", source: ["Blue Head", "Green Head"] }
 24290.7 "Blazeloop 1" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
-24291.5 "Blazeloop (castbar)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
+24291.5 "Blazeloop (cast)" Ability { id: "BA2E", source: ["Blue Head", "Green Head"] }
 24292.3 "Blaze 2" Ability { id: "BA30", source: ["Blue Head", "Green Head"] }
 24294.9 "Blazeloop 2" Ability { id: "BA2C", source: ["Blue Head", "Green Head"] }
 
@@ -443,8 +442,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 27006.0 label "oc-sword-dancer-normal"
-#27011.0 "Sword Storm (castbar)" Ability { id: "C1D1", source: "Sword Dancer" }
-#27012.0 "Sword Storm" Ability { id: "C214", source: "Sword Dancer" }
+#27011.0 "Sword Storm" Ability { id: "C1D1", source: "Sword Dancer" }
 
 ### Sword Dancer (Extreme)
 # -ii
@@ -456,8 +454,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 29006.0 label "oc-sword-dancer-extreme"
-#29011.0 "Sword Storm (castbar)" Ability { id: "C20B", source: "Sword Dancer" }
-#29012.0 "Sword Storm" Ability { id: "C216", source: "Sword Dancer" }
+#29011.0 "Sword Storm" Ability { id: "C20B", source: "Sword Dancer" }
 
 ### Storm Generators (Extreme)
 # TODO: Network log, addedcombatants for slimes, verify param1
@@ -554,7 +551,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 32005.1 label "oc-necrophobia-normal"
-#32010.1 "Hail of Hellflares (castbar)" Ability { id: "B95C", source: "Necrophobia" }
+#32010.1 "Hail of Hellflares (cast)" Ability { id: "B95C", source: "Necrophobia" }
 #32011.0 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
 
 ### Necrophobia (Extreme)
@@ -567,7 +564,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 34005.1 label "oc-necrophobia-extreme"
-#34010.1 "Hail of Hellflares (castbar)" Ability { id: "B97A", source: "Necrophobia" }
+#34010.1 "Hail of Hellflares (cast)" Ability { id: "B97A", source: "Necrophobia" }
 #34011.0 "Hail of Hellflares 1" Ability { id: "B97B", source: "Necrophobia" }
 
 ### Index (Normal)
@@ -580,7 +577,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 #
 36006.0 label "oc-index-normal"
-#36011.0 "Flare (castbar)" Ability { id: "BD1F", source: "Index" }
+#36011.0 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
 #36011.9 "Flare" Ability { id: "BD21", source: "Index" }
 
 ### Index (Extreme)
@@ -594,5 +591,5 @@ hideall "--sync--"
 #
 38009.0 label "oc-index-extreme"
 #38012.0 "Dualcast" Ability { id: "BD17", source: "Index" }
-#38019.1 "Flare (castbar)" Ability { id: "BD1F", source: "Index" }
+#38019.1 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
 #38020.0 "Flare 1" Ability { id: "BD48", source: "Index" }
