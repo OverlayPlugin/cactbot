@@ -13,3 +13,775 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### Sword Dancer
+# The Choreology Room will be sealed off
+22200.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1574" } window 100000,0
+
+22206.0 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-normal"
+22206.0 "--sync--" StartsUsing { id: "C20B", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-extreme"
+22211.0 "Sword Storm" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
+22014.2 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+22018.2 "Throwing Swords" #Ability { id: ["C197", "C1D3"], source: "Sword Dancer" } # Normal/Extreme
+22019.2 "Rush (Long)" #Ability { id: ["C55D", "C1D5"], source: "Dancing Sword" } # Normal/Extreme
+22019.2 "Rush (Short)" #Ability { id: ["C55E", "C55F"], source: "Dancing Sword" } # Normal/Extreme
+22021.2 "Throwing Swords 2 (Extreme)?" #Ability { id: "C1D4", source: "Sword Dancer" }
+22022.2 "Rush (Extreme)?" Ability { id: "C560", source: "Dancing Sword" }
+22022.2 "Rush (Extreme)?" Ability { id: "C1D5", source: "Dancing Sword" }
+# NOTE: Extreme here only does Middle CCW + Outer CW
+22023.9 "Turn 1 (Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E", "C1D7"], source: "Dancing Sword" } # short-thrown sword possibilities
+22023.9 "Turn 1 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D", "C1DC"], source: "Dancing Sword" } # long-thrown sword possibilities
+22023.9 "Rush (Extreme)?" #Ability { id: "C1D6", source: "Dancing Sword" }
+
+### Sword Dancer (Normal)
+# -ii C195 C1A7 C1A9 C1AA C1AC C214 C4B7 C6ED
+# -p C1D1:27011.0
+# -it "Sword Dancer"
+# IGNORED ABILITIES
+# C195 --sync--: Wall damage cast every 0.6s, starts ~0.8s after first C196
+# C1A7 Turn: 3.2s damage cast curved aoe, long-thrown sword
+# C1A9 Turn: 3.2s damage cast curved aoe, short-thrown sword
+# C1AA Turn: 3.2s damage cast curved aoe, long-thrown sword (targetted by Martial Mystique)
+# C1AC Turn: 3.2s damage cast curved aoe, short-thrown sword (targetted by Martial Mystique)
+# C214 Sword Storm: damage to remaining players ~0.9s afrer C1D1 Sword Storm
+# C4B7 Steelsbreath: 1.7s casted aoe + point knockback from Dancing Sword, each is ~2.5s apart, this is used on remaining players
+# C6ED --sync--: Auto-attacks
+#
+# ALL ENCOUNTER ABILITIES
+# C195 --sync--: Wall damage cast every 0.6s, starts ~0.8s after first C196
+# C196 --sync--: Boss jumps to a location
+# C197 Throwing Swords: 1.7s castbar, North/South thrown swords, 1 Short + 1 Long in tutorial, after 2 long-thrown or 2 short-thrown swords
+# C198 Throwing Swords: followup cast 3.1s after C197 after tutorial, E/W 2 short-thrown or 2 long-thrown swords, will be opposite distance to that of C197
+# C19B Turn: VFX 3.2s cast, long-thrown sword moves counter-clockwise
+# C19D Turn: VFX 3.2s cast, long-thrown sword moves clockwise
+# C19E Turn: VFX 3.2s cast, short-thrown sword moves counter-clockwise
+# C1A0 Turn: VFX 3.2s cast, short-thrown sword moves clockwise
+# C1A1 Turn: VFX 3.2s cast, long-thrown sword moves counter-clockwise (targeted by Martial Mystique)
+# C1A3 Turn: VFX 3.2s cast, long-thrown sword moves clockwise (targeted by Martial Mystique)
+# C1A4 Turn: VFX 3.2s cast, short-thrown sword moves counter-clockwise (targeted by Martial Mystique)
+# C1A6 Turn: VFX 3.2s cast, short-thrown sword moves clockwise (targeted by Martial Mystique)
+# C1A7 Turn: 3.2s damage cast curved aoe, long-thrown sword
+# C1A9 Turn: 3.2s damage cast curved aoe, short-thrown sword
+# C1AA Turn: 3.2s damage cast curved aoe, long-thrown sword (targetted by Martial Mystique)
+# C1AC Turn: 3.2s damage cast curved aoe, short-thrown sword (targetted by Martial Mystique)
+# C1AF Martial Mystique: 3.7s castbar, boss tethers a Dancing Sword, VFX for halfroom cleave from boss' right
+# C1B0 Martial Mystique: 3.7s castbar, boss tethers a Dancing Sword, VFX for halfroom cleave from boss' left
+# C1B1 Martial Mystique: 5.2s damage cast
+# C1B2 Cycloswords Unsheathed: 2.7s castbar, spawns a big circle in middle during tutorial and after tutorial it is 2 circles creating a venn diagram and the circles come in big and/or small size, 4 Dancing Swords on each circle pointing inwards or outwards that rotate around; Dancing sword receives debuff DE6 ~0.8s after cast
+# C1B3 Cycloswords: 2.7s castbar, C1B5 or C1B8 Spin will start ~0.04s after
+# C1B5 Spin: 49589 0.7s big donut cast from C1B3 Cycloswords, outside aoe
+# C1B6 Spin: 49590 0.7s small cast
+# C1B8 Spin: 49592 0.7s big circle aoe cast from C1B3 Cycloswords, inside aoe
+# C1B9 Spin: 49593 0.7s small cast
+# C1BA Leaping Lift: 2.7s castbar
+# C1BB Pierce: 3.3s casted, small circle aoes at 4 cardinals that spawn 4 Dancing Swords, concides with C1BA Leaping Lift
+# C1BC Leaping Lift: boss jumps to a Dancing Sword
+# C1BD Leaping Lift: boss leaps from one Dancing Sword to another, signifying the order in which Steelsbreath knockbacks will go off
+# C1BE Leaping Lift: boss leaps from last Dancing Sword to the middle
+# C1BF Steelsbreath: 1.7s castbar from Dancing Sword, aoe + point knockback from Dancing Sword, each is ~2.5s apart, splits targets with C4B7 Steelsbreath
+# C1C9 Sword Dance: 4.1s castbar, at end of castbar boss will do 4 aoes, each aoe also spawns a line aoe, clockwise or counterclock-wise
+# C1CA Sword Dance: 4.7s aoe cast, starts same time as C1C9
+# C1CB Sword Dance: 2nd hit, ~0.8s after C1CA
+# C1CC Sword Dance: 3rd hit, ~0.8s after C1CB
+# C1CD Sword Dance: 4rth hit, ~0.8s after C1CC
+# C1CE Sword Dance: 1.2s casted line aoe from middle of room
+# C1CF Surgeswords Unsheathed: 2.7s castbar, spawns 8 Dancing Swords in a line N/S or E/W, each facing left or right, that will start C1D0 Rush ~5s later
+# C1D0 Rush: 3.7s castbar from Dancing Sword, line aoe from Dancing Sword
+# C1D1 Sword Storm: 4.7s castbar + damage, splits targets with C214
+# C214 Sword Storm: damage to remaining players ~0.9s afrer C1D1 Sword Storm
+# C215 Swordpointe: 1.7s castbar, Dancing Swords will start C1BF Steelsbreath ~0.9s after
+# C2DB Turnabout: VFX 3.2s cast by short-thrown sword going counter-clockwise when it is targetted by Martial Mystique
+# C2E1 Turnabout: VFX 3.2s cast by short-thrown sword going clockwise when it is targetted by Martial Mystique
+# C4B7 Steelsbreath: 1.7s casted aoe + point knockback from Dancing Sword, each is ~2.5s apart, this is used on remaining players
+# C55D Rush: 2.7s casted line aoe from long-thrown sword
+# C55E Rush: 2.7s casted line aoe from short-thrown sword
+# C6ED --sync--: Auto-attacks
+27006.0 label "oc-sword-dancer-normal"
+27011.0 "Sword Storm" Ability { id: "C1D1", source: "Sword Dancer" }
+
+# Tutorial - Throwing Swords + Martial Mystique
+# NOTE: This will always be a long-thrown and short-thrown sword, but the later ones will be double long or double short
+# NOTE2: There will be 4 patterns here:
+#   - Either Long or Short is targetted first
+#   - Either Long is counter-clockwise or Short is counter-clockwise
+27014.2 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+27018.2 "Throwing Swords" Ability { id: "C197", source: "Sword Dancer" }
+27019.2 "Rush (Long)" Ability { id: "C55D", source: "Dancing Sword" }
+27019.2 "Rush (Short)" #Ability { id: "C55E", source: "Dancing Sword" }
+
+# Throwing Swords Branch 1 - Clockwise or Counterclockwise
+# NOTE: We can predict where the second jump will be using the Turn associated with the Martial Mystique targetting:
+#   - South with C1A6 Turn (C2E1 Turnabout) and C1A3 Turn
+#   - North with C1A4 Turn (C2DB Turnabout) and C1A1 Turn
+#  These would also tell us where the boss jumped first, but it doesn't seem we can know the first jump ahead of time
+#  Unfortunately, the Left/Right StartsUsing cast for Martial Mystique happens at the same time as this Turn cast starts
+#  which creates a slightly more complicated timeline
+27020.4 "--sync--" StartsUsing { id: ["C1A0", "C19B"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-cw"
+27020.4 "--sync--" StartsUsing { id: ["C19E", "C19D"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-ccw"
+27023.9 "Turn 1 (Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E"], source: "Dancing Sword" } # short-thrown sword possibilities
+27023.9 "Turn 1 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D"], source: "Dancing Sword" } # long-thrown sword possibilities
+27026.3 "--east/west--" #Ability { id: "C196", source: "Sword Dancer" }
+27028.1 "Turn 2 (Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E"], source: "Dancing Sword" } # short-thrown sword possibilities
+27028.1 "Turn 2 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D"], source: "Dancing Sword" } # long-thrown sword possibilities
+27032.3 "Turn 3 (Middle CW/CCW)?" #Ability { id: ["C1A6", "C1A4", "C1A0", "C19E"], source: "Dancing Sword" } # short-thrown sword possibilities
+27032.3 "Turn 3 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D", "C1A1", "C1A3"], source: "Dancing Sword" } # long-thrown sword possibilities
+27032.3 "Turnabout (Middle)?" #Ability { id: ["C2E1", "C2DB"], source: "Dancing Sword" } # Only on short-thrown targetted
+27032.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27034.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27036.6 "Turn 4 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E", "C19B", "C19D"], source: "Dancing Sword" } # short/long possibilities
+27038.9 "--north/south?--" #Ability { id: "C196", source: "Sword Dancer" }
+27040.8 "Turn 5 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E", "C19B", "C19D"], source: "Dancing Sword" } # short/long possibilities
+27045.2 "Turn 6 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A6", "C1A4", "C1A1", "C1A3"], source: "Dancing Sword" } # short/long targetted possibilities
+27045.2 "Turnabout (Middle)?" #Ability { id: ["C2E1", "C2DB"], source: "Dancing Sword" } # Only on short-thrown targetted
+27045.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27047.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27055.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27064.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27065.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+
+# Throwing Swords Branch 1 - Level 1
+# Clockwise Middle and Counterclockwise Outer
+27120.4 label "oc-sword-dancer-throwing1-short-cw"
+27123.9 "Turn 1 (Middle CW)" Ability { id: "C1A0", source: "Dancing Sword" }
+27123.9 "Turn 1 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27126.3 "--east/west--" Ability { id: "C196", source: "Sword Dancer" }
+27128.1 "Turn 2 (Middle CW)" Ability { id: "C1A0", source: "Dancing Sword" }
+27128.1 "Turn 2 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+
+27128.8 "--sync--" StartsUsing { id: ["C1A6", "C19B"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-cw-short-martial"
+27128.8 "--sync--" StartsUsing { id: ["C1A0", "C1A1"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-cw-long-martial"
+27132.3 "Turn 3 (Middle CW)" #Ability { id: ["C1A6", "C1A0"], source: "Dancing Sword" } # short-thrown sword possibilities
+27132.3 "Turn 3 (Outer CCW)" #Ability { id: ["C19B", "C1A1"], source: "Dancing Sword" } # long-thrown sword possibilities
+27132.3 "Turnabout (Middle)?" #Ability { id: "C2E1", source: "Dancing Sword" } # Only on short-thrown targetted
+27132.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27134.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27136.6 "Turn 4 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A0", "C19B"], source: "Dancing Sword" } # short/long possibilities
+27138.9 "--north/south?--" #Ability { id: "C196", source: "Sword Dancer" }
+27140.8 "Turn 5 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A0", "C19B"], source: "Dancing Sword" } # short/long possibilities
+27145.2 "Turn 6 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A6", "C1A1"], source: "Dancing Sword" } # short/long targetted possibilities
+27145.2 "Turnabout (Middle)?" #Ability { id: "C2E1", source: "Dancing Sword" } # Only on short-thrown targetted
+27145.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27147.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27155.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27164.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27165.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27171.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Counterclockwise Middle and Clockwise Outer
+27220.4 label "oc-sword-dancer-throwing1-short-ccw"
+27223.9 "Turn 1 (Middle CCW)" Ability { id: "C19E", source: "Dancing Sword" }
+27223.9 "Turn 1 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+27226.3 "--east/west--" Ability { id: "C196", source: "Sword Dancer" }
+27228.1 "Turn 2 (Middle CCW)" Ability { id: "C19E", source: "Dancing Sword" }
+27228.1 "Turn 2 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+
+27228.8 "--sync--" StartsUsing { id: ["C1A4", "C19D"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-ccw-short-martial"
+27228.8 "--sync--" StartsUsing { id: ["C19E", "C1A3"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-ccw-long-martial"
+27232.3 "Turn 3 (Middle CCW)" #Ability { id: ["C1A4", "C19E"], source: "Dancing Sword" } # short-thrown sword possibilities
+27232.3 "Turn 3 (Outer CW)" #Ability { id: ["C19D", "C1A3"], source: "Dancing Sword" } # long-thrown sword possibilities
+27232.3 "Turnabout (Middle)?" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27232.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27234.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27236.6 "Turn 4 (Outer/Middle CW/CCW)?" #Ability { id: ["C19E", "C19D"], source: "Dancing Sword" } # short/long possibilities
+27238.9 "--north/south?--" #Ability { id: "C196", source: "Sword Dancer" }
+27240.8 "Turn 5 (Outer/Middle CW/CCW)?" #Ability { id: ["C19E", "C19D"], source: "Dancing Sword" } # short/long possibilities
+27245.2 "Turn 6 (Outer/Middle CW/CCW)?" #Ability { id: ["C1A4", "C1A3"], source: "Dancing Sword" } # short/long targetted possibilities
+27245.2 "Turnabout (Middle)?" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27245.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27247.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27255.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27264.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27265.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27271.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Throwing Swords Branch 1 - Level 2
+# Clockwise Middle and Counterclockwise Outer => Clockwise Middle Tethered First
+27328.8 label "oc-sword-dancer-throwing1-short-cw-short-martial"
+
+27328.8 "--sync--" StartsUsing { id: "C1B0", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-cw-short-martial-left"
+27328.8 "--sync--" StartsUsing { id: "C1AF", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-cw-short-martial-right"
+27332.3 "Turn 3 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+27332.3 "Turn 3 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27332.3 "Turnabout (Middle)" #Ability { id: "C2E1", source: "Dancing Sword" }
+27332.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27334.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27336.6 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27338.9 "--south--" Ability { id: "C196", source: "Sword Dancer" } # This is now known
+27340.8 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27345.2 "Turn 6 (Outer CCW)" Ability { id: "C1A1", source: "Dancing Sword" }
+27345.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27347.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27355.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27364.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27365.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27371.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Clockwise Middle and Counterclockwise Outer => Counterclockwise Outer Tethered First
+27428.8 label "oc-sword-dancer-throwing1-short-cw-long-martial"
+
+27428.8 "--sync--" StartsUsing { id: "C1B0", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-cw-long-martial-left"
+27428.8 "--sync--" StartsUsing { id: "C1AF", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-cw-long-martial-right"
+27432.3 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+27432.3 "Turn 3 (Outer CCW)" #Ability { id: "C1A1", source: "Dancing Sword" }
+27432.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27434.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27436.6 "Turn 4 (Middle CW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27438.9 "--north--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+27440.8 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+27445.2 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+27245.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27445.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27447.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27455.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27464.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27465.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27471.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Counterclockwise Middle and Clockwise Outer => Counterclockwise Middle Tethered First
+27528.8 label "oc-sword-dancer-throwing1-short-ccw-short-martial"
+
+27528.8 "--sync--" StartsUsing { id: "C1B0", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-ccw-short-martial-left"
+27528.8 "--sync--" StartsUsing { id: "C1AF", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-ccw-short-martial-right"
+27532.3 "Turn 3 (Middle CCW)" #Ability { id: "C1A4", source: "Dancing Sword" }
+27532.3 "Turn 3 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+27532.3 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" }
+27532.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27534.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27536.6 "Turn 4 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+27538.9 "--north--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+27540.8 "Turn 5 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+27545.2 "Turn 6 (Outer CW)" #Ability { id: "C1A3", source: "Dancing Sword" }
+27545.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27547.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27555.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27564.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27565.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27571.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Counterclockwise Middle and Clockwise Outer => Clockwise Outer Tethered First
+27628.8 label "oc-sword-dancer-throwing1-short-ccw-long-martial"
+
+27628.8 "--sync--" StartsUsing { id: "C1B0", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-ccw-long-martial-left"
+27628.8 "--sync--" StartsUsing { id: "C1AF", source: "Sword Dancer" } jump "oc-sword-dancer-throwing1-short-ccw-long-martial-right"
+27632.3 "Turn 3 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+27632.3 "Turn 3 (Outer CW)" #Ability { id: "C1A3", source: "Dancing Sword" }
+27632.7 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+27634.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27636.6 "Turn 4 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+27638.9 "--south--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+27640.8 "Turn 5 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+27645.2 "Turn 6 (Middle CCW)" #Ability { id: "C1A4", source: "Dancing Sword" }
+27645.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27645.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
+27647.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+27655.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+27664.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+27665.1 "Spin" #Ability { id: "C1B5", source: "Dancing Sword" }
+27671.2 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+
+# Throwing Swords Branch 1 - Level 3
+# Clockwise Middle and Counterclockwise Outer => Clockwise Middle Tethered => Left Martial Mystique
+27728.8 label "oc-sword-dancer-throwing1-short-cw-short-martial-left"
+27732.3 "Turn 3 (Middle CW)" Ability { id: "C1A6", source: "Dancing Sword" }
+27732.3 "Turn 3 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27732.3 "Turnabout (Middle)" #Ability { id: "C2E1", source: "Dancing Sword" }
+27732.7 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+27734.3 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27736.6 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27738.9 "--south--" Ability { id: "C196", source: "Sword Dancer" }
+27740.8 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27745.2 "Turn 6 (Outer CCW)" Ability { id: "C1A1", source: "Dancing Sword" }
+27745.6 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+27747.2 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27752.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Clockwise Middle and Counterclockwise Outer => Clockwise Middle Tethered => Right Martial Mystique
+27828.8 label "oc-sword-dancer-throwing1-short-cw-short-martial-right"
+27832.3 "Turn 3 (Middle CW)" Ability { id: "C1A6", source: "Dancing Sword" }
+27832.3 "Turn 3 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27832.3 "Turnabout (Middle)" #Ability { id: "C2E1", source: "Dancing Sword" }
+27832.7 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+27834.3 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27836.6 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27838.9 "--south--" Ability { id: "C196", source: "Sword Dancer" }
+27840.8 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+27845.2 "Turn 6 (Outer CCW)" Ability { id: "C1A1", source: "Dancing Sword" }
+27845.6 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+27847.2 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27852.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Clockwise Middle and Counterclockwise Outer => Counterclockwise Outer Tethered => Left Martial Mystique
+27928.8 label "oc-sword-dancer-throwing1-short-cw-long-martial-left"
+27932.3 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+27932.3 "Turn 3 (Outer CCW)" #Ability { id: "C1A1", source: "Dancing Sword" }
+27932.7 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+27934.3 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27936.6 "Turn 4 (Middle CW)" #Ability { id: "C19B", source: "Dancing Sword" }
+27938.9 "--north--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+27940.8 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+27945.2 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+27945.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27945.6 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+27947.2 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+27952.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Clockwise Middle and Counterclockwise Outer => Counterclockwise Outer => Right Martial Mystique
+28028.8 label "oc-sword-dancer-throwing1-short-cw-long-martial-right"
+28032.3 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28032.3 "Turn 3 (Outer CCW)" #Ability { id: "C1A1", source: "Dancing Sword" }
+28032.7 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28034.3 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28036.6 "Turn 4 (Middle CW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28038.9 "--north--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+28040.8 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28045.2 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+28045.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+28045.6 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28047.2 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28052.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Counterclockwise Middle and Clockwise Outer => Counterclockwise Middle Tethered => Left Martial Mystique
+28128.8 label "oc-sword-dancer-throwing1-short-ccw-short-martial-left"
+28132.3 "Turn 3 (Middle CCW)" Ability { id: "C1A4", source: "Dancing Sword" }
+28132.3 "Turn 3 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+28132.3 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" }
+28132.7 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28134.3 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28136.6 "Turn 4 (Outer CW)" #bility { id: "C19D", source: "Dancing Sword" }
+28138.9 "--north--" Ability { id: "C196", source: "Sword Dancer" } # This is now known
+28140.8 "Turn 5 (Outer CW)" Ability { id: "C19D", source: "Dancing Sword" }
+28145.2 "Turn 6 (Outer CW)" Ability { id: "C1A3", source: "Dancing Sword" }
+28145.6 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28147.2 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28152.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Counterclockwise Middle and Clockwise Outer => Counterclockwise Middle Tethered => Right Martial Mystique
+28228.8 label "oc-sword-dancer-throwing1-short-ccw-short-martial-right"
+28232.3 "Turn 3 (Middle CCW)" Ability { id: "C1A4", source: "Dancing Sword" }
+28232.3 "Turn 3 (Outer CW)" #Ability { id: "C19D", source: "Dancing Sword" }
+28232.3 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" }
+28232.7 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28234.3 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28236.6 "Turn 4 (Outer CW)" #bility { id: "C19D", source: "Dancing Sword" }
+28238.9 "--north--" Ability { id: "C196", source: "Sword Dancer" } # This is now known
+28240.8 "Turn 5 (Outer CW)" Ability { id: "C19D", source: "Dancing Sword" }
+28245.2 "Turn 6 (Outer CW)" Ability { id: "C1A3", source: "Dancing Sword" }
+28245.6 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28247.2 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28252.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Counterclockwise Middle and Clockwise Outer => Clockwise Outer Tethered => Left Martial Mystique
+28328.8 label "oc-sword-dancer-throwing1-short-ccw-long-martial-left"
+28332.3 "Turn 3 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28332.3 "Turn 3 (Outer CW)" #Ability { id: "C1A3", source: "Dancing Sword" }
+28332.7 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28334.3 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28336.6 "Turn 4 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28338.9 "--south--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+28340.8 "Turn 5 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28345.2 "Turn 6 (Middle CCW)" #Ability { id: "C1A4", source: "Dancing Sword" }
+28345.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+28345.6 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28347.2 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28352.0 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-cycloswords1"
+
+# Counterclockwise Middle and Clockwise Outer => Clockwise Outer Tethered => Right Martial Mystique
+28428.8 label "oc-sword-dancer-throwing1-short-ccw-long-martial-right"
+28432.3 "Turn 3 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28432.3 "Turn 3 (Outer CW)" #Ability { id: "C1A3", source: "Dancing Sword" }
+28432.7 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28434.3 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+28436.6 "Turn 4 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28438.9 "--south--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
+28440.8 "Turn 5 (Middle CCW)" #Ability { id: "C19E", source: "Dancing Sword" }
+28445.2 "Turn 6 (Middle CCW)" #Ability { id: "C1A4", source: "Dancing Sword" }
+28445.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+28445.6 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28447.2 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+
+# Tutorial - Cycloswords
+# NOTE: This is one of two patterns, Big In => Big Out, or Big Out => Big In, the later ones can be big and/or small
+28452.0 label "oc-sword-dancer-cycloswords1"
+28455.0 "Cycloswords Unsheathed" Ability { id: "C1B2", source: "Sword Dancer" }
+28464.1 "Cycloswords" Ability { id: "C1B3", source: "Sword Dancer" }
+28465.1 "Spin (In/Out)" Ability { id: ["C1B5", "C1B8"], source: "Dancing Sword" }
+28471.2 "Cycloswords Unsheathed" Ability { id: "C1B2", source: "Sword Dancer" }
+28480.3 "Cycloswords" Ability { id: "C1B3", source: "Sword Dancer" }
+28481.3 "Spin (Out/In)" Ability { id: ["C1B8", "C1B5"], source: "Dancing Sword" }
+
+28483.4 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+28489.8 "Sword Dance (cast)" Ability { id: "C1C9", source: "Sword Dancer" }
+28490.5 "Sword Dance 1" Ability { id: "C1CA", source: "Sword Dancer" }
+28491.4 "Sword Dance 2" Ability { id: "C1CB", source: "Sword Dancer" }
+28492.2 "Sword Dance 3" Ability { id: "C1CC", source: "Sword Dancer" }
+28493.0 "Sword Dance 4" Ability { id: "C1CD", source: "Sword Dancer" }
+28499.6 "Sword Dance 1 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+28502.1 "Sword Dance 2 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+28504.5 "Sword Dance 3 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+28507.0 "Sword Dance 4 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+
+# Leaping Lift
+28511.1 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+28516.1 "Leaping Lift" Ability { id: "C1BA", source: "Sword Dancer" }
+28516.7 "Pierce" Ability { id: "C1BB", source: "Dancing Sword" }
+28519.1 "--untargetable--"
+28519.1 "Leaping Lift (cast)" Ability { id: "C1BC", source: "Sword Dancer" }
+28520.4 "Leaping Lift 1" #Ability { id: "C1BD", source: "Sword Dancer" }
+28521.7 "Leaping Lift 2" #Ability { id: "C1BD", source: "Sword Dancer" }
+28523.0 "Leaping Lift 3" #Ability { id: "C1BD", source: "Sword Dancer" }
+28524.5 "Leaping Lift 4" Ability { id: "C1BE", source: "Sword Dancer" }
+28524.5 "--middle--"
+28525.8 "--targetable--"
+28527.8 "Swordpointe" Ability { id: "C215", source: "Sword Dancer" }
+28530.6 "Steelsbreath 1" #Ability { id: "C1BF", source: "Dancing Sword" }
+28530.6 "--knockback--"
+28532.8 "Surgeswords Unsheathed" Ability { id: "C1CF", source: "Sword Dancer" }
+28533.0 "Steelsbreath 2" #Ability { id: "C1BF", source: "Dancing Sword" }
+28533.0 "--knockback--"
+28535.4 "Steelsbreath 3" #Ability { id: "C1BF", source: "Dancing Sword" }
+28535.4 "--knockback--"
+28537.8 "Steelsbreath 4" #Ability { id: "C1BF", source: "Dancing Sword" }
+28537.8 "--knockback--"
+28541.7 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+28546.7 "Sword Storm" Ability { id: "C1D1", source: "Sword Dancer" }
+
+28552.8 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+
+# Throwing Swords Branch 2
+# Two Long-thrown Swords => Two Short-thrown Swords or vice versa
+# C55E Rush or C55D Rush tells us the first jump, unsure if second jump can be predicted
+# - C55E Rush first => First jump is outer East cardinal
+# - C55D Rush first => First jump is outer North cardinal
+# - This will always be followed up with a Left Martial Mystique cleave, these are also only done with C1A6 Turn (clockwise moving short-thrown sword)
+# - Second jump is either to the inner of the same cardinal or counterclockwise cardinal
+# - Outer cardinals = Left Cleave, Inner cardinals = Right Cleave
+# - Boss will also only do right cleaves with a C1A1 Turn (counterclockwise moving long-thrown sword), but we can know 2s earlier with AbilityExtra:
+#     West = (578.485, 703.975), North Inner = (600.000, 692.470), North = (600.000, 682.490), East Inner = (611.475, 703.975)
+28554.8 "--sync--" StartsUsing { id: "C55E", source: "Dancing Sword" } jump "oc-sword-dancer-throwing2-short"
+28554.8 "--sync--" StartsUsing { id: "C55D", source: "Dancing Sword" } jump "oc-sword-dancer-throwing2-long"
+28556.8 "Throwing Swords 1" #Ability { id: "C197", source: "Sword Dancer" }
+28557.8 "Rush (Short/Long)" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
+28559.8 "Throwing Swords 2" #Ability { id: "C198", source: "Sword Dancer" }
+28560.8 "Rush (Long/Short)?" #Ability { id: ["C55D", "C55E"], source: "Dancing Sword" }
+28565.5 "Turn 1 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28565.5 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28566.5 "Rush (N/S)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28568.1 "--north/east?--" #Ability { id: "C196", source: "Sword Dancer" }
+28569.8 "Turn 2 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28569.8 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28574.0 "Turn 3 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28574.0 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28574.0 "Turn 3 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+28574.0 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+28574.4 "Left Martial Mystique (cast)" #Ability { id: "C1B0", source: "Sword Dancer" }
+28575.8 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28575.8 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+28578.0 "Turn 4 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28578.0 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28580.9 "--west/north/east inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+28582.2 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28582.2 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28586.4 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28586.4 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28586.4 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+28586.4 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+28586.8 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+28588.2 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28588.2 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+
+# Two Short-thrown Swords First
+28654.8 label "oc-sword-dancer-throwing2-short"
+28656.8 "Throwing Swords 1" Ability { id: "C197", source: "Sword Dancer" }
+28657.8 "Rush (Short)" Ability { id: "C55E", source: "Dancing Sword" }
+28659.8 "Throwing Swords 2" Ability { id: "C198", source: "Sword Dancer" }
+28660.8 "Rush (Long)" Ability { id: "C55D", source: "Dancing Sword" }
+28665.5 "Turn 1 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28665.5 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28666.5 "Rush (N/S)" Ability { id: "C1D0", source: "Dancing Sword" }
+28668.1 "--east--" Ability { id: "C196", source: "Sword Dancer" }
+28669.8 "Turn 2 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28669.8 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28674.0 "Turn 3 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28674.0 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28674.0 "Turn 3 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+28674.0 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+28674.4 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28675.8 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+28675.8 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+28678.0 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28678.0 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+
+28680.9 "--sync--" AbilityExtra { id: "C196", x: "600.*" } jump "oc-sword-dancer-throwing2-left"
+28680.9 "--sync--" AbilityExtra { id: "C196", x: "611.*" } jump "oc-sword-dancer-throwing2-right"
+28680.9 "--north/east inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+28682.2 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28682.2 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28686.4 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28686.4 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28686.4 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+28686.4 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+28686.8 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+28688.2 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28688.2 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+28704.1 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+28712.2 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+28713.2 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28713.2 "Spin" #Ability { id: ["C1B5", "C1B6", "C1B8", "C1B9"], source: "Dancing Sword" }
+28715.3 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+28721.7 "Sword Dance (cast)" #Ability { id: "C1C9", source: "Sword Dancer" }
+28722.4 "Sword Dance 1" #Ability { id: "C1CA", source: "Sword Dancer" }
+28723.3 "Sword Dance 2" #Ability { id: "C1CB", source: "Sword Dancer" }
+28724.1 "Sword Dance 3" #Ability { id: "C1CC", source: "Sword Dancer" }
+28724.9 "Sword Dance 4" #Ability { id: "C1CD", source: "Sword Dancer" }
+
+# Two Long-thrown Swords First
+28754.8 label "oc-sword-dancer-throwing2-long"
+28756.8 "Throwing Swords 1" Ability { id: "C197", source: "Sword Dancer" }
+28757.8 "Rush (Long)" Ability { id: "C55D"], source: "Dancing Sword" }
+28759.8 "Throwing Swords 2" Ability { id: "C198", source: "Sword Dancer" }
+28760.8 "Rush (Short)" Ability { id: "C55E", source: "Dancing Sword" }
+28765.5 "Turn 1 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28765.5 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28766.5 "Rush (N/S)" Ability { id: "C1D0", source: "Dancing Sword" }
+28768.1 "--north--" Ability { id: "C196", source: "Sword Dancer" }
+28769.8 "Turn 2 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28769.8 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28774.0 "Turn 3 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28774.0 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28774.0 "Turn 3 (Middle CW)" Ability { id: "C1A6", source: "Dancing Sword" }
+28774.0 "Turnabout" Ability { id: "C2E1", source: "Dancing Sword" }
+28774.4 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28775.8 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+28775.8 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+28778.0 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28778.0 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+
+28780.9 "--sync--" AbilityExtra { id: "C196", x: "578.*" } jump "oc-sword-dancer-throwing2-left"
+28780.9 "--sync--" AbilityExtra { id: "C196", x: "600.*" } jump "oc-sword-dancer-throwing2-right"
+28780.9 "--west/north inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+28782.2 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28782.2 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28786.4 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+28786.4 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28786.4 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+28786.4 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+28786.8 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+28788.2 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28788.2 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+28804.1 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+28812.2 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+28813.2 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+28813.2 "Spin" #Ability { id: ["C1B5", "C1B6", "C1B8", "C1B9"], source: "Dancing Sword" }
+28815.3 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+28821.7 "Sword Dance (cast)" #Ability { id: "C1C9", source: "Sword Dancer" }
+28822.4 "Sword Dance 1" #Ability { id: "C1CA", source: "Sword Dancer" }
+28823.3 "Sword Dance 2" #Ability { id: "C1CB", source: "Sword Dancer" }
+28824.1 "Sword Dance 3" #Ability { id: "C1CC", source: "Sword Dancer" }
+28824.9 "Sword Dance 4" #Ability { id: "C1CD", source: "Sword Dancer" }
+
+28880.9 label "oc-sword-dancer-throwing2-left"
+28882.2 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28882.2 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28886.4 "Turn 6 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28886.4 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28886.4 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+28886.4 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+28886.8 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+28888.2 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+28888.2 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+28890.0 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } forcejump "oc-sword-dancer-throwing2-end"
+
+28980.9 label "oc-sword-dancer-throwing2-right"
+28982.2 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28982.2 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+28986.4 "Turn 6 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+28986.4 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#28986.4 "Turn 6 (Outer CCW)" #Ability { id: "C1A1", source: "Dancing Sword" }
+28986.8 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+28988.2 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+28988.2 "Right Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+
+28989.9 label "oc-sword-dancer-throwing2-end"
+28994.9 "Sword Storm" Ability { id: "C1D1", source: "Sword Dancer" }
+
+# Loop Begins
+29001.1 label "oc-sword-dancer-loop"
+29004.1 "Cycloswords Unsheathed" Ability { id: "C1B2", source: "Sword Dancer" }
+29012.2 "Cycloswords" Ability { id: "C1B3", source: "Sword Dancer" }
+29013.2 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+29013.2 "Spin" #Ability { id: ["C1B5", "C1B6", "C1B8", "C1B9"], source: "Dancing Sword" }
+
+29015.3 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+29021.7 "Sword Dance (cast)" Ability { id: "C1C9", source: "Sword Dancer" }
+29022.4 "Sword Dance 1" Ability { id: "C1CA", source: "Sword Dancer" }
+29023.3 "Sword Dance 2" Ability { id: "C1CB", source: "Sword Dancer" }
+29024.1 "Sword Dance 3" Ability { id: "C1CC", source: "Sword Dancer" }
+29024.9 "Sword Dance 4" Ability { id: "C1CD", source: "Sword Dancer" }
+29029.9 "Surgeswords Unsheathed" Ability { id: "C1CF", source: "Sword Dancer" }
+29031.3 "Sword Dance 1 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+29033.7 "Sword Dance 2 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+29036.1 "Sword Dance 3 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+29038.5 "Sword Dance 4 (Line)" #Ability { id: "C1CE", source: "Sword Dancer" }
+29038.8 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+
+29041.9 "--middle--" Ability { id: "C196", source: "Sword Dancer" }
+
+# Throwing Swords Branch 3 (Loop version)
+29043.8 "--sync--" StartsUsing { id: "C55E", source: "Dancing Sword" } jump "oc-sword-dancer-throwing3-short"
+29043.8 "--sync--" StartsUsing { id: "C55D", source: "Dancing Sword" } jump "oc-sword-dancer-throwing3-long"
+29045.8 "Throwing Swords 1" #Ability { id: "C197", source: "Sword Dancer" }
+29046.8 "Rush (Short/Long)" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
+29048.8 "Throwing Swords 2" #Ability { id: "C198", source: "Sword Dancer" }
+29049.8 "Rush (Long/Short)?" #Ability { id: ["C55D", "C55E"], source: "Dancing Sword" }
+29054.5 "Turn 1 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29054.5 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29055.5 "Rush (N/S)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29057.1 "--north/east?--" #Ability { id: "C196", source: "Sword Dancer" }
+29058.8 "Turn 2 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29058.8 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29063.0 "Turn 3 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29063.0 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29063.0 "Turn 3 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+29063.0 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+29063.4 "Left Martial Mystique (cast)" #Ability { id: "C1B0", source: "Sword Dancer" }
+29064.7 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29064.8 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+29066.9 "Turn 4 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29066.9 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29069.9 "--west/north/east inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+29071.1 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29071.1 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29075.3 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29075.3 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29075.3 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+29075.3 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+29075.8 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+29077.3 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29077.3 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+29084.0 "Sword Storm" #Ability { id: "C1D1", source: "Sword Dancer" }
+
+# Two Short-thrown Swords First
+29143.6 label "oc-sword-dancer-throwing3-short"
+29145.6 "Throwing Swords 1" Ability { id: "C197", source: "Sword Dancer" }
+29146.6 "Rush (Short)" Ability { id: "C55E", source: "Dancing Sword" }
+29148.6 "Throwing Swords 2" Ability { id: "C198", source: "Sword Dancer" }
+29149.6 "Rush (Long)" Ability { id: "C55D", source: "Dancing Sword" }
+29154.3 "Turn 1 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29154.3 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29155.3 "Rush (N/S)" Ability { id: "C1D0", source: "Dancing Sword" }
+29156.9 "--east--" Ability { id: "C196", source: "Sword Dancer" }
+29158.6 "Turn 2 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29158.6 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29162.8 "Turn 3 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29162.8 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29162.8 "Turn 3 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+29162.8 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+29163.2 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+29164.5 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+29164.6 "Left Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+29166.7 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29166.7 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+
+29169.7 "--sync--" AbilityExtra { id: "C196", x: "600.*" } jump "oc-sword-dancer-throwing3-left"
+29169.7 "--sync--" AbilityExtra { id: "C196", x: "611.*" } jump "oc-sword-dancer-throwing3-right"
+29169.7 "--north/east inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+29170.9 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29170.9 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29175.1 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29175.1 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29175.1 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+29175.1 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+29175.6 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+29177.1 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29177.1 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+29183.8 "Sword Storm" #Ability { id: "C1D1", source: "Sword Dancer" }
+29200.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+29208.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+29209.1 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29209.1 "Spin" #Ability { id: ["C1B5", "C1B6", "C1B8", "C1B9"], source: "Dancing Sword" }
+29211.2 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+29217.6 "Sword Dance" #Ability { id: "C1C9", source: "Sword Dancer" }
+29218.3 "Sword Dance" #Ability { id: "C1CA", source: "Sword Dancer" }
+
+# Two Long-thrown Swords First
+29243.6 label "oc-sword-dancer-throwing3-long"
+29245.6 "Throwing Swords 1" #Ability { id: "C197", source: "Sword Dancer" }
+29246.6 "Rush (Long)" #Ability { id: "C55D"], source: "Dancing Sword" }
+29248.6 "Throwing Swords 2" Ability { id: "C198", source: "Sword Dancer" }
+29249.6 "Rush (Short)" Ability { id: "C55E", source: "Dancing Sword" }
+29254.3 "Turn 1 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29254.3 "Turn 1 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29255.3 "Rush (N/S)" Ability { id: "C1D0", source: "Dancing Sword" }
+29256.9 "--north--" Ability { id: "C196", source: "Sword Dancer" }
+29258.6 "Turn 2 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29258.6 "Turn 2 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29262.8 "Turn 3 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29262.8 "Turn 3 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29262.8 "Turn 3 (Middle CW)" Ability { id: "C1A6", source: "Dancing Sword" }
+29262.8 "Turnabout" Ability { id: "C2E1", source: "Dancing Sword" }
+29263.2 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+29264.5 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+29264.6 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+29266.7 "Turn 4 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29266.7 "Turn 4 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+
+29269.7 "--sync--" AbilityExtra { id: "C196", x: "578.*" } jump "oc-sword-dancer-throwing3-left"
+29269.7 "--sync--" AbilityExtra { id: "C196", x: "600.*" } jump "oc-sword-dancer-throwing3-right"
+29269.7 "--west/north inner?--" #Ability { id: "C196", source: "Sword Dancer" }
+29270.9 "Turn 5 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29270.9 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29275.1 "Turn 6 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
+29275.1 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29275.1 "Turn 6 (Outer/Middle CCW/CW)?" #Ability { id: ["C1A1", "C1A6"], source: "Dancing Sword" }
+29275.1 "Turnabout?" #Ability { id: "C2E1", source: "Dancing Sword" }
+29275.6 "Left/Right Martial Mystique (cast)?" #Ability { id: ["C1B0", "C1AF"], source: "Sword Dancer" }
+29277.1 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29277.1 "Left/Right Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
+29283.8 "Sword Storm" #Ability { id: "C1D1", source: "Sword Dancer" }
+29300.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
+29308.1 "Cycloswords" #Ability { id: "C1B3", source: "Sword Dancer" }
+29309.1 "Rush (E/W)" #Ability { id: "C1D0", source: "Dancing Sword" }
+29309.1 "Spin" #Ability { id: ["C1B5", "C1B6", "C1B8", "C1B9"], source: "Dancing Sword" }
+29311.2 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+29317.6 "Sword Dance" #Ability { id: "C1C9", source: "Sword Dancer" }
+29318.3 "Sword Dance" #Ability { id: "C1CA", source: "Sword Dancer" }
+
+29369.7 label "oc-sword-dancer-throwing3-left"
+29370.9 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29370.9 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29375.1 "Turn 6 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29375.1 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29375.1 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
+29375.1 "Turnabout" #Ability { id: "C2E1", source: "Dancing Sword" }
+29375.6 "Left Martial Mystique (cast)" Ability { id: "C1B0", source: "Sword Dancer" }
+29377.1 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+29377.1 "Left Martial Mystique" #Ability { id: "C1B1", source: "Sword Dancer" }
+29378.9 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } forcejump "oc-sword-dancer-throwing3-end"
+
+29469.7 label "oc-sword-dancer-throwing3-right"
+29470.9 "Turn 5 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29470.9 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+29475.1 "Turn 6 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
+29475.1 "Turn 6 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
+#29475.1 "Turn 6 (Outer CCW)" #Ability { id: "C1A1", source: "Dancing Sword" }
+29475.6 "Right Martial Mystique (cast)" Ability { id: "C1AF", source: "Sword Dancer" }
+29477.1 "Rush (E/W)" Ability { id: "C1D0", source: "Dancing Sword" }
+29477.1 "Right Martial Mystique" Ability { id: "C1B1", source: "Sword Dancer" }
+
+29478.8 label "oc-sword-dancer-throwing3-end"
+29483.8 "Sword Storm" Ability { id: "C1D1", source: "Sword Dancer" }
+
+# Loops after ~16.2s pause
+29497.2 "--sync--" StartsUsing { id: "C1B2", source: "Sword Dancer" } forcejump "oc-sword-dancer-loop"
+
+### Sword Dancer (Extreme)
+# -ii
+# -p C20B:30011.0
+# -it "Sword Dancer"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+30006.0 label "oc-sword-dancer-extreme"
+#30011.0 "Sword Storm" Ability { id: "C20B", source: "Sword Dancer" }
