@@ -21,17 +21,17 @@ hideall "--sync--"
 22206.0 "--sync--" StartsUsing { id: "C1D1", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-normal"
 22206.0 "--sync--" StartsUsing { id: "C20B", source: "Sword Dancer" } window 10,50 jump "oc-sword-dancer-extreme"
 22211.0 "Sword Storm" #Ability { id: ["C1D1", "C20B"], source: "Sword Dancer" } # Normal/Extreme
-22014.2 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
-22018.2 "Throwing Swords" #Ability { id: ["C197", "C1D3"], source: "Sword Dancer" } # Normal/Extreme
-22019.2 "Rush (Long)" #Ability { id: ["C55D", "C1D5"], source: "Dancing Sword" } # Normal/Extreme
-22019.2 "Rush (Short)" #Ability { id: ["C55E", "C55F"], source: "Dancing Sword" } # Normal/Extreme
-22021.2 "Throwing Swords 2 (Extreme)?" #Ability { id: "C1D4", source: "Sword Dancer" }
-22022.2 "Rush (Extreme)?" Ability { id: "C560", source: "Dancing Sword" }
-22022.2 "Rush (Extreme)?" Ability { id: "C1D5", source: "Dancing Sword" }
+22214.2 "--middle--" #Ability { id: "C196", source: "Sword Dancer" }
+22218.2 "Throwing Swords" #Ability { id: ["C197", "C1D3"], source: "Sword Dancer" } # Normal/Extreme
+22219.2 "Rush (Long)" #Ability { id: ["C55D", "C1D5"], source: "Dancing Sword" } # Normal/Extreme
+22219.2 "Rush (Short)" #Ability { id: ["C55E", "C55F"], source: "Dancing Sword" } # Normal/Extreme
+22221.2 "Throwing Swords 2 (Extreme)?" #Ability { id: "C1D4", source: "Sword Dancer" }
+22222.2 "Rush (Extreme)?" Ability { id: "C560", source: "Dancing Sword" }
+22222.2 "Rush (Extreme)?" Ability { id: "C1D5", source: "Dancing Sword" }
 # NOTE: Extreme here only does Middle CCW + Outer CW
-22023.9 "Turn 1 (Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E", "C1D7"], source: "Dancing Sword" } # short-thrown sword possibilities
-22023.9 "Turn 1 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D", "C1DC"], source: "Dancing Sword" } # long-thrown sword possibilities
-22023.9 "Rush (Extreme)?" #Ability { id: "C1D6", source: "Dancing Sword" }
+22223.9 "Turn 1 (Middle CW/CCW)?" #Ability { id: ["C1A0", "C19E", "C1D7"], source: "Dancing Sword" } # short-thrown sword possibilities
+22223.9 "Turn 1 (Outer CCW/CW)?" #Ability { id: ["C19B", "C19D", "C1DC"], source: "Dancing Sword" } # long-thrown sword possibilities
+22223.9 "Rush (Extreme)?" #Ability { id: "C1D6", source: "Dancing Sword" }
 
 ### Sword Dancer (Normal)
 # -ii C195 C1A7 C1A9 C1AA C1AC C214 C4B7 C6ED
@@ -229,7 +229,7 @@ hideall "--sync--"
 27438.9 "--north--" #Ability { id: "C196", source: "Sword Dancer" } # This is now known
 27440.8 "Turn 5 (Middle CW)" #Ability { id: "C1A0", source: "Dancing Sword" }
 27445.2 "Turn 6 (Middle CW)" #Ability { id: "C1A6", source: "Dancing Sword" }
-27245.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
+27445.2 "Turnabout (Middle)" #Ability { id: "C2DB", source: "Dancing Sword" } # Only on short-thrown targetted
 27445.6 "Right/Left Martial Mystique (cast)?" #Ability { id: ["C1AF", "C1B0"], source: "Sword Dancer" }
 27447.2 "Right/Left Martial Mystique?" #Ability { id: "C1B1", source: "Sword Dancer" }
 27455.0 "Cycloswords Unsheathed" #Ability { id: "C1B2", source: "Sword Dancer" }
@@ -537,7 +537,7 @@ hideall "--sync--"
 # Two Long-thrown Swords First
 28754.8 label "oc-sword-dancer-throwing2-long"
 28756.8 "Throwing Swords 1" Ability { id: "C197", source: "Sword Dancer" }
-28757.8 "Rush (Long)" Ability { id: "C55D"], source: "Dancing Sword" }
+28757.8 "Rush (Long)" Ability { id: "C55D", source: "Dancing Sword" }
 28759.8 "Throwing Swords 2" Ability { id: "C198", source: "Sword Dancer" }
 28760.8 "Rush (Short)" Ability { id: "C55E", source: "Dancing Sword" }
 28765.5 "Turn 1 (Outer CCW)" Ability { id: "C19B", source: "Dancing Sword" }
