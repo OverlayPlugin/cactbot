@@ -460,7 +460,7 @@ hideall "--sync--"
 28554.8 "--sync--" StartsUsing { id: "C55E", source: "Dancing Sword" } jump "oc-sword-dancer-throwing2-short"
 28554.8 "--sync--" StartsUsing { id: "C55D", source: "Dancing Sword" } jump "oc-sword-dancer-throwing2-long"
 28556.8 "Throwing Swords 1" #Ability { id: "C197", source: "Sword Dancer" }
-28557.8 "Rush (Short/Long)" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
+28557.8 "Rush (Short/Long)?" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
 28559.8 "Throwing Swords 2" #Ability { id: "C198", source: "Sword Dancer" }
 28560.8 "Rush (Long/Short)?" #Ability { id: ["C55D", "C55E"], source: "Dancing Sword" }
 28565.5 "Turn 1 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
@@ -630,7 +630,7 @@ hideall "--sync--"
 29043.8 "--sync--" StartsUsing { id: "C55E", source: "Dancing Sword" } jump "oc-sword-dancer-throwing3-short"
 29043.8 "--sync--" StartsUsing { id: "C55D", source: "Dancing Sword" } jump "oc-sword-dancer-throwing3-long"
 29045.8 "Throwing Swords 1" #Ability { id: "C197", source: "Sword Dancer" }
-29046.8 "Rush (Short/Long)" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
+29046.8 "Rush (Short/Long)?" #Ability { id: ["C55E", "C55D"], source: "Dancing Sword" }
 29048.8 "Throwing Swords 2" #Ability { id: "C198", source: "Sword Dancer" }
 29049.8 "Rush (Long/Short)?" #Ability { id: ["C55D", "C55E"], source: "Dancing Sword" }
 29054.5 "Turn 1 (Outer CCW)" #Ability { id: "C19B", source: "Dancing Sword" }
