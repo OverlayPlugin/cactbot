@@ -187,30 +187,26 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Ancient Fire III/Ancient Blizzard III/Ancient Thunder III\?':
-          'Ancient Fire/Blizzard/Thunder III?',
-        'Ancient Blizzard III/Ancient Thunder III/Ancient Fire III\?':
-          'Ancient Blizzard/Thunder/Fire III?',
-        'Ancient Thunder III/Ancient Fire III/Ancient Blizzard III\?':
-          'Ancient Thunder/Fire/Blizzard III?',
-        'Severed Fire III/Severed Blizzard III/Severed Thunder III\?':
-          'Severed Fire/Blizzard/Thunder III?',
-        'Severed Blizzard III/Severed Thunder III/Severed Fire III\?':
-          'Severed Blizzard/Thunder/Fire III?',
-        'Ancient Fire III/Ancient Blizzard III \\(Normal\\)\?':
-          'Ancient Fire/Blizzard III (Normal)?',
-        'Ancient Blizzard III/Ancient Fire III \\(Normal\\)\?':
-          'Ancient Blizzard/Fire III (Normal)?',
-        'Ancient Fire III/Ancient Blizzard III\?': 'Ancient Fire/Blizzard III?',
-        'Ancient Fire III/Ancient Thunder III\?': 'Ancient Fire/Thunder III?',
-        'Ancient Blizzard III/Ancient Fire III\?': 'Ancient Blizzard/Fire III?',
-        'Ancient Blizzard III/Ancient Thunder III\?': 'Ancient Blizzard/Thunder III?',
-        'Ancient Thunder III/Ancient Fire III\?': 'Ancient Thunder/Fire III?',
-        'Ancient Thunder III/Ancient Blizzard III\?': 'Ancient Thunder/Blizzard III?',
-        'Severed Fire III/Severed Blizzard III\?': 'Severed Fire/Blizzard III?',
-        'Severed Blizzard III/Severed Fire III\?': 'Severed Blizzard/Fire III?',
-        'Severed Blizzard III/Severed Thunder III\?': 'Severed Blizzard/Thunder III?',
-        'Severed Thunder III/Severed Fire III\?': 'Severed Thunder/Fire III?',
+        'Ancient Fire III/Ancient Blizzard III/Ancient Thunder III':
+          'Ancient Fire/Blizzard/Thunder III',
+        'Ancient Blizzard III/Ancient Thunder III/Ancient Fire III':
+          'Ancient Blizzard/Thunder/Fire III',
+        'Ancient Thunder III/Ancient Fire III/Ancient Blizzard III':
+          'Ancient Thunder/Fire/Blizzard III',
+        'Severed Fire III/Severed Blizzard III/Severed Thunder III':
+          'Severed Fire/Blizzard/Thunder III',
+        'Severed Blizzard III/Severed Thunder III/Severed Fire III':
+          'Severed Blizzard/Thunder/Fire III',
+        'Ancient Fire III/Ancient Blizzard III': 'Ancient Fire/Blizzard III',
+        'Ancient Fire III/Ancient Thunder III': 'Ancient Fire/Thunder III',
+        'Ancient Blizzard III/Ancient Fire III': 'Ancient Blizzard/Fire III',
+        'Ancient Blizzard III/Ancient Thunder III': 'Ancient Blizzard/Thunder III',
+        'Ancient Thunder III/Ancient Fire III': 'Ancient Thunder/Fire III',
+        'Ancient Thunder III/Ancient Blizzard III': 'Ancient Thunder/Blizzard III',
+        'Severed Fire III/Severed Blizzard III': 'Severed Fire/Blizzard III',
+        'Severed Blizzard III/Severed Fire III': 'Severed Blizzard/Fire III',
+        'Severed Blizzard III/Severed Thunder III': 'Severed Blizzard/Thunder III',
+        'Severed Thunder III/Severed Fire III': 'Severed Thunder/Fire III',
       },
     },
     {
