@@ -201,7 +201,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shapeshifting Supercell': 'Supercell',
         'Right-Left Combination/Left-Right Combination': 'Right-Left/Left-Right Combination',
         'Tiny Flare/Tiny Holy': 'Tiny Flare/Holy',
-        'Tiny Meteor (castbar)': '--sync--',
+        'Tiny Meteor \(cast\)': '--sync--',
       },
     },
     {
