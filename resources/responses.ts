@@ -648,13 +648,17 @@ export const Responses = {
   getTowers: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.getTowers),
 } as const;
 
-// Example usage:
-// {
-//   id: 'Some In => Out Mechanic',
-//   type: 'StartsUsing',
-//   netRegex: { id: '0000', source: 'Name' },
-//   response: compose(Outputs.in, [' => ', Outputs.out])(),
-// },
+/**
+ * Creates a static response from localized text, defaulting to info severity.
+ *
+ * @example
+ * {
+ *   id: 'Some In => Out Mechanic',
+ *   type: 'StartsUsing',
+ *   netRegex: { id: '0000', source: 'Name' },
+ *   response: compose(Outputs.in, [' => ', Outputs.out])(),
+ * }
+ */
 export const compose = (
   first: LocaleText,
   ...rest: [sep: string, text: LocaleText][]
