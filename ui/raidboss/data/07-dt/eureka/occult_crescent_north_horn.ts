@@ -197,7 +197,7 @@ const triggerSet: TriggerSet<Data> = {
           'Severed Fire/Blizzard/Thunder III',
         'Severed Blizzard III/Severed Thunder III/Severed Fire III':
           'Severed Blizzard/Thunder/Fire III',
-        'Ancient Fire III/Ancient Blizzard III(?!/)': 'Ancient Fire/Blizzard III',
+        '(?<!/)Ancient Fire III/Ancient Blizzard III(?!/)': 'Ancient Fire/Blizzard III',
         'Ancient Fire III/Ancient Thunder III': 'Ancient Fire/Thunder III',
         'Ancient Blizzard III/Ancient Fire III': 'Ancient Blizzard/Fire III',
         '(?<!/)Ancient Blizzard III/Ancient Thunder III(?!/)': 'Ancient Blizzard/Thunder III',
