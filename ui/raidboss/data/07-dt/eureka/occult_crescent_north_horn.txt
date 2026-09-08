@@ -33,7 +33,7 @@ hideall "--sync--"
 22425.6 "Ancient Fire III/Ancient Blizzard III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
 22429.6 "Death Shroud (Extreme)?" #Ability { id: "B97E", source: "Necrophobia" }
 22434.7 "Heads Roll (Extreme)?" #Ability { id: "B980", source: "Necrophobia" }
-22435.3 "Ancient Blizzard III/Ancient Blizzard III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
+22435.3 "Ancient Blizzard III/Ancient Fire III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
 22446.1 "Corpse Mangler (Normal)?" #Ability { id: "B963", source: "Necrophobia" }
 
 ### Necrophobia (Normal)
@@ -265,7 +265,7 @@ hideall "--sync--"
 33734.6 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
 33736.6 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 33738.6 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
-33743.9 "Severed Dark Current" A#bility { id: "B977", source: "Necrophobia" }
+33743.9 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
 33745.1 "Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96F", "B96C"], source: "Severing Head" }
 33745.1 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
 33747.1 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
@@ -717,8 +717,8 @@ hideall "--sync--"
 35991.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 35993.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
 
-35993.9 "--sync--" StartsUsing Ability { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed5-thunder2"
-35993.9 "--sync--" StartsUsing Ability { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard2"
+35993.9 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed5-thunder2"
+35993.9 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard2"
 35998.2 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
 35999.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
 35999.4 "Ancient Thunder III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96D"], source: "Severing Head" }
@@ -744,7 +744,7 @@ hideall "--sync--"
 36089.2 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
 36091.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 36093.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
-36094.0 "--sync--" StartsUsing Ability { id: "B96C", source: "Severing Head" } forcejump "oc-necrophobia-severed5-fire2"
+36094.0 "--sync--" StartsUsing { id: "B96C", source: "Severing Head" } forcejump "oc-necrophobia-severed5-fire2"
 
 # Ancient Blizzard III with Ancient Fire III First
 36183.7 label "oc-necrophobia-severed5-blizzard-fire1"
@@ -753,7 +753,7 @@ hideall "--sync--"
 36189.2 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
 36191.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 36193.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
-36194.0 "--sync--" StartsUsing Ability { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
+36194.0 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
 
 # Ancient Blizzard III with Ancient Blizzard III First
 # NOTE: This should always lead to Ancient Thunder III
@@ -763,7 +763,7 @@ hideall "--sync--"
 36289.2 "Ancient Blizzard III" Ability { id: "B96D", source: "Severing Head" }
 36291.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 36293.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
-36294.0 "--sync--" StartsUsing Ability { id: "B96F", source: "Severing Head" } forcejump "oc-necrophobia-severed5-thunder2"
+36294.0 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } forcejump "oc-necrophobia-severed5-thunder2"
 
 # Ancient Blizzard III with Ancient Thunder III First
 36383.7 label "oc-necrophobia-severed5-blizzard-thunder1"
@@ -772,7 +772,7 @@ hideall "--sync--"
 36389.2 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
 36391.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
 36393.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
-36394.0 "--sync--" StartsUsing Ability { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
+36394.0 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
 
 # Severed Dark Current Branch 2 - Level 3
 # Ancient Fire III Second
