@@ -804,3 +804,16 @@ hideall "--sync--"
 36703.2 "--heads return--" Ability { id: "B970", source: "Severing Head" }
 36703.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
 36705.3 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+### Necrophobia (Extreme)
+# -ii
+# -p B97A:37010.1
+# -it "Necrophobia"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+37005.1 label "oc-necrophobia-extreme"
+#37010.1 "Hail of Hellflares (cast)" Ability { id: "B97A", source: "Necrophobia" }
+#37011.0 "Hail of Hellflares 1" Ability { id: "B97B", source: "Necrophobia" }
