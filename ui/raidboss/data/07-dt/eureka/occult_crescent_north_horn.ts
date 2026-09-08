@@ -186,9 +186,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Claw to Tail/Tail to Claw \(Tail/Claw\)': 'Tail/Claw',
-        'Claw to Tail \(Tail\)': 'Tail',
-        'Tail to Claw \(Claw\)': 'Claw',
+        'Claw to Tail/Tail to Claw \\(Tail/Claw\\)': 'Tail/Claw',
+        'Claw to Tail \\(Tail\\)': 'Tail',
+        'Tail to Claw \\(Claw\\)': 'Claw',
         'Nigh-drawn Eruption/Far-flung Eruption': 'Nigh-drawn/Far-flung Eruption',
         'Far-flung Eruption/Nigh-drawn Eruption': 'Far-flung/Nigh-drawn Eruption',
         'Knowledge Level 4 Holy/Knowledge Level 3 Flare/Knowledge Level 5 Death/Prime Knowledge Level Death':
@@ -201,7 +201,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shapeshifting Supercell': 'Supercell',
         'Right-Left Combination/Left-Right Combination': 'Right-Left/Left-Right Combination',
         'Tiny Flare/Tiny Holy': 'Tiny Flare/Holy',
-        'Tiny Meteor \(cast\)': '--sync--',
+        'Tiny Meteor \\(cast\\)': '--sync--',
       },
     },
     {
