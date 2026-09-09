@@ -264,6 +264,14 @@ const contentTypeToLabel: {
       tc: '假面狂歡',
     },
   },
+  [ContentType.xbm]: {
+    full: {
+      en: 'Crucible of the Unbroken',
+    },
+    short: {
+      en: 'BST',
+    },
+  },
   [ContentType.Eureka]: {
     full: {
       en: 'Eureka',
@@ -1177,6 +1185,7 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
 
     // @TODO: Remap categories to group them better
     ContentType.TheMaskedCarnivale,
+    ContentType.xbm,
     ContentType.Eureka,
     ContentType.SaveTheQueen,
     ContentType.OccultCrescent,
