@@ -463,6 +463,10 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
   },
   BST: {
     en: 'BST',
+    de: 'BST',
+    fr: 'DRE',
+    ja: 'BST', // FIXME
+    cn: 'BST', // FIXME
     ko: '마수',
   },
 };
@@ -857,6 +861,10 @@ const jobLocalizedFull: Record<Job, LocaleText> = {
   },
   BST: {
     en: 'Beastmaster',
+    de: 'Bestienbändiger',
+    fr: 'dresseur',
+    ja: '魔獣使い',
+    cn: '驯兽师',
     ko: '마수조련사',
   },
 };
