@@ -150,7 +150,7 @@ const data: CeInfoType = {
   'TheForkedTowerMagic': {
     'directorId': '389',
     'name': {
-      'cn': '两岐塔 魔之塔',
+      'cn': '两歧塔 魔之塔',
       'de': 'Der Turm der Magie',
       'en': 'The Forked Tower: Magic',
       'fr': 'Tour fourchue de la Magie',

@@ -132,7 +132,7 @@ const data: CeInfoType = {
       'en': 'The Fires of War',
       'fr': 'Brasier de guerre',
       'ja': '炎獣使い「火焔百人隊」',
-      'ko': '화염마수 조련사 \'화염백인대\'',
+      'ko': '화염마수조련사 \'화염백인대\'',
       'tc': '炎獸訓練師——火焰百夫隊',
     },
   },

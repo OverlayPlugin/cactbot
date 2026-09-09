@@ -151,7 +151,7 @@ const data: CeInfoType = {
   'ThereWouldBeBlood': {
     'directorId': '210',
     'name': {
-      'cn': '异界魔王——汉比',
+      'cn': '异界废王——汉比',
       'de': 'Hanbi, König im Exil',
       'en': 'There Would Be Blood',
       'fr': 'Le Roi des cendres',

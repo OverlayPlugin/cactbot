@@ -41,6 +41,7 @@ const data = {
   'UltimateRaids': 28,
   'VCDungeonFinder': 30,
   'WondrousTails': 24,
+  'xbm': 40,
 } as const;
 
 export default data;
