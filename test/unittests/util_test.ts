@@ -41,6 +41,11 @@ const jobs: JobInfo[] = ((): JobInfo[] => {
     'Stun',
   );
 
+  // Beastmaster has its own utility actions instead of role actions.
+  const beastmaster = jobs.find((job) => job.name === 'BST');
+  if (beastmaster)
+    beastmaster.actions = ['Cleanse', 'Silence', 'Sleep', 'Stun'];
+
   return jobs;
 })();
 

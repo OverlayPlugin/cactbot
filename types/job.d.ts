@@ -41,6 +41,7 @@ export type Job =
   | 'RPR'
   | 'SGE'
   | 'VPR'
-  | 'PCT';
+  | 'PCT'
+  | 'BST';
 
 export type Role = 'tank' | 'healer' | 'dps' | 'crafter' | 'gatherer' | 'none';

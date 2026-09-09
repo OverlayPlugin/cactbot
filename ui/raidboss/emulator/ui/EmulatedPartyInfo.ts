@@ -24,6 +24,7 @@ const jobOrder = [
   'SAM',
   'RPR',
   'VPR',
+  'BST',
   'BRD',
   'MCH',
   'DNC',

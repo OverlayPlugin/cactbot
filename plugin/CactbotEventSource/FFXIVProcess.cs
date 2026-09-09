@@ -109,6 +109,7 @@ namespace Cactbot {
       SGE = 40,
       VPR = 41,
       PCT = 42,
+      BST = 43,
     };
 
     static internal bool IsGatherer(EntityJob job) {

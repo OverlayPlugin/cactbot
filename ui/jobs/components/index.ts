@@ -59,6 +59,7 @@ const ComponentMap: Record<Job, typeof BaseComponent> = {
   SAM: SAMComponent,
   RPR: RPRComponent,
   VPR: VPRComponent,
+  BST: BaseComponent,
   // ranged dps
   ARC: BRDComponent,
   BRD: BRDComponent,
