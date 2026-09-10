@@ -13,3 +13,807 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### Necrophobia
+# The Thanatology Room will be sealed off
+22400.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1575" } window 100000,0
+
+22405.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-normal"
+22405.1 "--sync--" StartsUsing { id: "B97A", source: "Necrophobia" } window 10,50 jump "oc-necrophobia-extreme"
+22410.1 "Hail of Hellflares (cast)" #Ability { id: ["B95C", "B97A"], source: "Necrophobia" } # Normal/Extreme
+22411.0 "Hail of Hellflares 1" #Ability { id: ["B95D", "B97B"], source: "Necrophobia" } # Normal/Extreme
+22412.7 "Hail of Hellflares 2" #Ability { id: ["BF3D", "BF3F"], source: "Necrophobia" } # Normal/Extreme
+22414.5 "Hail of Hellflares 3" #Ability { id: ["BF3D", "BF3F"], source: "Necrophobia" } # Normal/Extreme
+22416.3 "Hail of Hellflares 4" #Ability { id: ["BF3D", "BF3F"], source: "Necrophobia" } # Normal/Extreme
+22416.3 "--middle (Extreme)?--" #Ability { id: "B978", source: "Necrophobia" }
+22418.1 "Hail of Hellflares 5" #Ability { id: ["BF3D", "BF3F"], source: "Necrophobia" } # Normal/Extreme
+22418.3 "--middle (Normal)?--" #Ability { id: "B95A", source: "Necrophobia" }
+22418.5 "Capitation (Extreme)?" #Ability { id: "B97D", source: "Necrophobia" }
+22419.4 "--heads appear (Extreme)?--" #Ability { id: "B97F", source: "Severing Head" }
+22425.6 "Ancient Fire III/Ancient Blizzard III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
+22429.6 "Death Shroud (Extreme)?" #Ability { id: "B97E", source: "Necrophobia" }
+22434.7 "Heads Roll (Extreme)?" #Ability { id: "B980", source: "Necrophobia" }
+22435.3 "Ancient Blizzard III/Ancient Fire III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
+22446.1 "Corpse Mangler (Normal)?" #Ability { id: "B963", source: "Necrophobia" }
+
+### Necrophobia (Normal)
+# NOTE: There will be debuffs on the boss and tethers to the Severing Heads for several of the mechanics
+# Boss Tethers:
+#  0190 => Fire
+#  0191 => Blizzard
+#  0192 => Thunder
+# Boss Debuffs have a count for headmarkers:
+#  9F8 => 45A Ancient Fire III
+#  9F8 => 45B Ancient Blizzard III
+#  9F8 => 5C Ancient Thunder III
+# -ii B95B B95E B96E BF3C
+# -p B95C:33010.1
+# -it "Necrophobia"
+# IGNORED ABILITIES
+# B95B --sync--: Auto-attack
+# B95E --sync--: Wall damage casts, starts ~0.3s after first BF3D Hail of Hellflares, repeats every ~1s
+# B96E Ancient Thunder III: VFX 4.4s cast from severing Head
+# BF3C Hail of Hellflares: subsequent VFX casts for BF3D Hail of Hellflares, starting ~1.2s after the initial B95D Hail of Hellflares aoe
+#
+# ALL ENCOUNTER ABILITIES
+# B95A --sync--: Boss dashes to the middle
+# B95B --sync--: Auto-attack
+# B95C Hail of Hellflares: 4.7s castbar, an initial aoe damage (B95D Hail of Hellflares), followed by four BF3D Hail of Hellflares aoes every ~1.8s
+# B95D Hail of Hellflares: intial aoe damage about 0.9s after B95C Hail of Hellflares
+# B95E --sync--: Wall damage casts, starts ~0.3s after first BF3D Hail of Hellflares, repeats every ~1s
+# B95F Ancient Fire III: 4.7s castbar, big circle aoe under boss, two fire orbs rotate around boss during cast
+# B960 Ancient Blizzard III: 4.7s castbar plus-shaped aoe under boss, two spiky ice orbs rotate around boss during cast
+# B961 Ancient Thunder III: 3.9s castbar, two purple diamonds will also be rotating around boss
+# B962 Ancient Thunder III: 4.7s cast, cone aoes coming from each of boss' cardinals
+# B963 Corpse Mangler: 4.7s castbar tankbuster with red spinning tankbuster headmarker
+# B964 Capitation: VFX ~0.9s prior to B966, four Severing Heads will expand out from boss at his intercardinals
+# B965 Death Shroud: 6.7s castbar, ~2s into the cast, tethers appear indicating what spell the head will cast later
+# B966 --sync--: Severing Heads appear
+# B967 Heads Roll: 2.7s castbar, at end Severing Heads will move one at a time into a position around the arena using B968
+# B968 --sync--: Head dashes into a position, rotates and receives a heading indicator
+# B969 Severed Fire III: 5.2s castbar, starts same time as B96C Ancient Fire III, big circle aoe under boss
+# B96A Severed Blizzard III: 5.2s castbar, starts same time as B96D Ancient Blizzard III, plus-shaped aoe under boss
+# B96B Severed Thunder III: 5.2s castbar, starts same time as B96F and B96E Ancient Thunder III, conal aoes from boss' cardinals
+# B96C Ancient Fire III: Severing Head 5.2s casted big circle aoe under Severing Head, heading indicator isn't relevant for this mechanic
+# B96D Ancient Blizzard III: Severing Head 5.2s casted plus-shaped aoe under Severing Head
+# B96E Ancient Thunder III: VFX 4.4s cast from severing Head
+# B96F Ancient Thunder III: 5.2s cast cone aoes from Severing Head's cardinals, ability is about ~0.8s after B96E Ancient Thunder III
+# B970 --sync--: Severing Heads dash back into the boss
+# B971 Vacuum Wave: 3.7s castbar, boss faces random player and starts a halfroom cleave
+# B972 Heads Roll: VFX prior to B966, eight Severing Heads will expanding out from boss in a line
+# B973 Deathly Ray: 4.7s line aoes cast from Severing Heads, the heads will each be facing left or right in a line
+# B974 Dark Current: 3.9s castbar, boss faces random player and starts an expanding line aoe, at end of cast VFX is played where boss jumps to one end of arena, dashes across and jumps back middle
+# B975 Dark Current: 5.2s cast, first expanding line aoe
+# B976 Dark Current: 0.7s cast, two subsequent line aoes, starting 1.1s after B975 Dark Current, about 1.1s apart
+# B977 Severed Dark Current: 3.9s castbar, boss faces north, two purple diamonds rotating around boss
+# BF3C Hail of Hellflares: subsequent VFX casts for BF3D Hail of Hellflares, starting ~1.2s after the initial B95D Hail of Hellflares aoe
+# BF3D Hail of Hellflares: aoe damage, there are 4 total that occur ~1.8s apart
+# C4B5 Severed Thunder III
+33005.1 label "oc-necrophobia-normal"
+33010.1 "Hail of Hellflares (cast)" Ability { id: "B95C", source: "Necrophobia" }
+33011.0 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
+33012.7 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33014.5 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+33016.3 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+33018.1 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+33018.3 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+
+# Tutorial - Ancient Fire III and Ancient Blizzard III
+# Ancient Fire III => Ancient Blizzard III or Ancient Blizzard III => Ancient Fire III
+33020.6 "--sync--" StartsUsing { id: "B95F", source: "Necrophobia" } jump "oc-necrophobia-ancient1-fire"
+33020.6 "--sync--" StartsUsing { id: "B960", source: "Necrophobia" } jump "oc-necrophobia-ancient1-blizzard"
+33025.6 "Ancient Fire III/Ancient Blizzard III?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
+33035.3 "Ancient Blizzard III/Ancient Fire III?" #Ability { id: ["B960", "B95F"], source: "Necrophobia" }
+33046.0 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+33052.1 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+33054.2 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+33055.1 "--sync--" #Ability { id: "B966", source: "Severing Head" }
+33065.3 "Death Shroud" #Ability { id: "B965", source: "Necrophobia" }
+33070.4 "Heads Roll" #Ability { id: "B967", source: "Necrophobia" }
+
+33120.7 label "oc-necrophobia-ancient1-fire"
+33125.7 "Ancient Fire III" Ability { id: "B95F", source: "Necrophobia" }
+33135.4 "Ancient Blizzard III" Ability { id: "B960", source: "Necrophobia" }
+33141.2 "--sync-" StartsUsing { id: "B963", source: "Necrophobia" } forcejump "oc-necrophobia-ancient1-end"
+
+33220.7 label "oc-necrophobia-ancient1-blizzard"
+33225.7 "Ancient Blizzard III" Ability { id: "B960", source: "Necrophobia" }
+33235.4 "Ancient Fire III" Ability { id: "B95F", source: "Necrophobia" }
+
+33241.1 label "oc-necrophobia-ancient1-end"
+33246.1 "Corpse Mangler" Ability { id: "B963", source: "Necrophobia" }
+33252.2 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+
+# Tutorial - Severed Fire III
+# NOTE: Four heads spawn and will be tethered with fire
+33254.3 "Capitation" Ability { id: "B964", source: "Necrophobia" }
+33255.2 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+33260.4 "--fire tethers--" Tether { id: "0190", source: "Severing Head" }
+33265.4 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+33270.5 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+33272.5 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+33273.7 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+33274.9 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+33276.1 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+33284.2 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+33284.2 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+33288.9 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+
+# Tutorial - Severed Blizzard III + Severed Fire III
+# NOTE: Four heads spawn, 1 will be tethered with blizzzard, three tethered with fire
+33288.9 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+33291.0 "Capitation" Ability { id: "B964", source: "Necrophobia" }
+33291.9 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+33297.1 "--fire tethers--" Tether { id: "0190", source: "Severing Head" }
+33297.1 "--blizzard tethers--" #Tether { id: "0191", source: "Severing Head" }
+33302.1 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+33307.2 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+33309.2 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+33310.4 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+33311.6 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+33312.8 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+# Severed Fire III => Severed Blizzard III or Severed Blizzard III => Severed Fire III
+33315.4 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } jump "oc-necrophobia-severed2-fire"
+33315.4 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } jump "oc-necrophobia-severed2-blizzard"
+33320.9 "Severed Fire III/Severed Blizzard III?" #Ability { id: ["B969", "B96A"], source: "Necrophobia" }
+33320.9 "Ancient Fire III/Ancient Blizzard III?" #Ability { id: ["B96C", "B96D"], source: "Severing Head" }
+33330.0 "Severed Blizzard III/Severed Fire III?" #Ability { id: ["B96A", "B969"], source: "Necrophobia" }
+33330.0 "Ancient Blizzard III/Ancient Fire III?" #Ability { id: ["B96D", "B96C"], source: "Severing Head" }
+33334.7 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+33340.1 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+33341.0 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+33342.7 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33344.5 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+33346.3 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+33348.1 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+33353.7 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+33356.8 "Heads Roll" #Ability { id: "B972", source: "Necrophobia" }
+33357.7 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+
+33415.4 label "oc-necrophobia-severed2-fire"
+33420.9 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+33420.9 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+33430.0 "Severed Blizzard III" Ability { id: "B96A", source: "Necrophobia" }
+33430.0 "Ancient Blizzard III" #Ability { id: "B96D", source: "Severing Head" }
+33434.7 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+33435.2 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-severed2-end"
+
+33515.4 label "oc-necrophobia-severed2-blizzard"
+33520.9 "Severed Blizzard III" Ability { id: "B96A", source: "Necrophobia" }
+33520.9 "Ancient Blizzard III" #Ability { id: "B96D", source: "Severing Head" }
+33530.0 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+33530.0 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+33534.7 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+
+33535.1 label "oc-necrophobia-severed2-end"
+33540.1 "Hail of Hellflares (cast)" Ability { id: "B95C", source: "Necrophobia" }
+33541.0 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
+33542.7 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33544.5 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+33546.3 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+33548.1 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+
+# Deathly Ray
+33553.5 "Vacuum Wave" Ability { id: "B971", source: "Necrophobia" }
+33556.8 "Heads Roll" Ability { id: "B972", source: "Necrophobia" }
+33557.7 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+33565.1 "Deathly Ray" Ability { id: "B973", source: "Severing Head" }
+33567.1 "--heads rotate--" Ability { id: "B968", source: "Severing Head" }
+33567.7 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+33573.9 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+33573.9 "Vacuum Wave" Ability { id: "B971", source: "Necrophobia" }
+33576.1 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+
+# Tutorial - Dark Current + Ancient Thunder III
+33580.0 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+33587.5 "Dark Current (cast)" Ability { id: "B974", source: "Necrophobia" }
+33588.6 "Dark Current 1" Ability { id: "B975", source: "Necrophobia" }
+33590.6 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33592.6 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33596.5 "Ancient Thunder III (cast)" Ability { id: "B961", source: "Necrophobia" }
+33597.4 "Ancient Thunder III" Ability { id: "B962", source: "Necrophobia" }
+
+# Tutorial - Severed Dark Current
+# NOTE: This can be two Ancient Blizzard III or two Ancient Fire III, and two Ancient Thunder III
+# NOTE2: Additionally, order can be Ancient Thunder III => Ancient Blizzard/Fire III or Ancient Blizzard/Fire III => Ancient Thunder III
+33602.3 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+33604.6 "Capitation" Ability { id: "B964", source: "Necrophobia" }
+33605.3 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+
+# Severed Dark Current Branch 1
+33610.5 "--sync--" Tether { id: "0190", source: "Severing Head" } jump "oc-necrophobia-severed3-fire"
+33610.5 "--sync--" Tether { id: "0191", source: "Severing Head" } jump "oc-necrophobia-severed3-blizzard"
+33610.5 "--fire/blizzard tethers--" #Tether { id: ["0190", "0191"], source: "Severing Head" }
+33610.5 "--thunder tethers--" #Tether { id: "0192", source: "Severing Head" }
+33615.5 "Death Shroud" #Ability { id: "B965", source: "Necrophobia" }
+33620.6 "Heads Roll" #Ability { id: "B967", source: "Necrophobia" }
+33622.6 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+33623.8 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+33624.9 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+33626.1 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+33633.0 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+33634.2 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+33634.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33636.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33638.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33643.5 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+33644.7 "Ancient Thunder III/Ancient Fire III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96C", "B96D"], source: "Severing Head" }
+33644.7 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33646.7 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33648.6 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+33648.8 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33655.5 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+33656.4 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+33658.1 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33659.9 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+
+# Severed Dark Current Branch 1 - Level 1
+# Ancient Fire III + Ancient Thunder III
+33710.5 label "oc-necrophobia-severed3-fire"
+33715.5 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+33720.6 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+33722.6 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+33723.8 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+33724.9 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+33726.1 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+33729.1 "--sync--" StartsUsing { id: "B96C", source: "Severing Head" } jump "oc-necrophobia-severed3-fire-fire"
+33729.1 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed3-fire-thunder"
+33733.4 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+33734.6 "Ancient Fire III/Ancient Thunder III?" #Ability { id: ["B96C", "B96F"], source: "Severing Head" }
+33734.6 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33736.6 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33738.6 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33743.9 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+33745.1 "Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96F", "B96C"], source: "Severing Head" }
+33745.1 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33747.1 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33749.0 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+33749.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33755.9 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+33756.8 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+33758.5 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33760.3 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+33762.1 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+33763.9 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+33769.1 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+33774.3 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+33776.4 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+33777.3 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+
+# Ancient Blizzard III + Ancient Thunder III
+33810.5 label "oc-necrophobia-severed3-blizzard"
+33815.5 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+33820.6 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+33822.6 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+33823.8 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+33824.9 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+33826.1 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+33829.0 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed3-blizzard-blizzard"
+33829.0 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed3-blizzard-thunder"
+33833.3 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+33834.5 "Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96D", "B86F"], source: "Severing Head" }
+33834.5 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33836.5 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33838.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33843.8 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+33845.0 "Ancient Thunder III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96D"], source: "Severing Head" }
+33845.0 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33847.0 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33848.8 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+33849.1 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33855.8 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+33856.7 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+33858.4 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+33860.2 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+33862.0 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+33863.8 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+33869.0 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+33874.2 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+33876.3 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+33877.2 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+
+# Severed Dark Current Branch 1 - Level 2
+# Ancient Fire III => Ancient Thunder III
+33929.0 label "oc-necrophobia-severed3-fire-fire"
+33933.3 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+33934.5 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
+33934.5 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+33936.5 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+33938.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+33940.1 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } forcejump "oc-necrophobia-severed3-thunder2"
+
+# Ancient Thunder III => Ancient Fire III
+34029.0 label "oc-necrophobia-severed3-fire-thunder"
+34033.3 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34034.5 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+34034.5 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34036.5 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34038.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+34044.2 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34045.4 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
+34045.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34047.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34049.3 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+34049.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+34051.4 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+# Ancient Blizzard III => Ancient Thunder III
+34129.0 label "oc-necrophobia-severed3-blizzard-blizzard"
+34133.3 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34134.5 "Ancient Blizzard III" Ability { id: "B96D", source: "Severing Head" }
+34134.5 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34136.5 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34138.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+34140.1 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } forcejump "oc-necrophobia-severed3-thunder2"
+
+# Ancient Thunder III => Ancient Blizzard III
+34229.0 label "oc-necrophobia-severed3-blizzard-thunder"
+34233.3 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34234.5 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+34234.5 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34236.5 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34238.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+34243.8 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34245.0 "Ancient Blizzard III" Ability { id: "B96D", source: "Severing Head" }
+34245.0 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34247.0 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34248.8 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+34249.1 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+34250.9 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+# Severed Dark Current Branch 1 - Level 3
+# Both Ancient Fire III and Ancient Blizzard III can end on this
+# Ancient Thunder III Second
+34339.2 label "oc-necrophobia-severed3-thunder2"
+34343.5 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+34344.7 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+34344.7 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+34346.7 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+34348.6 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+34348.8 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+
+# Loop Begins
+34350.5 label "oc-necrophobia-loop"
+34355.5 "Hail of Hellflares (cast)" Ability { id: "B95C", source: "Necrophobia" }
+34356.4 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
+34358.1 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+34359.9 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+34361.7 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+34363.5 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+34368.7 "Corpse Mangler" Ability { id: "B963", source: "Necrophobia" }
+
+# Severed 4 Branch (Loop version)
+# Possibilities:
+#   Ancient Fire III => Ancient Blizzard III
+#   Ancient Fire III => Ancient Thunder III
+#   Ancient Blizzard III => Ancient Fire III
+#   Ancient Blizzard III => Ancient Thunder III
+#   Ancient Thunder III => Ancient Fire III
+#   Ancient Thunder III => Ancient Blizzard III
+34373.9 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+34376.0 "Capitation" Ability { id: "B964", source: "Necrophobia" }
+34376.9 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+
+# NOTE: There will always be at least two of three, by matching here we have a decent chance at predicting the last cast early
+34382.0 "--sync--" Tether { id: "0190", source: "Severing Head" } jump "oc-necrophobia-severed4-fire"
+34382.0 "--sync--" Tether { id: "0191", source: "Severing Head" } jump "oc-necrophobia-severed4-blizzard"
+34387.0 "Death Shroud" #Ability { id: "B965", source: "Necrophobia" }
+34392.1 "Heads Roll" #Ability { id: "B967", source: "Necrophobia" }
+34394.1 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+34395.3 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+34396.5 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+34397.7 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+34405.8 "Severed Fire III/Severed Blizzard III/Severed Thunder III?" #Ability { id: ["B969", "B69A", "B69B"], source: "Necrophobia" }
+34405.8 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+34414.9 "Severed Blizzard III/Severed Thunder III/Severed Fire III?" #Ability { id: ["B96A", "B69B", "B969"], source: "Necrophobia" }
+34414.9 "Ancient Blizzard III/Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96D", "B96F", "B86C"], source: "Severing Head" }
+34419.6 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+34424.0 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+34424.9 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+34426.6 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+34428.4 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+34430.2 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+34431.2 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+34432.0 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+
+# Severed Banch 4 - Level 1
+# Ancient Fire III
+34482.0 label "oc-necrophobia-severed4-fire"
+34487.0 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+34492.1 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+34494.1 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+34495.3 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+34496.5 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+34497.7 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+34500.3 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-fire1"
+34500.3 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-blizzard1"
+34500.3 "--sync--" StartsUsing { id: "B96B", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-thunder1"
+34505.0 "Severed Fire III/Severed Blizzard III/Severed Thunder III?" #Ability { id: ["B969", "B69A", "B69B"], source: "Necrophobia" }
+34505.0 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+34514.1 "Severed Blizzard III/Severed Thunder III/Severed Fire III?" #Ability { id: ["B96A", "B69B", "B969"], source: "Necrophobia" }
+34514.1 "Ancient Blizzard III/Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96D", "B96F", "B86C"], source: "Severing Head" }
+34518.8 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+34523.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+34524.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+34525.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+34527.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+34529.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+34530.4 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+34531.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+34532.5 "Heads Roll" #Ability { id: "B972", source: "Necrophobia" }
+34533.4 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+34540.8 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+34540.8 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+34542.8 "--heads rotate--" #Ability { id: "B968", source: "Severing Head" }
+
+# Ancient Blizzard III
+34582.0 label "oc-necrophobia-severed4-blizzard"
+34587.0 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+34592.1 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+34594.1 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+34595.3 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+34596.5 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+34597.7 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+34600.3 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-fire1"
+34600.3 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-blizzard1"
+34600.3 "--sync--" StartsUsing { id: "B96B", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard-thunder1"
+34605.0 "Severed Fire III/Severed Blizzard III/Severed Thunder III?" #Ability { id: ["B969", "B69A", "B69B"], source: "Necrophobia" }
+34605.0 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+34614.1 "Severed Blizzard III/Severed Thunder III/Severed Fire III?" #Ability { id: ["B96A", "B69B", "B969"], source: "Necrophobia" }
+34614.1 "Ancient Blizzard III/Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96D", "B96F", "B86C"], source: "Severing Head" }
+34618.8 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+34623.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+34624.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+34625.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+34627.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+34629.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+34630.4 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+34631.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+34632.5 "Heads Roll" #Ability { id: "B972", source: "Necrophobia" }
+34633.4 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+34640.8 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+34640.8 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+34642.8 "--heads rotate--" #Ability { id: "B968", source: "Severing Head" }
+
+# Severed Banch 4 - Level 2
+# Ancient Fire III with Ancient Fire III first (unlucky)
+34700.3 label "oc-necrophobia-severed4-fire-fire1"
+34705.0 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+34705.0 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+
+34708.6 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } jump "oc-necrophobia-severed4-blizzard2"
+34708.6 "--sync--" StartsUsing { id: "B96B", source: "Necrophobia" } jump "oc-necrophobia-severed4-thunder2"
+34714.1 "Severed Blizzard III/Severed Thunder III?" #Ability { id: ["B96A", "B69B"], source: "Necrophobia" }
+34714.1 "Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96D", "B96F"], source: "Severing Head" }
+34718.8 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+34723.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+34724.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+34725.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+34727.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+34729.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+34730.4 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+34731.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+34732.5 "Heads Roll" #Ability { id: "B972", source: "Necrophobia" }
+34733.4 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+34740.8 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+34740.8 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+34742.8 "--heads rotate--" #Ability { id: "B968", source: "Severing Head" }
+34749.7 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+34749.7 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+34749.7 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+34755.8 "--middle--" #Ability { id: "B95A", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+34757.8 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+
+# Ancient Fire III with Ancient Blizzard III first
+34800.3 label "oc-necrophobia-severed4-fire-blizzard1"
+34805.0 "Severed Blizzard III" Ability { id: "B96A", source: "Necrophobia" }
+34805.0 "Ancient Blizzard III" #Ability { id: "B96D", source: "Severing Head" }
+34808.8 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-fire2"
+
+# Ancient Fire III with Ancient Thunder III first
+34900.3 label "oc-necrophobia-severed4-fire-thunder1"
+34905.0 "Severed Thunder III" Ability { id: "B96B", source: "Necrophobia" }
+34905.0 "Ancient Thunder III" #Ability { id: "B96F", source: "Severing Head" }
+34908.8 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-fire2"
+
+# Ancient Blizzard III with Ancient Fire III first
+# NOTE: This is 0.8s different than other routes
+35000.3 label "oc-necrophobia-severed4-blizzard-fire1"
+35005.8 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+35005.8 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+35009.6 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-blizzard2"
+
+# Ancient Blizzard III with Ancient Blizzard III first (unlucky)
+35100.3 label "oc-necrophobia-severed4-blizzard-blizzard1"
+35105.0 "Severed Blizzard III" Ability { id: "B96A", source: "Necrophobia" }
+35105.0 "Ancient Blizzard III" #Ability { id: "B96D", source: "Severing Head" }
+
+35108.6 "--sync--" StartsUsing { id: "B969", source: "Necrophobia" } jump "oc-necrophobia-severed4-fire2"
+35108.6 "--sync--" StartsUsing { id: "B96B", source: "Necrophobia" } jump "oc-necrophobia-severed4-thunder2"
+35114.1 "Severed Thunder III/Severed Fire III?" #Ability { id: ["B69B", "B969"], source: "Necrophobia" }
+35114.1 "Ancient Thunder III/Ancient Fire III?" #Ability { id: ["B96F", "B86C"], source: "Severing Head" }
+35118.8 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35123.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+35124.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+35125.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+35127.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+35129.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+35130.4 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+35131.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+35132.5 "Heads Roll" #Ability { id: "B972", source: "Necrophobia" }
+35133.4 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+35140.8 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+35140.8 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+35142.8 "--heads rotate--" #Ability { id: "B968", source: "Severing Head" }
+35149.7 "Vacuum Wave" #Ability { id: "B971", source: "Necrophobia" }
+35149.7 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+35149.7 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35155.8 "--middle--" #Ability { id: "B95A", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+35157.8 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+
+# Ancient Blizzard III with Ancient Thunder III first
+35200.3 label "oc-necrophobia-severed4-blizzard-thunder1"
+35205.0 "Severed Thunder III" Ability { id: "B96B", source: "Necrophobia" }
+35205.0 "Ancient Thunder III" #Ability { id: "B96F", source: "Severing Head" }
+35208.8 "--sync--" StartsUsing { id: "B96A", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-blizzard2"
+
+# Severed Banch 4 - Level 3
+# Ancient Fire III last with Ancient Blizzard III first
+35309.4 label "oc-necrophobia-severed4-fire2"
+35314.9 "Severed Fire III" Ability { id: "B969", source: "Necrophobia" }
+35314.9 "Ancient Fire III" #Ability { id: "B96C", source: "Severing Head" }
+35319.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-end"
+
+# Ancient Blizzard III last with Ancient Fire III first
+35409.4 label "oc-necrophobia-severed4-blizzard2"
+35414.9 "Severed Blizzard III" Ability { id: "B96A", source: "Necrophobia" }
+35414.9 "Ancient Blizzard III" #Ability { id: "B96D", source: "Severing Head" }
+35419.1 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-severed4-end"
+
+# Ancient Thunder III last with Ancient Fire III or Ancient Blizzard III first
+35509.4 label "oc-necrophobia-severed4-thunder2"
+35514.9 "Severed Thunder III" Ability { id: "B69B", source: "Necrophobia" }
+35514.9 "Ancient Thunder III" #Ability { id: "B96F", source: "Severing Head" }
+
+35519.0 label "oc-necrophobia-severed4-end"
+35519.6 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35524.0 "Hail of Hellflares (cast)" Ability { id: "B95C", source: "Necrophobia" }
+35524.9 "Hail of Hellflares 1" Ability { id: "B95D", source: "Necrophobia" }
+35526.6 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+35528.4 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+35530.2 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+
+# Deathly Ray 2
+35531.2 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+35532.0 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+35533.3 "Heads Roll" Ability { id: "B972", source: "Necrophobia" }
+35534.2 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+35541.6 "Vacuum Wave" Ability { id: "B971", source: "Necrophobia" }
+35541.6 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+35543.6 "--heads rotate--" Ability { id: "B968", source: "Severing Head" }
+35550.5 "Vacuum Wave" Ability { id: "B971", source: "Necrophobia" }
+35550.5 "Deathly Ray" #Ability { id: "B973", source: "Severing Head" }
+35552.5 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+
+# Severed Dark Current 2 (Loop version)
+# NOTE: This one has more possibilities, Always two Severed Dark Currents, but pairing can differ:
+#   Ancient Fire III => Ancient Blizzard III
+#   Ancient Fire III => Ancient Thunder III
+#   Ancient Blizzard III => Ancient Thunder III
+#   Ancient Thunder III => Ancient Fire III
+#   Ancient Thunder III => Ancient Blizzard III
+# NOTE2: Ancient Blizzard III => Ancient Fire III does not seem to be a possibility
+35556.6 "--middle--" Ability { id: "B95A", source: "Necrophobia" }
+35558.6 "Capitation" Ability { id: "B964", source: "Necrophobia" }
+35559.5 "--heads appear--" Ability { id: "B966", source: "Severing Head" }
+
+# Severed Dark Current Branch 2
+35564.7 "--sync--" Tether { id: "0190", source: "Severing Head" } jump "oc-necrophobia-severed5-fire"
+35564.7 "--sync--" Tether { id: "0191", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard"
+35564.7 "--fire/blizzard/thunder tethers--" #Tether { id: ["0190", "0191", "0192"], source: "Severing Head" }
+35564.7 "--blizzard/thunder/fire tethers--" #Tether { id: ["0192", "0192", "0190"], source: "Severing Head" }
+35569.7 "Death Shroud" #Ability { id: "B965", source: "Necrophobia" }
+35574.8 "Heads Roll" #Ability { id: "B967", source: "Necrophobia" }
+35576.8 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+35578.0 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+35579.2 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+35580.4 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+35588.0 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35589.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35589.2 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+35591.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35593.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35598.2 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35599.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35599.4 "Ancient Thunder III/Ancient Fire III/Ancient Blizzard III" #Ability { id: ["B96F", "B96C", "B96D"], source: "Severing Head" }
+35601.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35603.2 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35603.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35610.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+35611.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+35612.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+35614.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+
+# Severed Dark Current Branch 2 - Level 1
+# Ancient Fire III
+35764.7 label "oc-necrophobia-severed5-fire"
+35769.7 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+35774.8 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+35776.8 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+35778.0 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+35779.2 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+35780.4 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+35783.7 "--sync--" StartsUsing { id: "B96C", source: "Severing Head" } jump "oc-necrophobia-severed5-fire-fire1"
+#35783.7 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed5-fire-blizzard1" # Not possible
+35783.7 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed5-fire-thunder1"
+35788.0 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35789.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35789.2 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+35791.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35793.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35798.2 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35799.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35799.4 "Ancient Thunder III/Ancient Fire III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96C", "B96D"], source: "Severing Head" }
+35801.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35803.2 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35803.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35810.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+35811.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+35812.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+35814.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+35816.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+35818.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+35823.4 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+35828.7 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+35830.9 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+35831.8 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+
+# Ancient Blizzard III
+35864.7 label "oc-necrophobia-severed5-blizzard"
+35869.7 "Death Shroud" Ability { id: "B965", source: "Necrophobia" }
+35874.8 "Heads Roll" Ability { id: "B967", source: "Necrophobia" }
+35876.8 "--roll 1--" #Ability { id: "B968", source: "Severing Head" }
+35878.0 "--roll 2--" #Ability { id: "B968", source: "Severing Head" }
+35879.2 "--roll 3--" #Ability { id: "B968", source: "Severing Head" }
+35880.4 "--roll 4--" #Ability { id: "B968", source: "Severing Head" }
+
+35883.7 "--sync--" StartsUsing { id: "B96C", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard-fire1"
+35883.7 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard-blizzard1"
+35883.7 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard-thunder1"
+35888.0 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35889.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35889.2 "Ancient Fire III/Ancient Blizzard III/Ancient Thunder III?" #Ability { id: ["B96C", "B96D", "B96F"], source: "Severing Head" }
+35891.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35893.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35898.2 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35899.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35899.4 "Ancient Thunder III/Ancient Fire III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96C", "B96D"], source: "Severing Head" }
+35901.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35903.2 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+35903.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+35910.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+35911.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+35912.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+35914.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+35916.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+35918.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+35923.4 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+35928.7 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+35930.9 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+35931.8 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+
+# Severed Dark Current Branch 2 - Level 2
+# Ancient Fire III with Ancient Fire III First (unlucky)
+35983.7 label "oc-necrophobia-severed5-fire-fire1"
+35988.0 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+35989.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35989.2 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
+35991.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+35993.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+
+35993.9 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } jump "oc-necrophobia-severed5-thunder2"
+35993.9 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } jump "oc-necrophobia-severed5-blizzard2"
+35998.2 "Severed Dark Current" #Ability { id: "B977", source: "Necrophobia" }
+35999.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+35999.4 "Ancient Thunder III/Ancient Blizzard III?" #Ability { id: ["B96F", "B96D"], source: "Severing Head" }
+36001.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36003.2 "--heads return--" #Ability { id: "B970", source: "Severing Head" }
+36003.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36010.2 "Hail of Hellflares (cast)" #Ability { id: "B95C", source: "Necrophobia" }
+36011.1 "Hail of Hellflares 1" #Ability { id: "B95D", source: "Necrophobia" }
+36012.8 "Hail of Hellflares 2" #Ability { id: "BF3D", source: "Necrophobia" }
+36014.6 "Hail of Hellflares 3" #Ability { id: "BF3D", source: "Necrophobia" }
+36016.4 "Hail of Hellflares 4" #Ability { id: "BF3D", source: "Necrophobia" }
+36018.2 "Hail of Hellflares 5" #Ability { id: "BF3D", source: "Necrophobia" }
+36023.4 "Corpse Mangler" #Ability { id: "B963", source: "Necrophobia" }
+36028.7 "--middle--" #Ability { id: "B95A", source: "Necrophobia" }
+36030.9 "Capitation" #Ability { id: "B964", source: "Necrophobia" }
+36031.8 "--heads appear--" #Ability { id: "B966", source: "Severing Head" }
+36042.0 "Death Shroud" #Ability { id: "B965", source: "Necrophobia" }
+
+# Ancient Fire III with Ancient Thunder III First
+36083.7 label "oc-necrophobia-severed5-fire-thunder1"
+36088.0 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36089.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36089.2 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+36091.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36093.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36094.0 "--sync--" StartsUsing { id: "B96C", source: "Severing Head" } forcejump "oc-necrophobia-severed5-fire2"
+
+# Ancient Blizzard III with Ancient Fire III First
+36183.7 label "oc-necrophobia-severed5-blizzard-fire1"
+36188.0 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36189.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36189.2 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
+36191.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36193.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36194.0 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
+
+# Ancient Blizzard III with Ancient Blizzard III First
+# NOTE: This should always lead to Ancient Thunder III
+36283.7 label "oc-necrophobia-severed5-blizzard-blizzard1"
+36288.0 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36289.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36289.2 "Ancient Blizzard III" Ability { id: "B96D", source: "Severing Head" }
+36291.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36293.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36294.0 "--sync--" StartsUsing { id: "B96F", source: "Severing Head" } forcejump "oc-necrophobia-severed5-thunder2"
+
+# Ancient Blizzard III with Ancient Thunder III First
+36383.7 label "oc-necrophobia-severed5-blizzard-thunder1"
+36388.0 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36389.2 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36389.2 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+36391.2 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36393.2 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36394.0 "--sync--" StartsUsing { id: "B96D", source: "Severing Head" } forcejump "oc-necrophobia-severed5-blizzard2"
+
+# Severed Dark Current Branch 2 - Level 3
+# Ancient Fire III Second
+36493.9 label "oc-necrophobia-severed5-fire2"
+36498.2 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36499.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36499.4 "Ancient Fire III" Ability { id: "B96C", source: "Severing Head" }
+36501.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36503.2 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+36503.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36505.3 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+# Ancient Blizzard III Second
+36593.9 label "oc-necrophobia-severed5-blizzard2"
+36598.2 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36599.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36599.4 "Ancient Blizzard III" Ability { id: "B96D", source: "Severing Head" }
+36601.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36603.2 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+36603.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36605.3 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+# Ancient Thunder III Second
+36693.9 label "oc-necrophobia-severed5-thunder2"
+36698.2 "Severed Dark Current" Ability { id: "B977", source: "Necrophobia" }
+36699.4 "Dark Current 1" #Ability { id: "B975", source: "Necrophobia" }
+36699.4 "Ancient Thunder III" Ability { id: "B96F", source: "Severing Head" }
+36701.4 "Dark Current 2" #Ability { id: "B976", source: "Necrophobia" }
+36703.2 "--heads return--" Ability { id: "B970", source: "Severing Head" }
+36703.5 "Dark Current 3" #Ability { id: "B976", source: "Necrophobia" }
+36705.3 "--sync--" StartsUsing { id: "B95C", source: "Necrophobia" } forcejump "oc-necrophobia-loop"
+
+### Necrophobia (Extreme)
+# -ii
+# -p B97A:37010.1
+# -it "Necrophobia"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+37005.1 label "oc-necrophobia-extreme"
+#37010.1 "Hail of Hellflares (cast)" Ability { id: "B97A", source: "Necrophobia" }
+#37011.0 "Hail of Hellflares 1" Ability { id: "B97B", source: "Necrophobia" }
