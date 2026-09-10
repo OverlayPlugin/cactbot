@@ -581,6 +581,7 @@ export class PopupText {
   protected readonly kMaxRowsOfText = 2;
   protected data: RaidbossData;
   protected me = '';
+  protected meId = '';
   protected job: Job = 'NONE';
   protected role: Role = 'none';
   protected triggerSets: ProcessedTriggerSet[] = [];
@@ -1033,6 +1034,7 @@ export class PopupText {
 
   OnJobChange(e: PlayerChangedDetail): void {
     this.me = e.detail.name;
+    this.meId = e.detail.id.toString(16).toUpperCase();
     this.job = e.detail.job;
     this.role = Util.jobToRole(this.job);
     this.ReloadTimelines();
@@ -1738,6 +1740,9 @@ export class PopupText {
     // make all this style consistent, sorry.
     const data: RaidbossData = {
       me: this.me,
+      meId: this.meId,
+      zoneName: this.zoneName,
+      zoneId: this.zoneId,
       job: this.job,
       role: this.role,
       party: this.partyTracker,
@@ -1748,6 +1753,10 @@ export class PopupText {
       options: this.options,
       inCombat: this.inCombat,
       triggerSetConfig: this.triggerSetConfig,
+      timeline: {
+        currentTime: () => this.timelineLoader.CurrentTime(),
+        jumpTo: (label: string) => this.timelineLoader.JumpTo(label, Date.now()),
+      },
       ShortName: (name?: string) => Util.shortName(name, this.options.PlayerNicks),
       StopCombat: () => this.SetInCombat(false),
       ParseLocaleFloat: parseFloat,

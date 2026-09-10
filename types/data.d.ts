@@ -24,6 +24,9 @@ export interface BaseOptions {
 export interface RaidbossData {
   job: Job;
   me: string;
+  meId: string;
+  zoneName: string;
+  zoneId: number;
   role: Role;
   party: PartyTracker;
   lang: Lang;
@@ -33,6 +36,10 @@ export interface RaidbossData {
   options: BaseOptions;
   inCombat: boolean;
   triggerSetConfig: { [key: string]: ConfigValue };
+  timeline: {
+    jumpTo: (label: string) => void;
+    currentTime: () => number;
+  };
   /** @deprecated Use data.party.member instead */
   ShortName: (x?: string) => string;
   StopCombat: () => void;
