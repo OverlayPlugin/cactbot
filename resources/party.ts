@@ -465,8 +465,8 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
     en: 'BST',
     de: 'BST',
     fr: 'DRE',
-    ja: 'BST', // FIXME
-    cn: 'BST', // FIXME
+    ja: '魔獣使い',
+    cn: '驯兽',
     ko: '마수',
   },
 };
