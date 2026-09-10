@@ -99,6 +99,50 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Stray Geist': 'mahrtastisch(?:e|er|es|en) Geist',
+        'Träumerei': 'Träumerei',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Stray Geist': 'fantôme errant',
+        'Träumerei': 'Träumerei',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Stray Geist': 'ストレイ・ゴースト',
+        'Träumerei': 'トロイメライ',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Stray Geist': '迷途的幽灵',
+        'Träumerei': '梦像',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Stray Geist': '헤매는 유령',
+        'Träumerei': '트로이메라이',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Stray Geist': '迷途的幽靈',
+        'Träumerei': '夢像',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
