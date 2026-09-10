@@ -66,6 +66,8 @@ type NMInfo = {
   x: number;
   y: number;
   respawnMinutes?: number;
+  partnerFateId?: number;
+  partnerFateRespawnMinutes?: number;
 
   // Modified
   element?: HTMLElement;
@@ -546,8 +548,40 @@ class EurekaTracker {
     }
   }
 
+  StartPartnerFateRespawnTimer(fate: NMInfo) {
+    if (!fate.partnerFateId || !fate.partnerFateRespawnMinutes)
+      return;
+
+    const partnerFate = Object.values(this.nms).find(
+      (nm) => nm.fateId === fate.partnerFateId,
+    );
+
+    if (!partnerFate) {
+      this.DebugPrint(
+        `Partner FATE ${fate.partnerFateId} not found for ${this.TransByDispLang(fate.label)}`,
+      );
+      return;
+    }
+
+    partnerFate.respawnTimeMsLocal = Date.now() + fate.partnerFateRespawnMinutes * 60 * 1000;
+
+    partnerFate.element?.classList.remove('nm-hidden');
+    partnerFate.element?.classList.remove('nm-pop');
+    partnerFate.element?.classList.add('nm-down');
+
+    if (partnerFate.progressElement)
+      partnerFate.progressElement.innerText = '';
+
+    this.DebugPrint(
+      `Started ${fate.partnerFateRespawnMinutes} minute timer for partner FATE: ${
+        this.TransByDispLang(partnerFate.label)
+      }`,
+    );
+  }
+
   OnFateKill(fate: NMInfo) {
     this.DebugPrint(`OnFateKill: ${this.TransByDispLang(fate.label)}`);
+    this.StartPartnerFateRespawnTimer(fate);
     this.UpdateTimes();
     if (fate.element?.classList.contains('nm-pop')) {
       if (this.zoneInfo?.onlyShowInactiveWithExplicitRespawns && !fate.respawnMinutes)
