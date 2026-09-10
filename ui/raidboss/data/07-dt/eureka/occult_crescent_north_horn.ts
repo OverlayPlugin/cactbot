@@ -186,35 +186,43 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'en',
-      'replaceText': {},
+      'replaceText': {
+        'Storm\'s Breath/Poison Breath': 'Storm\'s/Poison Breath',
+      },
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'tc',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
