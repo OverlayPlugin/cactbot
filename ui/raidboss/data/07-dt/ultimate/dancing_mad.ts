@@ -282,18 +282,18 @@ const trapOutputStrings: OutputStrings = {
   },
 };
 
-// Get Partner's HeadMarker following HTMR Priority
+// Get Partner following HTMR Priority
 // Requires data and Forsaken Group
-// Will return the forsaken headmarker of partner:
+// Will return the player:
 // Tanks + Healers are partners
 // Melee DPS + Range/Caster are Partners
 // Tanks look for healer as they are left unless healer has it
 // Melee DPS look for the Range/Caster as they are left if ranged has it
 // Range/Caster looks for existence of a Melee DPS in case there is fake melee
-const getHTMRPartnerMarker = (
+const getHTMRPartner = (
   data: Data,
   group: string[],
-): forsakenHeadmarker => {
+): string => {
   // Healer role should not be parsed with this function
   // as they have highest priority left
   if (data.role === 'healer')
@@ -329,7 +329,6 @@ const getHTMRPartnerMarker = (
     // Partner should be a melee dps, for optimal comp
     return isMeleeDPS;
   };
-  const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
 
   // Check each player in the group if they are our partner
   const isMyPartner = getRoleFunction(data.role);
@@ -343,6 +342,25 @@ const getHTMRPartnerMarker = (
     : isMyPartner(member3)
     ? member3
     : 'unknown';
+
+  return partner;
+};
+
+
+// Get Partner's HeadMarker following HTMR Priority
+// Requires data and Forsaken Group
+// Will return the forsaken headmarker of partner:
+// Tanks + Healers are partners
+// Melee DPS + Range/Caster are Partners
+// Tanks look for healer as they are left unless healer has it
+// Melee DPS look for the Range/Caster as they are left if ranged has it
+// Range/Caster looks for existence of a Melee DPS in case there is fake melee
+const getHTMRPartnerMarker = (
+  data: Data,
+  group: string[],
+): forsakenHeadmarker => {
+  const partner = getHTMRPartner(data, group);
+  const playerHeadmarkers = data.forsakenPlayerHeadmarkers;
 
   // Return partner's marker
   return playerHeadmarkers[partner ?? 0] ?? 'unknown';
@@ -528,6 +546,9 @@ const forsakenOutputStrings: OutputStrings = {
     en: '${num}Bait Left Cone Left',
     cn: '${num}左扇形向左引导',
     ko: '${num}왼쪽 부채꼴 왼쪽으로 유도',
+  },
+  baitRightConeRightEvens: {
+    en: '${num}Bait Right Cone Right',
   },
   getHitBySpreadRightBowtie: { // Used only in 5th tower for AAAABBBB
     en: '${num}Get Right + Hit by Spread',
@@ -2647,14 +2668,37 @@ const triggerSet: TriggerSet<Data> = {
           (!isForsakenGroupA && config === 'kroxy-rinon') ||
           (isForsakenGroupA && config === 'abba')
         ) {
-          if (data.role === 'healer')
-            return output.baitLeftConeLeftEvens!({
-              num: num,
-            });
-          if (data.role === 'tank')
-            return output.baitCloneOppositeTowers!({
-              num: num,
-            });
+          switch (data.role) {
+            case 'healer':
+              return output.baitLeftConeLeftEvens!({
+                num: num,
+              });
+            case 'tank':
+              return output.baitCloneOppositeTowers!({
+                num: num,
+              });
+            default: {
+              const group = config === 'kroxy-rinon'
+                ? data.forsakenGroupB
+                : data.forsakenGroupA;
+              const partner = getHTMRPartner(data, group);
+
+              // Could not get priority
+              if (partner === 'unknown')
+                break;
+
+              if (Util.isMeleeDpsJob(data.job))
+                return output.baitCloneOppositeTowers!({
+                  num: num,
+                });
+
+              // Ranged DPS highest priority right
+              return output.baitRightConeRightEvens!({
+                num: num,
+              });
+            }
+          }
+
           // DPS Unknown party composition
           return output.bait!({
             num: num,
@@ -3469,14 +3513,37 @@ const triggerSet: TriggerSet<Data> = {
           (isForsakenGroupA && config === 'kroxy-rinon') ||
           (!isForsakenGroupA && config === 'abba')
         ) {
-          if (data.role === 'healer')
-            return output.baitLeftConeLeftEvens!({
-              num: num,
-            });
-          if (data.role === 'tank')
-            return output.baitCloneOppositeTowers!({
-              num: num,
-            });
+          switch (data.role) {
+            case 'healer':
+              return output.baitLeftConeLeftEvens!({
+                num: num,
+              });
+            case 'tank':
+              return output.baitCloneOppositeTowers!({
+                num: num,
+              });
+            default: {
+              const group = config === 'kroxy-rinon'
+                ? data.forsakenGroupA
+                : data.forsakenGroupB;
+              const partner = getHTMRPartner(data, group);
+
+              // Could not get priority
+              if (partner === 'unknown')
+                break;
+
+              if (Util.isMeleeDpsJob(data.job))
+                return output.baitCloneOppositeTowers!({
+                  num: num,
+                });
+
+              // Ranged DPS highest priority right
+              return output.baitRightConeRightEvens!({
+                num: num,
+              });
+            }
+          }
+
           // DPS Unknown party composition
           return output.bait!({
             num: num,
@@ -3789,14 +3856,34 @@ const triggerSet: TriggerSet<Data> = {
           isForsakenGroupA &&
           (config === 'kroxy-rinon' || config === 'abba')
         ) {
-          if (data.role === 'healer')
-            return output.baitLeftConeLeftEvens!({
-              num: num,
-            });
-          if (data.role === 'tank')
-            return output.baitCloneOppositeTowers!({
-              num: num,
-            });
+          switch (data.role) {
+            case 'healer':
+              return output.baitLeftConeLeftEvens!({
+                num: num,
+              });
+            case 'tank':
+              return output.baitCloneOppositeTowers!({
+                num: num,
+              });
+            default: {
+              const partner = getHTMRPartner(data, data.forsakenGroupA);
+
+              // Could not get priority
+              if (partner === 'unknown')
+                break;
+
+              if (Util.isMeleeDpsJob(data.job))
+                return output.baitCloneOppositeTowers!({
+                  num: num,
+                });
+
+              // Ranged DPS highest priority right
+              return output.baitRightConeRightEvens!({
+                num: num,
+              });
+            }
+          }
+
           // DPS Unknown party composition
           return output.bait!({
             num: num,
@@ -4142,14 +4229,35 @@ const triggerSet: TriggerSet<Data> = {
 
         // Baits for ABBAABBA and AAABBBBA
         if (config === 'kroxy-rinon' || config === 'abba') {
-          if (data.role === 'healer')
-            return output.baitLeftConeLeftEvens!({
-              num: num,
-            });
-          if (data.role === 'tank')
-            return output.baitCloneOppositeTowers!({
-              num: num,
-            });
+          switch (data.role) {
+            case 'healer':
+              return output.baitLeftConeLeftEvens!({
+                num: num,
+              });
+            case 'tank':
+              return output.baitCloneOppositeTowers!({
+                num: num,
+              });
+            default: {
+              const partner = getHTMRPartner(data, data.forsakenGroupB);
+
+              // Could not get priority
+              if (partner === 'unknown')
+                break;
+
+              if (Util.isMeleeDpsJob(data.job))
+                return output.baitCloneOppositeTowers!({
+                  num: num,
+                });
+
+              // Ranged DPS highest priority right
+              return output.baitRightConeRightEvens!({
+                num: num,
+              });
+            }
+          }
+
+          // DPS Unknown party composition
           return output.bait!({
             num: num,
           });
