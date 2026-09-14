@@ -73,6 +73,7 @@ some breaking changes were added, including:
 * `forcejump` keyword
 * `label` keyword
 * netregex sync syntax, e.g. `Ability { id: "1234", source: "That Mob" }` instead of `sync /etc/`
+* `blockbegin` and `blockend` keywords
 
 ## How do Timelines Work
 
@@ -81,7 +82,7 @@ There are two states: whether it is paused or not, and the current timeline time
 
 They start paused at time=0.
 As soon as any sync happens, it jumps to that time, then unpauses.
-If it ever jumps to time=0, then it pauses again.
+If it ever jumps to time=0 outside a block, then it pauses again.
 
 When playing, the timeline time advances in real time.
 In other words, if the timeline time is currently `360.2`
@@ -106,9 +107,10 @@ If that line occurs outside the valid window, it is ignored.
 ## Timeline File Syntax
 
 Each line in a timeline file is considered its own timeline entry.
-Ordering is irrelevant insofar as processing/usage of the file.
-The fact that timeline files are ordered is as a convenience to the reader.
-(Two lines with the same time do keep their relative ordering.)
+Ordering is relevant insofar as it determines which block an entry belongs
+to. It is expected that timeline files should be kept ordered as a matter of
+convenience to the reader. Also, two lines with the same timestamp will keep
+their relative order.
 
 That said, cactbot's linting tools require that timelines be be ordered by time
 to help with readability and accuracy.
@@ -280,6 +282,10 @@ If you jump to time 0, the timeline will stop playback.
 The syntax for **jump** is `jump [number]` (e.g. `jump 204.2`)
 or `jump [label]` (e.g. `jump "Hieroglyphika"`).
 
+To jump to a label within another block, use `jump "[blockname]:[label]"`. You
+may also jump to the start of a block with `jump "[blockname]"`. Labels
+within the block will take precedence over blocknames.
+
 #### label
 
 **label** is simply a way to assign a name to a particular time in the timeline.
@@ -295,6 +301,60 @@ To hide all instances of an ability, you can use the `hideall` command.
 Most timelines start with the line `hideall "--sync--"`
 to hide syncs that are just used to keep the timeline on track but should not be shown to the player.
 Timeline triggers can still match hidden entries.
+
+#### blockbegin
+
+Timeline entries can be grouped together into logical "blocks" using
+`blockbegin "name"` and `blockend`, where "name" is a label for the start of
+the block.
+
+Blocks are intended to allow creating logical groupings of timeline entries
+which belong together, to avoid needing to manually offset the entries. The
+typical use-case is for timeline files contain multiple separate fights such
+as dungeons or critical encounters in field content.
+
+A block beings at `0.0`, but note that jumping to the block does not pause
+the timeline.
+
+The following is an example for how blocks can be used to separate
+encounters.
+
+```text
+# Lapis Manalis
+
+0.0 "--sync--" sync / 00:0839::The Silvan Throne will be sealed off/ window 0,1 jump "albion"
+0.0 "--sync--" sync / 00:0839::The Forum Messorum will be sealed off/ window 0,1 jump "galatea"
+0.0 "--sync--" sync / 00:0839::Deepspine will be sealed off/ window 0,1 jump "cagnazzo"
+
+blockbegin "albion"
+0.0 "--sync--" sync / 00:0839::The Silvan Throne will be sealed off/ window 0,1
+6.0 "--sync--" sync / 1[56]:[^:]*:Albion:802C:/
+10.6 "Call of the Mountain" sync / 1[56]:[^:]*:Albion:7A7C:/
+# etc
+blockend
+
+blockbegin "galatea"
+0.0 "--sync--" sync / 00:0839::The Forum Messorum will be sealed off/ window 0,1
+10.2 "--sync--" sync / 1[56]:[^:]*:Galatea Magna:7F71:/ # manually added for early sync
+15.2 "Waxing Cycle/Waning Cycle" sync / 1[56]:[^:]*:Galatea Magna:(7A91|7F6E):/
+#etc
+blockend
+
+blockbegin "cagnazzo"
+0.0 "--sync--" sync / 00:0839::Deepspine will be sealed off/ window 0,1
+15.6 "Stygian Deluge" sync / 1[56]:[^:]*:Cagnazzo:79A3:/
+25.4 "--sync--" sync / 1[56]:[^:]*:Cagnazzo:798F:/
+38.0 "Antediluvian 1" sync / 1[56]:[^:]*:Cagnazzo:7990:/
+#etc
+blockend
+```
+
+At present, blocks have some caveats. Blocks are currently implemented
+entirely within the timeline parser by determining a suitable time offset
+and "unrolling" the blocks by adjusting all timeline entries within the
+block using that offset. Thus, it may be possible for one block to continue
+into the next. However, the automatically determined gap should be large
+enough to prevent issues in practice.
 
 #### other commands
 
@@ -354,6 +414,8 @@ rather than using a wide window sync at the beginning of the loop for readabilit
 but do not remove them. (This preserves the ability ID for future maintainers.)
 * prefer to use `npcNameId` instead of `name` on `AddedCombatant` lines.
 * use `-la` with `make_timeline` to print an [ability table](../ui/raidboss/data/06-ew/dungeon/another_aloalo_island.txt#L92-L142) and fill it out.
+* use `blockbegin` syntax for zones with multiple fights to avoid needing to
+  offset timestamps.
 * As always, be consistent with other timelines.
 
 ### Trigger Filenames
@@ -1274,6 +1336,10 @@ There's plenty of feature work and fixes for timelines if you are interested in 
 * `testsync` instead of comments (we use `#Ability { params }` to avoid sync issues, but it'd be nice to add a `testsync` command that verifies that the sync was hit in the window but does not resync for testing purposes)
 * handle multiple syncs at the same time: <https://github.com/quisquous/cactbot/issues/5479>
 * clean up old timelines to use `label` and `forcejump`
+* clean up old timelines to use `blockbegin` and `blockend`
+* clean up old timelines to use `blockbegin` and `blockend`
+* Refactor timelines to natively support blocks instead of unrolling them in
+  the parser
 
 ### Ability Table
 
