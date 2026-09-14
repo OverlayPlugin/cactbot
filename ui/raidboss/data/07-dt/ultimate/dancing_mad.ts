@@ -346,7 +346,6 @@ const getHTMRPartner = (
   return partner;
 };
 
-
 // Get Partner's HeadMarker following HTMR Priority
 // Requires data and Forsaken Group
 // Will return the forsaken headmarker of partner:
