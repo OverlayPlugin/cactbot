@@ -2491,22 +2491,22 @@ const triggerSet: TriggerSet<Data> = {
 
         // Clear previous Headmarker if set
         data.pathOfLightStackPlayers = data.pathOfLightStackPlayers.filter((t) => t !== target);
-        data.forsakenPlayerHeadmarkers[matches.target] = forsakenHeadmarkerIdToName[id] ??
+        data.forsakenPlayerHeadmarkers[target] = forsakenHeadmarkerIdToName[id] ??
           'unknown';
 
         // On first headmarker, start everyone in same group
         // Excluding self as this reduces number of lookups to find partner
-        if (data.pathOfLightCounter === 1 && data.me !== matches.target)
-          data.forsakenGroupB.push(matches.target);
+        if (data.pathOfLightCounter === 1 && data.me !== target)
+          data.forsakenGroupB.push(target);
 
         // If the groups are uneven a tower was missed and it's probably a wipe
         if (data.pathOfLightCounter === 2) {
           // Remove from Group B
           data.forsakenGroupB = data.forsakenGroupB.filter((t) => t !== target);
-          if (data.me === matches.target)
+          if (data.me === target)
             data.isForsakenGroupA = true;
           else
-            data.forsakenGroupA.push(matches.target);
+            data.forsakenGroupA.push(target);
         }
 
         if (id === headMarkerData['stackPath'])
