@@ -186,35 +186,45 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'en',
-      'replaceText': {},
+      'replaceText': {
+        'Fire IV/Blizzard IV/Thunder IV': 'Element',
+        'Blizzard IV/Thunder IV/Fire IV': 'Element',
+        'Thunder IV/Fire IV/Blizzard IV': 'Element',
+      },
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'tc',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {},
       'replaceText': {},
     },

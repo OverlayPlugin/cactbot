@@ -13,3 +13,345 @@ hideall "--sync--"
 # Unlike with Bozja, you do not teleport into critical encounters from afar.
 # Instead players must run to the encounter spot. This makes the "entry"
 # into the critical encounter happen much later.
+
+### Index
+# The Epistemology Theater will be sealed off
+22600.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1576" } window 100000,0
+22603.0 "--sync--" Ability { id: ["BD25", "BD49"], source: "Index" } # Normal/Extreme
+
+22606.0 "--sync--" StartsUsing { id: "BD1F", source: "Index" } window 10,50 jump "oc-index-normal" # Extreme will cast this as well, but at later point
+22609.0 "--sync--" StartsUsing { id: "BD17", source: "Index" } window 10,50 jump "oc-index-extreme"
+22611.0 "Flare (cast)?" #Ability { id: "BD1F", source: "Index" } # Normal
+22611.9 "Flare (Normal)?" #Ability { id: "BD21", source: "Index" }
+22612.0 "Dualcast (Extreme)?" #Ability { id: "BD17", source: "Index" }
+22619.1 "Flare (cast)?" #Ability { id: "BD1F", source: "Index" } # Extreme
+22620.0 "Flare 1 (Extreme)?" #Ability { id: "BD48", source: "Index" }
+22628.3 "Sealed Implements (Normal)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+22630.3 "Romeo's Ballad/Aim (Normal)?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+
+### Index (Normal)
+# -ii BD15 BD1A BD20 BD25
+# -p BD1F:39011.0
+# -it "Index" "Summoned Bomb"
+# IGNORED ABILITIES
+# BD15 Shockwave: 4.7s VFX cast from Holy Lance, part of BD16 Shockwave
+# BD1A Self-Destruct: aoe cast by Summoned Bomb
+# BD20 Flare: VFX cast for Dualcast BD1F Flare
+# BD25 --sync--: Auto-attack
+#
+# ALL ENCOUNTER ABILITIES
+# BD00 Sealed Implements: 4.7s castbar, used with Harp
+# BD01 Romeo's Ballad: 6.7s cast paired with BD00 Sealed Implements, large circle aoe in center, boss' harp glows, boss gains 159F Seal of the Harp buff ~0.1s prior to cast
+# BD02 Sealed Implements: 4.7s castbar, used with Bow
+# BD03 Aim: 6.8s cast paired with BD02 Sealed Implements, circle aoes on outer platforms, boss' bow glows, boss gains 159E Seal of the Bow buff ~0.1s prior to cast
+# BD04 Duology of Implements: 4.7s castbar, used for BD05 Ianuki => BD07 Wind Slash
+# BD05 Iainuki: 5.7s cast, boss' katana lights up, cleave down center to outer platforms (Y-cleave), boss gains 159C Seal of the Bell buff ~0.1s prior to cast
+# BD06 Duology of Implements: 3.7s castbar, used for BD07 Wind Slash => BD05 Ianuki
+# BD07 Wind Slash: 5.7s cast, boss' bell lights up, cleave down small platforms (⅄-cleave), boss gains 159D Seal of the Blade buff ~0.1s prior to cast
+# BD0A Omni-elements: 3.7s castbar
+# BD0B Omni-elements: aoe damage ~1.1s after BD0A Omni-elements, three additional platforms appear, all 6 outer platforms will have either Fire, Blizzard, or Thunder element shapes
+# BD0C Fire IV
+# BD0D Blizzard IV
+# BD0E Thunder IV
+# BD0F Elementary Expansion: 2.7s castbar, spawns three element circles (6 with Dualcast), one at a time, that expand outward, these will not repeat back-to-back but can be in any order of Fire, Blizzard, Thunder in their sets of 3, for dualcast they will also not repeat back to back but remain in sets of 3
+# BD10 Elementary Evocation: 2.7s castbar, spawns an element line (3 with Dualcast) that later starts rotating
+# BD11 Elementary Chemistry: 3.6s castbar
+# BD12 Elementary Chemistry: aoe damage ~1.4s after BD11 Elementary Chemistry
+# BD13 Propulsive Prophecy: 2.7s castbar
+# BD14 Jump: VFX for copies of Index jumping out and placing Holy Lance on outer platforms
+# BD15 Shockwave: 4.7s VFX cast from Holy Lance, part of BD16 Shockwave
+# BD16 Shockwave: 4.7s damage cast, radial knockback
+# BD17 Dualcast: 2.7s castbar, boss gains 153E Dualcast buff
+# BD18 Summon: 2.7s castbar, three Summoned Bombs spawn, one at each outer platform, they will move towards boss and need to be killed
+# BD19 Self-Destruct: VFX cast by Summoned Bomb once reached Index
+# BD1A Self-Destruct: aoe cast by Summoned Bomb
+# BD1C Predict: 2.7s castbar, two yellow circles and red donut tether to points on outer platforms and start moving to them
+# BD1D Starfall: 0.2s cast by Foretold Phenomenon, big circle aoe
+# BD1E Cleansing: 0.2s cast by Foretold Phenomenon, Donut aoe
+# BD1F Flare: 4.7s castbar
+# BD20 Flare: VFX cast for Dualcast BD1F Flare
+# BD21 Flare: aoe damage ~0.8s after BD1F Flare
+# BD22 All-knowing Flames: 4.7s castbar, three sets of three spread aoes on players
+# BD24 All-consuming Flames: spread aoe on player, has a headmarker
+# BD25 --sync--: Auto-attack
+# BF07 Sealed Implements: 1.7s VFX cast for subsequent BD05 Iainuki during BD06 Duology of Implements
+# BF08 Sealed Implements: VFX cast for subsequent BD07 Wind Slash during BD04 Duology of Implements
+# BF09 --sync--: 5.7s cast, square aoe on outer platform, the platform will be removed at end of cast
+# C5E9 --sync--: VFX after Sealed Implements
+39006.0 label "oc-index-normal"
+39011.0 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
+39011.9 "Flare" Ability { id: "BD21", source: "Index" }
+
+# Tutorial - Sealed Implements Bow => Harp or Harp => Bow
+39023.3 "--sync--" StartsUsing { id: "BD01", source: "Index" } window 16418,5 jump "oc-index-implements1-harp" # Safety Sync
+39023.3 "--sync--" StartsUsing { id: "BD03", source: "Index" } window 16418,5 jump "oc-index-implements1-bow"  # Safety Sync
+39028.3 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39030.3 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+39039.4 "Sealed Implements (Bow/Harp)?" #Ability { id: ["BD02", "BD00"], source: "Index" }
+39041.3 "Aim/Romeo's Ballad?" #Ability { id: ["BD03", "BD01"], source: "Index" }
+39050.4 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39052.4 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+39061.5 "Sealed Implements (Bow/Harp)?" #Ability { id: ["BD02", "BD00"], source: "Index" }
+39063.5 "Aim/Romeo's Ballad?" #Ability { id: ["BD03", "BD01"], source: "Index" }
+39072.5 "Flare (cast)" #Ability { id: "BD1F", source: "Index" }
+39073.3 "Flare" #Ability { id: "BD21", source: "Index" }
+
+39123.3 label "oc-index-implements1-harp"
+39128.3 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+39130.3 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+39139.4 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+39141.3 "Aim" Ability { id: "BD03", source: "Index" }
+
+39145.4 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements2-harp"
+39145.4 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements2-bow"
+39150.4 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39152.4 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+39161.5 "Sealed Implements (Bow/Harp)?" #Ability { id: ["BD02", "BD00"], source: "Index" }
+39163.5 "Aim/Romeo's Ballad?" #Ability { id: ["BD03", "BD01"], source: "Index" }
+39172.5 "Flare (cast)" #Ability { id: "BD1F", source: "Index" }
+39173.3 "Flare" #Ability { id: "BD21", source: "Index" }
+39184.7 "Omni-elements (cast)" #Ability { id: "BD0A", source: "Index" }
+39185.8 "Omni-elements" #Ability { id: "BD0B", source: "Index" }
+39191.8 "Elementary Evocation" #Ability { id: "BD10", source: "Index" }
+
+39223.3 label "oc-index-implements1-bow"
+39228.3 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+39230.3 "Aim" Ability { id: "BD03", source: "Index" }
+39239.4 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+39241.3 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+
+39245.4 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements2-harp"
+39245.4 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements2-bow"
+39250.4 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39252.4 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+39261.5 "Sealed Implements (Bow/Harp)?" #Ability { id: ["BD02", "BD00"], source: "Index" }
+39263.5 "Aim/Romeo's Ballad?" #Ability { id: ["BD03", "BD01"], source: "Index" }
+39272.5 "Flare (cast)" #Ability { id: "BD1F", source: "Index" }
+39273.3 "Flare" #Ability { id: "BD21", source: "Index" }
+39284.7 "Omni-elements (cast)" #Ability { id: "BD0A", source: "Index" }
+39285.8 "Omni-elements" #Ability { id: "BD0B", source: "Index" }
+39291.8 "Elementary Evocation" #Ability { id: "BD10", source: "Index" }
+
+39345.4 label "oc-index-implements2-harp"
+39350.4 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+39352.4 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+39354.5 "--sync--" Ability { id: "C5E9", source: "Index" }
+39361.5 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+39363.5 "Aim" Ability { id: "BD03", source: "Index" }
+39365.5 "--sync--" Ability { id: "C5E9", source: "Index" }
+39367.7 "--sync--" StartsUsing { id: "BD1F", source: "Index" } forcejump "oc-index-implements2-end"
+
+39445.4 label "oc-index-implements2-bow"
+39450.4 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+39452.4 "Aim" Ability { id: "BD03", source: "Index" }
+39454.5 "--sync--" Ability { id: "C5E9", source: "Index" }
+39461.5 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+39463.5 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+39465.5 "--sync--" Ability { id: "C5E9", source: "Index" }
+
+39467.5 label "oc-index-implements2-end"
+39472.5 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
+39473.3 "Flare" Ability { id: "BD21", source: "Index" }
+
+# Tutorial - Omni-elements, Evocation and Expansion
+39484.7 "Omni-elements (cast)" Ability { id: "BD0A", source: "Index" }
+39485.8 "Omni-elements" Ability { id: "BD0B", source: "Index" }
+39491.8 "Elementary Evocation" Ability { id: "BD10", source: "Index" }
+39502.9 "Fire IV/Blizzard IV/Thunder IV" Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+
+39507.9 "Elementary Expansion" Ability { id: "BD0F", source: "Index" }
+39515.8 "Fire IV/Blizzard IV/Thunder IV 1" Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+39519.8 "Blizzard IV/Thunder IV/Fire IV 2" Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+39523.8 "Thunder IV/Fire IV/Blizzard IV 3" Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+
+39524.1 "Elementary Evocation" Ability { id: "BD10", source: "Index" }
+39535.2 "Fire IV/Blizzard IV/Thunder IV" Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+39545.1 "Elementary Chemistry (cast)" Ability { id: "BD11", source: "Index" }
+39546.5 "Elementary Chemistry" Ability { id: "BD12", source: "Index" }
+39547.2 "--sync--" Ability { id: "BF09", source: "Index" }
+
+# Loop Begins
+39553.3 label "oc-index-loop"
+39556.3 "Propulsive Prophecy" Ability { id: "BD13", source: "Index" }
+39558.5 "Jump" Ability { id: "BD14", source: "Transcribed Index" }
+
+39559.5 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements3-harp"
+39559.5 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements3-bow"
+39564.5 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39565.4 "Shockwave" #Ability { id: "BD16", source: "Index" }
+39566.5 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+39586.7 "Duology of Implements (Bell)?" #Ability { id: "BD06", source: "Index" }
+39587.7 "Duology of Implements (Sword)?" #Ability { id: "BD04", source: "Index" }
+39588.7 "Iainuki/Wind Slash?" #Ability { id: ["BD05", "BD07"], source: "Index" }
+39590.7 "Sealed Implements (Bell)?" #Ability { id: ["BD08", "BF07"], source: "Index" }
+39591.7 "Sealed Implements (Sword)?" #Ability { id: ["BD08", "BF07"], source: "Index" }
+39592.7 "Wind Slash/Iainuki?" #Ability { id: ["BD07", "BD05"], source: "Index" }
+39603.9 "All-knowing Flames" #Ability { id: "BD22", source: "Index" }
+39604.0 "All-consuming Flames 1" #Ability { id: "BD24", source: "Index" }
+39607.0 "All-consuming Flames 2" #Ability { id: "BD24", source: "Index" }
+
+39659.5 label "oc-index-implements3-harp"
+39664.5 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+39665.4 "Shockwave" Ability { id: "BD16", source: "Index" }
+39666.5 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+39668.6 "--sync--" Ability { id: "C5E9", source: "Index" }
+39670.8 "--sync--" StartsUsing { id: "BD18", source: "Index" } forcejump "oc-index-implements3-end"
+
+39759.5 label "oc-index-implements3-bow"
+39764.5 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+39765.4 "Shockwave" Ability { id: "BD16", source: "Index" }
+39766.5 "Aim" Ability { id: "BD03", source: "Index" }
+39768.6 "--sync--" Ability { id: "C5E9", source: "Index" }
+
+# Adds
+39770.6 label "oc-index-implements3-end"
+39773.6 "Summon" Ability { id: "BD18", source: "Index" }
+39774.1 "--adds targetable--" #AddedCombatant { name: "Summoned Bomb" }
+
+39782.7 "--sync--" StartsUsing { id: "BD04", source: "Index" } jump "oc-index-duology1-sword"
+39782.7 "--sync--" StartsUsing { id: "BD06", source: "Index" } jump "oc-index-duology1-bell"
+39786.7 "Duology of Implements (Bell)?" #Ability { id: "BD06", source: "Index" }
+39787.7 "Duology of Implements (Sword)?" #Ability { id: "BD04", source: "Index" }
+39788.7 "Iainuki/Wind Slash?" #Ability { id: ["BD05", "BD07"], source: "Index" }
+39790.7 "Sealed Implements (Bell)?" #Ability { id: "BF08", source: "Index" }
+39791.7 "Sealed Implements (Sword)?" #Ability { id: "BF07", source: "Index" }
+39792.7 "Wind Slash/Iainuki?" #Ability { id: ["BD07", "BD05"], source: "Index" }
+39803.9 "All-knowing Flames" #Ability { id: "BD22", source: "Index" }
+39804.0 "All-consuming Flames 1" #Ability { id: "BD24", source: "Index" }
+39807.0 "All-consuming Flames 2" #Ability { id: "BD24", source: "Index" }
+39810.0 "All-consuming Flames 3" #Ability { id: "BD24", source: "Index" }
+39816.0 "Predict" #Ability { id: "BD1C", source: "Index" }
+39827.0 "Starfall" #Ability { id: "BD1D", source: "Foretold Phenomenon" }
+39827.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
+39829.2 "Sealed Implements" #Ability { id: ["BD00", "BD02"], source: "Index" }
+39831.2 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+
+39982.7 label "oc-index-duology1-sword"
+39987.7 "Duology of Implements (Sword)" Ability { id: "BD04", source: "Index" }
+39988.7 "Iainuki" Ability { id: "BD05", source: "Index" }
+39990.7 "Sealed Implements (Bell)" Ability { id: "BF08", source: "Index" }
+39992.7 "Wind Slash" Ability { id: "BD07", source: "Index" }
+39994.9 "--sync--" Ability { id: "C5E9", source: "Index" }
+39999.1 "--sync--" StartsUsing { id: "BD22", source: "Index" } forcejump "oc-index-duology1-end"
+
+40082.7 label "oc-index-duology1-bell"
+40086.7 "Duology of Implements (Bell)" Ability { id: "BD06", source: "Index" }
+40088.7 "Wind Slash" Ability { id: "BD07", source: "Index" }
+40091.7 "Sealed Implements (Sword)" Ability { id: "BF07", source: "Index" }
+40092.7 "Iainuki" Ability { id: "BD05", source: "Index" }
+40094.9 "--sync--" Ability { id: "C5E9", source: "Index" }
+
+40098.9 label "oc-index-duology1-end"
+40102.3 "Self-Destruct?" Ability { id: "BD19", source: "Summoned Bomb" }
+40103.9 "All-knowing Flames" Ability { id: "BD22", source: "Index" }
+40104.0 "All-consuming Flames 1" Ability { id: "BD24", source: "Index" }
+40107.0 "All-consuming Flames 2" Ability { id: "BD24", source: "Index" }
+40110.0 "All-consuming Flames 3" Ability { id: "BD24", source: "Index" }
+
+40116.0 "Predict" Ability { id: "BD1C", source: "Index" }
+40127.0 "Starfall" Ability { id: "BD1D", source: "Foretold Phenomenon" }
+40127.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
+
+40124.2 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements4-harp"
+40124.2 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements4-bow"
+40129.2 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02", source: "Index" }
+40131.2 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+40138.2 "Dualcast" #Ability { id: "BD17", source: "Index" }
+40145.3 "Flare (cast)" #Ability { id: "BD1F", source: "Index" }
+40146.2 "Flare 1" #Ability { id: "BD21", source: "Index" }
+40149.3 "Flare 2" #Ability { id: "BD21", source: "Index" }
+40161.6 "Omni-elements (cast)" #Ability { id: "BD0A", source: "Index" }
+40162.7 "Omni-elements" #Ability { id: "BD0B", source: "Index" }
+40168.7 "Elementary Expansion" #Ability { id: "BD0F", source: "Index" }
+
+40224.2 label "oc-index-implements4-harp"
+40229.2 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+40231.2 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+40233.2 "--sync--" Ability { id: "C5E9", source: "Index" }
+40235.4 "--sync--" StartsUsing { id: "BD17", source: "Index" } forcejump "oc-index-implements4-end"
+
+40324.2 label "oc-index-implements4-bow"
+40329.2 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+40331.2 "Aim" Ability { id: "BD03", source: "Index" }
+40333.2 "--sync--" Ability { id: "C5E9", source: "Index" }
+
+40335.2 label "oc-index-implements4-end"
+40338.2 "Dualcast" Ability { id: "BD17", source: "Index" }
+40345.3 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
+40346.2 "Flare 1" Ability { id: "BD21", source: "Index" }
+40349.3 "Flare 2" Ability { id: "BD21", source: "Index" }
+40361.6 "Omni-elements (cast)" Ability { id: "BD0A", source: "Index" }
+40362.7 "Omni-elements" Ability { id: "BD0B", source: "Index" }
+40368.7 "Elementary Expansion" Ability { id: "BD0F", source: "Index" }
+40376.6 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40378.6 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40380.6 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40382.6 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40384.6 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40386.6 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+
+40387.9 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements5-harp"
+40387.9 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements5-bow"
+40392.9 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
+40394.9 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
+40401.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40403.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40405.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40407.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40409.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40411.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40415.1 "Elementary Evocation" #Ability { id: "BD10", source: "Index" }
+40423.8 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40426.2 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40428.6 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40434.9 "Elementary Chemistry (cast)" #Ability { id: "BD11", source: "Index" }
+40436.3 "Elementary Chemistry" #Ability { id: "BD12", source: "Index" }
+
+40487.9 label "oc-index-implements5-harp"
+40492.9 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
+40494.9 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
+40497.0 "--sync--" Ability { id: "C5E9", source: "Index" }
+40501.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40503.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40505.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40507.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40509.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40511.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40512.2 "--sync--" StartsUsing { id: "BD10", source: "Index" } forcejump "oc-index-expansion-end"
+
+40587.9 label "oc-index-implements5-bow"
+40592.9 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
+40594.9 "Aim" Ability { id: "BD03", source: "Index" }
+40597.0 "--sync--" Ability { id: "C5E9", source: "Index" }
+40601.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40603.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40605.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40607.0 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40609.0 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40611.0 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+
+40612.1 label "oc-index-expansion-end"
+40615.1 "Elementary Evocation" Ability { id: "BD10", source: "Index" }
+40623.8 "Fire IV/Blizzard IV/Thunder IV 1" #Ability { id: ["BD0C", "BD0D", "BD0E"], source: "Index" }
+40626.2 "Blizzard IV/Thunder IV/Fire IV 2" #Ability { id: ["BD0D", "BD0E", "BD0C"], source: "Index" }
+40628.6 "Thunder IV/Fire IV/Blizzard IV 3" #Ability { id: ["BD0E", "BD0C", "BD0D"], source: "Index" }
+40635.0 "Elementary Chemistry (cast)" Ability { id: "BD11", source: "Index" }
+40636.3 "Elementary Chemistry" Ability { id: "BD12", source: "Index" }
+40637.0 "--sync--" Ability { id: "BF09", source: "Index" }
+
+# Loop
+40643.2 "--sync--" StartsUsing { id: "BD13", source: "Index" } forcejump "oc-index-loop"
+
+### Index (Extreme)
+# -ii
+# -p BD17:41012.0
+# -it "Index" "Summoned Bomb" "Summoned Bird"
+# IGNORED ABILITIES
+#
+#
+# ALL ENCOUNTER ABILITIES
+#
+41009.0 label "oc-index-extreme"
+#41012.0 "Dualcast" Ability { id: "BD17", source: "Index" }
+#41019.1 "Flare (cast)" Ability { id: "BD1F", source: "Index" }
+#41020.0 "Flare 1" Ability { id: "BD48", source: "Index" }
