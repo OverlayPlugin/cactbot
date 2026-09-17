@@ -30,6 +30,8 @@ hideall "--sync--"
 22418.3 "--middle (Normal)?--" #Ability { id: "B95A", source: "Necrophobia" }
 22418.5 "Capitation (Extreme)?" #Ability { id: "B97D", source: "Necrophobia" }
 22419.4 "--heads appear (Extreme)?--" #Ability { id: "B97F", source: "Severing Head" }
+22420.6 "--sync--" StartsUsing { id: "B95F", source: "Necrophobia" } jump "oc-necrophobia-ancient1-fire" # Late Sync for Normal
+22420.6 "--sync--" StartsUsing { id: "B960", source: "Necrophobia" } jump "oc-necrophobia-ancient1-blizzard" # Late Sync for Normal
 22425.6 "Ancient Fire III/Ancient Blizzard III (Normal)?" #Ability { id: ["B95F", "B960"], source: "Necrophobia" }
 22429.6 "Death Shroud (Extreme)?" #Ability { id: "B97E", source: "Necrophobia" }
 22434.7 "Heads Roll (Extreme)?" #Ability { id: "B980", source: "Necrophobia" }
