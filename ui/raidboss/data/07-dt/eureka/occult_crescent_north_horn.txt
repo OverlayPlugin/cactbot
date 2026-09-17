@@ -25,6 +25,8 @@ hideall "--sync--"
 22218.2 "Throwing Swords" #Ability { id: ["C197", "C1D3"], source: "Sword Dancer" } # Normal/Extreme
 22219.2 "Rush (Long)" #Ability { id: ["C55D", "C1D5"], source: "Dancing Sword" } # Normal/Extreme
 22219.2 "Rush (Short)" #Ability { id: ["C55E", "C55F"], source: "Dancing Sword" } # Normal/Extreme
+22220.4 "--sync--" StartsUsing { id: ["C1A0", "C19B"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-cw" # Late sync for Normal
+22220.4 "--sync--" StartsUsing { id: ["C19E", "C19D"], source: "Dancing Sword" } jump "oc-sword-dancer-throwing1-short-ccw" # Late sync for Normal
 22221.2 "Throwing Swords 2 (Extreme)?" #Ability { id: "C1D4", source: "Sword Dancer" }
 22222.2 "Rush (Extreme)?" Ability { id: "C560", source: "Dancing Sword" }
 22222.2 "Rush (Extreme)?" Ability { id: "C1D5", source: "Dancing Sword" }
