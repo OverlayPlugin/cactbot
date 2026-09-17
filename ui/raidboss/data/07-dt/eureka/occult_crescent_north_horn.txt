@@ -26,6 +26,8 @@ hideall "--sync--"
 22612.0 "Dualcast (Extreme)?" #Ability { id: "BD17", source: "Index" }
 22619.1 "Flare (cast)?" #Ability { id: "BD1F", source: "Index" } # Extreme
 22620.0 "Flare 1 (Extreme)?" #Ability { id: "BD48", source: "Index" }
+22623.3 "--sync--" StartsUsing { id: "BD01", source: "Index" } jump "oc-index-implements1-harp" # Late Sync for Normal
+22623.3 "--sync--" StartsUsing { id: "BD03", source: "Index" } jump "oc-index-implements1-bow" # Late Sync for Normal
 22628.3 "Sealed Implements (Normal)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
 22630.3 "Romeo's Ballad/Aim (Normal)?" #Ability { id: ["BD01", "BD03"], source: "Index" }
 
@@ -83,8 +85,8 @@ hideall "--sync--"
 39011.9 "Flare" Ability { id: "BD21", source: "Index" }
 
 # Tutorial - Sealed Implements Bow => Harp or Harp => Bow
-39023.3 "--sync--" StartsUsing { id: "BD01", source: "Index" } window 16418,5 jump "oc-index-implements1-harp" # Safety Sync
-39023.3 "--sync--" StartsUsing { id: "BD03", source: "Index" } window 16418,5 jump "oc-index-implements1-bow"  # Safety Sync
+39023.3 "--sync--" StartsUsing { id: "BD01", source: "Index" } jump "oc-index-implements1-harp" # Safety Sync
+39023.3 "--sync--" StartsUsing { id: "BD03", source: "Index" } jump "oc-index-implements1-bow"  # Safety Sync
 39028.3 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02"], source: "Index" }
 39030.3 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
 39039.4 "Sealed Implements (Bow/Harp)?" #Ability { id: ["BD02", "BD00"], source: "Index" }
@@ -249,11 +251,11 @@ hideall "--sync--"
 40110.0 "All-consuming Flames 3" Ability { id: "BD24", source: "Index" }
 
 40116.0 "Predict" Ability { id: "BD1C", source: "Index" }
-40127.0 "Starfall" Ability { id: "BD1D", source: "Foretold Phenomenon" }
-40127.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
 
 40124.2 "--sync--" StartsUsing { id: "BD00", source: "Index" } jump "oc-index-implements4-harp"
 40124.2 "--sync--" StartsUsing { id: "BD02", source: "Index" } jump "oc-index-implements4-bow"
+40127.0 "Starfall" #Ability { id: "BD1D", source: "Foretold Phenomenon" }
+40127.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
 40129.2 "Sealed Implements (Harp/Bow)?" #Ability { id: ["BD00", "BD02", source: "Index" }
 40131.2 "Romeo's Ballad/Aim?" #Ability { id: ["BD01", "BD03"], source: "Index" }
 40138.2 "Dualcast" #Ability { id: "BD17", source: "Index" }
@@ -265,12 +267,16 @@ hideall "--sync--"
 40168.7 "Elementary Expansion" #Ability { id: "BD0F", source: "Index" }
 
 40224.2 label "oc-index-implements4-harp"
+40227.0 "Starfall" Ability { id: "BD1D", source: "Foretold Phenomenon" }
+40227.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
 40229.2 "Sealed Implements (Harp)" Ability { id: "BD00", source: "Index" }
 40231.2 "Romeo's Ballad" Ability { id: "BD01", source: "Index" }
 40233.2 "--sync--" Ability { id: "C5E9", source: "Index" }
 40235.4 "--sync--" StartsUsing { id: "BD17", source: "Index" } forcejump "oc-index-implements4-end"
 
 40324.2 label "oc-index-implements4-bow"
+40327.0 "Starfall" Ability { id: "BD1D", source: "Foretold Phenomenon" }
+40327.0 "Cleansing" #Ability { id: "BD1E", source: "Foretold Phenomenon" }
 40329.2 "Sealed Implements (Bow)" Ability { id: "BD02", source: "Index" }
 40331.2 "Aim" Ability { id: "BD03", source: "Index" }
 40333.2 "--sync--" Ability { id: "C5E9", source: "Index" }
