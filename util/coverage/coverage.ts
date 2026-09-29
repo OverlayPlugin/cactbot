@@ -324,12 +324,14 @@ const contentTypeToLabel: {
       fr: 'Croissant Occulte',
       cn: '蜃景幻界新月岛',
       ko: '초승달 섬',
+      tc: '蜃景幻界新月島',
     },
     short: {
       en: 'Occult',
       fr: 'Croissant',
       cn: '新月岛',
       ko: '초승달 섬',
+      tc: '新月島',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
