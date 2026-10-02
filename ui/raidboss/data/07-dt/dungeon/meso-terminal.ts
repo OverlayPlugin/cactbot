@@ -550,7 +550,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Bloody Headsman': 'Mémoire du bourreau rouge',
         'Bygone Aerostat': 'Aérostat séculaire',
@@ -561,6 +560,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pestilent Headsman': 'Mémoire du bourreau vert',
       },
       'replaceText': {
+        '--hellmaker adds--': '--Adds Faiseur d\'enfer--',
         'Biochemical Front': 'Pulvérisation avant',
         'Bombardment': 'Bombardement',
         'Chopping Block': 'Lune tranchante',

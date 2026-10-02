@@ -581,11 +581,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Lindwurm': 'Lindwurm',
       },
       'replaceText': {
+        'Mindless Flesh': 'Chair sans esprit',
+        '\\(huge\\)': '(énorme)',
         'Bloodshed': 'Afflux de sang',
         'Bring Down the House': 'Effondrement brutal',
         '(?<! )Burst': 'Explosion',

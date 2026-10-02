@@ -476,7 +476,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Coordinate Bit': 'drone monolithique',
         'Coordinate Turret': 'tourelle monolithique',
