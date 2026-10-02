@@ -560,7 +560,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pestilent Headsman': 'Mémoire du bourreau vert',
       },
       'replaceText': {
-        '--hellmaker adds--': '--Adds Faiseur d\'enfer--',
+        '--hellmaker adds--': '--adds four de torture--',
         'Biochemical Front': 'Pulvérisation avant',
         'Bombardment': 'Bombardement',
         'Chopping Block': 'Lune tranchante',

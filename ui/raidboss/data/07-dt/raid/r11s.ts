@@ -1698,7 +1698,8 @@ const triggerSet: TriggerSet<Data> = {
         '--tethers--': '--liens--',
         'Triple Tyrannhilation': 'Triple annihilation tyrannique',
         '--meteor (\\d)--': '--météore $1--',
-        'Two-way Fireball / Four-way Fireball': 'Boule de feu double / quadruple',
+        'Two-way Fireball / Four-way Fireball':
+          'Double spirale enflammée / Flammes tournoyante croisées',
         '\\(castbar\\)': '(barre d\'incantation)',
         'Arcadion Avalanche': 'Écrasement de l\'Arcadion',
         'Assault Apex': 'Avalanche d\'armes',

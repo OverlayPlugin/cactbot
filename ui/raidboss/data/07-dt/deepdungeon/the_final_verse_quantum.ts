@@ -1397,9 +1397,9 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '--add targetable--': '--Add ciblable--',
         '--towers targetable--': '--Tours ciblables--',
-        'Drain Aether (\\d)': 'Drain d\'éther $1',
-        'Drain Aether Dark': 'Drain d\'éther sombre',
-        'Drain Aether Light': 'Drain d\'éther lumineux',
+        'Drain Aether (\\d)': 'Aspiration d\'éther $1',
+        'Drain Aether Dark': 'Aspiration d\'éther sombre',
+        'Drain Aether Light': 'Aspiration d\'éther lumineux',
         'Abyssal Blaze': 'Feu abyssal',
         'Abyssal Dawn': 'Aurore abyssale',
         'Abyssal Sun': 'Soleil abyssal',

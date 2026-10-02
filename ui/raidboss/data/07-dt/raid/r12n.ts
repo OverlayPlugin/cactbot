@@ -585,7 +585,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lindwurm': 'Lindwurm',
       },
       'replaceText': {
-        'Mindless Flesh': 'Chair sans esprit',
+        'Mindless Flesh': 'Frénésie cellulaire',
         '\\(huge\\)': '(énorme)',
         'Bloodshed': 'Afflux de sang',
         'Bring Down the House': 'Effondrement brutal',

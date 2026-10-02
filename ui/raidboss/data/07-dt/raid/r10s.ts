@@ -1045,7 +1045,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--intercardinal--': '--intercardinaux--',
-        'Reverse Alley-oop/Alley-oop Double-dip': 'Alley-oop inversé/Alley-oop double',
+        'Reverse Alley-oop/Alley-oop Double-dip': 'Alley-oop inversé/Double alley-oop',
         '--hot jump--': '--Saut enflammé--',
         '--add-targetable--': '--add ciblable--',
         '--add-untargetable--': '--add non ciblable--',
@@ -1055,7 +1055,7 @@ const triggerSet: TriggerSet<Data> = {
         '--blue targetable--': '--Bleu ciblable--',
         'Xtreme Firesnaking/Xtreme Watersnaking':
           'Ondulation enflammée Xtrême/Ondulation hydrique Xtrême',
-        'Bailout': 'Évacuation',
+        'Bailout': 'Retrait stratégique',
         'Alley-oop Inferno': 'Alley-oop enflammé',
         'Awesome Slab': 'Éclaboussement hydrique puissant',
         'Awesome Splash': 'Éclaboussement hydrique',
