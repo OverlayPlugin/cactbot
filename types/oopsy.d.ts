@@ -31,7 +31,9 @@ export type InternalOopsyTriggerType =
   | 'Damage'
   | 'GainsEffect'
   | 'Share'
-  | 'Solo';
+  | 'Solo'
+  | 'Missed'
+  | 'Multiple';
 
 export type DeathReportData = {
   lang: Lang;
@@ -98,7 +100,22 @@ export type OopsyTrigger<Data extends OopsyData> =
     id: string;
   };
 
-type MistakeMap = { [mistakeId: string]: string };
+type MistakeRole = 'tank' | 'healer' | 'dps';
+
+export type MistakeDetails = {
+  id: string;
+  onlyForRole?: MistakeRole | MistakeRole[]; // only a mistake if player is in this/these roles
+  text?: LocaleText; // override default text for this mistake type
+};
+
+export type CollectMistakeDetails = MistakeDetails & {
+  collectSeconds?: number; // time to collect before reporting
+  suppressSeconds?: number; // time until the same mistake can be re-collected and reported
+  minCount?: number; // for `multipleX` triggers, the # of hits before a mistake is reported
+};
+
+export type MistakeMap = { [mistakeId: string]: string | MistakeDetails };
+export type CollectMistakeMap = { [mistakeId: string]: string | CollectMistakeDetails };
 
 export type DataInitializeFunc<Data extends OopsyData> = () => Omit<Data, keyof OopsyData>;
 
@@ -119,6 +136,10 @@ export type OopsyMistakeMapFields = {
   shareFail?: MistakeMap;
   soloWarn?: MistakeMap;
   soloFail?: MistakeMap;
+  missedWarn?: CollectMistakeMap;
+  missedFail?: CollectMistakeMap;
+  multipleWarn?: CollectMistakeMap;
+  multipleFail?: CollectMistakeMap;
 };
 
 type SimpleOopsyTriggerSet<Data extends OopsyData> = {

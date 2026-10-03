@@ -156,17 +156,17 @@ export class PlayerStateTracker {
     this.triggerSets.push(set);
     for (const set of this.triggerSets) {
       for (const value of Object.values(set.damageWarn ?? {}))
-        this.mistakeDamageMap[value] = 'warn';
+        this.mistakeDamageMap[typeof value === 'object' ? value.id : value] = 'warn';
       for (const value of Object.values(set.damageFail ?? {}))
-        this.mistakeDamageMap[value] = 'fail';
+        this.mistakeDamageMap[typeof value === 'object' ? value.id : value] = 'fail';
       for (const value of Object.values(set.shareWarn ?? {}))
-        this.mistakeShareMap[value] = 'warn';
+        this.mistakeShareMap[typeof value === 'object' ? value.id : value] = 'warn';
       for (const value of Object.values(set.shareFail ?? {}))
-        this.mistakeShareMap[value] = 'fail';
+        this.mistakeShareMap[typeof value === 'object' ? value.id : value] = 'fail';
       for (const value of Object.values(set.soloWarn ?? {}))
-        this.mistakeSoloMap[value] = 'warn';
+        this.mistakeSoloMap[typeof value === 'object' ? value.id : value] = 'warn';
       for (const value of Object.values(set.soloFail ?? {}))
-        this.mistakeSoloMap[value] = 'fail';
+        this.mistakeSoloMap[typeof value === 'object' ? value.id : value] = 'fail';
     }
   }
 
