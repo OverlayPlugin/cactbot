@@ -258,6 +258,7 @@ const promathiaExplosionOutputStrings: OutputStrings = {
   southeast: Outputs.southeast,
   avoidExplosions: {
     en: ' Avoid Puddle Explosions',
+    fr: ' Évitez les explosions de flaques',
     cn: ' 躲避爆炸圈圈',
     ko: ' 장판 폭발 피하기',
   },
@@ -392,22 +393,26 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} + ${prox}',
+          fr: '${dir} + ${prox}',
           cn: '${dir} + ${prox}',
           ko: '${dir} + ${prox}',
         },
         ...cardDirToOutputStrings,
         close: {
           en: 'Get close',
+          fr: 'Approchez-vous',
           cn: '靠近',
           ko: '가까이 붙기',
         },
         far: {
           en: 'Get far',
+          fr: 'Éloignez-vous',
           cn: '远离',
           ko: '멀리 떨어지기',
         },
         unknown: {
           en: 'Avoid rock crusher',
+          fr: 'Évitez le broyeur de rocher',
           cn: '躲避岩石挤压',
           ko: '바위 압착 피하기',
         },
@@ -490,12 +495,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Move ${dir} + ${under}',
+          fr: 'Allez ${dir} + ${under}',
           cn: '去${dir} + ${under}',
           ko: '${dir}으로 이동 + ${under}',
         },
         under: Outputs.getUnder,
         unknown: {
           en: 'Move to next circle',
+          fr: 'Allez au cercle suivant',
           cn: '去下一个圈圈',
           ko: '다음 원으로 이동',
         },
@@ -541,6 +548,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         proxAOE: {
           en: 'Avoid Proximity AoEs',
+          fr: 'Évitez les AoE de proximité',
           cn: '远离距离衰减 AOE',
           ko: '거리 감쇠 장판 피하기',
         },
@@ -574,6 +582,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockWest: {
           en: 'Knockback west into wall',
+          fr: 'Poussée vers l\'Ouest contre le mur',
           cn: '向左击退至墙',
           ko: '서쪽 벽으로 넉백',
         },
@@ -588,6 +597,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockEast: {
           en: 'Knockback east into wall',
+          fr: 'Poussée vers l\'Est contre le mur',
           cn: '向右击退至墙',
           ko: '동쪽 벽으로 넉백',
         },
@@ -789,11 +799,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         pinwheel: {
           en: 'Pinwheel: Lean ${rot} close',
+          fr: 'Moulinette : décaler près ${rot}',
           cn: '旋转焰火：向${rot}侧靠近',
           ko: '회전: ${rot}쪽으로 가까이 붙기',
         },
         cardSafe: {
           en: 'Go ${dir} close',
+          fr: 'Allez ${dir} près',
           cn: '去${dir}靠近',
           ko: '${dir} 가까이 붙기',
         },
@@ -802,6 +814,7 @@ const triggerSet: TriggerSet<Data> = {
         ccw: Outputs.counterclockwise,
         unknownSpear: {
           en: 'Avoid spear triangles',
+          fr: 'Évitez les triangles de lances',
           cn: '躲避旋转扇形',
           ko: '회전하는 부채꼴 피하기',
         },
@@ -837,6 +850,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         noShields: {
           en: 'Attack only unshielded Gordius',
+          fr: 'Attaquez uniquement le Gordius sans bouclier',
           cn: '只攻击无护盾的戈耳狄系统',
           ko: '보호막 없는 시스템만 공격',
         },
@@ -935,11 +949,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wheelLasers: {
           en: '${out} + ${behind} => avoid lasers',
+          fr: '${out} + ${behind} => évitez les lasers',
           cn: '${out} + ${behind} => 躲避激光',
           ko: '${out} + ${behind} => 레이저 피하기',
         },
         wheelBlessing: {
           en: '${out} + ${dir}',
+          fr: '${out} + ${dir}',
           cn: '${out} + ${dir}',
           ko: '${out} + ${dir}',
         },
@@ -979,6 +995,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bastionLasers: {
           en: '${behind} + ${under} => avoid lasers',
+          fr: '${behind} + ${under} => évitez les lasers',
           cn: '${behind} + ${under} => 躲避激光',
           ko: '${behind} + ${under} => 레이저 피하기',
         },
@@ -1116,6 +1133,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidAuroral: {
           en: 'Go To Safe Corner',
+          fr: 'Allez dans le coin sûr',
           cn: '前往安全角落',
           ko: '안전한 구석으로 이동',
         },
@@ -1134,6 +1152,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidBeleaguer: {
           en: 'Dodge 2-1',
+          fr: 'Esquivez 2-1',
           cn: '二穿一躲避',
           ko: '2-1 피하기',
         },
@@ -1148,6 +1167,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         aoePlusStun: {
           en: 'AoE + stun',
+          fr: 'AoE + étourdissement',
           cn: 'AoE + 眩晕',
           ko: '전체공격 + 기절',
         },
@@ -1331,6 +1351,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goDown: {
           en: 'Go lower platform',
+          fr: 'Allez sur la plateforme basse',
           cn: '去下平台',
           ko: '아래 플랫폼으로 이동',
         },
@@ -1344,6 +1365,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goUp: {
           en: 'Go upper platform',
+          fr: 'Allez sur la plateforme haute',
           cn: '去上平台',
           ko: '위 플랫폼으로 이동',
         },
@@ -1359,6 +1381,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lightLater: {
           en: 'Light safe later',
+          fr: 'Lumière sûre après',
           cn: '稍后光安全',
           ko: '나중에 빛 안전',
         },
@@ -1374,6 +1397,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         darkLater: {
           en: 'Dark safe later',
+          fr: 'Ténèbres sûres après',
           cn: '稍后暗安全',
           ko: '나중에 어둠 안전',
         },
@@ -1393,16 +1417,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         upLightSafe: {
           en: 'Up on light platform',
+          fr: 'Haut sur la plateforme de lumière',
           cn: '去上光平台',
           ko: '위쪽 빛 플랫폼으로 이동',
         },
         downDarkSafe: {
           en: 'Down on dark platform',
+          fr: 'Bas sur la plateforme de ténèbres',
           cn: '去下暗平台',
           ko: '아래쪽 어둠 플랫폼으로 이동',
         },
         unknownSafe: {
           en: 'Match platform + debuff color',
+          fr: 'Plateforme de la même couleur que le debuff',
           cn: '去 debuff 同色平台',
           ko: '플랫폼과 디버프 색 맞추기',
         },
@@ -1444,6 +1471,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         goUp: {
           en: 'Go upper platform',
+          fr: 'Allez sur la plateforme haute',
           cn: '去上平台',
           ko: '위 플랫폼으로 이동',
         },
@@ -1542,6 +1570,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidSwords: {
           en: 'Avoid sword cones',
+          fr: 'Évitez les cônes d\'épées',
           cn: '躲避扇形剑击',
           ko: '검 부채꼴 피하기',
         },
@@ -1641,8 +1670,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
+        'Aw\'aern': 'Aw\'aern',
+        'Medusa Swarmsinger': 'Medusa Swarmsinger',
+        'Nemean Lion': 'Nemean Lion',
         'Alexander Resurrected': 'Alexander Resurrected',
         'Arcane Sphere': 'Arcane Sphere',
         'Empty Thinker': 'Empty Thinker',
@@ -1656,6 +1687,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shinryu Paradox': 'Shinryu',
       },
       'replaceText': {
+        '--east/west--': '--est/ouest--',
         'Activate': 'Activation',
         'Aero Dynamics': 'Vent ébourrifant',
         'Atomic Ray': 'Rayon atomique',
