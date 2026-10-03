@@ -97,6 +97,12 @@ const triggerSet: OopsyTriggerSet<Data> = {
         'Titan': '타이탄',
       },
     },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Titan': '泰坦',
+      },
+    },
   ],
 };
 
