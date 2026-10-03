@@ -981,7 +981,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Deep Blue': 'Deep Blue',
         'Red Hot': 'Red Hot',
@@ -989,6 +988,18 @@ Options.Triggers.push({
         'Watery Grave': 'prison aquatique',
       },
       'replaceText': {
+        '--intercardinal--': '--intercardinaux--',
+        'Reverse Alley-oop/Alley-oop Double-dip': 'Alley-oop inversé/Double alley-oop',
+        '--hot jump--': '--Saut enflammé--',
+        '--add-targetable--': '--add ciblable--',
+        '--add-untargetable--': '--add non ciblable--',
+        '--red north--': '--Rouge nord--',
+        '--blue east/west--': '--Bleu est/ouest--',
+        '--blue untargetable--': '--Bleu non ciblable--',
+        '--blue targetable--': '--Bleu ciblable--',
+        'Xtreme Firesnaking/Xtreme Watersnaking':
+          'Ondulation enflammée Xtrême/Ondulation hydrique Xtrême',
+        'Bailout': 'Retrait stratégique',
         'Alley-oop Inferno': 'Alley-oop enflammé',
         'Awesome Slab': 'Éclaboussement hydrique puissant',
         'Awesome Splash': 'Éclaboussement hydrique',

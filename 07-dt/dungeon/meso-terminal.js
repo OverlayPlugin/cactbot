@@ -519,7 +519,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Bloody Headsman': 'Mémoire du bourreau rouge',
         'Bygone Aerostat': 'Aérostat séculaire',
@@ -530,6 +529,7 @@ Options.Triggers.push({
         'Pestilent Headsman': 'Mémoire du bourreau vert',
       },
       'replaceText': {
+        '--hellmaker adds--': '--adds four de torture--',
         'Biochemical Front': 'Pulvérisation avant',
         'Bombardment': 'Bombardement',
         'Chopping Block': 'Lune tranchante',

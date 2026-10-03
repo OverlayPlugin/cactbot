@@ -1311,13 +1311,17 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Devoured Eater': 'Purgateur dévoré',
         'Eminent Grief': 'Pontife du Chagrin',
         'Flameborn': 'Division de flamme',
       },
       'replaceText': {
+        '--add targetable--': '--Add ciblable--',
+        '--towers targetable--': '--Tours ciblables--',
+        'Drain Aether (\\d)': 'Aspiration d\'éther $1',
+        'Drain Aether Dark': 'Aspiration d\'éther sombre',
+        'Drain Aether Light': 'Aspiration d\'éther lumineux',
         'Abyssal Blaze': 'Feu abyssal',
         'Abyssal Dawn': 'Aurore abyssale',
         'Abyssal Sun': 'Soleil abyssal',

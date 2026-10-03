@@ -544,7 +544,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet': 'comète',
         'The Tyrant': 'The Tyrant',

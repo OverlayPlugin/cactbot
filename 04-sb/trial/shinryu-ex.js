@@ -585,7 +585,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Hakkinryu': 'Hakkinryu',
         'Icicle': 'stalactite',

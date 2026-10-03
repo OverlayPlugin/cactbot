@@ -442,7 +442,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Coordinate Bit': 'drone monolithique',
         'Coordinate Turret': 'tourelle monolithique',

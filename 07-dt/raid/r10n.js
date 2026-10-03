@@ -608,7 +608,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Deep Blue': 'Deep Blue',
         'Red Hot': 'Red Hot',
@@ -616,6 +615,8 @@ Options.Triggers.push({
         'Xtreme Aether': 'éther Xtrême',
       },
       'replaceText': {
+        '--Blue middle--': '--Bleu au milieu--',
+        '--Red middle--': '--Rouge au milieu--',
         'Alley-Oop Inferno': 'Alley-oop enflammé',
         'Alley-oop Inferno': 'Alley-oop enflammé',
         'Alley-Oop Maelstrom': 'Alley-oop hydrique',
