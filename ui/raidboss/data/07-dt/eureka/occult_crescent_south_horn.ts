@@ -171,6 +171,7 @@ const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
     de: 'In Linien sammeln auf ${player1}, ${player2}, ${player3}',
+    fr: 'Packages en ligne sur ${player1}, ${player2}, ${player3}',
     cn: '直线分摊点 ${player1}, ${player2}, ${player3}',
     ko: '직선 쉐어 대상자 ${player1}, ${player2}, ${player3}',
     tc: '直線分攤點 ${player1}, ${player2}, ${player3}',
@@ -178,6 +179,7 @@ const deadStarsOutputStrings = {
   lineStackOnYouTankCleave: {
     en: 'Line Stack on YOU, Avoid Tank Cleave',
     de: 'In einer Linie sammeln auf DIR, Vermeide Tank-Cleave',
+    fr: 'Package en ligne sur VOUS, évitez le tank cleave',
     cn: '直线分摊点名，躲避坦克顺劈',
     ko: '직선 쉐어 대상자, 광역 탱버 피하기',
     tc: '直線分攤點名，躲避坦克順劈',
@@ -270,6 +272,7 @@ const magitaurOutputStrings = {
   rune1BigAoeOnYou: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
     de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
+    fr: 'Grosse AoE sur VOUS, allez vers le mur près du cercle violet',
     cn: '大圈点名, 去紫圈墙边',
     ko: '큰 징 대상자, 보라색 원이 있는 벽 쪽으로 이동',
     tc: '大圈點名, 去紫圈牆邊',
@@ -277,6 +280,7 @@ const magitaurOutputStrings = {
   rune1SmallAoeOnYou: {
     en: 'Small aoe on YOU, Stay Square => Between Squares',
     de: 'Kleine AoE auf DIR, Steh im Viereck => Zwichen den Vierecken',
+    fr: 'Petite AoE sur VOUS, restez sur le carré => Entre les carrés',
     cn: '小圈点名, 留在方块内 => 方块间',
     ko: '작은 징 대상자, 네모 칸 안에 있기 => 네모 칸 사이로 이동',
     tc: '小圈點名, 留在方塊內 => 方塊間',
@@ -284,6 +288,7 @@ const magitaurOutputStrings = {
   rune1BigAoeOnPlayer: {
     en: 'Big AOE on ${player}, Be on Square',
     de: 'Große AoE auf ${player}, Steh im Viereck',
+    fr: 'Grosse AoE sur ${player}, placez-vous sur un carré',
     cn: '大圈点 ${player}, 去方块内',
     ko: '${player} 큰 징 대상자, 네모 칸 안에 있기',
     tc: '大圈點 ${player}, 去方塊內',
@@ -291,6 +296,7 @@ const magitaurOutputStrings = {
   rune1SmallAoesOnPlayers: {
     en: 'Small aoes on ${player1}, ${player2}, ${player3}',
     de: 'Kleine AoEs auf ${player1}, ${player2}, ${player3}',
+    fr: 'Petites AoE sur ${player1}, ${player2}, ${player3}',
     cn: '小圈点 ${player1}, ${player2}, ${player3}',
     ko: '${player1}, ${player2}, ${player3} 작은 징 대상자',
     tc: '小圈點 ${player1}, ${player2}, ${player3}',
@@ -298,6 +304,7 @@ const magitaurOutputStrings = {
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
     de: 'Stehenbleiben für AOE => Rein, Zwichen den Vierecken',
+    fr: 'Restez pour l\'AoE => Intérieur, entre les carrés',
     cn: '留在方块外 => 内, 方块间',
     ko: '징 대기 => 네모 칸 사이로 이동',
     tc: '留在方塊外 => 內, 方塊間',
@@ -305,6 +312,7 @@ const magitaurOutputStrings = {
   rune2BigAoeOnYouLater: {
     en: 'Big AOE on YOU (Later)',
     de: 'Große AOE auf DIR (Später)',
+    fr: 'Grosse AoE sur VOUS (après)',
     cn: '大圈点名 (稍后)',
     ko: '큰 징 대상자 (나중에)',
     tc: '大圈點名 (稍後)',
@@ -312,6 +320,7 @@ const magitaurOutputStrings = {
   rune2SmallAoeOnYouLater: {
     en: 'Small aoe on YOU (Later)',
     de: 'Kleine AOE auf DIR (Später)',
+    fr: 'Petite AoE sur VOUS (après)',
     cn: '小圈点名 (稍后)',
     ko: '작은 징 대상자 (나중에)',
     tc: '小圈點名 (稍後)',
@@ -319,6 +328,7 @@ const magitaurOutputStrings = {
   rune2InBigAoeOnYou: {
     en: 'In, Between Squares => To Wall',
     de: 'Rein, Zwichen den Vierecken => Zur Wand',
+    fr: 'Intérieur, entre les carrés => Vers le mur',
     cn: '内, 方块间 => 去墙边',
     ko: '안, 네모 칸 사이 => 벽 쪽으로',
     tc: '內, 方塊間 => 去牆邊',
@@ -326,6 +336,7 @@ const magitaurOutputStrings = {
   rune2InSmallAoeOnYou: {
     en: 'In, Between Squares => Solo Square',
     de: 'Rein, Zwichen den Vierecken => Einzelnes Viereck',
+    fr: 'Intérieur, entre les carrés => Carré en solo',
     cn: '内, 方块间 => 单人方块',
     ko: '안, 네모 칸 사이 => 혼자 네모 칸 안에',
     tc: '內, 方塊間 => 單人方塊',
@@ -333,6 +344,7 @@ const magitaurOutputStrings = {
   rune2AoesOnPlayers: {
     en: 'AOEs on ${player1}, ${player2}, ${player3}',
     de: 'AOEs auf ${player1}, ${player2}, ${player3}',
+    fr: 'AoE sur ${player1}, ${player2}, ${player3}',
     cn: '圈点 ${player1}, ${player2}, ${player3}',
     ko: '${player1}, ${player2}, ${player3} 징 대상자',
     tc: '圈點 ${player1}, ${player2}, ${player3}',
@@ -340,6 +352,7 @@ const magitaurOutputStrings = {
   rune2AvoidPlayers: {
     en: 'On Square, Avoid ${player1} & ${player2}',
     de: 'Aufs Viereck, Vermeide ${player1} & ${player2}',
+    fr: 'Sur un carré, évitez ${player1} et ${player2}',
     cn: '方块内, 远离 ${player1} 和 ${player2}',
     ko: '네모 칸 안에 있기, ${player1} & ${player2} 피하기',
     tc: '方塊內, 遠離 ${player1} 和 ${player2}',
@@ -347,6 +360,7 @@ const magitaurOutputStrings = {
   rune2SmallAoeOnYouReminder: {
     en: 'Small aoe on YOU, Be on Square (Solo)',
     de: 'Kleine AoE auf DIR, Sei auf einem Viereck (Alleine)',
+    fr: 'Petite AoE sur VOUS, placez-vous sur un carré (solo)',
     cn: '小圈点名, 去方块内 (单人)',
     ko: '작은 징 대상자, 네모 칸 안에 있기 (혼자)',
     tc: '小圈點名, 去方塊內 (單人)',
@@ -354,6 +368,7 @@ const magitaurOutputStrings = {
   rune2BigAoeOnYouReminder: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
     de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
+    fr: 'Grosse AoE sur VOUS, allez vers le mur près du cercle violet',
     cn: '大圈点名, 去紫圈墙边',
     ko: '큰 징 대상자, 보라색 원이 있는 벽 쪽으로 이동',
     tc: '大圈點名, 去紫圈牆邊',
@@ -361,6 +376,7 @@ const magitaurOutputStrings = {
   inThenOnSquare: {
     en: 'In, between Squares => On Square',
     de: 'Rein, Zwichen den Vierecken => Auf ein Viereck',
+    fr: 'Intérieur, entre les carrés => Sur un carré',
     cn: '内, 方块间 => 方块内',
     ko: '안, 네모 칸 사이 => 네모 칸 안으로',
     tc: '內, 方塊間 => 方塊內',
@@ -368,6 +384,7 @@ const magitaurOutputStrings = {
   northeastOff: {
     en: 'Northeast Off',
     de: 'Nordosten aus',
+    fr: 'Nord-Est désactivé',
     cn: '右上外',
     ko: '북동쪽 밖',
     tc: '东北外',
@@ -375,6 +392,7 @@ const magitaurOutputStrings = {
   northeastOn: {
     en: 'Northeast On',
     de: 'Nordosten an',
+    fr: 'Nord-Est activé',
     cn: '右上内',
     ko: '북동쪽 안',
     tc: '东北內',
@@ -382,6 +400,7 @@ const magitaurOutputStrings = {
   southOff: {
     en: 'South Off',
     de: 'Süden aus',
+    fr: 'Sud désactivé',
     cn: '下方外',
     ko: '남쪽 밖',
     tc: '南方外',
@@ -389,6 +408,7 @@ const magitaurOutputStrings = {
   southOn: {
     en: 'South On',
     de: 'Süden an',
+    fr: 'Sud activé',
     cn: '下方内',
     ko: '남쪽 안',
     tc: '南方內',
@@ -396,6 +416,7 @@ const magitaurOutputStrings = {
   northwestOff: {
     en: 'Northwest Off',
     de: 'Nordwesten aus',
+    fr: 'Nord-Ouest désactivé',
     cn: '左上外',
     ko: '북서쪽 밖',
     tc: '西北外',
@@ -403,6 +424,7 @@ const magitaurOutputStrings = {
   out: {
     en: 'Out, Square Corner',
     de: 'Raus, Ecke des Vierecks',
+    fr: 'Extérieur, coin du carré',
     cn: '外, 方块角落',
     ko: '밖, 네모 칸 모서리',
     tc: '外, 方塊角落',
@@ -410,6 +432,7 @@ const magitaurOutputStrings = {
   in: {
     en: 'In, between Squares',
     de: 'Rein, Zwichen den Vierecken',
+    fr: 'Intérieur, entre les carrés',
     cn: '内, 方块间',
     ko: '안, 네모 칸 사이',
     tc: '內, 方塊間',
@@ -450,6 +473,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Occult Crescent South Horn critical encounter triggers/timeline.',
     de: 'Kreszentia Südexpedition kritische Begegnungen Triggers/Timeline.',
+    fr: 'Triggers/timeline du combattant critique de la Corne sud du Croissant occulte.',
     cn: '蜃景幻界新月岛 南征之章 紧急遭遇战 触发器/时间轴。',
     ko: '초승달 섬: 남부편 비상 조우 트리거/타임라인',
     tc: '蜃景幻界新月島 南征之章 緊急遭遇戰 觸發器/時間軸。',
@@ -460,6 +484,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Demon Tablet Rotation Strategy',
         de: 'Fork-Turm: Blut Dämonentafel Rotationsstrategie',
+        fr: 'Tour fourchue : Sang - Stratégie de rotation de la muraille démonique',
         cn: '两歧塔力之塔 恶魔板 旋转策略',
         ko: '포크타워: 악마의 석판 회전 전략',
         tc: '兩歧塔力之塔 惡魔板 旋轉策略',
@@ -495,6 +520,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Dead Stars Vengeful Direction Strategy',
         de: 'Fork-Turm: Blut Astronomischer Trio Rache-Richtungs Strategy',
+        fr: 'Tour fourchue : Sang - Stratégie de direction vengeresse du trio de la Fosse',
         cn: '两歧塔力之塔 星头三兄弟 复仇方向策略',
         ko: '포크타워: 별머리 삼인조 복수의 파이가/블리자가/바이오가 방향 전략',
         tc: '兩歧塔力之塔 星頭三兄弟 復仇方向策略',
@@ -536,6 +562,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Marble Dragon Imitation Rain 1 and 5 Strategy',
         de: 'Fork-Turm: Blut Marmordrache Falscher Regen 1 und 5 Strategie',
+        fr: 'Tour fourchue : Sang - Stratégie Réplique de pluie 1 et 5 du dragon marmoréen',
         cn: '两歧塔力之塔 大理石龙 仿效雨 1和5 策略',
         ko: '포크타워: 대리석 드래곤 모방된 비 1, 5 전략',
         tc: '兩歧塔力之塔 大理石龍 仿效雨 1和5 策略',
@@ -570,6 +597,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Magitaur Dagger Strategy',
         de: 'Fork-Turm: Blut Magitaurus Dolchstrategie',
+        fr: 'Tour fourchue : Sang - Stratégie des dagues du magitaure',
         cn: '两歧塔力之塔 魔陶洛斯 暗杀短剑 策略',
         ko: '포크타워: 마기타우로스 단검 전략',
         tc: '兩歧塔力之塔 魔陶洛斯 暗殺短劍 策略',
@@ -672,6 +700,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           cn: '东/西',
           ko: '동/서',
           tc: '東/西',
@@ -679,6 +708,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           cn: '南/北',
           ko: '남/북',
           tc: '南/北',
@@ -686,6 +716,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait Cleave',
           de: 'Cleave ködern',
+          fr: 'Attirez le cleave',
           cn: '诱导顺劈',
           ko: '휩쓸기 유도',
           tc: '誘導順劈',
@@ -693,6 +724,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleaveThenDir: {
           en: 'Bait Cleave => ${dir}',
           de: 'Cleave ködern => ${dir}',
+          fr: 'Attirez le cleave => ${dir}',
           cn: '诱导顺劈 => ${dir}',
           ko: '휩쓸기 유도 => ${dir}',
           tc: '誘導順劈 => ${dir}',
@@ -709,6 +741,7 @@ const triggerSet: TriggerSet<Data> = {
         squarePosition: {
           en: 'Rune Axe Square Position',
           de: 'Runenaxt Viereck Position',
+          fr: 'Position carré Hache runique',
           cn: '符文之斧方块站位',
           ko: '룬 도끼 플랫폼 위치로',
           tc: '符文之斧方塊站位',
@@ -725,6 +758,7 @@ const triggerSet: TriggerSet<Data> = {
         squarePosition: {
           en: 'Holy Lance Square Position',
           de: 'Heiligenspeer Viereck Position',
+          fr: 'Position carré Lance sacrée',
           cn: '圣枪方块站位',
           ko: '신성한 창 플랫폼 위치로',
           tc: '聖槍方塊站位',
@@ -1144,6 +1178,7 @@ const triggerSet: TriggerSet<Data> = {
         combined: {
           en: '${dir} + ${wedge}',
           de: '${dir} + ${wedge}',
+          fr: '${dir} + ${wedge}',
           cn: '${dir} + ${wedge}',
           ko: '${dir} + ${wedge}',
           tc: '${dir} + ${wedge}',
@@ -1160,6 +1195,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge expanding rings',
           de: 'Weiche größer werdende Ringe aus',
+          fr: 'Esquivez les anneaux en expansion',
           cn: '躲避扩散环',
           ko: '퍼지는 고리 장판 피하기',
           tc: '躲避擴散環',
@@ -1188,6 +1224,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'In => Out => Sides',
           de: 'Rein => Raus => Seiten',
+          fr: 'Intérieur => Extérieur => Côtés',
           cn: '靠近 => 远离 => 两侧',
           ko: '안 => 밖 => 양 옆',
           tc: '靠近 => 遠離 => 兩側',
@@ -1211,6 +1248,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out => In => Sides',
           de: 'Raus => Rein => Seiten',
+          fr: 'Extérieur => Intérieur => Côtés',
           cn: '远离 => 靠近 => 两侧',
           ko: '밖 => 안 => 양 옆',
           tc: '遠離 => 靠近 => 兩側',
@@ -1257,6 +1295,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow Dash => Get Behind',
           de: 'Ansturm folgen => Geh hinter den Boss',
+          fr: 'Suivez la ruée => Placez-vous derrière',
           cn: '跟随冲锋 => 去背后',
           ko: '돌진 따라가기 => 보스 뒤로',
           tc: '跟隨衝鋒 => 去背後',
@@ -1272,6 +1311,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away After Dash',
           de: 'Nach dem Ansturm weggehen',
+          fr: 'Éloignez-vous après la ruée',
           cn: '冲锋后远离',
           ko: '돌진 후 멀어지기',
           tc: '衝鋒後遠離',
@@ -1386,6 +1426,7 @@ const triggerSet: TriggerSet<Data> = {
         inKnockback: {
           en: 'In => Knockback',
           de: 'Rein => Rückstoß',
+          fr: 'Intérieur => Poussée',
           cn: '内 => 击退',
           ko: '안 => 넉백',
           tc: '內 => 擊退',
@@ -1412,6 +1453,7 @@ const triggerSet: TriggerSet<Data> = {
           tankbustersOnPlayers: {
             en: 'Tankbusters on ${player1}, ${player2}, ${player3}',
             de: 'Tankbusters auf ${player1}, ${player2}, ${player3}',
+            fr: 'Tank busters sur ${player1}, ${player2}, ${player3}',
             cn: '坦克死刑点 ${player1}, ${player2}, ${player3}',
             ko: '탱버 대상자 ${player1}, ${player2}, ${player3}',
             tc: '坦克死刑點 ${player1}, ${player2}, ${player3}',
@@ -1457,6 +1499,7 @@ const triggerSet: TriggerSet<Data> = {
         inKnockback: {
           en: 'In => Knockback',
           de: 'Rein => Rückstoß',
+          fr: 'Intérieur => Poussée',
           cn: '内 => 击退',
           ko: '안 => 넉백',
           tc: '內 => 擊退',
@@ -1563,6 +1606,7 @@ const triggerSet: TriggerSet<Data> = {
         leftBehind: {
           en: 'Left (Behind Boss)',
           de: 'Links (Hinter den Boss)',
+          fr: 'Gauche (derrière le boss)',
           cn: '左侧 (Boss后方)',
           ko: '왼쪽 (보스 뒤)',
           tc: '左側 (Boss後方)',
@@ -1570,6 +1614,7 @@ const triggerSet: TriggerSet<Data> = {
         rightBehind: {
           en: 'Right (Behind Boss)',
           de: 'Rechts (Hinter den Boss)',
+          fr: 'Droite (derrière le boss)',
           cn: '右侧 (Boss后方)',
           ko: '오른쪽 (보스 뒤)',
           tc: '右側 (Boss後方)',
@@ -1577,6 +1622,7 @@ const triggerSet: TriggerSet<Data> = {
         leftThenGetBehind: {
           en: 'Left => Get Behind',
           de: 'Links => Hinter den Boss',
+          fr: 'Gauche => Allez derrière',
           cn: '左侧 => 去Boss后方',
           ko: '왼쪽 => 보스 뒤로',
           tc: '左側 => 去Boss後方',
@@ -1584,6 +1630,7 @@ const triggerSet: TriggerSet<Data> = {
         rightThenGetBehind: {
           en: 'Right => Get Behind',
           de: 'Rechts => Hinter den Boss',
+          fr: 'Droite => Allez derrière',
           cn: '右侧 => 去Boss后方',
           ko: '오른쪽 => 보스 뒤로',
           tc: '右側 => 去Boss後方',
@@ -1591,6 +1638,7 @@ const triggerSet: TriggerSet<Data> = {
         goRightAround: {
           en: 'Go Right and Around',
           de: 'Geh nach Rechts und drumherum',
+          fr: 'Allez à droite et contournez',
           cn: '右侧绕行',
           ko: '오른쪽으로 돌아가기',
           tc: '右側繞行',
@@ -1598,6 +1646,7 @@ const triggerSet: TriggerSet<Data> = {
         goLeftAround: {
           en: 'Go Left and Around',
           de: 'Geh nach Links und drumherum',
+          fr: 'Allez à gauche et contournez',
           cn: '左侧绕行',
           ko: '왼쪽으로 돌아가기',
           tc: '左側繞行',
@@ -1695,6 +1744,7 @@ const triggerSet: TriggerSet<Data> = {
         inKnockback: {
           en: 'In => Knockback',
           de: 'Rein => Rückstoß',
+          fr: 'Intérieur => Poussée',
           cn: '内 => 击退',
           ko: '안 => 넉백',
           tc: '內 => 擊退',
@@ -1702,6 +1752,7 @@ const triggerSet: TriggerSet<Data> = {
         dirMech: {
           en: '${dir} & ${mech}',
           de: '${dir} & ${mech}',
+          fr: '${dir} et ${mech}',
           cn: '${dir} 和 ${mech}',
           ko: '${dir} & ${mech}',
           tc: '${dir} 和 ${mech}',
@@ -1709,6 +1760,7 @@ const triggerSet: TriggerSet<Data> = {
         hasMeteorMech: {
           en: 'Meteor on YOU, ${mech}',
           de: 'Meteor auf DIR, ${mech}',
+          fr: 'Météore sur VOUS, ${mech}',
           cn: '陨石点名, ${mech}',
           ko: '메테오 대상자, ${mech}',
           tc: '隕石點名, ${mech}',
@@ -1716,6 +1768,7 @@ const triggerSet: TriggerSet<Data> = {
         hasMeteorDirMech: {
           en: 'Meteor on YOU, Go ${dir} & ${mech}',
           de: 'Meteor auf DIR, Geh nach ${dir} & ${mech}',
+          fr: 'Météore sur VOUS, allez ${dir} et ${mech}',
           cn: '陨石点名, 去${dir} 并 ${mech}',
           ko: '메테오 대상자, ${dir}으로 & ${mech}',
           tc: '隕石點名, 去${dir} 並 ${mech}',
@@ -1813,6 +1866,7 @@ const triggerSet: TriggerSet<Data> = {
           stackLaunchTowardsBoss: {
             en: 'Stack, Launch towards Boss',
             de: 'Sammeln, Fliege zum Boss',
+            fr: 'Package, lancement vers le boss',
             cn: '集合, 向Boss方向击飞',
             ko: '쉐어, 보스를 향해 발사',
             tc: '集合, 向Boss方向擊飛',
@@ -1820,6 +1874,7 @@ const triggerSet: TriggerSet<Data> = {
           stackLaunchOverBoss: {
             en: 'Stack, Launch over Boss',
             de: 'Sammeln, Fliege über den Boss',
+            fr: 'Package, lancement par-dessus le boss',
             cn: '集合, 越过Boss击飞',
             ko: '쉐어, 보스를 넘어 발사',
             tc: '集合, 越過Boss擊飛',
@@ -1827,6 +1882,7 @@ const triggerSet: TriggerSet<Data> = {
           goNorthOutStackOnYou: {
             en: 'Go North Out => Stack Launch Marker on You',
             de: 'Geh nördlich raus => Sammel-Flug Marker auf DIR',
+            fr: 'Allez Nord extérieur => Package du marqueur de lancement sur vous',
             cn: '去上方外侧 => 集合击飞点名',
             ko: '북쪽 바깥으로 => 쉐어 발사 대상자',
             tc: '去上方外側 => 集合擊飛點名',
@@ -1834,6 +1890,7 @@ const triggerSet: TriggerSet<Data> = {
           goNorthInStackOnYou: {
             en: 'Go North In (Knockback) => Stack Launch Marker on You',
             de: 'Geh nördlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
+            fr: 'Allez Nord intérieur (poussée) => Package du marqueur de lancement sur vous',
             cn: '去上方内侧 (击退) => 集合击飞点名',
             ko: '북쪽 안쪽으로 (넉백) => 쉐어 발사 대상자',
             tc: '去上方內側 (擊退) => 集合擊飛點名',
@@ -1841,6 +1898,7 @@ const triggerSet: TriggerSet<Data> = {
           goSouthOutStackOnYou: {
             en: 'Go South Out => Stack Launch Marker on You',
             de: 'Geh südlich raus => Sammel-Flug Marker auf DIR',
+            fr: 'Allez Sud extérieur => Package du marqueur de lancement sur vous',
             cn: '去下方外侧 => 集合击飞点名',
             ko: '남쪽 바깥으로 => 쉐어 발사 대상자',
             tc: '去下方外側 => 集合擊飛點名',
@@ -1848,6 +1906,7 @@ const triggerSet: TriggerSet<Data> = {
           goSouthInStackOnYou: {
             en: 'Go South In (Knockback) => Stack Launch Marker on You',
             de: 'Geh südlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
+            fr: 'Allez Sud intérieur (poussée) => Package du marqueur de lancement sur vous',
             cn: '去下方内侧 (击退) => 集合击飞点名',
             ko: '남쪽 안쪽으로 (넉백) => 쉐어 발사 대상자',
             tc: '去下方內側 (擊退) => 集合擊飛點名',
@@ -1883,6 +1942,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Add Positions and Out',
           de: 'Positioniere Add und Raus',
+          fr: 'Positions des adds et extérieur',
           cn: '小怪站位并远离',
           ko: '쫄 위치 및 밖으로',
           tc: '小怪站位並遠離',
@@ -1931,6 +1991,7 @@ const triggerSet: TriggerSet<Data> = {
         dirOutThenTowers: {
           en: '${dir} Out => Towers',
           de: '${dir} Raus => Türme',
+          fr: '${dir} extérieur => Tours',
           cn: '${dir} 外侧 => 塔',
           ko: '${dir} 밖으로 => 탑',
           tc: '${dir} 外側 => 塔',
@@ -1938,6 +1999,7 @@ const triggerSet: TriggerSet<Data> = {
         goTowerSideOut: {
           en: 'Go Towers Side and Out',
           de: 'Geh zu den Turm-Seiten und Raus',
+          fr: 'Allez du côté des tours, extérieur',
           cn: '去塔侧并远离',
           ko: '탑 쪽 밖으로',
           tc: '去塔側並遠離',
@@ -1945,6 +2007,7 @@ const triggerSet: TriggerSet<Data> = {
         dirInThenTowers: {
           en: '${dir} In => Knockback => Towers',
           de: '${dir} Rein => Rückstoß => Türme',
+          fr: '${dir} intérieur => Poussée => Tours',
           cn: '${dir} 内侧 => 击退 => 塔',
           ko: '${dir} 안 => 넉백 => 탑',
           tc: '${dir} 內側 => 擊退 => 塔',
@@ -1952,6 +2015,7 @@ const triggerSet: TriggerSet<Data> = {
         goTowerSideIn: {
           en: 'Go Towers Side and In => Knockback',
           de: 'Geh zu den Turm-Seiten und Rein => Rückstoß',
+          fr: 'Allez du côté des tours, intérieur => Poussée',
           cn: '去塔侧并内侧 => 击退',
           ko: '탑 쪽 안으로 => 넉백',
           tc: '去塔側並內側 => 擊退',
@@ -2015,6 +2079,7 @@ const triggerSet: TriggerSet<Data> = {
         frontRightLater: {
           en: 'Front Right (Later)',
           de: 'Vorne Rechts (Später)',
+          fr: 'Avant droite (après)',
           cn: '右前 (稍后)',
           ko: '앞 오른쪽 (나중에)',
           tc: '右前 (稍後)',
@@ -2022,6 +2087,7 @@ const triggerSet: TriggerSet<Data> = {
         backLeftLater: {
           en: 'Back Left (Later)',
           de: 'Hinten Links (Später)',
+          fr: 'Arrière gauche (après)',
           cn: '左后 (稍后)',
           ko: '뒤 왼쪽 (나중에)',
           tc: '左後 (稍後)',
@@ -2089,6 +2155,7 @@ const triggerSet: TriggerSet<Data> = {
         towersThenSafeSpot: {
           en: '${towers} => ${corner}',
           de: '${towers} => ${corner}',
+          fr: '${towers} => ${corner}',
           cn: '${towers} => ${corner}',
           ko: '${towers} => ${corner}',
           tc: '${towers} => ${corner}',
@@ -2115,6 +2182,7 @@ const triggerSet: TriggerSet<Data> = {
         safeCorner: {
           en: 'Safe Corner',
           de: 'Sichere Ecken',
+          fr: 'Coin sûr',
           cn: '安全角落',
           ko: '안전한 구석',
           tc: '安全角落',
@@ -2139,6 +2207,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidFallingStatues: {
           en: 'Avoid Falling Statues',
           de: 'Vermeide fallende Statuen',
+          fr: 'Évitez les statues qui tombent',
           cn: '躲避下落雕像',
           ko: '떨어지는 석상 피하기',
           tc: '躲避下落雕像',
@@ -2230,6 +2299,7 @@ const triggerSet: TriggerSet<Data> = {
         boss: {
           en: 'Tethered to ${boss}',
           de: 'Verbunden zum ${boss}',
+          fr: 'Lié à ${boss}',
           cn: '连线 ${boss}',
           ko: '${boss} 연결됨',
           tc: '連線 ${boss}',
@@ -2249,6 +2319,7 @@ const triggerSet: TriggerSet<Data> = {
           tankCleavesOnPlayers: {
             en: 'Tank Cleaves on ${player1}, ${player2}, ${player3}',
             de: 'Tank-Cleaves auf ${player1}, ${player2}, ${player3}',
+            fr: 'Tank cleaves sur ${player1}, ${player2}, ${player3}',
             cn: '坦克顺劈点 ${player1}, ${player2}, ${player3}',
             ko: '광역 탱버 대상자 ${player1}, ${player2}, ${player3}',
             tc: '坦克順劈點 ${player1}, ${player2}, ${player3}',
@@ -2257,6 +2328,7 @@ const triggerSet: TriggerSet<Data> = {
           tankCleaveOnYouLineStack: {
             en: 'Tank Cleave on YOU, Avoid Line Stack',
             de: 'Tank Cleave auf DIR, Vermeide Linien-sammeln',
+            fr: 'Tank cleave sur VOUS, évitez le package en ligne',
             cn: '坦克顺劈点名, 避开直线分摊',
             ko: '광역 탱버 대상자, 직선 쉐어 피하기',
             tc: '坦克順劈點名, 避開直線分攤',
@@ -2380,6 +2452,7 @@ const triggerSet: TriggerSet<Data> = {
         blue: {
           en: '+1 Blue',
           de: '+1 Blau',
+          fr: '+1 Bleu',
           cn: '+1 蓝',
           ko: '+1 파랑',
           tc: '+1 藍',
@@ -2387,6 +2460,7 @@ const triggerSet: TriggerSet<Data> = {
         blueTwo: {
           en: '+2 Blue',
           de: '+2 Blau',
+          fr: '+2 Bleu',
           cn: '+2 蓝',
           ko: '+2 파랑',
           tc: '+2 藍',
@@ -2394,6 +2468,7 @@ const triggerSet: TriggerSet<Data> = {
         blueThree: {
           en: '+3 Blue',
           de: '+3 Blau',
+          fr: '+3 Bleu',
           cn: '+3 蓝',
           ko: '+3 파랑',
           tc: '+3 藍',
@@ -2401,6 +2476,7 @@ const triggerSet: TriggerSet<Data> = {
         red: {
           en: '+1 Red',
           de: '+1 Rot',
+          fr: '+1 Rouge',
           cn: '+1 红',
           ko: '+1 빨강',
           tc: '+1 紅',
@@ -2408,6 +2484,7 @@ const triggerSet: TriggerSet<Data> = {
         redTwo: {
           en: '+2 Red',
           de: '+2 Rot',
+          fr: '+2 Rouge',
           cn: '+2 红',
           ko: '+2 빨강',
           tc: '+2 紅',
@@ -2415,6 +2492,7 @@ const triggerSet: TriggerSet<Data> = {
         redThree: {
           en: '+3 Red',
           de: '+3 Rot',
+          fr: '+3 Rouge',
           cn: '+3 红',
           ko: '+3 빨강',
           tc: '+3 紅',
@@ -2562,6 +2640,7 @@ const triggerSet: TriggerSet<Data> = {
         red: {
           en: 'Red: ${dirs}',
           de: 'Rot: ${dirs}',
+          fr: 'Rouge : ${dirs}',
           cn: '红: ${dirs}',
           ko: '빨강: ${dirs}',
           tc: '紅: ${dirs}',
@@ -2569,6 +2648,7 @@ const triggerSet: TriggerSet<Data> = {
         blue: {
           en: 'Blue: ${dirs}',
           de: 'Blau: ${dirs}',
+          fr: 'Bleu : ${dirs}',
           cn: '蓝: ${dirs}',
           ko: '파랑: ${dirs}',
           tc: '藍: ${dirs}',
@@ -2576,6 +2656,7 @@ const triggerSet: TriggerSet<Data> = {
         red1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          fr: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           ko: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           tc: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
@@ -2583,6 +2664,7 @@ const triggerSet: TriggerSet<Data> = {
         blue1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          fr: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           ko: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           tc: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
@@ -2590,6 +2672,7 @@ const triggerSet: TriggerSet<Data> = {
         red2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          fr: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           ko: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           tc: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
@@ -2597,6 +2680,7 @@ const triggerSet: TriggerSet<Data> = {
         blue2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          fr: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           ko: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           tc: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
@@ -2604,6 +2688,7 @@ const triggerSet: TriggerSet<Data> = {
         red3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          fr: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           ko: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           tc: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
@@ -2611,6 +2696,7 @@ const triggerSet: TriggerSet<Data> = {
         blue3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          fr: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           ko: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           tc: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
@@ -2659,6 +2745,7 @@ const triggerSet: TriggerSet<Data> = {
         getHitRedOoze: {
           en: '${hit} for Ooze',
           de: '${hit} für Schleim',
+          fr: '${hit} pour Toxicité',
           cn: '${hit} 吃软泥',
           ko: '${hit} 슬라임 맞기',
           tc: '${hit} 吃軟泥',
@@ -2666,6 +2753,7 @@ const triggerSet: TriggerSet<Data> = {
         getHitBlueOoze: {
           en: '${hit} for Ooze',
           de: '${hit} für Schleim',
+          fr: '${hit} pour Toxicité',
           cn: '${hit} 吃软泥',
           ko: '${hit} 슬라임 맞기',
           tc: '${hit} 吃軟泥',
@@ -2673,6 +2761,7 @@ const triggerSet: TriggerSet<Data> = {
         getHitBothOoze: {
           en: 'Red: ${red}, Blue: ${blue}',
           de: 'Rot: ${red}, Blau: ${blue}',
+          fr: 'Rouge : ${red}, Bleu : ${blue}',
           cn: '红: ${red}, 蓝: ${blue}',
           ko: '빨강: ${red}, 파랑: ${blue}',
           tc: '紅: ${red}, 藍: ${blue}',
@@ -2812,6 +2901,7 @@ const triggerSet: TriggerSet<Data> = {
         getHit: {
           en: '${dir} for Ooze',
           de: '${dir} für Schleim',
+          fr: '${dir} pour la Toxicité',
           cn: '去${dir}吃软泥',
           ko: '${dir} 슬라임 맞기',
           tc: '去${dir}吃軟泥',
@@ -2828,6 +2918,7 @@ const triggerSet: TriggerSet<Data> = {
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
           de: '${dir1} / ${dir2} Sichere Zonen',
+          fr: 'Zones sûres ${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2} 安全点',
           ko: '${dir1} / ${dir2} 안전 지대',
           tc: '${dir1} / ${dir2} 安全點',
@@ -2900,6 +2991,7 @@ const triggerSet: TriggerSet<Data> = {
         getHit: {
           en: '${dir} for Ooze',
           de: '${dir} für Schleim',
+          fr: '${dir} pour Toxicité',
           cn: '去${dir}吃软泥',
           ko: '${dir} 슬라임 맞기',
           tc: '去${dir}吃軟泥',
@@ -2916,6 +3008,7 @@ const triggerSet: TriggerSet<Data> = {
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
           de: '${dir1} / ${dir2} Sichere Zonen',
+          fr: 'Zones sûres ${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2} 安全点',
           ko: '${dir1} / ${dir2} 안전 지대',
           tc: '${dir1} / ${dir2} 安全點',
@@ -3027,6 +3120,7 @@ const triggerSet: TriggerSet<Data> = {
         waymarkA: {
           en: 'A',
           de: 'A',
+          fr: 'A',
           cn: 'A 点',
           ko: 'A',
           tc: 'A 點',
@@ -3034,6 +3128,7 @@ const triggerSet: TriggerSet<Data> = {
         waymark2and3: {
           en: '2/3',
           de: '2/3',
+          fr: '2/3',
           cn: '2 或 3 点',
           ko: '2/3',
           tc: '2 或 3 點',
@@ -3041,6 +3136,7 @@ const triggerSet: TriggerSet<Data> = {
         waymarkCandD: {
           en: 'C/D',
           de: 'C/D',
+          fr: 'C/D',
           cn: 'C 或 D 点',
           ko: 'C/D',
           tc: 'C 或 D 點',
@@ -3048,6 +3144,7 @@ const triggerSet: TriggerSet<Data> = {
         combined: {
           en: '${waymark} (${dir})',
           de: '${waymark} (${dir})',
+          fr: '${waymark} (${dir})',
           cn: '${waymark} (${dir})',
           ko: '${waymark} (${dir})',
           tc: '${waymark} (${dir})',
@@ -3123,6 +3220,7 @@ const triggerSet: TriggerSet<Data> = {
         chargePositions: {
           en: 'Wild Charge Positions',
           de: 'Wilde Rage Positionen',
+          fr: 'Positions Ruée sauvage',
           cn: '狂野冲锋站位',
           ko: '직선 쉐어 위치로',
           tc: '狂野衝鋒站位',
@@ -3190,6 +3288,7 @@ const triggerSet: TriggerSet<Data> = {
           knockbackTetherDir: {
             en: 'Tether: Knockback to ${dir} => Stack at Wall',
             de: 'Verbindung: Rückstoß nach ${dir} => An der Wand sammeln',
+            fr: 'Lien : poussée vers ${dir} => Package au mur',
             cn: '连线: 击退到${dir} => 靠墙分摊',
             ko: '선: ${dir}쪽으로 넉백 => 벽에서 쉐어',
             tc: '連線: 擊退到${dir} => 靠牆分攤',
@@ -3197,6 +3296,7 @@ const triggerSet: TriggerSet<Data> = {
           knockbackToSnowball: {
             en: 'Knockback to Snowball => Stack at Wall',
             de: 'Rückstoß zum Schneeball => An der Wand sammeln',
+            fr: 'Poussée vers la boule de neige => Package au mur',
             cn: '击退到雪球 => 靠墙分摊',
             ko: '눈덩이 쪽으로 넉백 => 벽에서 쉐어',
             tc: '擊退到雪球 => 靠牆分攤',
@@ -3289,6 +3389,7 @@ const triggerSet: TriggerSet<Data> = {
         outOfMiddleGroups: {
           en: 'Out of Middle, Group Positions',
           de: 'Raus aus der Mitte, Gruppen Positionen',
+          fr: 'Hors du milieu, positions de groupe',
           cn: '远离中间, 分组站位',
           ko: '중앙 피하기, 그룹별 위치',
           tc: '遠離中間, 分組站位',
@@ -3313,6 +3414,7 @@ const triggerSet: TriggerSet<Data> = {
         jetsThenSpread: {
           en: 'Dodge Two Jets => Spread',
           de: 'Weiche 2 Angriffen aus => Verteilen',
+          fr: 'Esquivez les deux jets => Dispersion',
           cn: '躲避两次X波 => 分散',
           ko: '독파 두 번 피하기 => 산개',
           tc: '躲避兩次X波 => 分散',
@@ -3372,6 +3474,7 @@ const triggerSet: TriggerSet<Data> = {
           interruptBhoot: {
             en: 'Interrupt Bhoot',
             de: 'Bhut unterbrechen',
+            fr: 'Interrompez le bhut',
             cn: '打断浮灵',
             ko: '브후트 차단',
             tc: '打斷浮靈',
@@ -3379,6 +3482,7 @@ const triggerSet: TriggerSet<Data> = {
           northInterrupt: {
             en: 'North: Interrupt Bhoot',
             de: 'Norden: Bhut unterbrechen',
+            fr: 'Nord : interrompez le bhut',
             cn: '左桥: 打断浮灵',
             ko: '왼쪽 다리: 브후트 차단',
             tc: '左橋: 打斷浮靈',
@@ -3386,6 +3490,7 @@ const triggerSet: TriggerSet<Data> = {
           southInterrupt: {
             en: 'South: Interrupt Bhoot',
             de: 'Süden: Bhut unterbrechen',
+            fr: 'Sud : interrompez le bhut',
             cn: '右桥: 打断浮灵',
             ko: '오른쪽 다리: 브후트 차단',
             tc: '右橋: 打斷浮靈',
@@ -3455,6 +3560,7 @@ const triggerSet: TriggerSet<Data> = {
         wildChargeEast: {
           en: 'Wild Charge (East), Stack in a Row',
           de: 'Ansturm (Osten), In einer Reihe sammeln',
+          fr: 'Ruée sauvage (Est), package en ligne',
           cn: '狂野冲锋(右), 在同一行集合',
           ko: '직선 쉐어 (동쪽), 한 줄로 서기',
           tc: '狂野衝鋒(東), 在同一行集合',
@@ -3508,6 +3614,7 @@ const triggerSet: TriggerSet<Data> = {
         northAoEDispel: {
           en: 'North: AoE (Dispel if Possible)',
           de: 'Norden: AoE (Kreszenter Bann wenn möglich)',
+          fr: 'Nord : AoE (dissipez si possible)',
           cn: '左桥: AOE (能驱散就驱散)',
           ko: '왼쪽 다리: 전체공격 (가능하면 디스펠)',
           tc: '左橋: AOE (能驅散就驅散)',
@@ -3515,6 +3622,7 @@ const triggerSet: TriggerSet<Data> = {
         southAoEDispel: {
           en: 'South: AoE (Dispel if Possible)',
           de: 'Süden: AoE (Entfernen wenn möglich)',
+          fr: 'Sud : AoE (dissipez si possible)',
           cn: '右桥: AOE (能驱散就驱散)',
           ko: '오른쪽 다리: 전체공격 (가능하면 디스펠)',
           tc: '右橋: AOE (能驅散就驅散)',
@@ -3583,6 +3691,7 @@ const triggerSet: TriggerSet<Data> = {
         romeo: {
           en: 'Romeo\'s Ballad (if possible)',
           de: 'Liebliche Klänge (wenn möglich)',
+          fr: 'Lied arrêté (si possible)',
           cn: '爱之歌 (能用就用)',
           ko: '사랑의 노래 (가능하면)',
           tc: '愛之歌 (能用就用)',
@@ -3619,6 +3728,7 @@ const triggerSet: TriggerSet<Data> = {
           topApart: {
             en: 'Top row (bosses apart)',
             de: 'Obere Reihe (Bosse auseinander)',
+            fr: 'Rangée du haut (boss éloignés)',
             cn: '上排 (BOSS远离)',
             ko: '위쪽 줄 (보스 멀리)',
             tc: '上排 (BOSS遠離)',
@@ -3626,6 +3736,7 @@ const triggerSet: TriggerSet<Data> = {
           bottomApart: {
             en: 'Bottom row (bosses apart)',
             de: 'Untere Reihe (Bosse auseinander)',
+            fr: 'Rangée du bas (boss éloignés)',
             cn: '下排 (BOSS远离)',
             ko: '아래쪽 줄 (보스 멀리)',
             tc: '下排 (BOSS遠離)',
@@ -3633,6 +3744,7 @@ const triggerSet: TriggerSet<Data> = {
           bossesApart: {
             en: 'Move bosses apart',
             de: 'Bewege Bosse auseinander',
+            fr: 'Éloignez les boss l\'un de l\'autre',
             cn: '让BOSS远离',
             ko: '보스 멀리 떨어뜨리기',
             tc: '讓BOSS遠離',
@@ -3640,6 +3752,7 @@ const triggerSet: TriggerSet<Data> = {
           topTogether: {
             en: 'Top row (bosses together)',
             de: 'Obere Reihe (Bosse zusammen)',
+            fr: 'Rangée du haut (boss ensemble)',
             cn: '上排 (BOSS靠近)',
             ko: '위쪽 줄 (보스 가까이)',
             tc: '上排 (BOSS靠近)',
@@ -3647,6 +3760,7 @@ const triggerSet: TriggerSet<Data> = {
           bottomTogether: {
             en: 'Bottom row (bosses together)',
             de: 'Untere Reihe (Bosse zusammen)',
+            fr: 'Rangée du bas (boss ensemble)',
             cn: '下排 (BOSS靠近)',
             ko: '아래쪽 줄 (보스 가까이)',
             tc: '下排 (BOSS靠近)',
@@ -3654,6 +3768,7 @@ const triggerSet: TriggerSet<Data> = {
           bossesTogether: {
             en: 'Move bosses together',
             de: 'Bewege Bosse zusammen',
+            fr: 'Rapprochez les boss',
             cn: '让BOSS靠近',
             ko: '보스 가까이 모으기',
             tc: '讓BOSS靠近',
@@ -3705,6 +3820,7 @@ const triggerSet: TriggerSet<Data> = {
         wildChargeEast: {
           en: 'Wild Charge (East), Stack in a Row',
           de: 'Ansturm (Osten), In einer Reihe sammeln',
+          fr: 'Ruée sauvage (Est), package en ligne',
           cn: '狂野冲锋(右), 在同一行集合',
           ko: '직선 쉐어 (동쪽), 한 줄로 서기',
           tc: '狂野衝鋒(東), 在同一行集合',
@@ -3729,6 +3845,7 @@ const triggerSet: TriggerSet<Data> = {
         pullBossAway: {
           en: 'Pull boss away from bombs',
           de: 'Zieh Boss weg von den Bomben',
+          fr: 'Éloignez le boss des bombes',
           cn: '将BOSS拉离炸弹',
           ko: '보스를 폭탄에서 멀리 떨어뜨리기',
           tc: '將BOSS拉離炸彈',
@@ -3831,6 +3948,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           cn: '左/右',
           ko: '동/서',
           tc: '東/西',
@@ -3838,6 +3956,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           cn: '上/下',
           ko: '남/북',
           tc: '北/南',
@@ -3931,6 +4050,7 @@ const triggerSet: TriggerSet<Data> = {
         eastLater: {
           en: '(${dir} Later)',
           de: '(${dir} Später)',
+          fr: '(${dir} après)',
           cn: '(稍后 ${dir})',
           ko: '(나중에 ${dir})',
           tc: '(稍後 ${dir})',
@@ -3938,6 +4058,7 @@ const triggerSet: TriggerSet<Data> = {
         westLater: {
           en: '(${dir} Later)',
           de: '(${dir} Später)',
+          fr: '(${dir} après)',
           cn: '(稍后 ${dir})',
           ko: '(나중에 ${dir})',
           tc: '(稍後 ${dir})',
@@ -3945,6 +4066,7 @@ const triggerSet: TriggerSet<Data> = {
         eastThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
           de: '(${dir1} Später => ${dir2})',
+          fr: '(${dir1} après => ${dir2})',
           cn: '(稍后 ${dir1} => ${dir2})',
           ko: '(나중에 ${dir1} => ${dir2})',
           tc: '(稍後 ${dir1} => ${dir2})',
@@ -3952,6 +4074,7 @@ const triggerSet: TriggerSet<Data> = {
         westThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
           de: '(${dir1} Später => ${dir2})',
+          fr: '(${dir1} après => ${dir2})',
           cn: '(稍后 ${dir1} => ${dir2})',
           ko: '(나중에 ${dir1} => ${dir2})',
           tc: '(稍後 ${dir1} => ${dir2})',
@@ -3959,6 +4082,7 @@ const triggerSet: TriggerSet<Data> = {
         wickedWater: {
           en: 'Get Hit ${dir}',
           de: 'Werde ${dir} getroffen',
+          fr: 'Prenez le coup ${dir}',
           cn: '站在${dir}吃圈',
           ko: '${dir} 맞기',
           tc: '站在${dir}吃圈',
@@ -4074,6 +4198,7 @@ const triggerSet: TriggerSet<Data> = {
           tankBusterBleeds: {
             en: 'Tankbuster Bleeds',
             de: 'Tankbuster Blutung',
+            fr: 'Tankbuster Saignements',
             cn: '坦克流血死刑',
             ko: '출혈 탱버',
             tc: '坦克流血死刑',
@@ -4081,6 +4206,7 @@ const triggerSet: TriggerSet<Data> = {
           tankBusterBleedOnYou: {
             en: 'Tankbuster bleed on YOU',
             de: 'Tankbuster Blutung auf DIR',
+            fr: 'Tankbuster Saignement sur VOUS',
             cn: '坦克流血死刑点名',
             ko: '출혈 탱버 대상자',
             tc: '坦克流血死刑點名',
@@ -4197,6 +4323,7 @@ const triggerSet: TriggerSet<Data> = {
         east: {
           en: '(East Later)',
           de: '(Osten Später)',
+          fr: '(Est après)',
           cn: '(稍后左)',
           ko: '(나중에 동쪽)',
           tc: '(稍後東)',
@@ -4204,6 +4331,7 @@ const triggerSet: TriggerSet<Data> = {
         west: {
           en: '(West Later)',
           de: '(Westen Später)',
+          fr: '(Ouest après)',
           cn: '(稍后右)',
           ko: '(나중에 서쪽)',
           tc: '(稍後西)',
@@ -4296,6 +4424,7 @@ const triggerSet: TriggerSet<Data> = {
         crossesFirst: {
           en: 'Crosses First + ${clock}',
           de: 'Kreuze zuerst + ${clock}',
+          fr: 'Croix d\'abord + ${clock}',
           cn: '先十字 + ${clock}',
           ko: '십자 먼저 + ${clock}',
           tc: '先十字 + ${clock}',
@@ -4303,6 +4432,7 @@ const triggerSet: TriggerSet<Data> = {
         circlesFirst: {
           en: 'Circles First + ${clock}',
           de: 'Kreise zuerst + ${clock}',
+          fr: 'Cercles d\'abord + ${clock}',
           cn: '先圆圈 + ${clock}',
           ko: '원 먼저 + ${clock}',
           tc: '先圓圈 + ${clock}',
@@ -4338,6 +4468,7 @@ const triggerSet: TriggerSet<Data> = {
           cross1Dodge: {
             en: '${dir}',
             de: '${dir}',
+            fr: '${dir}',
             cn: '${dir}',
             ko: '${dir}',
             tc: '${dir}',
@@ -4345,6 +4476,7 @@ const triggerSet: TriggerSet<Data> = {
           circles1Dodge: {
             en: '${dir}',
             de: '${dir}',
+            fr: '${dir}',
             cn: '${dir}',
             ko: '${dir}',
             tc: '${dir}',
@@ -4411,6 +4543,7 @@ const triggerSet: TriggerSet<Data> = {
         twoDirs: {
           en: '${dir1}/${dir2}',
           de: '${dir1}/${dir2}',
+          fr: '${dir1}/${dir2}',
           cn: '${dir1}/${dir2}',
           ko: '${dir1}/${dir2}',
           tc: '${dir1}/${dir2}',
@@ -4438,6 +4571,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidTwister: {
           en: 'Avoid Twister',
           de: 'Vermeide Wirbelsturm',
+          fr: 'Évitez la tornade',
           cn: '远离龙卷风',
           ko: '회오리 피하기',
           tc: '遠離龍捲風',
@@ -4484,6 +4618,7 @@ const triggerSet: TriggerSet<Data> = {
         diveDirsThenTowers: {
           en: '${dir1}/${dir2} Dive => Towers',
           de: '${dir1}/${dir2} Sturz => Türme',
+          fr: 'Plongeon ${dir1}/${dir2} => Tours',
           cn: '${dir1}/${dir2} 俯冲 => 塔',
           ko: '${dir1}/${dir2} 강하 => 탑',
           tc: '${dir1}/${dir2} 俯衝 => 塔',
@@ -4491,6 +4626,7 @@ const triggerSet: TriggerSet<Data> = {
         bossDiveThenTowers: {
           en: 'Boss Dive => Towers',
           de: 'Boss Sturz => Türme',
+          fr: 'Plongeon du boss => Tours',
           cn: 'BOSS俯冲 => 塔',
           ko: '보스 강하 => 탑',
           tc: 'BOSS俯衝 => 塔',
@@ -4521,6 +4657,7 @@ const triggerSet: TriggerSet<Data> = {
         towersUnknownDir: {
           en: 'Towers => Cardinal/Intercard Towers',
           de: 'Türme => Kardinale/Interkardinale Türme',
+          fr: 'Tours => Tours cardinales/intercardinales',
           cn: '塔 => 正点/斜点塔',
           ko: '탑 => 십자/대각선 탑',
           tc: '塔 => 正點/斜點塔',
@@ -4528,6 +4665,7 @@ const triggerSet: TriggerSet<Data> = {
         towerDirsThenCardinalTowers: {
           en: '${dir1}/${dir2} Towers => Cardinal Towers',
           de: '${dir1}/${dir2} Türme => Kardinale Türme',
+          fr: 'Tours ${dir1}/${dir2} => Tours cardinales',
           cn: '${dir1}/${dir2} 塔 => 正点塔',
           ko: '${dir1}/${dir2} 탑 => 십자 탑',
           tc: '${dir1}/${dir2} 塔 => 正點塔',
@@ -4535,6 +4673,7 @@ const triggerSet: TriggerSet<Data> = {
         towerDirsThenIntercardTowers: {
           en: '${dir1}/${dir2} Towers => Intercard Towers',
           de: '${dir1}/${dir2} Türme => Interkardinale Türme',
+          fr: 'Tours ${dir1}/${dir2} => Tours intercardinales',
           cn: '${dir1}/${dir2} 塔 => 斜点塔',
           ko: '${dir1}/${dir2} 탑 => 대각선 탑',
           tc: '${dir1}/${dir2} 塔 => 斜點塔',
@@ -4569,6 +4708,7 @@ const triggerSet: TriggerSet<Data> = {
         unknownTowers: {
           en: 'Cardinal/Intercard Towers',
           de: 'Kardinale/Interkardinale Türme',
+          fr: 'Tours cardinales/intercardinales',
           cn: '正点/斜点塔',
           ko: '십자/대각선 탑',
           tc: '正點/斜點塔',
@@ -4576,6 +4716,7 @@ const triggerSet: TriggerSet<Data> = {
         cardinalTowers: {
           en: 'Cardinal Towers',
           de: 'Kardinale Türme',
+          fr: 'Tours cardinales',
           cn: '正点塔',
           ko: '십자 탑',
           tc: '正點塔',
@@ -4583,6 +4724,7 @@ const triggerSet: TriggerSet<Data> = {
         intercardTowers: {
           en: 'Intercardinal Towers',
           de: 'Interkardinale Türme',
+          fr: 'Tours intercardinales',
           cn: '斜点塔',
           ko: '대각선 탑',
           tc: '斜點塔',
@@ -4632,6 +4774,7 @@ const triggerSet: TriggerSet<Data> = {
         wickedWaterOnYou: {
           en: 'Wicked Water on YOU',
           de: 'Verfluchtes Wasser auf DIR',
+          fr: 'Eau abjecte sur VOUS',
           cn: '水圈点名',
           ko: '저주받은 물 대상자',
           tc: '水圈點名',
@@ -4654,6 +4797,7 @@ const triggerSet: TriggerSet<Data> = {
         getHitByIceExplosion: {
           en: 'Get hit by ice explosion',
           de: 'Werde von der Eis-Explosion getroffen',
+          fr: 'Prenez l\'explosion de glace',
           cn: '吃冰圈爆炸',
           ko: '얼음 폭발 맞기',
           tc: '吃冰圈爆炸',
@@ -4677,6 +4821,7 @@ const triggerSet: TriggerSet<Data> = {
         breakGaols: {
           en: 'Break Gaols',
           de: 'Gefängnis zerstören',
+          fr: 'Brisez les geôles',
           cn: '打破冰牢',
           ko: '감옥 부수기',
           tc: '打破冰牢',
@@ -4816,6 +4961,7 @@ const triggerSet: TriggerSet<Data> = {
         circlesFirst: {
           en: 'Circles First',
           de: 'Kreise zuerst',
+          fr: 'Cercles d\'abord',
           cn: '先圆圈',
           ko: '원 먼저',
           tc: '先圓圈',
@@ -4823,6 +4969,7 @@ const triggerSet: TriggerSet<Data> = {
         crossesFirst: {
           en: 'Crosses First',
           de: 'Kreuze zuerst',
+          fr: 'Croix d\'abord',
           cn: '先十字',
           ko: '십자 먼저',
           tc: '先十字',
@@ -4920,6 +5067,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           cn: '左/右',
           ko: '동/서',
           tc: '東/西',
@@ -4927,6 +5075,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           cn: '上/下',
           ko: '남/북',
           tc: '北/南',
@@ -4934,6 +5083,7 @@ const triggerSet: TriggerSet<Data> = {
         dirCrossesFirst: {
           en: '${dir}: Crosses First + ${clock}',
           de: '${dir}: Kreuze zuerst + ${clock}',
+          fr: '${dir} : Croix d\'abord + ${clock}',
           cn: '${dir}: 先十字 + ${clock}',
           ko: '${dir}: 십자 먼저 + ${clock}',
           tc: '${dir}: 先十字 + ${clock}',
@@ -4941,6 +5091,7 @@ const triggerSet: TriggerSet<Data> = {
         dirCirclesFirst: {
           en: '${dir}: Circles First + ${clock}',
           de: '${dir}: Kreise zuerst + ${clock}',
+          fr: '${dir} : Cercles d\'abord + ${clock}',
           cn: '${dir}: 先圆圈 + ${clock}',
           ko: '${dir}: 원 먼저 + ${clock}',
           tc: '${dir}: 先圓圈 + ${clock}',
@@ -4948,6 +5099,7 @@ const triggerSet: TriggerSet<Data> = {
         dirClock: {
           en: '${dir}: ${clock}',
           de: '${dir}: ${clock}',
+          fr: '${dir} : ${clock}',
           cn: '${dir}: ${clock}',
           ko: '${dir}: ${clock}',
           tc: '${dir}: ${clock}',
@@ -5013,6 +5165,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           cn: '左/右',
           ko: '동/서',
           tc: '東/西',
@@ -5020,6 +5173,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           cn: '上/下',
           ko: '남/북',
           tc: '北/南',
@@ -5028,6 +5182,7 @@ const triggerSet: TriggerSet<Data> = {
         getVerticalTowers: {
           en: 'Get Vertical Towers',
           de: 'Nimm vertikale Türme',
+          fr: 'Prenez les tours verticales',
           cn: '去竖排塔',
           ko: '수직 탑 밟기',
           tc: '去豎排塔',
@@ -5035,6 +5190,7 @@ const triggerSet: TriggerSet<Data> = {
         getHorizontalTowers: {
           en: 'Get Horizontal Towers',
           de: 'Nimm horizontale Türme',
+          fr: 'Prenez les tours horizontales',
           cn: '去横排塔',
           ko: '수평 탑 밟기',
           tc: '去橫排塔',
@@ -5042,6 +5198,7 @@ const triggerSet: TriggerSet<Data> = {
         getTowersDir: {
           en: '${text} => ${dir}',
           de: '${text} => ${dir}',
+          fr: '${text} => ${dir}',
           cn: '${text} => ${dir}',
           ko: '${text} => ${dir}',
           tc: '${text} => ${dir}',
@@ -5049,6 +5206,7 @@ const triggerSet: TriggerSet<Data> = {
         getVerticalTowersDir: {
           en: 'Get Vertical Towers => ${dir}',
           de: 'Nimm vertikale Türme => ${dir}',
+          fr: 'Prenez les tours verticales => ${dir}',
           cn: '去竖排塔 => ${dir}',
           ko: '수직 탑 밟기 => ${dir}',
           tc: '去豎排塔 => ${dir}',
@@ -5056,6 +5214,7 @@ const triggerSet: TriggerSet<Data> = {
         getHorizontalTowersDir: {
           en: 'Get Horizontal Towers => ${dir}',
           de: 'Nimm horizontale Türme => ${dir}',
+          fr: 'Prenez les tours horizontales => ${dir}',
           cn: '去横排塔 => ${dir}',
           ko: '수평 탑 밟기 => ${dir}',
           tc: '去橫排塔 => ${dir}',
@@ -5085,6 +5244,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           cn: '左/右',
           ko: '동/서',
           tc: '東/西',
@@ -5092,6 +5252,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           cn: '上/下',
           ko: '남/북',
           tc: '北/南',
@@ -5134,6 +5295,7 @@ const triggerSet: TriggerSet<Data> = {
         recuperation: {
           en: 'Recuperation (if possible)',
           de: 'Gesundung (wenn möglich)',
+          fr: 'Récupération (si possible)',
           cn: '痊愈宣告 (能用就用)',
           ko: '치유 선고 (가능하면)',
           tc: '痊癒宣告 (能用就用)',
@@ -5192,6 +5354,7 @@ const triggerSet: TriggerSet<Data> = {
         spawned: {
           en: 'Master Lockward spawned',
           de: 'Alpha-Schlosswächter ist erschienen',
+          fr: 'Le Maître des serrures apparait',
           cn: '首领看锁人出现',
           ko: '대장 자물쇠지기 등장',
           tc: '首領看鎖人出現',
@@ -5227,6 +5390,7 @@ const triggerSet: TriggerSet<Data> = {
         tanksFar: {
           en: 'Tanks Far (Party Close) x3',
           de: 'Tanks entfernt (Gruppe nahe) x3',
+          fr: 'Tanks loin (groupe proche) x3',
           cn: '坦克远离 (人群靠近) x3',
           ko: '탱커 멀리 (본대 가까이) x3',
           tc: '坦克遠離 (人群靠近) x3',
@@ -5234,6 +5398,7 @@ const triggerSet: TriggerSet<Data> = {
         tanksNear: {
           en: 'Tanks Close (Party Far) x3',
           de: 'Tanks nahe (Gruppe entfernt) x3',
+          fr: 'Tanks proches (groupe loin) x3',
           cn: '坦克靠近 (人群远离) x3',
           ko: '탱커 가까이 (본대 멀리) x3',
           tc: '坦克靠近 (人群遠離) x3',
@@ -5296,6 +5461,7 @@ const triggerSet: TriggerSet<Data> = {
         startOnLetters: {
           en: 'Start on Letters',
           de: 'Starte auf Buchstaben',
+          fr: 'Commencez sur les lettres',
           cn: '字母点开始',
           ko: '알파벳에서 시작',
           tc: '字母點開始',
@@ -5303,6 +5469,7 @@ const triggerSet: TriggerSet<Data> = {
         startOnNumbers: {
           en: 'Start on Numbers',
           de: 'Starte auf Zahlen',
+          fr: 'Commencez sur les chiffres',
           cn: '数字点开始',
           ko: '숫자에서 시작',
           tc: '數字點開始',
@@ -5311,6 +5478,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '⅄ Daggers',
           // Displays an upside down Y
           de: '⅄ Dolche',
+          fr: 'Dagues ⅄',
           cn: '⅄ 形短剑',
           ko: '⅄ 단검',
           tc: '⅄ 形短劍',
@@ -5318,6 +5486,7 @@ const triggerSet: TriggerSet<Data> = {
         pattern1TtsText: {
           en: 'Flipped Y Daggers',
           de: 'Umgedrehte Y Dolche',
+          fr: 'Dagues Y inversé',
           cn: '倒 Y 形短剑',
           ko: '역 Y 단검',
           tc: '倒 Y 形短劍',
@@ -5325,6 +5494,7 @@ const triggerSet: TriggerSet<Data> = {
         pattern2: {
           en: 'Y Daggers',
           de: 'Y Dolche',
+          fr: 'Dagues Y',
           cn: 'Y 形短剑',
           ko: 'Y 단검',
           tc: 'Y 形短劍',
@@ -5391,6 +5561,7 @@ const triggerSet: TriggerSet<Data> = {
         nearFarTankCleave: {
           en: 'Near and far tank cleave => 2 tank autos',
           de: 'Nah und entfernte Tank-Cleaves => 2 Tank Autoangriffe',
+          fr: 'Tank cleave proche et loin => 2 attaques auto sur le tank',
           cn: '近远坦克死刑 => 2次坦克普攻',
           ko: '근거리/원거리 광역탱버 => 탱커 평타 2회',
           tc: '近遠坦克死刑 => 2次坦克普攻',
@@ -5412,6 +5583,7 @@ const triggerSet: TriggerSet<Data> = {
         blueCanisters: {
           en: 'Attack Blue Canisters (Lance)',
           de: 'Greife blaue Kanister an (Lanze)',
+          fr: 'Attaquez les cuves bleues (Lance)',
           cn: '攻击蓝色罐子 (枪)',
           ko: '파란색 통 공격 (창)',
           tc: '攻擊藍色罐子 (槍)',
@@ -5419,6 +5591,7 @@ const triggerSet: TriggerSet<Data> = {
         yellowCanisters: {
           en: 'Attack Yellow Canisters (Axe)',
           de: 'Greife gelbe Kanister an (Axt)',
+          fr: 'Attaquez les cuves jaunes (Hache)',
           cn: '攻击黄色罐子 (斧)',
           ko: '노란색 통 공격 (도끼)',
           tc: '攻擊黃色罐子 (斧)',
@@ -5450,6 +5623,7 @@ const triggerSet: TriggerSet<Data> = {
         lineStackStaff: {
           en: 'Line stack at staff',
           de: 'In eine rLinie sammeln beim Stab',
+          fr: 'Package en ligne au bâton',
           cn: '直线分摊法杖伤害',
           ko: '지팡이 직선 쉐어',
           tc: '直線分攤法杖傷害',
@@ -5754,6 +5928,7 @@ const triggerSet: TriggerSet<Data> = {
         shortStackOnYou: {
           en: 'Short Stack on YOU (17)',
           de: 'Kurzer Sammel-Debuff auf DIR (17)',
+          fr: 'Package court sur VOUS (17)',
           cn: '短分摊点名 (17秒)',
           ko: '짧은 쉐어징 (17초)',
           tc: '短分攤點名 (17秒)',
@@ -5761,6 +5936,7 @@ const triggerSet: TriggerSet<Data> = {
         mediumStackOnYou: {
           en: 'Medium Stack on YOU (25)',
           de: 'Mittlerer Sammel-Debuff auf DIR (25)',
+          fr: 'Package moyen sur VOUS (25)',
           cn: '中分摊点名 (25秒)',
           ko: '중간 쉐어징 (25초)',
           tc: '中分攤點名 (25秒)',
@@ -5768,6 +5944,7 @@ const triggerSet: TriggerSet<Data> = {
         longStackOnYou: {
           en: 'Long Stack on YOU (33)',
           de: 'Langer Sammel-Debuff auf DIR (33)',
+          fr: 'Package long sur VOUS (33)',
           cn: '长分摊点名 (33秒)',
           ko: '긴 쉐어징 (33초)',
           tc: '長分攤點名 (33秒)',
