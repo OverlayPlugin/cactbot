@@ -132,6 +132,7 @@ const p3UROutputStrings = {
   yNorthStrat: {
     en: '${debuff} (${dir})',
     de: '${debuff} (${dir})',
+    fr: '${debuff} (${dir})',
     cn: '${debuff} (${dir})',
     ko: '${debuff} (${dir})',
     tc: '${debuff} (${dir})',
@@ -139,6 +140,7 @@ const p3UROutputStrings = {
   dirCombo: {
     en: '${inOut} + ${dir}',
     de: '${inOut} + ${dir}',
+    fr: '${inOut} + ${dir}',
     cn: '${inOut} + ${dir}',
     ko: '${inOut} + ${dir}',
     tc: '${inOut} + ${dir}',
@@ -146,6 +148,7 @@ const p3UROutputStrings = {
   fireSpread: {
     en: 'Fire - Spread',
     de: 'Feuer - verteilen',
+    fr: 'Feu - Dispersion',
     cn: '火分散',
     ko: '불 - 산개',
     tc: '火分散',
@@ -153,6 +156,7 @@ const p3UROutputStrings = {
   dropRewind: {
     en: 'Drop Rewind',
     de: 'Lege Rückführung ab',
+    fr: 'Déposez Retour',
     cn: '放置回返',
     ko: '리턴 설치',
     tc: '放置回返',
@@ -160,6 +164,7 @@ const p3UROutputStrings = {
   baitStoplight: {
     en: 'Bait Stoplight',
     de: 'Köder Sanduhr',
+    fr: 'Attirez les lasers',
     cn: '引导激光',
     ko: '모래시계 유도',
     tc: '引導雷射',
@@ -167,6 +172,7 @@ const p3UROutputStrings = {
   avoidStoplights: {
     en: 'Avoid stoplights',
     de: 'Vermeide Sanduhren',
+    fr: 'Évitez les lasers',
     cn: '远离激光',
     ko: '모래시계 피하기',
     tc: '遠離雷射',
@@ -235,6 +241,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Triggers: P1-4 / Timeline: P1-5',
     de: 'Triggers: P1-4 / Timeline: P1-5',
+    fr: 'Triggers : P1-4 / Timeline : P1-5',
     cn: '触发器: P1-4 / 时间轴: P1-5',
     ko: '트리거: P1-4 / 타임라인: P1-5',
     tc: '觸發器: P1-4 / 時間軸: P1-5',
@@ -247,6 +254,8 @@ const triggerSet: TriggerSet<Data> = {
           `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        fr:
+          `Toujours loin, Malédiction sens horaire : <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         tc: `總是遠離, 180° 順時針: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
@@ -254,6 +263,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
         de: 'P2 Diamantenstaub / Sünden-Sanctus',
+        fr: 'P2 Poussière de diamant / Miracle authentique',
         cn: 'P2 钻石星尘 / 罪神圣',
         ko: 'P2 다이아몬드 더스트 / 죄의 홀리',
         tc: 'P2 鑽石星塵 / 罪神聖',
@@ -294,6 +304,10 @@ const triggerSet: TriggerSet<Data> = {
           `Y Norden, DPS O-SW, Supp W-NO: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
           Die Richtungsansage ist wahrer Norden (d. h., "Osten" bedeutet tatsächlich Osten,
           nicht an der Stelle, die östlich des nördlichen "Y" liegt).`,
+        fr:
+          `Y Nord, DPS E-SO, Support O-NE : <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
+          Les directions annoncées sont relatives au vrai Nord (c.à.d. « Est » signifie l'Est réel,
+          et non l'Est par rapport à la position Nord « Y »).`,
         cn:
           `Y 北, DPS 东-西南, T奶 西-东北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
           方向输出为真北 (即 “东”表示实际的东, 而不是相对于 “Y” 北的东)。`,
@@ -307,6 +321,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P3 Ultimate Relativity',
         de: 'P3 Fatale Relativität',
+        fr: 'P3 Compression temporelle fatale',
         cn: 'P3 时间压缩·绝',
         ko: 'P3 시간 압축: 절',
         tc: 'P3 時間壓縮·絕',
@@ -343,6 +358,8 @@ const triggerSet: TriggerSet<Data> = {
           `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `DPS NO->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        fr:
+          `DPS NE->S, Support SO->N : <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn:
           `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko:
@@ -353,6 +370,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P3 Apocalypse',
         de: 'P3 Apokalypse',
+        fr: 'P3 Apocalypse',
         cn: 'P3 启示',
         ko: 'P3 대재앙',
         tc: 'P3 啟示',
@@ -389,6 +407,8 @@ const triggerSet: TriggerSet<Data> = {
           `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `Rollenquadranten, Heiler plazieren im NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        fr:
+          `Quadrants par rôle, Healer au NO : <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
         ko: `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         tc: `按職能四分組, 補師在西北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
@@ -396,6 +416,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P4 Darklit Dragonsong',
         de: 'P4 Drachenlied Von Licht Und Schatten',
+        fr: 'P4 Chant de Lumière et de Ténèbres',
         cn: 'P4 光与暗的龙诗',
         ko: 'P4 빛과 어둠의 용시',
         tc: 'P4 光與暗的龍詩',
@@ -432,6 +453,8 @@ const triggerSet: TriggerSet<Data> = {
           `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
           `Frühes explodieren, Winde Süden: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        fr:
+          `Éclatement précoce, Vents Sud : <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         tc: `龍頭早撞, 風南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
@@ -439,6 +462,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P4 Crystallize Time',
         de: 'P4 Chronokristall',
+        fr: 'P4 Cristallisation temporelle',
         cn: 'P4 时间结晶',
         ko: 'P4 시간의 결정체',
         tc: 'P4 時間結晶',
@@ -547,6 +571,7 @@ const triggerSet: TriggerSet<Data> = {
         clockPairs: {
           en: 'Clock spots => Pairs',
           de: 'Himmelsrichtungen => Paare',
+          fr: 'Positions horaires => Paires',
           ja: '八方向 => ペア',
           cn: '八方 => 两人分摊',
           ko: '8방향 => 쉐어',
@@ -568,6 +593,7 @@ const triggerSet: TriggerSet<Data> = {
         clockSpread: {
           en: 'Clock spots => Spread',
           de: 'Himmelsrichtungen => Verteilen',
+          fr: 'Positions horaires => Dispersion',
           ja: '八方向 => 散開',
           cn: '八方 => 分散',
           ko: '8방향 => 산개',
@@ -628,6 +654,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir1} / ${dir2} => ${mech}',
           de: '${dir1} / ${dir2} => ${mech}',
+          fr: '${dir1} / ${dir2} => ${mech}',
           ja: '${dir1} / ${dir2} => ${mech}',
           cn: '${dir1} / ${dir2} => ${mech}',
           ko: '${dir1} / ${dir2} => ${mech}',
@@ -690,6 +717,7 @@ const triggerSet: TriggerSet<Data> = {
         lightningSafe: {
           en: 'Lightning Safe',
           de: 'Blitz Sicher',
+          fr: 'Foudre sûre',
           ja: '雷安置',
           cn: '雷安全',
           ko: '번개 안전',
@@ -707,6 +735,7 @@ const triggerSet: TriggerSet<Data> = {
         fireSafe: {
           en: 'Fire Safe',
           de: 'Feuer Sicher',
+          fr: 'Feu sûr',
           ja: '炎安置',
           cn: '火安全',
           ko: '불 안전',
@@ -731,6 +760,7 @@ const triggerSet: TriggerSet<Data> = {
           fire: {
             en: 'Fire',
             de: 'Feuer',
+            fr: 'Feu',
             ja: '炎',
             cn: '火',
             ko: '불',
@@ -739,6 +769,7 @@ const triggerSet: TriggerSet<Data> = {
           lightning: {
             en: 'Lightning',
             de: 'Blitz',
+            fr: 'Foudre',
             ja: '雷',
             cn: '雷',
             ko: '번개',
@@ -747,6 +778,7 @@ const triggerSet: TriggerSet<Data> = {
           one: {
             en: '1',
             de: '1',
+            fr: '1',
             ja: '1',
             cn: '1',
             ko: '1',
@@ -755,6 +787,7 @@ const triggerSet: TriggerSet<Data> = {
           two: {
             en: '2',
             de: '2',
+            fr: '2',
             ja: '2',
             cn: '2',
             ko: '2',
@@ -763,6 +796,7 @@ const triggerSet: TriggerSet<Data> = {
           three: {
             en: '3',
             de: '3',
+            fr: '3',
             ja: '3',
             cn: '3',
             ko: '3',
@@ -771,6 +805,7 @@ const triggerSet: TriggerSet<Data> = {
           onYou: {
             en: 'On YOU',
             de: 'Auf DIR',
+            fr: 'Sur VOUS',
             cn: '点名',
             ko: '대상자',
             tc: '點名',
@@ -778,6 +813,7 @@ const triggerSet: TriggerSet<Data> = {
           tether: {
             en: '${num}: ${elem} (${target})',
             de: '${num}: ${elem} (${target})',
+            fr: '${num} : ${elem} (${target})',
             ja: '${num}: ${elem} (${target})',
             cn: '${num}: ${elem} (${target})',
             ko: '${num}: ${elem} (${target})',
@@ -786,6 +822,7 @@ const triggerSet: TriggerSet<Data> = {
           all: {
             en: '${e1} => ${e2} => ${e3} => ${e4}',
             de: '${e1} => ${e2} => ${e3} => ${e4}',
+            fr: '${e1} => ${e2} => ${e3} => ${e4}',
             ja: '${e1} => ${e2} => ${e3} => ${e4}',
             cn: '${e1} => ${e2} => ${e3} => ${e4}',
             ko: '${e1} => ${e2} => ${e3} => ${e4}',
@@ -869,6 +906,7 @@ const triggerSet: TriggerSet<Data> = {
           busterCleanse: {
             en: '${buster} (Cleanse?)',
             de: '${buster} (Reinigen?)',
+            fr: '${buster} (Purification ?)',
             cn: '${buster} (驱散?)',
             ko: '${buster} (에스나?)',
             tc: '${buster} (驅散?)',
@@ -962,6 +1000,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${inOut} + ${dir} => ${mech}',
           de: '${inOut} + ${dir} => ${mech}',
+          fr: '${inOut} + ${dir} => ${mech}',
           cn: '${inOut} + ${dir} => ${mech}',
           ko: '${inOut} + ${dir} => ${mech}',
           tc: '${inOut} + ${dir} => ${mech}',
@@ -969,6 +1008,7 @@ const triggerSet: TriggerSet<Data> = {
         dropPuddle: {
           en: 'Drop Puddle',
           de: 'Fläche ablegen',
+          fr: 'Déposez la flaque',
           cn: '放置冰花',
           ko: '장판 놓기',
           tc: '放置冰花',
@@ -976,6 +1016,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait',
           de: 'Ködern',
+          fr: 'Attirez',
           cn: '引导水波',
           ko: '유도',
           tc: '引導水波',
@@ -1002,6 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
         kbDir: {
           en: '${kb} (${dir1}/${dir2})',
           de: '${kb} (${dir1}/${dir2})',
+          fr: '${kb} (${dir1}/${dir2})',
           cn: '${kb} (${dir1}/${dir2})',
           ko: '${kb} (${dir1}/${dir2})',
           tc: '${kb} (${dir1}/${dir2})',
@@ -1059,6 +1101,7 @@ const triggerSet: TriggerSet<Data> = {
         aaccCursed: {
           en: 'Cursed - Fast Clockwise',
           de: 'Verflucht - Schnell im Uhrzeigersinn',
+          fr: 'Maudit - Rapide sens horaire',
           cn: '180° - 快速顺时针',
           ko: '180도 - 빠른 시계방향',
           tc: '180° - 快速順時針',
@@ -1068,6 +1111,7 @@ const triggerSet: TriggerSet<Data> = {
         same: {
           en: 'Cursed - Add on knockback',
           de: 'Verflucht - Add beim Rückstoß',
+          fr: 'Maudit - Add sur la poussée',
           cn: '180° - 分身在脚下',
           ko: '180도 - 넉백된 곳에 분신',
           tc: '180° - 分身在腳下',
@@ -1075,6 +1119,7 @@ const triggerSet: TriggerSet<Data> = {
         opposite: {
           en: 'Cursed - Add opposite you',
           de: 'Verflucht - Add gegenüber von DIR',
+          fr: 'Maudit - Add à l\'opposé de vous',
           cn: '180° - 分身在对面',
           ko: '180도 - 반대편에 분신',
           tc: '180° - 分身在對面',
@@ -1082,6 +1127,7 @@ const triggerSet: TriggerSet<Data> = {
         clockwise: {
           en: 'Add is clockwise',
           de: 'Add ist im Uhrzeigersinn',
+          fr: 'L\'add est dans le sens horaire',
           cn: '分身在顺时针',
           ko: '분신 시계방향',
           tc: '分身在順時針',
@@ -1089,6 +1135,7 @@ const triggerSet: TriggerSet<Data> = {
         counterclockwise: {
           en: 'Add is counterclockwise',
           de: 'Add ist gegen den Uhrzeigersinn',
+          fr: 'L\'add est dans le sens antihoraire',
           cn: '分身在逆时针',
           ko: '분신 반시계방향',
           tc: '分身在逆時針',
@@ -1117,6 +1164,7 @@ const triggerSet: TriggerSet<Data> = {
           aaccSilence: {
             en: '(stay in front)',
             de: '(steh vorne)',
+            fr: '(restez devant)',
             cn: '(待在正面)',
             ko: '(보스 앞 그대로)',
             tc: '(待在正面)',
@@ -1161,6 +1209,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait cleave',
           de: 'Cleve ködern',
+          fr: 'Attirez le cleave',
           cn: '引导水波',
           ko: '부채꼴 유도',
           tc: '引導水波',
@@ -1179,6 +1228,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait cleave',
           de: 'Cleve ködern',
+          fr: 'Attirez le cleave',
           cn: '引导水波',
           ko: '부채꼴 유도',
           tc: '引導水波',
@@ -1230,6 +1280,7 @@ const triggerSet: TriggerSet<Data> = {
         puddle: {
           en: 'Puddles on you (w/ ${other})',
           de: 'Flächen auf DIR (mit ${other})',
+          fr: 'Flaques sur vous (avec ${other})',
           cn: '放置大圈 (和 ${other})',
           ko: '장판 대상자 (+ ${other})',
           tc: '放置大圈 (和 ${other})',
@@ -1237,6 +1288,7 @@ const triggerSet: TriggerSet<Data> = {
         tether: {
           en: 'Tether on you (Puddles: ${p1}, ${p2})',
           de: 'Verbindung auf DIR (Flächen: ${p1}, ${p2})',
+          fr: 'Lien sur vous (Flaques : ${p1}, ${p2})',
           cn: '拉线踩塔 (大圈: ${p1}, ${p2})',
           ko: '사슬 대상자 (장판: ${p1}, ${p2})',
           tc: '拉線踩塔 (大圈: ${p1}, ${p2})',
@@ -1255,6 +1307,7 @@ const triggerSet: TriggerSet<Data> = {
           towerSoak: {
             en: 'Soak middle tower',
             de: 'Mittleren Turm nehmen',
+            fr: 'Prenez la tour du milieu',
             cn: '踩塔',
             ko: '중앙 탑 밟기',
             tc: '踩塔',
@@ -1262,6 +1315,7 @@ const triggerSet: TriggerSet<Data> = {
           towerAvoid: {
             en: 'Avoid middle tower',
             de: 'Vermeide mittleren Turm',
+            fr: 'Évitez la tour du milieu',
             cn: '不去踩塔',
             ko: '중앙 탑 피하기',
             tc: '不去踩塔',
@@ -1293,6 +1347,7 @@ const triggerSet: TriggerSet<Data> = {
         afterTower: {
           en: '${partnerSpread} (after tower)',
           de: '${partnerSpread} (nach Turm)',
+          fr: '${partnerSpread} (après la tour)',
           cn: '踩塔后 + ${partnerSpread}',
           ko: '${partnerSpread} (탑 이후)',
           tc: '踩塔後 + ${partnerSpread}',
@@ -1327,6 +1382,7 @@ const triggerSet: TriggerSet<Data> = {
         targetVeil: {
           en: 'Target Ice Veil',
           de: 'Ziele auf Immerfrost-Kristall',
+          fr: 'Ciblez le bloc de glaces éternelles',
           cn: '集火永久冰晶',
           ko: '영구빙정 공격',
           tc: '集火永久冰晶',
@@ -1432,6 +1488,7 @@ const triggerSet: TriggerSet<Data> = {
         debuffSolo: {
           en: '${debuff}',
           de: '${debuff}',
+          fr: '${debuff}',
           cn: '${debuff}',
           ko: '${debuff}',
           tc: '${debuff}',
@@ -1439,6 +1496,7 @@ const triggerSet: TriggerSet<Data> = {
         debuffShared: {
           en: '${debuff} (w/ ${other})',
           de: '${debuff} (mit ${other})',
+          fr: '${debuff} (avec ${other})',
           cn: '${debuff} (和 ${other})',
           ko: '${debuff} (+ ${other})',
           tc: '${debuff} (和 ${other})',
@@ -1446,6 +1504,7 @@ const triggerSet: TriggerSet<Data> = {
         shortFire: {
           en: 'Short Fire',
           de: 'Kurzes Feuer',
+          fr: 'Feu court',
           cn: '短火',
           ko: '짧은 불',
           tc: '短火',
@@ -1453,6 +1512,7 @@ const triggerSet: TriggerSet<Data> = {
         mediumFire: {
           en: 'Medium Fire',
           de: 'Mittleres Feuer',
+          fr: 'Feu moyen',
           cn: '中火',
           ko: '중간 불',
           tc: '中火',
@@ -1460,6 +1520,7 @@ const triggerSet: TriggerSet<Data> = {
         longFire: {
           en: 'Long Fire',
           de: 'Langes Feuer',
+          fr: 'Feu long',
           cn: '长火',
           ko: '긴 불',
           tc: '長火',
@@ -1467,6 +1528,7 @@ const triggerSet: TriggerSet<Data> = {
         ice: {
           en: 'Ice',
           de: 'Eis',
+          fr: 'Glace',
           cn: '冰点名',
           ko: '얼음',
           tc: '冰點名',
@@ -1791,6 +1853,7 @@ const triggerSet: TriggerSet<Data> = {
           onYou: {
             en: 'Shared tank cleave on YOU',
             de: 'Geteilter Tank-Cleave auf DIR',
+            fr: 'Tank cleave partagé sur VOUS',
             cn: '坦克分摊点名',
             ko: '쉐어 탱버 대상자',
             tc: '坦克分攤點名',
@@ -1798,6 +1861,7 @@ const triggerSet: TriggerSet<Data> = {
           share: {
             en: 'Shared tank cleave on ${target}',
             de: 'Geteilter Tank-Cleave auf ${target}',
+            fr: 'Tank cleave partagé sur ${target}',
             cn: '坦克分摊 (和 ${target})',
             ko: '쉐어 탱버 (${target})',
             tc: '坦克分攤 (和 ${target})',
@@ -1805,6 +1869,7 @@ const triggerSet: TriggerSet<Data> = {
           avoid: {
             en: 'Avoid tank cleave',
             de: 'Tank-Cleave vermeiden',
+            fr: 'Évitez le tank cleave',
             cn: '远离分摊顺劈',
             ko: '탱버 피하기',
             tc: '遠離分攤順劈',
@@ -1890,6 +1955,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Stack: ${debuff} (w/ ${same})',
           de: 'Sammeln: ${debuff} (mit ${same})',
+          fr: 'Package : ${debuff} (avec ${same})',
           cn: '${debuff} 分摊 (和 ${same})',
           ko: '쉐어: ${debuff} (+ ${same})',
           tc: '${debuff} 分攤 (和 ${same})',
@@ -1897,6 +1963,7 @@ const triggerSet: TriggerSet<Data> = {
         short: {
           en: 'Short',
           de: 'Kurz',
+          fr: 'Court',
           cn: '短',
           ko: '짧은',
           tc: '短',
@@ -1904,6 +1971,7 @@ const triggerSet: TriggerSet<Data> = {
         medium: {
           en: 'Medium',
           de: 'Mittel',
+          fr: 'Moyen',
           cn: '中',
           ko: '중간',
           tc: '中',
@@ -1911,6 +1979,7 @@ const triggerSet: TriggerSet<Data> = {
         long: {
           en: 'Long',
           de: 'Lang',
+          fr: 'Long',
           cn: '长',
           ko: '긴',
           tc: '長',
@@ -1918,6 +1987,7 @@ const triggerSet: TriggerSet<Data> = {
         none: {
           en: 'No Debuff',
           de: 'Kein Debuff',
+          fr: 'Pas de debuff',
           cn: '无点名',
           ko: '디버프 없음',
           tc: '無點名',
@@ -1985,6 +2055,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: '(Apoc safe later: ${dir1})',
           de: '(Apoc später sicher: ${dir1})',
+          fr: '(Apocalypse sûre après : ${dir1})',
           cn: '${dir1} 稍后安全',
           ko: '(대재앙 안전지대: ${dir1})',
           tc: '${dir1} 稍後安全',
@@ -2062,6 +2133,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: 'Safe: ${dir1} (lean ${dir2})',
           de: 'Sicher: ${dir1} (halte dich ${dir2})',
+          fr: 'Sûr : ${dir1} (penchez-vous ${dir2})',
           cn: '${dir1} 偏 ${dir2} 安全',
           ko: '안전: ${dir1} (${dir2} 쪽으로 한칸)',
           tc: '${dir1} 偏 ${dir2} 安全',
@@ -2108,6 +2180,7 @@ const triggerSet: TriggerSet<Data> = {
           stacksSwap: {
             en: '${stacks} (Swapped)',
             de: '${stacks} (Getauscht)',
+            fr: '${stacks} (échangé)',
             cn: '${stacks} (换位后)',
             ko: '${stacks} (교대)',
             tc: '${stacks} (換位後)',
@@ -2148,6 +2221,7 @@ const triggerSet: TriggerSet<Data> = {
         bait: {
           en: 'Bait Jump (${dirs})?',
           de: 'Sprung ködern (${dirs})?',
+          fr: 'Attirez le saut (${dirs}) ?',
           cn: '${dirs} 引导超级跳',
           ko: '${dirs} 점프 유도?',
           tc: '${dirs} 引導超級跳',
@@ -2169,6 +2243,7 @@ const triggerSet: TriggerSet<Data> = {
         kbStacks: {
           en: 'Knockback => Stacks',
           de: 'Rückstoß => Sammeln',
+          fr: 'Poussée => Packages',
           cn: '击退 => 四四分摊',
           ko: '넉백 => 쉐어',
           tc: '擊退 => 四四分攤',
@@ -2176,6 +2251,7 @@ const triggerSet: TriggerSet<Data> = {
         kbStacksSwap: {
           en: '${kbStacks} (Swapped)',
           de: '${kbStacks} (Getauscht)',
+          fr: '${kbStacks} (échangé)',
           cn: '${kbStacks} (换位后)',
           ko: '${kbStacks} (교대)',
           tc: '${kbStacks} (換位後)',
@@ -2267,6 +2343,7 @@ const triggerSet: TriggerSet<Data> = {
           towerNoSwap: {
             en: 'Tower (no swaps)',
             de: 'Turm (kein wechsel)',
+            fr: 'Tour (sans échange)',
             cn: '塔 (无换位)',
             ko: '탑 (교대 없음)',
             tc: '塔 (無換位)',
@@ -2274,6 +2351,7 @@ const triggerSet: TriggerSet<Data> = {
           towerOtherSwap: {
             en: 'Tower (${p1} + ${p2} swap)',
             de: 'Turm (${p1} + ${p2} wechseln)',
+            fr: 'Tour (échange ${p1} + ${p2})',
             cn: '塔 (${p1} + ${p2} 换位)',
             ko: '탑 (${p1} + ${p2} 교대)',
             tc: '塔 (${p1} + ${p2} 換位)',
@@ -2281,6 +2359,7 @@ const triggerSet: TriggerSet<Data> = {
           towerYouSwap: {
             en: 'Tower (swap w/${player})',
             de: 'Turm (wechsel mit ${player})',
+            fr: 'Tour (échange avec ${player})',
             cn: '塔 (与 ${player} 换位)',
             ko: '탑 (${player}와 교대)',
             tc: '塔 (與 ${player} 換位)',
@@ -2289,6 +2368,7 @@ const triggerSet: TriggerSet<Data> = {
             // if no strat set, or cannot determine
             en: 'Tower',
             de: 'Turm',
+            fr: 'Tour',
             cn: '塔',
             ko: '탑',
             tc: '塔',
@@ -2297,6 +2377,7 @@ const triggerSet: TriggerSet<Data> = {
             // for supports in healerPlantNW, or no strat
             en: 'Bait Cone',
             de: 'Köder Kegel-AoE',
+            fr: 'Attirez le cône',
             cn: '诱导扇形',
             ko: '부채꼴 유도',
             tc: '誘導扇形',
@@ -2305,6 +2386,7 @@ const triggerSet: TriggerSet<Data> = {
             // for DPS in healerPlantNW
             en: 'Bait Cone (w/ ${otherDps})',
             de: 'Köder Kegel-AoE (mit ${otherDps})',
+            fr: 'Attirez le cône (avec ${otherDps})',
             cn: '诱导扇形 (与 ${otherDps})',
             ko: '부채꼴 유도 (+ ${otherDps})',
             tc: '誘導扇形 (與 ${otherDps})',
@@ -2458,6 +2540,7 @@ const triggerSet: TriggerSet<Data> = {
             // default/fallthrough
             en: '(stack on you later)',
             de: '(später sammeln auf dir)',
+            fr: '(package sur vous après)',
             cn: '(稍后分摊点名)',
             ko: '(쉐어 대상자)',
             tc: '(稍後分攤點名)',
@@ -2466,6 +2549,7 @@ const triggerSet: TriggerSet<Data> = {
           stackOnYouNoSwap: {
             en: '(stack on you later - no swap)',
             de: '(später sammeln auf dir - kein wechsel)',
+            fr: '(package sur vous après - sans échange)',
             cn: '(稍后分摊点名 - 不换位)',
             ko: '(쉐어 대상자 - 교대 없음)',
             tc: '(稍後分攤點名 - 不換位)',
@@ -2473,6 +2557,7 @@ const triggerSet: TriggerSet<Data> = {
           dpsStackOnYouSwap: {
             en: 'Stacks: You swap w/ Support',
             de: 'Sammeln: Du wechselst mit Support',
+            fr: 'Packages : vous échangez avec le Support',
             cn: '分摊: 与T/奶换位',
             ko: '쉐어: 탱힐과 교대',
             tc: '分攤: 與T/奶換位',
@@ -2480,6 +2565,7 @@ const triggerSet: TriggerSet<Data> = {
           healerStackOnYouSwap: {
             en: 'Stacks: You swap w/ Ranged/Flex',
             de: 'Sammeln: Du wechselst mit Fernkämpfer/Flex',
+            fr: 'Packages : vous échangez avec Distant/Flex',
             cn: '分摊: 与远程/灵活位换位',
             ko: '쉐어: 원딜과 교대/상황 판단',
             tc: '分攤: 與遠程/靈活位換位',
@@ -2487,6 +2573,7 @@ const triggerSet: TriggerSet<Data> = {
           tankStackOnYouSwap: {
             en: 'Stacks: You swap w/ Melee/Flex',
             de: 'Sammeln: Du wechselst mit Nahkämpfer/Flex',
+            fr: 'Packages : vous échangez avec Mêlée/Flex',
             cn: '分摊: 与近战/灵活位换位',
             ko: '쉐어: 근딜과 교대/상황 판단',
             tc: '分攤: 與近戰/靈活位換位',
@@ -2495,6 +2582,7 @@ const triggerSet: TriggerSet<Data> = {
           dpsStackOnHealerSwap: {
             en: 'Stacks: ${healer} swap w/ Ranged/Flex',
             de: 'Sammeln: ${healer} wechselt mit Fernkämpfer/Flex',
+            fr: 'Packages : ${healer} échange avec Distant/Flex',
             cn: '分摊: ${healer} 与远程/灵活位换位',
             ko: '쉐어: ${healer} 원딜과 교대/상황 판단',
             tc: '分攤: ${healer} 與遠程/靈活位換位',
@@ -2502,6 +2590,7 @@ const triggerSet: TriggerSet<Data> = {
           dpsStackOnTankSwap: {
             en: 'Stacks: ${tank} swap w/ Melee/Flex',
             de: 'Sammeln: ${tank} wechselt mit Nahkämpfer/Flex',
+            fr: 'Packages : ${tank} échange avec Mêlée/Flex',
             cn: '分摊: ${tank} 与近战/灵活位换位',
             ko: '쉐어: ${tank} 근딜과 교대/상황 판단',
             tc: '分攤: ${tank} 與近戰/靈活位換位',
@@ -2509,6 +2598,7 @@ const triggerSet: TriggerSet<Data> = {
           supportStackOnDpsSwap: {
             en: 'Stacks: ${dps} swap w/ Support',
             de: 'Sammeln: ${dps} wechselt mit Support',
+            fr: 'Packages : ${dps} échange avec le Support',
             cn: '分摊: ${dps} 与T/奶换位',
             ko: '쉐어: ${dps} 탱힐과 교대',
             tc: '分攤: ${dps} 與T/奶換位',
@@ -2608,6 +2698,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir} => ${stacks}',
           de: '${dir} => ${stacks}',
+          fr: '${dir} => ${stacks}',
           cn: '${dir} => ${stacks}',
           ko: '${dir} => ${stacks}',
           tc: '${dir} => ${stacks}',
@@ -2710,6 +2801,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${debuff} on You',
           de: '${debuff} auf DIR',
+          fr: '${debuff} sur VOUS',
           cn: '${debuff} 点名',
           ko: '${debuff} 대상자',
           tc: '${debuff} 點名',
@@ -2717,6 +2809,7 @@ const triggerSet: TriggerSet<Data> = {
         comboText: {
           en: '${debuff} (w/ ${player})',
           de: '${debuff} (mit ${player})',
+          fr: '${debuff} (avec ${player})',
           cn: '${debuff} (与 ${player})',
           ko: '${debuff} (+ ${player})',
           tc: '${debuff} (與 ${player})',
@@ -2724,6 +2817,7 @@ const triggerSet: TriggerSet<Data> = {
         redIce: {
           en: 'Red Ice',
           de: 'Rotes Eis',
+          fr: 'Glace rouge',
           cn: '短红',
           ko: '빨간색 얼음',
           tc: '短紅',
@@ -2731,6 +2825,7 @@ const triggerSet: TriggerSet<Data> = {
         redWind: {
           en: 'Wind/Aero',
           de: 'Wind/Aero',
+          fr: 'Vent/Méga Vent',
           cn: '长红',
           ko: '바람',
           tc: '長紅',
@@ -2738,6 +2833,7 @@ const triggerSet: TriggerSet<Data> = {
         blueIce: {
           en: 'Blue Ice',
           de: 'Blaues Eis',
+          fr: 'Glace bleue',
           cn: '蓝冰',
           ko: '파란색 얼음',
           tc: '藍冰',
@@ -2745,6 +2841,7 @@ const triggerSet: TriggerSet<Data> = {
         blueWater: {
           en: 'Water (stack)',
           de: 'Wasser (sammeln)',
+          fr: 'Eau (package)',
           cn: '水 (分摊)',
           ko: '물 (쉐어)',
           tc: '水 (分攤)',
@@ -2752,6 +2849,7 @@ const triggerSet: TriggerSet<Data> = {
         blueUnholy: {
           en: 'Unholy (stack)',
           de: 'Unheiliges (sammeln)',
+          fr: 'Miracle ténébreux (package)',
           cn: '圣 (分摊)',
           ko: '다크 홀리 (쉐어)',
           tc: '聖 (分攤)',
@@ -2759,6 +2857,7 @@ const triggerSet: TriggerSet<Data> = {
         blueEruption: {
           en: 'Eruption (spread)',
           de: 'Eruption (verteilen)',
+          fr: 'Éruption (dispersion)',
           cn: '暗 (分散)',
           ko: '어둠의 불기둥 (산개)',
           tc: '暗 (分散)',
@@ -2864,6 +2963,7 @@ const triggerSet: TriggerSet<Data> = {
         blue: {
           en: '${mech} (${dir})',
           de: '${mech} (${dir})',
+          fr: '${mech} (${dir})',
           cn: '${mech} (${dir})',
           ko: '${mech} (${dir})',
           tc: '${mech} (${dir})',
@@ -2871,6 +2971,7 @@ const triggerSet: TriggerSet<Data> = {
         redIce: {
           en: '${dir} ${followup}',
           de: '${dir} ${followup}',
+          fr: '${dir} ${followup}',
           cn: '${dir} ${followup}',
           ko: '${dir} ${followup}',
           tc: '${dir} ${followup}',
@@ -2878,6 +2979,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeSouth: {
           en: '(dodge S after)',
           de: '(weiche nach Süden aus)',
+          fr: '(esquivez Sud après)',
           cn: '(稍后避开下)',
           ko: '(이후 남쪽으로 회피)',
           tc: '(稍後避開下)',
@@ -2885,6 +2987,7 @@ const triggerSet: TriggerSet<Data> = {
         stackNorth: {
           en: '(stack N after)',
           de: '(sammeln im Norden danach)',
+          fr: '(package Nord après)',
           cn: '(稍后去上分摊)',
           ko: '(이후 북쪽으로 쉐어)',
           tc: '(稍後去上分攤)',
@@ -2893,6 +2996,7 @@ const triggerSet: TriggerSet<Data> = {
         partyStack: {
           en: '(party stack is ${dir})',
           de: '(Party sammeln im ${dir})',
+          fr: '(Package du groupe ${dir})',
           cn: '(在 ${dir} 全员分摊)',
           ko: '(본대 쉐어 ${dir})',
           tc: '(在 ${dir} 全員分攤)',
@@ -2925,6 +3029,7 @@ const triggerSet: TriggerSet<Data> = {
         cleanseSpot: {
           en: 'Cleanse: ${spot}',
           de: 'Reinige: ${spot}',
+          fr: 'Purifiez : ${spot}',
           cn: '净化: ${spot}',
           ko: '정화: ${spot}',
           tc: '淨化: ${spot}',
@@ -2933,6 +3038,7 @@ const triggerSet: TriggerSet<Data> = {
           // if no strat
           en: 'Cleanse',
           de: 'Reinigen',
+          fr: 'Purifiez',
           cn: '净化',
           ko: '정화',
           tc: '淨化',
@@ -2940,6 +3046,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidCleanse: {
           en: 'Avoid cleanse puddles',
           de: 'Vermeide Reinungs-Fläche',
+          fr: 'Évitez les flaques de purification',
           cn: '避开净化圈',
           ko: '정화 장판 피하기',
           tc: '避開淨化圈',
@@ -2989,6 +3096,7 @@ const triggerSet: TriggerSet<Data> = {
         rewind: {
           en: 'Drop Rewind: ${spot}',
           de: 'Rückführung ablegen: ${spot}',
+          fr: 'Déposez Retour : ${spot}',
           cn: '放置回返: ${spot}',
           ko: '리턴 설치: ${spot}',
           tc: '放置回返: ${spot}',
@@ -3007,6 +3115,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadAvoid: {
           en: 'Spread -- Avoid crystal',
           de: 'Verteilen -- Vermeide Kristall',
+          fr: 'Dispersion -- Évitez le cristal',
           cn: '分摊 -- 避开水晶',
           ko: '산개 -- 크리스탈 피하기',
           tc: '分攤 -- 避開水晶',
@@ -3177,7 +3286,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Crystal of Darkness': 'cristal de Ténèbres',
         'Crystal of Light': 'cristal de Lumière',
@@ -3196,6 +3304,13 @@ const triggerSet: TriggerSet<Data> = {
         'Usurper of Frost': 'Shiva-Mitron',
       },
       'replaceText': {
+        '--jump south--': '--Saut Sud--',
+        '--Oracle targetable--': '--Prêtresse ciblable--',
+        '--Oracle untargetable--': '--Prêtresse non ciblable--',
+        '--Oracle center--': '--Prêtresse au centre--',
+        '--reposition--': '--Repositionnement--',
+        '--Usurper untargetable--': '--Shiva-Mitron non ciblable--',
+        '\\(rewind drop\\)': '(dépôt de Retour)',
         'Absolute Zero': 'Zéro absolu',
         'Akh Morn': 'Akh Morn',
         'Akh Rhai': 'Akh Rhai',
