@@ -979,7 +979,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Aggressive Shadow': 'main assaillante de l\'ombre insondable',
         'Enuo': 'Énuo',
@@ -990,6 +989,8 @@ const triggerSet: TriggerSet<Data> = {
         'Yawning Void': 'grand vortex de néant',
       },
       'replaceText': {
+        '--Add targetable--': '--Add ciblable--',
+        '--Tower adds targetable--': '--Adds des tours ciblables--',
         'Airy Emptiness': 'Onde diffusée',
         'All for Naught': 'Domaine du néant',
         'Almagest': 'Almageste',

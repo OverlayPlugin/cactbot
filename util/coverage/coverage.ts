@@ -391,12 +391,14 @@ const contentTypeToLabel: {
   [ContentType.DeepDungeonExtras]: {
     full: {
       en: 'Deep Dungeon Extra Content',
+      fr: 'Donjon sans fond contenu supplémentaire',
       cn: '深层迷宫额外内容',
       ko: '딥 던전 추가 컨텐츠',
       tc: '深層迷宮額外內容',
     },
     short: {
       en: 'DD+',
+      fr: 'DSF+',
       cn: '深宫+',
       ko: '딥 던전+',
       tc: '深宮+',

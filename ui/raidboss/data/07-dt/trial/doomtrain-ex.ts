@@ -667,6 +667,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadIntoBuster: {
           en: 'Spread AoEs => Tankbusters',
           de: 'AoEs verteilen => Tank-Busters',
+          fr: 'Dispersez les AoE => Tankbusters',
           cn: '分散处理黄圈 => 双T死刑',
           ko: '산개징 => 탱버',
         },

@@ -12,6 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'pre-7.5 rework',
     de: 'Vor der 7.5 Überarbeitung',
+    fr: 'Avant le remaniement 7.5',
     cn: '7.5改版前',
     ko: '7.5 개편 전',
     tc: '7.5改版前',

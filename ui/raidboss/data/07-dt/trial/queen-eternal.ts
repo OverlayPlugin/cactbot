@@ -471,7 +471,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Queen Eternal': 'Reine Éternité',
       },

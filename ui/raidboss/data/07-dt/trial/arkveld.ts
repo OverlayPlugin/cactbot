@@ -38,11 +38,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Guardian Arkveld': 'Arkveld Gardien',
       },
       'replaceText': {
+        'Siegeflight \\(dash\\)': 'Charge aérienne (ruée)',
+        '\\(edge\\)': '(bord)',
         'Aetheric Resonance': 'Résonance éthérée',
         'Chainblade Blow': 'Chaîne écrasante',
         'Chainblade Charge': 'Chaîne oppressante',

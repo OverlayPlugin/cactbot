@@ -501,7 +501,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Aether': 'sphère éthérée',
         'Doomtrain': 'Glasya-Labolas',

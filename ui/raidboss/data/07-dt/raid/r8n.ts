@@ -426,7 +426,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Gleaming Fang': 'croc de lumière',
         'Howling Blade': 'Howling Blade',
