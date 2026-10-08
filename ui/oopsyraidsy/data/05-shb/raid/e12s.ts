@@ -487,20 +487,26 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       'locale': 'de',
       'replaceSync': {
-        'Beastly Sculpture': 'Abbild Eines Löwen',
+        'Chiseled Sculpture': 'Abbild eines Mannes',
+        'Ice Pillar': 'Eissäule',
+        'Beastly Sculpture': 'Abbild eines Löwen',
         'Regal Sculpture': 'Abbild eines großen Löwen',
       },
     },
     {
       'locale': 'fr',
       'replaceSync': {
-        'Beastly Sculpture': 'Création Léonine',
+        'Chiseled Sculpture': 'création masculine',
+        'Ice Pillar': 'pilier de glace',
+        'Beastly Sculpture': 'création léonine',
         'Regal Sculpture': 'création léonine royale',
       },
     },
     {
       'locale': 'ja',
       'replaceSync': {
+        'Chiseled Sculpture': '創られた男',
+        'Ice Pillar': '氷柱',
         'Beastly Sculpture': '創られた獅子',
         'Regal Sculpture': '創られた獅子王',
       },
@@ -508,8 +514,28 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       'locale': 'cn',
       'replaceSync': {
+        'Chiseled Sculpture': '被创造的男性',
+        'Ice Pillar': '冰柱',
         'Beastly Sculpture': '被创造的狮子',
         'Regal Sculpture': '被创造的狮子王',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Chiseled Sculpture': '창조된 남자',
+        'Ice Pillar': '얼음기둥',
+        'Beastly Sculpture': '창조된 사자',
+        'Regal Sculpture': '창조된 사자왕',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Chiseled Sculpture': '被創造的男性',
+        'Ice Pillar': '冰柱',
+        'Beastly Sculpture': '被創造的獅子',
+        'Regal Sculpture': '被創造的獅子王',
       },
     },
   ],
