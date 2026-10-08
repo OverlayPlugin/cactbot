@@ -71,6 +71,20 @@ UserConfig.registerOptions('eureka', {
       default: false,
     },
     {
+      id: 'HideWeather',
+      name: {
+        en: 'Hide weather information',
+        de: 'Wetterinformationen ausblenden',
+        fr: 'Masquer les informations météo',
+        ja: '天気情報を非表示にする',
+        cn: '隐藏天气信息',
+        ko: '날씨 정보 숨기기',
+        tc: '隱藏天氣資訊',
+      },
+      type: 'checkbox',
+      default: false,
+    },
+    {
       id: 'PopNoiseForNM',
       name: {
         en: 'Play pop sound for NMs',
