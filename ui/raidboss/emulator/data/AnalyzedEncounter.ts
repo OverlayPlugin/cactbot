@@ -33,7 +33,6 @@ type Perspectives = { [id: string]: Perspective };
 
 export default class AnalyzedEncounter extends EventBus {
   perspectives: Perspectives = {};
-  regexCache: LineRegExpCache | undefined;
   constructor(
     public options: RaidbossOptions,
     public encounter: Encounter,
@@ -110,34 +109,11 @@ export default class AnalyzedEncounter extends EventBus {
     });
   }
 
-  async analyze(): Promise<void> {
-    // @TODO: Make this run in parallel sometime in the future, since it could be really slow?
-    if (this.encounter.combatantTracker) {
-      for (const id of this.encounter.combatantTracker.partyMembers)
-        await this.analyzeFor(id);
-    }
-
-    // Free up this memory
-    delete this.regexCache;
-
-    return this.dispatch('analyzed');
-  }
-
-  async analyzeFor(id: string): Promise<void> {
-    if (!this.encounter.combatantTracker)
-      return;
-    let currentLogIndex = 0;
-    const partyMember = this.encounter.combatantTracker.combatants[id];
-
-    const getCurLogLine = (): LineEvent => {
-      const line = this.encounter.logLines[currentLogIndex];
-      if (!line)
-        throw new UnreachableCode();
-      return line;
-    };
+  checkPartyMember(id: string): boolean {
+    const partyMember = this.encounter.combatantTracker?.combatants[id];
 
     if (!partyMember)
-      return;
+      return false;
 
     const initState = partyMember?.nextState(0);
 
@@ -146,8 +122,39 @@ export default class AnalyzedEncounter extends EventBus {
         initialData: {},
         triggers: [],
       };
-      return;
+      return false;
     }
+
+    return true;
+  }
+
+  async analyze(): Promise<void> {
+    const regexCache: LineRegExpCache = new Map();
+
+    if (this.encounter.combatantTracker) {
+      const partyMembers = this.encounter.combatantTracker.partyMembers;
+      const batchSize = 24;
+
+      for (let i = 0; i < partyMembers.length; i += batchSize) {
+        const batch = partyMembers.slice(i, i + batchSize);
+        await this.analyzeFor(batch, regexCache);
+      }
+    }
+
+    return this.dispatch('analyzed');
+  }
+
+  async analyzeFor(partyMembers: string[], regexCache: LineRegExpCache): Promise<void> {
+    let currentLogIndex = 0;
+
+    const getCurLogLine = (): LineEvent => {
+      const line = this.encounter.logLines[currentLogIndex];
+      if (!line)
+        throw new UnreachableCode();
+      return line;
+    };
+
+    const validPartyMembers = partyMembers.filter((id) => this.checkPartyMember(id));
 
     const timelineUI = new RaidEmulatorAnalysisTimelineUI(this.options);
     const timelineController = new RaidEmulatorTimelineController(
@@ -157,79 +164,94 @@ export default class AnalyzedEncounter extends EventBus {
     );
     timelineController.bindTo(this.emulator);
 
-    const popupText = new PopupTextAnalysis(
-      this.options,
-      new TimelineLoader(timelineController),
-      raidbossFileData,
-    );
+    type PlayerContext = {
+      popupText: PopupTextAnalysis;
+      id: string;
+    };
 
-    if (this.regexCache)
-      popupText.regexCache = this.regexCache;
+    const partyContext: PlayerContext[] = validPartyMembers.map((id) => {
+      const popupText = new PopupTextAnalysis(
+        this.options,
+        new TimelineLoader(timelineController),
+        raidbossFileData,
+        regexCache,
+      );
 
-    const generator = new PopupTextGenerator(popupText);
-    timelineUI.SetPopupTextInterface(generator);
+      const generator = new PopupTextGenerator(popupText);
+      timelineUI.SetPopupTextInterface(generator);
 
-    timelineController.SetPopupTextInterface(generator);
+      timelineController.SetPopupTextInterface(generator);
 
-    this.selectPerspective(id, popupText);
+      if (timelineController.activeTimeline?.ui) {
+        timelineController.activeTimeline.ui.OnTrigger = (trigger: LooseTrigger, matches) => {
+          const currentLine = this.encounter.logLines[currentLogIndex];
+          if (!currentLine)
+            throw new UnreachableCode();
 
-    if (timelineController.activeTimeline?.ui) {
-      timelineController.activeTimeline.ui.OnTrigger = (trigger: LooseTrigger, matches) => {
-        const currentLine = this.encounter.logLines[currentLogIndex];
-        if (!currentLine)
+          const resolver = popupText.currentResolver = new Resolver({
+            initialData: EmulatorCommon.cloneData(popupText.getData()),
+            suppressed: false,
+            executed: false,
+          });
+          resolver.triggerHelper = popupText._onTriggerInternalGetHelper(
+            trigger,
+            matches?.groups ?? {},
+            currentLine?.timestamp,
+          );
+          popupText.triggerResolvers.push(resolver);
+
+          popupText.OnTrigger(trigger, matches, currentLine.timestamp);
+
+          resolver.setFinal(() => {
+            // Get the current log line when the callback is executed instead of the line
+            // when the trigger initially fires
+            const resolvedLine = getCurLogLine();
+            resolver.status.finalData = EmulatorCommon.cloneData(popupText.getData());
+            delete resolver.triggerHelper?.resolver;
+            if (popupText.callback) {
+              popupText.callback(
+                resolvedLine,
+                resolver.triggerHelper,
+                resolver.status,
+                popupText.getData(),
+              );
+            }
+          });
+        };
+      }
+
+      popupText.callback = (log, triggerHelper, currentTriggerStatus) => {
+        const perspective = this.perspectives[id];
+        if (!perspective || !triggerHelper)
           throw new UnreachableCode();
 
-        const resolver = popupText.currentResolver = new Resolver({
-          initialData: EmulatorCommon.cloneData(popupText.getData()),
-          suppressed: false,
-          executed: false,
-        });
-        resolver.triggerHelper = popupText._onTriggerInternalGetHelper(
-          trigger,
-          matches?.groups ?? {},
-          currentLine?.timestamp,
-        );
-        popupText.triggerResolvers.push(resolver);
-
-        popupText.OnTrigger(trigger, matches, currentLine.timestamp);
-
-        resolver.setFinal(() => {
-          // Get the current log line when the callback is executed instead of the line
-          // when the trigger initially fires
-          const resolvedLine = getCurLogLine();
-          resolver.status.finalData = EmulatorCommon.cloneData(popupText.getData());
-          delete resolver.triggerHelper?.resolver;
-          if (popupText.callback) {
-            popupText.callback(
-              resolvedLine,
-              resolver.triggerHelper,
-              resolver.status,
-              popupText.getData(),
-            );
-          }
+        perspective.triggers.push({
+          triggerHelper: triggerHelper,
+          status: currentTriggerStatus,
+          logLine: log,
+          resolvedOffset: log.timestamp - this.encounter.startTimestamp,
         });
       };
+      popupText.triggerResolvers = [];
+
+      this.selectPerspective(id, popupText);
+
+      return {
+        popupText: popupText,
+        id: id,
+      };
+    });
+
+    for (const ctx of partyContext) {
+      const popupText = ctx.popupText;
+      const id = ctx.id;
+
+      this.perspectives[id] = {
+        initialData: EmulatorCommon.cloneData(popupText.getData(), []),
+        triggers: [],
+        finalData: popupText.getData(),
+      };
     }
-
-    popupText.callback = (log, triggerHelper, currentTriggerStatus) => {
-      const perspective = this.perspectives[id];
-      if (!perspective || !triggerHelper)
-        throw new UnreachableCode();
-
-      perspective.triggers.push({
-        triggerHelper: triggerHelper,
-        status: currentTriggerStatus,
-        logLine: log,
-        resolvedOffset: log.timestamp - this.encounter.startTimestamp,
-      });
-    };
-    popupText.triggerResolvers = [];
-
-    this.perspectives[id] = {
-      initialData: EmulatorCommon.cloneData(popupText.getData(), []),
-      triggers: [],
-      finalData: popupText.getData(),
-    };
 
     for (; currentLogIndex < this.encounter.logLines.length; ++currentLogIndex) {
       const log = this.encounter.logLines[currentLogIndex];
@@ -237,18 +259,24 @@ export default class AnalyzedEncounter extends EventBus {
         throw new UnreachableCode();
       await this.dispatch('analyzeLine', log);
 
-      const combatant = this.encounter?.combatantTracker?.combatants[id];
+      for (const ctx of partyContext) {
+        const popupText = ctx.popupText;
+        const id = ctx.id;
 
-      if (combatant && combatant.hasState(log.timestamp))
-        this.updateState(combatant, log.timestamp, popupText);
+        const combatant = this.encounter?.combatantTracker?.combatants[id];
+
+        if (combatant && combatant.hasState(log.timestamp)) {
+          this.updateState(combatant, log.timestamp, popupText);
+        }
+
+        await popupText.onEmulatorLog([log], getCurLogLine);
+      }
 
       this.watchCombatantsOverride.tick(log.timestamp);
-      await popupText.onEmulatorLog([log], getCurLogLine);
       timelineController.onEmulatorLogEvent([log]);
     }
 
     this.watchCombatantsOverride.clear();
     timelineUI.stop();
-    this.regexCache = popupText.regexCache;
   }
 }

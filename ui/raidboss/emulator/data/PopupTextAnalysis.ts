@@ -1,4 +1,5 @@
 import { UnreachableCode } from '../../../../resources/not_reached';
+import { RaidbossData } from '../../../../types/data';
 import { EventResponses, LogEvent } from '../../../../types/event';
 import { Matches } from '../../../../types/net_matches';
 import { LooseTrigger, RaidbossFileData } from '../../../../types/trigger';
@@ -15,7 +16,7 @@ type ResolverFunc = () => void;
 export interface ResolverStatus {
   responseType?: string;
   responseLabel?: string;
-  initialData: DataType;
+  initialData?: DataType;
   finalData?: DataType;
   condition?: boolean;
   response?: undefined;
@@ -29,6 +30,30 @@ export interface ResolverStatus {
 type EmulatorTriggerHelper = TriggerHelper & {
   resolver?: Resolver;
 };
+
+const dataPropsToExcludeMap: { [key in keyof RaidbossData]: boolean } = {
+  job: true,
+  me: true,
+  role: true,
+  party: true,
+  lang: true,
+  parserLang: true,
+  displayLang: true,
+  currentHP: true,
+  options: true,
+  inCombat: true,
+  triggerSetConfig: true,
+  ShortName: true,
+  StopCombat: true,
+  ParseLocaleFloat: true,
+  CanStun: true,
+  CanSilence: true,
+  CanSleep: true,
+  CanCleanse: true,
+  CanFeint: true,
+  CanAddle: true,
+};
+const dataPropsToExclude = Object.keys(dataPropsToExcludeMap);
 
 export class Resolver {
   private promise?: Promise<void>;
@@ -103,9 +128,10 @@ export default class PopupTextAnalysis extends StubbedPopupText {
     options: RaidbossOptions,
     timelineLoader: TimelineLoader,
     raidbossFileData: RaidbossFileData,
+    regexCache: LineRegExpCache,
   ) {
     super(options, timelineLoader, raidbossFileData);
-    this.regexCache = new Map();
+    this.regexCache = regexCache;
     this.ttsSay = (_text: string) => {
       return;
     };
@@ -152,7 +178,7 @@ export default class PopupTextAnalysis extends StubbedPopupText {
           continue;
 
         const resolver = this.currentResolver = new Resolver({
-          initialData: EmulatorCommon.cloneData(this.data),
+          initialData: EmulatorCommon.cloneData(this.data, dataPropsToExclude),
           suppressed: false,
           executed: false,
         });
@@ -161,7 +187,11 @@ export default class PopupTextAnalysis extends StubbedPopupText {
 
         resolver.setFinal(() => {
           const currentLine = getCurrentLogLine();
-          resolver.status.finalData = EmulatorCommon.cloneData(this.data);
+          const finalData = EmulatorCommon.cloneData(this.data, dataPropsToExclude);
+          if (JSON.stringify(finalData) !== JSON.stringify(resolver.status.initialData))
+            resolver.status.finalData = finalData;
+          else
+            delete resolver.status.initialData;
           delete resolver.triggerHelper?.resolver;
           if (this.callback)
             this.callback(currentLine, resolver.triggerHelper, resolver.status, this.data);
@@ -185,7 +215,7 @@ export default class PopupTextAnalysis extends StubbedPopupText {
         }
         if (r !== false) {
           const resolver = this.currentResolver = new Resolver({
-            initialData: EmulatorCommon.cloneData(this.data),
+            initialData: EmulatorCommon.cloneData(this.data, dataPropsToExclude),
             suppressed: false,
             executed: false,
           });
@@ -197,7 +227,11 @@ export default class PopupTextAnalysis extends StubbedPopupText {
 
           resolver.setFinal(() => {
             const currentLine = getCurrentLogLine();
-            resolver.status.finalData = EmulatorCommon.cloneData(this.data);
+            const finalData = EmulatorCommon.cloneData(this.data, dataPropsToExclude);
+            if (JSON.stringify(finalData) !== JSON.stringify(resolver.status.initialData))
+              resolver.status.finalData = finalData;
+            else
+              delete resolver.status.initialData;
             delete resolver.triggerHelper?.resolver;
             if (this.callback)
               this.callback(currentLine, resolver.triggerHelper, resolver.status, this.data);
