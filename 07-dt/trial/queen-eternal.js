@@ -455,7 +455,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Queen Eternal': 'Reine Éternité',
       },

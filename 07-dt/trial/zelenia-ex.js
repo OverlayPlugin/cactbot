@@ -174,6 +174,7 @@ Options.Triggers.push({
       name: {
         en: 'Escelons Fall Strategy',
         de: 'Aufsteigendes Kreuz Strategy',
+        fr: 'Stratégie pour Péril cruciforme',
         cn: '凌空错策略',
         ko: '클라임 크로스 전략',
         tc: '淩空錯策略',
@@ -991,7 +992,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Briar Thorn': 'Mortimer',
         'Zelenia(?!\')': 'Zelenia',

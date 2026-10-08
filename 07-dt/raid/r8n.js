@@ -393,7 +393,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Gleaming Fang': 'croc de lumière',
         'Howling Blade': 'Howling Blade',

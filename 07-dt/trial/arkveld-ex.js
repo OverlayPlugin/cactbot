@@ -35,11 +35,11 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Guardian Arkveld': 'Arkveld Gardien',
       },
       'replaceText': {
+        'Siegeflight \\(dash\\)': 'Charge aérienne (ruée)',
         'Aetheric Resonance': 'Résonance éthérée',
         'Chainblade Blow': 'Chaîne écrasante',
         'Chainblade Charge': 'Chaîne oppressante',

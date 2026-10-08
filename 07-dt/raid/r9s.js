@@ -651,7 +651,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Coffinmaker': 'torture fatale',
         'Fatal Flail': 'fléau fatal',
@@ -659,11 +658,16 @@ Options.Triggers.push({
         'Vampette Fatale': 'chauve-souris fatale',
       },
       'replaceText': {
+        '--coffinmaker--': '--Torture fatale--',
+        '--flail x2--': '--Fléau x2--',
+        '--nail--': '--Clou--',
+        '--cell x4--': '--Cellule x4--',
         'Aetherletting': 'Libération d\'éther',
         'Blast Beat': 'Vague de résonance',
         'Bloody Bondage': 'Bondage sanglant',
         'Breakdown Drop': 'Fracas dévastateur',
         'Breakwing Beat': 'Rythme dévastateur',
+        'Brutal Rain': 'Pluie brutale',
         'Coffinfiller': 'Entaille funèbre',
         'Crowd Kill': 'Fauchage du public',
         'Dead Wake': 'Avancée',

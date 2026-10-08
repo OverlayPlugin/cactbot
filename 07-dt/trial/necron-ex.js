@@ -100,6 +100,7 @@ Options.Triggers.push({
         text: {
           en: '${mid} => ${side}',
           de: '${mid} => ${side}',
+          fr: '${mid} => ${side}',
           ja: '${mid} => ${side}',
           cn: '${mid} => ${side}',
           ko: '${mid} => ${side}',
@@ -722,7 +723,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'sphère d\'énergie bleue',
         'Beckoning Hands': 'grand attrape-mort',
@@ -730,6 +730,7 @@ Options.Triggers.push({
         'Necron': 'Darkness',
       },
       'replaceText': {
+        'Add Spawn': 'Apparition des adds',
         '\\(cast\\)': '(Incante)',
         '\\(damage\\)': '(Dommages)',
         '\\(intercards\\)': '(Intercardinaux)',

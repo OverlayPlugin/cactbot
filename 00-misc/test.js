@@ -535,13 +535,13 @@ Options.Triggers.push({
     },
     {
       locale: 'fr',
-      missingTranslations: true,
       replaceSync: {
         'cactbot lang': 'cactbot langue',
         'cactbot test response': 'cactbot test de réponse',
         'cactbot test watch': 'cactbot test d\'observation',
         'cactbot test config': 'test de configuration de cactbot',
         'cactbot test combatant cast': 'test d\'incantation d\'un combattant',
+        'cactbot test trigger countdown': 'cactbot test de décompte des triggers',
         'cactbot test outputStrings': 'cactbot test outputStrings',
         'testNetRegexTimeline': 'testNetRegexTimeline',
         'You bid farewell to the striking dummy':

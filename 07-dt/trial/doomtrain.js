@@ -469,7 +469,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Aether': 'sphère éthérée',
         'Doomtrain': 'Glasya-Labolas',
