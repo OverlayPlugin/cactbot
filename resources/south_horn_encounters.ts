@@ -13,6 +13,7 @@ const data: CeInfoType = {
       'fr': 'Défi : Cloître à perpétuité',
       'ja': '封印大妖「クロイスターデーモン」',
       'ko': '봉인된 대요마 \'회랑 악마\'',
+      'tc': '掙脫封印的大妖異——回廊惡魔',
     },
   },
   'CompanyOfStone': {
@@ -24,6 +25,7 @@ const data: CeInfoType = {
       'fr': 'L\'armée des argileux',
       'ja': '石造りの守護騎士たち',
       'ko': '돌로 만들어진 수호 기사들',
+      'tc': '石製騎士團',
     },
   },
   'CrawlingDeath': {
@@ -35,6 +37,7 @@ const data: CeInfoType = {
       'fr': 'Défi : face de griffes',
       'ja': '忍び寄る爪「デスクロー」',
       'ko': '은밀히 다가오는 손톱 \'죽음손아귀\'',
+      'tc': '潛影撕裂者——死亡厲爪',
     },
   },
   'CursedConcern': {
@@ -46,6 +49,7 @@ const data: CeInfoType = {
       'fr': 'Défi : être aux pièces',
       'ja': '呪いの商亀「コイントートス」',
       'ko': '저주를 파는 거북 \'동전거북\'',
+      'tc': '販賣詛咒的商販——金錢龜',
     },
   },
   'EternalWatch': {
@@ -57,6 +61,7 @@ const data: CeInfoType = {
       'fr': 'Défi : comme un lion nouveau',
       'ja': '復元された獅子像「リペアドライオン」',
       'ko': '오래된 사자상 \'복원된 사자\'',
+      'tc': '城塞守衛——復原獅像',
     },
   },
   'FlameOfDusk': {
@@ -68,6 +73,7 @@ const data: CeInfoType = {
       'fr': 'Défi : les ailes de pierre',
       'ja': '昏き篝火「ヒンキーパンク」',
       'ko': '어둑한 화톳불 \'힝키펑크\'',
+      'tc': '昏暗妖魂——鬼火苗',
     },
   },
   'FromTimesBygone': {
@@ -79,6 +85,7 @@ const data: CeInfoType = {
       'fr': 'Défi : idole surprise',
       'ja': '神秘の偶像「ミシカルアイドル」',
       'ko': '수수께끼에 싸인 토우 \'신비로운 우상\'',
+      'tc': '雙極的造物——神秘土偶',
     },
   },
   'NoiseComplaint': {
@@ -90,6 +97,7 @@ const data: CeInfoType = {
       'fr': 'Défi : mammouth fâché',
       'ja': '鳥嫌いの巨獣「ネオガルラ」',
       'ko': '새를 싫어하는 거대 짐승 \'네오 가루라\'',
+      'tc': '厭鳥巨獸——進化加魯拉',
     },
   },
   'OnTheHunt': {
@@ -101,6 +109,7 @@ const data: CeInfoType = {
       'fr': 'Défi : à rugir debout',
       'ja': '二足の獅子「ランパントライオン」',
       'ko': '두 발로 선 사자 \'직립 사자\'',
+      'tc': '雙足獅人——躍立獅',
     },
   },
   'ScourgeOfTheMind': {
@@ -112,6 +121,7 @@ const data: CeInfoType = {
       'fr': 'Défi : l\'encéphalophage',
       'ja': '脳髄愛好家「マインドフレイア」',
       'ko': '뇌수 애호가 \'정신탈취자\'',
+      'tc': '腦髓愛好者——奪心魔',
     },
   },
   'SharkAttack': {
@@ -123,6 +133,7 @@ const data: CeInfoType = {
       'fr': 'Défi : homo selachus',
       'ja': '伝説の鮫「ニーム・ペタロドゥス」',
       'ko': '전설의 상어 \'니므 페탈로두스\'',
+      'tc': '傳說中的鯊魚——尼姆瓣齒鯊',
     },
   },
   'TheBlackRegiment': {
@@ -134,6 +145,7 @@ const data: CeInfoType = {
       'fr': 'Plumes d\'encre',
       'ja': '黒の連隊',
       'ko': '검은 연대',
+      'tc': '黑色連隊',
     },
   },
   'TheForkedTowerBlood': {
@@ -145,6 +157,7 @@ const data: CeInfoType = {
       'fr': 'Tour fourchue de la Force',
       'ja': 'フォークタワー：力の塔',
       'ko': '포크 타워: 힘의 탑',
+      'tc': '兩歧塔 力之塔',
     },
   },
   'TheUnbridled': {
@@ -156,6 +169,7 @@ const data: CeInfoType = {
       'fr': 'Défi : le rageux',
       'ja': '怒れる人造人間「クレセント・バーサーカー」',
       'ko': '분노한 인조인간 \'초승달 광전사\'',
+      'tc': '憤怒的人造人——新月狂戰士',
     },
   },
   'TrialByClaw': {
@@ -167,6 +181,7 @@ const data: CeInfoType = {
       'fr': 'Défi : écailles de cristal',
       'ja': '模造されしもの「水晶竜」',
       'ko': '모조된 존재 \'수정룡\'',
+      'tc': '擬造使魔——水晶龍',
     },
   },
   'WithExtremePrejudice': {
@@ -178,6 +193,7 @@ const data: CeInfoType = {
       'fr': 'Cordon de sécurité',
       'ja': 'セキュリティ・コマンドー',
       'ko': '보안 명령',
+      'tc': '防衛指令',
     },
   },
 } as const;
