@@ -661,11 +661,11 @@ Options.Triggers.push({
     {
       locale: 'tc',
       replaceSync: {
-        'You bid farewell to the striking dummy': '.*向木人告别',
+        'You bid farewell to the striking dummy': '.*向木人告別',
         'You bow courteously to the striking dummy': '.*恭敬地對木人行禮',
         'test sync': 'test sync',
         'testNetRegexTimeline': 'testNetRegexTimeline',
-        'You burst out laughing at the striking dummy': '.*看着木人高聲大笑',
+        'You burst out laughing at the striking dummy': '.*看著木人高聲大笑',
         'cactbot lang': 'cactbot語言',
         'cactbot test combatant cast': 'cactbot測試戰鬥員施法',
         'cactbot test config': 'cactbot測試配置',
