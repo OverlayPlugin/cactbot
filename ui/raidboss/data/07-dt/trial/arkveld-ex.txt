@@ -130,7 +130,7 @@ hideall "--sync--"
 #  AB8C and AB8E are the secondary follow-up hit similar to chainblade blow
 #
 #  After the power-up:
-#  B032 and B032 are the first hit, each being a different half
+#  B031 and B032 are the first hit, each being a different half
 #  B033 and B034 are the secondary follow-up hit similar to chainblade blow
 #
 # AB96 Wyvern's Vengeance
@@ -169,7 +169,7 @@ hideall "--sync--"
 # AF05 Steeltail Thrust
 # AF06 Steeltail Thrust
 # B035 Steeltail Thrust
-#  Tail thrust. One might be the animation while one is thie hit, not sure.
+#  Tail thrust. One might be the animation while one is the hit, not sure.
 #  It looks like damage is on the second skill.
 #
 # ABAE Roar
