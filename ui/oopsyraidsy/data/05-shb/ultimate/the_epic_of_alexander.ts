@@ -192,6 +192,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Jagd Doll': 'Jagdpuppe',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Jagd Doll': 'poupée jagd',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Jagd Doll': 'ヤークトドール',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Jagd Doll': '狩猎人偶',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Jagd Doll': '인형 수렵병',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Jagd Doll': '狩獵人偶',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

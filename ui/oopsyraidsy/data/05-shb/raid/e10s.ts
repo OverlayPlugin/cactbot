@@ -102,8 +102,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       'locale': 'fr',
       'replaceSync': {
-        'Flameshadow': 'Flamme ombrale',
-        'Shadowkeeper': 'Roi De L\'Ombre',
+        'Flameshadow': 'flamme ombrale',
+        'Shadowkeeper': 'roi de l\'Ombre',
       },
     },
     {
@@ -115,6 +115,20 @@ const triggerSet: OopsyTriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Flameshadow': '影烈火',
+        'Shadowkeeper': '影之王',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Flameshadow': '그림자 불꽃',
+        'Shadowkeeper': '그림자의 왕',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Flameshadow': '影烈火',
         'Shadowkeeper': '影之王',
