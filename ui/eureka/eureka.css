@@ -284,9 +284,18 @@
   padding-top: 5px;
 }
 
+#label-weather-container.hidden {
+  display: none;
+}
+
 #label-time {
   padding-bottom: 5px;
   border-bottom: 2px dashed rgb(255 255 255 / 30%);
+}
+
+#label-time.weather-hidden {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .aspect-ratio-anemos #label-container {
