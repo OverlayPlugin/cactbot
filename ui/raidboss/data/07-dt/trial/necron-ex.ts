@@ -948,6 +948,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(puddles\\)': '(圈)',
         '\\(spread\\)': '(分散)',
         '\\(tower\\)': '(塔)',
+        'Add Spawn': '小怪生成',
         'Aetherblight': '青藍波動',
         'Blue Shockwave': '青藍衝擊',
         'Choking Grasp': '壓潰',
