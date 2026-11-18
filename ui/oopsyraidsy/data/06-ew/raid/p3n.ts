@@ -59,6 +59,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Sparkfledged': 'Saat des Phoinix',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Sparkfledged': 'oiselet de feu',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Sparkfledged': '火霊鳥',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Sparkfledged': '火灵鸟',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Sparkfledged': '화령조',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Sparkfledged': '火靈鳥',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
