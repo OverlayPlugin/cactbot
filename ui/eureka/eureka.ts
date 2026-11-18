@@ -117,6 +117,7 @@ const defaultEurekaConfigOptions = {
   FlagTimeoutMs: 90,
   CompleteNamesSTQ: false,
   EnrichedSTQ: false,
+  HideWeather: false,
   PopNoiseForNM: true,
   PopNoiseForBunny: true,
   PopNoiseForSkirmish: false,
@@ -586,71 +587,79 @@ class EurekaTracker {
       return;
     const nowMs = +new Date();
 
-    const primaryWeatherList = this.zoneInfo?.primaryWeather;
-    const currentWeather = getWeather(nowMs, zoneId);
-    if (primaryWeatherList) {
-      for (let i = 0; i < numWeatherElem; ++i) {
-        const iconElem = document.getElementById(`label-weather-icon${i}`);
-        const textElem = document.getElementById(`label-weather-text${i}`);
+    const weatherContainer = document.getElementById('label-weather-container');
+    const labelTime = document.getElementById('label-time');
+
+    if (!weatherContainer || !labelTime)
+      throw new UnreachableCode();
+
+    weatherContainer.classList.toggle('hidden', this.options.HideWeather);
+    labelTime.classList.toggle('weather-hidden', this.options.HideWeather);
+
+    if (!this.options.HideWeather) {
+      const primaryWeatherList = this.zoneInfo?.primaryWeather;
+      const currentWeather = getWeather(nowMs, zoneId);
+
+      if (primaryWeatherList) {
+        primaryWeatherList.forEach((primaryWeather, i) => {
+          const weatherIcon = gWeatherIcons[primaryWeather];
+          let weatherStr = '';
+          if (currentWeather === primaryWeather) {
+            const stopTime = findNextWeatherNot(nowMs, zoneId, primaryWeather);
+            weatherStr = this.TransByDispLang(this.options.timeStrings.weatherFor)(nowMs, stopTime);
+          } else {
+            const startTime = findNextWeather(nowMs, zoneId, primaryWeather);
+            if (startTime !== undefined) {
+              weatherStr = this.TransByDispLang(this.options.timeStrings.weatherIn)(
+                nowMs,
+                startTime,
+              );
+            }
+          }
+          const iconElem = document.getElementById(`label-weather-icon${i}`);
+          const textElem = document.getElementById(`label-weather-text${i}`);
+          if (!iconElem || !textElem)
+            throw new UnreachableCode();
+
+          iconElem.innerHTML = weatherIcon ?? '';
+          textElem.innerHTML = weatherStr;
+        });
+      } else if (currentWeather !== undefined) {
+        const stopTime = findNextWeatherNot(nowMs, zoneId, currentWeather);
+        const weatherIcon = gWeatherIcons[currentWeather];
+        let weatherStr = this.TransByDispLang(this.options.timeStrings.weatherFor)(nowMs, stopTime);
+
+        const iconElem = document.getElementById('label-weather-icon0');
+        const textElem = document.getElementById('label-weather-text0');
+
         if (!iconElem || !textElem)
           throw new UnreachableCode();
-        iconElem.innerHTML = '';
-        textElem.innerHTML = '';
-      }
+        iconElem.innerHTML = weatherIcon ?? '';
+        textElem.innerHTML = weatherStr;
 
-      primaryWeatherList.forEach((primaryWeather, i) => {
-        const weatherIcon = gWeatherIcons[primaryWeather];
-        let weatherStr = '';
-        if (currentWeather === primaryWeather) {
-          const stopTime = findNextWeatherNot(nowMs, zoneId, primaryWeather);
-          weatherStr = this.TransByDispLang(this.options.timeStrings.weatherFor)(nowMs, stopTime);
-        } else {
-          const startTime = findNextWeather(nowMs, zoneId, primaryWeather);
-          if (startTime !== undefined)
-            weatherStr = this.TransByDispLang(this.options.timeStrings.weatherIn)(nowMs, startTime);
+        let lastTime = nowMs;
+        let lastWeather = currentWeather;
+
+        for (let i = 1; i < numWeatherElem; ++i) {
+          const startTime = findNextWeatherNot(lastTime, zoneId, lastWeather);
+          if (startTime === undefined)
+            continue;
+          const weather = getWeather(startTime + 1, zoneId);
+          if (weather === undefined)
+            continue;
+          const weatherIcon = gWeatherIcons[weather];
+          weatherStr = this.TransByDispLang(this.options.timeStrings.weatherIn)(nowMs, startTime);
+
+          const iconElem = document.getElementById(`label-weather-icon${i}`);
+          const textElem = document.getElementById(`label-weather-text${i}`);
+          if (!iconElem || !textElem)
+            throw new UnreachableCode();
+
+          iconElem.innerHTML = weatherIcon ?? '';
+          textElem.innerHTML = weatherStr;
+          lastTime = startTime;
+          lastWeather = weather;
         }
-        const iconElem = document.getElementById(`label-weather-icon${i}`);
-        const textElem = document.getElementById(`label-weather-text${i}`);
-        if (!iconElem || !textElem)
-          throw new UnreachableCode();
-
-        iconElem.innerHTML = weatherIcon ?? '';
-        textElem.innerHTML = weatherStr;
-      });
-    } else if (currentWeather !== undefined) {
-      const stopTime = findNextWeatherNot(nowMs, zoneId, currentWeather);
-      const weatherIcon = gWeatherIcons[currentWeather];
-      let weatherStr = this.TransByDispLang(this.options.timeStrings.weatherFor)(nowMs, stopTime);
-
-      const iconElem = document.getElementById(`label-weather-icon0`);
-      const textElem = document.getElementById(`label-weather-text0`);
-      if (!iconElem || !textElem)
-        throw new UnreachableCode();
-      iconElem.innerHTML = weatherIcon ?? '';
-      textElem.innerHTML = weatherStr;
-
-      // round up current time
-      let lastTime = nowMs;
-      let lastWeather = currentWeather;
-      for (let i = 1; i < 5; ++i) {
-        const startTime = findNextWeatherNot(lastTime, zoneId, lastWeather);
-        if (startTime === undefined)
-          continue;
-        const weather = getWeather(startTime + 1, zoneId);
-        if (weather === undefined)
-          continue;
-        const weatherIcon = gWeatherIcons[weather];
-        weatherStr = this.TransByDispLang(this.options.timeStrings.weatherIn)(nowMs, startTime);
-
-        const iconElem = document.getElementById(`label-weather-icon${i}`);
-        const textElem = document.getElementById(`label-weather-text${i}`);
-        if (!iconElem || !textElem)
-          throw new UnreachableCode();
-
-        iconElem.innerHTML = weatherIcon ?? '';
-        textElem.innerHTML = weatherStr;
-        lastTime = startTime;
-        lastWeather = weather;
       }
     }
 
