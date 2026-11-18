@@ -13,9 +13,13 @@ import { Job, Role } from '../../types/job';
 import { Matches, NetMatches } from '../../types/net_matches';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
 import {
+  CollectMistakeDetails,
+  CollectMistakeMap,
   DataInitializeFunc,
+  InternalOopsyTriggerType,
   LooseOopsyTrigger,
   LooseOopsyTriggerSet,
+  MistakeDetails,
   MistakeMap,
   OopsyDeathReason,
   OopsyField,
@@ -30,6 +34,8 @@ import { ZoneIdType } from '../../types/trigger';
 import { CombatState } from './combat_state';
 import { MistakeCollector } from './mistake_collector';
 import {
+  GetMissedMistakeText,
+  GetMultipleMistakeText,
   GetShareMistakeText,
   GetSoloMistakeText,
   IsPlayerId,
@@ -44,6 +50,16 @@ import {
 } from './oopsy_common';
 import { OopsyOptions } from './oopsy_options';
 import { PlayerStateTracker } from './player_state_tracker';
+
+type CollectHelperType = 'missed' | 'multiple';
+
+// Defaults for collect helper triggers
+const collectMistakeDefaults = {
+  id: 'DUMMY_VALUE', // gets set later
+  collectSeconds: 1.5,
+  suppressSeconds: 1.5,
+  minCount: 2,
+};
 
 const actorControlFadeInCommandPre62 = '40000010';
 const actorControlFadeInCommand = '4000000F';
@@ -82,6 +98,19 @@ const latePullText = {
 export const earlyPullTriggerId = 'General Early Pull';
 
 const isOopsyMistake = (x: OopsyMistake | OopsyDeathReason): x is OopsyMistake => 'type' in x;
+
+// Helper function to handle `onlyForRole` mistake properties
+const inRequiredRole = (
+  mistake: string | MistakeDetails | CollectMistakeDetails,
+  playerRole: string,
+): boolean => {
+  if (typeof mistake === 'string' || mistake.onlyForRole === undefined)
+    return true;
+  const eligibleRoles: string[] = Array.isArray(mistake.onlyForRole)
+    ? mistake.onlyForRole
+    : [mistake.onlyForRole];
+  return eligibleRoles.includes(playerRole);
+};
 
 export type ProcessedOopsyTriggerSet = LooseOopsyTriggerSet & {
   filename?: string;
@@ -550,18 +579,23 @@ export class DamageTracker {
     if (!dict)
       return;
     for (const key in dict) {
-      const id = dict[key];
+      const mistake = dict[key];
+      const id = typeof mistake === 'object' ? mistake.id : mistake;
       const trigger: OopsyTrigger<OopsyData> = {
         id: key,
         type: 'Ability',
         netRegex: NetRegexes.ability({ id: id, ...playerDamageFields }),
-        mistake: (_data, matches) => {
+        mistake: (data, matches) => {
+          const text = (typeof mistake === 'object' ? mistake : {}).text ?? matches.ability;
+          if (mistake !== undefined && !inRequiredRole(mistake, data.role))
+            return;
+
           return {
             type: type,
             blame: matches.target,
             reportId: matches.targetId,
             triggerType: 'Damage',
-            text: matches.ability,
+            text: text,
           };
         },
       };
@@ -573,18 +607,23 @@ export class DamageTracker {
     if (!dict)
       return;
     for (const key in dict) {
-      const id = dict[key];
+      const mistake = dict[key];
+      const id = typeof mistake === 'object' ? mistake.id : mistake;
       const trigger: OopsyTrigger<OopsyData> = {
         id: key,
         type: 'GainsEffect',
         netRegex: NetRegexes.gainsEffect({ effectId: id, ...playerTargetFields }),
-        mistake: (_data, matches) => {
+        mistake: (data, matches) => {
+          const text = (typeof mistake === 'object' ? mistake : {}).text ?? matches.effect;
+          if (mistake !== undefined && !inRequiredRole(mistake, data.role))
+            return;
+
           return {
             type: type,
             blame: matches.target,
             reportId: matches.targetId,
             triggerType: 'GainsEffect',
-            text: matches.effect,
+            text: text,
           };
         },
       };
@@ -598,23 +637,30 @@ export class DamageTracker {
     if (!dict)
       return;
     for (const key in dict) {
-      const id = dict[key];
+      const mistake = dict[key];
+      const id = typeof mistake === 'object' ? mistake.id : mistake;
       const trigger: OopsyTrigger<OopsyData> = {
         id: key,
         type: 'Ability',
         netRegex: NetRegexes.ability({ type: '22', id: id, ...playerDamageFields }),
-        mistake: (_data, matches) => {
+        mistake: (data, matches) => {
           // Some single target damage is still marked as AOEActionEffect type 22, so check
           // the number of targets that it hits.
           const numTargets = parseInt(matches.targetCount);
           if (numTargets === 1 || isNaN(numTargets))
             return;
+
+          const text = (typeof mistake === 'object' ? mistake : {}).text ??
+            GetShareMistakeText(matches.ability, numTargets);
+          if (mistake !== undefined && !inRequiredRole(mistake, data.role))
+            return;
+
           return {
             type: type,
             blame: matches.target,
             reportId: matches.targetId,
             triggerType: 'Share',
-            text: GetShareMistakeText(matches.ability, numTargets),
+            text: text,
           };
         },
       };
@@ -626,22 +672,127 @@ export class DamageTracker {
     if (!dict)
       return;
     for (const key in dict) {
-      const id = dict[key];
+      const mistake = dict[key];
+      const id = typeof mistake === 'object' ? mistake.id : mistake;
       const trigger: OopsyTrigger<OopsyData> = {
         id: key,
         type: 'Ability',
         netRegex: NetRegexes.ability({ type: '21', id: id, ...playerDamageFields }),
-        mistake: (_data, matches) => {
+        mistake: (data, matches) => {
+          const text = (typeof mistake === 'object' ? mistake : {}).text ??
+            GetSoloMistakeText(matches.ability);
+          if (mistake !== undefined && !inRequiredRole(mistake, data.role))
+            return;
+
           return {
             type: type,
             blame: matches.target,
             reportId: matches.targetId,
             triggerType: 'Solo',
-            text: GetSoloMistakeText(matches.ability),
+            text: text,
           };
         },
       };
       this.ProcessTrigger(trigger);
+    }
+  }
+
+  AddCollectTriggers(
+    type: OopsyMistakeType,
+    helperType: CollectHelperType,
+    dict?: CollectMistakeMap,
+  ): void {
+    if (!dict)
+      return;
+    for (const key in dict) {
+      const mistake = dict[key];
+      if (mistake === undefined)
+        continue;
+
+      const mistakeDetails = typeof mistake === 'string'
+        ? { ...collectMistakeDefaults, id: mistake }
+        : { ...collectMistakeDefaults, ...mistake };
+
+      // Create a sanitized mistakeId with only alphanumerics to use as the data.collectors prop
+      // This is a bit of a hack, but the alternatives are worse. And lint/test rules enforce
+      // unique trigger names, so this shouldn't cause bad things to happen......... /.\
+      const sanitizedMistakeId = key.replace(/[^\w]/g, '');
+
+      const collectTrigger: OopsyTrigger<OopsyData> = {
+        id: `${key} Collect`,
+        type: 'Ability',
+        netRegex: NetRegexes.ability({ id: mistakeDetails.id }),
+        // only collect party members to determine if they were missed
+        // TODO: Add support for alliances if/once we have a config option?
+        condition: (data, matches) => data.party.partyNames_.includes(matches.target),
+        run: (data, matches) => {
+          ((data.collectors ??= {})[sanitizedMistakeId] ??= []).push(matches.target);
+        },
+      };
+      this.ProcessTrigger(collectTrigger);
+
+      const mistakeTrigger: OopsyTrigger<OopsyData> = {
+        id: `${key} Mistake`,
+        type: 'Ability',
+        netRegex: NetRegexes.ability({ id: mistakeDetails.id }),
+        delaySeconds: mistakeDetails.collectSeconds,
+        // At a minimum, suppress for the collection period so the trigger fires only once
+        // for that collction. But allow for the possibility that we may want to suppress for longer
+        // (e.g., for a multi-hit stack, a trigger writer might think it's sufficient to report
+        // missing the first hit and not re-report multiple times, which could get spammy).
+        suppressSeconds: Math.max(mistakeDetails.collectSeconds, mistakeDetails.suppressSeconds),
+        mistake: (data, matches) => {
+          // TODO: Add support for alliances if/once we have a config option?
+          const trackList = data.party.partyNames_;
+          const targeted = (data.collectors ??= {})[sanitizedMistakeId] ??= [];
+          const minCount = mistakeDetails.minCount; // for 'multiple'-type triggers
+
+          let mistakePlayers: string[] = [];
+          let triggerType: InternalOopsyTriggerType = 'Damage'; // default
+          // assume MissedMistakeText if not provided as a default, and override later if needed
+          // as MultipleMistakeText requires an addiitonal per-user param
+          let mistakeText = mistakeDetails.text ?? GetMissedMistakeText(matches.ability);
+
+          if (helperType === 'missed') {
+            triggerType = 'Missed';
+            mistakePlayers = trackList.filter((name) => !targeted.includes(name));
+          } else if (helperType === 'multiple') {
+            triggerType = 'Multiple';
+            mistakePlayers = trackList.filter(
+              (name) => targeted.filter((target) => target === name).length >= minCount,
+            );
+          }
+
+          if (mistakePlayers.length === 0)
+            return;
+
+          const mistakes: OopsyMistake[] = [];
+
+          for (const name of mistakePlayers) {
+            const playerId = data.party.member(name).id;
+            const playerRole = data.party.member(name).role;
+            if (playerId === undefined || playerRole === undefined)
+              continue;
+
+            const numHits = targeted.filter((target) => target === name).length;
+            if (helperType === 'multiple' && mistakeDetails.text === undefined)
+              mistakeText = GetMultipleMistakeText(matches.ability, numHits);
+
+            if (inRequiredRole(mistakeDetails, playerRole))
+              mistakes.push({
+                type: type,
+                blame: name,
+                reportId: playerId,
+                triggerType: triggerType,
+                text: mistakeText,
+              });
+          }
+
+          return mistakes;
+        },
+        run: (data) => (data.collectors ??= {})[sanitizedMistakeId] = [],
+      };
+      this.ProcessTrigger(mistakeTrigger);
     }
   }
 
@@ -724,6 +875,10 @@ export class DamageTracker {
       this.AddShareTriggers('fail', set.shareFail);
       this.AddSoloTriggers('warn', set.soloWarn);
       this.AddSoloTriggers('fail', set.soloFail);
+      this.AddCollectTriggers('warn', 'missed', set.missedWarn);
+      this.AddCollectTriggers('fail', 'missed', set.missedFail);
+      this.AddCollectTriggers('warn', 'multiple', set.multipleWarn);
+      this.AddCollectTriggers('fail', 'multiple', set.multipleFail);
 
       for (const trigger of set.triggers ?? [])
         this.ProcessTrigger(trigger, set);
