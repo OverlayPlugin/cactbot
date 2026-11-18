@@ -651,49 +651,48 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Bloody Headsman': '', // FIXME '某个绯红处刑人的记忆'
-        // 'Bygone Aerostat': '', // FIXME '旧日航空机'
-        // 'Chirurgeon General': '', // FIXME '某个医师长的记忆'
-        // 'Hooded Headsman': '', // FIXME '某个处刑人的记忆'
-        // 'Immortal Remains': '', // FIXME '某些人的记忆'
-        // 'Pale Headsman': '', // FIXME '某个黄褐处刑人的记忆'
-        // 'Pestilent Headsman': '', // FIXME '某个翠绿处刑人的记忆'
+        'Bloody Headsman': '某位處刑人的記憶【緋紅】',
+        'Bygone Aerostat': '昔日浮空機',
+        'Chirurgeon General': '某位醫療主任的記憶',
+        'Hooded Headsman': '某位處刑人的記憶',
+        'Immortal Remains': '某些人的記憶',
+        'Pale Headsman': '某位處刑人的記憶【枯黃】',
+        'Pestilent Headsman': '某位處刑人的記憶【翠綠】',
       },
       'replaceText': {
-        // '--hellmaker adds--': '', // FIXME '--焦热刑具出现--'
-        // '\\(active\\)': '', // FIXME '(生效)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(castbar\\)': '', // FIXME '(读条)'
-        // 'Biochemical Front': '', // FIXME '正面喷雾'
+        '--hellmaker adds--': '--焦熱刑具出現--',
+        '\\(active\\)': '(生效)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(castbar\\)': '(讀條)',
+        'Biochemical Front': '正面噴霧',
         'Bombardment': '轟炸',
-        // 'Chopping Block': '', // FIXME '圆月断'
-        // 'Concentrated Dose': '', // FIXME '高压缩药弹'
-        // 'Death Penalty': '', // FIXME '死刑宣告'
-        // 'Dismemberment': '', // FIXME '斩足刃'
-        // 'Electray': '', // FIXME '雷质射线'
-        // 'Execution Wheel': '', // FIXME '月环断'
-        // 'Flaying Flail': '', // FIXME '断罪的铁球'
-        // 'Head-splitting Roar': '', // FIXME '处刑人的咆哮'
-        // 'Impression': '', // FIXME '印象'
-        // 'Keraunography': '', // FIXME '雷光'
-        // 'Lawless Pursuit': '', // FIXME '捉拿罪犯'
-        // 'Medicine Field': '', // FIXME '广域撒药'
-        // 'Memento': '', // FIXME '记忆重现'
-        // 'Memory of the Pyre': '', // FIXME '记忆爆炸'
-        // 'Memory of the Storm': '', // FIXME '记忆风暴'
-        // 'No Man\'s Land': '', // FIXME '启动装置'
-        // 'Peal of Judgment': '', // FIXME '断罪的雷剑'
-        // 'Pungent Aerosol': '', // FIXME '爆炸药液'
-        // 'Recollection': '', // FIXME '回忆'
-        // 'Relentless Torment': '', // FIXME '强连击'
-        // 'Sensory Deprivation': '', // FIXME '知觉扰乱药'
-        // 'Serial Torture': '', // FIXME '连续处刑'
-        // 'Shackles of Fate': '', // FIXME '铁链束缚'
-        // 'Sterile Sphere': '', // FIXME '圆状散布'
-        // 'Turmoil': '', // FIXME '慌乱'
-        // 'Will Breaker': '', // FIXME '破碎弹'
+        'Chopping Block': '圓月斬',
+        'Concentrated Dose': '高密度藥彈',
+        'Death Penalty': '死刑宣告',
+        'Dismemberment': '斬足刃',
+        'Electray': '雷轉質射線',
+        'Execution Wheel': '月環斬',
+        'Flaying Flail': '斷罪鐵球',
+        'Head-splitting Roar': '處刑人的咆哮',
+        'Impression': '印象',
+        'Keraunography': '雷光',
+        'Lawless Pursuit': '捕捉罪犯',
+        'Medicine Field': '廣域灑藥',
+        'Memento': '記憶重現',
+        'Memory of the Pyre': '記憶爆發',
+        'Memory of the Storm': '記憶風暴',
+        'No Man\'s Land': '啟動裝置',
+        'Peal of Judgment': '斷罪雷劍',
+        'Pungent Aerosol': '爆炸藥劑',
+        'Recollection': '回憶',
+        'Relentless Torment': '強連擊',
+        'Sensory Deprivation': '擾亂知覺藥',
+        'Serial Torture': '連續處刑',
+        'Shackles of Fate': '鐵鍊束縛',
+        'Sterile Sphere': '圓狀散佈',
+        'Turmoil': '慌亂',
+        'Will Breaker': '破碎彈',
       },
     },
     {

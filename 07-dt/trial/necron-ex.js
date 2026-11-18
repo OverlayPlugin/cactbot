@@ -864,49 +864,52 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Azure Aether': '', // FIXME '青之魂块'
-        // 'Beckoning Hands': '', // FIXME '邀死之手'
-        // 'Icy Hands': '', // FIXME '招死之手'
-        // 'Necron': '', // FIXME '永远之暗'
+        'Azure Aether': '青之魂塊',
+        'Beckoning Hands': '邀死之手',
+        'Icy Hands': '招死之手',
+        'Necron': '永恆黑暗',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(intercards\\)': '', // FIXME '(斜角)'
-        // '\\(line\\)': '', // FIXME '(直线)'
-        // '\\(lines\\)': '', // FIXME '(直线)'
-        // '\\(puddle\\)': '', // FIXME '(圈)'
-        // '\\(puddles\\)': '', // FIXME '(圈)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '\\(tower\\)': '', // FIXME '(塔)'
-        // 'Aetherblight': '', // FIXME '青之波动'
-        // 'Blue Shockwave': '', // FIXME '青之冲击'
-        // 'Choking Grasp': '', // FIXME '压溃'
-        // 'Circle of Lives': '', // FIXME '青之环波'
-        // 'Cold Grip': '', // FIXME '暗之死腕'
-        // 'Crop Rotation': '', // FIXME '灵魂轮转'
-        // 'Darkness of Eternity': '', // FIXME '永远之暗'
-        'Existential Dread': '萬死的憎惡',
-        // 'Fear of Death': '', // FIXME '死之恐惧'
-        // 'Fourfold Blight': '', // FIXME '青之四重波'
+        '\\(cast\\)': '(詠唱)',
+        '\\(damage\\)': '(傷害)',
+        '\\(intercards\\)': '(斜角)',
+        '\\(line\\)': '(直線)',
+        '\\(lines\\)': '(直線)',
+        '\\(puddle\\)': '(圈)',
+        '\\(puddles\\)': '(圈)',
+        '\\(spread\\)': '(分散)',
+        '\\(tower\\)': '(塔)',
+        'Add Spawn': '小怪生成',
+        'Aetherblight': '青藍波動',
+        'Blue Shockwave': '青藍衝擊',
+        'Choking Grasp': '壓潰',
+        'Circle of Lives': '青藍環波',
+        'Cold Grip': '暗黑死腕',
+        'Crop Rotation': '靈魂輪轉',
+        'Darkness of Eternity': '永世黑暗',
+        'Existential Dread': '暗氣流',
+        'Fear of Death': '死之恐懼',
+        'Fourfold Blight': '青藍四重波',
         'Grand Cross': '大十字',
-        // 'Inevitability': '', // FIXME '死之泛滥'
-        // 'Mass Macabre': '', // FIXME '群体恐慌'
-        // 'Memento Mori': '', // FIXME '死亡警告'
-        // 'Muted Struggle': '', // FIXME '击溃'
-        // 'Neutron Ring': '', // FIXME '中子环'
-        // 'Relentless Reaping': '', // FIXME '青之连魂'
+        'Inevitability': '死亡氾濫',
+        'Mass Macabre': '群體恐慌',
+        'Memento Mori': '死亡警告',
+        'Muted Struggle': '擊潰',
+        'Neutron Ring': '中子環',
+        'Relentless Reaping': '青藍連魂',
         'Shock(?!wave)': '放電',
-        // '(?<!Blue )Shockwave': '', // FIXME '青之冲击'
+        '(?<!Blue )Shockwave': '衝擊波',
         'Smite of Gloom': '黑暗一擊',
-        // 'Soul Reaping': '', // FIXME '青魂'
-        // 'Specter of Death': '', // FIXME '黑暗巨腕'
-        // 'The End\'s Embrace': '', // FIXME '引导之翼'
-        // 'The Fourth Season': '', // FIXME '四重青之波潮'
-        // 'The Second Season': '', // FIXME '二重青之波潮'
-        // 'Twofold Blight': '', // FIXME '青之二重波'
+        'Soul Reaping': '青藍之魂',
+        'Specter of Death': '黑暗巨腕',
+        'The End\'s Embrace': '引導之翼',
+        'The Fourth Season': '四重青藍浪潮',
+        'The Second Season': '二重青藍浪潮',
+        'Twofold Blight': '青藍二重波',
+        'Chilling Fingers': '糾纏',
+        'Necrotic Pulse': '撕裂',
+        'Spreading Fear': '散佈',
       },
     },
     {
